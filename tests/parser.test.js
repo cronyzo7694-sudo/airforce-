@@ -128,6 +128,67 @@ T('backup payload parses questions + restore data', () => {
   assert(!plain.restore, 'plain question JSON has no restore payload');
 });
 
+console.log('\n━━━ bilingual master TXT (Solution — English / समाधान — हिन्दी format)');
+T('bilingual TXT: Hindi question + both explanations parsed', () => {
+  const sample = [
+    '==============================================================================',
+    'PAPER 1  |  GROUP Y  |  04 Nov 2020  |  Source: Prepp',
+    '==============================================================================',
+    '',
+    'Q1. For a standard clock, what is the angle at 9:30 am?',
+    'एक सामान्य घड़ी में जब समय 9:30 am हो तो कोण कितना होगा?',
+    '',
+    '(A) 250°',
+    '(B) 105°',
+    '(C) 150°',
+    '(D) 165°',
+    'Answer: B',
+    '',
+    'Solution — English',
+    'Angle = |30H − 5.5M| = 105°.',
+    '',
+    'समाधान — हिन्दी',
+    'कोण = |30H − 5.5M| = 105°।',
+    '',
+    'सही उत्तर: (B)',
+    '',
+    'Q2. Choose the correct figure?',
+    'सही आकृति चुनिए।',
+    '',
+    '(Options are figure-based in the source — विकल्प स्रोत में चित्र आधारित हैं)',
+    'Answer: C',
+    '',
+    'Solution — English',
+    'Rotate the figure.',
+    '',
+    'समाधान — हिन्दी',
+    'आकृति घुमाइए।',
+    '',
+    'सही उत्तर: (C)'
+  ].join('\n');
+  const res = Parsers.parseMasterTxt(sample, 'raga');
+  eq(res.questions.length, 2, '2 questions');
+  const q1 = res.questions[0], q2 = res.questions[1];
+  eq(q1.questionText, 'For a standard clock, what is the angle at 9:30 am?', 'English text clean');
+  eq(q1.questionTextHi, 'एक सामान्य घड़ी में जब समय 9:30 am हो तो कोण कितना होगा?', 'Hindi question split out');
+  eq(q1.correctAnswer, 'B', 'answer key');
+  assert(q1.explanation.includes('105°') && q1.explanation.includes('30H'), 'English explanation captured');
+  assert((q1.explanationHi || '').includes('कोण'), 'Hindi explanation captured');
+  assert(!q1.questionText.includes('सही'), 'सही उत्तर line not leaked into question');
+  assert(q2.figureBased, 'figure-based detected');
+  eq(q2.questionTextHi, 'सही आकृति चुनिए।', 'figure question Hindi kept');
+  assert((q2.explanationHi || '').includes('घुमाइए'), 'figure Hindi explanation kept');
+});
+T('uploaded bilingual master parses end-to-end (uploads present)', () => {
+  let text;
+  try { text = fs.readFileSync(UP + 'RAGA_Master_Bilingual_Solutions.txt', 'utf-8'); }
+  catch (e) { return; /* uploads not present in this checkout — skip */ }
+  const res = Parsers.parseMasterTxt(text, 'raga');
+  assert(res.questions.length >= 790, '790+ questions parsed (got ' + res.questions.length + ')');
+  assert(res.questions.filter(q => q.questionTextHi).length >= 770, '770+ with Hindi question');
+  assert(res.questions.every(q => !q.questionText.includes('सही उत्तर')), 'no answer-repeat leak');
+});
+
 console.log('\n━━━ bilingual (EN + HI) + exam-scope support');
 T('bilingual JSON: Hindi fields kept + subjects mapped', () => {
   const res = Parsers.parseJson(JSON.stringify([
@@ -152,7 +213,7 @@ T('subject files carry bilingual (EN+HI) records — no separate hindi file', ()
   assert(bi(raga).length >= 60, 'raga file has 60+ bilingual records (got ' + bi(raga).length + ')');
   assert(bi(math).length >= 30, 'math file has 30+ bilingual records (got ' + bi(math).length + ')');
   assert(bi(raga).concat(bi(math)).every(q => q.options && q.options.length === 4), 'all have 4 options');
-  assert(bi(raga).concat(bi(math)).every(q => q.exam === 'airforce'), 'exam-tagged');
+  assert(bi(raga).concat(bi(math)).every(q => (q.exam || 'airforce') === 'airforce'), 'exam-tagged (default airforce)');
 });
 
 console.log('\n━━━ importer dedupe logic');

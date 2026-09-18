@@ -6,6 +6,7 @@
 
 Views.questionBank = async function (state) {
   state = state || Object.assign({ page: 1, search: '', subject: 'all', chapter: 'all', topic: 'all', difficulty: 'all', keyState: 'all', attempted: 'all', year: 'all' });
+
   const cfg = await App.config();
   const PER = 25;
 
@@ -51,6 +52,10 @@ Views.questionBank = async function (state) {
   const topics = (state.subject !== 'all' && state.chapter !== 'all') ? Object.keys(bank[state.subject]?.topics || {}).filter(t => true) : [];
   const years = [...new Set(rows.map(r => r.year).filter(Boolean))].sort().reverse();
 
+  // modal-safe paint: agar preview/edit modal khula hai (form me likha hai),
+  // usse paint se theek pehle detach karke capture karo — paint ke baad wapas
+  // attach (capture → paint → re-attach teeno synchronous = koi race nahi)
+  const keepHost = (() => { const h = AVUtil.$('#qb-modal-host'); return (h && h.children.length) ? h : null; })();
   const painted = App.page('page page-bank', `
     <div class="page-head">
       <div>
@@ -131,6 +136,8 @@ Views.questionBank = async function (state) {
     <div id="qb-modal-host"></div>
   `, '/questions');
   if (!painted) return; // user navigated away while this render was building
+  // restore an open modal (ya to filter/page re-render ya late double-render ke baad)
+  if (keepHost) { const h = AVUtil.$('#qb-modal-host'); if (h && !h.children.length) h.replaceWith(keepHost); }
 
   // one-click bank restore (if wiped)
   const qbRestore = AVUtil.$('#qb-restore');

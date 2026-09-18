@@ -16,6 +16,19 @@ const Parsers = (() => {
     return undefined;
   }
 
+  /* ---- bilingual (EN + HI) master TXT support ----
+     Format: Q1. English line / हिन्दी line / options / Answer: X /
+             Solution — English ... / समाधान — हिन्दी ... / सही उत्तर: (X) */
+  const DEV_RE = /[\u0900-\u097F]/g;
+  function devanagariRatio(s) {
+    const letters = String(s).replace(/[\s\d\p{P}\p{S}]/gu, '');
+    if (!letters.length) return 0;
+    return (String(s).match(DEV_RE) || []).length / letters.length;
+  }
+  const isSolEn = s => /^Solution\s*[\u2014\-]\s*English\b/i.test(s);
+  const isSolHi = s => /^\u0938\u092e\u093e\u0927\u093e\u0928\s*[\u2014\-]\s*\u0939\u093f\u0928\u094d\u0926\u0940/.test(s);
+  const isHiAns = s => /^\u0938\u0939\u0940 \u0909\u0924\u094d\u0924\u0930\s*[:\uFF1A]/.test(s);
+
   function mkQuestion(o) {
     const subjectRaw = normKey(o, ['subject', 'subjectid', 'section']);
     const SUBJECT_MAP = { physics: 'physics', mathematics: 'mathematics', maths: 'mathematics', math: 'mathematics', english: 'english', raga: 'raga', reasoning: 'raga', verbalreasoning: 'raga', nonverbalreasoning: 'raga', generalawareness: 'raga', 'general-awareness': 'raga', generalknowledge: 'raga', gk: 'raga', ga: 'raga', currentaffairs: 'raga', reasoningandgeneralawareness: 'raga', 'general-awareness': 'raga', 'reasoning&generalawareness': 'raga' };
@@ -161,20 +174,37 @@ const Parsers = (() => {
     const yearMatch = paper.date.match(/\b(19|20)\d{2}\b/);
     const year = yearMatch ? +yearMatch[0] : null;
 
-    // figure-based note format
-    if (b.rest.some(l => l.includes('(Options are figure-based in the source)'))) {
-      const junk = t => t.startsWith('Answer:') || t === '(Options are figure-based in the source)' || /^[=\-]+$/.test(t) || PAPER_RE.test(t);
-      const noteLines = b.rest.map(l => l.trim()).filter(l => l && !junk(l));
-      const qt = [b.first].concat(noteLines).join(' ').replace(/\s+/g, ' ').trim();
-      const ansM = b.rest.join('\n').match(/Answer:\s*([A-D])/);
+    // figure-based note format (tolerates the bilingual note variant)
+    if (b.rest.some(l => l.includes('(Options are figure-based in the source'))) {
+      let ans = null, mode2 = 'q';
+      const enL = [], hiL = [], exp = [], expHi = [];
+      for (const raw of b.rest) {
+        const s = raw.trim();
+        if (!s || /^[=\-]+$/.test(s) || PAPER_RE.test(s)) continue;
+        const am = s.match(/^Answer:\s*([A-D?])\s*$/);
+        if (am) { if (!ans) ans = /^[A-D]$/.test(am[1]) ? am[1] : null; mode2 = 'exp'; continue; }
+        if (isSolEn(s)) { mode2 = 'exp'; continue; }
+        if (isSolHi(s)) { mode2 = 'expHi'; continue; }
+        if (isHiAns(s)) { if (!ans) { const h = s.match(/\(([A-D])\)/); if (h) ans = h[1]; } continue; }
+        if (s.startsWith('(Options are figure-based')) { mode2 = 'q'; continue; }
+        if (mode2 === 'q') { (devanagariRatio(s) > .5 ? hiL : enL).push(s); }
+        else if (mode2 === 'exp') exp.push(s);
+        else if (mode2 === 'expHi') expHi.push(s);
+      }
+      const qt = [b.first].concat(enL).join(' ').replace(/\s+/g, ' ').trim();
       return { q: _finalize(defaultSubject, qt + ' (Options are figure-based in the source)',
         ['Figure A (see source)', 'Figure B (see source)', 'Figure C (see source)', 'Figure D (see source)'],
-        ansM ? ansM[1] : null, meta(), year, ['pyq', 'figure-based']), recovered: false };
+        ans, meta(), year, ['pyq', 'figure-based'], {
+          questionTextHi: hiL.join(' ').replace(/\s+/g, ' ').trim() || null,
+          explanation: exp.join(' ').replace(/\s+/g, ' ').trim() || '',
+          explanationHi: expHi.join(' ').replace(/\s+/g, ' ').trim() || null
+        }), recovered: false };
     }
 
     let fmt = null, answer = null, cur = null;
     const fmtOpts = {};
     const qtextLines = b.first ? [b.first] : [];
+    const expLines = [], expHiLines = [];
     let mode = 'qtext';
     for (const raw of b.rest) {
       const s = raw.trim();
@@ -186,13 +216,22 @@ const Parsers = (() => {
       else if (md && fmt !== 'A') { fmt = 'D'; mode = 'opt'; cur = [md[2]]; fmtOpts['ABCD'[+md[1] - 1]] = cur; }
       else if (mb && fmt !== 'A') { fmt = 'B'; mode = 'opt'; cur = null; }
       else if (mAns) { answer = mAns[1].trim(); mode = 'done'; }
+      else if (isSolEn(s)) { mode = 'exp'; continue; }
+      else if (isSolHi(s)) { mode = 'expHi'; continue; }
+      else if (isHiAns(s)) { if (!answer) { const h = s.match(/\(([A-D])\)/); if (h) answer = h[1]; } continue; }
+      else if (mode === 'exp') { if (s) expLines.push(s); }
+      else if (mode === 'expHi') { if (s) expHiLines.push(s); }
       else {
         if (!s && mode === 'qtext') continue;
         if (fmt === 'A' || fmt === 'D') { if (mode === 'opt' && cur) cur.push(s); else if (mode === 'qtext') qtextLines.push(s); }
         else qtextLines.push(s);
       }
     }
-    let qtext = qtextLines.join(' ').replace(/\s+/g, ' ').trim();
+    // split bilingual question lines: Devanagari lines → questionTextHi
+    const enQ = [], hiQ = [];
+    qtextLines.forEach(l => (devanagariRatio(l) > .5 ? hiQ : enQ).push(l));
+    let qtext = enQ.join(' ').replace(/\s+/g, ' ').trim();
+    const qtextHi = hiQ.join(' ').replace(/\s+/g, ' ').trim() || null;
     let opts = null, recovered = false;
 
     if (fmt === 'A' || fmt === 'D') {
@@ -206,7 +245,10 @@ const Parsers = (() => {
         if (!qtext) return { err: 'empty question' };
         return { q: _finalize(defaultSubject, qtext + ' (Options are figure-based in the source)',
           ['Figure A (see source)', 'Figure B (see source)', 'Figure C (see source)', 'Figure D (see source)'],
-          /^[A-D]$/.test(answer || '') ? answer : null, meta(), year, ['pyq', 'figure-based']) };
+          /^[A-D]$/.test(answer || '') ? answer : null, meta(), year, ['pyq', 'figure-based'], {
+            questionTextHi: qtextHi, explanation: expLines.join(' ').replace(/\s+/g, ' ').trim(),
+            explanationHi: expHiLines.join(' ').replace(/\s+/g, ' ').trim() || null
+          }) };
       }
       if (!opts[0] && !opts[3] && opts[1] && opts[2] && !['1.', '2.', '3.', '4.'].includes(opts[1]) && !['1.', '2.', '3.', '4.'].includes(opts[2]) && /1\. 2\. 3\. 4\./.test(qtext)) {
         const m2 = qtext.match(/^(.*?)\s*1\. 2\. 3\. 4\.\s*(.*)$/);
@@ -253,10 +295,15 @@ const Parsers = (() => {
     if (!qtext) return { err: 'missing question text' };
     if (opts.filter(Boolean).length < 4) return { err: 'missing option text' };
     if (answer && !/^[A-D]$/.test(answer)) answer = null;
-    return { q: _finalize(defaultSubject, qtext, opts, answer || null, meta(), year, recovered ? ['pyq', 'auto-reconstructed'] : ['pyq']), recovered };
+    return { q: _finalize(defaultSubject, qtext, opts, answer || null, meta(), year, recovered ? ['pyq', 'auto-reconstructed'] : ['pyq'], {
+      questionTextHi: qtextHi,
+      explanation: expLines.join(' ').replace(/\s+/g, ' ').trim(),
+      explanationHi: expHiLines.join(' ').replace(/\s+/g, ' ').trim() || null
+    }), recovered };
   }
 
-  function _finalize(subject, qtext, opts, ans, source, year, tags) {
+  function _finalize(subject, qtext, opts, ans, source, year, tags, extra) {
+    const x = extra || {};
     return {
       id: null,
       subject,
@@ -264,10 +311,12 @@ const Parsers = (() => {
       topic: 'General',
       difficulty: 'medium',
       questionText: qtext,
+      questionTextHi: x.questionTextHi || null,
       image: null,
       options: ['A', 'B', 'C', 'D'].map((L, i) => ({ id: L, text: opts[i] })),
       correctAnswer: ans,
-      explanation: '',
+      explanation: x.explanation || '',
+      explanationHi: x.explanationHi || null,
       source,
       year,
       tags,
