@@ -212,26 +212,38 @@ Views.analysis = async function (attemptId, state) {
         }).join('')}</tbody></table>
       </section>`;
   } else if (state.tab === 'questions') {
-    const chipDef = [['all', `All (${flat.length})`], ['correct', `Correct (${res.correct})`], ['wrong', `Wrong (${res.wrong})`], ['skip', `Skipped (${res.unattempted})`], ['marked', 'Marked for Review'], ['slow', '> 60s']];
+    const chipDef = [['all', `All (${flat.length})`], ['wrong', `Wrong (${res.wrong})`], ['correct', `Correct (${res.correct})`], ['skip', `Skipped (${res.unattempted})`], ['marked', 'Marked'], ['slow', '> 60s']];
     body.innerHTML = `
-      <div class="filter-tabs small">
-        ${chipDef.map(([k, v]) => `<button class="ftab ${state.qFilter === k ? 'active' : ''}" data-qf="${k}">${v}</button>`).join('')}
+      <div class="qa-toolbar">
+        <div class="filter-tabs small qa-chips">
+          ${chipDef.map(([k, v]) => `<button class="ftab ${state.qFilter === k ? 'active' : ''}" data-qf="${k}">${v}</button>`).join('')}
+        </div>
+        <div class="qa-bulk">
+          <button class="btn btn-mini" id="qa-expand-all">Expand all</button>
+          <button class="btn btn-mini" id="qa-collapse-all">Collapse all</button>
+        </div>
       </div>
-      ${qSlice.length ? qSlice.map(f => {
+      ${qSlice.length ? qSlice.map((f, fi) => {
         const q = f.q || { questionText: '(question missing)', options: [], chapter: '?', topic: '?', difficulty: '?' };
         const rcls = f.pq.result === 'correct' ? 'good' : (f.pq.result === 'wrong' ? 'bad' : '');
         const rlbl = f.pq.result === 'correct' ? 'CORRECT' : (f.pq.result === 'wrong' ? 'WRONG' : 'UNATTEMPTED');
         const marked = f.pq.state === 'MARKED_FOR_REVIEW' || f.pq.state === 'ANSWERED_AND_MARKED_FOR_REVIEW';
         const yourAns = f.pq.sel ? (q.options.find(o => o.id === f.pq.sel)?.text || f.pq.sel) : '<i>Not answered</i>';
         const keyAns = f.pq.key ? (q.options.find(o => o.id === f.pq.key)?.text || f.pq.key) : '<i>not available</i>';
-        return `<div class="qa-card ${rcls}" data-gn="${f.gn}">
-          <div class="qa-head">
+        const isOpen = (f.pq.result === 'wrong' && qSlice.findIndex(x => x.pq.result === 'wrong') === fi) ||
+          (f.pq.result === 'skip' && !qSlice.some(x => x.pq.result === 'wrong') && qSlice.findIndex(x => x.pq.result === 'skip') === fi) ||
+          (f.pq.result === 'correct' && !qSlice.some(x => x.pq.result !== 'correct') && fi === 0);
+        return `<div class="qa-card ${rcls}${isOpen ? ' open' : ''}" data-gn="${f.gn}">
+          <button class="qa-toggle" aria-expanded="${isOpen ? 'true' : 'false'}">
             <span class="qa-no">Q${f.gn}</span>
-            <span class="qa-meta">${AVUtil.esc(f.sname)} · ${AVUtil.esc(q.chapter)} › ${AVUtil.esc(q.topic)} · ${AVUtil.esc(q.difficulty || 'medium')}</span>
             ${marked ? '<span class="badge mk">Marked</span>' : ''}
             <span class="badge ${rcls}">${rlbl}</span>
+            <span class="qa-meta">${AVUtil.esc(f.sname)} · ${AVUtil.esc(q.chapter)} › ${AVUtil.esc(q.topic)}</span>
             <span class="qa-time">${AVUtil.fmtDur(f.pq.timeSpent || 0)}</span>
-          </div>
+            <span class="qa-chev" aria-hidden="true">▾</span>
+            <span class="qa-snip">${AVUtil.qtext(q.questionText)}</span>
+          </button>
+          <div class="qa-body">
           <div class="qa-text">${AVUtil.qtext(q.questionText)}</div>
           ${q.questionTextHi ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}
           ${q.image ? `<img class="qa-img" src="${AVUtil.esc(q.image)}" alt="figure" loading="lazy">` : ''}
@@ -243,9 +255,10 @@ Views.analysis = async function (attemptId, state) {
           ${q.explanationHi ? `<div class="qa-exp qa-hi"><b>व्याख्या:</b> ${AVUtil.qtext(q.explanationHi)}</div>` : ''}
           ${!q.explanation && q.source ? `<div class="qa-exp muted"><b>Source:</b> ${AVUtil.esc(q.source)}</div>` : ''}
           <div class="qa-note" data-qid="${f.qid}">
-            <div class="qa-note-head">📝 My Notebook <span class="muted small">(apna solution / trick — solution kholne par hamesha dikhega)</span></div>
-            <textarea class="note-ta" rows="3" placeholder="Apna khud ka solution, shortcut ya trick yahan likho…">${AVUtil.esc(noteMap[f.qid] || '')}</textarea>
-            <div class="qa-note-actions"><button class="btn btn-plain btn-sm" data-note-save="${f.qid}">💾 Save Note</button> <span class="note-saved muted small"></span></div>
+            <div class="qa-note-head">📝 My Notebook</div>
+            <textarea class="note-ta" rows="1" placeholder="Apna solution / trick yahan likho…">${AVUtil.esc(noteMap[f.qid] || '')}</textarea>
+            <div class="qa-note-actions"><button class="btn btn-plain btn-sm" data-note-save="${f.qid}">💾 Save</button> <span class="note-saved muted small"></span></div>
+          </div>
           </div>
         </div>`;
       }).join('') : '<div class="empty-state"><p>No questions in this filter.</p></div>'}
@@ -312,6 +325,20 @@ Views.analysis = async function (attemptId, state) {
 
   // events
   AVUtil.$$('#an-body [data-qf]').forEach(b => b.addEventListener('click', () => { state.qFilter = b.dataset.qf; state.qPage = 1; Views.analysis(attemptId, state); }));
+  // question-card accordion
+  AVUtil.$$('#an-body .qa-toggle').forEach(b => b.addEventListener('click', () => {
+    const card = b.closest('.qa-card');
+    card.classList.toggle('open');
+    b.setAttribute('aria-expanded', card.classList.contains('open') ? 'true' : 'false');
+  }));
+  AVUtil.$('#qa-expand-all')?.addEventListener('click', () => {
+    AVUtil.$$('#an-body .qa-card').forEach(c => c.classList.add('open'));
+    AVUtil.$$('#an-body .qa-toggle').forEach(b => b.setAttribute('aria-expanded', 'true'));
+  });
+  AVUtil.$('#qa-collapse-all')?.addEventListener('click', () => {
+    AVUtil.$$('#an-body .qa-card').forEach(c => c.classList.remove('open'));
+    AVUtil.$$('#an-body .qa-toggle').forEach(b => b.setAttribute('aria-expanded', 'false'));
+  });
   AVUtil.$('#an-body [data-qp]') && AVUtil.$$('#an-body [data-qp]').forEach(b => b.addEventListener('click', () => { state.qPage = +b.dataset.qp; Views.analysis(attemptId, state); }));
   AVUtil.$$('#app .filter-tabs [data-tab]').forEach(b => b.addEventListener('click', () => { state.tab = b.dataset.tab; Views.analysis(attemptId, state); }));
 
@@ -324,7 +351,12 @@ Views.analysis = async function (attemptId, state) {
     wrap.querySelector('.note-saved').textContent = text ? 'Saved ✓ ' + new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' }) : 'Note cleared ✓';
     AVUtil.toast(text ? 'Note saved to your notebook' : 'Note cleared', 'success');
   }));
-  AVUtil.$$('#an-body .note-ta').forEach(ta => ta.addEventListener('keydown', e => {
-    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') ta.closest('.qa-note').querySelector('[data-note-save]').click();
-  }));
+  AVUtil.$$('#an-body .note-ta').forEach(ta => {
+    ta.addEventListener('keydown', e => {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') ta.closest('.qa-note').querySelector('[data-note-save]').click();
+    });
+    const grow = () => { ta.style.height = 'auto'; ta.style.height = Math.min(160, ta.scrollHeight) + 'px'; };
+    ta.addEventListener('input', grow);
+    grow();
+  });
 };

@@ -30,31 +30,25 @@ Views.instructions = async function (testId) {
   const mk = test.marking;
 
   const rules = [
-    `<b>Total duration of the examination is <b>${Math.round(test.duration / 60)} minutes</b>.</b> ${test.timerMode === 'section'
-      ? `The examination is divided into ${secs.length} section${secs.length > 1 ? 's' : ''}, each with its own time limit (${secs.map(s => `${s.name} ${Math.round(s.duration / 60)} min`).join(', ')}). When a section's time expires, it is submitted automatically and the next section begins with its full time. Time remaining in one section is <b>not</b> carried forward.`
-      : `A single countdown timer will display the remaining time available for you to complete the examination. When the timer reaches zero, the examination will end automatically.`}`,
-    `The clock will be set at the server. The countdown timer in the top right corner of screen will display the remaining time available for you to complete the examination. When the timer reaches zero, the examination will end by itself.`,
-    `The Question Palette displayed on the right side of screen will show the status of each question using one of the following symbols:<br>
-      <span class="pal-demo"><button class="qbtn answered" tabindex="-1">1</button> You have answered the question</span>
-      <span class="pal-demo"><button class="qbtn notanswered" tabindex="-1">2</button> You have not answered the question</span>
-      <span class="pal-demo"><button class="qbtn notvisited" tabindex="-1">3</button> You have not visited the question yet</span>
-      <span class="pal-demo"><button class="qbtn marked" tabindex="-1">4</button> You have marked the question for review</span>
-      <span class="pal-demo"><button class="qbtn ansmarked" tabindex="-1">5</button> <b>The question was answered and marked for review — it <b>will still be evaluated</b></b></span>`,
-    `You can click on the ">" arrow shown to the left of the question palette to collapse it, and on the "<" arrow to expand it back. This arrow is useful in case the palette hides part of the question on smaller screens.`,
-    `You can click on your "Profile" image on account to change the language during the exam for entire question paper. On clicking of Profile image you will get a drop-down to change the question content language. By clicking on it, your question content language will be changed. This can also be changed during the exam.${test.timerMode === 'section' ? ' The section timers continue to run while you change the language.' : ''}`,
-    `To answer a question: click the question number in the Question Palette, select one of the four options and then click <b>SAVE &amp; NEXT</b> to save and go to the next question.`,
-    `To deselect your chosen answer, click on the selected option again or click <b>CLEAR RESPONSE</b>.`,
-    `To mark a question for review, click <b>MARK FOR REVIEW &amp; NEXT</b>. If an answer is selected for a question that is marked for review, that answer <b>will be considered</b> in the evaluation.`,
-    `To change your answer to a question that has already been answered, first select that question from the Question Palette, then click on the new answer option followed by <b>SAVE &amp; NEXT</b>.`,
-    `Questions in this paper are displayed in the language chosen by you. Where content is available in only one language, it will be shown in that language.`,
-    `Each question in this examination carries <b>${mk.correct} mark${Math.abs(mk.correct) === 1 ? '' : 's'}</b>. For each incorrect answer, <b>${Math.abs(mk.wrong)} mark${Math.abs(mk.wrong) === 1 ? '' : 's'}</b> will be deducted. No marks are deducted for questions left unattempted.`,
-    `Note that selecting an option for a question will NOT save your answer — you must click <b>SAVE &amp; NEXT</b> or the answer is stored only when you navigate. In this simulator, selections are also auto-saved instantly so that a refresh never loses your work.`,
+    `<b>Duration: ${Math.round(test.duration / 60)} minutes.</b> ${test.timerMode === 'section'
+      ? `Section-wise timing: ${secs.map(s => `${s.name} ${Math.round(s.duration / 60)} min`).join(' · ')}. When a section's time expires it is submitted automatically and the next section starts with its full time — leftover time is <b>not</b> carried forward.`
+      : `A single countdown timer (top-right) shows the remaining time. At 00:00 the examination ends automatically.`}`,
+    `The <b>Question Palette</b> on the right shows the status of every question:
+      <span class="pal-demo"><button class="qbtn answered" tabindex="-1">1</button> answered</span>
+      <span class="pal-demo"><button class="qbtn notanswered" tabindex="-1">2</button> not answered</span>
+      <span class="pal-demo"><button class="qbtn notvisited" tabindex="-1">3</button> not visited</span>
+      <span class="pal-demo"><button class="qbtn marked" tabindex="-1">4</button> marked for review</span>
+      <span class="pal-demo"><button class="qbtn ansmarked" tabindex="-1">5</button> answered &amp; marked — <b>will be evaluated</b></span>`,
+    `To answer: select an option and press <b>SAVE &amp; NEXT</b>. Selections are also auto-saved instantly — a refresh never loses your work.`,
+    `To change an answer, pick the question from the palette and select the new option. To deselect, use <b>CLEAR RESPONSE</b>.`,
+    `<b>MARK FOR REVIEW &amp; NEXT</b> flags a question — if it also has a selected answer, that answer <b>is evaluated</b>.`,
+    `Questions appear in the language chosen below${test.timerMode === 'section' ? ' (section timers keep running while you switch)' : ''}. Where content is available in only one language, it is shown in that language.`,
+    `Marking: <b>+${mk.correct}</b> correct · <b>${mk.wrong}</b> wrong · <b>0</b> unattempted. Maximum marks: <b>${test.maxScore}</b>.`,
     test.sectionLock
-      ? `The sections in this examination are <b>locked in order</b>: ${secs.map(s => s.name).join(' → ')}. You cannot open the next section until the current section is submitted. To finish a section before its time expires, reach the end of the section and click <b>SUBMIT SECTION</b>. Once submitted, a section cannot be revisited.`
-      : `You may navigate freely between sections using the subject tabs at the top of the screen.`,
-    `You may shuffle back and forth between questions (using the palette, Previous/Next buttons or <b>arrow keys</b>) during the examination as time permits — within the currently active section.`,
-    `Do not click on the "Submit" button before completing the examination. ${test.sectionLock ? 'Each section must be submitted at its end; the examination ends when the last section is submitted.' : 'If you click Submit, a confirmation dialog will appear and you can return to the paper if you wish to continue.'}`,
-    `The Question Palette summary counts (Answered / Not Answered / Marked for Review / Answered &amp; Marked for Review) update in real time for the current section.`
+      ? `Sections are <b>locked in order</b>: ${secs.map(s => AVUtil.esc(s.name)).join(' → ')}. Submit the current section (button in the top bar) to unlock the next. A submitted section cannot be reopened.`
+      : `You may move freely between sections using the subject tabs at the top.`,
+    `Navigate with the palette, Previous / Next buttons or the <b>arrow keys</b>; keys <b>1–4</b> select options.`,
+    `Submit anytime via the <b>SUBMIT</b> button (a confirmation is always shown first). ${test.sectionLock ? 'The examination ends when the last section is submitted.' : 'Do not submit before completing — a confirmation lets you return to the paper.'}`
   ];
 
   document.getElementById('app').innerHTML = `
@@ -84,39 +78,39 @@ Views.instructions = async function (testId) {
           <div class="ins-panel">
             <div class="ins-cand">
               <div class="avatar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="44" height="44"><path fill="#b9c6d8" d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+                <svg viewBox="0 0 24 24" width="40" height="40"><path fill="#b9c6d8" d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
               </div>
               <div>
                 <div class="ins-cand-name">${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}</div>
-                <div class="muted small">Attempt #${attemptNo}</div>
+                <div class="muted small">${AVUtil.esc(test.name)} · Attempt #${attemptNo}</div>
               </div>
             </div>
             <table class="ins-tbl">
-              <tr><td>Examination</td><td><b>${AVUtil.esc(test.name)}</b></td></tr>
+              <tr><td>Examination</td><td><b>${AVUtil.esc(cfg.name)}</b></td></tr>
               <tr><td>Total Questions</td><td><b>${total}</b> (${secs.map(s => `${AVUtil.esc(s.name)}: ${s.questionIds.length}`).join(', ')})</td></tr>
               <tr><td>Total Duration</td><td><b>${Math.round(test.duration / 60)} minutes</b></td></tr>
               ${test.timerMode === 'section' ? `<tr><td>Section Timing</td><td>${secs.map(s => `${AVUtil.esc(s.name)}: <b>${Math.round(s.duration / 60)} min</b>`).join('<br>')}</td></tr>` : ''}
-              <tr><td>Marks per question</td><td><b>+${mk.correct}</b></td></tr>
-              <tr><td>Negative marking</td><td><b>${mk.wrong}</b> per wrong answer</td></tr>
-              <tr><td>Unattempted</td><td><b>0</b></td></tr>
+              <tr><td>Marks per question</td><td><b>+${mk.correct}</b> · wrong <b>${mk.wrong}</b> · skipped <b>0</b></td></tr>
               <tr><td>Maximum marks</td><td><b>${test.maxScore}</b></td></tr>
             </table>
-            <label class="ins-lang">
-              <span>${App.t('chooseLanguage')}</span>
-              <select id="ins-lang">
-                <option value="en" ${lang === 'en' ? 'selected' : ''}>English</option>
-                <option value="hi" ${lang === 'hi' ? 'selected' : ''}>हिन्दी</option>
-              </select>
-            </label>
-            <label class="ins-declare">
-              <input type="checkbox" id="ins-agree">
-              <span>${App.t('readInstructions')}</span>
-            </label>
-            <button class="btn-begin" id="ins-begin" disabled>${App.t('readyToBegin').toUpperCase()}</button>
             <div class="ins-back"><a href="#/test/${test.id}">← Back to test details</a></div>
           </div>
         </aside>
       </div>
+      <footer class="ins-footer">
+        <label class="ins-lang">
+          <span class="small muted">${App.t('chooseLanguage')}</span>
+          <select id="ins-lang">
+            <option value="en" ${lang === 'en' ? 'selected' : ''}>English</option>
+            <option value="hi" ${lang === 'hi' ? 'selected' : ''}>हिन्दी</option>
+          </select>
+        </label>
+        <label class="ins-declare">
+          <input type="checkbox" id="ins-agree">
+          <span>${App.t('readInstructions')}</span>
+        </label>
+        <button class="btn-begin" id="ins-begin" disabled>${App.t('readyToBegin').toUpperCase()}</button>
+      </footer>
     </div>`;
   window.scrollTo(0, 0);
 

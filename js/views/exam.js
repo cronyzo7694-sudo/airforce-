@@ -114,9 +114,11 @@ const ExamScreen = {
 
     const candidatePanel = `
       <div class="cand-panel">
-        <div class="avatar" aria-hidden="true"><svg viewBox="0 0 24 24" width="40" height="40"><path fill="#b9c6d8" d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
-        <div class="cand-name">${AVUtil.esc((App.configCache?.candidateName) || 'Practice Candidate')}</div>
-        <div class="cand-sub muted small">${AVUtil.esc(test.name)}</div>
+        <div class="avatar" aria-hidden="true"><svg viewBox="0 0 24 24" width="34" height="34"><path fill="#b9c6d8" d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
+        <div class="cand-info">
+          <div class="cand-name">${AVUtil.esc((App.configCache?.candidateName) || 'Practice Candidate')}</div>
+          <div class="cand-sub muted small">${AVUtil.esc(test.name)}</div>
+        </div>
       </div>`;
 
     const optionsHtml = optOrder.map(({ letter, orig }) => {
@@ -132,14 +134,17 @@ const ExamScreen = {
 
     const questionBody = `
       <div class="q-head">
-        <div class="q-no">${t('questionNo')} ${gnum}</div>
+        <div class="q-no">
+          ${t('questionNo')} ${gnum}<span class="q-of"> / ${sec.questionIds.length}</span>
+          <span class="q-marks" title="${AVUtil.esc(secName)} · marking scheme">+${test.marking.correct} · ${test.marking.wrong} · 0</span>
+        </div>
         <div class="q-viewin">
-          <label class="small muted">${t('viewIn')}:</label>
+          <label class="small muted" for="q-lang">${t('viewIn')}:</label>
           <select id="q-lang" aria-label="View question in">
             <option value="en" ${this.qLang !== 'hi' ? 'selected' : ''}>English</option>
             ${q.questionTextHi
               ? `<option value="hi" ${this.qLang === 'hi' ? 'selected' : ''}>हिन्दी</option>`
-              : `<option value="hi" disabled title="No Hindi translation available for this question">हिन्दी (not available)</option>`}
+              : `<option value="hi" disabled title="No Hindi translation available for this question">हिन्दी</option>`}
           </select>
         </div>
       </div>
@@ -154,57 +159,46 @@ const ExamScreen = {
         <div class="qa-note-actions"><button class="btn btn-plain btn-sm" id="x-note-save">💾 Save</button> <span class="note-saved muted small"></span></div>
       </div>` : ''}`;
 
+    const saveLabel = isLast && test.timerMode === 'section' && test.sectionLock ? 'Save &amp; Next → Section End' : t('saveNext');
     const bottomBar = `
       <div class="exam-bottom">
-        <div class="eb-left">
-          <button class="xbtn xbtn-prev" id="x-prev" ${a.currentQIdx === 0 && !this.freePrev() ? 'disabled' : ''}>◀ ${t('previous')}</button>
-          <button class="xbtn xbtn-mark" id="x-mark">${t('markReviewNext')}</button>
-          <button class="xbtn xbtn-clear" id="x-clear">${t('clearResponse')}</button>
-        </div>
-        <div class="eb-right">
-          <button class="xbtn xbtn-save" id="x-save">${isLast && test.timerMode === 'section' && test.sectionLock ? 'Save &amp; Next → Section End' : t('saveNext')}</button>
-        </div>
+        <button class="xbtn xbtn-prev" id="x-prev" ${a.currentQIdx === 0 && !this.freePrev() ? 'disabled' : ''}>
+          <span class="lbl-full">◀ ${t('previous')}</span><span class="lbl-short">◀ ${t('prevShort')}</span></button>
+        <button class="xbtn xbtn-clear" id="x-clear"><span class="lbl-full">${t('clearResponse')}</span><span class="lbl-short">${t('clearShort')}</span></button>
+        <button class="xbtn xbtn-mark" id="x-mark"><span class="lbl-full">${t('markReviewNext')}</span><span class="lbl-short">${t('markShort')}</span></button>
+        <span class="eb-spring" aria-hidden="true"></span>
+        <button class="xbtn xbtn-save" id="x-save">${saveLabel}</button>
       </div>`;
 
     const header = `
       <header class="exam-header">
-        <div class="eh-left">
-          <button class="palette-toggle" id="drawer-btn" aria-label="Open question palette">☰ <span class="pt-label">${t('questionPalette')}</span></button>
-          <div class="eh-name">
-            <div class="eh-exam">${AVUtil.esc(App.configCache?.name || 'Air Force Agniveervayu')}</div>
-            <div class="eh-test small muted">${AVUtil.esc(test.name)}</div>
-          </div>
+        <button class="palette-toggle" id="drawer-btn" aria-label="${t('questionPalette')}"><span aria-hidden="true">☰</span></button>
+        <div class="eh-name">
+          <div class="eh-exam">${AVUtil.esc(App.configCache?.name || 'Air Force Agniveervayu')}</div>
+          <div class="eh-test small muted">${AVUtil.esc(test.name)}</div>
         </div>
         <div class="eh-right">
-          <button class="xbtn xbtn-ghost" id="x-instructions">📄 ${t('instructions')}</button>
-          ${test.allowPause ? `<button class="xbtn xbtn-ghost" id="x-pause">⏸ Pause</button>` : ''}
-          <button class="xbtn xbtn-submit" id="x-submit" title="Submit anytime — koi restriction nahi. Confirmation milegi.">${test.timerMode === 'section' ? t('submitSection').toUpperCase() : t('submitTest').toUpperCase()}</button>
           <div class="timer ${warnCls}" id="x-timer" role="timer" aria-live="off">
             <span class="timer-lbl">${t('timeLeft')}</span>
             <span class="timer-val" id="x-timer-val">${AVUtil.fmtTime(remaining)}</span>
           </div>
+          ${test.allowPause ? `<button class="xbtn xbtn-ghost icon-only" id="x-pause" title="Pause (practice only)" aria-label="Pause">⏸</button>` : ''}
+          <button class="xbtn xbtn-ghost" id="x-instructions" title="${t('instructions')}"><span aria-hidden="true">📄</span><span class="ilbl">${t('instructions')}</span></button>
+          <button class="xbtn xbtn-submit" id="x-submit" title="Submit anytime — koi restriction nahi. Confirmation milegi.">${test.timerMode === 'section' ? t('submitSection').toUpperCase() : t('submitTest').toUpperCase()}</button>
         </div>
       </header>`;
 
     const sectionBar = `
-      <div class="subtabs" role="tablist" aria-label="Subjects">${sectionTabs}</div>
-      <div class="sectionbar">
-        <div class="sb-name">${AVUtil.esc(secName)}</div>
-        <div class="sb-progress small">
-          <span>${t('currentSection')}: <b>${AVUtil.esc(secName.toUpperCase())}</b></span>
-          <span>${t('sectionProgress')} <b>${a.currentQIdx + 1}</b> ${t('of')} <b>${sec.questionIds.length}</b></span>
-          <span class="sb-c"><i class="dot d-ans"></i>${t('answered')}: <b>${summary.answered}</b></span>
-          <span class="sb-c"><i class="dot d-no"></i>${t('notAnswered')}: <b>${summary.notAnswered}</b></span>
-          <span class="sb-c"><i class="dot d-mk"></i>${t('markedReview')}: <b>${summary.marked + summary.answeredMarked}</b></span>
-        </div>
-      </div>`;
+      <div class="subtabs" role="tablist" aria-label="Subjects">${sectionTabs}</div>`;
 
     const rightPanel = `
       <aside class="palette-panel" id="palette-panel">
+        <button class="pal-close" id="pal-close" aria-label="Close palette">✕</button>
         ${candidatePanel}
         ${legend}
-        <div class="palette-head">${AVUtil.esc(secName)}:</div>
+        <div class="palette-head">${AVUtil.esc(secName)} <span class="muted small">· ${sec.questionIds.length}</span></div>
         <div class="palette-grid">${paletteBtns}</div>
+        <button class="xbtn xbtn-ghost pal-instructions" id="pal-instructions">📄 ${t('instructions')}</button>
       </aside>`;
 
     document.getElementById('app').innerHTML = `
@@ -284,6 +278,8 @@ const ExamScreen = {
     // drawer (mobile)
     AVUtil.$('#drawer-btn')?.addEventListener('click', () => this.openDrawer());
     AVUtil.$('#drawer-veil')?.addEventListener('click', () => this.closeDrawer());
+    AVUtil.$('#pal-close')?.addEventListener('click', () => this.closeDrawer());
+    AVUtil.$('#pal-instructions')?.addEventListener('click', () => { this.closeDrawer(); this.instructionsModal(); });
     // image zoom
     const img = AVUtil.$('#q-img');
     if (img) img.addEventListener('click', () => this.lightbox(img.src));
