@@ -14,6 +14,8 @@ const Bank = (() => {
   }
 
   /* --------- import a batch of parsed questions --------- */
+  const SUBJECT_ALIAS = { reasoning: 'raga', 'reasoning-and-general-awareness': 'raga', 'general-awareness': 'raga', 'general-knowledge': 'raga', gk: 'raga', 'general-science': 'raga' };
+
   async function importBatch(questions, onProgress, exam) {
     const report = {
       total: questions.length, imported: 0, duplicates: 0, replaced: 0,
@@ -28,6 +30,9 @@ const Bank = (() => {
     const toPut = [];
     for (let qi = 0; qi < questions.length; qi++) {
       const q = questions[qi];
+      // subject aliases — RAGA paper ke sub-topics kabhi alag naam se aate hain
+      // (reasoning / general-awareness / GK converters) — ek hi subject hai: raga
+      if (SUBJECT_ALIAS[q.subject]) q.subject = SUBJECT_ALIAS[q.subject];
       if (!q.subject || !q.questionText || !Array.isArray(q.options) || q.options.length < 4) {
         report.invalid++;
         if (report.errors.length < 60) report.errors.push({ reason: 'invalid question record', text: String(q.questionText || '').slice(0, 100) });
@@ -41,16 +46,21 @@ const Bank = (() => {
       const dh = dupeId(q);
       const dupe = byDupe.get(dh);
       if (dupe) {
-        const needsKey = !dupe.correctAnswer && q.correctAnswer;
-        const needsHi = (q.questionTextHi && !dupe.questionTextHi) || (q.explanationHi && !dupe.explanationHi);
-        if (needsKey || needsHi) {
-          // upgrade the existing record: fill the answer key and/or Hindi translation
-          // (same question, both languages in ONE record — never a duplicate row)
+        const needsKey = (!dupe.correctAnswer && q.correctAnswer) ||
+          (q.correctAnswer && dupe.correctAnswer && q.correctAnswer !== dupe.correctAnswer); // bundle corrects a wrong key
+        const needsHi = (q.questionTextHi && !dupe.questionTextHi) || (q.explanationHi && !dupe.explanationHi) || (q.explanation && !dupe.explanation);
+        const needsCh = dupe.chapter === 'General' && q.chapter && q.chapter !== 'General'; // bundle has the real chapter
+        if (needsKey || needsHi || needsCh) {
+          // upgrade the existing record: fill/correct the answer key, Hindi fields,
+          // real chapter-topic — bundle is authoritative (same question, both
+          // languages in ONE record — never a duplicate row)
           const merged = Object.assign({}, dupe, {
             correctAnswer: q.correctAnswer || dupe.correctAnswer,
             explanation: q.explanation || dupe.explanation,
             questionTextHi: q.questionTextHi || dupe.questionTextHi || null,
             explanationHi: q.explanationHi || dupe.explanationHi || null,
+            chapter: (dupe.chapter === 'General' && q.chapter && q.chapter !== 'General') ? q.chapter : (dupe.chapter || q.chapter),
+            topic: (dupe.chapter === 'General' && q.topic && q.topic !== 'General') ? q.topic : (dupe.topic || q.topic),
             id: dupe.id,
             dupeHash: dupe.dupeHash || dh
           });
@@ -141,6 +151,45 @@ const Bank = (() => {
      (questionText + questionTextHi); the in-exam language dropdown switches display. */
   const BUNDLE_FILES = ['data/bank-physics.json', 'data/bank-mathematics.json', 'data/bank-english.json', 'data/bank-raga.json'];
 
+  /* ---- retired-question pruning ----
+     Purane bundle versions se aaye sawal (ab bank me nahi) + 18 Sep 2026 wale
+     bad push (galat subjects: reasoning / general-awareness / mathematics wale
+     RAGA sawal) — ye list devices se saaf ho jaati hai. List version badalne
+     par dobara chalta hai. Kabhi bhi user ke khud ke questions/delete nahi karta
+     — sirf exact dupeHash match. */
+  const RETIRED_V = 1;
+  async function pruneRetired() {
+    try {
+      const done = await Store.getMeta('retiredV', 0);
+      if (done >= RETIRED_V) return 0;
+      const r = await fetch('data/retired-raga.json');
+      if (!r.ok) return 0;
+      const ret = await r.json();
+      const hs = new Set([].concat(ret.raga || [], ret.foreign || []));
+      const doomed = [];
+      await DB.cursor('questions', null, q => { if (hs.has(q.dupeHash)) doomed.push(q.id); });
+      for (const id of doomed) { try { await DB.delete('questions', id); } catch (e) {} }
+      // auto-built (series) tests jinke questions ab bank me nahi → unattempted
+      // honge to delete (autoBuild clean bank se dobara bana dega). Custom tests
+      // + attempted tests kabhi nahi chute — history safe rehti hai.
+      const gone = new Set(doomed);
+      let testsDropped = 0;
+      try {
+        const tests = await DB.getAll('tests');
+        for (const t of tests) {
+          if (!t.series || !Array.isArray(t.sections)) continue;
+          const qids = t.sections.flatMap(s => s.questionIds || []);
+          if (!qids.some(id => gone.has(id))) continue;
+          const atts = await DB.byIndex('attempts', 'testId', t.id);
+          if (atts && atts.length) continue; // history preserved
+          await DB.delete('tests', t.id); testsDropped++;
+        }
+      } catch (e) { /* test cleanup is best-effort */ }
+      await Store.setMeta('retiredV', RETIRED_V);
+      return { questions: doomed.length, tests: testsDropped };
+    } catch (e) { return 0; }
+  }
+
   async function syncBundled() {
     let fp = '';
     const payloads = [];
@@ -162,10 +211,13 @@ const Bank = (() => {
       catch (e) { /* one bad file never blocks the rest */ }
     }
     await Store.setMeta('bundleFP', fp);
-    return { synced: true, imported };
+    // import ke BAAD prune — naya bank pehle purani records ko upgrade karta
+    // hai, phir retired list wale (jo naye bank me nahi) saaf ho jaate hain
+    const pr = await pruneRetired();
+    return { synced: true, imported, pruned: pr ? pr.questions : 0, testsDropped: pr ? pr.tests : 0 };
   }
 
-  return { importBatch, seedIfNeeded, syncBundled, bankStats, contentId, dupeId };
+  return { importBatch, seedIfNeeded, syncBundled, pruneRetired, bankStats, contentId, dupeId };
 })();
 
 /* --------- update cumulative stats after every submit --------- */

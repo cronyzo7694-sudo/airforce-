@@ -48,8 +48,12 @@ const App = {
       const r = await Bank.syncBundled();
       if (r && r.synced && r.imported > 0 && typeof Generator !== 'undefined') {
         const made = await Generator.autoBuild();
-        AVUtil.toast(r.imported + ' new question' + (r.imported === 1 ? '' : 's') + ' synced from the question bank' +
-          (made ? ' — ' + made + ' new test' + (made === 1 ? '' : 's') + ' auto-created 🎉' : ''), 'success');
+        let msg = r.imported + ' new question' + (r.imported === 1 ? '' : 's') + ' synced from the question bank' +
+          (made ? ' — ' + made + ' new test' + (made === 1 ? '' : 's') + ' auto-created 🎉' : '');
+        if (r.pruned > 0) msg += ' · ' + r.pruned + ' outdated question' + (r.pruned === 1 ? '' : 's') + ' removed';
+        AVUtil.toast(msg, 'success');
+      } else if (r && r.pruned > 0) {
+        AVUtil.toast(r.pruned + ' outdated question' + (r.pruned === 1 ? '' : 's') + ' removed — bank updated.', 'info');
       }
     } catch (e) { /* sync is a bonus — never block boot */ }
 

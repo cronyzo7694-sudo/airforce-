@@ -22,8 +22,9 @@ const UP = '../uploads/';
 const FILES = [
   ['Master_Physics_All_Papers (1).txt', 'physics'],
   ['Master_Math_All_Papers.txt', 'mathematics'],
-  ['Master_English_All_Papers.txt', 'english'],
-  ['Master_RAGA_All_Papers.txt', 'raga']
+  ['Master_English_All_Papers.txt', 'english']
+  // RAGA bank is now the user-curated bilingual master (Sep 2026) — no longer a
+  // superset of the old English-only master, so the old parity test is retired.
 ];
 
 console.log('\n━━━ master TXT parser vs Python reference output (after importer dedupe)');
@@ -70,7 +71,7 @@ T('physics format-A question parses options + key', () => {
   eq(q.correctAnswer, 'C', 'key');
 });
 T('RAGA figure-based flagged and excluded later', () => {
-  const res = Parsers.parseMasterTxt(fs.readFileSync(UP + FILES[3][0], 'utf-8'), 'raga');
+  const res = Parsers.parseMasterTxt(fs.readFileSync(UP + 'Master_RAGA_All_Papers.txt', 'utf-8'), 'raga');
   const fig = res.questions.filter(q => q.figureBased);
   assert(fig.length > 60, 'figure count: ' + fig.length);
   assert(fig.every(q => q.questionText.includes('figure-based')), 'note present');
@@ -208,6 +209,13 @@ T('bilingual JSON: Hindi fields kept + subjects mapped', () => {
 T('subject files carry bilingual (EN+HI) records — no separate hindi file', () => {
   assert(!fs.existsSync('data/bank-hindi-1.json'), 'no separate hindi bundle file');
   const raga = JSON.parse(fs.readFileSync('data/bank-raga.json', 'utf-8'));
+  // RAGA: 100% bilingual + 100% dual explanations + real chapters (user-curated master)
+  assert(raga.length >= 700, 'raga bank has 700+ records (got ' + raga.length + ')');
+  assert(raga.every(q => q.questionTextHi), 'EVERY raga question is bilingual');
+  assert(raga.every(q => q.explanation && q.explanationHi), 'EVERY raga question has EN+HI explanations');
+  assert(raga.every(q => q.subject === 'raga'), 'no stray subjects (reasoning/GK aliases all raga)');
+  assert(raga.every(q => q.chapter && q.chapter !== 'General'), 'every raga record has a real chapter');
+  assert(raga.every(q => q.options && q.options.length === 4), 'every raga record has 4 options');
   const math = JSON.parse(fs.readFileSync('data/bank-mathematics.json', 'utf-8'));
   const bi = arr => arr.filter(q => q.questionTextHi && q.explanationHi);
   assert(bi(raga).length >= 60, 'raga file has 60+ bilingual records (got ' + bi(raga).length + ')');
