@@ -1,0 +1,142 @@
+/* ============================================================
+ * PARSER QA — verify the in-browser TXT/JSON/CSV parsers against
+ * the actual master question files.
+ * Run: node tests/parser.test.js
+ * ============================================================ */
+process.chdir(__dirname + '/..');
+const fs = require('fs');
+
+global.AVUtil = require('../js/util.js');
+const Parsers = require('../js/parsers.js');
+const Bank = require('../js/seed.js');
+
+let passed = 0, failed = 0;
+function T(name, fn) {
+  try { fn(); passed++; console.log('  ✓', name); }
+  catch (e) { failed++; console.error('  ✗', name, '\n     →', e.message); }
+}
+function eq(a, b, msg) { if (a !== b) throw new Error(`${msg || 'eq'}: expected ${b}, got ${a}`); }
+function assert(c, m) { if (!c) throw new Error(m || 'assert'); }
+
+const UP = '../uploads/';
+const FILES = [
+  ['Master_Physics_All_Papers (1).txt', 'physics'],
+  ['Master_Math_All_Papers.txt', 'mathematics'],
+  ['Master_English_All_Papers.txt', 'english'],
+  ['Master_RAGA_All_Papers.txt', 'raga']
+];
+
+console.log('\n━━━ master TXT parser vs Python reference output (after importer dedupe)');
+for (const [fname, subject] of FILES) {
+  T(`${fname} → matches data/bank-${subject}.json`, () => {
+    const text = fs.readFileSync(UP + fname, 'utf-8');
+    const res = Parsers.parseMasterTxt(text, subject);
+    // apply the same dedupe the importer uses
+    const seen = new Map();
+    const final = [];
+    for (const q of res.questions) {
+      q.options = q.options || [];
+      const dh = Bank.dupeId(q);
+      const id = Bank.contentId(q);
+      if (seen.has(dh)) {
+        const prev = seen.get(dh);
+        if (!prev.correctAnswer && q.correctAnswer) final[final.indexOf(prev)] = Object.assign({}, prev, { correctAnswer: q.correctAnswer });
+        continue;
+      }
+      seen.set(dh, q);
+      final.push(q);
+    }
+    const ref = JSON.parse(fs.readFileSync(`data/bank-${subject}.json`, 'utf-8'));
+    eq(final.length, ref.length, 'deduped count parity');
+    eq(final.filter(q => q.correctAnswer).length, ref.filter(q => q.correctAnswer).length, 'keyed parity');
+    eq(final.filter(q => (q.tags || []).includes('auto-reconstructed')).length,
+       ref.filter(q => (q.tags || []).includes('auto-reconstructed')).length, 'reconstructed parity');
+    // every question valid shape
+    final.forEach(q => {
+      assert(q.subject === subject, 'subject set');
+      assert(q.questionText && q.questionText.length >= 1, 'question text');
+      assert(q.options.length === 4 && q.options.every(o => o.text && o.text.length > 0), '4 options with text');
+      assert(!q.correctAnswer || 'ABCD'.includes(q.correctAnswer), 'key format');
+    });
+  });
+}
+
+console.log('\n━━━ sample parse checks');
+T('physics format-A question parses options + key', () => {
+  const res = Parsers.parseMasterTxt(fs.readFileSync(UP + FILES[0][0], 'utf-8'), 'physics');
+  const q = res.questions.find(x => x.questionText.includes('electrostatic force between two charges'));
+  eq(q.options[2].text, '4 N', 'option C');
+  eq(q.correctAnswer, 'C', 'key');
+});
+T('RAGA figure-based flagged and excluded later', () => {
+  const res = Parsers.parseMasterTxt(fs.readFileSync(UP + FILES[3][0], 'utf-8'), 'raga');
+  const fig = res.questions.filter(q => q.figureBased);
+  assert(fig.length > 60, 'figure count: ' + fig.length);
+  assert(fig.every(q => q.questionText.includes('figure-based')), 'note present');
+  assert(fig.every(q => q.correctAnswer), 'figure questions keep their key');
+});
+T('English reconstructed questions look sane', () => {
+  const res = Parsers.parseMasterTxt(fs.readFileSync(UP + FILES[2][0], 'utf-8'), 'english');
+  const rec = res.questions.filter(q => (q.tags || []).includes('auto-reconstructed'));
+  const ref = JSON.parse(fs.readFileSync('data/bank-english.json', 'utf-8')).filter(q => (q.tags || []).includes('auto-reconstructed'));
+  assert(rec.length >= ref.length, 'reconstructed pre-dedupe (' + rec.length + ') >= post-dedupe (' + ref.length + ')');
+  const iaf = rec.find(q => q.questionText.includes('key role of the Indian Air Force'));
+  eq(iaf.options[1].text, 'to keep the Indian aerospace resistant to attacks', 'IAF option B');
+  eq(iaf.correctAnswer, 'B', 'IAF key');
+});
+
+console.log('\n━━━ generic parsers');
+T('generic TXT with Q/A)/Ans format', () => {
+  const res = Parsers.parseGenericTxt(`Q1. What is 2+2?\nA) 3\nB) 4\nC) 5\nD) 6\nAns: B\n\n2. Next question?\n(a) x\n(b) y\n(c) z\n(d) w\nAnswer: a`, 'physics');
+  eq(res.questions.length, 2, 'two questions');
+  eq(res.questions[0].correctAnswer, 'B', 'key1');
+  eq(res.questions[1].correctAnswer, 'A', 'key2');
+});
+T('JSON import (flexible keys)', () => {
+  const res = Parsers.parseJson(JSON.stringify([
+    { subject: 'physics', question: 'Q?', optionA: 'a', optionB: 'b', optionC: 'c', optionD: 'd', answer: 'd', explanation: 'exp', chapter: 'Ch', topic: 'To', difficulty: 'hard' },
+    { subject: 'unknown-subject', question: 'bad', optionA: 'a', optionB: 'b', optionC: 'c', optionD: 'd' }
+  ]));
+  eq(res.questions.length, 1, '1 valid');
+  eq(res.invalid.length, 1, '1 invalid (unknown subject)');
+  eq(res.questions[0].correctAnswer, 'D', 'key');
+});
+T('CSV import with quoted fields', () => {
+  const csv = 'subject,question,optionA,optionB,optionC,optionD,answer\n' +
+    'mathematics,"What is 5 x 5, exactly?","20","25","30","35",B\n';
+  const res = Parsers.parseCsv(csv);
+  eq(res.questions.length, 1, '1 row');
+  eq(res.questions[0].questionText, 'What is 5 x 5, exactly?', 'quoted comma preserved');
+  eq(res.questions[0].correctAnswer, 'B', 'key');
+});
+
+console.log('\n━━━ full backup JSON restore');
+T('backup payload parses questions + restore data', () => {
+  const backup = JSON.stringify({
+    app: 'agniveer-cbt', version: 1, exportedAt: '2026-01-01',
+    questions: [{ question: 'Backup Q?', options: ['a', 'b', 'c', 'd'], answer: 'A', subject: 'physics' }],
+    tests: [{ id: 't1', name: 'Restored test' }],
+    attempts: [{ id: 'a1', testId: 't1', completed: true }],
+    meta: { attemptIndex: [{ id: 'a1', score: 3 }] }
+  });
+  const parsed = Parsers.parseJson(backup);
+  eq(parsed.questions.length, 1, 'backup questions parsed');
+  assert(parsed.restore && parsed.restore.tests.length === 1 && parsed.restore.attempts.length === 1
+    && parsed.restore.meta.attemptIndex.length === 1, 'restore payload carried (tests/attempts/meta)');
+  const plain = Parsers.parseJson(JSON.stringify([{ question: 'Plain Q?', options: ['1', '2', '3', '4'], answer: 'B', subject: 'raga' }]));
+  assert(!plain.restore, 'plain question JSON has no restore payload');
+});
+
+console.log('\n━━━ importer dedupe logic');
+T('duplicate content detected via dupeHash', () => {
+  const q = { subject: 'physics', questionText: 'Same question?', options: [{ id: 'A', text: '1' }, { id: 'B', text: '2' }, { id: 'C', text: '3' }, { id: 'D', text: '4' }], correctAnswer: 'A' };
+  const id1 = Bank.contentId(q);
+  const q2 = Object.assign({}, q, { correctAnswer: 'B' });
+  assert(id1 !== Bank.contentId(q2), 'different keys → different ids');
+  eq(Bank.dupeId(q), Bank.dupeId(q2), 'same text → same dupeHash');
+});
+
+console.log(`\n════════════════════════════════════════`);
+console.log(`  RESULT: ${passed} passed, ${failed} failed`);
+console.log(`════════════════════════════════════════\n`);
+process.exit(failed ? 1 : 0);

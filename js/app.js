@@ -1,0 +1,193 @@
+/* ============================================================
+ * AGNIVEER VAYU CBT — APPLICATION SHELL
+ * ============================================================ */
+
+const App = {
+  activeAttempt: null,     // live attempt object (exam screen)
+  examTickHandle: null,
+  lang: 'en',
+
+  t(key) {
+    const d = I18N[this.lang] || I18N.en;
+    return d[key] || I18N.en[key] || key;
+  },
+
+  async config() {
+    const saved = await Store.getSetting('config', null);
+    this.configCache = saved || EXAM_CONFIG;
+    return this.configCache;
+  },
+
+  /* ---------------- boot ---------------- */
+  async boot() {
+    // language pref (tiny — localStorage ok)
+    this.lang = localStorage.getItem('av_lang') || EXAM_CONFIG.defaultLanguage || 'en';
+    // load saved config early (candidate name, timers, thresholds) for nav + exam header
+    try { await this.config(); } catch (e) { this.configCache = EXAM_CONFIG; }
+
+    // register service worker (offline support)
+    if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+      try { navigator.serviceWorker.register('sw.js'); } catch (e) { /* offline mode unavailable */ }
+    }
+
+    // first-run: seed bundled PYQ question bank
+    try {
+      const needSeed = !(await Store.getMeta('seeded', false));
+      if (needSeed) {
+        document.getElementById('app').innerHTML =
+          `<div class="page"><div class="seed-box"><div class="seed-spin"></div>
+           <h3>Preparing your question bank…</h3>
+           <p>Loading previous-year questions into local storage. This happens only once.</p></div></div>`;
+        await Bank.seedIfNeeded();
+      }
+    } catch (e) { console.error('seed failed', e); }
+
+    // upgrade path: existing installs get the ready-made test series too
+    try {
+      if (!(await Store.getMeta('seriesBuilt', null))) {
+        const r = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 });
+        if (r.made) await Store.setMeta('seriesBuilt', { at: Date.now(), made: r.made });
+      }
+    } catch (e) { /* series is a bonus — never block boot */ }
+
+    // find an unfinished attempt (browser closed during exam)
+    const unfinished = await this.findUnfinishedAttempt();
+    this.pendingResume = unfinished;
+
+    this.mountRoutes();
+    Router.beforeEach = async (to, from) => this.guard(to, from);
+    Router.start();
+  },
+
+  async findUnfinishedAttempt() {
+    let found = null;
+    await DB.cursor('attempts', 'completed', false, a => { found = a; return false; });
+    return found;
+  },
+
+  /* ---------------- navigation guard ---------------- */
+  async guard(to, from) {
+    // leaving an active exam view (attempt still in progress) requires confirmation
+    if (this.activeAttempt && !this.activeAttempt.completed && from === '/test/' + this.activeAttempt.testId + '/attempt' && !to.startsWith('/test/' + this.activeAttempt.testId + '/attempt')) {
+      const leave = await AVUtil.confirmModal({
+        title: this.t('leaveExamTitle'),
+        body: this.t('leaveExamBody'),
+        yesLabel: this.t('leave'), noLabel: this.t('stay'), yesClass: 'btn-danger'
+      });
+      if (!leave) { location.hash = '#' + from; return false; }
+      await ExamScreen.persist(); // preserve the attempt
+      ExamScreen.teardown();
+      this.activeAttempt = null;
+    }
+    return true;
+  },
+
+  /* ---------------- top nav ---------------- */
+  navHTML(active) {
+    const items = [
+      ['dashboard', '#/dashboard', 'Dashboard'],
+      ['tests', '#/tests', 'Tests'],
+      ['questions', '#/questions', 'Question Bank'],
+      ['import', '#/import', 'Import'],
+      ['attempts', '#/attempts', 'My Attempts'],
+      ['settings', '#/settings', 'Settings']
+    ];
+    return `<header class="topnav">
+      <a class="brand" href="#/dashboard" aria-label="Home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+        </span>
+        <span class="brand-text">Agniveer&nbsp;Vayu <b>CBT</b></span>
+      </a>
+      <nav class="navlinks" aria-label="Main">
+        ${items.map(([id, href, label]) => `<a href="${href}" class="${active === id ? 'active' : ''}" ${active === id ? 'aria-current="page"' : ''}>${label}</a>`).join('')}
+      </nav>
+      <div class="nav-right">
+        <span class="nav-badge">${AVUtil.esc(((this.configCache && this.configCache.candidateName) || 'Practice Candidate').split(' ')[0])}</span>
+      </div>
+    </header>`;
+  },
+
+  /* `route` (optional): hash path this render belongs to. Slow in-page async
+     re-renders (e.g. the bank save handler rebuilding the question list) can
+     finish after the user has already navigated elsewhere; painting then would
+     wipe the page they are on. Stale renders are skipped. */
+  page(cls, inner, route) {
+    if (route && Router.path && Router.path !== route) return false;
+    document.getElementById('app').innerHTML = this.navHTML(cls ? cls.split(' ')[0] : '') +
+      `<main class="${cls || ''}">${inner}</main>`;
+    window.scrollTo(0, 0);
+    return true;
+  },
+
+  /* ---------------- resume banner ---------------- */
+  resumeBannerHTML() {
+    if (!this.pendingResume) return '';
+    const a = this.pendingResume;
+    return `<div class="resume-banner" role="alert">
+      <div>
+        <b>An unfinished examination attempt was found.</b>
+        <span>${AVUtil.esc(a.testName)} — started ${AVUtil.fmtDate(a.startTime)}</span>
+      </div>
+      <div class="resume-actions">
+        <button class="btn btn-primary" onclick="App.resumePending()">RESUME EXAM</button>
+        <button class="btn btn-plain" onclick="App.endPending()">END ATTEMPT</button>
+      </div>
+    </div>`;
+  },
+
+  async resumePending() {
+    const a = this.pendingResume;
+    if (!a) return;
+    // timer expiry may have occurred while away — engine fast-forwards
+    const test = await DB.get('tests', a.testId);
+    if (!test) { AVUtil.toast('The test for this attempt no longer exists.', 'error'); this.pendingResume = null; return this.refresh(); }
+    location.hash = '#/test/' + a.testId + '/attempt';
+  },
+
+  async endPending() {
+    const a = this.pendingResume;
+    if (!a) return;
+    const ok = await AVUtil.confirmModal({
+      title: 'End this attempt?',
+      body: 'The attempt will be marked incomplete and removed from resume. It will not be scored.',
+      yesLabel: 'End Attempt', yesClass: 'btn-danger'
+    });
+    if (!ok) return;
+    a.completed = true; a.abandoned = true;
+    a.endTime = Date.now();
+    await DB.put('attempts', a);
+    this.pendingResume = null;
+    AVUtil.toast('Attempt ended.');
+    Router.resolve();
+  },
+
+  async refresh() {
+    this.pendingResume = await this.findUnfinishedAttempt();
+    Router.resolve();
+  },
+
+  /* ---------------- routes ---------------- */
+  mountRoutes() {
+    Router.add('/dashboard', () => Views.dashboard());
+    Router.add('/tests', () => Views.tests());
+    Router.add('/tests/new', () => Views.builder());
+    Router.add('/test/:id', p => Views.testOverview(p.id));
+    Router.add('/test/:id/instructions', p => Views.instructions(p.id));
+    Router.add('/test/:id/attempt', p => Views.attempt(p.id));
+    Router.add('/attempt/:id/result', p => Views.result(p.id));
+    Router.add('/attempt/:id/analysis', p => Views.analysis(p.id));
+    Router.add('/questions', () => Views.questionBank());
+    Router.add('/import', () => Views.importPage());
+    Router.add('/attempts', () => Views.attempts());
+    Router.add('/settings', () => Views.settings());
+    Router.notFound = () => Router.go('/dashboard');
+  }
+};
+
+window.addEventListener('beforeunload', e => {
+  if (App.activeAttempt && !App.activeAttempt.completed) {
+    e.preventDefault();
+    e.returnValue = '';
+  }
+});

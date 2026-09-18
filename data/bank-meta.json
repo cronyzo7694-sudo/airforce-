@@ -1,0 +1,72 @@
+{
+ "physics": {
+  "total": 715,
+  "keyed": 623,
+  "chapters": {
+   "Electrostatics": 48,
+   "Waves & Sound": 51,
+   "Modern Physics": 25,
+   "Laws of Motion & Friction": 44,
+   "Units, Measurement & Errors": 46,
+   "Optics": 45,
+   "EMI & AC": 11,
+   "Thermodynamics & KTG": 50,
+   "Oscillations": 21,
+   "Rotational Motion": 14,
+   "Work, Energy & Power": 79,
+   "Kinematics": 40,
+   "Gravitation": 28,
+   "Magnetism & Moving Charges": 33,
+   "Properties of Matter": 23,
+   "Physics (Miscellaneous)": 110,
+   "Current Electricity": 44,
+   "Thermal Expansion & Heat Transfer": 3
+  }
+ },
+ "mathematics": {
+  "total": 738,
+  "keyed": 616,
+  "chapters": {
+   "Differentiation & Applications": 37,
+   "Statistics": 17,
+   "Trigonometry": 201,
+   "Sets, Relations & Functions": 64,
+   "Coordinate Geometry": 68,
+   "Binomial Theorem": 18,
+   "Mathematics (Miscellaneous)": 161,
+   "Vectors & 3D Geometry": 8,
+   "Matrices & Determinants": 36,
+   "Probability": 30,
+   "Permutations & Combinations": 10,
+   "Integration": 43,
+   "Limits, Continuity & Differentiability": 10,
+   "Mensuration": 5,
+   "Sequences & Series": 14,
+   "Logarithms": 1,
+   "Quadratic Equations & Complex Numbers": 13,
+   "Number System & Simplification": 1,
+   "Differential Equations": 1
+  }
+ },
+ "english": {
+  "total": 894,
+  "keyed": 830,
+  "chapters": {
+   "Grammar": 221,
+   "Reading Comprehension": 71,
+   "Vocabulary": 332,
+   "Spelling": 53,
+   "Idioms & Phrases": 43,
+   "English (Miscellaneous)": 173,
+   "Cloze Test": 1
+  }
+ },
+ "raga": {
+  "total": 735,
+  "keyed": 735,
+  "chapters": {
+   "Reasoning": 469,
+   "General Knowledge": 266
+  }
+ }
+}
