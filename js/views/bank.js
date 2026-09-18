@@ -11,6 +11,7 @@ Views.questionBank = async function (state) {
 
   const bank = state.bankCache || await Bank.bankStats();
   state.bankCache = bank;
+  const bankTotal = ['physics', 'mathematics', 'english', 'raga'].reduce((a, s) => a + ((bank[s] || {}).total || 0), 0);
 
   // gather candidate rows (filter via indexes where possible)
   let rows = [];
@@ -95,6 +96,11 @@ Views.questionBank = async function (state) {
     </div>
     <div class="card qb-list-card">
       <div class="qb-count muted small">${rows.length.toLocaleString('en-IN')} question(s) · page ${state.page} of ${pages}</div>
+      ${bankTotal === 0 ? `<div class="imp-sum error" id="qb-wiped" style="margin:10px 0">
+        <b>Question bank khali lag rahi hai!</b>
+        <p class="muted small" style="margin:6px 0">Bundled PYQ bank (3,000+ questions) ek click me wapas restore ho jayegi — tumhare tests/attempts/notes ko koi nuksan nahi hoga.</p>
+        <button class="btn btn-primary" id="qb-restore">♻️ Restore Bundled Question Bank</button>
+      </div>` : ''}
       <table class="tbl qb-tbl">
         <thead><tr><th style="width:44px">#</th><th>Question</th><th style="width:110px">Subject</th><th style="width:150px">Chapter</th><th style="width:70px">Diff</th><th style="width:90px">Key</th><th style="width:150px">Actions</th></tr></thead>
         <tbody>
@@ -125,6 +131,21 @@ Views.questionBank = async function (state) {
     <div id="qb-modal-host"></div>
   `, '/questions');
   if (!painted) return; // user navigated away while this render was building
+
+  // one-click bank restore (if wiped)
+  const qbRestore = AVUtil.$('#qb-restore');
+  if (qbRestore) qbRestore.addEventListener('click', async () => {
+    qbRestore.disabled = true; qbRestore.textContent = 'Restoring…';
+    try {
+      const r = await Bank.seedIfNeeded(true);
+      AVUtil.toast('Bank restored — ' + (r.imported || 0) + ' questions re-imported.', 'success');
+      state.bankCache = null;
+      Views.questionBank(state);
+    } catch (err) {
+      AVUtil.toast('Restore failed: ' + err.message, 'error');
+      qbRestore.disabled = false; qbRestore.textContent = '♻️ Restore Bundled Question Bank';
+    }
+  });
 
   // filter events
   const rerun = () => { state.page = 1; Views.questionBank(state); };

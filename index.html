@@ -19,6 +19,29 @@
     </div>
   </div>
 
+  <!-- site chrome: community stats footer + floating chat (hidden during exams) -->
+  <footer id="site-footer" class="site-footer">
+    <div class="sf-stats" id="sf-stats">👥 Loading community stats…</div>
+    <div class="sf-links">
+      <a href="https://anim-kineora.cronyzo7694.workers.dev/" target="_blank" rel="noopener">💬 Community Chat</a>
+      <span aria-hidden="true">·</span>
+      <span>🔒 Tumhara data sirf tumhare device par — no server, no tracking</span>
+      <span aria-hidden="true">·</span>
+      <span>Made for Agniveer Vayu aspirants 🇮🇳</span>
+    </div>
+  </footer>
+  <button id="chat-fab" aria-label="Open community chat" aria-expanded="false" title="Community Chat">💬</button>
+  <div id="chat-panel" role="dialog" aria-label="Community chat">
+    <div class="chat-head">
+      <b>💬 Community Chat</b>
+      <div class="chat-head-btns">
+        <a class="chat-newtab" href="https://anim-kineora.cronyzo7694.workers.dev/" target="_blank" rel="noopener" title="Open in new tab">↗</a>
+        <button class="chat-close" aria-label="Close chat" title="Close">✕</button>
+      </div>
+    </div>
+    <iframe class="chat-frame" title="Community chat" referrerpolicy="no-referrer"></iframe>
+  </div>
+
   <script>
     /* view registry (populated by js/views/*.js) */
     const Views = {};
@@ -32,6 +55,7 @@
   <script src="js/seed.js"></script>
   <script src="js/charts.js"></script>
   <script src="js/router.js"></script>
+  <script src="js/chrome.js"></script>
   <script src="js/app.js"></script>
   <script src="js/views/dashboard.js"></script>
   <script src="js/views/tests.js"></script>

@@ -54,6 +54,20 @@ const App = {
     const unfinished = await this.findUnfinishedAttempt();
     this.pendingResume = unfinished;
 
+    // site chrome: community visitor stats + floating chat (once per page load)
+    try { if (window.SiteChrome) SiteChrome.init(); } catch (e) { /* never block the app */ }
+
+    // exam selector (topnav) — delegated so it survives every re-render
+    document.addEventListener('change', e => {
+      if (e.target && e.target.id === 'exam-select') {
+        const v = e.target.value;
+        this.configCache = this.configCache || Object.assign({}, EXAM_CONFIG);
+        this.configCache.exam = v;
+        Store.setSetting('config', this.configCache).catch(() => {});
+        AVUtil.toast('Exam selected: ' + (v === 'airforce' ? 'Agniveer Vayu (Air Force)' : v));
+      }
+    });
+
     this.mountRoutes();
     Router.beforeEach = async (to, from) => this.guard(to, from);
     Router.start();
@@ -103,6 +117,14 @@ const App = {
         ${items.map(([id, href, label]) => `<a href="${href}" class="${active === id ? 'active' : ''}" ${active === id ? 'aria-current="page"' : ''}>${label}</a>`).join('')}
       </nav>
       <div class="nav-right">
+        <label class="exam-sel" title="Exam select karo — naye exams aa rahe hain">
+          <span aria-hidden="true">🎖️</span>
+          <select id="exam-select" aria-label="Select exam">
+            <option value="airforce" ${(this.configCache && this.configCache.exam) !== 'navy' && (this.configCache && this.configCache.exam) !== 'army' ? 'selected' : ''}>Agniveer Vayu ✈️</option>
+            <option value="navy" disabled>Indian Navy — coming soon</option>
+            <option value="army" disabled>Indian Army — coming soon</option>
+          </select>
+        </label>
         <span class="nav-badge">${AVUtil.esc(((this.configCache && this.configCache.candidateName) || 'Practice Candidate').split(' ')[0])}</span>
       </div>
     </header>`;

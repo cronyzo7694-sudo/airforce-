@@ -3,7 +3,7 @@
  * Cache-first for the immutable app shell + bundled bank data.
  * ============================================================ */
 
-const SW_VERSION = 'agniveer-cbt-v1.1.0';
+const SW_VERSION = 'agniveer-cbt-v1.2.0';
 
 const APP_SHELL = [
   './',
@@ -19,6 +19,7 @@ const APP_SHELL = [
   './js/seed.js',
   './js/charts.js',
   './js/router.js',
+  './js/chrome.js',
   './js/app.js',
   './js/views/dashboard.js',
   './js/views/tests.js',

@@ -181,12 +181,15 @@ async function main() {
 
   /* ---------- 6. section submit flow (modal) ---------- */
   console.log('\n━━━ E2E · section submit');
-  // jump to last question via engine + rerender
-  await G('Engine.gotoQuestion(ExamScreen.attempt, "physics", 24, Date.now())');
+  // submit button lives in the header now, away from Next — always enabled (submit anytime)
+  T('submit-section button in header, always enabled', !!doc.querySelector('.exam-header #x-submit') && doc.getElementById('x-submit').disabled === false);
+  T('no submit button next to Next', !doc.querySelector('.exam-bottom #x-submit'));
+  // section can be submitted from ANY question — try from Q1 (not last)
+  await G('Engine.gotoQuestion(ExamScreen.attempt, "physics", 0, Date.now())');
   await G('ExamScreen.persist()');
   await G('ExamScreen.render()');
   await sleep(200);
-  T('submit-section button enabled at last question', doc.getElementById('x-submit').disabled === false);
+  T('section submit possible from Q1 (no restriction)', !!doc.querySelector('.exam-header #x-submit') && !doc.getElementById('x-submit').disabled);
   doc.getElementById('x-submit').dispatchEvent(new window.Event('click', { bubbles: true }));
   await sleep(250);
   const modal = doc.querySelector('.av-modal-overlay');
@@ -320,7 +323,10 @@ async function main() {
     await sleep(300);
     T('practice note saved', (await G('DB.count("notes")')) === 2);
   }
-  T('global submit button present (not section)', doc.getElementById('x-submit') && !doc.getElementById('x-submit').textContent.toUpperCase().includes('SECTION'));
+  T('global submit button present in header (not section)', !!doc.querySelector('.exam-header #x-submit') && !doc.getElementById('x-submit').textContent.toUpperCase().includes('SECTION'));
+  T('site footer + chat FAB exist in shell', !!doc.getElementById('site-footer') && !!doc.getElementById('chat-fab') && !!doc.getElementById('chat-panel'));
+  T('exam mode hides site chrome (body.exam-on)', await G('document.body.classList.contains("exam-on")'));
+  T('exam name shown in exam header', !!doc.querySelector('.eh-exam'));
   const before = await G('Engine.remainingMs(ExamScreen.attempt, ' + JSON.stringify(r.test) + ', Date.now())');
   await sleep(1200);
   const after = await G('Engine.remainingMs(ExamScreen.attempt, ' + JSON.stringify(r.test) + ', Date.now())');
@@ -329,6 +335,8 @@ async function main() {
   await G('Engine.submitExam(ExamScreen.attempt, ' + JSON.stringify(r.test) + ', "user", Date.now())');
   await G('ExamScreen.finalize("user", true)');
   await sleep(300);
+  T('exam selector present in topnav (normal pages)', !!doc.querySelector('.exam-sel #exam-select'));
+  T('site chrome visible again after exam', !(await G('document.body.classList.contains("exam-on")')));
   T('practice test completes with result', (await G('DB.get("attempts", "' + pa.id + '")')).result.maxScore === 25);
 
   /* ---------- summary ---------- */

@@ -166,6 +166,7 @@ Views.testOverview = async function (id) {
       </div>
       <div class="head-actions">
         <button class="btn btn-primary" id="ov-start">${idx.length ? 'REATTEMPT' : 'START TEST'}</button>
+        ${idx.length ? `<button class="btn btn-plain" id="ov-analysis">VIEW ANALYSIS</button>` : ''}
         <button class="btn btn-plain" id="ov-delete">Delete Test</button>
       </div>
     </div>
@@ -203,6 +204,12 @@ Views.testOverview = async function (id) {
   `);
 
   AVUtil.$('#ov-start').addEventListener('click', () => location.hash = '#/test/' + id + '/instructions');
+  const ovAna = AVUtil.$('#ov-analysis');
+  if (ovAna) ovAna.addEventListener('click', async () => {
+    const atts = (await DB.byIndex('attempts', 'testId', id)).filter(a => a.completed && !a.abandoned);
+    if (!atts.length) return AVUtil.toast('No completed attempt found.', 'error');
+    location.hash = '#/attempt/' + atts[atts.length - 1].id + '/analysis';
+  });
   AVUtil.$('#ov-delete').addEventListener('click', async () => {
     const ok = await AVUtil.confirmModal({
       title: 'Delete this test?',

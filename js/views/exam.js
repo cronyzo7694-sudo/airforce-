@@ -160,9 +160,6 @@ const ExamScreen = {
         </div>
         <div class="eb-right">
           <button class="xbtn xbtn-save" id="x-save">${isLast && test.timerMode === 'section' && test.sectionLock ? 'Save &amp; Next → Section End' : t('saveNext')}</button>
-          ${test.sectionLock && test.timerMode === 'section'
-            ? `<button class="xbtn xbtn-submit" id="x-submit" ${isLast ? '' : 'disabled'} title="Available at the last question of the section">${t('submitSection')}</button>`
-            : `<button class="xbtn xbtn-submit" id="x-submit">${t('submit')}</button>`}
         </div>
       </div>`;
 
@@ -178,6 +175,7 @@ const ExamScreen = {
         <div class="eh-right">
           <button class="xbtn xbtn-ghost" id="x-instructions">📄 ${t('instructions')}</button>
           ${test.allowPause ? `<button class="xbtn xbtn-ghost" id="x-pause">⏸ Pause</button>` : ''}
+          <button class="xbtn xbtn-submit" id="x-submit" title="Submit anytime — koi restriction nahi. Confirmation milegi.">${test.timerMode === 'section' ? t('submitSection').toUpperCase() : t('submitTest').toUpperCase()}</button>
           <div class="timer ${warnCls}" id="x-timer" role="timer" aria-live="off">
             <span class="timer-lbl">${t('timeLeft')}</span>
             <span class="timer-val" id="x-timer-val">${AVUtil.fmtTime(remaining)}</span>
@@ -251,7 +249,11 @@ const ExamScreen = {
 
   /* ================= view binding ================= */
   bindCommon() {
+    document.body.classList.add('exam-on'); // hides site footer + chat during the exam
     const a = this.attempt;
+    // submit (header — always available, with confirmation)
+    const subBtn = AVUtil.$('#x-submit');
+    if (subBtn) subBtn.addEventListener('click', () => this.confirmSubmit());
     // subject tabs
     AVUtil.$$('.subtab').forEach(tab => tab.addEventListener('click', async () => {
       const sid = tab.dataset.sid;
@@ -319,8 +321,6 @@ const ExamScreen = {
       this.render();
     });
     AVUtil.$('#x-prev').addEventListener('click', () => this.previous());
-    const sub = AVUtil.$('#x-submit');
-    if (sub && !sub.disabled) sub.addEventListener('click', () => this.confirmSubmit());
 
     // keyboard navigation
     this.keyHandler = async e => {
@@ -484,6 +484,7 @@ const ExamScreen = {
   teardown() {
     // full cleanup when leaving the exam view mid-attempt
     this.stopTick();
+    document.body.classList.remove('exam-on');
     if (this.keyHandler) { document.removeEventListener('keydown', this.keyHandler); this.keyHandler = null; }
   },
 
@@ -558,6 +559,7 @@ const ExamScreen = {
   async finalize(reason, silent) {
     const a = this.attempt, test = this.test;
     this.stopTick();
+    document.body.classList.remove('exam-on');
     Engine.accumulateTime(a, Date.now());
     if (!a.completed) {
       if (test.timerMode === 'section' && !Engine.activeSection(a)) Engine.submitExam(a, test, reason, Date.now());
