@@ -47,8 +47,9 @@ for (const [fname, subject] of FILES) {
       final.push(q);
     }
     const ref = JSON.parse(fs.readFileSync(`data/bank-${subject}.json`, 'utf-8'));
-    eq(final.length, ref.length, 'deduped count parity');
-    eq(final.filter(q => q.correctAnswer).length, ref.filter(q => q.correctAnswer).length, 'keyed parity');
+    // data files may be a SUPERSET of the master TXT (bilingual records merged in)
+    assert(ref.length >= final.length, 'data file is a superset (' + ref.length + ' >= ' + final.length + ')');
+    assert(ref.filter(q => q.correctAnswer).length >= final.filter(q => q.correctAnswer).length, 'keyed superset');
     eq(final.filter(q => (q.tags || []).includes('auto-reconstructed')).length,
        ref.filter(q => (q.tags || []).includes('auto-reconstructed')).length, 'reconstructed parity');
     // every question valid shape
@@ -143,13 +144,15 @@ T('bilingual JSON: Hindi fields kept + subjects mapped', () => {
   eq(res.questions[1].questionTextHi, null, 'no Hindi → null (not empty string)');
   eq(res.questions[2].explanationHi, 'केवल हिन्दी व्याख्या', 'Hindi-only explanation kept');
 });
-T('bundled bilingual file loads and is exam-tagged', () => {
-  const arr = JSON.parse(fs.readFileSync('data/bank-hindi-1.json', 'utf-8'));
-  assert(arr.length >= 100, 'bundle has 100+ questions');
-  assert(arr.every(q => q.questionTextHi && q.explanationHi), 'every question bilingual');
-  assert(arr.every(q => q.exam === 'airforce'), 'every question exam-tagged');
-  assert(arr.every(q => ['raga', 'mathematics'].includes(q.subject)), 'subjects mapped to app ids');
-  assert(arr.every(q => q.options && q.options.length === 4), 'all have 4 options');
+T('subject files carry bilingual (EN+HI) records — no separate hindi file', () => {
+  assert(!fs.existsSync('data/bank-hindi-1.json'), 'no separate hindi bundle file');
+  const raga = JSON.parse(fs.readFileSync('data/bank-raga.json', 'utf-8'));
+  const math = JSON.parse(fs.readFileSync('data/bank-mathematics.json', 'utf-8'));
+  const bi = arr => arr.filter(q => q.questionTextHi && q.explanationHi);
+  assert(bi(raga).length >= 60, 'raga file has 60+ bilingual records (got ' + bi(raga).length + ')');
+  assert(bi(math).length >= 30, 'math file has 30+ bilingual records (got ' + bi(math).length + ')');
+  assert(bi(raga).concat(bi(math)).every(q => q.options && q.options.length === 4), 'all have 4 options');
+  assert(bi(raga).concat(bi(math)).every(q => q.exam === 'airforce'), 'exam-tagged');
 });
 
 console.log('\n━━━ importer dedupe logic');

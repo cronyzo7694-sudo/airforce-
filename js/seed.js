@@ -41,12 +41,21 @@ const Bank = (() => {
       const dh = dupeId(q);
       const dupe = byDupe.get(dh);
       if (dupe) {
-        if (!dupe.correctAnswer && q.correctAnswer) {
-          // upgrade an unkeyed duplicate with the keyed copy
+        const needsKey = !dupe.correctAnswer && q.correctAnswer;
+        const needsHi = (q.questionTextHi && !dupe.questionTextHi) || (q.explanationHi && !dupe.explanationHi);
+        if (needsKey || needsHi) {
+          // upgrade the existing record: fill the answer key and/or Hindi translation
+          // (same question, both languages in ONE record — never a duplicate row)
           const merged = Object.assign({}, dupe, {
-            correctAnswer: q.correctAnswer, explanation: q.explanation || dupe.explanation, id: dupe.id
+            correctAnswer: q.correctAnswer || dupe.correctAnswer,
+            explanation: q.explanation || dupe.explanation,
+            questionTextHi: q.questionTextHi || dupe.questionTextHi || null,
+            explanationHi: q.explanationHi || dupe.explanationHi || null,
+            id: dupe.id,
+            dupeHash: dupe.dupeHash || dh
           });
           toPut.push(merged);
+          byDupe.set(dh, merged);
           report.replaced++;
         } else {
           report.duplicates++;
@@ -91,13 +100,6 @@ const Bank = (() => {
       report.duplicates += rep.duplicates;
       report.bySubject[s] = rep.imported;
     }
-    // bilingual bundle (Hindi + English) — part of the default bank
-    try {
-      const hb = await seedHindiBundle();
-      imported += hb.imported;
-      report.imported += hb.imported;
-    } catch (e) { /* bundle is a bonus */ }
-
     await Store.setMeta('seeded', true);
     await Store.setMeta('seededAt', Date.now());
     report.totalParsed = total;
@@ -135,7 +137,9 @@ const Bank = (() => {
      duplicates are skipped by dupeHash — and new tests are auto-built from the
      new material. Add questions to the files → users get them + new tests, no
      manual step anywhere. */
-  const BUNDLE_FILES = ['data/bank-physics.json', 'data/bank-mathematics.json', 'data/bank-english.json', 'data/bank-raga.json', 'data/bank-hindi-1.json'];
+  /* ONE file per subject — each question record carries BOTH languages
+     (questionText + questionTextHi); the in-exam language dropdown switches display. */
+  const BUNDLE_FILES = ['data/bank-physics.json', 'data/bank-mathematics.json', 'data/bank-english.json', 'data/bank-raga.json'];
 
   async function syncBundled() {
     let fp = '';
@@ -161,18 +165,7 @@ const Bank = (() => {
     return { synced: true, imported };
   }
 
-  /* bilingual (EN+HI) bundled bank — imported once; existing installs get it via
-     the seedV2 boot check, re-imports are deduped by dupeHash */
-  async function seedHindiBundle() {
-    try {
-      const r = await fetch('data/bank-hindi-1.json');
-      if (!r.ok) return { imported: 0, duplicates: 0 };
-      const arr = await r.json();
-      return await importBatch(arr, null, 'airforce');
-    } catch (e) { return { imported: 0, duplicates: 0 }; }
-  }
-
-  return { importBatch, seedIfNeeded, seedHindiBundle, syncBundled, bankStats, contentId, dupeId };
+  return { importBatch, seedIfNeeded, syncBundled, bankStats, contentId, dupeId };
 })();
 
 /* --------- update cumulative stats after every submit --------- */
