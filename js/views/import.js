@@ -10,7 +10,7 @@ Views.importPage = async function () {
   App.page('page page-import', `
     <div class="page-head">
       <div><h1>Import Question Bank</h1>
-      <p class="muted">${total.toLocaleString('en-IN')} questions currently on this device. Imports merge into the bank — duplicates are detected by content.</p></div>
+      <p class="muted">${total.toLocaleString('en-IN')} questions currently on this device. Imports merge into the bank — duplicates are detected by content. <b>Naye questions se tests apne aap ban jaati hain</b> — tumhe manually kuch nahi banana.</p></div>
     </div>
 
     <div class="import-grid">
@@ -192,5 +192,17 @@ Views.importPage = async function () {
     if (!el.reportHost) return;
     el.reportHost.innerHTML = html || '<p class="muted pad">Nothing imported.</p>';
     AVUtil.toast('Import finished.');
+
+    // AUTO-TESTS: new questions entered the bank → top up the ready-made library.
+    // The user never has to build tests by hand — imports keep the library growing.
+    try {
+      const newQs = allReports.reduce((a, r) => a + (r.imported || 0), 0);
+      if (newQs > 0 && typeof Generator !== 'undefined') {
+        if (el.status) el.status.textContent = 'Building new tests from your questions…';
+        const made = await Generator.autoBuild();
+        if (made > 0) AVUtil.toast(made + ' new test' + (made === 1 ? '' : 's') + ' auto-created from your import 🎉', 'success');
+        if (el.status) el.status.textContent = 'Done — ' + newQs + ' new question' + (newQs === 1 ? '' : 's') + ' in the bank.';
+      }
+    } catch (e) { /* auto-build is a bonus */ }
   }
 };

@@ -42,13 +42,16 @@ const App = {
       }
     } catch (e) { console.error('seed failed', e); }
 
-    // upgrade path: existing installs get the bilingual (EN+HI) bundle once
+    // bundled bank auto-sync: data files changed (new questions) → import the
+    // delta + auto-build new tests from it. User never builds tests by hand.
     try {
-      if (!(await Store.getMeta('seedV2', null))) {
-        const hb = await Bank.seedHindiBundle();
-        await Store.setMeta('seedV2', { at: Date.now(), imported: hb.imported });
+      const r = await Bank.syncBundled();
+      if (r && r.synced && r.imported > 0 && typeof Generator !== 'undefined') {
+        const made = await Generator.autoBuild();
+        AVUtil.toast(r.imported + ' new question' + (r.imported === 1 ? '' : 's') + ' synced from the question bank' +
+          (made ? ' — ' + made + ' new test' + (made === 1 ? '' : 's') + ' auto-created 🎉' : ''), 'success');
       }
-    } catch (e) { /* bundle is a bonus — never block boot */ }
+    } catch (e) { /* sync is a bonus — never block boot */ }
 
     // upgrade path: existing installs get the ready-made test series too
     try {

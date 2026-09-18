@@ -322,7 +322,19 @@ const Generator = (() => {
     });
   }
 
-  return { generate, fullMock, subjectTest, buildSeries, planSeries, poolFor, pick, MASTERED_AFTER };
+  /* ---------- auto-build ----------
+     Whenever new questions enter the bank (import page or bundled-file sync),
+     this tops up the ready-made library: up to 5 full mocks + 5 subject tests
+     per trigger, zero-overlap with everything attempted-able before. Returns
+     the number of tests created (0 when material is exhausted). */
+  async function autoBuild() {
+    try {
+      const r = await buildSeries({ fullMocks: 5, perSubject: 5 });
+      return r.made || 0;
+    } catch (e) { return 0; }
+  }
+
+  return { generate, fullMock, subjectTest, buildSeries, planSeries, poolFor, pick, autoBuild, MASTERED_AFTER };
 })();
 
 if (typeof module !== 'undefined' && module.exports) module.exports = Generator;

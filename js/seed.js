@@ -129,6 +129,38 @@ const Bank = (() => {
     return stats;
   }
 
+  /* ---- bundled bank auto-sync ----
+     Fingerprint of every data/bank-*.json file. When files change (new questions
+     added to the bundle), every install imports the delta on next boot —
+     duplicates are skipped by dupeHash — and new tests are auto-built from the
+     new material. Add questions to the files → users get them + new tests, no
+     manual step anywhere. */
+  const BUNDLE_FILES = ['data/bank-physics.json', 'data/bank-mathematics.json', 'data/bank-english.json', 'data/bank-raga.json', 'data/bank-hindi-1.json'];
+
+  async function syncBundled() {
+    let fp = '';
+    const payloads = [];
+    for (const f of BUNDLE_FILES) {
+      try {
+        const r = await fetch(f);
+        if (!r.ok) continue;
+        const text = await r.text();
+        fp += f + ':' + text.length + ':' + (text.match(/"dupeHash"/g) || []).length + ';';
+        payloads.push(JSON.parse(text));
+      } catch (e) { /* offline / partial — skip silently */ }
+    }
+    if (!payloads.length) return { synced: false, imported: 0 };
+    const prev = await Store.getMeta('bundleFP', null);
+    if (prev === fp) return { synced: false, imported: 0 };
+    let imported = 0;
+    for (const arr of payloads) {
+      try { const rep = await importBatch(arr, null, 'airforce'); imported += rep.imported; }
+      catch (e) { /* one bad file never blocks the rest */ }
+    }
+    await Store.setMeta('bundleFP', fp);
+    return { synced: true, imported };
+  }
+
   /* bilingual (EN+HI) bundled bank — imported once; existing installs get it via
      the seedV2 boot check, re-imports are deduped by dupeHash */
   async function seedHindiBundle() {
@@ -140,7 +172,7 @@ const Bank = (() => {
     } catch (e) { return { imported: 0, duplicates: 0 }; }
   }
 
-  return { importBatch, seedIfNeeded, seedHindiBundle, bankStats, contentId, dupeId };
+  return { importBatch, seedIfNeeded, seedHindiBundle, syncBundled, bankStats, contentId, dupeId };
 })();
 
 /* --------- update cumulative stats after every submit --------- */
