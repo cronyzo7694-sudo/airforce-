@@ -19,7 +19,7 @@ Views.importPage = async function () {
         <p class="muted small">Supported formats:</p>
         <ul class="fmt-list">
           <li><b>TXT</b> — the master PYQ format (Q1. / (A)–(D) / Answer:), numbered-option variants, and generic formats. Auto-detected.</li>
-          <li><b>JSON</b> — array of questions, or <code>{ "questions": [...] }</code>. Keys: subject, question, optionA–D, answer, explanation, chapter, topic, difficulty, year, source, image.</li>
+          <li><b>JSON</b> — array of questions, or <code>{ "questions": [...] }</code>. Keys: subject, question, optionA–D, answer, explanation, chapter, topic, difficulty, year, source, image. <b>Hindi+English bilingual:</b> <code>questionTextHi</code>, <code>explanationHi</code>.</li>
           <li><b>CSV</b> — same columns as JSON (header row required, quote fields containing commas).</li>
           <li><b>DOCX</b> — unzipped locally in your browser; embedded images are kept as data URIs.</li>
           <li><b>PDF</b> — best-effort text extraction (text-layer PDFs only). Scanned PDFs must be converted to TXT/DOCX first.</li>
@@ -30,6 +30,14 @@ Views.importPage = async function () {
           <input type="file" id="file-input" multiple accept=".txt,.json,.csv,.docx,.pdf" class="visually-hidden">
         </div>
         <div class="b-row" style="margin-top:14px">
+          <label>Exam — is file ke questions kis exam ke liye hain?</label>
+          <select id="imp-exam">
+            <option value="airforce" selected>Agniveer Vayu (Air Force)</option>
+            <option value="navy">Indian Navy</option>
+            <option value="army">Indian Army</option>
+          </select>
+        </div>
+        <div class="b-row" style="margin-top:10px">
           <label>Default subject (for files without one)</label>
           <select id="imp-subject">
             <option value="">Auto-detect from file name</option>
@@ -103,6 +111,7 @@ Views.importPage = async function () {
   async function handleFiles(files) {
     if (!files || !files.length) return;
     let defaultSubject = AVUtil.$('#imp-subject').value || null;
+    const examTag = (AVUtil.$('#imp-exam') && AVUtil.$('#imp-exam').value) || 'airforce';
     const allowUnkeyed = AVUtil.$('#imp-allow-unkeyed').checked;
     const allReports = [];
 
@@ -134,7 +143,7 @@ Views.importPage = async function () {
         report = await Bank.importBatch(questions, (i, n) => {
           if (el.fill) el.fill.style.width = (30 + 65 * (i / Math.max(1, n))) + '%';
           if (el.status) el.status.textContent = `Saving… ${i}/${n}`;
-        });
+        }, examTag);
         // full backup restore: tests, attempts and analytics alongside questions
         if (parsed.restore && (parsed.restore.tests.length || parsed.restore.attempts.length)) {
           if (el.fill) el.fill.style.width = '98%';

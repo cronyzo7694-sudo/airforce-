@@ -179,7 +179,18 @@ async function main() {
   console.log('\n━━━ FLOWS · question bank edit');
   window.location.hash = '#/questions';
   await waitFor(() => doc.querySelectorAll('.qb-row').length > 0, 30000);
-  await sleep(600);
+  // wait until the DOM settles (jsdom fires hashchange twice → bank renders twice;
+  // clicking between renders hits a stale node that render#2 then wipes)
+  {
+    let last = -1, same = 0;
+    for (let i = 0; i < 120; i++) {
+      const h = (doc.getElementById('app') || {}).innerHTML.length;
+      if (h === last) { if (++same >= 5) break; } else same = 0;
+      last = h;
+      await sleep(150);
+    }
+  }
+  await sleep(300);
   const firstRow = doc.querySelector('.qb-row');
   const editBtn = firstRow.querySelector('[data-act="edit"]');
   T('bank row has edit action', !!editBtn);

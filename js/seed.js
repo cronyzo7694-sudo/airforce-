@@ -14,7 +14,7 @@ const Bank = (() => {
   }
 
   /* --------- import a batch of parsed questions --------- */
-  async function importBatch(questions, onProgress) {
+  async function importBatch(questions, onProgress, exam) {
     const report = {
       total: questions.length, imported: 0, duplicates: 0, replaced: 0,
       bySubject: { physics: 0, mathematics: 0, english: 0, raga: 0 },
@@ -55,6 +55,7 @@ const Bank = (() => {
       }
 
       const rec = Object.assign({}, q, { id, dupeHash: dh });
+      if (!rec.exam) rec.exam = exam || q.exam || 'airforce';   // exam-scoped bank
       if (Array.isArray(rec.tags)) rec.tags = Array.from(new Set(rec.tags));
       byDupe.set(dh, rec);
       toPut.push(rec);
@@ -90,6 +91,13 @@ const Bank = (() => {
       report.duplicates += rep.duplicates;
       report.bySubject[s] = rep.imported;
     }
+    // bilingual bundle (Hindi + English) — part of the default bank
+    try {
+      const hb = await seedHindiBundle();
+      imported += hb.imported;
+      report.imported += hb.imported;
+    } catch (e) { /* bundle is a bonus */ }
+
     await Store.setMeta('seeded', true);
     await Store.setMeta('seededAt', Date.now());
     report.totalParsed = total;
@@ -121,7 +129,18 @@ const Bank = (() => {
     return stats;
   }
 
-  return { importBatch, seedIfNeeded, bankStats, contentId, dupeId };
+  /* bilingual (EN+HI) bundled bank — imported once; existing installs get it via
+     the seedV2 boot check, re-imports are deduped by dupeHash */
+  async function seedHindiBundle() {
+    try {
+      const r = await fetch('data/bank-hindi-1.json');
+      if (!r.ok) return { imported: 0, duplicates: 0 };
+      const arr = await r.json();
+      return await importBatch(arr, null, 'airforce');
+    } catch (e) { return { imported: 0, duplicates: 0 }; }
+  }
+
+  return { importBatch, seedIfNeeded, seedHindiBundle, bankStats, contentId, dupeId };
 })();
 
 /* --------- update cumulative stats after every submit --------- */

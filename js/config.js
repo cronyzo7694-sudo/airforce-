@@ -82,7 +82,7 @@ const EXAM_PRESET = {
 /* ---------------- UI STRINGS (English / Hindi) ---------------- */
 const I18N = {
   en: {
-    appName: 'Agniveer Vayu CBT',
+    appName: 'Kineora Exam',
     dashboard: 'Dashboard', tests: 'Test Library', questions: 'Question Bank',
     import: 'Import', attempts: 'My Attempts', settings: 'Settings',
     timeLeft: 'Time Left', instructions: 'Instructions',
@@ -107,7 +107,7 @@ const I18N = {
     stay: 'Stay', leave: 'Leave'
   },
   hi: {
-    appName: 'अग्निवीर वायु CBT',
+    appName: 'किनोरा एग्ज़ाम',
     dashboard: 'डैशबोर्ड', tests: 'टेस्ट लाइब्रेरी', questions: 'प्रश्न बैंक',
     import: 'इंपोर्ट', attempts: 'मेरे प्रयास', settings: 'सेटिंग्स',
     timeLeft: 'शेष समय', instructions: 'निर्देश',

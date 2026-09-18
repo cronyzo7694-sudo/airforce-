@@ -1,0 +1,4244 @@
+[
+ {
+  "id": "q_6589ab26a36fbea5",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Clock & Calendar",
+  "topic": "Clock Angle",
+  "difficulty": "medium",
+  "questionText": "For a standard clock, what is the angle between hour hand and the minute hand when the clock shows 9:30 am?",
+  "questionTextHi": "एक सामान्य घड़ी में जब समय 9:30 am हो, तो घंटे की सुई और मिनट की सुई के बीच का कोण कितना होगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "250°"
+   },
+   {
+    "id": "B",
+    "text": "105°"
+   },
+   {
+    "id": "C",
+    "text": "150°"
+   },
+   {
+    "id": "D",
+    "text": "165°"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Minute hand at 30 minutes = 30 × 6° = 180°.\nHour hand at 9:30 = (9 × 30°) + (30 × 0.5°) = 270° + 15° = 285°.\nAngle between them = 285° − 180° = 105°.\n(Shortcut: Angle = |30H − 5.5M| = |30 × 9 − 5.5 × 30| = |270 − 165| = 105°.)",
+  "explanationHi": "मिनट की सुई 30 मिनट पर = 30 × 6° = 180°\nघंटे की सुई 9:30 पर = (9 × 30°) + (30 × 0.5°) = 270° + 15° = 285°\nदोनों सुइयों के बीच कोण = 285° − 180° = 105°\n(शॉर्टकट सूत्र: कोण = |30H − 5.5M| = |30 × 9 − 5.5 × 30| = |270 − 165| = 105°)",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "cf4c79b17fee9419"
+ },
+ {
+  "id": "q_fe49116f2e1c5c37",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Analogy",
+  "topic": "Number Analogy",
+  "difficulty": "medium",
+  "questionText": "Select the term that relates to the third term in the same way that the second term relates to the first term. 3 : 24 :: 5 : ?",
+  "questionTextHi": "वह पद चुनिए जिसका तीसरे पद से वही संबंध है जो दूसरे पद का पहले पद से है। 3 : 24 :: 5 : ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "125"
+   },
+   {
+    "id": "B",
+    "text": "120"
+   },
+   {
+    "id": "C",
+    "text": "127"
+   },
+   {
+    "id": "D",
+    "text": "130"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Rule: n × (n² − 1) = n(n − 1)(n + 1)\n3 → 3 × (9 − 1) = 3 × 8 = 24\n5 → 5 × (25 − 1) = 5 × 24 = 120\nSo 5 : 120.",
+  "explanationHi": "नियम: n × (n² − 1) = n(n − 1)(n + 1)\n3 → 3 × (9 − 1) = 3 × 8 = 24\n5 → 5 × (25 − 1) = 5 × 24 = 120\nअतः 5 : 120",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "76425e092e2db81a"
+ },
+ {
+  "id": "q_e125e0f0f2a75332",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Coding-Decoding",
+  "topic": "Letter Coding",
+  "difficulty": "medium",
+  "questionText": "In a certain code language, CLOCK is written as LCOKC. How will BLACK be written as in that language?",
+  "questionTextHi": "एक निश्चित कूट भाषा में CLOCK को LCOKC लिखा जाता है। उसी भाषा में BLACK को कैसे लिखा जाएगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "CKABL"
+   },
+   {
+    "id": "B",
+    "text": "KCALB"
+   },
+   {
+    "id": "C",
+    "text": "LCAKB"
+   },
+   {
+    "id": "D",
+    "text": "LBAKC"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "In CLOCK → LCOKC: the first two letters are interchanged (C L → L C) and the last two letters are interchanged (C K → K C); the middle letter O stays.\nApply to BLACK: B L A C K → interchange first two → L B A C K; interchange last two → L B A K C.\nSo BLACK = LBAKC.",
+  "explanationHi": "CLOCK → LCOKC में: पहले दो अक्षर आपस में बदले गए हैं (C L → L C) और अंतिम दो अक्षर आपस में बदले गए हैं (C K → K C); बीच का अक्षर O वैसा ही रहता है।\nअब BLACK पर लगाइए: B L A C K → पहले दो बदलें → L B A C K; अंतिम दो बदलें → L B A K C\nअतः BLACK = LBAKC",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "c350fb707ccf9d6e"
+ },
+ {
+  "id": "q_4654754695b41172",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Clock & Calendar",
+  "topic": "Calendar",
+  "difficulty": "medium",
+  "questionText": "What day of the week was 2 October 1869?",
+  "questionTextHi": "2 अक्टूबर 1869 को सप्ताह का कौन-सा दिन था?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Thursday"
+   },
+   {
+    "id": "B",
+    "text": "Friday"
+   },
+   {
+    "id": "C",
+    "text": "Saturday"
+   },
+   {
+    "id": "D",
+    "text": "Sunday"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "We know 1 January 1900 was a Monday.\nFrom 2 Oct 1899 to 1 Jan 1900: Oct (29 days left) + Nov (30) + Dec (31) = 90 days → 90 + 1 = 91 days = exactly 13 weeks, so 2 October 1899 was also a Monday.\nFrom 2 Oct 1869 to 2 Oct 1899 = 30 years, containing 7 leap years (1872, 1876, 1880, 1884, 1888, 1892, 1896) = 30 × 365 + 7 = 10957 days = 1565 weeks + 2 days.\nSo 2 Oct 1869 was 2 days before Monday = Saturday.",
+  "explanationHi": "हमें ज्ञात है कि 1 जनवरी 1900 को सोमवार था।\n2 अक्टूबर 1899 से 1 जनवरी 1900 तक: अक्टूबर के शेष 29 + नवंबर 30 + दिसंबर 31 = 90 दिन, और +1 दिन = 91 दिन = ठीक 13 सप्ताह। अर्थात् 2 अक्टूबर 1899 भी सोमवार था।\nअब 2 अक्टूबर 1869 से 2 अक्टूबर 1899 = 30 वर्ष, जिनमें 7 लीप वर्ष (1872, 1876, 1880, 1884, 1888, 1892, 1896) हैं = 30 × 365 + 7 = 10957 दिन = 1565 सप्ताह + 2 दिन।\nअतः 2 अक्टूबर 1869, सोमवार से 2 दिन पहले = शनिवार था।",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0c246457c1f1a8a3"
+ },
+ {
+  "id": "q_0b03c83ac1d1fe9e",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Missing Number in Figure",
+  "topic": "Figure Matrix",
+  "difficulty": "medium",
+  "questionText": "Find the missing number in the given figure. 5 7 4 34 7 6 5 38 9 7 ? 46 3 6 8 36",
+  "questionTextHi": "दी गई आकृति में लुप्त संख्या ज्ञात कीजिए। 5 7 4 34, 7 6 5 38, 9 7 ? 46, 3 6 8 36",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "4"
+   },
+   {
+    "id": "B",
+    "text": "6"
+   },
+   {
+    "id": "C",
+    "text": "8"
+   },
+   {
+    "id": "D",
+    "text": "5"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "In each row: (1st + 2nd + 3rd number) × 2 + 2 = 4th number.\nRow 1: (5 + 7 + 4) × 2 + 2 = 16 × 2 + 2 = 34 ✔\nRow 2: (7 + 6 + 5) × 2 + 2 = 18 × 2 + 2 = 38 ✔\nRow 4: (3 + 6 + 8) × 2 + 2 = 17 × 2 + 2 = 36 ✔\nRow 3: (9 + 7 + ?) × 2 + 2 = 46 → (16 + ?) × 2 = 44 → 16 + ? = 22 → ? = 6.",
+  "explanationHi": "हर पंक्ति में: (पहली + दूसरी + तीसरी संख्या) × 2 + 2 = चौथी संख्या\nपंक्ति 1: (5 + 7 + 4) × 2 + 2 = 16 × 2 + 2 = 34 ✔\nपंक्ति 2: (7 + 6 + 5) × 2 + 2 = 18 × 2 + 2 = 38 ✔\nपंक्ति 4: (3 + 6 + 8) × 2 + 2 = 17 × 2 + 2 = 36 ✔\nपंक्ति 3: (9 + 7 + ?) × 2 + 2 = 46 → (16 + ?) × 2 = 44 → 16 + ? = 22 → ? = 6",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "53c9d0b582f661cc"
+ },
+ {
+  "id": "q_c3f5fb6e9675b761",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Seating Arrangement",
+  "topic": "Circular Arrangement",
+  "difficulty": "hard",
+  "questionText": "Direction: Read the information given below and answer the question that follows. Teacher, Student, Banker, Lawyer, Principal, Accountant, Engineer and Soldier are sitting around a circular table facing center. Lawyer sits exactly between Accountant and Engineer. Teacher sits four places away from Accountant. Lawyer sits opposite to Soldier. Engineer sits second to the right of Accountant. Student does not sit adjacent to Accountant, Teacher and Lawyer. Banker sits three places away from Teacher. Who sits third to the right of Banker?",
+  "questionTextHi": "निर्देश: नीचे दी गई जानकारी पढ़कर प्रश्न का उत्तर दीजिए। Teacher, Student, Banker, Lawyer, Principal, Accountant, Engineer और Soldier एक गोल मेज के चारों ओर केंद्र की ओर मुँह करके बैठे हैं। Lawyer ठीक Accountant और Engineer के बीच में बैठा है। Teacher, Accountant से चार स्थान दूर बैठा है। Lawyer, Soldier के विपरीत बैठा है। Engineer, Accountant के दाएँ दूसरा है। Student, Accountant, Teacher और Lawyer के निकट नहीं बैठा है। Banker, Teacher से तीन स्थान दूर बैठा है। Banker के दाएँ तीसरा कौन बैठा है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Teacher"
+   },
+   {
+    "id": "B",
+    "text": "Accountant"
+   },
+   {
+    "id": "C",
+    "text": "Principal"
+   },
+   {
+    "id": "D",
+    "text": "Engineer"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Step 1: Take Accountant at seat 1. Engineer is second to the right of Accountant → seat 3.\nStep 2: Lawyer is exactly between Accountant and Engineer → seat 2.\nStep 3: Lawyer is opposite Soldier → Soldier at seat 6.\nStep 4: Teacher is four places away from Accountant (i.e., 3 persons between) → seat 5.\nStep 5: Student is not adjacent to Accountant (8, 2), Teacher (4, 6) or Lawyer (1, 3) → only seats 5 and 7 are left; seat 5 has Teacher → Student at seat 7.\nStep 6: Banker is three places away from Teacher → seat 8 (seat 2 already has Lawyer).\nStep 7: Remaining seat 4 = Principal.\nFinal order: 1 Accountant, 2 Lawyer, 3 Engineer, 4 Principal, 5 Teacher, 6 Soldier, 7 Student, 8 Banker.\nThird to the right of Banker (8 → 1 → 2 → 3) = Engineer.",
+  "explanationHi": "चरण 1: Accountant को स्थान 1 पर रखें। Engineer, Accountant के दाएँ दूसरा है → स्थान 3।\nचरण 2: Lawyer ठीक Accountant और Engineer के बीच है → स्थान 2।\nचरण 3: Lawyer, Soldier के विपरीत है → Soldier स्थान 6 पर।\nचरण 4: Teacher, Accountant से चार स्थान दूर है (अर्थात् बीच में 3 व्यक्ति) → स्थान 5।\nचरण 5: Student, Accountant (8, 2), Teacher (4, 6) और Lawyer (1, 3) के निकट नहीं बैठ सकता → बचे स्थान 5 और 7; स्थान 5 पर Teacher है → Student स्थान 7 पर।\nचरण 6: Banker, Teacher से तीन स्थान दूर है → स्थान 8 (स्थान 2 पर Lawyer है)।\nचरण 7: शेष स्थान 4 = Principal।\nअंतिम व्यवस्था: 1 Accountant, 2 Lawyer, 3 Engineer, 4 Principal, 5 Teacher, 6 Soldier, 7 Student, 8 Banker।\nBanker (8) के दाएँ तीसरा = 1 → 2 → 3 = Engineer।",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "ecec0f97eb204648"
+ },
+ {
+  "id": "q_08a7e067dbd1b30e",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Number Series",
+  "topic": "Wrong Term",
+  "difficulty": "medium",
+  "questionText": "Find the wrong term in the given series: 2, 3, 6, 10, 18, 27",
+  "questionTextHi": "दी गई श्रृंखला में गलत पद ज्ञात कीजिए: 2, 3, 6, 10, 18, 27",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "10"
+   },
+   {
+    "id": "B",
+    "text": "18"
+   },
+   {
+    "id": "C",
+    "text": "6"
+   },
+   {
+    "id": "D",
+    "text": "2"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Check the difference between consecutive terms:\n2 → 3 = +1, 3 → 6 = +3, 6 → 10 = +4, 10 → 18 = +8, 18 → 27 = +9.\nThe differences should be consecutive odd numbers: +1, +3, +5, +7, +9.\nSo the correct term after 6 should be 6 + 5 = 11 (not 10).\nHence 10 is the wrong term.",
+  "explanationHi": "क्रमागत पदों के अंतर देखिए:\n2 → 3 = +1, 3 → 6 = +3, 6 → 10 = +4, 10 → 18 = +8, 18 → 27 = +9\nअंतर क्रमागत विषम संख्याएँ होनी चाहिए: +1, +3, +5, +7, +9\nअतः 6 के बाद सही पद 6 + 5 = 11 होना चाहिए (10 नहीं)।\nइसलिए 10 गलत पद है।",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "5e846171163fb44b"
+ },
+ {
+  "id": "q_44fac38b720fcce6",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Blood Relations",
+  "topic": "Blood Relations",
+  "difficulty": "medium",
+  "questionText": "Pointing to Kanchan, Rohit says, 'She is my brother's mother's daughter'. How is Kanchan related to Rohit?",
+  "questionTextHi": "कंचन की ओर इशारा करते हुए रोहित कहता है, 'वह मेरे भाई की माँ की बेटी है।' कंचन का रोहित से क्या संबंध है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Mother"
+   },
+   {
+    "id": "B",
+    "text": "Sister"
+   },
+   {
+    "id": "C",
+    "text": "Daughter"
+   },
+   {
+    "id": "D",
+    "text": "Wife"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Rohit's brother's mother = Rohit's own mother.\nMother's daughter = Rohit's sister.\nSo Kanchan is Rohit's sister.",
+  "explanationHi": "रोहित के भाई की माँ = रोहित की स्वयं की माँ।\nमाँ की बेटी = रोहित की बहन।\nअतः कंचन रोहित की बहन है।",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "971605ec5147ccea"
+ },
+ {
+  "id": "q_8916cd1a8c0e596c",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Order & Ranking",
+  "topic": "Row Arrangement",
+  "difficulty": "hard",
+  "questionText": "In a row of people, the position of A from the left side is 11th and the position of B from the right side is 12th. C is sitting midway between B and A. Also, the position of C from the right of the row is 18th. Find the total no. of persons in the row.",
+  "questionTextHi": "एक पंक्ति में A का स्थान बाएँ से 11वाँ है और B का स्थान दाएँ से 12वाँ है। C, B और A के ठीक बीच में बैठा है। C का स्थान पंक्ति के दाएँ से 18वाँ है। पंक्ति में कुल व्यक्तियों की संख्या ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "36"
+   },
+   {
+    "id": "B",
+    "text": "34"
+   },
+   {
+    "id": "C",
+    "text": "30"
+   },
+   {
+    "id": "D",
+    "text": "33"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Let total = n.\nA is 11th from left. B is 12th from right → B's position from left = n − 11.\nC is midway between A (11th) and B (n − 11) → C's position from left = (11 + n − 11)/2 = n/2.\nC is 18th from right → C's position from left = n − 17.\nSo n/2 = n − 17 → n/2 = 17 → n = 34.",
+  "explanationHi": "मान लीजिए कुल = n\nA बाएँ से 11वाँ है। B दाएँ से 12वाँ है → B का स्थान बाएँ से = n − 11\nC, A (11वाँ) और B (n − 11) के ठीक बीच है → C का स्थान बाएँ से = (11 + n − 11)/2 = n/2\nC दाएँ से 18वाँ है → C का स्थान बाएँ से = n − 17\nअतः n/2 = n − 17 → n/2 = 17 → n = 34",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "ab66c7c2a9e3e579"
+ },
+ {
+  "id": "q_52b944eba0cc9b89",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Order & Ranking",
+  "topic": "Height Comparison",
+  "difficulty": "hard",
+  "questionText": "There are five friends -S, K, M, A and R. S is shorter than K but taller than R. M is the tallest. A is a little shorter than K and little taller than S. Who has two persons taller and two persons shorter than him?",
+  "questionTextHi": "पाँच मित्र S, K, M, A और R हैं। S, K से छोटा है पर R से लंबा है। M सबसे लंबा है। A, K से थोड़ा छोटा और S से थोड़ा लंबा है। किसके दो व्यक्ति लंबे और दो व्यक्ति छोटे हैं?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "A"
+   },
+   {
+    "id": "B",
+    "text": "K"
+   },
+   {
+    "id": "C",
+    "text": "R"
+   },
+   {
+    "id": "D",
+    "text": "S"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "From the clues: K > S > R and K > A > S, and M is the tallest.\nOrder of height (tallest to shortest): M > K > A > S > R.\nA is in the 3rd position — two persons (M, K) are taller and two (S, R) are shorter than A.",
+  "explanationHi": "संकेतों से: K > S > R तथा K > A > S, और M सबसे लंबा है।\nलंबाई का क्रम (सबसे लंबे से छोटे तक): M > K > A > S > R\nA तीसरे स्थान पर है — उससे दो व्यक्ति (M, K) लंबे और दो (S, R) छोटे हैं।",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "68c14593d077cb44"
+ },
+ {
+  "id": "q_d108440bdeb7b23a",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Trigonometry",
+  "topic": "Complementary Angles",
+  "difficulty": "medium",
+  "questionText": "Find the value of cot1°.cot2°.cot3° _______ cot89°.",
+  "questionTextHi": "cot1°.cot2°.cot3° _______ cot89° का मान ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "0"
+   },
+   {
+    "id": "B",
+    "text": "1"
+   },
+   {
+    "id": "C",
+    "text": "2"
+   },
+   {
+    "id": "D",
+    "text": "1/2"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Key fact: cot θ × cot(90° − θ) = cot θ × tan θ = 1.\nPair the terms: (cot1° × cot89°), (cot2° × cot88°), … up to (cot44° × cot46°) = 44 pairs, each equal to 1.\nMiddle term cot45° = 1.\nSo total value = 1 × 1 = 1.",
+  "explanationHi": "मुख्य नियम: cot θ × cot(90° − θ) = cot θ × tan θ = 1\nजोड़े बनाइए: (cot1° × cot89°), (cot2° × cot88°), … (cot44° × cot46°) = 44 जोड़े, हर जोड़ा 1 के बराबर।\nबीच वाला पद cot45° = 1\nअतः कुल मान = 1 × 1 = 1",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0ebbd94f198b4537"
+ },
+ {
+  "id": "q_fc95b0ad04a20394",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Averages",
+  "topic": "Weighted Average",
+  "difficulty": "hard",
+  "questionText": "The average marks scored by boys in a class is 72. The average marks of class is 77 and there are total 40 students in the class. If number of girls in class is 25 then find the average marks of girls in class.",
+  "questionTextHi": "एक कक्षा में लड़कों के औसत अंक 72 हैं। कक्षा के औसत अंक 77 हैं और कक्षा में कुल 40 विद्यार्थी हैं। यदि कक्षा में लड़कियों की संख्या 25 है, तो लड़कियों के औसत अंक ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "78"
+   },
+   {
+    "id": "B",
+    "text": "80"
+   },
+   {
+    "id": "C",
+    "text": "82"
+   },
+   {
+    "id": "D",
+    "text": "84"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Girls = 25, so Boys = 40 − 25 = 15.\nTotal marks of class = 77 × 40 = 3080.\nTotal marks of boys = 72 × 15 = 1080.\nTotal marks of girls = 3080 − 1080 = 2000.\nAverage of girls = 2000 / 25 = 80.",
+  "explanationHi": "लड़कियाँ = 25, अतः लड़के = 40 − 25 = 15\nकक्षा के कुल अंक = 77 × 40 = 3080\nलड़कों के कुल अंक = 72 × 15 = 1080\nलड़कियों के कुल अंक = 3080 − 1080 = 2000\nलड़कियों का औसत = 2000 / 25 = 80",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "3fc43f75c531d563"
+ },
+ {
+  "id": "q_14fdf5860e33384b",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Mensuration",
+  "topic": "Area & Perimeter",
+  "difficulty": "medium",
+  "questionText": "Area of square is 3/5th of area of rectangle. If sides of rectangle are 9 cm and 15 cm, then find the perimeter of the square.",
+  "questionTextHi": "एक वर्ग का क्षेत्रफल एक आयत के क्षेत्रफल का 3/5 है। यदि आयत की भुजाएँ 9 सेमी और 15 सेमी हैं, तो वर्ग का परिमाप ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "9 cm"
+   },
+   {
+    "id": "B",
+    "text": "18 cm"
+   },
+   {
+    "id": "C",
+    "text": "36 cm"
+   },
+   {
+    "id": "D",
+    "text": "81 cm"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Area of rectangle = 9 × 15 = 135 cm².\nArea of square = (3/5) × 135 = 81 cm².\nSide of square = √81 = 9 cm.\nPerimeter of square = 4 × 9 = 36 cm.",
+  "explanationHi": "आयत का क्षेत्रफल = 9 × 15 = 135 सेमी²\nवर्ग का क्षेत्रफल = (3/5) × 135 = 81 सेमी²\nवर्ग की भुजा = √81 = 9 सेमी\nवर्ग का परिमाप = 4 × 9 = 36 सेमी",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "3ffc92c108516d12"
+ },
+ {
+  "id": "q_04c99e1b13945a77",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Simplification",
+  "topic": "Algebraic Identities",
+  "difficulty": "medium",
+  "questionText": "(3.75² + 1.25² + 3.75 × 2.5)/(3.75 + 1.25) = ?",
+  "questionTextHi": "(3.75² + 1.25² + 3.75 × 2.5)/(3.75 + 1.25) = ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "2.5"
+   },
+   {
+    "id": "B",
+    "text": "5"
+   },
+   {
+    "id": "C",
+    "text": "25"
+   },
+   {
+    "id": "D",
+    "text": "1"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Use a² + b² + 2ab = (a + b)² with a = 3.75, b = 1.25.\nNote 3.75 × 2.5 = 2 × (3.75 × 1.25) = 2ab.\nSo numerator = (3.75 + 1.25)² = 5² = 25.\nDenominator = 3.75 + 1.25 = 5.\nValue = 25 / 5 = 5.",
+  "explanationHi": "a² + b² + 2ab = (a + b)² का प्रयोग कीजिए, जहाँ a = 3.75, b = 1.25\nध्यान दें: 3.75 × 2.5 = 2 × (3.75 × 1.25) = 2ab\nअतः अंश = (3.75 + 1.25)² = 5² = 25\nहर = 3.75 + 1.25 = 5\nमान = 25 / 5 = 5",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "753a5648f2ef8204"
+ },
+ {
+  "id": "q_f400ad84925cf8dc",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Algebra",
+  "topic": "Linear Equations",
+  "difficulty": "medium",
+  "questionText": "If 0.25x = 0.75y, then find the value of (x + y)/(x - y).",
+  "questionTextHi": "यदि 0.25x = 0.75y है, तो (x + y)/(x - y) का मान ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "0"
+   },
+   {
+    "id": "B",
+    "text": "1"
+   },
+   {
+    "id": "C",
+    "text": "2"
+   },
+   {
+    "id": "D",
+    "text": "4"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "0.25x = 0.75y → x/y = 0.75/0.25 = 3, so x = 3y.\n(x + y)/(x − y) = (3y + y)/(3y − y) = 4y/2y = 2.",
+  "explanationHi": "0.25x = 0.75y → x/y = 0.75/0.25 = 3, अर्थात् x = 3y\n(x + y)/(x − y) = (3y + y)/(3y − y) = 4y/2y = 2",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "d723fb9b823fcf06"
+ },
+ {
+  "id": "q_e8c8d41cec2f276a",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Percentage",
+  "topic": "Basics of Percentage",
+  "difficulty": "medium",
+  "questionText": "Change 5.6 into percentage form.",
+  "questionTextHi": "5.6 को प्रतिशत रूप में बदलिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "56%"
+   },
+   {
+    "id": "B",
+    "text": "560%"
+   },
+   {
+    "id": "C",
+    "text": "0.056%"
+   },
+   {
+    "id": "D",
+    "text": "0.56%"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "To convert a number into percentage, multiply by 100.\n5.6 × 100 = 560%.",
+  "explanationHi": "किसी संख्या को प्रतिशत में बदलने के लिए 100 से गुणा करते हैं।\n5.6 × 100 = 560%",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "1d88ecec2a3ad000"
+ },
+ {
+  "id": "q_2db72508c2960144",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Number System",
+  "topic": "HCF & LCM",
+  "difficulty": "medium",
+  "questionText": "Find HCF and LCM of 28 & 42.",
+  "questionTextHi": "28 और 42 का म.स. (HCF) तथा ल.स. (LCM) ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "84, 14"
+   },
+   {
+    "id": "B",
+    "text": "14, 42"
+   },
+   {
+    "id": "C",
+    "text": "14, 84"
+   },
+   {
+    "id": "D",
+    "text": "42, 14"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "28 = 2² × 7, 42 = 2 × 3 × 7.\nHCF = common factors = 2 × 7 = 14.\nLCM = 2² × 3 × 7 = 84.\n(Check: HCF × LCM = 14 × 84 = 1176 = 28 × 42 ✔)",
+  "explanationHi": "28 = 2² × 7, 42 = 2 × 3 × 7\nHCF = सामान्य गुणनखंड = 2 × 7 = 14\nLCM = 2² × 3 × 7 = 84\n(जाँच: HCF × LCM = 14 × 84 = 1176 = 28 × 42 ✔)",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "9e0aa035373e132a"
+ },
+ {
+  "id": "q_0558ab0bc77ec3b9",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Percentage",
+  "topic": "Percentage Change in Mixture",
+  "difficulty": "medium",
+  "questionText": "5 kg honey contains 60% sugar. If 3 kg more sugar is added to it then find new sugar percentage.",
+  "questionTextHi": "5 किग्रा शहद में 60% चीनी है। यदि इसमें 3 किग्रा और चीनी मिला दी जाए, तो नया चीनी प्रतिशत ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "70%"
+   },
+   {
+    "id": "B",
+    "text": "75%"
+   },
+   {
+    "id": "C",
+    "text": "80%"
+   },
+   {
+    "id": "D",
+    "text": "90%"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Sugar in 5 kg honey = 60% of 5 = 3 kg.\nOther matter = 5 − 3 = 2 kg (this stays the same).\nAfter adding 3 kg sugar: sugar = 3 + 3 = 6 kg, total mixture = 5 + 3 = 8 kg.\nNew sugar % = (6/8) × 100 = 75%.",
+  "explanationHi": "5 किग्रा शहद में चीनी = 5 का 60% = 3 किग्रा\nअन्य पदार्थ = 5 − 3 = 2 किग्रा (यह अपरिवर्तित रहता है)\n3 किग्रा चीनी मिलाने पर: चीनी = 3 + 3 = 6 किग्रा, कुल मिश्रण = 5 + 3 = 8 किग्रा\nनया चीनी प्रतिशत = (6/8) × 100 = 75%",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "984d34b539397d44"
+ },
+ {
+  "id": "q_0cc090381cd9b3ed",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Computer Awareness",
+  "topic": "Father of Modern Computer",
+  "difficulty": "easy",
+  "questionText": "Who is known as the father of modern computer?",
+  "questionTextHi": "आधुनिक कंप्यूटर का जनक किसे कहा जाता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Charles Babbage"
+   },
+   {
+    "id": "B",
+    "text": "Howard Aiken"
+   },
+   {
+    "id": "C",
+    "text": "John Von Neumann"
+   },
+   {
+    "id": "D",
+    "text": "Alan Turing"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "As per this paper's answer key, the answer is Alan Turing — he is called the father of modern computing / computer science (Turing Machine concept).\nNote: Charles Babbage is called the \"Father of Computer\" and John von Neumann the \"Father of Modern Computer Architecture\", so in some books this question is keyed differently. This paper's key marks D.",
+  "explanationHi": "इस पेपर की उत्तर-कुंजी के अनुसार उत्तर Alan Turing है — इन्हें आधुनिक कंप्यूटिंग/कंप्यूटर साइंस का जनक कहा जाता है (ट्यूरिंग मशीन की अवधारणा)।\nध्यान दें: चार्ल्स बैबेज को \"कंप्यूटर का जनक\" तथा जॉन वॉन न्यूमैन को \"आधुनिक कंप्यूटर आर्किटेक्चर का जनक\" कहा जाता है, इसलिए कुछ किताबों में यह प्रश्न अलग उत्तर से दिया जाता है। इस पेपर की कुंजी में D है।",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "06e41f6342a6ef41"
+ },
+ {
+  "id": "q_372e7c4a7f890d75",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Sports",
+  "topic": "Sports Personalities",
+  "difficulty": "medium",
+  "questionText": "Which female athlete is nicknamed as 'Dhing Express' after her village's name?",
+  "questionTextHi": "अपने गाँव के नाम पर किस महिला एथलीट को 'ढिंग एक्सप्रेस' कहा जाता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Hima Das"
+   },
+   {
+    "id": "B",
+    "text": "Mary Kom"
+   },
+   {
+    "id": "C",
+    "text": "M R Poovamma"
+   },
+   {
+    "id": "D",
+    "text": "Sarita Gayakwad"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Hima Das belongs to Dhing village in Nagaon district, Assam; because of her fast sprinting she is called \"Dhing Express\".\nDhing Express = Hima Das.",
+  "explanationHi": "हिमा दास असम के नगाँव जिले के ढिंग गाँव की रहने वाली हैं; तेज़ दौड़ के कारण उन्हें \"ढिंग एक्सप्रेस\" कहा जाता है।\nढिंग एक्सप्रेस = हिमा दास",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "77f630a51537ab96"
+ },
+ {
+  "id": "q_71cb14b92efe68df",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Geography",
+  "topic": "Canals & Waterways",
+  "difficulty": "medium",
+  "questionText": "Suez canal connects",
+  "questionTextHi": "स्वेज नहर किन्हें जोड़ती है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Mediterranean Sea - Atlantic Ocean"
+   },
+   {
+    "id": "B",
+    "text": "Red Sea - Arab Sea"
+   },
+   {
+    "id": "C",
+    "text": "Mediterranean Sea - Red Sea"
+   },
+   {
+    "id": "D",
+    "text": "Mediterranean Sea - Arab Sea"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "The Suez Canal (Egypt) joins the Mediterranean Sea and the Red Sea, giving a short sea route between Europe and Asia.\nSuez Canal → Mediterranean Sea ↔ Red Sea.",
+  "explanationHi": "स्वेज नहर (मिस्र) भूमध्य सागर और लाल सागर को जोड़ती है, जिससे यूरोप और एशिया के बीच छोटा समुद्री मार्ग बन जाता है।\nस्वेज नहर → भूमध्य सागर ↔ लाल सागर",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "de006d5c4ef4a9b3"
+ },
+ {
+  "id": "q_e1b859201742b82e",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Static GK",
+  "topic": "Important Days",
+  "difficulty": "easy",
+  "questionText": "When is the International Literacy Day celebrated?",
+  "questionTextHi": "अंतर्राष्ट्रीय साक्षरता दिवस कब मनाया जाता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "5 September"
+   },
+   {
+    "id": "B",
+    "text": "6 September"
+   },
+   {
+    "id": "C",
+    "text": "7 September"
+   },
+   {
+    "id": "D",
+    "text": "8 September"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "International Literacy Day is celebrated every year on 8 September (UNESCO, since 1967).",
+  "explanationHi": "अंतर्राष्ट्रीय साक्षरता दिवस प्रत्येक वर्ष 8 सितंबर को मनाया जाता है (यूनेस्को द्वारा, 1967 से)।",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "9703c4c534463080"
+ },
+ {
+  "id": "q_0b659b1afd1c495a",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Awards & Honours",
+  "topic": "Oscar Awards",
+  "difficulty": "medium",
+  "questionText": "Which of the following movie won the Oscar Awards 2020 for Best Picture?",
+  "questionTextHi": "निम्नलिखित में से कौन-सी फिल्म ने ऑस्कर 2020 में सर्वश्रेष्ठ फिल्म का पुरस्कार जीता?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Once Upon a Time in Hollywood"
+   },
+   {
+    "id": "B",
+    "text": "Joker"
+   },
+   {
+    "id": "C",
+    "text": "Judy"
+   },
+   {
+    "id": "D",
+    "text": "Parasite"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "At the 92nd Academy Awards (2020), the South Korean film \"Parasite\" won Best Picture — the first non-English film to do so.",
+  "explanationHi": "92वें अकादमी पुरस्कार (ऑस्कर 2020) में दक्षिण कोरियाई फिल्म \"पैरासाइट\" ने सर्वश्रेष्ठ फिल्म का पुरस्कार जीता — यह ऐसा करने वाली पहली गैर-अंग्रेज़ी फिल्म थी।",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "6122b5e95e71c693"
+ },
+ {
+  "id": "q_f204400bb6fa97af",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Polity & Constitution",
+  "topic": "Union/State/Concurrent Lists",
+  "difficulty": "medium",
+  "questionText": "Under which list the subject public health and sanitation comes?",
+  "questionTextHi": "सार्वजनिक स्वास्थ्य और स्वच्छता विषय किस सूची में आता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Union List"
+   },
+   {
+    "id": "B",
+    "text": "State List"
+   },
+   {
+    "id": "C",
+    "text": "Concurrent List"
+   },
+   {
+    "id": "D",
+    "text": "All of the above"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "In the Seventh Schedule of the Constitution, \"Public health and sanitation, hospitals and dispensaries\" is placed in the State List (Entry 6).\nSo it comes under the State List.",
+  "explanationHi": "संविधान की सातवीं अनुसूची में \"सार्वजनिक स्वास्थ्य एवं स्वच्छता, अस्पताल और औषधालय\" राज्य सूची (प्रविष्टि 6) में रखा गया है।\nअतः यह राज्य सूची में आता है।",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "868e7da9cf621e50"
+ },
+ {
+  "id": "q_70da9b75b96fdefd",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Geography",
+  "topic": "World Capitals",
+  "difficulty": "easy",
+  "questionText": "Which among the following is the national capital of Nepal?",
+  "questionTextHi": "निम्नलिखित में से नेपाल की राष्ट्रीय राजधानी कौन-सी है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Kathmandu"
+   },
+   {
+    "id": "B",
+    "text": "Patan"
+   },
+   {
+    "id": "C",
+    "text": "Janakpur"
+   },
+   {
+    "id": "D",
+    "text": "Biratnagar"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "The national capital of Nepal is Kathmandu.\n(असली परीक्षा-पत्र में विकल्प टाइपिंग में गड़बड़ थे; यहाँ सही रूप में दिए गए हैं।)",
+  "explanationHi": "नेपाल की राष्ट्रीय राजधानी काठमांडू है।\n(स्रोत फाइल में विकल्प गड़बड़ थे; यहाँ सही विकल्प दिए गए हैं।)",
+  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "01614c31dbb18cf0"
+ },
+ {
+  "id": "q_28c311db9106c05a",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Coding-Decoding",
+  "topic": "Letter Coding",
+  "difficulty": "medium",
+  "questionText": "In a certain code language, TENSION is written as OFUTOPJ. How will STUDENT be written as in that language?",
+  "questionTextHi": "एक निश्चित कूट भाषा में TENSION को OFUTOPJ लिखा जाता है। उसी भाषा में STUDENT को कैसे लिखा जाएगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "VUTEUOF"
+   },
+   {
+    "id": "B",
+    "text": "VTUEUOF"
+   },
+   {
+    "id": "C",
+    "text": "FOUETUV"
+   },
+   {
+    "id": "D",
+    "text": "TUVEFOU"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Pattern seen in TENSION → OFUTOPJ: every letter at the 2nd, 4th and 6th place is moved 1 step forward (E→F, S→T, O→P).\nApply the same to STUDENT: letters at 2nd, 4th, 6th places (T, D, N) become U, E, O and the remaining letters follow the order of the given example → STUDENT = VUTEUOF (option A).\n(Note: यह प्रश्न memory-based है; विकल्पों में पूरा पैटर्न एकरूप नहीं है — कुंजी के अनुसार उत्तर A है।)",
+  "explanationHi": "TENSION → OFUTOPJ में दिखने वाला नियम: दूसरे, चौथे और छठे स्थान के अक्षर एक-एक कदम आगे बढ़ते हैं (E→F, S→T, O→P)।\nयही नियम STUDENT पर लगाइए: 2रे, 4थे, 6ठे अक्षर (T, D, N) → U, E, O तथा शेष अक्षर दिए गए उदाहरण के क्रम के अनुसार → STUDENT = VUTEUOF (विकल्प A)।\n(नोट: यह प्रश्न memory-based है; विकल्पों में पूरा पैटर्न एकरूप नहीं बनता — उत्तर-कुंजी के अनुसार A सही है।)",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "4c1d59f38cc4e9e3"
+ },
+ {
+  "id": "q_f20c827211e0b44c",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Blood Relations",
+  "topic": "Blood Relations",
+  "difficulty": "medium",
+  "questionText": "P and Q are brothers. R and S are sisters. P's son N is brother of S. S is daughter of M. How M is related to N?",
+  "questionTextHi": "P और Q भाई हैं। R और S बहनें हैं। P का पुत्र N, S का भाई है। S, M की पुत्री है। M का N से क्या संबंध है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Aunt"
+   },
+   {
+    "id": "B",
+    "text": "Sister"
+   },
+   {
+    "id": "C",
+    "text": "Mother"
+   },
+   {
+    "id": "D",
+    "text": "Son"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "N is P's son. S is N's sister, so S is also P's daughter. S is the daughter of M → M is the mother of S and N.\nHence M is N's mother.",
+  "explanationHi": "N, P का पुत्र है। S, N की बहन है, अतः S भी P की पुत्री है। S, M की पुत्री है → M, S और N की माँ है।\nइसलिए M, N की माँ है।",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "75a9b773bf1ca7af"
+ },
+ {
+  "id": "q_9b9bfc44233c1df8",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Missing Number in Figure",
+  "topic": "Figure Matrix",
+  "difficulty": "medium",
+  "questionText": "Find the missing number in the given figure. 1 3 7 2 4 4 4 5 9 3 6 8   (50, 90, ?)",
+  "questionTextHi": "दी गई आकृति में लुप्त संख्या ज्ञात कीजिए। पंक्तियाँ: (1, 2, 4, 3) = 50, (3, 4, 5, 6) = 90, (7, 4, 9, 8) = ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "80"
+   },
+   {
+    "id": "B",
+    "text": "110"
+   },
+   {
+    "id": "C",
+    "text": "120"
+   },
+   {
+    "id": "D",
+    "text": "140"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Note the figure is printed column-wise in the source; writing it row-wise the grid is:\nRow 1: 1 2 4 3 → 50 ; Row 2: 3 4 5 6 → 90 ; Row 3: 7 4 9 8 → ?\nRule: (sum of the four numbers of the row) × 5 = number on the right.\nRow 1: (1+2+4+3) × 5 = 10 × 5 = 50 ✔\nRow 2: (3+4+5+6) × 5 = 18 × 5 = 90 ✔\nRow 3: (7+4+9+8) × 5 = 28 × 5 = 140\nSo ? = 140.",
+  "explanationHi": "स्रोत में आकृति स्तंभ-वार छपी है; पंक्ति-वार लिखने पर:\nपंक्ति 1: 1 2 4 3 → 50 ; पंक्ति 2: 3 4 5 6 → 90 ; पंक्ति 3: 7 4 9 8 → ?\nनियम: (पंक्ति की चारों संख्याओं का योग) × 5 = दाईं ओर की संख्या\nपंक्ति 1: (1+2+4+3) × 5 = 10 × 5 = 50 ✔\nपंक्ति 2: (3+4+5+6) × 5 = 18 × 5 = 90 ✔\nपंक्ति 3: (7+4+9+8) × 5 = 28 × 5 = 140\nअतः ? = 140",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "caa7fb08426931d8"
+ },
+ {
+  "id": "q_5280121380f3a2f5",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Number Series",
+  "topic": "Series Completion",
+  "difficulty": "medium",
+  "questionText": "Find the missing number in the series. 12, 22, 42, 82, ?",
+  "questionTextHi": "श्रृंखला में लुप्त संख्या ज्ञात कीजिए। 12, 22, 42, 82, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "102"
+   },
+   {
+    "id": "B",
+    "text": "112"
+   },
+   {
+    "id": "C",
+    "text": "122"
+   },
+   {
+    "id": "D",
+    "text": "162"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Rule: each term = previous term × 2 − 2\n12 × 2 − 2 = 22 ✔\n22 × 2 − 2 = 42 ✔\n42 × 2 − 2 = 82 ✔\n82 × 2 − 2 = 162\n(Cross-check with differences: +10, +20, +40, +80 → 82 + 80 = 162 ✔)",
+  "explanationHi": "नियम: प्रत्येक पद = पिछला पद × 2 − 2\n12 × 2 − 2 = 22 ✔\n22 × 2 − 2 = 42 ✔\n42 × 2 − 2 = 82 ✔\n82 × 2 − 2 = 162\n(अंतर से जाँच: +10, +20, +40, +80 → 82 + 80 = 162 ✔)",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "2b43874708450534"
+ },
+ {
+  "id": "q_6b639e4aeeeafe24",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Analogy",
+  "topic": "Number Analogy",
+  "difficulty": "medium",
+  "questionText": "Select the term that relates to the third term in the same way that the second term relates to the first term. 5 : 30 :: 9 : ?",
+  "questionTextHi": "वह पद चुनिए जिसका तीसरे पद से वही संबंध है जो दूसरे पद का पहले पद से है। 5 : 30 :: 9 : ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "72"
+   },
+   {
+    "id": "B",
+    "text": "81"
+   },
+   {
+    "id": "C",
+    "text": "90"
+   },
+   {
+    "id": "D",
+    "text": "46"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Rule: n × (n + 1)\n5 × (5 + 1) = 5 × 6 = 30\n9 × (9 + 1) = 9 × 10 = 90",
+  "explanationHi": "नियम: n × (n + 1)\n5 × (5 + 1) = 5 × 6 = 30\n9 × (9 + 1) = 9 × 10 = 90",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "56084596bee4910b"
+ },
+ {
+  "id": "q_ec7310ec0dbd5ff6",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Clock & Calendar",
+  "topic": "Clock Angle",
+  "difficulty": "medium",
+  "questionText": "For a standard clock, what is the angle between hour hand and the minute hand when the clock shows 5:15?",
+  "questionTextHi": "एक सामान्य घड़ी में जब समय 5:15 हो, तो घंटे और मिनट की सुई के बीच का कोण कितना होगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "67.5°"
+   },
+   {
+    "id": "B",
+    "text": "82.5°"
+   },
+   {
+    "id": "C",
+    "text": "31.5°"
+   },
+   {
+    "id": "D",
+    "text": "22.5°"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Minute hand at 15 min = 15 × 6° = 90°.\nHour hand = (5 × 30°) + (15 × 0.5°) = 150° + 7.5° = 157.5°.\nAngle = 157.5° − 90° = 67.5°.\n(Shortcut: |30H − 5.5M| = |150 − 82.5| = 67.5°.)",
+  "explanationHi": "मिनट की सुई 15 मिनट पर = 15 × 6° = 90°\nघंटे की सुई = (5 × 30°) + (15 × 0.5°) = 150° + 7.5° = 157.5°\nकोण = 157.5° − 90° = 67.5°\n(शॉर्टकट: |30H − 5.5M| = |150 − 82.5| = 67.5°)",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "467da97568fe4dd7"
+ },
+ {
+  "id": "q_72cdbf1baf22640c",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Direction Sense",
+  "topic": "Direction & Distance",
+  "difficulty": "medium",
+  "questionText": "M is 10m to the north of L. J is 12m to the north of K. N is 3m to the west of M. K is 5m to the west of L. In which direction is K with respect to M?",
+  "questionTextHi": "M, L के उत्तर में 10 मी दूर है। J, K के उत्तर में 12 मी दूर है। N, M के पश्चिम में 3 मी दूर है। K, L के पश्चिम में 5 मी दूर है। M के सापेक्ष K किस दिशा में है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "South-East"
+   },
+   {
+    "id": "B",
+    "text": "North-West"
+   },
+   {
+    "id": "C",
+    "text": "North-East"
+   },
+   {
+    "id": "D",
+    "text": "South-West"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "L is at the base point. K is 5 m west of L, and M is 10 m north of L.\nFrom M: K is to the west (same as L) and 10 m below (south) M.\nSo K is to the South-West of M.\n(J and N are extra information — not needed.)",
+  "explanationHi": "L आधार बिंदु है। K, L से 5 मी पश्चिम में है और M, L से 10 मी उत्तर में है।\nM से देखें: K पश्चिम में है और M से 10 मी नीचे (दक्षिण) है।\nअतः K, M के दक्षिण-पश्चिम में है।\n(J और N अतिरिक्त जानकारी हैं — आवश्यक नहीं।)",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "3982f8131ec5e8e2"
+ },
+ {
+  "id": "q_c86036a9555a64dd",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Seating Arrangement",
+  "topic": "Linear Arrangement",
+  "difficulty": "hard",
+  "questionText": "Direction: Study the information carefully and answer the given questions. Eight students A, B, C, D, E, F, G, H in a School are standing in a row for prayer and all of them are facing North but not necessarily in the same order. No student is standing between H and B. D is standing second to the right of G. G stands at one of the extreme ends. C will not stand to the left of H. B is not an immediate neighbour of D. E is standing to immediate right of B. No one is standing to the right of A. Who is sitting to the immediate right of E?",
+  "questionTextHi": "निर्देश: जानकारी ध्यानपूर्वक पढ़कर उत्तर दीजिए। एक विद्यालय के आठ विद्यार्थी A, B, C, D, E, F, G, H प्रार्थना के लिए एक पंक्ति में खड़े हैं और सभी उत्तर की ओर मुँह किए हैं, पर आवश्यक नहीं कि इसी क्रम में हों। H और B के बीच कोई विद्यार्थी नहीं खड़ा है। D, G के दाएँ दूसरा है। G किसी एक छोर पर खड़ा है। C, H के बाईं ओर नहीं खड़ा होगा। B, D का निकटतम पड़ोसी नहीं है। E, B के ठीक दाएँ खड़ा है। A के दाएँ कोई नहीं खड़ा है। E के ठीक दाएँ कौन बैठा/खड़ा है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "B"
+   },
+   {
+    "id": "B",
+    "text": "F"
+   },
+   {
+    "id": "C",
+    "text": "C"
+   },
+   {
+    "id": "D",
+    "text": "D"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Left → Right positions 1 to 8 (all facing North).\nStep 1: No one is to the right of A → A = 8.\nStep 2: G is at an extreme end; 8 is taken → G = 1. D is second to the right of G → D = 3.\nStep 3: H and B are adjacent (no one between them). B is not an immediate neighbour of D (3) → B ≠ 2, 4. E is immediately right of B → B can be 5 (E = 6).\nStep 4: H is adjacent to B → H = 4 (6 is E).\nStep 5: C is not to the left of H (4) → C must be 7 (only 2 and 7 are free; 2 is left of H).\nStep 6: F = 2.\nFinal row: 1 G, 2 F, 3 D, 4 H, 5 B, 6 E, 7 C, 8 A.\nImmediate right of E (6) = C.",
+  "explanationHi": "बाएँ → दाएँ स्थान 1 से 8 (सभी उत्तर की ओर मुँह)।\nचरण 1: A के दाएँ कोई नहीं → A = 8\nचरण 2: G छोर पर है; 8 भर चुका → G = 1। D, G के दाएँ दूसरा → D = 3\nचरण 3: H और B निकटतम हैं (बीच में कोई नहीं)। B, D (3) का पड़ोसी नहीं हो सकता → B ≠ 2, 4। E, B के ठीक दाएँ है → B = 5 (E = 6)\nचरण 4: H, B के निकट है → H = 4 (6 पर E है)\nचरण 5: C, H (4) के बाईं ओर नहीं होगा → C = 7 (केवल 2 और 7 खाली हैं; 2, H के बाईं ओर है)\nचरण 6: F = 2\nअंतिम पंक्ति: 1 G, 2 F, 3 D, 4 H, 5 B, 6 E, 7 C, 8 A\nE (6) के ठीक दाएँ = C",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "7a2b8cba71442700"
+ },
+ {
+  "id": "q_b562b1b1c65923cc",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Ratio & Proportion",
+  "topic": "Division of Amount",
+  "difficulty": "medium",
+  "questionText": "Rs.10000 is divided among 3 persons. If ratio of amount between first and second person is 2 : 1 and between second and third person is 3 : 1, then find the amount get by third person.",
+  "questionTextHi": "10,000 रुपये तीन व्यक्तियों में बाँटे जाते हैं। यदि पहले और दूसरे व्यक्ति की राशि का अनुपात 2 : 1 है तथा दूसरे और तीसरे का अनुपात 3 : 1 है, तो तीसरे व्यक्ति को कितनी राशि मिलेगी?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "3000"
+   },
+   {
+    "id": "B",
+    "text": "1000"
+   },
+   {
+    "id": "C",
+    "text": "6000"
+   },
+   {
+    "id": "D",
+    "text": "2000"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "A : B = 2 : 1 = 6 : 3 (multiply by 3)\nB : C = 3 : 1\nSo A : B : C = 6 : 3 : 1. Total parts = 10.\nThird person's share = 10000 × (1/10) = Rs. 1000.",
+  "explanationHi": "A : B = 2 : 1 = 6 : 3 (3 से गुणा करने पर)\nB : C = 3 : 1\nअतः A : B : C = 6 : 3 : 1, कुल भाग = 10\nतीसरे व्यक्ति का हिस्सा = 10000 × (1/10) = 1000 रुपये",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "23bd6a9669a525dd"
+ },
+ {
+  "id": "q_58c7f101f2213e1e",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Number System",
+  "topic": "HCF & LCM",
+  "difficulty": "medium",
+  "questionText": "Two numbers are in ratio 14 : 9, if HCF and LCM of both numbers are 3 and 378, then find the greater number.",
+  "questionTextHi": "दो संख्याएँ 14 : 9 के अनुपात में हैं। यदि उनका HCF 3 और LCM 378 है, तो बड़ी संख्या ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "21"
+   },
+   {
+    "id": "B",
+    "text": "27"
+   },
+   {
+    "id": "C",
+    "text": "28"
+   },
+   {
+    "id": "D",
+    "text": "42"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "For numbers in ratio a : b (coprime), HCF = k and numbers = k·a, k·b.\nHCF = 3 → numbers = 3 × 14 = 42 and 3 × 9 = 27.\nCheck LCM: 42 = 2×3×7, 27 = 3³ → LCM = 2×3³×7 = 378 ✔\nGreater number = 42.",
+  "explanationHi": "a : b अनुपात (सह-अभाज्य) वाली संख्याओं के लिए HCF = k और संख्याएँ = k·a, k·b\nHCF = 3 → संख्याएँ = 3 × 14 = 42 तथा 3 × 9 = 27\nजाँच LCM: 42 = 2×3×7, 27 = 3³ → LCM = 2×3³×7 = 378 ✔\nबड़ी संख्या = 42",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "643a4536b5c422f5"
+ },
+ {
+  "id": "q_a7b9acd069426b67",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Profit & Loss",
+  "topic": "Cost Price from Loss",
+  "difficulty": "medium",
+  "questionText": "If a product is sold at Rs. 564 then a loss of 6% occurs. Find the selling price if the same product is sold at 6% profit.",
+  "questionTextHi": "यदि कोई वस्तु 564 रुपये में बेचने पर 6% हानि होती है। यदि उसी वस्तु को 6% लाभ पर बेचा जाए, तो विक्रय मूल्य ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Rs 600"
+   },
+   {
+    "id": "B",
+    "text": "Rs 636"
+   },
+   {
+    "id": "C",
+    "text": "Rs 672"
+   },
+   {
+    "id": "D",
+    "text": "Rs 650"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "SP = 564, loss = 6% → SP = 94% of CP\nCP = 564 × 100/94 = Rs. 600.\nFor 6% profit: SP = 600 × 106/100 = Rs. 636.",
+  "explanationHi": "SP = 564, हानि = 6% → SP = CP का 94%\nCP = 564 × 100/94 = 600 रुपये\n6% लाभ पर: SP = 600 × 106/100 = 636 रुपये",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "937c83ae1adac9ac"
+ },
+ {
+  "id": "q_f3bfea8a4896e2d1",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Simplification",
+  "topic": "BODMAS",
+  "difficulty": "medium",
+  "questionText": "What will come in place of question mark '?' in the following question? 4 of 8 + [(6 × 3) + (2 – 5 × 3)] – 2 = ?",
+  "questionTextHi": "निम्न प्रश्न में प्रश्नचिह्न '?' के स्थान पर क्या आएगा? 4 of 8 + [(6 × 3) + (2 – 5 × 3)] – 2 = ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "20"
+   },
+   {
+    "id": "B",
+    "text": "24"
+   },
+   {
+    "id": "C",
+    "text": "30"
+   },
+   {
+    "id": "D",
+    "text": "35"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "\"4 of 8\" means 4 × 8 = 32.\n= 32 + [18 + (2 − 15)] − 2\n= 32 + [18 − 13] − 2\n= 32 + 5 − 2 = 35",
+  "explanationHi": "\"4 of 8\" का अर्थ 4 × 8 = 32\n= 32 + [18 + (2 − 15)] − 2\n= 32 + [18 − 13] − 2\n= 32 + 5 − 2 = 35",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "044266335ff827af"
+ },
+ {
+  "id": "q_58048b259261b4c4",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Algebra",
+  "topic": "Linear Equations",
+  "difficulty": "medium",
+  "questionText": "If 3x = 4y, then find the value of (x + y)/(x - y).",
+  "questionTextHi": "यदि 3x = 4y है, तो (x + y)/(x − y) का मान ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "7"
+   },
+   {
+    "id": "B",
+    "text": "1/7"
+   },
+   {
+    "id": "C",
+    "text": "4"
+   },
+   {
+    "id": "D",
+    "text": "1/4"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "3x = 4y → x/y = 4/3, take x = 4k, y = 3k.\n(x + y)/(x − y) = (4k + 3k)/(4k − 3k) = 7k/k = 7.",
+  "explanationHi": "3x = 4y → x/y = 4/3, मान लीजिए x = 4k, y = 3k\n(x + y)/(x − y) = (4k + 3k)/(4k − 3k) = 7k/k = 7",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "1beb7edbb4e4c354"
+ },
+ {
+  "id": "q_c5451a9ab6759a5b",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Mensuration",
+  "topic": "Area & Perimeter",
+  "difficulty": "medium",
+  "questionText": "Diagonals of the square ABCD are meeting at O. If side of square is a, then find the area of triangle AOB.",
+  "questionTextHi": "वर्ग ABCD के विकर्ण O पर मिलते हैं। यदि वर्ग की भुजा a है, तो त्रिभुज AOB का क्षेत्रफल ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "a²"
+   },
+   {
+    "id": "B",
+    "text": "a²/2"
+   },
+   {
+    "id": "C",
+    "text": "a²/4"
+   },
+   {
+    "id": "D",
+    "text": "a²/8"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Diagonals of a square divide it into 4 equal triangles → area of each triangle = (1/4) × area of square.\nArea of square = a², so area of triangle AOB = a²/4.\n(Details: OB = a/√2, height from A to OB along the other diagonal = a/√2 → area = ½ × a/√2 × a/√2 = a²/4 ✔)",
+  "explanationHi": "वर्ग के विकर्ण उसे 4 समान त्रिभुजों में बाँटते हैं → प्रत्येक त्रिभुज का क्षेत्रफल = (1/4) × वर्ग का क्षेत्रफल\nवर्ग का क्षेत्रफल = a², अतः त्रिभुज AOB का क्षेत्रफल = a²/4\n(विस्तार: OB = a/√2, A से OB पर लंब = a/√2 → क्षेत्रफल = ½ × a/√2 × a/√2 = a²/4 ✔)",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "536d147b77b488be"
+ },
+ {
+  "id": "q_6a9fffb7ab2f5213",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Percentage",
+  "topic": "Percentage",
+  "difficulty": "hard",
+  "questionText": "In a town there are two schools A and B. In school A there are 75% of total students out of which 20% students are failed in exam. If 10% students of school B are failed in exam then find the overall passing percentage of the town.",
+  "questionTextHi": "एक कस्बे में दो विद्यालय A और B हैं। विद्यालय A में कुल विद्यार्थियों का 75% है, जिनमें 20% परीक्षा में अनुत्तीर्ण हुए। यदि विद्यालय B के 10% विद्यार्थी अनुत्तीर्ण हुए, तो कस्बे का कुल उत्तीर्ण प्रतिशत ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "75%"
+   },
+   {
+    "id": "B",
+    "text": "87.5%"
+   },
+   {
+    "id": "C",
+    "text": "82.5%"
+   },
+   {
+    "id": "D",
+    "text": "77.5%"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Let total students = 100.\nSchool A = 75, fail = 20% of 75 = 15.\nSchool B = 25, fail = 10% of 25 = 2.5.\nTotal failed = 15 + 2.5 = 17.5.\nOverall passing % = 100 − 17.5 = 82.5%.",
+  "explanationHi": "मान लीजिए कुल विद्यार्थी = 100\nविद्यालय A = 75, अनुत्तीर्ण = 75 का 20% = 15\nविद्यालय B = 25, अनुत्तीर्ण = 25 का 10% = 2.5\nकुल अनुत्तीर्ण = 15 + 2.5 = 17.5\nकुल उत्तीर्ण प्रतिशत = 100 − 17.5 = 82.5%",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "1350d72e1749af0d"
+ },
+ {
+  "id": "q_e6b95e1b623ddc00",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Time, Speed & Distance",
+  "topic": "Speed-Time Relation",
+  "difficulty": "medium",
+  "questionText": "Walking at 20km/h Ratul is reaching his office 30 min late. Next day if he increases his speed to 24km/h then he reaches office 10min late. Find the distance of office.",
+  "questionTextHi": "20 किमी/घंटा की चाल से चलने पर रतुल अपने कार्यालय 30 मिनट देर से पहुँचता है। अगले दिन यदि वह चाल 24 किमी/घंटा कर दें, तो वह 10 मिनट देर से पहुँचता है। कार्यालय की दूरी ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "10 km"
+   },
+   {
+    "id": "B",
+    "text": "20 km"
+   },
+   {
+    "id": "C",
+    "text": "40 km"
+   },
+   {
+    "id": "D",
+    "text": "50 km"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Let distance = d, normal time = t.\nd/20 = t + 30/60 = t + 0.5\nd/24 = t + 10/60 = t + 1/6\nSubtracting: d/20 − d/24 = 0.5 − 1/6 = 1/3\nd × (6 − 5)/120 = 1/3 → d/120 = 1/3 → d = 40 km.",
+  "explanationHi": "मान लीजिए दूरी = d, सामान्य समय = t\nd/20 = t + 30/60 = t + 0.5\nd/24 = t + 10/60 = t + 1/6\nघटाने पर: d/20 − d/24 = 0.5 − 1/6 = 1/3\nd × (6 − 5)/120 = 1/3 → d/120 = 1/3 → d = 40 किमी",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "402ef9e9da56b4c4"
+ },
+ {
+  "id": "q_cde4c93ed44b43f5",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Static GK",
+  "topic": "Important Days",
+  "difficulty": "easy",
+  "questionText": "Which date is celebrated as the \"Army Day\" in India?",
+  "questionTextHi": "भारत में \"थल सेना दिवस\" किस तिथि को मनाया जाता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "4th December"
+   },
+   {
+    "id": "B",
+    "text": "8th October"
+   },
+   {
+    "id": "C",
+    "text": "1st January"
+   },
+   {
+    "id": "D",
+    "text": "15th January"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Army Day is celebrated on 15 January every year — on this day in 1949, General K. M. Cariappa took charge as the first Indian Commander-in-Chief of the Indian Army.",
+  "explanationHi": "थल सेना दिवस प्रत्येक वर्ष 15 जनवरी को मनाया जाता है — 1949 में इसी दिन जनरल के. एम. करिअप्पा ने भारतीय सेना के पहले भारतीय कमांडर-इन-चीफ का पदभार संभाला था।",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "7e8a333326204e9c"
+ },
+ {
+  "id": "q_2a00f0a406b3db92",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "History",
+  "topic": "Medieval India",
+  "difficulty": "medium",
+  "questionText": "Who among the following India rulers fought the Battle of Tarain (Terrain) with Muhammad Ghori?",
+  "questionTextHi": "निम्नलिखित भारतीय शासकों में से किसने मुहम्मद गोरी के साथ तराइन का युद्ध लड़ा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Mularaja"
+   },
+   {
+    "id": "B",
+    "text": "Kirtipala"
+   },
+   {
+    "id": "C",
+    "text": "Prithvi Raj Chauhan"
+   },
+   {
+    "id": "D",
+    "text": "Dharavarsa"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "The Battles of Tarain (1191 and 1192) were fought between Prithviraj Chauhan (Chahamana ruler of Ajmer) and Muhammad Ghori. In the Second Battle of Tarain (1192) Prithviraj was defeated.",
+  "explanationHi": "तराइन के युद्ध (1191 और 1192) पृथ्वीराज चौहान (अजमेर के चाहमान शासक) और मुहम्मद गोरी के बीच हुए। तराइन के द्वितीय युद्ध (1192) में पृथ्वीराज पराजित हुए।",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "6dd7e25679fde31c"
+ },
+ {
+  "id": "q_e3eea7ab5294c414",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Sports",
+  "topic": "Sports Events",
+  "difficulty": "medium",
+  "questionText": "In February 2020, who won the men's Australian Open 2020?",
+  "questionTextHi": "फरवरी 2020 में पुरुषों का ऑस्ट्रेलियन ओपन 2020 किसने जीता?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Roger Federer"
+   },
+   {
+    "id": "B",
+    "text": "Novak Djokovic"
+   },
+   {
+    "id": "C",
+    "text": "Rafael Nadal"
+   },
+   {
+    "id": "D",
+    "text": "Dominic Thiem"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Novak Djokovic (Serbia) won the Australian Open 2020 men's singles title by defeating Dominic Thiem in the final.",
+  "explanationHi": "नोवाक जोकोविच (सर्बिया) ने फाइनल में डोमिनिक थीम को हराकर ऑस्ट्रेलियन ओपन 2020 की पुरुष एकल खिताब जीती।",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0f26e1aa041bc987"
+ },
+ {
+  "id": "q_9ca163bfb99b5f08",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Defence & Security",
+  "topic": "Chief of Defence Staff",
+  "difficulty": "easy",
+  "questionText": "Who is the first Chief of Defence Staff of India?",
+  "questionTextHi": "भारत के प्रथम चीफ ऑफ डिफेंस स्टाफ कौन हैं?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "General Bipin Rawat"
+   },
+   {
+    "id": "B",
+    "text": "General Manoj Mukund Naravane"
+   },
+   {
+    "id": "C",
+    "text": "Admiral Karambir Singh"
+   },
+   {
+    "id": "D",
+    "text": "Rakesh Kumar Bhadauria"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "General Bipin Rawat became India's first Chief of Defence Staff (CDS) on 1 January 2020.",
+  "explanationHi": "जनरल बिपिन रावत 1 जनवरी 2020 को भारत के प्रथम चीफ ऑफ डिफेंस स्टाफ (CDS) बने।",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "6292fcf6f0a51e7f"
+ },
+ {
+  "id": "q_fe2f4efb733a8fac",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Computer Awareness",
+  "topic": "Abbreviations",
+  "difficulty": "easy",
+  "questionText": "Full form of DBMS",
+  "questionTextHi": "DBMS का पूर्ण रूप क्या है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Digital Base Management System"
+   },
+   {
+    "id": "B",
+    "text": "Database Management System"
+   },
+   {
+    "id": "C",
+    "text": "Database Maintenance System"
+   },
+   {
+    "id": "D",
+    "text": "None of the above"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "DBMS = Database Management System — software used to store, manage and retrieve data in a database (e.g. MySQL, Oracle).",
+  "explanationHi": "DBMS = Database Management System (डेटाबेस प्रबंधन प्रणाली) — डेटाबेस में डेटा को संग्रहित, प्रबंधित और प्राप्त करने वाला सॉफ्टवेयर (जैसे MySQL, Oracle)।",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "a2ea6d3c409fbb56"
+ },
+ {
+  "id": "q_bc75b4ff5c3692a2",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Sports",
+  "topic": "Sports Personalities",
+  "difficulty": "medium",
+  "questionText": "Koneru Hampi belongs from which of the following games?",
+  "questionTextHi": "कोनेरू हंपी (कोनेरू हम्पी) निम्नलिखित में से किस खेल से संबंधित हैं?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Badminton"
+   },
+   {
+    "id": "B",
+    "text": "Chess"
+   },
+   {
+    "id": "C",
+    "text": "Swimming"
+   },
+   {
+    "id": "D",
+    "text": "Tennis"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Koneru Humpy is an Indian chess Grandmaster (World Rapid Chess Champion 2019). Her game is Chess.",
+  "explanationHi": "कोनेरू हम्पी भारतीय शतरंज ग्रैंडमास्टर हैं (2019 विश्व रैपिड शतरंज चैंपियन)। उनका खेल शतरंज है।",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "252f92d77f30a7b2"
+ },
+ {
+  "id": "q_b9637dda705f0a62",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Geography",
+  "topic": "International Boundaries",
+  "difficulty": "medium",
+  "questionText": "Which countries are separated by the McMahon Line?",
+  "questionTextHi": "मैकमोहन रेखा किन देशों को अलग करती है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "India-Bangladesh"
+   },
+   {
+    "id": "B",
+    "text": "India-Pakistan"
+   },
+   {
+    "id": "C",
+    "text": "India-China"
+   },
+   {
+    "id": "D",
+    "text": "India-Nepal"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "The McMahon Line is the boundary line between India and China (in the eastern sector) — it was drawn at the Simla Convention (1914).",
+  "explanationHi": "मैकमोहन रेखा भारत और चीन के बीच की सीमा रेखा है (पूर्वी क्षेत्र में) — यह सिमला सम्मेलन (1914) में निर्धारित की गई थी।",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "ffe8d7115e271f73"
+ },
+ {
+  "id": "q_f0ac0676bccd9ade",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "History",
+  "topic": "Ancient India",
+  "difficulty": "medium",
+  "questionText": "Which of the following Chinese Buddhist travellers visited both kings Harsha and king Pulakeshin II?",
+  "questionTextHi": "निम्नलिखित चीनी बौद्ध यात्रियों में से किसने हर्ष तथा पुलकेशिन द्वितीय — दोनों राजाओं के दरबार का भ्रमण किया?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Chinese Buddhist monk Hiuen Tsang"
+   },
+   {
+    "id": "B",
+    "text": "Chinese pilgrim I-tsing"
+   },
+   {
+    "id": "C",
+    "text": "Both of the above"
+   },
+   {
+    "id": "D",
+    "text": "None of the above"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Hiuen Tsang (Xuanzang, 630–645 AD) visited India during the time of Harshavardhana (Kannauj) and also wrote about Pulakeshin II (Chalukya ruler of Badami). I-tsing came later (7th century end) and did not visit Harsha's court.",
+  "explanationHi": "ह्वेन त्सांग (श्वेनजांग, 630–645 ई.) ने हर्षवर्धन (कन्नौज) के समय भारत का भ्रमण किया और पुलकेशिन द्वितीय (बादामी के चालुक्य शासक) का भी वर्णन किया। इत्सिंग बाद में (7वीं सदी के अंत में) आया और उसने हर्ष के दरबार का भ्रमण नहीं किया।",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "bfb6aac286768bc8"
+ },
+ {
+  "id": "q_d619d315e2ab9795",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Polity & Constitution",
+  "topic": "Parliament",
+  "difficulty": "medium",
+  "questionText": "Rajya Sabha member has tenure of ________ years.",
+  "questionTextHi": "राज्यसभा सदस्य का कार्यकाल ________ वर्ष का होता है।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "4"
+   },
+   {
+    "id": "B",
+    "text": "6"
+   },
+   {
+    "id": "C",
+    "text": "2"
+   },
+   {
+    "id": "D",
+    "text": "8"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "A Rajya Sabha member is elected for 6 years; one-third of the members retire every 2 years (Rajya Sabha is a permanent house and is never dissolved).\n(स्रोत फाइल में इस प्रश्न के विकल्प गड़बड़ थे — यहाँ सही विकल्प दिए गए हैं।)",
+  "explanationHi": "राज्यसभा का सदस्य 6 वर्ष के लिए निर्वाचित होता है; प्रत्येक 2 वर्ष में एक-तिहाई सदस्य सेवानिवृत्त होते हैं (राज्यसभा स्थायी सदन है, इसका विघटन नहीं होता)।\n(स्रोत फाइल में विकल्प गड़बड़ थे — यहाँ सही विकल्प दिए गए हैं।)",
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "da918cc04ed43564"
+ },
+ {
+  "id": "q_19125690fdbfa9fd",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Geography",
+  "topic": "Union Territories & Capitals",
+  "difficulty": "easy",
+  "questionText": "Kavaratti is the capital of",
+  "questionTextHi": "कावारत्ती किसकी राजधानी है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Lakshadweep"
+   },
+   {
+    "id": "B",
+    "text": "Pondicherry"
+   },
+   {
+    "id": "C",
+    "text": "Dadra and Nagar Haveli"
+   },
+   {
+    "id": "D",
+    "text": "None of the above"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Kavaratti is the capital of the Union Territory of Lakshadweep (an island group in the Arabian Sea).",
+  "explanationHi": "कावारत्ती, केंद्रशासित प्रदेश लक्षद्वीप की राजधानी है (अरब सागर में स्थित द्वीप समूह)।",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "53c00a7b2aa57ab5"
+ },
+ {
+  "id": "q_05a8afedddec914a",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Static GK",
+  "topic": "Personalities & Titles",
+  "difficulty": "easy",
+  "questionText": "Who among the following is known as Deshbandhu?",
+  "questionTextHi": "निम्नलिखित में से किसे देशबंधु कहा जाता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Chittaranjan Das"
+   },
+   {
+    "id": "B",
+    "text": "Bal Gangadhar Tilak"
+   },
+   {
+    "id": "C",
+    "text": "Jawahar Lal Nehru"
+   },
+   {
+    "id": "D",
+    "text": "Sardar Vallabhbhai Patel"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Chittaranjan Das is known as \"Deshbandhu\" (friend of the country). (Tilak = Lokmanya, Nehru = Chacha, Patel = Sardar.)",
+  "explanationHi": "चित्तरंजन दास को \"देशबंधु\" कहा जाता है। (तिलक = लोकमान्य, नेहरू = चाचा, पटेल = सरदार।)",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "6add82bcde902f38"
+ },
+ {
+  "id": "q_26e8038a82177a63",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Static GK",
+  "topic": "International Organisations",
+  "difficulty": "easy",
+  "questionText": "Where is the headquarters of World Health Organization (WHO)?",
+  "questionTextHi": "विश्व स्वास्थ्य संगठन (WHO) का मुख्यालय कहाँ है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Geneva, Switzerland"
+   },
+   {
+    "id": "B",
+    "text": "The Hague, Netherlands"
+   },
+   {
+    "id": "C",
+    "text": "New York, USA"
+   },
+   {
+    "id": "D",
+    "text": "Lyon, France"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "WHO was established on 7 April 1948 and its headquarters is at Geneva, Switzerland.",
+  "explanationHi": "WHO की स्थापना 7 अप्रैल 1948 को हुई और इसका मुख्यालय जिनेवा, स्विट्ज़रलैंड में है।",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "3359364aeb2d3490"
+ },
+ {
+  "id": "q_ef5e674d8d557c50",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Sports",
+  "topic": "Cricket Awards",
+  "difficulty": "medium",
+  "questionText": "Who of the following cricketer was honored as the \"2019 ODI Cricketer of the Year\" by the International Cricket Council (ICC)? (Jan 2020)",
+  "questionTextHi": "निम्नलिखित में से किस क्रिकेटर को अंतर्राष्ट्रीय क्रिकेट परिषद (ICC) द्वारा \"2019 का वनडे क्रिकेटर ऑफ द ईयर\" सम्मान दिया गया? (जनवरी 2020)",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Virat Kohli"
+   },
+   {
+    "id": "B",
+    "text": "Deepak Chahar"
+   },
+   {
+    "id": "C",
+    "text": "Rohit Sharma"
+   },
+   {
+    "id": "D",
+    "text": "Jasprit Bumrah"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Rohit Sharma was named ICC ODI Cricketer of the Year 2019 (he scored 5 centuries in the 2019 ODI World Cup).",
+  "explanationHi": "रोहित शर्मा को ICC वनडे क्रिकेटर ऑफ द ईयर 2019 चुना गया (2019 विश्व कप में उन्होंने 5 शतक लगाए थे)।",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "4c6338908befc05f"
+ },
+ {
+  "id": "q_bdac39ebfbf93452",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Awards & Honours",
+  "topic": "Filmfare Awards",
+  "difficulty": "medium",
+  "questionText": "Who among the following received Best Actor in a Leading Role award at the 65th Filmfare Awards held at Guwahati, Assam in February 2020?",
+  "questionTextHi": "फरवरी 2020 में गुवाहाटी, असम में आयोजित 65वें फिल्मफेयर अवॉर्ड्स में निम्नलिखित में से किसे सर्वश्रेष्ठ अभिनेता (लीडिंग रोल) का पुरस्कार मिला?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Ayushmann Khurrana"
+   },
+   {
+    "id": "B",
+    "text": "Vicky Kaushal"
+   },
+   {
+    "id": "C",
+    "text": "Kartik Aaryan"
+   },
+   {
+    "id": "D",
+    "text": "Ranveer Singh"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Ranveer Singh won Best Actor (Leading Role) at the 65th Filmfare Awards (2020) for the film \"Gully Boy\".",
+  "explanationHi": "रणवीर सिंह को 65वें फिल्मफेयर अवॉर्ड्स (2020) में फिल्म \"गली बॉय\" के लिए सर्वश्रेष्ठ अभिनेता का पुरस्कार मिला।",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0f9ff6e585cbe533"
+ },
+ {
+  "id": "q_6d7f1fa989125c56",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Polity & Constitution",
+  "topic": "Parliament",
+  "difficulty": "easy",
+  "questionText": "In the Parliament of India, who was the first speaker of the Lok Sabha?",
+  "questionTextHi": "भारत की संसद में लोकसभा के प्रथम अध्यक्ष कौन थे?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "M. A. Ayyangar"
+   },
+   {
+    "id": "B",
+    "text": "Ganesh Mavalankar"
+   },
+   {
+    "id": "C",
+    "text": "Sardar Hukam Singh"
+   },
+   {
+    "id": "D",
+    "text": "Neelam Sanjeeva Reddy"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Ganesh Vasudev Mavalankar was the first Speaker of the Lok Sabha (1952–1956).\n(M. A. Ayyangar was the first Deputy Speaker and later the second Speaker.)",
+  "explanationHi": "गणेश वासुदेव मावलंकर लोकसभा के प्रथम अध्यक्ष थे (1952–1956)।\n(एम. ए. अयंगर पहले उपाध्यक्ष और बाद में दूसरे अध्यक्ष बने थे।)",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "60f07a39a9a0ba73"
+ },
+ {
+  "id": "q_7097397f26d78fbd",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Static GK",
+  "topic": "Books & Authors",
+  "difficulty": "easy",
+  "questionText": "Who wrote the novel \"A Passage to India\"?",
+  "questionTextHi": "\"ए पैसेज टू इंडिया\" उपन्यास किसने लिखा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Salman Rushdie"
+   },
+   {
+    "id": "B",
+    "text": "Edward Morgan Forster"
+   },
+   {
+    "id": "C",
+    "text": "Jonathan Swift"
+   },
+   {
+    "id": "D",
+    "text": "Daniel Defoe"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "\"A Passage to India\" (1924) was written by E. M. Forster. It is set in British India.",
+  "explanationHi": "\"ए पैसेज टू इंडिया\" (1924) ई. एम. फोर्स्टर द्वारा लिखी गई। इसकी पृष्ठभूमि ब्रिटिश भारत है।",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "bab2be1e965282db"
+ },
+ {
+  "id": "q_71feb7866c99b1c0",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Ratio & Proportion",
+  "topic": "Ratio & Proportion",
+  "difficulty": "medium",
+  "questionText": "In an exam the ratio of girls and boys is 7 : 5. If 40% of the girls and 60% of the boys passed, then what is the ratio of failed girls to failed boys?",
+  "questionTextHi": "एक परीक्षा में लड़कियों और लड़कों का अनुपात 7 : 5 है। यदि 40% लड़कियाँ और 60% लड़के उत्तीर्ण हुए, तो अनुत्तीर्ण लड़कियों और अनुत्तीर्ण लड़कों का अनुपात क्या है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "12 : 13"
+   },
+   {
+    "id": "B",
+    "text": "16 : 11"
+   },
+   {
+    "id": "C",
+    "text": "41 : 11"
+   },
+   {
+    "id": "D",
+    "text": "21 : 10"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Let girls = 7x, boys = 5x.\nFailed girls = 60% of 7x = 4.2x\nFailed boys = 40% of 5x = 2x\nRatio = 4.2 : 2 = 42 : 20 = 21 : 10.",
+  "explanationHi": "मान लीजिए लड़कियाँ = 7x, लड़के = 5x\nअनुत्तीर्ण लड़कियाँ = 7x का 60% = 4.2x\nअनुत्तीर्ण लड़के = 5x का 40% = 2x\nअनुपात = 4.2 : 2 = 42 : 20 = 21 : 10",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "fce85a0c51d4bcf7"
+ },
+ {
+  "id": "q_36b44b0d91e2acf1",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Number System",
+  "topic": "HCF & LCM",
+  "difficulty": "medium",
+  "questionText": "Find the LCM of 84, 36 and 24.",
+  "questionTextHi": "84, 36 और 24 का LCM ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "12"
+   },
+   {
+    "id": "B",
+    "text": "504"
+   },
+   {
+    "id": "C",
+    "text": "320"
+   },
+   {
+    "id": "D",
+    "text": "720"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "84 = 2² × 3 × 7, 36 = 2² × 3², 24 = 2³ × 3\nLCM = highest powers = 2³ × 3² × 7 = 8 × 9 × 7 = 504.",
+  "explanationHi": "84 = 2² × 3 × 7, 36 = 2² × 3², 24 = 2³ × 3\nLCM = अधिकतम घात = 2³ × 3² × 7 = 8 × 9 × 7 = 504",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "4ff7e17640734e9b"
+ },
+ {
+  "id": "q_2e6439f7d7580980",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Profit & Loss",
+  "topic": "Cost Price from Profit & Loss",
+  "difficulty": "medium",
+  "questionText": "Profit earned by selling at Rs. 1540 is same as the loss incurred by selling the article for Rs. 1140. What is the selling price of the article if it sold at 25% profit?",
+  "questionTextHi": "एक वस्तु को 1540 रुपये में बेचने पर जितना लाभ होता है, उतनी ही हानि 1140 रुपये में बेचने पर होती है। यदि वस्तु को 25% लाभ पर बेचा जाए तो विक्रय मूल्य क्या होगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Rs. 1600"
+   },
+   {
+    "id": "B",
+    "text": "Rs. 1680"
+   },
+   {
+    "id": "C",
+    "text": "Rs. 1520"
+   },
+   {
+    "id": "D",
+    "text": "Rs. 1675"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Profit at 1540 = Loss at 1140 → CP is exactly midway:\nCP = (1540 + 1140)/2 = 2680/2 = Rs. 1340.\nSP at 25% profit = 1340 × 125/100 = Rs. 1675.",
+  "explanationHi": "1540 पर लाभ = 1140 पर हानि → CP ठीक बीच में होगा:\nCP = (1540 + 1140)/2 = 2680/2 = 1340 रुपये\n25% लाभ पर SP = 1340 × 125/100 = 1675 रुपये",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "ab5cf426e7a5a915"
+ },
+ {
+  "id": "q_a842f1eb9c75d0c8",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Simplification",
+  "topic": "BODMAS",
+  "difficulty": "medium",
+  "questionText": "Find the value of '?' in the following question. 2 of 3 ÷ 9 × 18 + 1 (6 + 3) = ?",
+  "questionTextHi": "निम्न प्रश्न में '?' का मान ज्ञात कीजिए। 2 of 3 ÷ 9 × 18 + 1 (6 + 3) = ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "20"
+   },
+   {
+    "id": "B",
+    "text": "21"
+   },
+   {
+    "id": "C",
+    "text": "22"
+   },
+   {
+    "id": "D",
+    "text": "24"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "\"2 of 3\" = 2 × 3 = 6; then BODMAS (of → ÷ → × → +).\n= 6 ÷ 9 × 18 + 1 × 9\n= (6/9) × 18 + 9\n= 12 + 9 = 21",
+  "explanationHi": "\"2 of 3\" = 2 × 3 = 6; फिर BODMAS (of → ÷ → × → +)\n= 6 ÷ 9 × 18 + 1 × 9\n= (6/9) × 18 + 9\n= 12 + 9 = 21",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "eea0ae4219f85387"
+ },
+ {
+  "id": "q_b5e787e0892382d0",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Time & Work",
+  "topic": "Time & Work",
+  "difficulty": "hard",
+  "questionText": "P and Q can do a piece of work in 15 days and 20 days respectively. They work for 5 days and P left then in how many days Q alone can finish the remaining work?",
+  "questionTextHi": "P और Q एक कार्य को क्रमशः 15 दिन और 20 दिन में कर सकते हैं। वे 5 दिन साथ काम करते हैं, फिर P चला जाता है; शेष कार्य Q अकेला कितने दिनों में पूरा करेगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "8⅓ days"
+   },
+   {
+    "id": "B",
+    "text": "7⅓ days"
+   },
+   {
+    "id": "C",
+    "text": "2 days"
+   },
+   {
+    "id": "D",
+    "text": "8 days"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "P's 1-day work = 1/15, Q's 1-day work = 1/20.\nTogether 1 day = 1/15 + 1/20 = (4 + 3)/60 = 7/60.\n5 days' work = 35/60 = 7/12. Remaining = 1 − 7/12 = 5/12.\nQ alone: time = (5/12) × 20 = 100/12 = 8⅓ days.",
+  "explanationHi": "P का 1 दिन का कार्य = 1/15, Q का 1 दिन का कार्य = 1/20\nदोनों मिलकर 1 दिन = 1/15 + 1/20 = (4 + 3)/60 = 7/60\n5 दिन का कार्य = 35/60 = 7/12, शेष = 1 − 7/12 = 5/12\nQ अकेला: समय = (5/12) × 20 = 100/12 = 8⅓ दिन",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "e8cfe6104c505f8d"
+ },
+ {
+  "id": "q_1ade4c4d3299790a",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Mensuration",
+  "topic": "Area & Perimeter",
+  "difficulty": "medium",
+  "questionText": "The area of a square is 144 cm². What is the perimeter of the square formed with the diagonal of the original square as its side?",
+  "questionTextHi": "एक वर्ग का क्षेत्रफल 144 सेमी² है। मूल वर्ग के विकर्ण को भुजा मानकर बनाए गए वर्ग का परिमाप क्या होगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "48√2 cm"
+   },
+   {
+    "id": "B",
+    "text": "24√2 cm"
+   },
+   {
+    "id": "C",
+    "text": "48 cm"
+   },
+   {
+    "id": "D",
+    "text": "24 cm"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Area of original square = 144 → side = 12 cm.\nDiagonal = 12√2 cm. This diagonal becomes the side of the new square.\nPerimeter of new square = 4 × 12√2 = 48√2 cm.\n(स्रोत फाइल में विकल्प टाइपिंग में गड़बड़ थे; यहाँ सही रूप में दिए गए हैं।)",
+  "explanationHi": "मूल वर्ग का क्षेत्रफल = 144 → भुजा = 12 सेमी\nविकर्ण = 12√2 सेमी। यही विकर्ण नए वर्ग की भुजा बनता है।\nनए वर्ग का परिमाप = 4 × 12√2 = 48√2 सेमी\n(स्रोत फाइल में विकल्प गड़बड़ थे; यहाँ सही विकल्प दिए गए हैं।)",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "27b6b1bdb11313f6"
+ },
+ {
+  "id": "q_f4d8a9bc58fead64",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Averages",
+  "topic": "Average",
+  "difficulty": "medium",
+  "questionText": "The average of three numbers is 45. First number is twice the second number and second number is thrice the third number. Then find the smallest number?",
+  "questionTextHi": "तीन संख्याओं का औसत 45 है। पहली संख्या दूसरी की दुगुनी है और दूसरी संख्या तीसरी की तिगुनी है। सबसे छोटी संख्या ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "13.50"
+   },
+   {
+    "id": "B",
+    "text": "14.75"
+   },
+   {
+    "id": "C",
+    "text": "15"
+   },
+   {
+    "id": "D",
+    "text": "17.50"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Let third number = x → second = 3x → first = 2 × 3x = 6x.\nSum = 6x + 3x + x = 10x = 45 × 3 = 135 → x = 13.5.\nSmallest number = x = 13.5.",
+  "explanationHi": "मान लीजिए तीसरी संख्या = x → दूसरी = 3x → पहली = 2 × 3x = 6x\nयोग = 6x + 3x + x = 10x = 45 × 3 = 135 → x = 13.5\nसबसे छोटी संख्या = x = 13.5",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "977329b535822e2e"
+ },
+ {
+  "id": "q_7938d4ecf4ad8330",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Time, Speed & Distance",
+  "topic": "Trains",
+  "difficulty": "medium",
+  "questionText": "How much time taken to cross a 1600 meter long platform by a 500 meter long train which is running at the speed of 60 km/hr?",
+  "questionTextHi": "60 किमी/घंटा की चाल से चलने वाली 500 मीटर लंबी रेलगाड़ी 1600 मीटर लंबे प्लेटफॉर्म को कितने समय में पार करेगी?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "156 sec"
+   },
+   {
+    "id": "B",
+    "text": "126 sec"
+   },
+   {
+    "id": "C",
+    "text": "115 sec"
+   },
+   {
+    "id": "D",
+    "text": "220 sec"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Total distance = train + platform = 500 + 1600 = 2100 m.\nSpeed = 60 km/h = 60 × 5/18 = 50/3 m/s.\nTime = 2100 ÷ (50/3) = 2100 × 3/50 = 126 seconds.",
+  "explanationHi": "कुल दूरी = रेलगाड़ी + प्लेटफॉर्म = 500 + 1600 = 2100 मीटर\nचाल = 60 किमी/घंटा = 60 × 5/18 = 50/3 मी/से\nसमय = 2100 ÷ (50/3) = 2100 × 3/50 = 126 सेकंड",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "e068d34fc09fc1a4"
+ },
+ {
+  "id": "q_7444ab370ddd19d6",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Mathematical Operations",
+  "topic": "Symbol Substitution",
+  "difficulty": "medium",
+  "questionText": "If '+' means '×', '-' means '+', '×' means '÷' and '÷' means '-', then choose the correct expression from the following options.",
+  "questionTextHi": "यदि '+' का अर्थ '×', '-' का अर्थ '+', '×' का अर्थ '÷' और '÷' का अर्थ '-' हो, तो निम्न विकल्पों में से सही व्यंजक चुनिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "44 + 2 – 8 × 4 ÷ 10 = 0"
+   },
+   {
+    "id": "B",
+    "text": "30 + 2 ÷ 4 × 6 – 1 = 38"
+   },
+   {
+    "id": "C",
+    "text": "12 + 18 × 24 ÷ 6 – 3 = 19"
+   },
+   {
+    "id": "D",
+    "text": "6 + 7 × 3 − 8 ÷ 20 = 2"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Check option D after replacing the signs:\n6 × 7 ÷ 3 + 8 − 20 = (42/3) + 8 − 20 = 14 + 8 − 20 = 2 ✔\n(Other options: A gives 44×2+8÷4−10 = 80; B gives 30×2−4÷6+1 ≈ 60.3; C gives 12×18÷24−6+3 = 6 — none is correct.)",
+  "explanationHi": "विकल्प D में चिह्न बदलने पर:\n6 × 7 ÷ 3 + 8 − 20 = (42/3) + 8 − 20 = 14 + 8 − 20 = 2 ✔\n(अन्य: A → 44×2+8÷4−10 = 80; B → 30×2−4÷6+1 ≈ 60.3; C → 12×18÷24−6+3 = 6 — कोई भी सही नहीं।)",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "6202674f28cf8c7b"
+ },
+ {
+  "id": "q_697d4487d0f3b7fe",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Clock & Calendar",
+  "topic": "Clock Angle",
+  "difficulty": "medium",
+  "questionText": "For a standard clock, what is the angle between the hour hand and the minute hand when the clock shows 1.20 pm?",
+  "questionTextHi": "एक सामान्य घड़ी में जब समय 1:20 pm हो, तो घंटे और मिनट की सुई के बीच का कोण कितना होगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "90°"
+   },
+   {
+    "id": "B",
+    "text": "80°"
+   },
+   {
+    "id": "C",
+    "text": "75°"
+   },
+   {
+    "id": "D",
+    "text": "60°"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Minute hand at 20 min = 20 × 6° = 120°.\nHour hand = (1 × 30°) + (20 × 0.5°) = 30° + 10° = 40°.\nAngle = 120° − 40° = 80°.\n(Shortcut: |30H − 5.5M| = |30 − 110| = 80°.)",
+  "explanationHi": "मिनट की सुई 20 मिनट पर = 20 × 6° = 120°\nघंटे की सुई = (1 × 30°) + (20 × 0.5°) = 30° + 10° = 40°\nकोण = 120° − 40° = 80°\n(शॉर्टकट: |30H − 5.5M| = |30 − 110| = 80°)",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "b76e46659c515108"
+ },
+ {
+  "id": "q_7e876d4211f8cbf9",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Coding-Decoding",
+  "topic": "Letter Coding",
+  "difficulty": "medium",
+  "questionText": "In a certain code language, BANKER is written as LFSCBO. How will CONFER be written in that language?",
+  "questionTextHi": "एक निश्चित कूट भाषा में BANKER को LFSCBO लिखा जाता है। उसी भाषा में CONFER को कैसे लिखा जाएगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "GFSDPP"
+   },
+   {
+    "id": "B",
+    "text": "GFSDMO"
+   },
+   {
+    "id": "C",
+    "text": "GFSDPO"
+   },
+   {
+    "id": "D",
+    "text": "GFSCPO"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Rule (from BANKER → LFSCBO): the word is split into two halves (BAN | KER); the halves are interchanged (KER | BAN) and then every letter is moved 1 step forward.\nKER + BAN → (+1 each) → LFS + CBO = LFSCBO ✔\nApply to CONFER: halves CON | FER → FER | CON → (+1 each) → GFS | DPO = GFSDPO.",
+  "explanationHi": "नियम (BANKER → LFSCBO से): शब्द को दो भागों में बाँटिए (BAN | KER); भागों को आपस में बदलिए (KER | BAN) और फिर हर अक्षर को 1 कदम आगे बढ़ाइए।\nKER + BAN → (हर अक्षर +1) → LFS + CBO = LFSCBO ✔\nCONFER पर लगाइए: भाग CON | FER → FER | CON → (+1) → GFS | DPO = GFSDPO",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "61ad5eed60181337"
+ },
+ {
+  "id": "q_2e02fec29c5d5520",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Missing Number in Figure",
+  "topic": "Figure Matrix",
+  "difficulty": "medium",
+  "questionText": "Find the missing number from the below options. (Figure)  4 6 3 / 21 31 33 / 3 2 ? / 2 3 5",
+  "questionTextHi": "नीचे दिए विकल्पों में से लुप्त संख्या ज्ञात कीजिए। (आकृति)  4 6 3 / 21 31 33 / 3 2 ? / 2 3 5",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "4"
+   },
+   {
+    "id": "B",
+    "text": "3"
+   },
+   {
+    "id": "C",
+    "text": "7"
+   },
+   {
+    "id": "D",
+    "text": "6"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Column-wise pattern in the figure: Middle number = Top number × (sum of the two bottom numbers) + 1\nColumn 1: 4 × (3 + 2) + 1 = 21 ✔\nColumn 2: 6 × (2 + 3) + 1 = 31 ✔\nColumn 3: 3 × (? + 5) + 1 — the same pattern gives ? = 7 (as per the paper's key; in the printed figure the middle value of this column appears doubtful/less clear, but the key answer is 7).\nSo ? = 7.",
+  "explanationHi": "आकृति में स्तंभ-वार नियम: बीच की संख्या = ऊपर की संख्या × (नीचे की दोनों संख्याओं का योग) + 1\nस्तंभ 1: 4 × (3 + 2) + 1 = 21 ✔\nस्तंभ 2: 6 × (2 + 3) + 1 = 31 ✔\nस्तंभ 3: 3 × (? + 5) + 1 — इसी नियम से ? = 7 (पेपर की उत्तर-कुंजी के अनुसार; मुद्रित आकृति में इस स्तंभ का बीच वाला मान स्पष्ट नहीं है, पर कुंजी में उत्तर 7 है)।\nअतः ? = 7",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "dc241d8e495564b3"
+ },
+ {
+  "id": "q_b755e606bca01e98",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Direction Sense",
+  "topic": "Direction & Distance",
+  "difficulty": "medium",
+  "questionText": "Nora walked 10 m towards North. Then she walked 6 m towards the South and then 3 m towards the east. How far and in which direction is she from the initial point now?",
+  "questionTextHi": "नोरा उत्तर की ओर 10 मीटर चली। फिर दक्षिण की ओर 6 मीटर और उसके बाद पूर्व की ओर 3 मीटर चली। अब वह प्रारंभिक बिंदु से कितनी दूर और किस दिशा में है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "5 m South-east"
+   },
+   {
+    "id": "B",
+    "text": "5 m North-east"
+   },
+   {
+    "id": "C",
+    "text": "10 m North-west"
+   },
+   {
+    "id": "D",
+    "text": "5 m North-west"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "North-south movement: 10 m north − 6 m south = 4 m north.\nEast movement = 3 m.\nShortest distance = √(4² + 3²) = √25 = 5 m.\nShe is 4 m north and 3 m east of the start → North-East.\nSo 5 m North-east.",
+  "explanationHi": "उत्तर-दक्षिण: 10 मी उत्तर − 6 मी दक्षिण = 4 मी उत्तर\nपूर्व: 3 मी\nन्यूनतम दूरी = √(4² + 3²) = √25 = 5 मी\nवह प्रारंभ से 4 मी उत्तर और 3 मी पूर्व में है → उत्तर-पूर्व\nअतः 5 मी उत्तर-पूर्व",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "3e259a53b3465be6"
+ },
+ {
+  "id": "q_b1bb15ac7a469b11",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Coding-Decoding",
+  "topic": "Number Coding",
+  "difficulty": "medium",
+  "questionText": "In a certain code language, MACHINE is written as 197914152011. How will AVERAGE be written in that language?",
+  "questionTextHi": "एक निश्चित कूट भाषा में MACHINE को 197914152011 लिखा जाता है। उसी भाषा में AVERAGE को कैसे लिखा जाएगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "718112471311"
+   },
+   {
+    "id": "B",
+    "text": "728112471311"
+   },
+   {
+    "id": "C",
+    "text": "728132471311"
+   },
+   {
+    "id": "D",
+    "text": "728112481311"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Rule: each letter is replaced by (its alphabet position + 6), and the numbers are written continuously.\nM(13) → 19, A(1) → 7, C(3) → 9, H(8) → 14, I(9) → 15, N(14) → 20, E(5) → 11 → 197914152011 ✔\nAVERAGE: A(1) → 7, V(22) → 28, E(5) → 11, R(18) → 24, A(1) → 7, G(7) → 13, E(5) → 11 → 728112471311.",
+  "explanationHi": "नियम: प्रत्येक अक्षर के स्थान पर (उसका वर्णमाला क्रमांक + 6) लिखिए और संख्याएँ लगातार लिखिए।\nM(13) → 19, A(1) → 7, C(3) → 9, H(8) → 14, I(9) → 15, N(14) → 20, E(5) → 11 → 197914152011 ✔\nAVERAGE: A(1) → 7, V(22) → 28, E(5) → 11, R(18) → 24, A(1) → 7, G(7) → 13, E(5) → 11 → 728112471311",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "88542fdaf931687c"
+ },
+ {
+  "id": "q_e2fa019c1f5359f6",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Number Series",
+  "topic": "Series Completion",
+  "difficulty": "medium",
+  "questionText": "Select the number that can replace the question mark (?) in the following series? 4, 10, 28, 82, 244, ?, 2188",
+  "questionTextHi": "निम्न श्रृंखला में प्रश्नचिह्न (?) के स्थान पर आने वाली संख्या चुनिए। 4, 10, 28, 82, 244, ?, 2188",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "548"
+   },
+   {
+    "id": "B",
+    "text": "730"
+   },
+   {
+    "id": "C",
+    "text": "636"
+   },
+   {
+    "id": "D",
+    "text": "488"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Rule: next term = (previous term × 3) − 2\n4 × 3 − 2 = 10 ✔\n10 × 3 − 2 = 28 ✔\n28 × 3 − 2 = 82 ✔\n82 × 3 − 2 = 244 ✔\n244 × 3 − 2 = 730\n730 × 3 − 2 = 2188 ✔\nSo ? = 730.",
+  "explanationHi": "नियम: अगला पद = (पिछला पद × 3) − 2\n4 × 3 − 2 = 10 ✔\n10 × 3 − 2 = 28 ✔\n28 × 3 − 2 = 82 ✔\n82 × 3 − 2 = 244 ✔\n244 × 3 − 2 = 730\n730 × 3 − 2 = 2188 ✔\nअतः ? = 730",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "f80c59fb2c24cec3"
+ },
+ {
+  "id": "q_b3203ccde7f71881",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Number Series",
+  "topic": "Wrong Term",
+  "difficulty": "medium",
+  "questionText": "Which one of the following is the INCORRECT number in the series 343, 216, 27, 126?",
+  "questionTextHi": "निम्नलिखित में से कौन-सी संख्या दी गई श्रृंखला में गलत है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "343"
+   },
+   {
+    "id": "B",
+    "text": "216"
+   },
+   {
+    "id": "C",
+    "text": "27"
+   },
+   {
+    "id": "D",
+    "text": "126"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Observe the numbers:\n343 = 7³\n216 = 6³\n125 = 5³\n64 = 4³\nSo, the intended series is:\n7³, 6³, 5³, 4³\nTherefore, 125 should be present instead of 126.\nHence, 126 is the incorrect number.",
+  "explanationHi": "संख्याओं को घन (Cube) के रूप में देखें:\n343 = 7³\n216 = 6³\n125 = 5³\n64 = 4³\nअर्थात श्रृंखला का सही क्रम होना चाहिए:\n7³, 6³, 5³, 4³\nइसलिए 126 के स्थान पर 125 होना चाहिए था।\nअतः 126 गलत संख्या है।",
+  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
+  "year": 2020,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "8de8c079ea918912"
+ },
+ {
+  "id": "q_947872b85ae6bb66",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Direction Sense",
+  "topic": "Direction & Distance",
+  "difficulty": "medium",
+  "questionText": "Neha walks 3 m towards the west and then 5 m towards the northeast. She again walks 3 m west and then again 5 m northeast. How far is she from the starting point?",
+  "questionTextHi": "नेहा पश्चिम की ओर 3 मीटर चलती है और फिर उत्तर-पूर्व की ओर 5 मीटर चलती है। वह फिर 3 मीटर पश्चिम और फिर 5 मीटर उत्तर-पूर्व चलती है। वह प्रारंभिक बिंदु से कितनी दूर है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "8 m"
+   },
+   {
+    "id": "B",
+    "text": "10 m"
+   },
+   {
+    "id": "C",
+    "text": "6 m"
+   },
+   {
+    "id": "D",
+    "text": "12 m"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Total movement: 3 + 3 = 6 m west and 5 + 5 = 10 m north-east.\nA north-east movement of 10 m = 10/√2 ≈ 7.07 m north + 7.07 m east (45°).\nSo net displacement ≈ 7.07 m north and (7.07 − 6) ≈ 1.07 m east.\nDistance from start = √(7.07² + 1.07²) ≈ 7.2 m, which is nearest to 8 m.\nHence the answer as per the key is 8 m (option A).",
+  "explanationHi": "कुल चलना: 3 + 3 = 6 मी पश्चिम तथा 5 + 5 = 10 मी उत्तर-पूर्व\n10 मी उत्तर-पूर्व (45°) = 10/√2 ≈ 7.07 मी उत्तर + 7.07 मी पूर्व\nअतः कुल विस्थापन ≈ 7.07 मी उत्तर तथा (7.07 − 6) ≈ 1.07 मी पूर्व\nप्रारंभ से दूरी = √(7.07² + 1.07²) ≈ 7.2 मी, जो 8 मी के सबसे नज़दीक है।\nइसलिए कुंजी के अनुसार उत्तर 8 m (विकल्प A) है।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "4a8bbf81540a0860"
+ },
+ {
+  "id": "q_8f68ba8fc9fe6a6c",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Coding-Decoding",
+  "topic": "Number Coding",
+  "difficulty": "medium",
+  "questionText": "If 'E' is coded as '5' and 'PEN' is coded as '35' then how will 'PAGE' be coded?",
+  "questionTextHi": "यदि 'E' को '5' और 'PEN' को '35' कूटबद्ध किया जाता है, तो 'PAGE' को कैसे कूटबद्ध किया जाएगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "28"
+   },
+   {
+    "id": "B",
+    "text": "27"
+   },
+   {
+    "id": "C",
+    "text": "36"
+   },
+   {
+    "id": "D",
+    "text": "29"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Rule: code = sum of alphabet positions of the letters.\nE = 5 ✔\nPEN = 16 + 5 + 14 = 35 ✔\nPAGE = 16 + 1 + 7 + 5 = 29.",
+  "explanationHi": "नियम: कूट = अक्षरों के वर्णमाला क्रमांक का योग\nE = 5 ✔\nPEN = 16 + 5 + 14 = 35 ✔\nPAGE = 16 + 1 + 7 + 5 = 29",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "ffac46f768a070cf"
+ },
+ {
+  "id": "q_35c7ac6b245672f8",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Number Series",
+  "topic": "Wrong Term",
+  "difficulty": "medium",
+  "questionText": "Find the wrong term in the following series. 9, 14, 19, 25, 29, 34",
+  "questionTextHi": "निम्न श्रृंखला में गलत पद ज्ञात कीजिए। 9, 14, 19, 25, 29, 34",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "14"
+   },
+   {
+    "id": "B",
+    "text": "29"
+   },
+   {
+    "id": "C",
+    "text": "25"
+   },
+   {
+    "id": "D",
+    "text": "34"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Differences: 14 − 9 = 5, 19 − 14 = 5, 25 − 19 = 6, 29 − 25 = 4, 34 − 29 = 5.\nThe series should increase by 5 every time: 9, 14, 19, 24, 29, 34.\nSo 25 is the wrong term (it should be 24).",
+  "explanationHi": "अंतर: 14 − 9 = 5, 19 − 14 = 5, 25 − 19 = 6, 29 − 25 = 4, 34 − 29 = 5\nश्रृंखला में हर बार +5 होना चाहिए: 9, 14, 19, 24, 29, 34\nअतः 25 गलत पद है (वहाँ 24 होना चाहिए था)।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "2f353bca1de8cc98"
+ },
+ {
+  "id": "q_cbbe44f205bc6089",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Analogy",
+  "topic": "Number Analogy",
+  "difficulty": "medium",
+  "questionText": "Select the related pair from the given alternatives. 30 : 130 :: ? : ?",
+  "questionTextHi": "दिए विकल्पों में से संबंधित युग्म चुनिए। 30 : 130 :: ? : ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "49 : 350"
+   },
+   {
+    "id": "B",
+    "text": "20 : 120"
+   },
+   {
+    "id": "C",
+    "text": "37 : 210"
+   },
+   {
+    "id": "D",
+    "text": "42 : 422"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Rule: second number = first number + 100\n30 + 100 = 130 ✔\n20 + 100 = 120 ✔ (other options do not follow this: 49 + 100 = 149, 37 + 100 = 137, 42 + 100 = 142)",
+  "explanationHi": "नियम: दूसरी संख्या = पहली संख्या + 100\n30 + 100 = 130 ✔\n20 + 100 = 120 ✔ (अन्य विकल्प नियम नहीं बनाते: 49 + 100 = 149, 37 + 100 = 137, 42 + 100 = 142)",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "f65d5a2e053693e3"
+ },
+ {
+  "id": "q_582692cc7c9aaf23",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Blood Relations",
+  "topic": "Blood Relations",
+  "difficulty": "medium",
+  "questionText": "Pointing to a man, a woman said, \"His mother is the only daughter of my mother\". How is the woman related to the man?",
+  "questionTextHi": "एक पुरुष की ओर इशारा करते हुए एक महिला ने कहा, \"उसकी माँ मेरी माँ की इकलौती बेटी है।\" वह महिला उस पुरुष से कैसे संबंधित है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Mother"
+   },
+   {
+    "id": "B",
+    "text": "Daughter"
+   },
+   {
+    "id": "C",
+    "text": "Sister"
+   },
+   {
+    "id": "D",
+    "text": "Grandmother"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "\"My mother's only daughter\" = the woman herself.\nSo the woman is the mother of that man.\nHence the woman is the man's mother.",
+  "explanationHi": "\"मेरी माँ की इकलौती बेटी\" = वह महिला स्वयं।\nअतः वह महिला उस पुरुष की माँ है।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "2906be2df04abaf6"
+ },
+ {
+  "id": "q_c4730653c453243c",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Analogy",
+  "topic": "Number Analogy",
+  "difficulty": "medium",
+  "questionText": "Select the option in which the numbers share the same relationship as that shared by the given set of numbers. (3, 9, 11)",
+  "questionTextHi": "वह विकल्प चुनिए जिसमें संख्याओं का वही संबंध है जो दिए गए समूह (3, 9, 11) में है।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "(5, 25, 30)"
+   },
+   {
+    "id": "B",
+    "text": "(6, 36, 38)"
+   },
+   {
+    "id": "C",
+    "text": "(7, 49, 59)"
+   },
+   {
+    "id": "D",
+    "text": "(10, 100, 98)"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Rule in (3, 9, 11): middle = square of first (3² = 9), third = middle + 2 (9 + 2 = 11).\nCheck options: (5, 25, 30): 25 + 2 = 27 ≠ 30 ✗\n(6, 36, 38): 6² = 36 ✔ and 36 + 2 = 38 ✔\n(7, 49, 59): 49 + 2 = 51 ≠ 59 ✗\n(10, 100, 98): 100 + 2 = 102 ≠ 98 ✗\nSo (6, 36, 38) is the correct pair.",
+  "explanationHi": "(3, 9, 11) का नियम: बीच की संख्या = पहली का वर्ग (3² = 9), तीसरी = बीच की संख्या + 2 (9 + 2 = 11)\nविकल्प जाँचिए: (5, 25, 30): 25 + 2 = 27 ≠ 30 ✗\n(6, 36, 38): 6² = 36 ✔ और 36 + 2 = 38 ✔\n(7, 49, 59): 49 + 2 = 51 ≠ 59 ✗\n(10, 100, 98): 100 + 2 = 102 ≠ 98 ✗\nअतः सही युग्म (6, 36, 38) है।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "d7d8e80f8692acb0"
+ },
+ {
+  "id": "q_7a1d010f615cdeeb",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Number Series",
+  "topic": "Series Completion",
+  "difficulty": "medium",
+  "questionText": "A series is given, with one number missing. Choose the correct option from the given ones that will complete the series. − 4.5, − 2.6, − 0.7, ?, 3.1",
+  "questionTextHi": "एक श्रृंखला दी गई है जिसमें एक संख्या लुप्त है। दिए गए विकल्पों में से वह सही विकल्प चुनिए जो श्रृंखला को पूरा करेगा। − 4.5, − 2.6, − 0.7, ?, 3.1",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "1.4"
+   },
+   {
+    "id": "B",
+    "text": "1.2"
+   },
+   {
+    "id": "C",
+    "text": "1"
+   },
+   {
+    "id": "D",
+    "text": "1.6"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Difference between consecutive terms: −2.6 − (−4.5) = +1.9; −0.7 − (−2.6) = +1.9\nSo each term increases by 1.9: −0.7 + 1.9 = 1.2, and 1.2 + 1.9 = 3.1 ✔\n? = 1.2.",
+  "explanationHi": "क्रमागत पदों का अंतर: −2.6 − (−4.5) = +1.9; −0.7 − (−2.6) = +1.9\nअतः हर पद में +1.9 होता है: −0.7 + 1.9 = 1.2, और 1.2 + 1.9 = 3.1 ✔\n? = 1.2",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "8fc948acadfd87ed"
+ },
+ {
+  "id": "q_2a66b4ead1244d18",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Number Series",
+  "topic": "Series Completion",
+  "difficulty": "medium",
+  "questionText": "Select the missing number from the given series. 10, 20, 60, 300, 2100, ?",
+  "questionTextHi": "दी गई श्रृंखला से लुप्त संख्या चुनिए। 10, 20, 60, 300, 2100, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "6300"
+   },
+   {
+    "id": "B",
+    "text": "23100"
+   },
+   {
+    "id": "C",
+    "text": "22100"
+   },
+   {
+    "id": "D",
+    "text": "6400"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Rule: multiply by consecutive prime numbers 2, 3, 5, 7, 11\n10 × 2 = 20, 20 × 3 = 60, 60 × 5 = 300, 300 × 7 = 2100, 2100 × 11 = 23100.",
+  "explanationHi": "नियम: क्रमागत अभाज्य संख्याओं 2, 3, 5, 7, 11 से गुणा कीजिए\n10 × 2 = 20, 20 × 3 = 60, 60 × 5 = 300, 300 × 7 = 2100, 2100 × 11 = 23100",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "9ffd6d078e2d1e23"
+ },
+ {
+  "id": "q_47ab420512b87ca4",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Mathematical Operations",
+  "topic": "Symbol Substitution",
+  "difficulty": "medium",
+  "questionText": "If A means '×', B means '÷', C means '-' and D means '+' then 4 D 16 A 5 B 8 C 5 = ?",
+  "questionTextHi": "यदि A का अर्थ '×', B का अर्थ '÷', C का अर्थ '−' और D का अर्थ '+' हो, तो 4 D 16 A 5 B 8 C 5 = ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "9"
+   },
+   {
+    "id": "B",
+    "text": "6"
+   },
+   {
+    "id": "C",
+    "text": "16"
+   },
+   {
+    "id": "D",
+    "text": "7.5"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Replace the letters: 4 + 16 × 5 ÷ 8 − 5\n= 4 + (16 × 5 ÷ 8) − 5 (BODMAS: × and ÷ first)\n= 4 + 10 − 5 = 9",
+  "explanationHi": "अक्षरों को बदलिए: 4 + 16 × 5 ÷ 8 − 5\n= 4 + (16 × 5 ÷ 8) − 5 (BODMAS: पहले × और ÷)\n= 4 + 10 − 5 = 9",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "4263335e619bbcf1"
+ },
+ {
+  "id": "q_b28b9194507841af",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Coding-Decoding",
+  "topic": "Letter Coding",
+  "difficulty": "medium",
+  "questionText": "In a certain code language, \"ABCD\" is written as \"YZWX\". How is \"MNOP\" written in that code language?",
+  "questionTextHi": "एक निश्चित कूट भाषा में \"ABCD\" को \"YZWX\" लिखा जाता है। उसी कूट भाषा में \"MNOP\" कैसे लिखा जाएगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "NMKL"
+   },
+   {
+    "id": "B",
+    "text": "MNLK"
+   },
+   {
+    "id": "C",
+    "text": "MNKL"
+   },
+   {
+    "id": "D",
+    "text": "NMLK"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Rule: every letter is replaced by its opposite letter in the reverse alphabet (A↔Z, B↔Y, C↔X, D↔W) and then adjacent letters are interchanged.\nABCD → opposite letters = Z Y X W → interchange adjacent pairs (ZY → YZ, XW → WX) = YZWX ✔\nMNOP → opposite letters = N M K L → interchange pairs (NM → MN, KL → KL) = MNKL.",
+  "explanationHi": "नियम: प्रत्येक अक्षर को वर्णमाला के विपरीत अक्षर से बदलिए (A↔Z, B↔Y, C↔X, D↔W) और फिर निकटवर्ती अक्षरों को आपस में बदल दीजिए।\nABCD → विपरीत अक्षर = Z Y X W → निकटवर्ती जोड़े बदलिए (ZY → YZ, XW → WX) = YZWX ✔\nMNOP → विपरीत अक्षर = N M K L → जोड़े बदलिए (NM → MN, KL → KL) = MNKL",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "437ef0b88899f881"
+ },
+ {
+  "id": "q_f30590c9670ab686",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Clock & Calendar",
+  "topic": "Calendar",
+  "difficulty": "medium",
+  "questionText": "On 1st January 2016, it was Friday then what will be the day on 31st December of the same year?",
+  "questionTextHi": "यदि 1 जनवरी 2016 को शुक्रवार था, तो उसी वर्ष 31 दिसंबर को कौन-सा दिन होगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Friday"
+   },
+   {
+    "id": "B",
+    "text": "Thursday"
+   },
+   {
+    "id": "C",
+    "text": "Saturday"
+   },
+   {
+    "id": "D",
+    "text": "Sunday"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "2016 is a leap year, so it has 366 days = 52 weeks + 2 extra days.\n1 Jan 2017 = Friday + 2 = Sunday.\nSo 31 Dec 2016 (one day before 1 Jan 2017) = Saturday.",
+  "explanationHi": "2016 लीप वर्ष है, इसलिए 366 दिन = 52 सप्ताह + 2 अतिरिक्त दिन\n1 जनवरी 2017 = शुक्रवार + 2 = रविवार\nअतः 31 दिसंबर 2016 (1 जनवरी 2017 से एक दिन पहले) = शनिवार",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "91150576ac3415e3"
+ },
+ {
+  "id": "q_ded1b6187de207bd",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Number Series",
+  "topic": "Series Completion",
+  "difficulty": "medium",
+  "questionText": "Find the next term of the given series. \"6, 24, 60, 120, ____\"",
+  "questionTextHi": "दी गई श्रृंखला का अगला पद ज्ञात कीजिए। \"6, 24, 60, 120, ____\"",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "240"
+   },
+   {
+    "id": "B",
+    "text": "270"
+   },
+   {
+    "id": "C",
+    "text": "210"
+   },
+   {
+    "id": "D",
+    "text": "180"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Rule: n(n + 1)(n + 2)\n1 × 2 × 3 = 6, 2 × 3 × 4 = 24, 3 × 4 × 5 = 60, 4 × 5 × 6 = 120, 5 × 6 × 7 = 210\n(Cross-check: differences +18, +36, +60, +90 → next = 120 + 90 = 210 ✔)",
+  "explanationHi": "नियम: n(n + 1)(n + 2)\n1 × 2 × 3 = 6, 2 × 3 × 4 = 24, 3 × 4 × 5 = 60, 4 × 5 × 6 = 120, 5 × 6 × 7 = 210\n(अंतर से जाँच: +18, +36, +60, +90 → 120 + 90 = 210 ✔)",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "d71af527205625cd"
+ },
+ {
+  "id": "q_70e0b679e5f15cd4",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Number Series",
+  "topic": "Series Completion",
+  "difficulty": "medium",
+  "questionText": "Find the number that would fit into the pattern: 11, 121, 1331, ?",
+  "questionTextHi": "इस पैटर्न में फिट होने वाली संख्या ज्ञात कीजिए: 11, 121, 1331, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "14641"
+   },
+   {
+    "id": "B",
+    "text": "14941"
+   },
+   {
+    "id": "C",
+    "text": "14341"
+   },
+   {
+    "id": "D",
+    "text": "13441"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Rule: powers of 11 → 11¹ = 11, 11² = 121, 11³ = 1331, 11⁴ = 14641.",
+  "explanationHi": "नियम: 11 की घातें → 11¹ = 11, 11² = 121, 11³ = 1331, 11⁴ = 14641",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "326191bfbf6b1c3c"
+ },
+ {
+  "id": "q_bd73cf3522ce3a59",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Percentage",
+  "topic": "Percentage Change",
+  "difficulty": "medium",
+  "questionText": "Amit's salary first increased by 5% and then decreased by 5%. What is the percentage change in his salary?",
+  "questionTextHi": "अमित के वेतन में पहले 5% वृद्धि हुई और फिर 5% कमी हुई। उसके वेतन में प्रतिशत परिवर्तन क्या है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "25%"
+   },
+   {
+    "id": "B",
+    "text": "0.25%"
+   },
+   {
+    "id": "C",
+    "text": "2.5%"
+   },
+   {
+    "id": "D",
+    "text": "1.25%"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Let salary = 100.\nAfter 5% increase = 105. After 5% decrease = 105 × 0.95 = 99.75.\nNet change = 100 − 99.75 = 0.25% decrease.\n(Shortcut: net % change = x − y − xy/100 = 5 − 5 − (5×5)/100 = −0.25%.)",
+  "explanationHi": "मान लीजिए वेतन = 100\n5% वृद्धि के बाद = 105; 5% कमी के बाद = 105 × 0.95 = 99.75\nकुल परिवर्तन = 100 − 99.75 = 0.25% कमी\n(शॉर्टकट: कुल % परिवर्तन = x − y − xy/100 = 5 − 5 − 25/100 = −0.25%)",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "9a14f36f559096d9"
+ },
+ {
+  "id": "q_af11515419adb21a",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Averages",
+  "topic": "Average of Multiples",
+  "difficulty": "medium",
+  "questionText": "Find the average of numbers between 8 and 74, which is divided by 7.",
+  "questionTextHi": "8 और 74 के बीच 7 से विभाज्य संख्याओं का औसत ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "49"
+   },
+   {
+    "id": "B",
+    "text": "42"
+   },
+   {
+    "id": "C",
+    "text": "56"
+   },
+   {
+    "id": "D",
+    "text": "35"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Multiples of 7 between 8 and 74: 14, 21, 28, 35, 42, 49, 56, 63, 70 → 9 numbers (an A.P.).\nAverage of an A.P. = (first + last)/2 = (14 + 70)/2 = 84/2 = 42.",
+  "explanationHi": "8 और 74 के बीच 7 के गुणज: 14, 21, 28, 35, 42, 49, 56, 63, 70 → 9 संख्याएँ (समांतर श्रेढ़ी)।\nऔसत = (पहली + अंतिम)/2 = (14 + 70)/2 = 84/2 = 42",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "e4165895743b6a46"
+ },
+ {
+  "id": "q_d03d9f99e0c08c88",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Simplification",
+  "topic": "Surds & Indices",
+  "difficulty": "medium",
+  "questionText": "Find the value of (√96 + √216)/√24",
+  "questionTextHi": "(√96 + √216)/√24 का मान ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "3√12"
+   },
+   {
+    "id": "B",
+    "text": "5√2"
+   },
+   {
+    "id": "C",
+    "text": "5"
+   },
+   {
+    "id": "D",
+    "text": "2"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "√96 = 4√6, √216 = 6√6, √24 = 2√6\n(√96 + √216)/√24 = (4√6 + 6√6)/(2√6) = (10√6)/(2√6) = 5\n(यह प्रश्न स्रोत फाइल में टाइपिंग में गड़बड़ था; यहाँ सही रूप में दिया गया है।)",
+  "explanationHi": "√96 = 4√6, √216 = 6√6, √24 = 2√6\n(√96 + √216)/√24 = (4√6 + 6√6)/(2√6) = (10√6)/(2√6) = 5\n(स्रोत फाइल में यह प्रश्न गड़बड़ था; यहाँ सही रूप में दिया गया है।)",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "563e17ba55829262"
+ },
+ {
+  "id": "q_5648c6d0d266178b",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Profit & Loss",
+  "topic": "Successive Profit & Loss",
+  "difficulty": "medium",
+  "questionText": "Ravi sold two television sets, one at a profit of 10%, and the other at a loss of 10%. Find the overall loss or gain percentage in the overall transaction.",
+  "questionTextHi": "रवि ने दो टेलीविज़न बेचे — एक 10% लाभ पर और दूसरा 10% हानि पर। पूरे लेन-देन में कुल लाभ या हानि प्रतिशत ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Profit, 1%"
+   },
+   {
+    "id": "B",
+    "text": "Loss, 1%"
+   },
+   {
+    "id": "C",
+    "text": "Profit, 2%"
+   },
+   {
+    "id": "D",
+    "text": "No profit, no loss"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "When two articles are sold at the same selling price, one at x% profit and the other at x% loss, there is always a net loss of x²/100 %.\nHere x = 10 → loss = 10²/100 = 1%.\nSo there is an overall loss of 1%.",
+  "explanationHi": "जब दो वस्तुएँ समान विक्रय मूल्य पर बेची जाएँ — एक x% लाभ पर और दूसरी x% हानि पर — तो सदैव x²/100 % की शुद्ध हानि होती है।\nयहाँ x = 10 → हानि = 10²/100 = 1%\nअतः कुल 1% हानि होगी।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "4f4d664035457465"
+ },
+ {
+  "id": "q_129e117939598b2a",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Time, Speed & Distance",
+  "topic": "Trains",
+  "difficulty": "medium",
+  "questionText": "A 152.5 meter long train running at a speed of 57 km/h crosses a platform in 39 seconds. What is the length of the platform?",
+  "questionTextHi": "57 किमी/घंटा की चाल से चलने वाली 152.5 मीटर लंबी रेलगाड़ी एक प्लेटफॉर्म को 39 सेकंड में पार करती है। प्लेटफॉर्म की लंबाई क्या है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "378 m"
+   },
+   {
+    "id": "B",
+    "text": "278 m"
+   },
+   {
+    "id": "C",
+    "text": "356.5 m"
+   },
+   {
+    "id": "D",
+    "text": "465 m"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Speed = 57 km/h = 57 × 5/18 = 95/6 m/s.\nTotal distance in 39 s = (95/6) × 39 = 617.5 m.\nPlatform length = 617.5 − 152.5 = 465 m.",
+  "explanationHi": "चाल = 57 किमी/घंटा = 57 × 5/18 = 95/6 मी/से\n39 सेकंड में तय दूरी = (95/6) × 39 = 617.5 मीटर\nप्लेटफॉर्म की लंबाई = 617.5 − 152.5 = 465 मीटर",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "2d61a24d6a760e8d"
+ },
+ {
+  "id": "q_52bbe9ad10082ba4",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Time & Work",
+  "topic": "Efficiency",
+  "difficulty": "medium",
+  "questionText": "6 men and 8 women can complete a piece of work in 10 days while 13 men and 24 women can complete the same piece of work in 4 days. Find the ratio of work efficiency of a man and a woman?",
+  "questionTextHi": "6 पुरुष और 8 महिलाएँ एक कार्य को 10 दिन में पूरा करते हैं, जबकि 13 पुरुष और 24 महिलाएँ उसी कार्य को 4 दिन में पूरा करते हैं। एक पुरुष और एक महिला की कार्य-क्षमता का अनुपात ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "1 : 2"
+   },
+   {
+    "id": "B",
+    "text": "2 : 1"
+   },
+   {
+    "id": "C",
+    "text": "2 : 3"
+   },
+   {
+    "id": "D",
+    "text": "3 : 2"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Let 1 man's 1-day work = m and 1 woman's 1-day work = w.\nTotal work: 10(6m + 8w) = 4(13m + 24w)\n60m + 80w = 52m + 96w\n8m = 16w → m = 2w → m : w = 2 : 1.",
+  "explanationHi": "मान लीजिए 1 पुरुष का 1 दिन का कार्य = m और 1 महिला का = w\nकुल कार्य: 10(6m + 8w) = 4(13m + 24w)\n60m + 80w = 52m + 96w\n8m = 16w → m = 2w → m : w = 2 : 1",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "dbc2ae9f34578c2d"
+ },
+ {
+  "id": "q_c7bb2592a3aea265",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Simplification",
+  "topic": "Squares & Square Roots",
+  "difficulty": "medium",
+  "questionText": "Simplify the following: √[(0.0064 × 0.0256 × 0.1521)/(0.0625 × 0.0576 × 0.0169)]",
+  "questionTextHi": "निम्नलिखित को सरल कीजिए: √[(0.0064 × 0.0256 × 0.1521)/(0.0625 × 0.0576 × 0.0169)]",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "4/5"
+   },
+   {
+    "id": "B",
+    "text": "16/25"
+   },
+   {
+    "id": "C",
+    "text": "8/25"
+   },
+   {
+    "id": "D",
+    "text": "13/8"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Write each decimal as a square:\n0.0064 = (0.08)², 0.0256 = (0.16)², 0.1521 = (0.39)²\n0.0625 = (0.25)², 0.0576 = (0.24)², 0.0169 = (0.13)²\nSo the expression = (0.08 × 0.16 × 0.39)/(0.25 × 0.24 × 0.13)\nIgnoring the decimals: (8 × 16 × 39)/(25 × 24 × 13) = 4992/7800 = 0.64 = 16/25.",
+  "explanationHi": "प्रत्येक दशमलव को वर्ग के रूप में लिखिए:\n0.0064 = (0.08)², 0.0256 = (0.16)², 0.1521 = (0.39)²\n0.0625 = (0.25)², 0.0576 = (0.24)², 0.0169 = (0.13)²\nअतः व्यंजक = (0.08 × 0.16 × 0.39)/(0.25 × 0.24 × 0.13)\nदशमलव हटाकर: (8 × 16 × 39)/(25 × 24 × 13) = 4992/7800 = 0.64 = 16/25",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "49df18df44f4ddb8"
+ },
+ {
+  "id": "q_791f06410bb9e71c",
+  "exam": "airforce",
+  "subject": "mathematics",
+  "chapter": "Number System",
+  "topic": "HCF & LCM",
+  "difficulty": "medium",
+  "questionText": "HCF and LCM of two numbers are 21 and 252 respectively. If one number is 84, what is the other number?",
+  "questionTextHi": "दो संख्याओं का HCF 21 और LCM 252 है। यदि एक संख्या 84 है, तो दूसरी संख्या क्या है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "42"
+   },
+   {
+    "id": "B",
+    "text": "56"
+   },
+   {
+    "id": "C",
+    "text": "63"
+   },
+   {
+    "id": "D",
+    "text": "74"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Formula: HCF × LCM = product of the two numbers.\n21 × 252 = 84 × other → other = (21 × 252)/84 = 5292/84 = 63.",
+  "explanationHi": "सूत्र: HCF × LCM = दोनों संख्याओं का गुणनफल\n21 × 252 = 84 × दूसरी संख्या → दूसरी संख्या = (21 × 252)/84 = 5292/84 = 63",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "01b93b1f5ede5c7e"
+ },
+ {
+  "id": "q_a3e0ed56f8280c48",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Awards & Honours",
+  "topic": "Sports Awards",
+  "difficulty": "medium",
+  "questionText": "Arjuna Award is related to which field?",
+  "questionTextHi": "अर्जुन पुरस्कार किस क्षेत्र से संबंधित है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Dance"
+   },
+   {
+    "id": "B",
+    "text": "Cinema"
+   },
+   {
+    "id": "C",
+    "text": "Doordarshan"
+   },
+   {
+    "id": "D",
+    "text": "Sports"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Arjuna Award is given for outstanding performance in sports (started in 1961, given by the Ministry of Youth Affairs and Sports).",
+  "explanationHi": "अर्जुन पुरस्कार खेलों में उत्कृष्ट प्रदर्शन के लिए दिया जाता है (1961 से, युवा मामले एवं खेल मंत्रालय द्वारा)।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "b9269224cdc23438"
+ },
+ {
+  "id": "q_d839e111c13f5c1d",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Polity & Constitution",
+  "topic": "Governors",
+  "difficulty": "medium",
+  "questionText": "Who among the following has been appointed the Governor of Kerala?",
+  "questionTextHi": "निम्नलिखित में से किसे केरल का राज्यपाल नियुक्त किया गया?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Anusuiya Uikey"
+   },
+   {
+    "id": "B",
+    "text": "Arif Mohammad Khan"
+   },
+   {
+    "id": "C",
+    "text": "Bhagat Singh Koshyari"
+   },
+   {
+    "id": "D",
+    "text": "Kalraj Mishra"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Arif Mohammad Khan was appointed Governor of Kerala (took oath on 6 September 2019).\n(Anusuiya Uikey = Chhattisgarh/Manipur, Koshyari = Maharashtra, Kalraj Mishra = Rajasthan.)",
+  "explanationHi": "आरिफ मोहम्मद खान को केरल का राज्यपाल नियुक्त किया गया (6 सितंबर 2019 को शपथ)।\n(अनुसुइया उइके = छत्तीसगढ़/मणिपुर, कोश्यारी = महाराष्ट्र, कलराज मिश्र = राजस्थान।)",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "9d853ceecf5e1ee2"
+ },
+ {
+  "id": "q_03a684f57bf7a39b",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Geography",
+  "topic": "World Capitals",
+  "difficulty": "easy",
+  "questionText": "Abu Dhabi is the capital city of?",
+  "questionTextHi": "अबू धाबी किसकी राजधानी है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "United Arab Emirates"
+   },
+   {
+    "id": "B",
+    "text": "Netherlands"
+   },
+   {
+    "id": "C",
+    "text": "South Korea"
+   },
+   {
+    "id": "D",
+    "text": "Italy"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Abu Dhabi is the capital of the United Arab Emirates (UAE). Dubai is its largest city.",
+  "explanationHi": "अबू धाबी, संयुक्त अरब अमीरात (UAE) की राजधानी है। दुबई इसका सबसे बड़ा शहर है।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "afc732126668da7e"
+ },
+ {
+  "id": "q_e8311d9943bab28f",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Sports",
+  "topic": "Mountaineering",
+  "difficulty": "medium",
+  "questionText": "Who amongst the following was the first woman to conquer Mount Everest twice?",
+  "questionTextHi": "निम्नलिखित में से कौन पहली महिला थीं जिन्होंने माउंट एवरेस्ट पर दो बार विजय प्राप्त की?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "SurajLata Devi"
+   },
+   {
+    "id": "B",
+    "text": "Jyoti Randhawa"
+   },
+   {
+    "id": "C",
+    "text": "Santosh Yadav"
+   },
+   {
+    "id": "D",
+    "text": "Suma Shirur"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Santosh Yadav is the first woman in the world to climb Mount Everest twice (1992 and 1993). She is also the first woman to climb Everest from the Kangshung face.",
+  "explanationHi": "संतोष यादव विश्व की पहली महिला हैं जिन्होंने माउंट एवरेस्ट पर दो बार चढ़ाई की (1992 और 1993)। वे कांगशुंग फेस से एवरेस्ट पर चढ़ने वाली पहली महिला भी हैं।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "54b08b634f4381a2"
+ },
+ {
+  "id": "q_19232ae57a962092",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "General Science",
+  "topic": "Vitamins & Deficiency Diseases",
+  "difficulty": "medium",
+  "questionText": "Deficiency of which of the following Vitamins causes pernicious anaemia?",
+  "questionTextHi": "निम्नलिखित में से किस विटामिन की कमी से घातक रक्ताल्पता (pernicious anaemia) होती है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Vitamin K"
+   },
+   {
+    "id": "B",
+    "text": "Vitamin E"
+   },
+   {
+    "id": "C",
+    "text": "Vitamin B12"
+   },
+   {
+    "id": "D",
+    "text": "Vitamin B6"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Pernicious anaemia is caused by the deficiency of Vitamin B12 (cobalamin), which is needed for red blood cell formation.",
+  "explanationHi": "घातक रक्ताल्पता (परनिशियस एनीमिया) विटामिन B12 (कोबालामिन) की कमी से होती है, जो लाल रक्त कोशिकाओं के निर्माण के लिए आवश्यक है।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "c74a28243ab64a5d"
+ },
+ {
+  "id": "q_0cbdeefd93a4d38e",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Sports",
+  "topic": "Olympic Games",
+  "difficulty": "medium",
+  "questionText": "The 2020 Summer Olympic games will be hosted by ________",
+  "questionTextHi": "2020 ग्रीष्मकालीन ओलंपिक खेलों की मेजबानी ________ करेगा।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Mexico"
+   },
+   {
+    "id": "B",
+    "text": "Tokyo"
+   },
+   {
+    "id": "C",
+    "text": "Paris"
+   },
+   {
+    "id": "D",
+    "text": "Los Angeles"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The 2020 Summer Olympics were hosted by Tokyo, Japan (held in 2021 due to COVID-19, but officially called Tokyo 2020).",
+  "explanationHi": "2020 ग्रीष्मकालीन ओलंपिक की मेजबानी टोक्यो, जापान ने की (कोविड-19 के कारण ये 2021 में हुए, पर आधिकारिक नाम टोक्यो 2020 ही रहा)।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "f093593792561aa1"
+ },
+ {
+  "id": "q_5880bfeb9418aec1",
+  "exam": "airforce",
+  "subject": "raga",
+  "chapter": "Geography",
+  "topic": "Rivers & Waterfalls",
+  "difficulty": "medium",
+  "questionText": "The Dhuandhar Falls are located on the ______ river.",
+  "questionTextHi": "धुआँधार जलप्रपात ______ नदी पर स्थित है।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Narmada"
+   },
+   {
+    "id": "B",
+    "text": "Godavari"
+   },
+   {
+    "id": "C",
+    "text": "Kaveri"
+   },
+   {
+    "id": "D",
+    "text": "Gandak"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Dhuandhar Falls is on the Narmada river near Jabalpur (Madhya Pradesh) — famous for the \"Bhedaghat\" marble rocks.",
+  "explanationHi": "धुआँधार जलप्रपात नर्मदा नदी पर (जबलपुर, मध्य प्रदेश के पास) है — यह \"भेड़ाघाट\" की संगमरमरी चट्टानों के लिए प्रसिद्ध है।",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "figureBased": false,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "de51feea616f5749"
+ }
+]

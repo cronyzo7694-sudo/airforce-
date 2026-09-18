@@ -42,6 +42,14 @@ const App = {
       }
     } catch (e) { console.error('seed failed', e); }
 
+    // upgrade path: existing installs get the bilingual (EN+HI) bundle once
+    try {
+      if (!(await Store.getMeta('seedV2', null))) {
+        const hb = await Bank.seedHindiBundle();
+        await Store.setMeta('seedV2', { at: Date.now(), imported: hb.imported });
+      }
+    } catch (e) { /* bundle is a bonus — never block boot */ }
+
     // upgrade path: existing installs get the ready-made test series too
     try {
       if (!(await Store.getMeta('seriesBuilt', null))) {
@@ -111,7 +119,7 @@ const App = {
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
         </span>
-        <span class="brand-text">Agniveer&nbsp;Vayu <b>CBT</b></span>
+        <span class="brand-text">Kineora <b>Exam</b></span>
       </a>
       <nav class="navlinks" aria-label="Main">
         ${items.map(([id, href, label]) => `<a href="${href}" class="${active === id ? 'active' : ''}" ${active === id ? 'aria-current="page"' : ''}>${label}</a>`).join('')}

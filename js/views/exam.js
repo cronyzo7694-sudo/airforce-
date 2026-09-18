@@ -35,6 +35,7 @@ const ExamScreen = {
 
     this.attempt = attempt;
     this.test = test;
+    this.qLang = 'en';          // EN default; हिन्दी unlocks per-question when available
     App.activeAttempt = attempt;
     App.pendingResume = null;
 
@@ -135,16 +136,18 @@ const ExamScreen = {
         <div class="q-viewin">
           <label class="small muted">${t('viewIn')}:</label>
           <select id="q-lang" aria-label="View question in">
-            <option value="en" selected>English</option>
-            <option value="hi" disabled title="No Hindi translation available for this question">हिन्दी (not available)</option>
+            <option value="en" ${this.qLang !== 'hi' ? 'selected' : ''}>English</option>
+            ${q.questionTextHi
+              ? `<option value="hi" ${this.qLang === 'hi' ? 'selected' : ''}>हिन्दी</option>`
+              : `<option value="hi" disabled title="No Hindi translation available for this question">हिन्दी (not available)</option>`}
           </select>
         </div>
       </div>
-      <div class="q-text" id="q-text">${AVUtil.qtext(q.questionText)}</div>
+      <div class="q-text" id="q-text">${AVUtil.qtext(this.qLang === 'hi' && q.questionTextHi ? q.questionTextHi : q.questionText)}</div>
       ${q.image ? `<div class="q-img-wrap"><img src="${q.image}" alt="Question figure" class="q-img" id="q-img" tabindex="0"></div>` : ''}
       ${q.figureBased ? `<div class="q-note muted small">⚠ This question had figure-based options in the source paper.</div>` : ''}
       <div class="opts" role="radiogroup" aria-label="Answer options">${optionsHtml}</div>
-      ${this.showExplain && q.explanation && r.sel ? `<div class="instant-exp"><b>Explanation:</b> ${AVUtil.qtext(q.explanation)}</div>` : ''}
+      ${(this.showExplain && r.sel && (q.explanation || q.explanationHi)) ? `<div class="instant-exp"><b>Explanation:</b> ${AVUtil.qtext(this.qLang === 'hi' && q.explanationHi ? q.explanationHi : q.explanation)}</div>` : ''}
       ${this.attempt.mode === 'practice' ? `<div class="qa-note x-note" data-qid="${q.id}">
         <div class="qa-note-head">📝 My Notebook</div>
         <textarea class="note-ta" rows="2" placeholder="Apna solution / trick yahan likho…">${AVUtil.esc(this.noteMap[q.id] || '')}</textarea>
@@ -300,6 +303,14 @@ const ExamScreen = {
       if (!input.checked) { input.checked = true; }
       await this.select(input.value);
     }));
+
+    // language switch (EN ⇄ HI, per question availability)
+    const langSel = AVUtil.$('#q-lang');
+    if (langSel) langSel.addEventListener('change', async e => {
+      this.qLang = e.target.value === 'hi' ? 'hi' : 'en';
+      await this.persist();
+      this.render();
+    });
 
     // bottom buttons
     AVUtil.$('#x-save').addEventListener('click', () => this.saveNext());

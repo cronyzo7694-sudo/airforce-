@@ -127,6 +127,31 @@ T('backup payload parses questions + restore data', () => {
   assert(!plain.restore, 'plain question JSON has no restore payload');
 });
 
+console.log('\n━━━ bilingual (EN + HI) + exam-scope support');
+T('bilingual JSON: Hindi fields kept + subjects mapped', () => {
+  const res = Parsers.parseJson(JSON.stringify([
+    { subject: 'reasoning', questionText: 'Pick the odd one?', questionTextHi: 'विषम को चुनिए?', options: [{ id: 'A', text: 'a' }, { id: 'B', text: 'b' }, { id: 'C', text: 'c' }, { id: 'D', text: 'd' }], answer: 'A', explanation: 'en exp', explanationHi: 'hi exp', chapter: 'Reasoning', topic: 'Odd One' },
+    { subject: 'general-awareness', questionText: 'Capital of India?', options: ['Delhi', 'Mumbai', 'Pune', 'Agra'], answer: 'A' },
+    { subject: 'mathematics', questionText: '2+2?', options: ['3', '4', '5', '6'], answer: 'B', explanationHi: 'केवल हिन्दी व्याख्या' }
+  ]));
+  eq(res.questions.length, 3, '3 valid');
+  eq(res.questions[0].subject, 'raga', 'reasoning → raga');
+  eq(res.questions[1].subject, 'raga', 'general-awareness → raga');
+  eq(res.questions[2].subject, 'mathematics', 'mathematics stays');
+  eq(res.questions[0].questionTextHi, 'विषम को चुनिए?', 'Hindi question kept');
+  eq(res.questions[0].explanationHi, 'hi exp', 'Hindi explanation kept');
+  eq(res.questions[1].questionTextHi, null, 'no Hindi → null (not empty string)');
+  eq(res.questions[2].explanationHi, 'केवल हिन्दी व्याख्या', 'Hindi-only explanation kept');
+});
+T('bundled bilingual file loads and is exam-tagged', () => {
+  const arr = JSON.parse(fs.readFileSync('data/bank-hindi-1.json', 'utf-8'));
+  assert(arr.length >= 100, 'bundle has 100+ questions');
+  assert(arr.every(q => q.questionTextHi && q.explanationHi), 'every question bilingual');
+  assert(arr.every(q => q.exam === 'airforce'), 'every question exam-tagged');
+  assert(arr.every(q => ['raga', 'mathematics'].includes(q.subject)), 'subjects mapped to app ids');
+  assert(arr.every(q => q.options && q.options.length === 4), 'all have 4 options');
+});
+
 console.log('\n━━━ importer dedupe logic');
 T('duplicate content detected via dupeHash', () => {
   const q = { subject: 'physics', questionText: 'Same question?', options: [{ id: 'A', text: '1' }, { id: 'B', text: '2' }, { id: 'C', text: '3' }, { id: 'D', text: '4' }], correctAnswer: 'A' };

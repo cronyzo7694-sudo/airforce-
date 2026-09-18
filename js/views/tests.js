@@ -24,8 +24,9 @@ Views.tests = async function (state) {
   const hasUnfinished = t => (unfinishedByTest[t.id] || []).length > 0;
 
   // filters
+  const curExam = (App.configCache && App.configCache.exam) || 'airforce';
   const FNAMES = { all: 'All', series: 'Test Series', full: 'Full Mock', subject: 'Subject', chapter: 'Chapter', topic: 'Topic', custom: 'Custom', completed: 'Completed', incomplete: 'Incomplete' };
-  let list = tests.filter(t => {
+  let list = tests.filter(t => (t.exam || 'airforce') === curExam).filter(t => {
     if (state.filter === 'all' || FNAMES[state.filter] === undefined) return true;
     if (state.filter === 'completed') return (attByTest[t.id] || []).some(a => !a.abandoned);
     if (state.filter === 'incomplete') return hasUnfinished(t);

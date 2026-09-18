@@ -72,9 +72,9 @@ async function main() {
   for (let i = 0; i < 80; i++) {
     await sleep(250);
     try { qCount = await G('DB.count("questions")'); } catch (e) {}
-    if (qCount >= 3082) break;
+    if (qCount >= 3130) break;
   }
-  T('question bank seeded (3082)', qCount === 3082, 'got ' + qCount);
+  T('question bank seeded (3082 core + bilingual bundle)', qCount >= 3130, 'got ' + qCount);
   const seededFlag = await G('Store.getMeta("seeded", false)');
   T('seeded flag set', seededFlag === true);
   let testCount = 0;

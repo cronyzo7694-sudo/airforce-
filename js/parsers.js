@@ -18,7 +18,7 @@ const Parsers = (() => {
 
   function mkQuestion(o) {
     const subjectRaw = normKey(o, ['subject', 'subjectid', 'section']);
-    const SUBJECT_MAP = { physics: 'physics', mathematics: 'mathematics', maths: 'mathematics', math: 'mathematics', english: 'english', raga: 'raga', reasoningandgeneralawareness: 'raga', 'reasoning&generalawareness': 'raga' };
+    const SUBJECT_MAP = { physics: 'physics', mathematics: 'mathematics', maths: 'mathematics', math: 'mathematics', english: 'english', raga: 'raga', reasoning: 'raga', verbalreasoning: 'raga', nonverbalreasoning: 'raga', generalawareness: 'raga', 'general-awareness': 'raga', generalknowledge: 'raga', gk: 'raga', ga: 'raga', currentaffairs: 'raga', reasoningandgeneralawareness: 'raga', 'general-awareness': 'raga', 'reasoning&generalawareness': 'raga' };
     const subject = SUBJECT_MAP[String(subjectRaw || '').toLowerCase().trim()] || null;
     const qt = normKey(o, ['question', 'questiontext', 'q', 'stem']);
     // options may come as: bank format [{id:'A',text:'…'},…], plain string array,
@@ -57,6 +57,8 @@ const Parsers = (() => {
         topic: String(normKey(o, ['topic']) || 'General').trim() || 'General',
         difficulty: String(normKey(o, ['difficulty', 'level']) || 'medium').toLowerCase(),
         questionText: qtext,
+        questionTextHi: String(normKey(o, ['questiontexthi', 'questionhi', 'qhi']) || '').trim() || null,
+        explanationHi: String(normKey(o, ['explanationhi', 'solutionhi', 'reasonhi']) || '').trim() || null,
         image: normKey(o, ['image', 'imageurl', 'img']) || null,
         options: ['A', 'B', 'C', 'D'].map((L, i) => ({ id: L, text: opts[i] })),
         correctAnswer: ans || null,

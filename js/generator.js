@@ -8,10 +8,13 @@ const Generator = (() => {
 
   /* ---------- pool building ---------- */
   async function poolFor(spec, qstats) {
-    /* spec: { subjectId, chapters?, topics?, difficulty?, years? } */
+    /* spec: { subjectId, chapters?, topics?, difficulty?, years? } — pools are
+       scoped to the selected exam so future exams (Navy/Army/…) never mix banks */
+    const exam = (typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce';
     const rows = await DB.byIndex('questions', 'subject', spec.subjectId);
     return rows.filter(q =>
       q.correctAnswer && !q.figureBased &&           // must be evaluable
+      (q.exam || 'airforce') === exam &&            // exam-scoped bank
       (!spec.chapters || spec.chapters.includes(q.chapter)) &&
       (!spec.topics || spec.topics.includes(q.topic)) &&
       (!spec.difficulty || spec.difficulty === 'all' || q.difficulty === spec.difficulty)
@@ -180,6 +183,7 @@ const Generator = (() => {
     const test = {
       id: 't_' + AVUtil.uid('x'),
       name: opts.name,
+      exam: (typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce',
       type: opts.type || 'custom',
       mode: opts.mode || 'exam',
       createdAt: createdAt != null ? createdAt : Date.now(),

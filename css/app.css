@@ -795,3 +795,10 @@ body.exam-on #site-footer, body.exam-on #chat-fab, body.exam-on #chat-panel { di
 @media print {
   .site-footer, #chat-fab, #chat-panel { display: none !important; }
 }
+
+/* bilingual (EN + HI) blocks in analysis */
+.qa-hi {
+  color: #5a6b84; font-size: 13.6px; border-left: 3px solid #d9c67a;
+  padding-left: 10px; margin-top: 4px; background: #fffdf4; border-radius: 0 6px 6px 0;
+}
+.qa-hi b { color: #6b5b1f; }
