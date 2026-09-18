@@ -402,19 +402,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Teacher"
+    "text": "Teacher (शिक्षक)"
    },
    {
     "id": "B",
-    "text": "Accountant"
+    "text": "Accountant (लेखाकार)"
    },
    {
     "id": "C",
-    "text": "Principal"
+    "text": "Principal (प्रधानाचार्य)"
    },
    {
     "id": "D",
-    "text": "Engineer"
+    "text": "Engineer (इंजीनियर)"
    }
   ],
   "correctAnswer": "D",
@@ -1201,19 +1201,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Once Upon a Time in Hollywood"
+    "text": "Once Upon a Time in Hollywood (वन्स अपॉन अ टाइम इन हॉलीवुड)"
    },
    {
     "id": "B",
-    "text": "Joker"
+    "text": "Joker (जोकर)"
    },
    {
     "id": "C",
-    "text": "Judy"
+    "text": "Judy (जूडी)"
    },
    {
     "id": "D",
-    "text": "Parasite"
+    "text": "Parasite (पैरासाइट)"
    }
   ],
   "correctAnswer": "D",
@@ -2437,15 +2437,15 @@
   "options": [
    {
     "id": "A",
-    "text": "Digital Base Management System"
+    "text": "Digital Base Management System (डिजिटल बेस प्रबंधन प्रणाली)"
    },
    {
     "id": "B",
-    "text": "Database Management System"
+    "text": "Database Management System (डेटाबेस प्रबंधन प्रणाली)"
    },
    {
     "id": "C",
-    "text": "Database Maintenance System"
+    "text": "Database Maintenance System (डेटाबेस रखरखाव प्रणाली)"
    },
    {
     "id": "D",
@@ -5207,11 +5207,11 @@
   "options": [
    {
     "id": "A",
-    "text": "Vitamin K"
+    "text": "Vitamin K (विटामिन K)"
    },
    {
     "id": "B",
-    "text": "Vitamin E"
+    "text": "Vitamin E (विटामिन E)"
    },
    {
     "id": "C",
@@ -5600,7 +5600,7 @@
   ],
   "correctAnswer": "D",
   "explanation": "0.000841 = 841 × 10⁻⁶\n√841 = 29 → √(0.000841) = 29 × 10⁻³ = 0.029",
-  "explanationHi": "0.000841 = 841 × 10⁻⁶\n√841 = 29 → √(0.000841) = 29 × 10⁻³ = 0.029",
+  "explanationHi": "हल:\n0.000841 = 841 × 10⁻⁶\n√841 = 29 → √(0.000841) = 29 × 10⁻³ = 0.029\nअतः सही उत्तर विकल्प (D) है।",
   "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group Y)",
   "year": 2021,
   "tags": [
@@ -7197,7 +7197,7 @@
   ],
   "correctAnswer": "C",
   "explanation": "0.4̄ (0.444…) = 4/9\n√(4/9) = 2/3\n(स्रोत में यह व्यंजक टाइपिंग में गड़बड़ था; यहाँ सही रूप में दिया गया है।)",
-  "explanationHi": "0.4̄ (0.444…) = 4/9\n√(4/9) = 2/3",
+  "explanationHi": "हल:\n0.4̄ (0.444…) = 4/9\n√(4/9) = 2/3\nअतः सही उत्तर विकल्प (C) है।",
   "source": "PYQ · 13 Jul 2021 · SelfStudys (Group Y)",
   "year": 2021,
   "tags": [
@@ -8559,7 +8559,7 @@
   ],
   "correctAnswer": "C",
   "explanation": "0.4̄ (0.444…) = 4/9\n√(4/9) = 2/3\n(स्रोत में यह व्यंजक टाइपिंग में गड़बड़ था; यहाँ सही रूप में दिया गया है।)",
-  "explanationHi": "0.4̄ (0.444…) = 4/9\n√(4/9) = 2/3",
+  "explanationHi": "हल:\n0.4̄ (0.444…) = 4/9\n√(4/9) = 2/3\nअतः सही उत्तर विकल्प (C) है।",
   "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group Y)",
   "year": 2021,
   "tags": [
@@ -11471,7 +11471,7 @@
   ],
   "correctAnswer": "B",
   "explanation": "sin²60° = (√3/2)² = 3/4; tan45° = 1; cosec²45° = (√2)² = 2\n= 3/4 + 1 − 2 = 3/4 − 1 = −1/4",
-  "explanationHi": "sin²60° = (√3/2)² = 3/4; tan45° = 1; cosec²45° = (√2)² = 2\n= 3/4 + 1 − 2 = 3/4 − 1 = −1/4",
+  "explanationHi": "हल:\nsin²60° = (√3/2)² = 3/4; tan45° = 1; cosec²45° = (√2)² = 2\n= 3/4 + 1 − 2 = 3/4 − 1 = −1/4\nअतः सही उत्तर विकल्प (B) है।",
   "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group Y)",
   "year": 2021,
   "tags": [
@@ -11690,7 +11690,7 @@
   ],
   "correctAnswer": "B",
   "explanation": "70 ÷ 7 + 21 × 2 − 15\n= 10 + 42 − 15 = 37",
-  "explanationHi": "70 ÷ 7 + 21 × 2 − 15\n= 10 + 42 − 15 = 37",
+  "explanationHi": "हल:\n70 ÷ 7 + 21 × 2 − 15\n= 10 + 42 − 15 = 37\nअतः सही उत्तर विकल्प (B) है।",
   "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group Y)",
   "year": 2021,
   "tags": [
@@ -12393,19 +12393,19 @@
   "options": [
    {
     "id": "A",
-    "text": "World Wide Web"
+    "text": "World Wide Web (वर्ल्ड वाइड वेब)"
    },
    {
     "id": "B",
-    "text": "Web Wide World"
+    "text": "Web Wide World (वेब वाइड वर्ल्ड)"
    },
    {
     "id": "C",
-    "text": "Whole World Web"
+    "text": "Whole World Web (होल वर्ल्ड वेब)"
    },
    {
     "id": "D",
-    "text": "Wide Word Web"
+    "text": "Wide Word Web (वाइड वर्ड वेब)"
    }
   ],
   "correctAnswer": "A",
@@ -12692,7 +12692,7 @@
   ],
   "correctAnswer": "C",
   "explanation": "729 = 3^6 → 4x − 2 = 6 → 4x = 8 → x = 2",
-  "explanationHi": "729 = 3^6 → 4x − 2 = 6 → 4x = 8 → x = 2",
+  "explanationHi": "हल:\n729 = 3^6 → 4x − 2 = 6 → 4x = 8 → x = 2\nअतः सही उत्तर विकल्प (C) है।",
   "source": "PYQ · 15 Jul 2021 Shift-2 · Prepp (Group Y)",
   "year": 2021,
   "tags": [
@@ -13756,7 +13756,7 @@
   ],
   "correctAnswer": "C",
   "explanation": "sin²60° = 3/4; tan²45° = 1; sec²45° = 2; cosec²30° = 4\n= 3/4 + 1 + 2 − 4 = 3/4 − 1 = −1/4\n(स्रोत में इस प्रश्न/विकल्पों का टाइपिंग गड़बड़ था; यहाँ कुंजी से मेल खाता सही रूप दिया गया है।)",
-  "explanationHi": "sin²60° = 3/4; tan²45° = 1; sec²45° = 2; cosec²30° = 4\n= 3/4 + 1 + 2 − 4 = 3/4 − 1 = −1/4",
+  "explanationHi": "हल:\nsin²60° = 3/4; tan²45° = 1; sec²45° = 2; cosec²30° = 4\n= 3/4 + 1 + 2 − 4 = 3/4 − 1 = −1/4\nअतः सही उत्तर विकल्प (C) है।",
   "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group Y)",
   "year": 2021,
   "tags": [
@@ -15868,19 +15868,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Surgeon : Operation"
+    "text": "Surgeon : Operation (सर्जन : ऑपरेशन)"
    },
    {
     "id": "B",
-    "text": "Engineer : Chemical Engineer"
+    "text": "Engineer : Chemical Engineer (इंजीनियर : केमिकल इंजीनियर)"
    },
    {
     "id": "C",
-    "text": "Teacher : Education"
+    "text": "Teacher : Education (शिक्षक : शिक्षा)"
    },
    {
     "id": "D",
-    "text": "Nurse : Injection"
+    "text": "Nurse : Injection (नर्स : इंजेक्शन)"
    }
   ],
   "correctAnswer": "B",
@@ -16198,7 +16198,7 @@
   ],
   "correctAnswer": "A",
   "explanation": "20X/100 = 30Y/100 → 2X = 3Y → X/Y = 3/2 → X : Y = 3 : 2",
-  "explanationHi": "20X/100 = 30Y/100 → 2X = 3Y → X/Y = 3/2 → X : Y = 3 : 2",
+  "explanationHi": "हल:\n20X/100 = 30Y/100 → 2X = 3Y → X/Y = 3/2 → X : Y = 3 : 2\nअतः सही उत्तर विकल्प (A) है।",
   "source": "PYQ · 24 Jul 2022 · SelfStudys (Group Y)",
   "year": 2022,
   "tags": [
@@ -16292,7 +16292,7 @@
   ],
   "correctAnswer": "D",
   "explanation": "3 = 3, 4 = 2², 6 = 2 × 3\nLCM = 2² × 3 = 12\n(स्रोत में यह प्रश्न टाइपिंग में गड़बड़ था; यहाँ कुंजी (12) के अनुरूप सही रूप दिया गया है।)",
-  "explanationHi": "3 = 3, 4 = 2², 6 = 2 × 3\nLCM = 2² × 3 = 12",
+  "explanationHi": "हल:\n3 = 3, 4 = 2², 6 = 2 × 3\nLCM = 2² × 3 = 12\nअतः सही उत्तर विकल्प (D) है।",
   "source": "PYQ · 24 Jul 2022 · SelfStudys (Group Y)",
   "year": 2022,
   "tags": [
@@ -16698,19 +16698,19 @@
   "options": [
    {
     "id": "A",
-    "text": "National Internal Trade Information"
+    "text": "National Internal Trade Information (राष्ट्रीय आंतरिक व्यापार सूचना)"
    },
    {
     "id": "B",
-    "text": "National Institution for Transforming India"
+    "text": "National Institution for Transforming India (राष्ट्रीय भारत परिवर्तन संस्थान (नीति आयोग))"
    },
    {
     "id": "C",
-    "text": "National Integrated Treaty Institute"
+    "text": "National Integrated Treaty Institute (राष्ट्रीय एकीकृत संधि संस्थान)"
    },
    {
     "id": "D",
-    "text": "National Intellectual Training Institute"
+    "text": "National Intellectual Training Institute (राष्ट्रीय बौद्धिक प्रशिक्षण संस्थान)"
    }
   ],
   "correctAnswer": "B",
@@ -17465,7 +17465,7 @@
   ],
   "correctAnswer": "C",
   "explanation": "18 ÷ 9 + 2 × 8 − 4\n= 2 + 16 − 4 = 14",
-  "explanationHi": "18 ÷ 9 + 2 × 8 − 4\n= 2 + 16 − 4 = 14",
+  "explanationHi": "हल:\n18 ÷ 9 + 2 × 8 − 4\n= 2 + 16 − 4 = 14\nअतः सही उत्तर विकल्प (C) है।",
   "source": "PYQ · 24 Jul 2022 · SelfStudys (Group Y)",
   "year": 2022,
   "tags": [
@@ -17777,19 +17777,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Combined Natural Gas"
+    "text": "Combined Natural Gas (संयुक्त प्राकृतिक गैस)"
    },
    {
     "id": "B",
-    "text": "Compressed Natural Gas"
+    "text": "Compressed Natural Gas (संपीड़ित प्राकृतिक गैस)"
    },
    {
     "id": "C",
-    "text": "Clean Natural Gas"
+    "text": "Clean Natural Gas (स्वच्छ प्राकृतिक गैस)"
    },
    {
     "id": "D",
-    "text": "Carbon Natural Gas"
+    "text": "Carbon Natural Gas (कार्बन प्राकृतिक गैस)"
    }
   ],
   "correctAnswer": "B",
@@ -17841,7 +17841,7 @@
   ],
   "correctAnswer": "C",
   "explanation": "(256)^0.16 × (256)^0.09 = 256^(0.16 + 0.09) = 256^0.25\n= (2⁸)^(1/4) = 2² = 4",
-  "explanationHi": "(256)^0.16 × (256)^0.09 = 256^(0.16 + 0.09) = 256^0.25\n= (2⁸)^(1/4) = 2² = 4",
+  "explanationHi": "हल:\n(256)^0.16 × (256)^0.09 = 256^(0.16 + 0.09) = 256^0.25\n= (2⁸)^(1/4) = 2² = 4\nअतः सही उत्तर विकल्प (C) है।",
   "source": "PYQ · 25 Jul 2022 · SelfStudys (Group Y)",
   "year": 2022,
   "tags": [
@@ -18592,7 +18592,7 @@
   ],
   "correctAnswer": "D",
   "explanation": "37 × 73 ÷ 23 + 32 − 29\n= 2701/23 + 32 − 29\n= 117.43 + 3 = 120.43",
-  "explanationHi": "37 × 73 ÷ 23 + 32 − 29\n= 2701/23 + 32 − 29\n= 117.43 + 3 = 120.43",
+  "explanationHi": "हल:\n37 × 73 ÷ 23 + 32 − 29\n= 2701/23 + 32 − 29\n= 117.43 + 3 = 120.43\nअतः सही उत्तर विकल्प (D) है।",
   "source": "PYQ · 25 Jul 2022 · SelfStudys (Group Y)",
   "year": 2022,
   "tags": [
@@ -18746,19 +18746,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Salim's wife is paternal grandmother of Imran"
+    "text": "Salim's wife is paternal grandmother of Imran (सलीम की पत्नी इमरान की दादी है)"
    },
    {
     "id": "B",
-    "text": "Salim's wife is mother of Imran"
+    "text": "Salim's wife is mother of Imran (सलीम की पत्नी इमरान की माँ है)"
    },
    {
     "id": "C",
-    "text": "Salim's wife is maternal grandmother of Imran"
+    "text": "Salim's wife is maternal grandmother of Imran (सलीम की पत्नी इमरान की नानी है)"
    },
    {
     "id": "D",
-    "text": "Salim's wife is aunt of Imran"
+    "text": "Salim's wife is aunt of Imran (सलीम की पत्नी इमरान की बुआ है)"
    }
   ],
   "correctAnswer": "C",
@@ -19216,19 +19216,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Universal Serial Bus"
+    "text": "Universal Serial Bus (यूनिवर्सल सीरियल बस)"
    },
    {
     "id": "B",
-    "text": "Unique Service Bus"
+    "text": "Unique Service Bus (यूनीक सर्विस बस)"
    },
    {
     "id": "C",
-    "text": "Uniform Service Bus"
+    "text": "Uniform Service Bus (यूनिफॉर्म सर्विस बस)"
    },
    {
     "id": "D",
-    "text": "Uniform Serial Bus"
+    "text": "Uniform Serial Bus (यूनिफॉर्म सीरियल बस)"
    }
   ],
   "correctAnswer": "A",
@@ -19701,19 +19701,19 @@
   "options": [
    {
     "id": "A",
-    "text": "North-west"
+    "text": "North-west (उत्तर-पश्चिम)"
    },
    {
     "id": "B",
-    "text": "South-east"
+    "text": "South-east (दक्षिण-पूर्व)"
    },
    {
     "id": "C",
-    "text": "South-west"
+    "text": "South-west (दक्षिण-पश्चिम)"
    },
    {
     "id": "D",
-    "text": "North-east"
+    "text": "North-east (उत्तर-पूर्व)"
    }
   ],
   "correctAnswer": "D",
@@ -20139,19 +20139,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Moon Orbiter Mission"
+    "text": "Moon Orbiter Mission (चंद्र ऑर्बिटर मिशन)"
    },
    {
     "id": "B",
-    "text": "Mars Orbiter Mission"
+    "text": "Mars Orbiter Mission (मंगल ऑर्बिटर मिशन)"
    },
    {
     "id": "C",
-    "text": "Mars Orbital Mission"
+    "text": "Mars Orbital Mission (मंगल ऑर्बिटल मिशन)"
    },
    {
     "id": "D",
-    "text": "Mars Orbital Module"
+    "text": "Mars Orbital Module (मंगल ऑर्बिटल मॉड्यूल)"
    }
   ],
   "correctAnswer": "B",
@@ -20792,7 +20792,7 @@
   "topic": "Complementary Angles",
   "difficulty": "medium",
   "questionText": "tan10° × tan20° × tan30° × tan45° × tan60° × tan70° × tan80° = ?",
-  "questionTextHi": "tan10° × tan20° × tan30° × tan45° × tan60° × tan70° × tan80° = ?",
+  "questionTextHi": "मान ज्ञात कीजिए: tan10° × tan20° × tan30° × tan45° × tan60° × tan70° × tan80° = ?",
   "image": null,
   "options": [
    {
@@ -21143,7 +21143,7 @@
   ],
   "correctAnswer": "A",
   "explanation": "324 + 35 − 184 − 17 × 3 + 39\n= 324 + 35 − 184 − 51 + 39 = 163",
-  "explanationHi": "324 + 35 − 184 − 17 × 3 + 39\n= 324 + 35 − 184 − 51 + 39 = 163",
+  "explanationHi": "हल:\n324 + 35 − 184 − 17 × 3 + 39\n= 324 + 35 − 184 − 51 + 39 = 163\nअतः सही उत्तर विकल्प (A) है।",
   "source": "PYQ · 18 Jan 2023 · SelfStudys (Group Y)",
   "year": 2023,
   "tags": [
@@ -21173,19 +21173,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Third to the left of A"
+    "text": "Third to the left of A (A के बाएँ तीसरा)"
    },
    {
     "id": "B",
-    "text": "Third to the right of E"
+    "text": "Third to the right of E (E के दाएँ तीसरा)"
    },
    {
     "id": "C",
-    "text": "Third to the left of E"
+    "text": "Third to the left of E (E के बाएँ तीसरा)"
    },
    {
     "id": "D",
-    "text": "Third to the right of A"
+    "text": "Third to the right of A (A के दाएँ तीसरा)"
    }
   ],
   "correctAnswer": "D",
@@ -23224,7 +23224,7 @@
   ],
   "correctAnswer": "D",
   "explanation": "1/2 × 1/3 × 504 = 504/6 = 84\n(स्रोत में यह प्रश्न टाइपिंग में गड़बड़ था; कुंजी के अनुसार मान 84 (विकल्प D) है।)",
-  "explanationHi": "1/2 × 1/3 × 504 = 504/6 = 84",
+  "explanationHi": "हल:\n1/2 × 1/3 × 504 = 504/6 = 84\nअतः सही उत्तर विकल्प (D) है।",
   "source": "PYQ · 20 Jan 2023 · SelfStudys (Group Y)",
   "year": 2023,
   "tags": [
@@ -24912,7 +24912,7 @@
   ],
   "correctAnswer": "C",
   "explanation": "sin θ = 4/5 → cos θ = 3/5\ntan θ = sin θ/cos θ = (4/5)/(3/5) = 4/3\n(स्रोत में व्यंजक अनुपलब्ध था; यहाँ विकल्पों व कुंजी (4/3) से मेल खाता मानक रूप दिया गया है।)",
-  "explanationHi": "sin θ = 4/5 → cos θ = 3/5\ntan θ = sin θ/cos θ = 4/3",
+  "explanationHi": "हल:\nsin θ = 4/5 → cos θ = 3/5\ntan θ = sin θ/cos θ = 4/3\nअतः सही उत्तर विकल्प (C) है।",
   "source": "PYQ · 13 Oct 2023 Shift-1 · SelfStudys (Group Y)",
   "year": 2023,
   "tags": [
@@ -25412,19 +25412,19 @@
   "options": [
    {
     "id": "A",
-    "text": "inbox"
+    "text": "inbox (इनबॉक्स)"
    },
    {
     "id": "B",
-    "text": "draft"
+    "text": "draft (ड्राफ्ट)"
    },
    {
     "id": "C",
-    "text": "spam"
+    "text": "spam (स्पैम)"
    },
    {
     "id": "D",
-    "text": "trash"
+    "text": "trash (ट्रैश)"
    }
   ],
   "correctAnswer": "C",
@@ -26132,7 +26132,7 @@
   ],
   "correctAnswer": "B",
   "explanation": "sin 65° = cos 25° → sin²65° = cos²25°\nsin²25° + cos²25° = 1",
-  "explanationHi": "sin 65° = cos 25° → sin²65° = cos²25°\nsin²25° + cos²25° = 1",
+  "explanationHi": "हल:\nsin 65° = cos 25° → sin²65° = cos²25°\nsin²25° + cos²25° = 1\nअतः सही उत्तर विकल्प (B) है।",
   "source": "PYQ · 13 Oct 2023 Shift-2 · SelfStudys (Group Y)",
   "year": 2023,
   "tags": [
@@ -26585,19 +26585,19 @@
   "options": [
    {
     "id": "A",
-    "text": "vitamin A"
+    "text": "vitamin A (विटामिन A)"
    },
    {
     "id": "B",
-    "text": "vitamin C"
+    "text": "vitamin C (विटामिन C)"
    },
    {
     "id": "C",
-    "text": "vitamin B"
+    "text": "vitamin B (विटामिन B)"
    },
    {
     "id": "D",
-    "text": "vitamin D"
+    "text": "vitamin D (विटामिन D)"
    }
   ],
   "correctAnswer": "A",
@@ -26679,15 +26679,15 @@
   "options": [
    {
     "id": "A",
-    "text": "Motherboard"
+    "text": "Motherboard (मदरबोर्ड)"
    },
    {
     "id": "B",
-    "text": "Memory"
+    "text": "Memory (मेमोरी)"
    },
    {
     "id": "C",
-    "text": "Gateway"
+    "text": "Gateway (गेटवे)"
    },
    {
     "id": "D",
@@ -27335,19 +27335,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Paris"
+    "text": "Paris (पेरिस)"
    },
    {
     "id": "B",
-    "text": "Berlin"
+    "text": "Berlin (बर्लिन)"
    },
    {
     "id": "C",
-    "text": "Baghdad"
+    "text": "Baghdad (बगदाद)"
    },
    {
     "id": "D",
-    "text": "Rome"
+    "text": "Rome (रोम)"
    }
   ],
   "correctAnswer": "B",
@@ -27665,7 +27665,7 @@
   ],
   "correctAnswer": "D",
   "explanation": "cos θ = 12/13 (since sin θ = 5/13)\n(cos²θ − sin²θ)/(2 sin θ cos θ) = ((12/13)² − (5/13)²) / (2 × 12/13 × 5/13) = (144 − 25)/169 ÷ 120/169 = 119/120\n(स्रोत में व्यंजक टाइपिंग में टूटा था; यहाँ sin θ = 5/13 तथा अभीष्ट भिन्न स्रोत के शेषांश व कुंजी से पुनर्स्थापित किया गया है।)",
-  "explanationHi": "cos θ = 12/13 (sin θ = 5/13)\n(cos²θ − sin²θ)/(2 sin θ cos θ) = ((12/13)² − (5/13)²)/(2 × 12/13 × 5/13) = (144 − 25)/120 = 119/120",
+  "explanationHi": "हल:\ncos θ = 12/13 (sin θ = 5/13)\n(cos²θ − sin²θ)/(2 sin θ cos θ) = ((12/13)² − (5/13)²)/(2 × 12/13 × 5/13) = (144 − 25)/120 = 119/120\nअतः सही उत्तर विकल्प (D) है।",
   "source": "PYQ · 14 Oct 2023 · SelfStudys (Group Y)",
   "year": 2023,
   "tags": [
@@ -27977,19 +27977,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Uploading"
+    "text": "Uploading (अपलोडिंग)"
    },
    {
     "id": "B",
-    "text": "Downloading"
+    "text": "Downloading (डाउनलोडिंग)"
    },
    {
     "id": "C",
-    "text": "Bookmarking"
+    "text": "Bookmarking (बुकमार्किंग)"
    },
    {
     "id": "D",
-    "text": "Hyperlinking"
+    "text": "Hyperlinking (हाइपरलिंकिंग)"
    }
   ],
   "correctAnswer": "B",
@@ -28212,19 +28212,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Quick access toolbar"
+    "text": "Quick access toolbar (क्विक एक्सेस टूलबार)"
    },
    {
     "id": "B",
-    "text": "Task bar"
+    "text": "Task bar (टास्क बार)"
    },
    {
     "id": "C",
-    "text": "Status bar"
+    "text": "Status bar (स्टेटस बार)"
    },
    {
     "id": "D",
-    "text": "Context Menu"
+    "text": "Context Menu (कॉन्टेक्स्ट मेनू)"
    }
   ],
   "correctAnswer": "A",
@@ -29183,7 +29183,7 @@
   ],
   "correctAnswer": "D",
   "explanation": "0.30N = 0.15 × 120 + 21 = 18 + 21 = 39\nN = 39/0.30 = 130",
-  "explanationHi": "0.30N = 18 + 21 = 39\nN = 39/0.30 = 130",
+  "explanationHi": "हल:\n0.30N = 18 + 21 = 39\nN = 39/0.30 = 130\nअतः सही उत्तर विकल्प (D) है।",
   "source": "PYQ · 22 Mar 2025 · SelfStudys (Group Y)",
   "year": 2025,
   "tags": [
@@ -29589,19 +29589,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Large Scale Integration (LSI)"
+    "text": "Large Scale Integration (LSI) (लार्ज स्केल इंटीग्रेशन (LSI))"
    },
    {
     "id": "B",
-    "text": "Random Access Memory (RAM)"
+    "text": "Random Access Memory (RAM) (रैंडम एक्सेस मेमोरी (RAM))"
    },
    {
     "id": "C",
-    "text": "Very Large Scale Integration (VLSI)"
+    "text": "Very Large Scale Integration (VLSI) (वेरी लार्ज स्केल इंटीग्रेशन (VLSI))"
    },
    {
     "id": "D",
-    "text": "Read Only Memory (ROM)"
+    "text": "Read Only Memory (ROM) (रीड ऑनली मेमोरी (ROM))"
    }
   ],
   "correctAnswer": "D",
@@ -31075,19 +31075,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Keyboard"
+    "text": "Keyboard (कीबोर्ड)"
    },
    {
     "id": "B",
-    "text": "Scanner"
+    "text": "Scanner (स्कैनर)"
    },
    {
     "id": "C",
-    "text": "Monitor"
+    "text": "Monitor (मॉनिटर)"
    },
    {
     "id": "D",
-    "text": "Touchscreen"
+    "text": "Touchscreen (टचस्क्रीन)"
    }
   ],
   "correctAnswer": "D",
@@ -31200,19 +31200,19 @@
   "options": [
    {
     "id": "A",
-    "text": "Figure A"
+    "text": "Figure A (आकृति A)"
    },
    {
     "id": "B",
-    "text": "Figure B"
+    "text": "Figure B (आकृति B)"
    },
    {
     "id": "C",
-    "text": "Figure C"
+    "text": "Figure C (आकृति C)"
    },
    {
     "id": "D",
-    "text": "Figure D"
+    "text": "Figure D (आकृति D)"
    }
   ],
   "correctAnswer": "D",
@@ -31530,7 +31530,7 @@
   ],
   "correctAnswer": "C",
   "explanation": "20 ÷ 5 × 4 + Z = 20\n4 × 4 + Z = 20 → 16 + Z = 20 → Z = 4",
-  "explanationHi": "20 ÷ 5 × 4 + Z = 20\n16 + Z = 20 → Z = 4",
+  "explanationHi": "हल:\n20 ÷ 5 × 4 + Z = 20\n16 + Z = 20 → Z = 4\nअतः सही उत्तर विकल्प (C) है।",
   "source": "PYQ · 30 Mar 2026 (Other than Science) · Utkarsh (Group XY)",
   "year": 2026,
   "tags": [
@@ -31812,7 +31812,7 @@
   ],
   "correctAnswer": "A",
   "explanation": "15 : 60 : : 60 : x → 15x = 60 × 60 → x = 3600/15 = 240",
-  "explanationHi": "15 : 60 : : 60 : x → 15x = 3600 → x = 240",
+  "explanationHi": "हल:\n15 : 60 : : 60 : x → 15x = 3600 → x = 240\nअतः सही उत्तर विकल्प (A) है।",
   "source": "PYQ · 30 Mar 2026 (Other than Science) · Utkarsh (Group XY)",
   "year": 2026,
   "tags": [
@@ -31906,7 +31906,7 @@
   ],
   "correctAnswer": "D",
   "explanation": "12 sinA + cosA = √13 sinA → cosA = (√13 − 12) sinA\ntanA = 1/(√13 − 12) = (√13 + 12)/(13 − 144) = −(12 + √13)/131\n(स्रोत में विकल्पों की टाइपिंग टूटी थी; यहाँ मान के अनुसार सही रूप दिया गया है — कुंजी में भी उत्तर D ही है।)",
-  "explanationHi": "12 sinA + cosA = √13 sinA → cosA = (√13 − 12) sinA\ntanA = 1/(√13 − 12) = −(12 + √13)/131",
+  "explanationHi": "हल:\n12 sinA + cosA = √13 sinA → cosA = (√13 − 12) sinA\ntanA = 1/(√13 − 12) = −(12 + √13)/131\nअतः सही उत्तर विकल्प (D) है।",
   "source": "PYQ · 30 Mar 2026 (Other than Science) · Utkarsh (Group XY)",
   "year": 2026,
   "tags": [
@@ -32141,7 +32141,7 @@
   ],
   "correctAnswer": "C",
   "explanation": "x = 12 × 2 − 6 ÷ 2 + 10 = 24 − 3 + 10 = 31\ny = 3 + 5 × 6 − 12 ÷ 4 = 3 + 30 − 3 = 30\nx + y = 61",
-  "explanationHi": "x = 12 × 2 − 6 ÷ 2 + 10 = 31\ny = 3 + 5 × 6 − 12 ÷ 4 = 30\nx + y = 61",
+  "explanationHi": "हल:\nx = 12 × 2 − 6 ÷ 2 + 10 = 31\ny = 3 + 5 × 6 − 12 ÷ 4 = 30\nx + y = 61\nअतः सही उत्तर विकल्प (C) है।",
   "source": "PYQ · 31 Mar 2026 Shift-1 · Utkarsh (Group Y)",
   "year": 2026,
   "tags": [
@@ -32626,7 +32626,7 @@
   ],
   "correctAnswer": "D",
   "explanation": "12 : 78 : : 78 : x → 12x = 78 × 78 = 6084 → x = 507",
-  "explanationHi": "12 : 78 : : 78 : x → 12x = 6084 → x = 507",
+  "explanationHi": "हल:\n12 : 78 : : 78 : x → 12x = 6084 → x = 507\nअतः सही उत्तर विकल्प (D) है।",
   "source": "PYQ · 31 Mar 2026 Shift-1 · Utkarsh (Group Y)",
   "year": 2026,
   "tags": [
@@ -33440,7 +33440,7 @@
   ],
   "correctAnswer": "B",
   "explanation": "86 = 2 × 43; 12 = 2² × 3; 42 = 2 × 3 × 7; 36 = 2² × 3²\nLCM = 2² × 3² × 7 × 43 = 4 × 9 × 7 × 43 = 10836",
-  "explanationHi": "86 = 2 × 43; 12 = 2² × 3; 42 = 2 × 3 × 7; 36 = 2² × 3²\nLCM = 2² × 3² × 7 × 43 = 10836",
+  "explanationHi": "हल:\n86 = 2 × 43; 12 = 2² × 3; 42 = 2 × 3 × 7; 36 = 2² × 3²\nLCM = 2² × 3² × 7 × 43 = 10836\nअतः सही उत्तर विकल्प (B) है।",
   "source": "PYQ · 31 Mar 2026 Shift-2 · Utkarsh (Group Y)",
   "year": 2026,
   "tags": [
@@ -34159,19 +34159,19 @@
   "options": [
    {
     "id": "A",
-    "text": "France, United Kingdom, and Germany"
+    "text": "France, United Kingdom, and Germany (फ्रांस, यूनाइटेड किंगडम और जर्मनी)"
    },
    {
     "id": "B",
-    "text": "United States, Japan, and Australia"
+    "text": "United States, Japan, and Australia (संयुक्त राज्य अमेरिका, जापान और ऑस्ट्रेलिया)"
    },
    {
     "id": "C",
-    "text": "Russia, China, and Mongolia"
+    "text": "Russia, China, and Mongolia (रूस, चीन और मंगोलिया)"
    },
    {
     "id": "D",
-    "text": "Sri Lanka, Maldives, and Mauritius"
+    "text": "Sri Lanka, Maldives, and Mauritius (श्रीलंका, मालदीव और मॉरीशस)"
    }
   ],
   "correctAnswer": "B",
@@ -34628,19 +34628,19 @@
   "options": [
    {
     "id": "A",
-    "text": "÷ and −"
+    "text": "÷ and − (÷ और −)"
    },
    {
     "id": "B",
-    "text": "+ and −"
+    "text": "+ and − (+ और −)"
    },
    {
     "id": "C",
-    "text": "× and +"
+    "text": "× and + (× और +)"
    },
    {
     "id": "D",
-    "text": "× and ÷"
+    "text": "× and ÷ (× और ÷)"
    }
   ],
   "correctAnswer": "A",
