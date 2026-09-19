@@ -12,7 +12,7 @@ Views.instructions = async function (testId) {
   // retake question-set policy
   const prevAttempts = (await DB.byIndex('attempts', 'testId', test.id));
   const attemptNo = prevAttempts.length + 1;
-  const retakeMode = cfg.retakeMode || 'fresh';
+  const retakeMode = cfg.retakeMode || 'same';
   let freshSets = null;
   if (prevAttempts.length && retakeMode === 'fresh') {
     // pre-generate a fresh question set for this attempt (same blueprint)
@@ -48,6 +48,7 @@ Views.instructions = async function (testId) {
       ? `Sections are <b>locked in order</b>: ${secs.map(s => AVUtil.esc(s.name)).join(' → ')}. Submit the current section (button in the top bar) to unlock the next. A submitted section cannot be reopened.`
       : `You may move freely between sections using the subject tabs at the top.`,
     `Navigate with the palette, Previous / Next buttons or the <b>arrow keys</b>; keys <b>1–4</b> select options.`,
+    `You may <b>PAUSE</b> the exam anytime (⏸ button, top bar) — the timer stops completely and resumes exactly where you left it.`,
     `Submit anytime via the <b>SUBMIT</b> button (a confirmation is always shown first). ${test.sectionLock ? 'The examination ends when the last section is submitted.' : 'Do not submit before completing — a confirmation lets you return to the paper.'}`
   ];
 

@@ -391,7 +391,7 @@ Views.builder = async function () {
         <div class="b-opts">
           <label><input type="checkbox" id="b-shuffle-q"> Shuffle questions</label>
           <label><input type="checkbox" id="b-instant"> Instant explanations (practice only)</label>
-          <label><input type="checkbox" id="b-pause"> Allow pause (practice only)</label>
+          <label class="muted small" title="Pausing is now available in every test — exam or practice">⏸ Pause available in every test</label>
         </div>
       </div>
       <div class="b-actions">
@@ -438,7 +438,7 @@ Views.builder = async function () {
       strategy: AVUtil.$('#b-strategy').value,
       shuffleQuestions: AVUtil.$('#b-shuffle-q').checked,
       instantExplanation: AVUtil.$('#b-instant').checked,
-      allowPause: AVUtil.$('#b-pause').checked
+      allowPause: true // pause is available in every test now
     });
     if (!r.ok) {
       btn.disabled = false; btn.textContent = 'GENERATE TEST →';

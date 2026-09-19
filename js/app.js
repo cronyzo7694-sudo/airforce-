@@ -14,7 +14,19 @@ const App = {
 
   async config() {
     const saved = await Store.getSetting('config', null);
-    this.configCache = saved || EXAM_CONFIG;
+    if (saved) {
+      // one-time migration: the old default was 'fresh' (new questions on reattempt)
+      // — reattempt should repeat the SAME paper. Users who explicitly pick
+      // 'fresh' in settings after this migration keep their choice.
+      if (saved.retakeMode === 'fresh' && !saved._retakeMigrated) {
+        saved.retakeMode = 'same';
+        saved._retakeMigrated = true;
+        try { await Store.setSetting('config', saved); } catch (e) { /* non-fatal */ }
+      }
+      this.configCache = saved;
+    } else {
+      this.configCache = EXAM_CONFIG;
+    }
     return this.configCache;
   },
 

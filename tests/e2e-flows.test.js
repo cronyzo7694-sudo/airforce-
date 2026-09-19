@@ -158,8 +158,8 @@ async function main() {
   await sleep(500);
   T('full exam completed after section expiry flow', (await G('DB.get("attempts", ExamScreen.attempt.id)')).result.maxScore === 100);
 
-  /* ============ 6. fresh retake = different questions ============ */
-  console.log('\n━━━ FLOWS · retake with fresh questions');
+  /* ============ 6. retake = SAME paper (user requirement: reattempt repeats the paper) ============ */
+  console.log('\n━━━ FLOWS · retake repeats the same paper');
   const t1Attempt = await G('(async () => (await DB.byIndex("attempts", "testId", "' + f.test.id + '")).filter(x => x.completed)[0])()');
   const t1qids = t1Attempt.sections.physics.questionIds;
   window.location.hash = '#/test/' + f.test.id + '/instructions';
@@ -171,7 +171,8 @@ async function main() {
   await waitFor(() => doc.querySelector('.exam-screen'), 20000); await sleep(400);
   const t2qids = await G('ExamScreen.attempt.sections.physics.questionIds');
   const overlap = t1qids.filter(q => t2qids.includes(q)).length;
-  T('fresh retake swaps in unseen questions (≤30% overlap)', overlap <= 7, overlap + ' of 25 overlap');
+  const sameOrder = JSON.stringify(t1qids) === JSON.stringify(t2qids);
+  T('retake repeats the SAME paper (100% overlap, same order)', overlap === 25 && sameOrder, overlap + ' of 25 overlap, order=' + sameOrder);
   // abandon this attempt cleanly
   await G('Engine.submitExam(ExamScreen.attempt, TREF2, "user", Date.now()); ExamScreen.finalize("user", true)');
 

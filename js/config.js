@@ -37,7 +37,7 @@ const EXAM_CONFIG = {
 
   /* ---------------- GENERATION ---------------- */
   selectionStrategy: 'smart', // smart (no repeat after 2× correct) | balanced-unseen | random | balanced | unseen-first | weak-topic | wrong-weighted
-  retakeMode: 'fresh',             // 'same' | 'fresh' (new questions, same blueprint) | 'random'
+  retakeMode: 'same',              // 'same' (reattempt = exactly the same paper) | 'fresh' (new questions, same blueprint) | 'random'
 
   /* ---------------- WEAK/STRONG TOPIC THRESHOLDS ---------------- */
   thresholds: { strong: 80, average: 60 },  // >=80 strong, 60-79 average, <60 needs practice

@@ -223,9 +223,10 @@ const Bank = (() => {
 /* --------- update cumulative stats after every submit --------- */
 const StatsUpdator = {
   async record(attempt, questionMap) {
-    const qstats = await Store.getMeta('qstats', { seen: {}, wrong: {}, correct: {}, topicAcc: {} });
+    const qstats = await Store.getMeta('qstats', { seen: {}, wrong: {}, correct: {}, skipped: {}, topicAcc: {} });
     const tstats = await Store.getMeta('topicStats', {});
     const seen = qstats.seen || {}, wrong = qstats.wrong || {}, correct = qstats.correct || {};
+    const skipped = qstats.skipped || {}; // seen but left unattempted → must repeat
     const tAcc = {};
     const result = attempt.result;
     if (result) {
@@ -234,6 +235,7 @@ const StatsUpdator = {
         seen[qid] = (seen[qid] || 0) + 1;
         if (pq.result === 'wrong') wrong[qid] = (wrong[qid] || 0) + 1;
         if (pq.result === 'correct') correct[qid] = (correct[qid] || 0) + 1;
+        if (pq.result === 'skip') skipped[qid] = (skipped[qid] || 0) + 1;
         const q = questionMap[qid];
         if (q) {
           const key = q.subject + '␟' + q.topic;
@@ -250,7 +252,7 @@ const StatsUpdator = {
       const c = prev.c + tAcc[k].c, w = prev.w + tAcc[k].w;
       stored[k] = Math.round((c / Math.max(1, c + w)) * 1000) / 10;
     }
-    qstats.seen = seen; qstats.wrong = wrong; qstats.correct = correct; qstats.topicAcc = stored;
+    qstats.seen = seen; qstats.wrong = wrong; qstats.correct = correct; qstats.skipped = skipped; qstats.topicAcc = stored;
     await Store.setMeta('qstats', qstats);
 
     // cumulative topic totals for progress tracking

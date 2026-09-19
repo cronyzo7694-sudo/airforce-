@@ -333,6 +333,22 @@ T('timer never negative + warning thresholds handled by caller', () => {
   const rem = Engine.remainingMs(a, t, NOW + 999 * 60 * SEC);
   eq(rem, 0, 'clamped at zero');
 });
+T('pause freezes the timer — global AND section mode', () => {
+  const t = mkTest(); // section-timer mode
+  const a = Engine.createAttempt(t, 1, NOW);
+  const DUR = t.sections[0].duration; // physics section length in seconds
+  Engine.pause(a, NOW + (DUR - 10) * SEC);            // pause 10s before section deadline
+  const r1 = Engine.remainingMs(a, t, NOW + (DUR - 5) * SEC);
+  const r2 = Engine.remainingMs(a, t, NOW + (DUR + 500) * SEC);
+  eq(r1, 10000, 'remaining frozen at 10s while paused');
+  eq(r1, r2, 'same value 8+ minutes later — time does not count while paused');
+  const ff = Engine.fastForward(a, t, NOW + (DUR + 500) * SEC);
+  assert(!ff.completed && !a.completed, 'section NOT auto-expired while paused (guard)');
+  Engine.resume(a, NOW + (DUR + 500) * SEC);
+  assert(a.sections.physics.endsAt > NOW + (DUR + 490) * SEC, 'section end shifted by the full paused duration');
+  const r3 = Engine.remainingMs(a, t, NOW + (DUR + 501) * SEC);
+  eq(r3, 9000, '~10s still left after resume');
+});
 T('submitting final section completes the exam', () => {
   const t = mkTest();
   const a = Engine.createAttempt(t, 1, NOW);
@@ -436,9 +452,31 @@ T('smart composition is mostly fresh with some revision', () => {
   const nWrong = picked.filter(q => qstats.wrong[q.id]).length;
   const nOnce = picked.filter(q => qstats.correct[q.id] === 1).length;
   const nFresh = picked.filter(q => !qstats.seen[q.id]).length;
-  eq(nWrong, 5, '20% revision of wrong questions');
+  eq(nWrong, 9, 'revision grows to the 35% cap when the wrong/skipped backlog is big (round(25×0.35))');
   eq(nOnce, 3, '~10% re-confirm of once-correct (round(25×0.1))');
-  eq(nFresh, 17, 'rest is fresh');
+  eq(nFresh, 13, 'rest is fresh — paper still majority new questions');
+});
+
+T('smart guarantees SKIPPED questions come back in the next paper', () => {
+  const pool = mkPool(100, 'sk');
+  const qstats = { seen: {}, wrong: {}, correct: {}, skipped: {} };
+  pool.slice(0, 5).forEach(q => { qstats.seen[q.id] = 1; qstats.skipped[q.id] = 1; });   // seen, left unattempted
+  const picked = Generator.pick(pool, 25, 'smart', qstats);
+  eq(picked.length, 25, '25 picked');
+  const nSkipped = picked.filter(q => qstats.skipped[q.id]).length;
+  eq(nSkipped, 5, 'every skipped question repeats');
+});
+
+T('smart prioritises skipped over wrong in revision slots', () => {
+  const pool = mkPool(40, 'sw');
+  const qstats = { seen: {}, wrong: {}, correct: {}, skipped: {} };
+  pool.slice(0, 4).forEach(q => { qstats.seen[q.id] = 1; qstats.skipped[q.id] = 1; });  // 4 skipped
+  pool.slice(4, 8).forEach(q => { qstats.seen[q.id] = 1; qstats.wrong[q.id] = 1; });   // 4 wrong
+  const picked = Generator.pick(pool, 8, 'smart', qstats); // want2 = min(3, max(2, 8)) = 3
+  const nSkipped = picked.filter(q => qstats.skipped[q.id]).length;
+  const nWrong = picked.filter(q => qstats.wrong[q.id]).length;
+  eq(nSkipped, 3, 'all 3 revision slots go to skipped questions (weight 2)');
+  eq(nWrong, 0, 'wrong questions wait for the next paper');
 });
 
 /* ---------- fixed test-series planner ---------- */

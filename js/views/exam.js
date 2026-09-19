@@ -182,7 +182,7 @@ const ExamScreen = {
             <span class="timer-lbl">${t('timeLeft')}</span>
             <span class="timer-val" id="x-timer-val">${AVUtil.fmtTime(remaining)}</span>
           </div>
-          ${test.allowPause ? `<button class="xbtn xbtn-ghost icon-only" id="x-pause" title="Pause (practice only)" aria-label="Pause">⏸</button>` : ''}
+          <button class="xbtn xbtn-ghost icon-only" id="x-pause" title="Pause — timer ruk jaayega" aria-label="Pause">⏸</button>
           <button class="xbtn xbtn-ghost" id="x-instructions" title="${t('instructions')}"><span aria-hidden="true">📄</span><span class="ilbl">${t('instructions')}</span></button>
           <button class="xbtn xbtn-submit" id="x-submit" title="Submit anytime — koi restriction nahi. Confirmation milegi.">${test.timerMode === 'section' ? t('submitSection').toUpperCase() : t('submitTest').toUpperCase()}</button>
         </div>
@@ -541,7 +541,7 @@ const ExamScreen = {
     }
   },
 
-  /* ---------- pause (practice only) ---------- */
+  /* ---------- pause (all modes — timer freezes, no data lost) ---------- */
   async togglePause() {
     const a = this.attempt;
     if (a.pauseStarted) {
@@ -550,7 +550,7 @@ const ExamScreen = {
     } else {
       Engine.pause(a, Date.now());
       const veil = AVUtil.el('div', { id: 'pause-veil', class: 'pause-veil' });
-      veil.innerHTML = `<div class="pause-box"><h2>Exam Paused</h2><p>The timer is stopped. This is available in practice mode only.</p><button class="xbtn xbtn-save" id="pause-resume">RESUME EXAM</button></div>`;
+      veil.innerHTML = `<div class="pause-box"><h2>Exam Paused</h2><p>The timer is stopped${a.timerMode === 'section' ? ' — section time bhi freeze hai' : ''}. Jab ready ho, resume kar do.</p><button class="xbtn xbtn-save" id="pause-resume">RESUME EXAM</button></div>`;
       document.body.appendChild(veil);
       veil.querySelector('#pause-resume').addEventListener('click', () => this.togglePause());
     }

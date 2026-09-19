@@ -313,6 +313,7 @@ const Engine = (() => {
     if (attempt.timerMode === 'section') {
       const sec = attempt.sections[attempt.currentSectionId];
       if (!sec || sec.state !== S.ACTIVE) return 0;
+      if (attempt.pauseStarted) return Math.max(0, (sec.endsAt || 0) - attempt.pauseStarted); // frozen while paused
       return Math.max(0, (sec.endsAt || 0) - now);
     }
     let end = attempt.endsAt || 0;
@@ -337,6 +338,7 @@ const Engine = (() => {
 
     let guard = 0;
     while (!attempt.completed && guard++ < 12) {
+      if (attempt.pauseStarted) break; // exam is paused — time does not count
       const sec = attempt.sections[attempt.currentSectionId];
       if (!sec || sec.state !== S.ACTIVE) break;
       if (sec.endsAt && now >= sec.endsAt) {

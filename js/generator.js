@@ -30,9 +30,12 @@ const Generator = (() => {
     const seen = qstats.seen || {};      // qid -> times seen
     const wrong = qstats.wrong || {};    // qid -> wrong count
     const correct = qstats.correct || {}; // qid -> correct count
+    const skipped = qstats.skipped || {}; // qid -> left-unattempted count (must repeat)
     const seenCount = q => seen[q.id] || 0;
     const wrongCount = q => wrong[q.id] || 0;
     const okCount = q => correct[q.id] || 0;
+    const skipCount = q => skipped[q.id] || 0;
+    const reviseWeight = q => wrongCount(q) + 2 * skipCount(q); // skipped first (never faced), then wrong → repeat
 
     // hard exclusion (used when building the fixed test series)
     let p = pool;
@@ -60,7 +63,8 @@ const Generator = (() => {
       }
       case 'unseen-first': {
         const unseen = AVUtil.shuffle(p.filter(q => seenCount(q) === 0));
-        const seenQ = AVUtil.shuffle(p.filter(q => seenCount(q) > 0));
+        const seenQ = AVUtil.shuffle(p.filter(q => seenCount(q) > 0))
+          .sort((a, b) => reviseWeight(b) - reviseWeight(a)); // skipped/wrong repeat first
         ranked = unseen.concat(seenQ);
         break;
       }
@@ -84,20 +88,28 @@ const Generator = (() => {
       }
       case 'smart': {
         /* Real-paper feel:
-           ~70% brand-new questions, ~20% revision of previously-wrong ones,
+           ~70% brand-new questions, ~20% revision of previously-wrong/skipped ones,
            ~10% one-more-confirmation of once-correct ones.
+           Skipped questions count as revision — they MUST come back.
            A question answered correctly MASTERED_AFTER times is RETIRED — it only
            comes back if the pool literally cannot fill the paper without it. */
         const t1 = AVUtil.shuffle(p.filter(q => seenCount(q) === 0));          // fresh
-        const t2 = AVUtil.shuffle(p.filter(q => seenCount(q) > 0 && okCount(q) === 0)); // seen, never correct → revise
+        const t2 = AVUtil.shuffle(p.filter(q => seenCount(q) > 0 && okCount(q) === 0)) // seen, never correct → revise
+          .sort((a, b) => reviseWeight(b) - reviseWeight(a));                  // wrong+skipped first
         const t3 = AVUtil.shuffle(p.filter(q => okCount(q) === 1));            // correct once → re-confirm
         const t4 = p.filter(q => okCount(q) >= MASTERED_AFTER)                 // mastered → last resort
           .sort((a, b) => seenCount(a) - seenCount(b));
-        const want2 = Math.round(n * 0.2), want3 = Math.round(n * 0.1);
+        // revision quota: 20% natural mix, but if the pending wrong/skipped backlog
+        // is bigger, grow up to 35% so skipped questions are GUARANTEED to come back
+        const pendingRevise = t2.length;
+        const want2 = Math.min(Math.round(n * 0.35), Math.max(Math.round(n * 0.2), pendingRevise));
+        const want3 = Math.round(n * 0.1);
         const take = (arr, k) => arr.splice(0, Math.max(0, k));
         let picked = take(t2, want2).concat(take(t3, want3));
-        picked = take(t1, n - picked.length).concat(picked);
-        for (const arr of [t1, t2, t3, t4]) { if (picked.length >= n) break; picked = picked.concat(take(arr, n - picked.length)); }
+        // revision candidates go FIRST so content-dupes in the fresh pool can never
+        // steal their slot in the dedupe pass — skipped/wrong questions are guaranteed
+        picked = picked.concat(take(t1, n - picked.length));
+        for (const arr of [t2, t3, t1, t4]) { if (picked.length >= n) break; picked = picked.concat(take(arr, n - picked.length)); }
         ranked = picked.concat(t1, t2, t3, t4);
         break;
       }
@@ -108,8 +120,8 @@ const Generator = (() => {
         break;
       }
       case 'wrong-weighted': {
-        // previously incorrect questions first
-        ranked = AVUtil.shuffle(p.slice()).sort((a, b) => wrongCount(b) - wrongCount(a));
+        // previously incorrect OR skipped questions first
+        ranked = AVUtil.shuffle(p.slice()).sort((a, b) => reviseWeight(b) - reviseWeight(a));
         break;
       }
       default:
@@ -217,7 +229,7 @@ const Generator = (() => {
          strategy, marking } */
     const cfg = await Store.getSetting('config', null);
     const C = cfg || EXAM_CONFIG;
-    const qstats = await Store.getMeta('qstats', { seen: {}, wrong: {}, topicAcc: {} });
+    const qstats = await Store.getMeta('qstats', { seen: {}, wrong: {}, correct: {}, skipped: {}, topicAcc: {} });
     const strategy = opts.strategy || C.selectionStrategy || 'balanced-unseen';
 
     const availability = [];
