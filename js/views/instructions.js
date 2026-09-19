@@ -162,6 +162,9 @@ Views.instructions = async function (testId) {
     }
 
     const now = Date.now();
+    // a blocked (reported) question must never enter a new attempt — swap in
+    // fresh replacements, even for ready-made series tests built before the block
+    questionSets = await Generator.sanitizeSections(test, questionSets);
     const attempt = Engine.createAttempt(test, attemptNo, now, questionSets);
     await DB.put('attempts', attempt);
     App.pendingResume = attempt;

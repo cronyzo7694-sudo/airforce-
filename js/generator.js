@@ -11,14 +11,91 @@ const Generator = (() => {
     /* spec: { subjectId, chapters?, topics?, difficulty?, years? } — pools are
        scoped to the selected exam so future exams (Navy/Army/…) never mix banks */
     const exam = (typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce';
+    const blocked = await blockedInfo();
     const rows = await DB.byIndex('questions', 'subject', spec.subjectId);
     return rows.filter(q =>
       q.correctAnswer && !q.figureBased &&           // must be evaluable
       (q.exam || 'airforce') === exam &&            // exam-scoped bank
+      !blocked.ids.has(q.id) &&                     // reported by candidate →
+      !(q.dupeHash && blocked.hashes.has(q.dupeHash)) && //   never again, even after re-import
       (!spec.chapters || spec.chapters.includes(q.chapter)) &&
       (!spec.topics || spec.topics.includes(q.topic)) &&
       (!spec.difficulty || spec.difficulty === 'all' || q.difficulty === spec.difficulty)
     );
+  }
+
+  /* ---------- blocked-question registry ----------
+     The candidate can report (🚩) a question mid-test: it is blocked FOREVER
+     on this device, immediately swapped for a fresh one, and excluded from
+     every future paper. Blocks are stored by dupeHash (content identity), so
+     they survive bank re-imports and id regeneration. */
+  async function blockedInfo() {
+    const list = (await Store.getMeta('blockedQ', [])) || [];
+    const ids = new Set(), hashes = new Set();
+    list.forEach(b => { if (b.id) ids.add(b.id); if (b.h) hashes.add(b.h); });
+    return { list, ids, hashes };
+  }
+
+  async function blockQuestion(q) {
+    const list = (await Store.getMeta('blockedQ', [])) || [];
+    const h = q.dupeHash || null;
+    if (list.some(b => (h && b.h === h) || b.id === q.id)) return false;
+    list.push({ h, id: q.id, subject: q.subject || null, ts: Date.now() });
+    await Store.setMeta('blockedQ', list);
+    return true;
+  }
+
+  function usableQ(q, exam) {
+    return !!(q && q.correctAnswer && !q.figureBased && (q.exam || 'airforce') === exam);
+  }
+
+  /* pick a same-subject replacement the candidate hasn't been shown yet
+     (prefers the same chapter so the paper's flavour stays intact) */
+  async function findReplacement(o) {
+    // o: { subjectId, chapter?, excludeIds: Set, excludeHashes: Set }
+    const exam = (typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce';
+    const info = await blockedInfo();
+    const rows = await DB.byIndex('questions', 'subject', o.subjectId);
+    const cand = rows.filter(q =>
+      usableQ(q, exam) &&
+      !info.ids.has(q.id) && !(q.dupeHash && info.hashes.has(q.dupeHash)) &&
+      !(o.excludeIds && o.excludeIds.has(q.id)) &&
+      !(o.excludeHashes && q.dupeHash && o.excludeHashes.has(q.dupeHash))
+    );
+    if (!cand.length) return null;
+    const sameChapter = o.chapter ? cand.filter(q => q.chapter === o.chapter) : [];
+    const pool = sameChapter.length ? sameChapter : cand;
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  /* Replace any blocked question in the (optional fresh) sets with a
+     same-subject replacement — a blocked question can NEVER enter a new
+     attempt, even from ready-made series tests built before the block. */
+  async function sanitizeSections(test, questionSets) {
+    const info = await blockedInfo();
+    if (!info.list.length) return questionSets;
+    const seedSets = questionSets || {};
+    const baseIds = new Set();
+    test.sections.forEach(sec => {
+      ((seedSets[sec.subjectId] && seedSets[sec.subjectId].slice()) || sec.questionIds).forEach(qid => baseIds.add(qid));
+    });
+    const rows = await DB.getMany('questions', [...baseIds]);
+    const inUseIds = new Set(baseIds), inUseHashes = new Set(), qById = {};
+    rows.forEach(q => { if (q) { qById[q.id] = q; if (q.dupeHash) inUseHashes.add(q.dupeHash); } });
+    const out = {};
+    for (const sec of test.sections) {
+      const base = (seedSets[sec.subjectId] && seedSets[sec.subjectId].slice()) || sec.questionIds;
+      out[sec.subjectId] = [];
+      for (const qid of base) {
+        const q = qById[qid];
+        const blocked = info.ids.has(qid) || (q && q.dupeHash && info.hashes.has(q.dupeHash));
+        if (!blocked) { out[sec.subjectId].push(qid); continue; }
+        const rep = await findReplacement({ subjectId: sec.subjectId, chapter: q && q.chapter, excludeIds: inUseIds, excludeHashes: inUseHashes });
+        if (rep) { out[sec.subjectId].push(rep.id); inUseIds.add(rep.id); if (rep.dupeHash) inUseHashes.add(rep.dupeHash); }
+        else out[sec.subjectId].push(qid); // subject pool exhausted — keep rather than shrink the paper
+      }
+    }
+    return out;
   }
 
   /* ---------- selection strategies ---------- */
@@ -346,7 +423,8 @@ const Generator = (() => {
     } catch (e) { return 0; }
   }
 
-  return { generate, fullMock, subjectTest, buildSeries, planSeries, poolFor, pick, autoBuild, MASTERED_AFTER };
+  return { generate, fullMock, subjectTest, buildSeries, planSeries, poolFor, pick, autoBuild, MASTERED_AFTER,
+           blockedInfo, blockQuestion, findReplacement, sanitizeSections };
 })();
 
 if (typeof module !== 'undefined' && module.exports) module.exports = Generator;

@@ -139,6 +139,7 @@ const ExamScreen = {
           <span class="q-marks" title="${AVUtil.esc(secName)} · marking scheme">+${test.marking.correct} · ${test.marking.wrong} · 0</span>
         </div>
         <div class="q-viewin">
+          <button class="q-report" id="x-report" title="🚩 Report / Block — ye question hamesha ke liye hat jayega aur turant naya aa jayega" aria-label="Report and block this question">🚩<span class="q-report-lbl">Report</span></button>
           <label class="small muted" for="q-lang">${t('viewIn')}:</label>
           <select id="q-lang" aria-label="View question in">
             <option value="en" ${this.qLang !== 'hi' ? 'selected' : ''}>English</option>
@@ -309,6 +310,9 @@ const ExamScreen = {
       this.render();
     });
 
+    // report / block this question (swapped for a fresh one instantly)
+    AVUtil.$('#x-report')?.addEventListener('click', () => this.blockCurrent());
+
     // bottom buttons
     AVUtil.$('#x-save').addEventListener('click', () => this.saveNext());
     AVUtil.$('#x-mark').addEventListener('click', () => this.markNext());
@@ -417,6 +421,59 @@ const ExamScreen = {
     if (a.view === 'section-end') { a.view = 'question'; await this.persist(); return this.render(); }
     const res = Engine.previous(a, Date.now());
     if (res.ok) { await this.persist(); this.render(); }
+  },
+
+  /* ---------- report / block current question ---------- */
+  async blockCurrent() {
+    const a = this.attempt, test = this.test;
+    if (!a || a.completed || a.view !== 'question' || a.pauseStarted) return;
+    const sec = Engine.activeSection(a);
+    const qid = sec.questionIds[a.currentQIdx];
+    const q = this.qmap[qid];
+    if (!q) return;
+    const snippet = AVUtil.esc((q.questionText || '').replace(/\s+/g, ' ').slice(0, 120));
+    const ok = await AVUtil.confirmModal({
+      serious: true,
+      title: '🚩 Block this question?',
+      html: `<p class="q-report-snip">“${snippet}${(q.questionText || '').length > 120 ? '…' : ''}”</p>
+        <p class="se-warn">Ye question <b>hamesha ke liye block</b> ho jayega — aane wale kisi test me nahi aayega. Iski jagah <b>turant naya question</b> aa jayega.</p>`,
+      yesLabel: '🚩 BLOCK KAR DO', noLabel: 'Cancel', yesClass: 'btn-danger'
+    });
+    if (!ok) return;
+
+    await Generator.blockQuestion(q);
+    const info = await Generator.blockedInfo();
+    const inUseIds = new Set(Engine.allQuestionIds(a));
+    const inUseHashes = new Set();
+    Object.values(this.qmap).forEach(x => { if (x && x.dupeHash) inUseHashes.add(x.dupeHash); });
+
+    let swapped = 0, starved = 0;
+    for (const sid of a.sectionOrder) {
+      const s = a.sections[sid];
+      if (s.state !== 'ACTIVE') continue;               // submitted sections are history
+      for (let i = 0; i < s.questionIds.length; i++) {
+        const oid = s.questionIds[i];
+        const oq = this.qmap[oid];
+        if (!info.ids.has(oid) && !(oq && oq.dupeHash && info.hashes.has(oq.dupeHash))) continue;
+        const rep = await Generator.findReplacement({ subjectId: sid, chapter: oq && oq.chapter, excludeIds: inUseIds, excludeHashes: inUseHashes });
+        if (!rep) { starved++; continue; }              // bank exhausted — old stays for this paper only
+        delete a.responses[oid];                        // fresh slate for the new question
+        try { await DB.delete('notes', oid); } catch (e) { /* notes store may be empty */ }
+        s.questionIds[i] = rep.id;
+        a.responses[rep.id] = { sel: null, state: 'NOT_VISITED', timeSpent: 0, visits: 0 };
+        inUseIds.add(rep.id);
+        if (rep.dupeHash) inUseHashes.add(rep.dupeHash);
+        this.qmap[rep.id] = rep;
+        swapped++;
+      }
+    }
+    // the question on screen right now → mark as seen
+    Engine.touch(a, sec.questionIds[a.currentQIdx], Date.now());
+    Engine.assertValidPosition(a);
+    await this.persist();
+    this.render();
+    if (swapped) AVUtil.toast(`Blocked ✓ — ${swapped === 1 ? 'naya question' : swapped + ' naye questions'} aa gaya${starved ? ` (${starved} purana is test me reh gaya — subject ka pool khatam)` : ''}.`, 'success');
+    else AVUtil.toast('Blocked for future tests — par is subject ke aur questions bank me nahi bache, isliye ye is test me raha.', 'warn');
   },
 
   freePrev() {
