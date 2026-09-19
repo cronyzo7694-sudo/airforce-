@@ -63,6 +63,7 @@ Views.questionBank = async function (state) {
         <p class="muted">${['physics','mathematics','english','raga'].map(s => `${cfg.subjects.find(x => x.id === s)?.name || s}: <b>${(bank[s] || {}).total || 0}</b> (${(bank[s] || {}).usable || 0} usable)`).join(' · ')}</p>
       </div>
       <div class="head-actions">
+        <a class="btn btn-plain" href="#/import" title="Import question files">⬆ Import</a>
         <button class="btn btn-plain" id="qb-export-json">Export JSON</button>
         <button class="btn btn-plain" id="qb-export-csv">Export CSV</button>
         <button class="btn btn-primary" id="qb-add">+ Add Question</button>

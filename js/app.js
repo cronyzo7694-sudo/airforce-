@@ -70,7 +70,7 @@ const App = {
     this.pendingResume = unfinished;
 
     // site chrome: community visitor stats + floating chat (once per page load)
-    try { if (window.SiteChrome) SiteChrome.init(); } catch (e) { /* never block the app */ }
+    try { if (typeof SiteChrome !== 'undefined') SiteChrome.init(); } catch (e) { /* never block the app */ }
 
     // exam selector (topnav) — delegated so it survives every re-render
     document.addEventListener('change', e => {
@@ -124,7 +124,12 @@ const App = {
     return `<header class="topnav">
       <a class="brand" href="#/dashboard" aria-label="Home">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M21 16v-2l-8-5V3.5A1.5 1.5 0 0 0 11.5 2 1.5 1.5 0 0 0 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
+            <circle cx="10" cy="14" r="7" stroke="currentColor" stroke-width="2.2"/>
+            <circle cx="10" cy="14" r="2.3" fill="currentColor"/>
+            <path d="M15.4 8.6 20.5 3.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M16.4 3.5h4.1v4.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </span>
         <span class="brand-text">Kineora <b>Exam</b></span>
       </a>
@@ -151,10 +156,36 @@ const App = {
      wipe the page they are on. Stale renders are skipped. */
   page(cls, inner, route) {
     if (route && Router.path && Router.path !== route) return false;
+    document.body.classList.remove('cbt-on');   // normal pages always show site chrome
     document.getElementById('app').innerHTML = this.navHTML(cls ? cls.split(' ')[0] : '') +
-      `<main class="${cls || ''}">${inner}</main>`;
+      `<main class="${cls || ''}">${inner}</main>` + this.bottomNavHTML();
     window.scrollTo(0, 0);
     return true;
+  },
+
+  /* mobile app-style bottom tab bar (desktop keeps the top nav) */
+  bottomNavHTML() {
+    const p = (typeof Router !== 'undefined' && Router.path) || '/dashboard';
+    const I = {
+      home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 3l9 8"/><path d="M5.5 9.5V20h13V9.5"/></svg>',
+      tests: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>',
+      bank: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 3H20v18H6.5A2.5 2.5 0 0 1 4 18.5v-13A2.5 2.5 0 0 1 6.5 3z"/><path d="M9 8h7"/></svg>',
+      attempts: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 20v-7"/><path d="M12 20V5"/><path d="M19 20v-10"/></svg>',
+      settings: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9c0 .66.39 1.26 1 1.51H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>'
+    };
+    const tabs = [
+      ['/dashboard', 'Home', I.home],
+      ['/tests', 'Tests', I.tests],
+      ['/questions', 'Bank', I.bank],
+      ['/attempts', 'Attempts', I.attempts],
+      ['/settings', 'Settings', I.settings]
+    ];
+    return `<nav class="bottomnav" aria-label="Main">
+      ${tabs.map(([href, label, svg]) => {
+        const active = p === href || (href !== '/dashboard' && p.startsWith(href));
+        return `<a href="#${href}" class="bn-tab ${active ? 'active' : ''}" ${active ? 'aria-current="page"' : ''}>${svg}<span class="bn-label">${label}</span></a>`;
+      }).join('')}
+    </nav>`;
   },
 
   /* ---------------- resume banner ---------------- */

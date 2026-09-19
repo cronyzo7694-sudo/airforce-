@@ -247,6 +247,7 @@ const ExamScreen = {
   /* ================= view binding ================= */
   bindCommon() {
     document.body.classList.add('exam-on'); // hides site footer + chat during the exam
+    document.body.classList.add('cbt-on');  // + bottom tab bar
     const a = this.attempt;
     // submit (header — always available, with confirmation)
     const subBtn = AVUtil.$('#x-submit');
@@ -492,6 +493,7 @@ const ExamScreen = {
     // full cleanup when leaving the exam view mid-attempt
     this.stopTick();
     document.body.classList.remove('exam-on');
+    document.body.classList.remove('cbt-on');
     if (this.keyHandler) { document.removeEventListener('keydown', this.keyHandler); this.keyHandler = null; }
   },
 
@@ -567,6 +569,7 @@ const ExamScreen = {
     const a = this.attempt, test = this.test;
     this.stopTick();
     document.body.classList.remove('exam-on');
+    document.body.classList.remove('cbt-on');
     Engine.accumulateTime(a, Date.now());
     if (!a.completed) {
       if (test.timerMode === 'section' && !Engine.activeSection(a)) Engine.submitExam(a, test, reason, Date.now());

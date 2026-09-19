@@ -113,6 +113,7 @@ Views.instructions = async function (testId) {
       </footer>
     </div>`;
   window.scrollTo(0, 0);
+  document.body.classList.add('cbt-on');   // full-screen exam context — hide site chrome
 
   AVUtil.$('#ins-lang').addEventListener('change', e => {
     App.lang = e.target.value;

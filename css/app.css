@@ -57,6 +57,34 @@ button { font-family: inherit; }
 .bad-txt { color: var(--red); }
 .link { color: var(--blue); cursor: pointer; background: none; border: none; padding: 0; font-size: inherit; }
 
+/* ---------------- mobile app-style bottom tab bar ---------------- */
+.bottomnav {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 80;
+  display: none; grid-template-columns: repeat(5, 1fr); gap: 2px;
+  background: rgba(255, 255, 255, .92);
+  -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px);
+  border-top: 1px solid rgba(26, 60, 110, .09);
+  box-shadow: 0 -8px 28px rgba(20, 40, 80, .1);
+  padding: 5px 6px calc(5px + env(safe-area-inset-bottom, 0px));
+}
+.bn-tab {
+  position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  padding: 7px 2px 6px; border-radius: 13px; color: #7a8aa0; text-decoration: none !important;
+  transition: color .15s, background .18s;
+  -webkit-tap-highlight-color: transparent; touch-action: manipulation;
+}
+.bn-tab svg { width: 23px; height: 23px; }
+.bn-label { font-size: 10.2px; font-weight: 600; letter-spacing: .25px; }
+.bn-tab.active {
+  color: var(--navy); background: linear-gradient(180deg, #eef4fc, #f8fafd);
+  box-shadow: inset 0 0 0 1px #dbe6f3;
+}
+.bn-tab.active::before {
+  content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+  width: 18px; height: 3px; border-radius: 999px; background: var(--navy-2);
+}
+body.exam-on .bottomnav, body.cbt-on .bottomnav { display: none !important; }
+
 /* ---------------- top navigation ---------------- */
 .topnav {
   display: flex; align-items: center; gap: 18px;
@@ -67,9 +95,11 @@ button { font-family: inherit; }
 .brand { display: flex; align-items: center; gap: 9px; color: var(--navy); font-weight: 600; font-size: 16.5px; text-decoration: none; }
 .brand:hover { text-decoration: none; }
 .brand-mark {
-  width: 34px; height: 34px; border-radius: 8px; background: linear-gradient(160deg, var(--navy-2), var(--navy));
+  width: 34px; height: 34px; border-radius: 9px; background: linear-gradient(160deg, #27508f, #16345f);
   display: inline-flex; align-items: center; justify-content: center; color: #cfe0f7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .18), 0 1px 3px rgba(20, 50, 100, .25);
 }
+.brand-mark svg { margin-top: -1px; }
 .brand-text b { color: var(--blue); }
 .navlinks { display: flex; gap: 4px; margin-left: 8px; flex-wrap: wrap; }
 .navlinks a {
@@ -660,6 +690,11 @@ button { font-family: inherit; }
   .eh-test { display: none; }
   .eh-exam { font-size: 13.5px; }
   .xbtn-ghost .ilbl { display: none; }
+  .bottomnav { display: grid; }
+  .navlinks { display: none; }
+  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  body.exam-on, body.cbt-on { padding-bottom: 0; }
+  .topnav { height: 54px; }
   .xbtn-ghost.icon-only { width: 40px; padding: 8px 0; }
   .eh-right #x-instructions { display: none; }
   .pal-instructions { width: 100%; margin-top: auto; }
@@ -697,11 +732,10 @@ button { font-family: inherit; }
 }
 @media (max-width: 720px) {
   body { font-size: 14px; }
-  .page { padding: 14px 12px; }
-  .topnav { padding: 0 10px; gap: 8px; height: auto; min-height: 54px; flex-wrap: wrap; }
+  .page { padding: 14px 12px calc(14px + 64px); }
+  .topnav { padding: 0 10px; gap: 8px; height: 54px; }
   .brand-text { display: none; }
-  .navlinks { order: 3; width: 100%; overflow-x: auto; padding-bottom: 4px; margin: 0; }
-  .navlinks a { padding: 6px 10px; font-size: 13px; white-space: nowrap; }
+  .navlinks { display: none; }   /* navigation moved to the bottom tab bar */
   .qs-grid { grid-template-columns: 1fr 1fr; }
   .qs-series, .qs-custom { grid-column: span 2; }
   .charts-grid { grid-template-columns: 1fr; }
@@ -882,11 +916,11 @@ body.exam-on { overflow: hidden; }
   .sf-stats { gap: 6px 14px; font-size: 12px; }
   .sf-links { font-size: 11.5px; }
   .exam-sel select { max-width: 150px; font-size: 11.5px; padding: 5px 4px; }
-  #chat-fab { right: 12px; bottom: 12px; width: 48px; height: 48px; font-size: 20px; }
-  #chat-panel { right: 12px; bottom: 68px; }
+  #chat-fab { right: 12px; bottom: calc(74px + env(safe-area-inset-bottom, 0px)); width: 48px; height: 48px; font-size: 20px; }
+  #chat-panel { right: 12px; bottom: calc(130px + env(safe-area-inset-bottom, 0px)); height: min(520px, 64vh); }
 }
 @media print {
-  .site-footer, #chat-fab, #chat-panel { display: none !important; }
+  .site-footer, #chat-fab, #chat-panel, .bottomnav { display: none !important; }
 }
 
 /* bilingual (EN + HI) blocks in analysis */
