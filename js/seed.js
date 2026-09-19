@@ -168,7 +168,7 @@ const Bank = (() => {
      RAGA sawal) — ye list devices se saaf ho jaati hai. List version badalne
      par dobara chalta hai. Kabhi bhi user ke khud ke questions/delete nahi karta
      — sirf exact dupeHash match. */
-  const RETIRED_V = 4;   // v4: real-paper-only cleanup — figure/image + AI-generated + text-dupe variants
+  const RETIRED_V = 5;   // v5: v1.4.16 — OCR variant-dupes pruned (kam repeat)
   async function pruneRetired() {
     try {
       const done = await Store.getMeta('retiredV', 0);
@@ -176,7 +176,7 @@ const Bank = (() => {
       const r = await fetch('data/retired-raga.json');
       if (!r.ok) return 0;
       const ret = await r.json();
-      const hs = new Set([].concat(ret.raga || [], ret.foreign || [], ret.physics || [], ret.mathematics || [], ret.v4 || []));
+      const hs = new Set([].concat(ret.raga || [], ret.foreign || [], ret.physics || [], ret.mathematics || [], ret.v4 || [], ret.v5 || []));
       const doomed = [];
       await DB.cursor('questions', null, q => { if (hs.has(q.dupeHash)) doomed.push(q.id); });
       for (const id of doomed) { try { await DB.delete('questions', id); } catch (e) {} }

@@ -960,246 +960,6 @@
   }
  },
  {
-  "id": "q_3009be040059408a",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "Select the segment of the sentence that contains an error. if there is no error, mark 'No error' as your answer. Towns after towns (A) was affected (B) by the rapidly-spreading Bubonic plague. (C) No Error (D)",
-  "questionTextHi": "Select the segment of the sentence that contains an error. if there is no error, mark 'No error' as your answer. Towns after towns (A) was affected (B) by the rapidly-spreading Bubonic plague. (C) No Error (D)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "A"
-   },
-   {
-    "id": "B",
-    "text": "B"
-   },
-   {
-    "id": "C",
-    "text": "C"
-   },
-   {
-    "id": "D",
-    "text": "No Error"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The correct idiom is 'town after town' (singular). 'Towns after towns' is thus wrong — segment A. The verb 'was affected' and the rest are correct.",
-  "explanationHi": "The correct idiom is 'town after town' (singular). 'Towns after towns' is thus wrong — segment A. The verb 'was affected' and the rest are correct.",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "06439406c112935a",
-  "figureBased": false,
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_e045fcb994d0d629",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "medium",
-  "questionText": "What did the girl do after she tasted both the apples?",
-  "questionTextHi": "What did the girl do after she tasted both the apples?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "She threw the apples down on the ground."
-   },
-   {
-    "id": "B",
-    "text": "She handed both the apples to her mother."
-   },
-   {
-    "id": "C",
-    "text": "She handed one of the bitten apples to her mother."
-   },
-   {
-    "id": "D",
-    "text": "She left the room and never talked to her mother ever again."
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "In the passage, after tasting both apples the girl handed one of the bitten apples to her mother saying it was the sweeter one → (C).",
-  "explanationHi": "In the passage, after tasting both apples the girl handed one of the bitten apples to her mother saying it was the sweeter one → (C).",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ab93de2211405e6",
-  "figureBased": false,
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_343e17c586cc8bbc",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Synonyms",
-  "difficulty": "easy",
-  "questionText": "What is the meaning of the word 'blunder'?",
-  "questionTextHi": "What is the meaning of the word 'blunder'?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Looting"
-   },
-   {
-    "id": "B",
-    "text": "Mistake"
-   },
-   {
-    "id": "C",
-    "text": "Stone"
-   },
-   {
-    "id": "D",
-    "text": "None of these"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Blunder' = a stupid or careless mistake. The mother realised her blunder, i.e. her mistake → (B).",
-  "explanationHi": "'Blunder' = a stupid or careless mistake. The mother realised her blunder, i.e. her mistake → (B).",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0f4ffe38110caa0b",
-  "figureBased": false,
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_e8d48b5ed2ef506d",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "What do we need to be more aware of?",
-  "questionTextHi": "What do we need to be more aware of?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Rushing to judgment"
-   },
-   {
-    "id": "B",
-    "text": "Staying in shape"
-   },
-   {
-    "id": "C",
-    "text": "How to cook fish"
-   },
-   {
-    "id": "D",
-    "text": "None of these"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The passage says we all need to be more aware of 'rushing to judgment', so (A) is correct.",
-  "explanationHi": "The passage says we all need to be more aware of 'rushing to judgment', so (A) is correct.",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "067ab174810dc50a",
-  "figureBased": false,
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_803dc5b8506e90d3",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "Select the segment of the sentence that contains an error. if there is no error, mark 'No error' as your answer. My mother (A) does not like me (B) coming home late at night. (C) No Error (D)",
-  "questionTextHi": "Select the segment of the sentence that contains an error. if there is no error, mark 'No error' as your answer. My mother (A) does not like me (B) coming home late at night. (C) No Error (D)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "A"
-   },
-   {
-    "id": "B",
-    "text": "B"
-   },
-   {
-    "id": "C",
-    "text": "C"
-   },
-   {
-    "id": "D",
-    "text": "No Error"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "After verbs like 'like/dislike', a gerund is preceded by the possessive: 'does not like my coming home late at night'. Hence segment B contains the error.",
-  "explanationHi": "After verbs like 'like/dislike', a gerund is preceded by the possessive: 'does not like my coming home late at night'. Hence segment B contains the error.",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ddf4092d111ab37",
-  "figureBased": false,
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_0fbdb6d044e35edd",
   "subject": "english",
   "subjectName": "English",
@@ -6960,54 +6720,6 @@
   }
  },
  {
-  "id": "q_61596ab6fb5ff867",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "A part of the sentence may or may not have an error. Find out which part has an error and mark that part as your answer. If there are no errors, mark 'No error' as your answer. She was shocked (A)/ when she heard the news (B)/ that he has died (C). No error (D)",
-  "questionTextHi": "A part of the sentence may or may not have an error. Find out which part has an error and mark that part as your answer. If there are no errors, mark 'No error' as your answer. She was shocked (A)/ when she heard the news (B)/ that he has died (C). No error (D)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "A"
-   },
-   {
-    "id": "B",
-    "text": "B"
-   },
-   {
-    "id": "C",
-    "text": "C"
-   },
-   {
-    "id": "D",
-    "text": "D"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Segment C contains the error — 'she was shocked at/on seeing him' should be 'shocked to see him'; the given part 'by seeing him' is wrong, hence the key C (segment C).",
-  "explanationHi": "Segment C contains the error — 'she was shocked at/on seeing him' should be 'shocked to see him'; the given part 'by seeing him' is wrong, hence the key C (segment C).",
-  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "07afdb3251143409",
-  "figureBased": false,
-  "paper": {
-   "no": 11,
-   "group": "Y",
-   "date": "12 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_90e9a1298a8b3f6f",
   "subject": "english",
   "subjectName": "English",
@@ -7578,54 +7290,6 @@
    "auto-topic"
   ],
   "dupeHash": "0f2271b2e10d1954",
-  "figureBased": false,
-  "paper": {
-   "no": 12,
-   "group": "Y",
-   "date": "12 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_eb8a709e6d2828c0",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "Direction: Select the segment of the sentence that contains the grammatical error. If there is no error, mark 'No error' as your answer. All of his luggages (A)/ was stolen by a thief (B)/ outside the railway station (C)/. No error (D).",
-  "questionTextHi": "Direction: Select the segment of the sentence that contains the grammatical error. If there is no error, mark 'No error' as your answer. All of his luggages (A)/ was stolen by a thief (B)/ outside the railway station (C)/. No error (D).",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "A"
-   },
-   {
-    "id": "B",
-    "text": "B"
-   },
-   {
-    "id": "C",
-    "text": "C"
-   },
-   {
-    "id": "D",
-    "text": "D"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "'Luggage' is an uncountable noun and has no plural, so 'All of his luggages' is wrong → segment A has the error; 'was stolen' (B) is correct with the singular sense.",
-  "explanationHi": "'Luggage' is an uncountable noun and has no plural, so 'All of his luggages' is wrong → segment A has the error; 'was stolen' (B) is correct with the singular sense.",
-  "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0631cfcdf11356ad",
   "figureBased": false,
   "paper": {
    "no": 12,
@@ -9370,150 +9034,6 @@
   }
  },
  {
-  "id": "q_b1e01f85d6624221",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Direction - Fill in the blank with the correct article. ______ thing of beauty is a joy forever.",
-  "questionTextHi": "Direction - Fill in the blank with the correct article. ______ thing of beauty is a joy forever.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "The"
-   },
-   {
-    "id": "B",
-    "text": "A"
-   },
-   {
-    "id": "C",
-    "text": "An"
-   },
-   {
-    "id": "D",
-    "text": "No article"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'A thing of beauty is a joy forever' — the indefinite article 'a' is used before the consonant sound 'th' in 'thing' → (B).",
-  "explanationHi": "'A thing of beauty is a joy forever' — the indefinite article 'a' is used before the consonant sound 'th' in 'thing' → (B).",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08e1c4f5a10e3206",
-  "figureBased": false,
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_465d76fef5845859",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "In the following question, out of the four alternatives, choose the one which can be substituted for the given words/ sentence. An accident which results in death",
-  "questionTextHi": "In the following question, out of the four alternatives, choose the one which can be substituted for the given words/ sentence. An accident which results in death",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Fatal"
-   },
-   {
-    "id": "B",
-    "text": "Dangerous"
-   },
-   {
-    "id": "C",
-    "text": "Terrible"
-   },
-   {
-    "id": "D",
-    "text": "Injurious"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "An accident that results in death is 'fatal' (A). Dangerous/Terrible/Injurious do not carry the sense of causing death.",
-  "explanationHi": "An accident that results in death is 'fatal' (A). Dangerous/Terrible/Injurious do not carry the sense of causing death.",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "05b786ce51121453",
-  "figureBased": false,
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_1bb0746d625f410b",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Active & Passive Voice",
-  "difficulty": "medium",
-  "questionText": "In the following question, a sentence has been given in Active/Passive voice. Out of the four alternatives suggested, select the one which best expresses the same sentence in a Passive/Active voice. The cobbler was mending my shoes.",
-  "questionTextHi": "In the following question, a sentence has been given in Active/Passive voice. Out of the four alternatives suggested, select the one which best expresses the same sentence in a Passive/Active voice. The cobbler was mending my shoes.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "My shoes were being mended by the cobbler."
-   },
-   {
-    "id": "B",
-    "text": "My shoes was being mended by the cobbler."
-   },
-   {
-    "id": "C",
-    "text": "My shoes were mended by the cobbler."
-   },
-   {
-    "id": "D",
-    "text": "My shoes will be being mended by the cobbler."
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Past continuous active → passive: 'was mending' → 'were being mended' ('shoes' plural) → (A) My shoes were being mended by the cobbler.",
-  "explanationHi": "Past continuous active → passive: 'was mending' → 'were being mended' ('shoes' plural) → (A) My shoes were being mended by the cobbler.",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "053a7b05d11aad91",
-  "figureBased": false,
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_32f0485ab0d58bbe",
   "subject": "english",
   "subjectName": "English",
@@ -9553,152 +9073,6 @@
    "auto-topic"
   ],
   "dupeHash": "0e389ebc7114e3dd",
-  "figureBased": false,
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_570a102d962c6e93",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "What did the miser hide under some stones? silver coins",
-  "questionTextHi": "What did the miser hide under some stones? silver coins",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "silver coins"
-   },
-   {
-    "id": "B",
-    "text": "gold coins"
-   },
-   {
-    "id": "C",
-    "text": "jewellery"
-   },
-   {
-    "id": "D",
-    "text": "food"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The passage states the miser hid his 'gold coins' in a pit under some stones → (B) gold coins.\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (B) on the correct answer.]",
-  "explanationHi": "The passage states the miser hid his 'gold coins' in a pit under some stones → (B) gold coins.\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (B) on the correct answer.]",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "00303477110d8acb",
-  "figureBased": false,
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_f8d1c9ff256af50e",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "Who said these lines, 'If that is the case, save the stone. It is as worthless as the gold you have lost.\"?",
-  "questionTextHi": "Who said these lines, 'If that is the case, save the stone. It is as worthless as the gold you have lost.\"?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "the miser"
-   },
-   {
-    "id": "B",
-    "text": "the thief"
-   },
-   {
-    "id": "C",
-    "text": "the neighbour"
-   },
-   {
-    "id": "D",
-    "text": "the sheriff"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "The words 'If that is the case, save the stone. It is as worthless as the gold you have lost.' are spoken by the neighbour who had advised keeping the money inside the house → (C) the neighbour.",
-  "explanationHi": "The words 'If that is the case, save the stone. It is as worthless as the gold you have lost.' are spoken by the neighbour who had advised keeping the money inside the house → (C) the neighbour.",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ae308ea410fd312",
-  "figureBased": false,
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_beeac752db5b0b0d",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Reading Comprehension",
-  "topic": "Passage-based Question",
-  "difficulty": "easy",
-  "questionText": "Read the passage and answer: Which of the following words could replace the word 'spend' as used in the passage?",
-  "questionTextHi": "Read the passage and answer: Which of the following words could replace the word 'spend' as used in the passage?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "secure"
-   },
-   {
-    "id": "B",
-    "text": "search"
-   },
-   {
-    "id": "C",
-    "text": "expend"
-   },
-   {
-    "id": "D",
-    "text": "expand"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "'Spend' means to pay out/use money → the closest word here is 'expend' (C).\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (C) on the correct answer.]",
-  "explanationHi": "'Spend' means to pay out/use money → the closest word here is 'expend' (C).\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (C) on the correct answer.]",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "06a9beb4d10f7197",
   "figureBased": false,
   "paper": {
    "no": 14,
@@ -10424,54 +9798,6 @@
    "source-note"
   ],
   "dupeHash": "02621a5d31105f6b",
-  "figureBased": false,
-  "paper": {
-   "no": 15,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_14615aa44cdfdfa0",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. He didn't eat the apple (A) / because it tasted bitterly (B) / and was slightly rotten. (C) / No error (D)",
-  "questionTextHi": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. He didn't eat the apple (A) / because it tasted bitterly (B) / and was slightly rotten. (C) / No error (D)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "(A)"
-   },
-   {
-    "id": "B",
-    "text": "(B)"
-   },
-   {
-    "id": "C",
-    "text": "(C)"
-   },
-   {
-    "id": "D",
-    "text": "(D)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "After a linking verb a plain adjective is used, not an adverb: 'it tasted bitter' (not 'bitterly') → the error is in segment B.",
-  "explanationHi": "After a linking verb a plain adjective is used, not an adverb: 'it tasted bitter' (not 'bitterly') → the error is in segment B.",
-  "source": "PYQ · 13 Jul 2021 Shift-2 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "06eeef7b6113208c",
   "figureBased": false,
   "paper": {
    "no": 15,
@@ -12122,54 +11448,6 @@
   }
  },
  {
-  "id": "q_cef3f82e731ed61c",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. A sum of thousand rupees (A) / are a large sum of money (B) / to earn in a month. (C) / No error (D)",
-  "questionTextHi": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. A sum of thousand rupees (A) / are a large sum of money (B) / to earn in a month. (C) / No error (D)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "(A)"
-   },
-   {
-    "id": "B",
-    "text": "(B)"
-   },
-   {
-    "id": "C",
-    "text": "(C)"
-   },
-   {
-    "id": "D",
-    "text": "(D)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The subject 'a sum of thousand rupees' is singular, so 'are' is wrong — it should be 'is'. Hence segment B has the error → (B).",
-  "explanationHi": "The subject 'a sum of thousand rupees' is singular, so 'are' is wrong — it should be 'is'. Hence segment B has the error → (B).",
-  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0cbcb346f112c2f1",
-  "figureBased": false,
-  "paper": {
-   "no": 18,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_faaff22bbc98ff8f",
   "subject": "english",
   "subjectName": "English",
@@ -12497,54 +11775,6 @@
    "auto-topic"
   ],
   "dupeHash": "0be3f660210dd392",
-  "figureBased": false,
-  "paper": {
-   "no": 20,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_406bbfa7b9dd6c97",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. I inquired of him (A) / why he is so negligent (B) / in his studies. (C) / No error (D)",
-  "questionTextHi": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. I inquired of him (A) / why he is so negligent (B) / in his studies. (C) / No error (D)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "(A)"
-   },
-   {
-    "id": "B",
-    "text": "(B)"
-   },
-   {
-    "id": "C",
-    "text": "(C)"
-   },
-   {
-    "id": "D",
-    "text": "(D)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The reporting verb is past ('inquired'), so the subordinate clause must be in the past: 'why he was so negligent' — hence segment B ('why he is so negligent') has the error.",
-  "explanationHi": "The reporting verb is past ('inquired'), so the subordinate clause must be in the past: 'why he was so negligent' — hence segment B ('why he is so negligent') has the error.",
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0f3edf2b61123e1a",
   "figureBased": false,
   "paper": {
    "no": 20,
@@ -14055,55 +13285,6 @@
   }
  },
  {
-  "id": "q_d1f1fad97f547f88",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Idioms & Phrases",
-  "difficulty": "easy",
-  "questionText": "Choose the correct meaning of the following phrase/idiom: Good things come to those who wait",
-  "questionTextHi": "Choose the correct meaning of the following phrase/idiom: Good things come to those who wait",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Be curious"
-   },
-   {
-    "id": "B",
-    "text": "Be furious"
-   },
-   {
-    "id": "C",
-    "text": "Be satisfied"
-   },
-   {
-    "id": "D",
-    "text": "Be patient"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "'Good things come to those who wait' = be patient → (D) Be patient.\n\n[Source note: the options were garbled in the source (two texts were lost); the set is restored as in the same question of the 15 Jul 2021 Shift-1 paper, with the printed key (D) on the correct answer.]",
-  "explanationHi": "'Good things come to those who wait' = be patient → (D) Be patient.\n\n[Source note: the options were garbled in the source (two texts were lost); the set is restored as in the same question of the 15 Jul 2021 Shift-1 paper, with the printed key (D) on the correct answer.]",
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0b97ba0ae10f65d8",
-  "figureBased": false,
-  "paper": {
-   "no": 22,
-   "group": "Y",
-   "date": "15 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_1bbd027118c107e1",
   "subject": "english",
   "subjectName": "English",
@@ -14144,55 +13325,6 @@
    "source-note"
   ],
   "dupeHash": "0f8eb9ca6110d72e",
-  "figureBased": false,
-  "paper": {
-   "no": 22,
-   "group": "Y",
-   "date": "15 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_38ad0d67d959cea0",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Synonyms",
-  "difficulty": "easy",
-  "questionText": "Select the option that is similar in meaning to the given word: Rectify",
-  "questionTextHi": "Select the option that is similar in meaning to the given word: Rectify",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Incorrect"
-   },
-   {
-    "id": "B",
-    "text": "Generate"
-   },
-   {
-    "id": "C",
-    "text": "Destroy"
-   },
-   {
-    "id": "D",
-    "text": "Correct"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "'Rectify' = to correct → 'Correct' (D).\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (D) on the correct answer.]",
-  "explanationHi": "'Rectify' = to correct → 'Correct' (D).\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (D) on the correct answer.]",
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "006f0d35210e0a10",
   "figureBased": false,
   "paper": {
    "no": 22,
@@ -15114,103 +14246,6 @@
    "auto-topic"
   ],
   "dupeHash": "021d576d810d0958",
-  "figureBased": false,
-  "paper": {
-   "no": 24,
-   "group": "Y",
-   "date": "15 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_c5f37f6f5eddc256",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Reading Comprehension",
-  "topic": "Passage-based Question",
-  "difficulty": "medium",
-  "questionText": "Direction: Given below is a short passage followed by some items based on the passage. First, read the passage and answer the items based on it. You are required to select your answers based on the contents of the passage and the opinion of the author only. Nearly every night of our lives, we undergo a startling metamorphosis. Our brain profoundly alters its behavior and purpose, dimming our consciousness. For a while, we become almost entirely paralyzed. We can’t even shiver. Our eyes, however, periodically dart about behind closed lids as if seeing, and the tiny muscles in our middle ear, even in silence, move as though hearing. We are stimulated, men and women both, repeatedly. We sometimes believe we can fly. We approach the frontiers of death. We sleep. Around 350 B.C., Aristotle wrote an essay, “On Sleep and Sleeplessness,” wondering just what we were doing and why. For the next 2,300 years, no one had a good answer. In 1924 German psychiatrist Hans Berger invented the electroencephalograph, which records electrical activity in the brain, and the study of sleep shifted from philosophy to science. How does our brain dim our consciousness?",
-  "questionTextHi": "Direction: Given below is a short passage followed by some items based on the passage. First, read the passage and answer the items based on it. You are required to select your answers based on the contents of the passage and the opinion of the author only. Nearly every night of our lives, we undergo a startling metamorphosis. Our brain profoundly alters its behavior and purpose, dimming our consciousness. For a while, we become almost entirely paralyzed. We can’t even shiver. Our eyes, however, periodically dart about behind closed lids as if seeing, and the tiny muscles in our middle ear, even in silence, move as though hearing. We are stimulated, men and women both, repeatedly. We sometimes believe we can fly. We approach the frontiers of death. We sleep. Around 350 B.C., Aristotle wrote an essay, “On Sleep and Sleeplessness,” wondering just what we were doing and why. For the next 2,300 years, no one had a good answer. In 1924 German psychiatrist Hans Berger invented the electroencephalograph, which records electrical activity in the brain, and the study of sleep shifted from philosophy to science. How does our brain dim our consciousness?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "by sleeping"
-   },
-   {
-    "id": "B",
-    "text": "by exercising alot"
-   },
-   {
-    "id": "C",
-    "text": "by extremely changing its behaviour"
-   },
-   {
-    "id": "D",
-    "text": "by using modern techniques"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "The passage says the brain 'profoundly alters its behaviour and purpose, dimming our consciousness' → it dims consciousness by extremely changing its behaviour → (C).",
-  "explanationHi": "The passage says the brain 'profoundly alters its behaviour and purpose, dimming our consciousness' → it dims consciousness by extremely changing its behaviour → (C).",
-  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0eaee0a5914ba911",
-  "figureBased": false,
-  "paper": {
-   "no": 24,
-   "group": "Y",
-   "date": "15 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_ccfd09c8d5012f6c",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Word Forms",
-  "difficulty": "easy",
-  "questionText": "The adjective form of 'Attention' is _________.",
-  "questionTextHi": "The adjective form of 'Attention' is _________.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Attended"
-   },
-   {
-    "id": "B",
-    "text": "Attending"
-   },
-   {
-    "id": "C",
-    "text": "Attentive"
-   },
-   {
-    "id": "D",
-    "text": "None of these"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "The adjective form of 'attention' is 'attentive' (C).\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (C) on the correct answer.]",
-  "explanationHi": "The adjective form of 'attention' is 'attentive' (C).\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (C) on the correct answer.]",
-  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "004816eba10d36e0",
   "figureBased": false,
   "paper": {
    "no": 24,
@@ -16568,54 +15603,6 @@
   }
  },
  {
-  "id": "q_1788fa74e2c07ab7",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "Direction: Choose the incorrect word among the followings:",
-  "questionTextHi": "Direction: Choose the incorrect word among the followings:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Hindrance"
-   },
-   {
-    "id": "B",
-    "text": "Honour"
-   },
-   {
-    "id": "C",
-    "text": "Headache"
-   },
-   {
-    "id": "D",
-    "text": "Hieght"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "'Hieght' is the incorrect word (D) — the correct spelling is 'height'. Hindrance, Honour and Headache are correctly spelt.",
-  "explanationHi": "'Hieght' is the incorrect word (D) — the correct spelling is 'height'. Hindrance, Honour and Headache are correctly spelt.",
-  "source": "PYQ · 18 Jul 2021 · SelfStudys (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c7b5261b10d6161",
-  "figureBased": false,
-  "paper": {
-   "no": 26,
-   "group": "X",
-   "date": "18 Jul 2021",
-   "src": "SelfStudys"
-  }
- },
- {
   "id": "q_c8f6e10a405d996e",
   "subject": "english",
   "subjectName": "English",
@@ -17917,202 +16904,6 @@
   }
  },
  {
-  "id": "q_9b833ab1cab83919",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Reading Comprehension",
-  "topic": "Passage-based Question",
-  "difficulty": "medium",
-  "questionText": "Read the passage and answer: What is the theme of the passage?",
-  "questionTextHi": "Read the passage and answer: What is the theme of the passage?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Trains between Kotdwar and Delhi"
-   },
-   {
-    "id": "B",
-    "text": "Flagging off the Siddhabali Jan Shatabdi Special Train"
-   },
-   {
-    "id": "C",
-    "text": "Electric traction"
-   },
-   {
-    "id": "D",
-    "text": "Zero carbon emission"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The passage is mainly about the minister flagging off the Siddhabali Jan Shatabdi Special Train → (B).\n\n[Source note: this question carried no answer key in the source ('Answer: ?') and its options were garbled; the set is restored (as in the keyed copy of the same paper) and the answer is worked out from the passage.]",
-  "explanationHi": "The passage is mainly about the minister flagging off the Siddhabali Jan Shatabdi Special Train → (B).\n\n[Source note: this question carried no answer key in the source ('Answer: ?') and its options were garbled; the set is restored (as in the keyed copy of the same paper) and the answer is worked out from the passage.]",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0a042217b1118de9",
-  "figureBased": false,
-  "paper": {
-   "no": 28,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_a364ee8b36ea9812",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Reading Comprehension",
-  "topic": "Passage-based Question",
-  "difficulty": "easy",
-  "questionText": "Read the passage and answer: Siddhabali Jan Shatabdi Special Train will run between which stations?",
-  "questionTextHi": "Read the passage and answer: Siddhabali Jan Shatabdi Special Train will run between which stations?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Kotdwar and Kanpur"
-   },
-   {
-    "id": "B",
-    "text": "Kotdwar and Delhi"
-   },
-   {
-    "id": "C",
-    "text": "Kotdwar and Mumbai"
-   },
-   {
-    "id": "D",
-    "text": "Kotdwar and Agra"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The passage says trains on electric traction will ply from Kotdwar to Delhi → (B) Kotdwar and Delhi.\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (B) on the correct answer.]",
-  "explanationHi": "The passage says trains on electric traction will ply from Kotdwar to Delhi → (B) Kotdwar and Delhi.\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (B) on the correct answer.]",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "086de120d110ce95",
-  "figureBased": false,
-  "paper": {
-   "no": 28,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_6b3feb786964ca8b",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Reading Comprehension",
-  "topic": "Passage-based Question",
-  "difficulty": "easy",
-  "questionText": "Read the passage and answer: The electric traction will ensure:",
-  "questionTextHi": "Read the passage and answer: The electric traction will ensure:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "net-zero Carbon emission"
-   },
-   {
-    "id": "B",
-    "text": "net-zero Oxygen emission"
-   },
-   {
-    "id": "C",
-    "text": "net-zero Nitrogen emission"
-   },
-   {
-    "id": "D",
-    "text": "net-zero Sulphur emission"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The passage says electric traction will ensure net-zero carbon emission → (A).\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (A) on the correct answer.]",
-  "explanationHi": "The passage says electric traction will ensure net-zero carbon emission → (A).\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (A) on the correct answer.]",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0d78b3597110d2f1",
-  "figureBased": false,
-  "paper": {
-   "no": 28,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_8e82b9b79aa8c090",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Reading Comprehension",
-  "topic": "Passage-based Question",
-  "difficulty": "easy",
-  "questionText": "Read the passage and answer: Which of the following words could replace the word 'ply' as used in the passage?",
-  "questionTextHi": "Read the passage and answer: Which of the following words could replace the word 'ply' as used in the passage?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "settle"
-   },
-   {
-    "id": "B",
-    "text": "join"
-   },
-   {
-    "id": "C",
-    "text": "organize"
-   },
-   {
-    "id": "D",
-    "text": "travel"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "'Ply' here means to travel/run (trains ply between stations) → (D) travel.\n\n[Source note: this question carried no answer key in the source ('Answer: ?') and its options were garbled; the set is restored (as in the keyed copy of the same paper) and the answer is worked out from the passage.]",
-  "explanationHi": "'Ply' here means to travel/run (trains ply between stations) → (D) travel.\n\n[Source note: this question carried no answer key in the source ('Answer: ?') and its options were garbled; the set is restored (as in the keyed copy of the same paper) and the answer is worked out from the passage.]",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "08068602110f5f2f",
-  "figureBased": false,
-  "paper": {
-   "no": 28,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_351a34d5281a4e42",
   "subject": "english",
   "subjectName": "English",
@@ -18201,247 +16992,6 @@
    "source-note"
   ],
   "dupeHash": "07dec784310cf237",
-  "figureBased": false,
-  "paper": {
-   "no": 28,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_11305624215034c0",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "Direction: Choose the appropriate answer for the given sentence: He came here ______ day before.",
-  "questionTextHi": "Direction: Choose the appropriate answer for the given sentence: He came here ______ day before.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "a"
-   },
-   {
-    "id": "B",
-    "text": "an"
-   },
-   {
-    "id": "C",
-    "text": "the"
-   },
-   {
-    "id": "D",
-    "text": "None of these"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "'The day before' is a fixed expression → (C) the.",
-  "explanationHi": "'The day before' is a fixed expression → (C) the.",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "09645d59610e7044",
-  "figureBased": false,
-  "paper": {
-   "no": 28,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_4940e8d6a3357f7c",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Active & Passive Voice",
-  "difficulty": "easy",
-  "questionText": "Direction: Change the Voice - The crown was being laughed at by them.",
-  "questionTextHi": "Direction: Change the Voice - The crown was being laughed at by them.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "They are laughing at the crown."
-   },
-   {
-    "id": "B",
-    "text": "Them were laughing at the crown."
-   },
-   {
-    "id": "C",
-    "text": "They were laughing at the crown."
-   },
-   {
-    "id": "D",
-    "text": "They were being laughing at the crown."
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Passive → active (past continuous): 'They were laughing at the crown' (C).",
-  "explanationHi": "Passive → active (past continuous): 'They were laughing at the crown' (C).",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "094def59c1122050",
-  "figureBased": false,
-  "paper": {
-   "no": 28,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_fdeda3287aae32b6",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Direct & Indirect Speech",
-  "difficulty": "easy",
-  "questionText": "Change the Narration: He said to me, \"I have no time for you.\"",
-  "questionTextHi": "Change the Narration: He said to me, \"I have no time for you.\"",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "He told me that she had no time for me."
-   },
-   {
-    "id": "B",
-    "text": "He told me that he had no time for me."
-   },
-   {
-    "id": "C",
-    "text": "He told me that he has no time for me."
-   },
-   {
-    "id": "D",
-    "text": "He told me that he have no time for me."
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Indirect speech: 'said to' → 'told'; 'have' → 'had'; 'I' → 'he', 'you' → 'me' → (B) He told me that he had no time for me.\n\n[Source note: this question carried no answer key in the source ('Answer: ?') and its options were garbled; the set is restored (as in the keyed copy of the same paper) and the answer is worked out here.]",
-  "explanationHi": "Indirect speech: 'said to' → 'told'; 'have' → 'had'; 'I' → 'he', 'you' → 'me' → (B) He told me that he had no time for me.\n\n[Source note: this question carried no answer key in the source ('Answer: ?') and its options were garbled; the set is restored (as in the keyed copy of the same paper) and the answer is worked out here.]",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "056e9a5b31123391",
-  "figureBased": false,
-  "paper": {
-   "no": 28,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_df3b0ca2659ecc2f",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Direction: Choose the most appropriate word and fill in the blank: His ______ read arts confused us.",
-  "questionTextHi": "Direction: Choose the most appropriate word and fill in the blank: His ______ read arts confused us.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "definite"
-   },
-   {
-    "id": "B",
-    "text": "vague"
-   },
-   {
-    "id": "C",
-    "text": "anxious"
-   },
-   {
-    "id": "D",
-    "text": "indecisive"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Vague' (unclear) fits the sentence → (B).",
-  "explanationHi": "'Vague' (unclear) fits the sentence → (B).",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ee4f7ff510f3f75",
-  "figureBased": false,
-  "paper": {
-   "no": 28,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_55c54c58a8bd9986",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "Direction: Choose the appropriate answer for the given sentence: We don't know the reason ______ his failure.",
-  "questionTextHi": "Direction: Choose the appropriate answer for the given sentence: We don't know the reason ______ his failure.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "to"
-   },
-   {
-    "id": "B",
-    "text": "for"
-   },
-   {
-    "id": "C",
-    "text": "at"
-   },
-   {
-    "id": "D",
-    "text": "by"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Reason for' is the fixed collocation → (B) for.",
-  "explanationHi": "'Reason for' is the fixed collocation → (B) for.",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "061e6f22510ea285",
   "figureBased": false,
   "paper": {
    "no": 28,
@@ -19364,391 +17914,6 @@
   }
  },
  {
-  "id": "q_a90d90a1bf535263",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "Find the part of the given sentence that has an error in it. If there is no error, choose ‘No error’. It is a pleasure (1)/ to meet a (2)/ cheerful persons (3)/ No error (4)",
-  "questionTextHi": "Find the part of the given sentence that has an error in it. If there is no error, choose ‘No error’. It is a pleasure (1)/ to meet a (2)/ cheerful persons (3)/ No error (4)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "No error"
-   },
-   {
-    "id": "B",
-    "text": "cheerful persons"
-   },
-   {
-    "id": "C",
-    "text": "It is a pleasure"
-   },
-   {
-    "id": "D",
-    "text": "to meet a"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The phrase 'to meet a' takes a singular noun, so 'cheerful persons' (segment 3) is the error — it should be 'cheerful person'.",
-  "explanationHi": "The phrase 'to meet a' takes a singular noun, so 'cheerful persons' (segment 3) is the error — it should be 'cheerful person'.",
-  "source": "PYQ · 24 Jul 2022 · PW Model (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0fdec8b6411a3e48",
-  "figureBased": false,
-  "paper": {
-   "no": 30,
-   "group": "Y",
-   "date": "24 Jul 2022",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_d16e5bc064d3660d",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Fill in the blank with an appropriate word. One who believes in no Government and therefore incites disorder in a state is called ______.",
-  "questionTextHi": "Fill in the blank with an appropriate word. One who believes in no Government and therefore incites disorder in a state is called ______.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "a Naxalite"
-   },
-   {
-    "id": "B",
-    "text": "an Autocrat"
-   },
-   {
-    "id": "C",
-    "text": "a Monarchist"
-   },
-   {
-    "id": "D",
-    "text": "an Anarchist"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "One who believes in no government and incites disorder is an 'anarchist' (D). Naxalite = a left-wing insurgent, Autocrat = absolute ruler, Monarchist = supporter of monarchy.",
-  "explanationHi": "One who believes in no government and incites disorder is an 'anarchist' (D). Naxalite = a left-wing insurgent, Autocrat = absolute ruler, Monarchist = supporter of monarchy.",
-  "source": "PYQ · 24 Jul 2022 · PW Model (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0028ed6941116eca",
-  "figureBased": false,
-  "paper": {
-   "no": 30,
-   "group": "Y",
-   "date": "24 Jul 2022",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_4bafeb526b3a9f42",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Spelling",
-  "difficulty": "easy",
-  "questionText": "In each of the following questions, groups of four words are given. In each group, one word is correctly spelt. Find the correctly spelt word.",
-  "questionTextHi": "In each of the following questions, groups of four words are given. In each group, one word is correctly spelt. Find the correctly spelt word.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "impromptue"
-   },
-   {
-    "id": "B",
-    "text": "illustrious"
-   },
-   {
-    "id": "C",
-    "text": "illusery"
-   },
-   {
-    "id": "D",
-    "text": "impetous"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Illustrious' (= famous, distinguished) is the correctly spelt word (B). Impromptue (impromptu), illusery (illusory) and impetous (impetuous) are misspellings.",
-  "explanationHi": "'Illustrious' (= famous, distinguished) is the correctly spelt word (B). Impromptue (impromptu), illusery (illusory) and impetous (impetuous) are misspellings.",
-  "source": "PYQ · 24 Jul 2022 · PW Model (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0698b1ffd1118d2f",
-  "figureBased": false,
-  "paper": {
-   "no": 30,
-   "group": "Y",
-   "date": "24 Jul 2022",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_079153751560a305",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Synonyms",
-  "difficulty": "easy",
-  "questionText": "Choose the correct synonym (word with similar meaning) of the head word form the four options given and mark the right option. PONDER",
-  "questionTextHi": "Choose the correct synonym (word with similar meaning) of the head word form the four options given and mark the right option. PONDER",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "evaluate"
-   },
-   {
-    "id": "B",
-    "text": "think"
-   },
-   {
-    "id": "C",
-    "text": "anticipate"
-   },
-   {
-    "id": "D",
-    "text": "increase"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The passage says people visit zoos considering it 'a day out having fun' → (C) to spend a day out for fun and excitement.",
-  "explanationHi": "The passage says people visit zoos considering it 'a day out having fun' → (C) to spend a day out for fun and excitement.",
-  "source": "PYQ · 24 Jul 2022 · PW Model (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "02eeb2490110c0e6",
-  "figureBased": false,
-  "paper": {
-   "no": 30,
-   "group": "Y",
-   "date": "24 Jul 2022",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_a6f01be898271a76",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Fill in the blank with the most appropriate word. They _______ football when it started raining.",
-  "questionTextHi": "Fill in the blank with the most appropriate word. They _______ football when it started raining.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "play"
-   },
-   {
-    "id": "B",
-    "text": "are playing"
-   },
-   {
-    "id": "C",
-    "text": "have been playing"
-   },
-   {
-    "id": "D",
-    "text": "were playing"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Past continuous for an action going on when another started: 'They were playing football when it started raining' → (D).\n\n[Source note: option B carried a page-footer artifact in the source ('Android App iOS App PW Website …'); it is cleaned to the plain option word.]",
-  "explanationHi": "Past continuous for an action going on when another started: 'They were playing football when it started raining' → (D).\n\n[Source note: option B carried a page-footer artifact in the source ('Android App iOS App PW Website …'); it is cleaned to the plain option word.]",
-  "source": "PYQ · 24 Jul 2022 · PW Model (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0bc3e9a4010fb222",
-  "figureBased": false,
-  "paper": {
-   "no": 30,
-   "group": "Y",
-   "date": "24 Jul 2022",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_89fabf74ed135e27",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Word Forms",
-  "difficulty": "easy",
-  "questionText": "Which of the following is an adjective formed from the noun ‘music’?",
-  "questionTextHi": "Which of the following is an adjective formed from the noun ‘music’?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "musician"
-   },
-   {
-    "id": "B",
-    "text": "musical"
-   },
-   {
-    "id": "C",
-    "text": "musically"
-   },
-   {
-    "id": "D",
-    "text": "musicality"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The passage says most animals are put in an artificial environment (cages) and this isolation makes them suffer → (A) by being kept in artificial environments.",
-  "explanationHi": "The passage says most animals are put in an artificial environment (cages) and this isolation makes them suffer → (A) by being kept in artificial environments.",
-  "source": "PYQ · 24 Jul 2022 · PW Model (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "073d7cd68115cfa2",
-  "figureBased": false,
-  "paper": {
-   "no": 30,
-   "group": "Y",
-   "date": "24 Jul 2022",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_daf7b57e59931c63",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "medium",
-  "questionText": "Read the given passage and answer the questions that follow. Many of us have enjoyed visiting a zoo and consider it a day out having fun. Seeing real animals face to face can be thrilling and exciting, but many people wonder whether the animals themselves while entertaining us, are suffering in the zoos. Many zoos do not have enough money to provide the animals with the basic features of a proper environment. Most animals are put in an artificial environment (e.g., cages). This isolation from their natural habitat can amount to cruelty. In some zoos, we see concrete floors for burrowing animals like rabbits. Cruelty may be shown in ways other than physical abuse or starvation. Big predators like lions and tigers are created to chase and hunt. By depriving them of these activities, we forget the reason for which they have evolved. These big cats lie in cages in the zoo eating the food given to them and they have nothing else to do. Highly intelligent and curious animals like chimpanzees and polar bears may become frustrated in a zoo; they need a challenging environment. Zoo supporters might argue that zoos provide educational opportunities to the visitors, especially children; if we didn't have animals in zoos, children wouldn't see them at all and be ignorant about them. We live at a time when animals in their natural habitat can be seen on TV or computers, even smartphones while sitting at home. Therefore, the aim should be to conserve animals in the wild, in protected areas called sanctuaries. According to the passage, we visit zoos ________.",
-  "questionTextHi": "Read the given passage and answer the questions that follow. Many of us have enjoyed visiting a zoo and consider it a day out having fun. Seeing real animals face to face can be thrilling and exciting, but many people wonder whether the animals themselves while entertaining us, are suffering in the zoos. Many zoos do not have enough money to provide the animals with the basic features of a proper environment. Most animals are put in an artificial environment (e.g., cages). This isolation from their natural habitat can amount to cruelty. In some zoos, we see concrete floors for burrowing animals like rabbits. Cruelty may be shown in ways other than physical abuse or starvation. Big predators like lions and tigers are created to chase and hunt. By depriving them of these activities, we forget the reason for which they have evolved. These big cats lie in cages in the zoo eating the food given to them and they have nothing else to do. Highly intelligent and curious animals like chimpanzees and polar bears may become frustrated in a zoo; they need a challenging environment. Zoo supporters might argue that zoos provide educational opportunities to the visitors, especially children; if we didn't have animals in zoos, children wouldn't see them at all and be ignorant about them. We live at a time when animals in their natural habitat can be seen on TV or computers, even smartphones while sitting at home. Therefore, the aim should be to conserve animals in the wild, in protected areas called sanctuaries. According to the passage, we visit zoos ________.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "to watch the frustration of animals in cages"
-   },
-   {
-    "id": "B",
-    "text": "to see how animals behave in zoos"
-   },
-   {
-    "id": "C",
-    "text": "to spend a day out for fun and excitement"
-   },
-   {
-    "id": "D",
-    "text": "to see the animals in cages"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "The passage says people visit zoos considering it 'a day out having fun' → (C).",
-  "explanationHi": "The passage says people visit zoos considering it 'a day out having fun' → (C).",
-  "source": "PYQ · 24 Jul 2022 · PW Model (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0698a0337154f071",
-  "figureBased": false,
-  "paper": {
-   "no": 30,
-   "group": "Y",
-   "date": "24 Jul 2022",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_5b13c93c55fde214",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "medium",
-  "questionText": "Read the given passage and answer the questions that follow. Many of us have enjoyed visiting a zoo and consider it a day out having fun. Seeing real animals face to face can be thrilling and exciting, but many people wonder whether the animals themselves while entertaining us, are suffering in the zoos. Many zoos do not have enough money to provide the animals with the basic features of a proper environment. Most animals are put in an artificial environment (e.g., cages). This isolation from their natural habitat can amount to cruelty. In some zoos, we see concrete floors for burrowing animals like rabbits. Cruelty may be shown in ways other than physical abuse or starvation. Big predators like lions and tigers are created to chase and hunt. By depriving them of these activities, we forget the reason for which they have evolved. These big cats lie in cages in the zoo eating the food given to them and they have nothing else to do. Highly intelligent and curious animals like chimpanzees and polar bears may become frustrated in a zoo; they need a challenging environment. Zoo supporters might argue that zoos provide educational opportunities to the visitors, especially children; if we didn't have animals in zoos, children wouldn't see them at all and be ignorant about them. We live at a time when animals in their natural habitat can be seen on TV or computers, even smartphones while sitting at home. Therefore, the aim should be to conserve animals in the wild, in protected areas called sanctuaries. According to the passage, animals in zoos suffer cruelty: | | Android App iOS App PW Website 16/09/2024, 13:31 Defence_Memory Based Paper 24 Jul 2022_DPP https://qbg-admin.penpencil.co/finalize-question-paper/print-preview 2/8 Defence",
-  "questionTextHi": "Read the given passage and answer the questions that follow. Many of us have enjoyed visiting a zoo and consider it a day out having fun. Seeing real animals face to face can be thrilling and exciting, but many people wonder whether the animals themselves while entertaining us, are suffering in the zoos. Many zoos do not have enough money to provide the animals with the basic features of a proper environment. Most animals are put in an artificial environment (e.g., cages). This isolation from their natural habitat can amount to cruelty. In some zoos, we see concrete floors for burrowing animals like rabbits. Cruelty may be shown in ways other than physical abuse or starvation. Big predators like lions and tigers are created to chase and hunt. By depriving them of these activities, we forget the reason for which they have evolved. These big cats lie in cages in the zoo eating the food given to them and they have nothing else to do. Highly intelligent and curious animals like chimpanzees and polar bears may become frustrated in a zoo; they need a challenging environment. Zoo supporters might argue that zoos provide educational opportunities to the visitors, especially children; if we didn't have animals in zoos, children wouldn't see them at all and be ignorant about them. We live at a time when animals in their natural habitat can be seen on TV or computers, even smartphones while sitting at home. Therefore, the aim should be to conserve animals in the wild, in protected areas called sanctuaries. According to the passage, animals in zoos suffer cruelty: | | Android App iOS App PW Website 16/09/2024, 13:31 Defence_Memory Based Paper 24 Jul 2022_DPP https://qbg-admin.penpencil.co/finalize-question-paper/print-preview 2/8 Defence",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "by being kept in artificial environments"
-   },
-   {
-    "id": "B",
-    "text": "by being physically tortured or abused"
-   },
-   {
-    "id": "C",
-    "text": "by being starved to death"
-   },
-   {
-    "id": "D",
-    "text": "by being forced to perform for the visitors"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The passage says animals are kept in an artificial environment (cages) which causes them cruelty → (A).",
-  "explanationHi": "The passage says animals are kept in an artificial environment (cages) which causes them cruelty → (A).",
-  "source": "PYQ · 24 Jul 2022 · PW Model (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0a06c64cc15caa06",
-  "figureBased": false,
-  "paper": {
-   "no": 30,
-   "group": "Y",
-   "date": "24 Jul 2022",
-   "src": "PW Model"
-  }
- },
- {
   "id": "q_4d26ef31c7777e1a",
   "subject": "english",
   "subjectName": "English",
@@ -19846,102 +18011,6 @@
   }
  },
  {
-  "id": "q_b2db54d0411fe912",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "In the following question out of the four alternatives, choose the one which can be a substitute for the given word/sentence. One who eats everything",
-  "questionTextHi": "In the following question out of the four alternatives, choose the one which can be a substitute for the given word/sentence. One who eats everything",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Omnivorous"
-   },
-   {
-    "id": "B",
-    "text": "Omniscient"
-   },
-   {
-    "id": "C",
-    "text": "Irresistible"
-   },
-   {
-    "id": "D",
-    "text": "Insolvent"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "One who eats everything is 'omnivorous' (A). Omniscient = all-knowing, Irresistible = impossible to resist, Insolvent = unable to pay debts.",
-  "explanationHi": "One who eats everything is 'omnivorous' (A). Omniscient = all-knowing, Irresistible = impossible to resist, Insolvent = unable to pay debts.",
-  "source": "PYQ · 24 Jul 2022 · PW Model (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "01b525e791121643",
-  "figureBased": false,
-  "paper": {
-   "no": 30,
-   "group": "Y",
-   "date": "24 Jul 2022",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_758ed68ab57ac877",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Spelling",
-  "difficulty": "easy",
-  "questionText": "Direction: In each of the following questions, groups of four words are given. In each group, one word is correctly spelt. Find the correctly spelt word.",
-  "questionTextHi": "Direction: In each of the following questions, groups of four words are given. In each group, one word is correctly spelt. Find the correctly spelt word.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "impromptue"
-   },
-   {
-    "id": "B",
-    "text": "illustrious"
-   },
-   {
-    "id": "C",
-    "text": "illusery"
-   },
-   {
-    "id": "D",
-    "text": "impetous"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Illustrious' (= famous, distinguished) is the correctly spelt word (B). Impromptue (impromptu), illusery (illusory) and impetous (impetuous) are misspellings.",
-  "explanationHi": "'Illustrious' (= famous, distinguished) is the correctly spelt word (B). Impromptue (impromptu), illusery (illusory) and impetous (impetuous) are misspellings.",
-  "source": "PYQ · 24 Jul 2022 (All Shifts) · AllExamPYQs (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "06613e2bc1120894",
-  "figureBased": false,
-  "paper": {
-   "no": 31,
-   "group": "Y",
-   "date": "24 Jul 2022 (All Shifts)",
-   "src": "AllExamPYQs"
-  }
- },
- {
   "id": "q_f1c6b212080508be",
   "subject": "english",
   "subjectName": "English",
@@ -19981,102 +18050,6 @@
    "auto-topic"
   ],
   "dupeHash": "04ca44fb611446ce",
-  "figureBased": false,
-  "paper": {
-   "no": 31,
-   "group": "Y",
-   "date": "24 Jul 2022 (All Shifts)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_2df12c1cac1ab819",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "medium",
-  "questionText": "According to the passage, animals in zoos suffer cruelty:",
-  "questionTextHi": "According to the passage, animals in zoos suffer cruelty:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "by being kept in artificial environments"
-   },
-   {
-    "id": "B",
-    "text": "by being physically tortured or abused"
-   },
-   {
-    "id": "C",
-    "text": "by being starved to death"
-   },
-   {
-    "id": "D",
-    "text": "by being forced to perform for the visitors"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The passage says most animals are put in an artificial environment (cages) and this isolation makes them suffer → (A) by being kept in artificial environments.",
-  "explanationHi": "The passage says most animals are put in an artificial environment (cages) and this isolation makes them suffer → (A) by being kept in artificial environments.",
-  "source": "PYQ · 24 Jul 2022 (All Shifts) · AllExamPYQs (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "083b2cca41129ccc",
-  "figureBased": false,
-  "paper": {
-   "no": 31,
-   "group": "Y",
-   "date": "24 Jul 2022 (All Shifts)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_23fdf6a8b432338f",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "Direction: In the following question out of the four alternatives, choose the one which can be a substitute for the given word/sentence. One who eats everything",
-  "questionTextHi": "Direction: In the following question out of the four alternatives, choose the one which can be a substitute for the given word/sentence. One who eats everything",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Omnivorous"
-   },
-   {
-    "id": "B",
-    "text": "Omniscient"
-   },
-   {
-    "id": "C",
-    "text": "Irresistible"
-   },
-   {
-    "id": "D",
-    "text": "Insolvent"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "One who eats everything is 'omnivorous' (A). Omniscient = all-knowing, Irresistible = impossible to resist, Insolvent = unable to pay debts.",
-  "explanationHi": "One who eats everything is 'omnivorous' (A). Omniscient = all-knowing, Irresistible = impossible to resist, Insolvent = unable to pay debts.",
-  "source": "PYQ · 24 Jul 2022 (All Shifts) · AllExamPYQs (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b753893a11291a8",
   "figureBased": false,
   "paper": {
    "no": 31,
@@ -20951,390 +18924,6 @@
   }
  },
  {
-  "id": "q_fd5fd16d78daace1",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Direct & Indirect Speech",
-  "difficulty": "easy",
-  "questionText": "Direction:Change the Narration- “Whatareyoudoing?” He said to me",
-  "questionTextHi": "Direction:Change the Narration- “Whatareyoudoing?” He said to me",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "He asked me what I was doing."
-   },
-   {
-    "id": "B",
-    "text": "He asked me what I were doing."
-   },
-   {
-    "id": "C",
-    "text": "He asked me that what I was doing."
-   },
-   {
-    "id": "D",
-    "text": "He asked me what he was doing."
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Indirect speech: 'He asked me what I was doing' (A).",
-  "explanationHi": "Indirect speech: 'He asked me what I was doing' (A).",
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "09715ee84118f7d0",
-  "figureBased": false,
-  "paper": {
-   "no": 33,
-   "group": "Y",
-   "date": "25 Jul 2022",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_c3826115552229aa",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "Direction: Select the segment of the sentence that contains the grammatical error. If there is no error, mark 'No error' as your answer. Hardly had he completed (A)/ his homework than the (B)/ lights went out. (C)/ No error (D)",
-  "questionTextHi": "Direction: Select the segment of the sentence that contains the grammatical error. If there is no error, mark 'No error' as your answer. Hardly had he completed (A)/ his homework than the (B)/ lights went out. (C)/ No error (D)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "A"
-   },
-   {
-    "id": "B",
-    "text": "B"
-   },
-   {
-    "id": "C",
-    "text": "C"
-   },
-   {
-    "id": "D",
-    "text": "D"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Hardly had ... when' is the correct pair, so 'than' (segment B) is the error.",
-  "explanationHi": "'Hardly had ... when' is the correct pair, so 'than' (segment B) is the error.",
-  "source": "PYQ · 25 Jul 2022 (All Shifts) · AllExamPYQs (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0047542e7112fa29",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "Y",
-   "date": "25 Jul 2022 (All Shifts)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_32f3b5d7d76c380b",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "Direction: Choose the appropriate word for the given sentence: Your brother will be failed ________ he does not come tomorrow.",
-  "questionTextHi": "Direction: Choose the appropriate word for the given sentence: Your brother will be failed ________ he does not come tomorrow.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "if"
-   },
-   {
-    "id": "B",
-    "text": "though"
-   },
-   {
-    "id": "C",
-    "text": "unless"
-   },
-   {
-    "id": "D",
-    "text": "until"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "'If' introduces the condition → (A) if.",
-  "explanationHi": "'If' introduces the condition → (A) if.",
-  "source": "PYQ · 25 Jul 2022 (All Shifts) · AllExamPYQs (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0813f564410ff09e",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "Y",
-   "date": "25 Jul 2022 (All Shifts)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_3991794506cd674f",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Prepositions",
-  "difficulty": "easy",
-  "questionText": "Directions: Choose the appropriate preposition for the given sentence: His path was beset _______ difficulties.",
-  "questionTextHi": "Directions: Choose the appropriate preposition for the given sentence: His path was beset _______ difficulties.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "with"
-   },
-   {
-    "id": "B",
-    "text": "within"
-   },
-   {
-    "id": "C",
-    "text": "among"
-   },
-   {
-    "id": "D",
-    "text": "by"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "'Beset with difficulties' → (A) with.",
-  "explanationHi": "'Beset with difficulties' → (A) with.",
-  "source": "PYQ · 25 Jul 2022 (All Shifts) · AllExamPYQs (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ae0e4e9710f3d47",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "Y",
-   "date": "25 Jul 2022 (All Shifts)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_f2431c9b39b91720",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "Read the sentence to find out whether there is any error in it. The error, if any, will be in one part of the sentence. The number of that part is the answer. If there is no error, the answer is (5). Ignore errors of punctuation, if any. (1)How much boys/(2) were present/(3) in the assembly./(4) No Error",
-  "questionTextHi": "Read the sentence to find out whether there is any error in it. The error, if any, will be in one part of the sentence. The number of that part is the answer. If there is no error, the answer is (5). Ignore errors of punctuation, if any. (1)How much boys/(2) were present/(3) in the assembly./(4) No Error",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "2"
-   },
-   {
-    "id": "C",
-    "text": "3"
-   },
-   {
-    "id": "D",
-    "text": "4"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "'How much boys were present in the assembly' — 'How many boys' is needed, so the error is in part 1 (A).",
-  "explanationHi": "'How much boys were present in the assembly' — 'How many boys' is needed, so the error is in part 1 (A).",
-  "source": "PYQ · 25 Jul 2022 (All Shifts) · AllExamPYQs (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0aa46b4b81161790",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "Y",
-   "date": "25 Jul 2022 (All Shifts)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_cbc1fd7c5ea82526",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Direct & Indirect Speech",
-  "difficulty": "easy",
-  "questionText": "Direction: Change the Narration- “What are you doing?” He said to me",
-  "questionTextHi": "Direction: Change the Narration- “What are you doing?” He said to me",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "He asked me what I was doing."
-   },
-   {
-    "id": "B",
-    "text": "He asked me what I were doing."
-   },
-   {
-    "id": "C",
-    "text": "He asked me that what I was doing."
-   },
-   {
-    "id": "D",
-    "text": "He asked me what he was doing."
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Indirect speech: 'He asked me what I was doing' (A).",
-  "explanationHi": "Indirect speech: 'He asked me what I was doing' (A).",
-  "source": "PYQ · 25 Jul 2022 (All Shifts) · AllExamPYQs (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08d952bee1190750",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "Y",
-   "date": "25 Jul 2022 (All Shifts)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_35745f94c743f984",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Synonyms",
-  "difficulty": "easy",
-  "questionText": "Which of the following word is a synonym for ‘brave’?",
-  "questionTextHi": "Which of the following word is a synonym for ‘brave’?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "hardworking"
-   },
-   {
-    "id": "B",
-    "text": "valiant"
-   },
-   {
-    "id": "C",
-    "text": "prosperous"
-   },
-   {
-    "id": "D",
-    "text": "enthusiastic"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The synonym for 'brave' is 'valiant' (B).",
-  "explanationHi": "The synonym for 'brave' is 'valiant' (B).",
-  "source": "PYQ · 25 Jul 2022 (All Shifts) · AllExamPYQs (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0f4ba03d5115775b",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "Y",
-   "date": "25 Jul 2022 (All Shifts)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_bfd6b897e5318b51",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "‘The way of living’ can be replaced with the word",
-  "questionTextHi": "‘The way of living’ can be replaced with the word",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "livelihood"
-   },
-   {
-    "id": "B",
-    "text": "liveliness"
-   },
-   {
-    "id": "C",
-    "text": "lifelike"
-   },
-   {
-    "id": "D",
-    "text": "lifestyle"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "'The way of living' = 'lifestyle' (D).",
-  "explanationHi": "'The way of living' = 'lifestyle' (D).",
-  "source": "PYQ · 25 Jul 2022 (All Shifts) · AllExamPYQs (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0f8c885d911511e1",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "Y",
-   "date": "25 Jul 2022 (All Shifts)",
-   "src": "AllExamPYQs"
-  }
- },
- {
   "id": "q_8e7bbbd6aacdc6ab",
   "subject": "english",
   "subjectName": "English",
@@ -21758,54 +19347,6 @@
    "auto-topic"
   ],
   "dupeHash": "078d63a4710ec8c9",
-  "figureBased": false,
-  "paper": {
-   "no": 35,
-   "group": "Y",
-   "date": "27 Jul 2022",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_317789bd4526636b",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Spelling",
-  "difficulty": "easy",
-  "questionText": "Select the correctly spelt word:",
-  "questionTextHi": "Select the correctly spelt word:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Begining"
-   },
-   {
-    "id": "B",
-    "text": "Soldier"
-   },
-   {
-    "id": "C",
-    "text": "Guidence"
-   },
-   {
-    "id": "D",
-    "text": "Shinning"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Soldier' is the correctly spelt word (B). Begining (beginning), Guidence (guidance) and Shinning (shining) are misspellings.",
-  "explanationHi": "'Soldier' is the correctly spelt word (B). Begining (beginning), Guidence (guidance) and Shinning (shining) are misspellings.",
-  "source": "PYQ · 27 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "082af9a9210c54ea",
   "figureBased": false,
   "paper": {
    "no": 35,
@@ -23208,198 +20749,6 @@
   }
  },
  {
-  "id": "q_b9a544b87d288a75",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Direct & Indirect Speech",
-  "difficulty": "medium",
-  "questionText": "3 Select the most appropriate indirect form of the given sentence. He said, “Hurray! I have won the match.”",
-  "questionTextHi": "3 Select the most appropriate indirect form of the given sentence. He said, “Hurray! I have won the match.”",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "He exclaimed with great sorrow that he had won the match."
-   },
-   {
-    "id": "B",
-    "text": "He exclaimed with great joy that he had won the match."
-   },
-   {
-    "id": "C",
-    "text": "He exclaimed with great joy that he would won the match."
-   },
-   {
-    "id": "D",
-    "text": "He exclaimed with great joy that he have won the match."
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Hurrah!' → exclaimed with great joy; 'have won' → 'had won' → (B).",
-  "explanationHi": "'Hurrah!' → exclaimed with great joy; 'have won' → 'had won' → (B).",
-  "source": "PYQ · 18 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "03c9fb40811f4772",
-  "figureBased": false,
-  "paper": {
-   "no": 37,
-   "group": "Y",
-   "date": "18 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_dfc3b82548685a9c",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "Direction: Select a word or phrase from the given list to complete the sentence: They needn't worry, _______?",
-  "questionTextHi": "Direction: Select a word or phrase from the given list to complete the sentence: They needn't worry, _______?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "isn't it"
-   },
-   {
-    "id": "B",
-    "text": "doesn't it"
-   },
-   {
-    "id": "C",
-    "text": "don't it"
-   },
-   {
-    "id": "D",
-    "text": "need they"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "'They needn't worry, need they?' — the question tag of 'needn't' is 'need they' (D).",
-  "explanationHi": "'They needn't worry, need they?' — the question tag of 'needn't' is 'need they' (D).",
-  "source": "PYQ · 18 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0cdf33c3710faedd",
-  "figureBased": false,
-  "paper": {
-   "no": 38,
-   "group": "Y",
-   "date": "18 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_c7a7c445ef63972e",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "A sentence has been given with a blank to be filled with an appropriate word. Choose the correct alternative. More than a decade has passed since this house was ______",
-  "questionTextHi": "A sentence has been given with a blank to be filled with an appropriate word. Choose the correct alternative. More than a decade has passed since this house was ______",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "build"
-   },
-   {
-    "id": "B",
-    "text": "built"
-   },
-   {
-    "id": "C",
-    "text": "is build"
-   },
-   {
-    "id": "D",
-    "text": "building"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Since this house was built' — the passive of the past simple is 'was built' → (B) built.",
-  "explanationHi": "'Since this house was built' — the passive of the past simple is 'was built' → (B) built.",
-  "source": "PYQ · 18 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "061f952ac111eb08",
-  "figureBased": false,
-  "paper": {
-   "no": 38,
-   "group": "Y",
-   "date": "18 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_fb608027bebf2a52",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Antonyms",
-  "difficulty": "easy",
-  "questionText": "Select the most appropriate ANTONYM of the given word. \"Indifferent\"",
-  "questionTextHi": "Select the most appropriate ANTONYM of the given word. \"Indifferent\"",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Apathetic"
-   },
-   {
-    "id": "B",
-    "text": "Attentive"
-   },
-   {
-    "id": "C",
-    "text": "Insensible"
-   },
-   {
-    "id": "D",
-    "text": "Incurious"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Indifferent' = not interested/caring; its antonym is 'Attentive' (B). Apathetic, Insensible and Incurious are synonyms of indifferent.",
-  "explanationHi": "'Indifferent' = not interested/caring; its antonym is 'Attentive' (B). Apathetic, Insensible and Incurious are synonyms of indifferent.",
-  "source": "PYQ · 18 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0854d8e5310e1e87",
-  "figureBased": false,
-  "paper": {
-   "no": 38,
-   "group": "Y",
-   "date": "18 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
   "id": "q_e4bad13ba44c3861",
   "subject": "english",
   "subjectName": "English",
@@ -23439,102 +20788,6 @@
    "auto-topic"
   ],
   "dupeHash": "0478b12d511aeb15",
-  "figureBased": false,
-  "paper": {
-   "no": 38,
-   "group": "Y",
-   "date": "18 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_9f4b4d647cfd2549",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "medium",
-  "questionText": "What is required to truly empower women?",
-  "questionTextHi": "What is required to truly empower women?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "An attitude shift and a shift in mindset towards gender equality."
-   },
-   {
-    "id": "B",
-    "text": "To eliminate typical attitudes and break down the systemic barriers that hold women back."
-   },
-   {
-    "id": "C",
-    "text": "Women have the same rights, abilities, and opportunities as men."
-   },
-   {
-    "id": "D",
-    "text": "Tackling the underlying causes of gender inequality in our societies."
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The passage says the need is to eliminate typical attitudes and break down the systemic barriers that hold women back → (B).",
-  "explanationHi": "The passage says the need is to eliminate typical attitudes and break down the systemic barriers that hold women back → (B).",
-  "source": "PYQ · 18 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0afbba07c1181b6c",
-  "figureBased": false,
-  "paper": {
-   "no": 38,
-   "group": "Y",
-   "date": "18 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_0afbf6e408c700e0",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Word Forms",
-  "difficulty": "easy",
-  "questionText": "Select the verb form of an adjective \"pacific\" from the given options:",
-  "questionTextHi": "Select the verb form of an adjective \"pacific\" from the given options:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "pacify"
-   },
-   {
-    "id": "B",
-    "text": "pacifying"
-   },
-   {
-    "id": "C",
-    "text": "pacified"
-   },
-   {
-    "id": "D",
-    "text": "pacification"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The verb form of the adjective 'pacific' is 'pacify' (A). Pacification is a noun; pacifying/pacified are participles.",
-  "explanationHi": "The verb form of the adjective 'pacific' is 'pacify' (A). Pacification is a noun; pacifying/pacified are participles.",
-  "source": "PYQ · 18 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "009099f7a10e26a4",
   "figureBased": false,
   "paper": {
    "no": 38,
@@ -24207,54 +21460,6 @@
    "auto-topic"
   ],
   "dupeHash": "0c8b5c05d10d78df",
-  "figureBased": false,
-  "paper": {
-   "no": 39,
-   "group": "X",
-   "date": "19 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_27e5df12115f70b5",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. No sooner did she see herteacher (A) / when she (B) / stopped copying. (C) / No error (D)",
-  "questionTextHi": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. No sooner did she see herteacher (A) / when she (B) / stopped copying. (C) / No error (D)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "(A)"
-   },
-   {
-    "id": "B",
-    "text": "(B)"
-   },
-   {
-    "id": "C",
-    "text": "(C)"
-   },
-   {
-    "id": "D",
-    "text": "(D)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'No sooner did ... when' is wrong — 'no sooner' pairs with 'than': 'No sooner did she see her teacher than she stopped copying' → the error is in segment B ('when she').",
-  "explanationHi": "'No sooner did ... when' is wrong — 'no sooner' pairs with 'than': 'No sooner did she see her teacher than she stopped copying' → the error is in segment B ('when she').",
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "02d7488cb112666d",
   "figureBased": false,
   "paper": {
    "no": 39,
@@ -25365,342 +22570,6 @@
    "group": "Y",
    "date": "20 Jan 2023",
    "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_baca82e07ad65a61",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Antonyms",
-  "difficulty": "easy",
-  "questionText": "Directions: Choose the antonym of the word Capricious.",
-  "questionTextHi": "Directions: Choose the antonym of the word Capricious.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Stable"
-   },
-   {
-    "id": "B",
-    "text": "mutable"
-   },
-   {
-    "id": "C",
-    "text": "variable"
-   },
-   {
-    "id": "D",
-    "text": "mercurial"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "'Capricious' = changing mood suddenly; its antonym is 'Stable' (A). Mutable, Variable and Mercurial are synonyms.",
-  "explanationHi": "'Capricious' = changing mood suddenly; its antonym is 'Stable' (A). Mutable, Variable and Mercurial are synonyms.",
-  "source": "PYQ · 20 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "02e2839ca10d4660",
-  "figureBased": false,
-  "paper": {
-   "no": 42,
-   "group": "Y",
-   "date": "20 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_a5407b3ea2601be2",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Error Spotting",
-  "difficulty": "easy",
-  "questionText": "DIRECTIONS: In the given sentence there might be an error. Find out which part of the sentence has an error. lf there is no error, mark your answer as (d) i.e. ‘No error’. Scarcely had I (a)/ started reading the paper (b)/ then the doorbell rang (c)/. No Error (d)",
-  "questionTextHi": "DIRECTIONS: In the given sentence there might be an error. Find out which part of the sentence has an error. lf there is no error, mark your answer as (d) i.e. ‘No error’. Scarcely had I (a)/ started reading the paper (b)/ then the doorbell rang (c)/. No Error (d)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "(a)"
-   },
-   {
-    "id": "B",
-    "text": "(b)"
-   },
-   {
-    "id": "C",
-    "text": "(c)"
-   },
-   {
-    "id": "D",
-    "text": "(d)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "'Scarcely had ... when' is the correct pair, so 'then the doorbell rang' (part c) is the error.",
-  "explanationHi": "'Scarcely had ... when' is the correct pair, so 'then the doorbell rang' (part c) is the error.",
-  "source": "PYQ · 20 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0cd46b25611c2878",
-  "figureBased": false,
-  "paper": {
-   "no": 42,
-   "group": "Y",
-   "date": "20 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_56c039f79f9a65fc",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Direction: Fill in the blanks with the simple past tense of the verb from the given options: We ______ the Channel yesterday.",
-  "questionTextHi": "Direction: Fill in the blanks with the simple past tense of the verb from the given options: We ______ the Channel yesterday.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "crosses"
-   },
-   {
-    "id": "B",
-    "text": "crossed"
-   },
-   {
-    "id": "C",
-    "text": "cross"
-   },
-   {
-    "id": "D",
-    "text": "were crossing"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Yesterday' takes the simple past: 'We crossed the Channel yesterday' → (B) crossed.",
-  "explanationHi": "'Yesterday' takes the simple past: 'We crossed the Channel yesterday' → (B) crossed.",
-  "source": "PYQ · 20 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "002a71d2d1107119",
-  "figureBased": false,
-  "paper": {
-   "no": 42,
-   "group": "Y",
-   "date": "20 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_4e973cb591f74c7a",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Directions: Fill in the blanks in the following sentences with the help of options that follow. I _________ like a log if my mother had not turned off the air-conditioner.",
-  "questionTextHi": "Directions: Fill in the blanks in the following sentences with the help of options that follow. I _________ like a log if my mother had not turned off the air-conditioner.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "would have slept"
-   },
-   {
-    "id": "B",
-    "text": "would sleep"
-   },
-   {
-    "id": "C",
-    "text": "would slept"
-   },
-   {
-    "id": "D",
-    "text": "would had slept"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Third conditional: 'I would have slept like a log if my mother had not turned off the air-conditioner' → (A) would have slept.",
-  "explanationHi": "Third conditional: 'I would have slept like a log if my mother had not turned off the air-conditioner' → (A) would have slept.",
-  "source": "PYQ · 20 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0949ea52a1135aea",
-  "figureBased": false,
-  "paper": {
-   "no": 42,
-   "group": "Y",
-   "date": "20 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_c5621e4ba37db218",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Reading Comprehension",
-  "topic": "Passage-based Question",
-  "difficulty": "medium",
-  "questionText": "Directions: Read the following passage and answer the given questions: Bringing up the baby is now a science and fine art! Most of the maternal grandparents would agree with this statement. My mother lost fifteen kilos in six months when my son was born, and I gained that as much. Both ways it was because of the anxiety and shared responsibility. My female colleague's welcome retirement when their daughter is ready to deliver or had just delivered. They most often befriend young, experienced mothers and spend long counselling sessions with them collecting tips on how to tackle a crisis. It is a funny sight to see grey-haired women browsing “Bringing up Baby” books at the local bookstore. One tends to think about what they did with their own offspring. Ask them and pat comes to the reply “it was so easy then. They grew up on their own”. The mother may wear many hats at the same time. But to her or her parents, the mind- boggling thing for the first few years is diaper changes, circadian rhythm and continual feeding. At home social life is taboo. Phone calls give the cause for irritation, music becomes noise, friends and relatives become total strangers, the domestic help a spirit of mercy and the paediatrician a fairy godmother. Raising a kid is akin to guerilla warfare and if you hear a woman say that her baby ‘is beautiful and perfect and an angel’ all the time, then she is the grandma. What is the main topic discussed in the passage?",
-  "questionTextHi": "Directions: Read the following passage and answer the given questions: Bringing up the baby is now a science and fine art! Most of the maternal grandparents would agree with this statement. My mother lost fifteen kilos in six months when my son was born, and I gained that as much. Both ways it was because of the anxiety and shared responsibility. My female colleague's welcome retirement when their daughter is ready to deliver or had just delivered. They most often befriend young, experienced mothers and spend long counselling sessions with them collecting tips on how to tackle a crisis. It is a funny sight to see grey-haired women browsing “Bringing up Baby” books at the local bookstore. One tends to think about what they did with their own offspring. Ask them and pat comes to the reply “it was so easy then. They grew up on their own”. The mother may wear many hats at the same time. But to her or her parents, the mind- boggling thing for the first few years is diaper changes, circadian rhythm and continual feeding. At home social life is taboo. Phone calls give the cause for irritation, music becomes noise, friends and relatives become total strangers, the domestic help a spirit of mercy and the paediatrician a fairy godmother. Raising a kid is akin to guerilla warfare and if you hear a woman say that her baby ‘is beautiful and perfect and an angel’ all the time, then she is the grandma. What is the main topic discussed in the passage?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Raising a child cannot be both a science and an art."
-   },
-   {
-    "id": "B",
-    "text": "The challenges and responsibilities of raising a baby."
-   },
-   {
-    "id": "C",
-    "text": "Parents can provide their children with the best possible start in life."
-   },
-   {
-    "id": "D",
-    "text": "To be creative and intuitive in problem-solving and finding solutions to difficult situations."
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The passage's main topic is the challenges and responsibilities of raising a baby (guerilla warfare, changed routine, stress) → (B).",
-  "explanationHi": "The passage's main topic is the challenges and responsibilities of raising a baby (guerilla warfare, changed routine, stress) → (B).",
-  "source": "PYQ · 20 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0af2ba6ce16c6a34",
-  "figureBased": false,
-  "paper": {
-   "no": 42,
-   "group": "Y",
-   "date": "20 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_d739c32c240c9c52",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Synonyms",
-  "difficulty": "easy",
-  "questionText": "Select the most appropriate SYNONYM of the given word. \"CONTINUAL\"",
-  "questionTextHi": "Select the most appropriate SYNONYM of the given word. \"CONTINUAL\"",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Irregular"
-   },
-   {
-    "id": "B",
-    "text": "Uninterrupted"
-   },
-   {
-    "id": "C",
-    "text": "Occasional"
-   },
-   {
-    "id": "D",
-    "text": "Unsteady"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Continual' = going on without interruption → 'Uninterrupted' (B). Irregular, Occasional and Unsteady are opposites.",
-  "explanationHi": "'Continual' = going on without interruption → 'Uninterrupted' (B). Irregular, Occasional and Unsteady are opposites.",
-  "source": "PYQ · 20 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0a186c47e10e14f6",
-  "figureBased": false,
-  "paper": {
-   "no": 42,
-   "group": "Y",
-   "date": "20 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
-  }
- },
- {
-  "id": "q_44f87e25353498d8",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "medium",
-  "questionText": "How do maternal grandparents often handle the challenges of raising a baby?",
-  "questionTextHi": "How do maternal grandparents often handle the challenges of raising a baby?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Maternal grandparents hardly provide emotional support for the parents."
-   },
-   {
-    "id": "B",
-    "text": "by adjusting to a new routine and schedule."
-   },
-   {
-    "id": "C",
-    "text": "by befriending young, experienced mothers and spending long counselling sessions."
-   },
-   {
-    "id": "D",
-    "text": "by balancing their own needs and desires with those of their grandchildren."
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "As per the passage, grandparents often cope by befriending young, experienced mothers and spending long counselling sessions → (C).",
-  "explanationHi": "As per the passage, grandparents often cope by befriending young, experienced mothers and spending long counselling sessions → (C).",
-  "source": "PYQ · 20 Jan 2023 (MB) · AllExamPYQs (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0388412b91190b8d",
-  "figureBased": false,
-  "paper": {
-   "no": 42,
-   "group": "Y",
-   "date": "20 Jan 2023 (MB)",
-   "src": "AllExamPYQs"
   }
  },
  {
@@ -30316,251 +27185,6 @@
   }
  },
  {
-  "id": "q_c099b5ab711c046c",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "Isn’t it strange that though we live in the same city, I get to see my sister once in a blue moon? What does 'once in a blue moon' mean?",
-  "questionTextHi": "Isn’t it strange that though we live in the same city, I get to see my sister once in a blue moon? What does 'once in a blue moon' mean?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Everyday"
-   },
-   {
-    "id": "B",
-    "text": "All the time"
-   },
-   {
-    "id": "C",
-    "text": "Frequently"
-   },
-   {
-    "id": "D",
-    "text": "Occasionally"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "'Once in a blue moon' = very rarely, i.e. occasionally → (D) Occasionally.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (16 Nov 2024, SelfStudys).]",
-  "explanationHi": "'Once in a blue moon' = very rarely, i.e. occasionally → (D) Occasionally.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (16 Nov 2024, SelfStudys).]",
-  "source": "PYQ · 16 Nov 2024 · User TXT (Group XY)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0206bebff114f16d",
-  "figureBased": false,
-  "paper": {
-   "no": 50,
-   "group": "XY",
-   "date": "16 Nov 2024",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_50051bb6fba37a47",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Direct & Indirect Speech",
-  "difficulty": "medium",
-  "questionText": "Select the correct indirect form of the given sentence. Nakul asked her, \"How do you know that Rahul has told this to him?\"",
-  "questionTextHi": "Select the correct indirect form of the given sentence. Nakul asked her, \"How do you know that Rahul has told this to him?\"",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Nakul asked her how she knew that Rahul had told that to him."
-   },
-   {
-    "id": "B",
-    "text": "Nakul asked her that how she has known that Rahul has told that to him."
-   },
-   {
-    "id": "C",
-    "text": "Nakul asked her how she knew that Rahul has told that to him."
-   },
-   {
-    "id": "D",
-    "text": "Nakul asked her that how she knows that Rahul had told that to him."
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Indirect speech: 'do you know' → 'she knew'; reported speech keeps the past perfect 'had told' → (A) Nakul asked her how she knew that Rahul had told that to him.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (16 Nov 2024, SelfStudys).]",
-  "explanationHi": "Indirect speech: 'do you know' → 'she knew'; reported speech keeps the past perfect 'had told' → (A) Nakul asked her how she knew that Rahul had told that to him.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (16 Nov 2024, SelfStudys).]",
-  "source": "PYQ · 16 Nov 2024 · User TXT (Group XY)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0c8f12b08119d4b0",
-  "figureBased": false,
-  "paper": {
-   "no": 50,
-   "group": "XY",
-   "date": "16 Nov 2024",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_def7c3b0b065a78c",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Active & Passive Voice",
-  "difficulty": "medium",
-  "questionText": "Read the following information carefully and answer the given questions. As humans we really don't think that psychologically, birds are capable of the same mental tasks that other mammals are, and much more specifically, some of them are in the rarest of company with us, they are near-sapient, just like our close relatives. Birds have been shown in previous studies to possess a range of skills such as complex social reasoning, an ability to problem solve and some have even demonstrated the capability to craft and use tools. Both birds and mammals are warm-blooded, which means they can maintain a constant body temperature and do not need to rely on an external heat source to stay warm. This similarity lends itself to several other commonalities, such as similar caloric requirements by weight and the ability to remain active in colder temperatures. Cold-blooded animals do not have to eat as much, but they also cannot survive colder temperatures. Birds require a lot of energy in order to fly. This also necessitates a circulatory system that is both efficient and effective, so they have evolved a four-chambered heart with two atria and two ventricles, just like mammals. The blood of birds and mammals contains both red and white blood cells, called erythrocytes and leukocytes respectively. The red blood cells in both classes of animals contain haemoglobin. Another similarity between birds and mammals is that both classes care for their young after they're hatched or born. Female mammals feed their young by lactating, while birds feed their young beak to beak. What is the main purpose of the passage?",
-  "questionTextHi": "Read the following information carefully and answer the given questions. As humans we really don't think that psychologically, birds are capable of the same mental tasks that other mammals are, and much more specifically, some of them are in the rarest of company with us, they are near-sapient, just like our close relatives. Birds have been shown in previous studies to possess a range of skills such as complex social reasoning, an ability to problem solve and some have even demonstrated the capability to craft and use tools. Both birds and mammals are warm-blooded, which means they can maintain a constant body temperature and do not need to rely on an external heat source to stay warm. This similarity lends itself to several other commonalities, such as similar caloric requirements by weight and the ability to remain active in colder temperatures. Cold-blooded animals do not have to eat as much, but they also cannot survive colder temperatures. Birds require a lot of energy in order to fly. This also necessitates a circulatory system that is both efficient and effective, so they have evolved a four-chambered heart with two atria and two ventricles, just like mammals. The blood of birds and mammals contains both red and white blood cells, called erythrocytes and leukocytes respectively. The red blood cells in both classes of animals contain haemoglobin. Another similarity between birds and mammals is that both classes care for their young after they're hatched or born. Female mammals feed their young by lactating, while birds feed their young beak to beak. What is the main purpose of the passage?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "To encourage scientists to research more on birds."
-   },
-   {
-    "id": "B",
-    "text": "To understand how birds and mammals are alike."
-   },
-   {
-    "id": "C",
-    "text": "To explain the differences between birds and humans."
-   },
-   {
-    "id": "D",
-    "text": "To motivate people to interact more with birds."
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The main purpose of the passage is to understand how birds and mammals are alike (mental tasks, caring for young) → (B).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (16 Nov 2024, SelfStudys).]",
-  "explanationHi": "The main purpose of the passage is to understand how birds and mammals are alike (mental tasks, caring for young) → (B).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (16 Nov 2024, SelfStudys).]",
-  "source": "PYQ · 16 Nov 2024 · User TXT (Group XY)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "06b5622f9159fe73",
-  "figureBased": false,
-  "paper": {
-   "no": 50,
-   "group": "XY",
-   "date": "16 Nov 2024",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_c5400bc27442b154",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "The author has discussed which of the following skills of birds in the passage? I. Complex social reasoning II. Problem solving skill III. Capability to craft tools",
-  "questionTextHi": "The author has discussed which of the following skills of birds in the passage? I. Complex social reasoning II. Problem solving skill III. Capability to craft tools",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Only III"
-   },
-   {
-    "id": "B",
-    "text": "I and II"
-   },
-   {
-    "id": "C",
-    "text": "II and III"
-   },
-   {
-    "id": "D",
-    "text": "I, II and III"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "The author discusses complex social reasoning, problem solving and the capability to craft tools — all three → (D) I, II and III.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (16 Nov 2024, SelfStudys).]",
-  "explanationHi": "The author discusses complex social reasoning, problem solving and the capability to craft tools — all three → (D) I, II and III.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (16 Nov 2024, SelfStudys).]",
-  "source": "PYQ · 16 Nov 2024 · User TXT (Group XY)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0ca2d4fcb111e45f",
-  "figureBased": false,
-  "paper": {
-   "no": 50,
-   "group": "XY",
-   "date": "16 Nov 2024",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_157fd098f9dbaa57",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "medium",
-  "questionText": "Which characteristic of birds show that they are caring?",
-  "questionTextHi": "Which characteristic of birds show that they are caring?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "They fly together in a particular area."
-   },
-   {
-    "id": "B",
-    "text": "They don’t leave the side of their kind."
-   },
-   {
-    "id": "C",
-    "text": "They feed their young beak to beak."
-   },
-   {
-    "id": "D",
-    "text": "They have the capability to use tools."
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Birds feed their young beak to beak, which shows they are caring → (C).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (16 Nov 2024, SelfStudys).]",
-  "explanationHi": "Birds feed their young beak to beak, which shows they are caring → (C).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (16 Nov 2024, SelfStudys).]",
-  "source": "PYQ · 16 Nov 2024 · User TXT (Group XY)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "04ba561191165fdb",
-  "figureBased": false,
-  "paper": {
-   "no": 50,
-   "group": "XY",
-   "date": "16 Nov 2024",
-   "src": "User TXT"
-  }
- },
- {
   "id": "q_c7c67c3e7eae42fb",
   "subject": "english",
   "subjectName": "English",
@@ -31521,447 +28145,6 @@
   }
  },
  {
-  "id": "q_105c16366cffd523",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "A sentence has been given with a blank to be filled with an appropriate option. Choose the correct alternative. John rushed to the spot and saw his wife and kid ________ on the road.",
-  "questionTextHi": "A sentence has been given with a blank to be filled with an appropriate option. Choose the correct alternative. John rushed to the spot and saw his wife and kid ________ on the road.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "lain"
-   },
-   {
-    "id": "B",
-    "text": "lying"
-   },
-   {
-    "id": "C",
-    "text": "lie"
-   },
-   {
-    "id": "D",
-    "text": "laying"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The participle 'lying' describes the position of his wife and kid on the road → (B) lying.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "explanationHi": "The participle 'lying' describes the position of his wife and kid on the road → (B) lying.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "source": "PYQ · 22 Mar 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0b2bf081c112284e",
-  "figureBased": false,
-  "paper": {
-   "no": 53,
-   "group": "XY",
-   "date": "22 Mar 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_6e2966aa9e9ce8dd",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "Choose the part of the sentence that is incorrect in questions. He said (1) / that the horse (2) / died at (3) / the night. (4)",
-  "questionTextHi": "Choose the part of the sentence that is incorrect in questions. He said (1) / that the horse (2) / died at (3) / the night. (4)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "(1)"
-   },
-   {
-    "id": "B",
-    "text": "(2)"
-   },
-   {
-    "id": "C",
-    "text": "(3)"
-   },
-   {
-    "id": "D",
-    "text": "(4)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "'At night' is the correct expression (no article); 'at the night' is wrong → the error is in part (3) → (C).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "explanationHi": "'At night' is the correct expression (no article); 'at the night' is wrong → the error is in part (3) → (C).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "source": "PYQ · 22 Mar 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "04651e48910e9d6f",
-  "figureBased": false,
-  "paper": {
-   "no": 53,
-   "group": "XY",
-   "date": "22 Mar 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_bcdb8ba3e0baf5a4",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Select the most appropriate option to fill in the blank. I enjoy finding ways to make the most of my budget by being _______.",
-  "questionTextHi": "Select the most appropriate option to fill in the blank. I enjoy finding ways to make the most of my budget by being _______.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "lethargic"
-   },
-   {
-    "id": "B",
-    "text": "miser"
-   },
-   {
-    "id": "C",
-    "text": "frugal"
-   },
-   {
-    "id": "D",
-    "text": "gloomy"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "'Frugal' = careful in spending money → the sentence 'I enjoy finding ways to make the most of my budget by being frugal' → (C).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "explanationHi": "'Frugal' = careful in spending money → the sentence 'I enjoy finding ways to make the most of my budget by being frugal' → (C).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "source": "PYQ · 22 Mar 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0a9f430391101f3d",
-  "figureBased": false,
-  "paper": {
-   "no": 53,
-   "group": "XY",
-   "date": "22 Mar 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_8b6a0a649d77ecfd",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Word Forms",
-  "difficulty": "easy",
-  "questionText": "Which of the following is the correct noun form of the word 'Destroy'?",
-  "questionTextHi": "Which of the following is the correct noun form of the word 'Destroy'?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Destructive"
-   },
-   {
-    "id": "B",
-    "text": "Destruction"
-   },
-   {
-    "id": "C",
-    "text": "Destruct"
-   },
-   {
-    "id": "D",
-    "text": "Destructing"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The noun form of 'destroy' is 'destruction' (B). Destructive is an adjective.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "explanationHi": "The noun form of 'destroy' is 'destruction' (B). Destructive is an adjective.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "source": "PYQ · 22 Mar 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0a299601f10e7a51",
-  "figureBased": false,
-  "paper": {
-   "no": 53,
-   "group": "XY",
-   "date": "22 Mar 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_566db7da6cfb0f99",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Active & Passive Voice",
-  "difficulty": "medium",
-  "questionText": "Select the option that expresses the given sentence in passive voice. His parents will send him to a boarding school next year.",
-  "questionTextHi": "Select the option that expresses the given sentence in passive voice. His parents will send him to a boarding school next year.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "He will be sent to a boarding school next year by his parents."
-   },
-   {
-    "id": "B",
-    "text": "He will be sent to a boarding school by his parents next year."
-   },
-   {
-    "id": "C",
-    "text": "He is to be sent to a boarding school next year by his parents."
-   },
-   {
-    "id": "D",
-    "text": "He would be sent to a boarding school next year by his parents."
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Future simple passive: 'He will be sent to a boarding school next year by his parents' (A) — the time phrase goes with the verb.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "explanationHi": "Future simple passive: 'He will be sent to a boarding school next year by his parents' (A) — the time phrase goes with the verb.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "source": "PYQ · 22 Mar 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0ac7d06ba119d852",
-  "figureBased": false,
-  "paper": {
-   "no": 53,
-   "group": "XY",
-   "date": "22 Mar 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_bc3f65bb3f82f3fa",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Reading Comprehension",
-  "topic": "Passage-based Question",
-  "difficulty": "medium",
-  "questionText": "Read the passage given below and answer the questions that follow. Almond trees are deciduous with a hardy dormancy. Typically growing 3–4.5 metres (10–15 feet) tall, the trees are strikingly beautiful when in flower; they produce fragrant, five-petaled, light pink to white flowers from late January to early April north of the Equator. The flowers are self-incompatible and thus require insect pollinators to facilitate cross-pollination with other cultivars. The growing fruit (a drupe) resembles a peach until it approaches maturity; as it ripens, the leathery outer covering, or hull, splits open, curls outward, and discharges the pit. Despite their common label, almonds are not true nuts (a type of dry fruit) but rather seeds enclosed in a hard fruit covering. The sweet almond is cultivated extensively in certain favourable regions, though nut crops are uncertain wherever frosts are likely to occur during flowering. While more than 25 types of almonds are grown in California, Marcona and Valencia almonds come from Spain, and Ferragnes are imported from Greece. In which months does the Almond tree produce flower?",
-  "questionTextHi": "Read the passage given below and answer the questions that follow. Almond trees are deciduous with a hardy dormancy. Typically growing 3–4.5 metres (10–15 feet) tall, the trees are strikingly beautiful when in flower; they produce fragrant, five-petaled, light pink to white flowers from late January to early April north of the Equator. The flowers are self-incompatible and thus require insect pollinators to facilitate cross-pollination with other cultivars. The growing fruit (a drupe) resembles a peach until it approaches maturity; as it ripens, the leathery outer covering, or hull, splits open, curls outward, and discharges the pit. Despite their common label, almonds are not true nuts (a type of dry fruit) but rather seeds enclosed in a hard fruit covering. The sweet almond is cultivated extensively in certain favourable regions, though nut crops are uncertain wherever frosts are likely to occur during flowering. While more than 25 types of almonds are grown in California, Marcona and Valencia almonds come from Spain, and Ferragnes are imported from Greece. In which months does the Almond tree produce flower?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Late January to early April"
-   },
-   {
-    "id": "B",
-    "text": "Late April to early January"
-   },
-   {
-    "id": "C",
-    "text": "January"
-   },
-   {
-    "id": "D",
-    "text": "March to May"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "As per the passage the almond tree flowers from late January to early April → (A).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "explanationHi": "As per the passage the almond tree flowers from late January to early April → (A).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "source": "PYQ · 22 Mar 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0c1e3921a146176e",
-  "figureBased": false,
-  "paper": {
-   "no": 53,
-   "group": "XY",
-   "date": "22 Mar 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_f7127069823a0b16",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "medium",
-  "questionText": "Which of the following options is correct?",
-  "questionTextHi": "Which of the following options is correct?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "The flowers of Almond have five petals."
-   },
-   {
-    "id": "B",
-    "text": "The flowers are self-incompatible."
-   },
-   {
-    "id": "C",
-    "text": "The flowers require insect pollinators to facilitate cross-pollination."
-   },
-   {
-    "id": "D",
-    "text": "All of the above"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "All the given statements about almond flowers (five petals, self-incompatibility, insect pollinators for cross-pollination) are correct → (D) All of the above.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "explanationHi": "All the given statements about almond flowers (five petals, self-incompatibility, insect pollinators for cross-pollination) are correct → (D) All of the above.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "source": "PYQ · 22 Mar 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "00a2f14c31128475",
-  "figureBased": false,
-  "paper": {
-   "no": 53,
-   "group": "XY",
-   "date": "22 Mar 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_a1e7d11ccd422871",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "medium",
-  "questionText": "What can be deduced from the given passage?",
-  "questionTextHi": "What can be deduced from the given passage?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Almond trees absorbs a lot amount of water"
-   },
-   {
-    "id": "B",
-    "text": "Almonds are not true nuts"
-   },
-   {
-    "id": "C",
-    "text": "Almonds are exported from India to America"
-   },
-   {
-    "id": "D",
-    "text": "None of the above"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The passage states that almonds are not true nuts (they are drupes) → (B).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "explanationHi": "The passage states that almonds are not true nuts (they are drupes) → (B).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "source": "PYQ · 22 Mar 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0056b2c62110da92",
-  "figureBased": false,
-  "paper": {
-   "no": 53,
-   "group": "XY",
-   "date": "22 Mar 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_cd7af348f825c1d3",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "medium",
-  "questionText": "What does the word 'extensively' mean in the given passage?",
-  "questionTextHi": "What does the word 'extensively' mean in the given passage?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "in a way that covers or affects a large area."
-   },
-   {
-    "id": "B",
-    "text": "in a way that covers or affects a tiny area."
-   },
-   {
-    "id": "C",
-    "text": "found in a particular region"
-   },
-   {
-    "id": "D",
-    "text": "covering a sandy area"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "'Extensively' = in a way that covers or affects a large area → (A).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "explanationHi": "'Extensively' = in a way that covers or affects a large area → (A).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copies of the same paper (22 Mar 2025, SelfStudys).]",
-  "source": "PYQ · 22 Mar 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "01cc2f618111ff22",
-  "figureBased": false,
-  "paper": {
-   "no": 53,
-   "group": "XY",
-   "date": "22 Mar 2025",
-   "src": "User TXT"
-  }
- },
- {
   "id": "q_bc5d357a183e2ee2",
   "subject": "english",
   "subjectName": "English",
@@ -32775,300 +28958,6 @@
    "group": "X",
    "date": "25 Sep 2025 Shift-A",
    "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_5522413a18066823",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "One Word Substitution",
-  "difficulty": "easy",
-  "questionText": "Select the option that can be used as a one-word substitute for the given group of words. A sudden and violent change or upheaval",
-  "questionTextHi": "Select the option that can be used as a one-word substitute for the given group of words. A sudden and violent change or upheaval",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Tranquility"
-   },
-   {
-    "id": "B",
-    "text": "Serenity"
-   },
-   {
-    "id": "C",
-    "text": "Equanimity"
-   },
-   {
-    "id": "D",
-    "text": "Turbulence"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "A sudden and violent change or upheaval is 'turbulence' (D). Tranquility, Serenity and Equanimity mean calmness.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "explanationHi": "A sudden and violent change or upheaval is 'turbulence' (D). Tranquility, Serenity and Equanimity mean calmness.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 25 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0519865bb1110079",
-  "figureBased": false,
-  "paper": {
-   "no": 55,
-   "group": "XY",
-   "date": "25 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_f2324aa9509c9421",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "One Word Substitution",
-  "difficulty": "easy",
-  "questionText": "Select the option that can be used as a one-word substitute for the given group of words. The place where soldiers live",
-  "questionTextHi": "Select the option that can be used as a one-word substitute for the given group of words. The place where soldiers live",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Unit"
-   },
-   {
-    "id": "B",
-    "text": "Regiment"
-   },
-   {
-    "id": "C",
-    "text": "Brigade"
-   },
-   {
-    "id": "D",
-    "text": "Barracks"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "The place where soldiers live is 'barracks' (D). Unit, Regiment and Brigade are army groupings.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "explanationHi": "The place where soldiers live is 'barracks' (D). Unit, Regiment and Brigade are army groupings.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 25 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0ab6dfbc010fe8de",
-  "figureBased": false,
-  "paper": {
-   "no": 55,
-   "group": "XY",
-   "date": "25 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_50632035cb05e451",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "One Word Substitution",
-  "difficulty": "easy",
-  "questionText": "Select the option that can be used as a one-word substitute for the given group of words. one who does something for pleasure",
-  "questionTextHi": "Select the option that can be used as a one-word substitute for the given group of words. one who does something for pleasure",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Anarchist"
-   },
-   {
-    "id": "B",
-    "text": "Atheist"
-   },
-   {
-    "id": "C",
-    "text": "Hedonist"
-   },
-   {
-    "id": "D",
-    "text": "Aggressor"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "One who does everything for pleasure is a 'hedonist' (C). Anarchist (rejects government), Atheist (disbelieves in God), Aggressor (attacks first).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "explanationHi": "One who does everything for pleasure is a 'hedonist' (C). Anarchist (rejects government), Atheist (disbelieves in God), Aggressor (attacks first).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 25 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "039e9535f110881b",
-  "figureBased": false,
-  "paper": {
-   "no": 55,
-   "group": "XY",
-   "date": "25 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_d71577dafd8315cb",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Direct & Indirect Speech",
-  "difficulty": "medium",
-  "questionText": "Select the correct indirect form of the given sentence. Ramita said, “I wish I didn’t have to meet my step-mother.”",
-  "questionTextHi": "Select the correct indirect form of the given sentence. Ramita said, “I wish I didn’t have to meet my step-mother.”",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Ramita said she wished she hadn’t have to meet her step-mother."
-   },
-   {
-    "id": "B",
-    "text": "Ramita said she wished she didn’t meet her step-mother."
-   },
-   {
-    "id": "C",
-    "text": "Ramita said she wished she didn’t have to meet her step-mother."
-   },
-   {
-    "id": "D",
-    "text": "Ramita said she wished hadn’t met her step-mother."
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Indirect speech: 'I wish I didn't have to' — the past subjunctive after 'wish' does not change further → (C) Ramita said she wished she didn't have to meet her step-mother.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "explanationHi": "Indirect speech: 'I wish I didn't have to' — the past subjunctive after 'wish' does not change further → (C) Ramita said she wished she didn't have to meet her step-mother.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 25 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "054c119281336514",
-  "figureBased": false,
-  "paper": {
-   "no": 55,
-   "group": "XY",
-   "date": "25 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_9bf13094c773f215",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Direct & Indirect Speech",
-  "difficulty": "medium",
-  "questionText": "Select the correct indirect form of the given sentence. He says to Gayatri, “You are writing an apology to the warden.”",
-  "questionTextHi": "Select the correct indirect form of the given sentence. He says to Gayatri, “You are writing an apology to the warden.”",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "He told Gayatri that she is writing an apology to the warden."
-   },
-   {
-    "id": "B",
-    "text": "He tells Gayatri that she is writing an apology to the warden."
-   },
-   {
-    "id": "C",
-    "text": "He says to Gayatri that she was writing an apology to the warden."
-   },
-   {
-    "id": "D",
-    "text": "He tells Gayatri that she was writing an apology to the warden."
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "With the present reporting verb 'says to' → 'tells' and no tense change: 'He tells Gayatri that she is writing an apology to the warden' (B).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "explanationHi": "With the present reporting verb 'says to' → 'tells' and no tense change: 'He tells Gayatri that she is writing an apology to the warden' (B).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 25 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0bddf09f612140e4",
-  "figureBased": false,
-  "paper": {
-   "no": 55,
-   "group": "XY",
-   "date": "25 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_3f400386242c24d1",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Reading Comprehension",
-  "topic": "Passage-based Question",
-  "difficulty": "medium",
-  "questionText": "Read the following passage about mother tongue and answer the questions that follow. Formal education through the medium of a language that is not a child’s mother tongue, leading to children not learning their own language fully (not learning the language that the parent generation knows). This is a subtractive language learning situation, where the dominant language is learned at the cost of the mother tongue. Instead, knowledge in dominant languages can be added to the children's linguistic repertoire, at no cost to the mother tongues. In this kind of additive language learning situation the result is additive bilingualism or multilingualism, and the maintenance of the mother tongue. Subtractive language learning also means that these children will tend not to speak their mother tongue to their own children. Homogenizing mass media, entertainment and other cultural products in dominant languages takes place through which these products send the message that the languages in which films, TV and pop music come have a higher status than others. Urbanization, migration and employment mobility of people often lead to the disintegration of language communities, with fewer chances for children to hear and use their parents’ language(s) on a daily basis. A labor market which requires knowledge of dominant languages and does not offer economic or psychological incentives for maintaining the smaller languages. Insufficient protection of linguistic human rights and ideologies see not multilingualism but monolinguals in dominant languages as normal, sufficient and desirable, both for states (one nation - one language) and for individuals. This leads to parents often thinking that their children have to choose between either learning their mother tongue (and losing out on the labor market) or learning the dominant language (and sacrificing their own language). What is known as the 'additive language learning situation'?",
-  "questionTextHi": "Read the following passage about mother tongue and answer the questions that follow. Formal education through the medium of a language that is not a child’s mother tongue, leading to children not learning their own language fully (not learning the language that the parent generation knows). This is a subtractive language learning situation, where the dominant language is learned at the cost of the mother tongue. Instead, knowledge in dominant languages can be added to the children's linguistic repertoire, at no cost to the mother tongues. In this kind of additive language learning situation the result is additive bilingualism or multilingualism, and the maintenance of the mother tongue. Subtractive language learning also means that these children will tend not to speak their mother tongue to their own children. Homogenizing mass media, entertainment and other cultural products in dominant languages takes place through which these products send the message that the languages in which films, TV and pop music come have a higher status than others. Urbanization, migration and employment mobility of people often lead to the disintegration of language communities, with fewer chances for children to hear and use their parents’ language(s) on a daily basis. A labor market which requires knowledge of dominant languages and does not offer economic or psychological incentives for maintaining the smaller languages. Insufficient protection of linguistic human rights and ideologies see not multilingualism but monolinguals in dominant languages as normal, sufficient and desirable, both for states (one nation - one language) and for individuals. This leads to parents often thinking that their children have to choose between either learning their mother tongue (and losing out on the labor market) or learning the dominant language (and sacrificing their own language). What is known as the 'additive language learning situation'?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Learning through English medium."
-   },
-   {
-    "id": "B",
-    "text": "Leaning another language without harming the mother tongue."
-   },
-   {
-    "id": "C",
-    "text": "Learning through mother tongue"
-   },
-   {
-    "id": "D",
-    "text": "Learning mother tongue with the support of another language."
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The passage describes the 'additive language learning situation' as learning another language without harming the mother tongue → (B).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "explanationHi": "The passage describes the 'additive language learning situation' as learning another language without harming the mother tongue → (B).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (25 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 25 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0971fb14e1704464",
-  "figureBased": false,
-  "paper": {
-   "no": 55,
-   "group": "XY",
-   "date": "25 Sep 2025",
-   "src": "User TXT"
   }
  },
  {
@@ -34820,54 +30709,6 @@
   }
  },
  {
-  "id": "q_8b549a951f6f32e7",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Vocabulary",
-  "topic": "Word Forms",
-  "difficulty": "easy",
-  "questionText": "Choose the most appropriate option and fill in the blank. The Verb form of 'Satisfactory' is_______________.",
-  "questionTextHi": "Choose the most appropriate option and fill in the blank. The Verb form of 'Satisfactory' is_______________.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Satisfy"
-   },
-   {
-    "id": "B",
-    "text": "Satisfying"
-   },
-   {
-    "id": "C",
-    "text": "Satisfied"
-   },
-   {
-    "id": "D",
-    "text": "Satisfaction"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The verb form of 'satisfactory' is 'satisfy' (A). Satisfaction is a noun, Satisfied/Satisfying are participles.",
-  "explanationHi": "The verb form of 'satisfactory' is 'satisfy' (A). Satisfaction is a noun, Satisfied/Satisfying are participles.",
-  "source": "PYQ · 27 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "06647025210ff3c4",
-  "figureBased": false,
-  "paper": {
-   "no": 57,
-   "group": "X",
-   "date": "27 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
   "id": "q_48344bd8aa94c0f7",
   "subject": "english",
   "subjectName": "English",
@@ -35009,202 +30850,6 @@
    "group": "X",
    "date": "27 Sep 2025",
    "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_0fc1958905ebe654",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Active & Passive Voice",
-  "difficulty": "medium",
-  "questionText": "Select the option that expresses the following sentence in passive voice. The audience loudly cheered the student leader’s speech.",
-  "questionTextHi": "Select the option that expresses the following sentence in passive voice. The audience loudly cheered the student leader’s speech.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "The student leader’s speech was loudly cheered by the audience."
-   },
-   {
-    "id": "B",
-    "text": "There was a loud cheer for the student."
-   },
-   {
-    "id": "C",
-    "text": "They all cheered loudly the leader’s speech."
-   },
-   {
-    "id": "D",
-    "text": "The student leader was loudly cheered by the audience."
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Simple past passive: 'The student leader's speech was loudly cheered by the audience' → (A) (the subject of the passive is the speech).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (27 Sep 2025, Utkarsh).]",
-  "explanationHi": "Simple past passive: 'The student leader's speech was loudly cheered by the audience' → (A) (the subject of the passive is the speech).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (27 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 27 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "09be5934c123a1c0",
-  "figureBased": false,
-  "paper": {
-   "no": 58,
-   "group": "XY",
-   "date": "27 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_cac9d2e772de50f0",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Select the most appropriate word to fill in the blank. My father was very distant, but I suppose all men of his generation _________.",
-  "questionTextHi": "Select the most appropriate word to fill in the blank. My father was very distant, but I suppose all men of his generation _________.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "there"
-   },
-   {
-    "id": "B",
-    "text": "was"
-   },
-   {
-    "id": "C",
-    "text": "would"
-   },
-   {
-    "id": "D",
-    "text": "were"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "'All men of his generation' is plural, so 'were' is needed: 'I suppose all men of his generation were' → (D).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (27 Sep 2025, Utkarsh).]",
-  "explanationHi": "'All men of his generation' is plural, so 'were' is needed: 'I suppose all men of his generation were' → (D).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (27 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 27 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0b8e994451100bdd",
-  "figureBased": false,
-  "paper": {
-   "no": 58,
-   "group": "XY",
-   "date": "27 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_37ff1c8b05e1cde9",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Select the most appropriate word to fill in the blank. The population _______ very fast in the last decade.",
-  "questionTextHi": "Select the most appropriate word to fill in the blank. The population _______ very fast in the last decade.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "had been risen"
-   },
-   {
-    "id": "B",
-    "text": "rising"
-   },
-   {
-    "id": "C",
-    "text": "has risen"
-   },
-   {
-    "id": "D",
-    "text": "rises"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "'The population has risen very fast in the ...' — present perfect with the intransitive 'risen' → (C). ('Had been risen' is wrong because rise is intransitive.)\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (27 Sep 2025, Utkarsh).]",
-  "explanationHi": "'The population has risen very fast in the ...' — present perfect with the intransitive 'risen' → (C). ('Had been risen' is wrong because rise is intransitive.)\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (27 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 27 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0ba0646ac10fab98",
-  "figureBased": false,
-  "paper": {
-   "no": 58,
-   "group": "XY",
-   "date": "27 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_665db13ae5d11965",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Fill in the blanks with suitable article. My mother is ________ honest woman.",
-  "questionTextHi": "Fill in the blanks with suitable article. My mother is ________ honest woman.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "A"
-   },
-   {
-    "id": "B",
-    "text": "An"
-   },
-   {
-    "id": "C",
-    "text": "The"
-   },
-   {
-    "id": "D",
-    "text": "No article required"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Honest' begins with a vowel sound, so 'an honest woman' → (B) An.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (27 Sep 2025, Utkarsh).]",
-  "explanationHi": "'Honest' begins with a vowel sound, so 'an honest woman' → (B) An.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (27 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 27 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "08fc5f43110dde59",
-  "figureBased": false,
-  "paper": {
-   "no": 58,
-   "group": "XY",
-   "date": "27 Sep 2025",
-   "src": "User TXT"
   }
  },
  {
@@ -36021,349 +31666,6 @@
    "group": "Y",
    "date": "28 Sep 2025",
    "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_bc8906b803c960a0",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Sentence Structure",
-  "difficulty": "easy",
-  "questionText": "DIRECTION: Choose the best word or expression to complete the sentences Government has set up a court _________ inquiry to ascertain the facts.",
-  "questionTextHi": "DIRECTION: Choose the best word or expression to complete the sentences Government has set up a court _________ inquiry to ascertain the facts.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "for"
-   },
-   {
-    "id": "B",
-    "text": "of"
-   },
-   {
-    "id": "C",
-    "text": "about"
-   },
-   {
-    "id": "D",
-    "text": "on"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'A court of inquiry' is the fixed expression → (B) of.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "explanationHi": "'A court of inquiry' is the fixed expression → (B) of.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 28 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "032928fd911041a1",
-  "figureBased": false,
-  "paper": {
-   "no": 60,
-   "group": "XY",
-   "date": "28 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_10f3d7ea450971e2",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Find out the most effective word from the given words to fill the blank to make the sentence meaningful. When I was a child, I ________ to school every day instead of going by cycle.",
-  "questionTextHi": "Find out the most effective word from the given words to fill the blank to make the sentence meaningful. When I was a child, I ________ to school every day instead of going by cycle.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "have walked"
-   },
-   {
-    "id": "B",
-    "text": "walked"
-   },
-   {
-    "id": "C",
-    "text": "have been walking"
-   },
-   {
-    "id": "D",
-    "text": "had walked"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The sentence refers to a past habit, so the simple past is used: 'When I was a child, I walked to school every day ...' → (B) walked.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "explanationHi": "The sentence refers to a past habit, so the simple past is used: 'When I was a child, I walked to school every day ...' → (B) walked.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 28 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0e3044f2011341f8",
-  "figureBased": false,
-  "paper": {
-   "no": 60,
-   "group": "XY",
-   "date": "28 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_e32c2d65436499d7",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Direction : The following sentence is given with blank space to be filled in with appropriate word(s). Four alternatives are suggested for each sentence. Choose the correct alternative. Do not hesitate to _________ if you do something wrong.",
-  "questionTextHi": "Direction : The following sentence is given with blank space to be filled in with appropriate word(s). Four alternatives are suggested for each sentence. Choose the correct alternative. Do not hesitate to _________ if you do something wrong.",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "apologizing"
-   },
-   {
-    "id": "B",
-    "text": "apologize"
-   },
-   {
-    "id": "C",
-    "text": "apologetic"
-   },
-   {
-    "id": "D",
-    "text": "apology"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "After 'to' the base form is used: 'Do not hesitate to apologize if you do something wrong' → (B) apologize.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "explanationHi": "After 'to' the base form is used: 'Do not hesitate to apologize if you do something wrong' → (B) apologize.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 28 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "067d3fdb7115e0b5",
-  "figureBased": false,
-  "paper": {
-   "no": 60,
-   "group": "XY",
-   "date": "28 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_e3aaf6d9809a768d",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Fill in the Blanks",
-  "difficulty": "easy",
-  "questionText": "Select the most appropriate option to fill in the blank. He _________ a long distance",
-  "questionTextHi": "Select the most appropriate option to fill in the blank. He _________ a long distance",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "running"
-   },
-   {
-    "id": "B",
-    "text": "runned"
-   },
-   {
-    "id": "C",
-    "text": "ran"
-   },
-   {
-    "id": "D",
-    "text": "run"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Simple past of 'run' is 'ran': 'He ran a long distance' → (C).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "explanationHi": "Simple past of 'run' is 'ran': 'He ran a long distance' → (C).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 28 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "09155b92010e10d8",
-  "figureBased": false,
-  "paper": {
-   "no": 60,
-   "group": "XY",
-   "date": "28 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_14c248f7c7f31fec",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Direct & Indirect Speech",
-  "difficulty": "medium",
-  "questionText": "Select the correct indirect form of the given sentence. The sage said, “Man proposes and God disposes.”",
-  "questionTextHi": "Select the correct indirect form of the given sentence. The sage said, “Man proposes and God disposes.”",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "The sage said that man proposes and God disposes."
-   },
-   {
-    "id": "B",
-    "text": "The sage said that man propose and God dispose."
-   },
-   {
-    "id": "C",
-    "text": "The sage said that man proposed and God disposed."
-   },
-   {
-    "id": "D",
-    "text": "The sage said that man had proposed and God had disposed."
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "A universal truth keeps the present tense in indirect speech: 'The sage said that man proposes and God disposes' → (A).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "explanationHi": "A universal truth keeps the present tense in indirect speech: 'The sage said that man proposes and God disposes' → (A).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 28 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0e66c292311e4b35",
-  "figureBased": false,
-  "paper": {
-   "no": 60,
-   "group": "XY",
-   "date": "28 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_5a2f636a617be899",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Direct & Indirect Speech",
-  "difficulty": "medium",
-  "questionText": "Select the option that expresses the given sentence in indirect speech. My brother said to me, “Don’t play in the rain.”",
-  "questionTextHi": "Select the option that expresses the given sentence in indirect speech. My brother said to me, “Don’t play in the rain.”",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "My brother said to me don’t play in the rain."
-   },
-   {
-    "id": "B",
-    "text": "My brother forbade me to play in the rain."
-   },
-   {
-    "id": "C",
-    "text": "My brother assured me not to play in the rain."
-   },
-   {
-    "id": "D",
-    "text": "My brother refused me to not play in the rain."
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "'Said to me, \"Don't play...\"' is a prohibition → 'forbade me to play in the rain' (B).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "explanationHi": "'Said to me, \"Don't play...\"' is a prohibition → 'forbade me to play in the rain' (B).\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 28 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "097a242c4125b8fc",
-  "figureBased": false,
-  "paper": {
-   "no": 60,
-   "group": "XY",
-   "date": "28 Sep 2025",
-   "src": "User TXT"
-  }
- },
- {
-  "id": "q_1ae810be5eb08a90",
-  "subject": "english",
-  "subjectName": "English",
-  "chapter": "Grammar",
-  "topic": "Direct & Indirect Speech",
-  "difficulty": "medium",
-  "questionText": "Select the option that expresses the given sentence in reported speech. Shikha said, “The heavy rain this week has spoiled all my travel plans.”",
-  "questionTextHi": "Select the option that expresses the given sentence in reported speech. Shikha said, “The heavy rain this week has spoiled all my travel plans.”",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Shikha said that the heavy rain that week had spoiled all her travel plans."
-   },
-   {
-    "id": "B",
-    "text": "Shikha told me that the heavy rain that week had spoiled all her travel plans."
-   },
-   {
-    "id": "C",
-    "text": "Shikha said that the heavy rain that week has spoiled all her travel plans."
-   },
-   {
-    "id": "D",
-    "text": "Shikha said that the heavy rain this week had spoiled all her travel plans."
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Indirect speech: 'this week' → 'that week', 'has spoiled' → 'had spoiled', 'my' → 'her' → (A) Shikha said that the heavy rain that week had spoiled all her travel plans.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "explanationHi": "Indirect speech: 'this week' → 'that week', 'has spoiled' → 'had spoiled', 'my' → 'her' → (A) Shikha said that the heavy rain that week had spoiled all her travel plans.\n\n[Source note: no answer key was printed in this source ('Answer: ?'); the answer is verified from the keyed twin copy of the same paper (28 Sep 2025, Utkarsh).]",
-  "source": "PYQ · 28 Sep 2025 · User TXT (Group XY)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "source-note"
-  ],
-  "dupeHash": "0a05a269a124b1f8",
-  "figureBased": false,
-  "paper": {
-   "no": 60,
-   "group": "XY",
-   "date": "28 Sep 2025",
-   "src": "User TXT"
   }
  },
  {
@@ -41122,6 +36424,487 @@
    "group": "X",
    "date": "Sample English Paper",
    "src": "Prepp Sample"
+  }
+ },
+ {
+  "id": "q_eb8a709e6d2828c0",
+  "subject": "english",
+  "subjectName": "English",
+  "chapter": "Grammar",
+  "topic": "Error Spotting",
+  "difficulty": "easy",
+  "questionText": "Direction: Select the segment of the sentence that contains the grammatical error. If there is no error, mark 'No error' as your answer. All of his luggages (A)/ was stolen by a thief (B)/ outside the railway station (C)/. No error (D).",
+  "questionTextHi": "Direction: Select the segment of the sentence that contains the grammatical error. If there is no error, mark 'No error' as your answer. All of his luggages (A)/ was stolen by a thief (B)/ outside the railway station (C)/. No error (D).",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "A"
+   },
+   {
+    "id": "B",
+    "text": "B"
+   },
+   {
+    "id": "C",
+    "text": "C"
+   },
+   {
+    "id": "D",
+    "text": "D"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "'Luggage' is an uncountable noun and has no plural, so 'All of his luggages' is wrong → segment A has the error; 'was stolen' (B) is correct with the singular sense.",
+  "explanationHi": "'Luggage' is an uncountable noun and has no plural, so 'All of his luggages' is wrong → segment A has the error; 'was stolen' (B) is correct with the singular sense.",
+  "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group Y)",
+  "year": 2021,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0631cfcdf11356ad",
+  "figureBased": false,
+  "paper": {
+   "no": 12,
+   "group": "Y",
+   "date": "12 Jul 2021 Shift-2",
+   "src": "Prepp"
+  }
+ },
+ {
+  "id": "q_61596ab6fb5ff867",
+  "subject": "english",
+  "subjectName": "English",
+  "chapter": "Grammar",
+  "topic": "Error Spotting",
+  "difficulty": "easy",
+  "questionText": "A part of the sentence may or may not have an error. Find out which part has an error and mark that part as your answer. If there are no errors, mark 'No error' as your answer. She was shocked (A)/ when she heard the news (B)/ that he has died (C). No error (D)",
+  "questionTextHi": "A part of the sentence may or may not have an error. Find out which part has an error and mark that part as your answer. If there are no errors, mark 'No error' as your answer. She was shocked (A)/ when she heard the news (B)/ that he has died (C). No error (D)",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "A"
+   },
+   {
+    "id": "B",
+    "text": "B"
+   },
+   {
+    "id": "C",
+    "text": "C"
+   },
+   {
+    "id": "D",
+    "text": "D"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Segment C contains the error — 'she was shocked at/on seeing him' should be 'shocked to see him'; the given part 'by seeing him' is wrong, hence the key C (segment C).",
+  "explanationHi": "Segment C contains the error — 'she was shocked at/on seeing him' should be 'shocked to see him'; the given part 'by seeing him' is wrong, hence the key C (segment C).",
+  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
+  "year": 2021,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "07afdb3251143409",
+  "figureBased": false,
+  "paper": {
+   "no": 11,
+   "group": "Y",
+   "date": "12 Jul 2021 Shift-1",
+   "src": "Prepp"
+  }
+ },
+ {
+  "id": "q_14615aa44cdfdfa0",
+  "subject": "english",
+  "subjectName": "English",
+  "chapter": "Grammar",
+  "topic": "Error Spotting",
+  "difficulty": "easy",
+  "questionText": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. He didn't eat the apple (A) / because it tasted bitterly (B) / and was slightly rotten. (C) / No error (D)",
+  "questionTextHi": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. He didn't eat the apple (A) / because it tasted bitterly (B) / and was slightly rotten. (C) / No error (D)",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "(A)"
+   },
+   {
+    "id": "B",
+    "text": "(B)"
+   },
+   {
+    "id": "C",
+    "text": "(C)"
+   },
+   {
+    "id": "D",
+    "text": "(D)"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "After a linking verb a plain adjective is used, not an adverb: 'it tasted bitter' (not 'bitterly') → the error is in segment B.",
+  "explanationHi": "After a linking verb a plain adjective is used, not an adverb: 'it tasted bitter' (not 'bitterly') → the error is in segment B.",
+  "source": "PYQ · 13 Jul 2021 Shift-2 · Prepp (Group X)",
+  "year": 2021,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "06eeef7b6113208c",
+  "figureBased": false,
+  "paper": {
+   "no": 15,
+   "group": "X",
+   "date": "13 Jul 2021 Shift-2",
+   "src": "Prepp"
+  }
+ },
+ {
+  "id": "q_cef3f82e731ed61c",
+  "subject": "english",
+  "subjectName": "English",
+  "chapter": "Grammar",
+  "topic": "Error Spotting",
+  "difficulty": "easy",
+  "questionText": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. A sum of thousand rupees (A) / are a large sum of money (B) / to earn in a month. (C) / No error (D)",
+  "questionTextHi": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. A sum of thousand rupees (A) / are a large sum of money (B) / to earn in a month. (C) / No error (D)",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "(A)"
+   },
+   {
+    "id": "B",
+    "text": "(B)"
+   },
+   {
+    "id": "C",
+    "text": "(C)"
+   },
+   {
+    "id": "D",
+    "text": "(D)"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The subject 'a sum of thousand rupees' is singular, so 'are' is wrong — it should be 'is'. Hence segment B has the error → (B).",
+  "explanationHi": "The subject 'a sum of thousand rupees' is singular, so 'are' is wrong — it should be 'is'. Hence segment B has the error → (B).",
+  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group X)",
+  "year": 2021,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0cbcb346f112c2f1",
+  "figureBased": false,
+  "paper": {
+   "no": 18,
+   "group": "X",
+   "date": "14 Jul 2021 Shift-3",
+   "src": "Prepp"
+  }
+ },
+ {
+  "id": "q_406bbfa7b9dd6c97",
+  "subject": "english",
+  "subjectName": "English",
+  "chapter": "Grammar",
+  "topic": "Error Spotting",
+  "difficulty": "easy",
+  "questionText": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. I inquired of him (A) / why he is so negligent (B) / in his studies. (C) / No error (D)",
+  "questionTextHi": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. I inquired of him (A) / why he is so negligent (B) / in his studies. (C) / No error (D)",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "(A)"
+   },
+   {
+    "id": "B",
+    "text": "(B)"
+   },
+   {
+    "id": "C",
+    "text": "(C)"
+   },
+   {
+    "id": "D",
+    "text": "(D)"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The reporting verb is past ('inquired'), so the subordinate clause must be in the past: 'why he was so negligent' — hence segment B ('why he is so negligent') has the error.",
+  "explanationHi": "The reporting verb is past ('inquired'), so the subordinate clause must be in the past: 'why he was so negligent' — hence segment B ('why he is so negligent') has the error.",
+  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group X)",
+  "year": 2021,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0f3edf2b61123e1a",
+  "figureBased": false,
+  "paper": {
+   "no": 20,
+   "group": "X",
+   "date": "15 Jul 2021 Shift-1",
+   "src": "Prepp"
+  }
+ },
+ {
+  "id": "q_27e5df12115f70b5",
+  "subject": "english",
+  "subjectName": "English",
+  "chapter": "Grammar",
+  "topic": "Error Spotting",
+  "difficulty": "easy",
+  "questionText": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. No sooner did she see herteacher (A) / when she (B) / stopped copying. (C) / No error (D)",
+  "questionTextHi": "Direction: Find out which part has an error and mark it as your answer. If there is no error, mark 'No error' as your answer. No sooner did she see herteacher (A) / when she (B) / stopped copying. (C) / No error (D)",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "(A)"
+   },
+   {
+    "id": "B",
+    "text": "(B)"
+   },
+   {
+    "id": "C",
+    "text": "(C)"
+   },
+   {
+    "id": "D",
+    "text": "(D)"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "'No sooner did ... when' is wrong — 'no sooner' pairs with 'than': 'No sooner did she see her teacher than she stopped copying' → the error is in segment B ('when she').",
+  "explanationHi": "'No sooner did ... when' is wrong — 'no sooner' pairs with 'than': 'No sooner did she see her teacher than she stopped copying' → the error is in segment B ('when she').",
+  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group X)",
+  "year": 2023,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "02d7488cb112666d",
+  "figureBased": false,
+  "paper": {
+   "no": 39,
+   "group": "X",
+   "date": "19 Jan 2023",
+   "src": "SelfStudys"
+  }
+ },
+ {
+  "id": "q_465d76fef5845859",
+  "subject": "english",
+  "subjectName": "English",
+  "chapter": "Grammar",
+  "topic": "Sentence Structure",
+  "difficulty": "easy",
+  "questionText": "In the following question, out of the four alternatives, choose the one which can be substituted for the given words/ sentence. An accident which results in death",
+  "questionTextHi": "In the following question, out of the four alternatives, choose the one which can be substituted for the given words/ sentence. An accident which results in death",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Fatal"
+   },
+   {
+    "id": "B",
+    "text": "Dangerous"
+   },
+   {
+    "id": "C",
+    "text": "Terrible"
+   },
+   {
+    "id": "D",
+    "text": "Injurious"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "An accident that results in death is 'fatal' (A). Dangerous/Terrible/Injurious do not carry the sense of causing death.",
+  "explanationHi": "An accident that results in death is 'fatal' (A). Dangerous/Terrible/Injurious do not carry the sense of causing death.",
+  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
+  "year": 2021,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "05b786ce51121453",
+  "figureBased": false,
+  "paper": {
+   "no": 14,
+   "group": "X",
+   "date": "13 Jul 2021 Shift-1",
+   "src": "Prepp"
+  }
+ },
+ {
+  "id": "q_570a102d962c6e93",
+  "subject": "english",
+  "subjectName": "English",
+  "chapter": "Grammar",
+  "topic": "Sentence Structure",
+  "difficulty": "easy",
+  "questionText": "What did the miser hide under some stones? silver coins",
+  "questionTextHi": "What did the miser hide under some stones? silver coins",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "silver coins"
+   },
+   {
+    "id": "B",
+    "text": "gold coins"
+   },
+   {
+    "id": "C",
+    "text": "jewellery"
+   },
+   {
+    "id": "D",
+    "text": "food"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The passage states the miser hid his 'gold coins' in a pit under some stones → (B) gold coins.\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (B) on the correct answer.]",
+  "explanationHi": "The passage states the miser hid his 'gold coins' in a pit under some stones → (B) gold coins.\n\n[Source note: the options were garbled in the source; the four texts are restored with the printed key (B) on the correct answer.]",
+  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
+  "year": 2021,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic",
+   "source-note"
+  ],
+  "dupeHash": "00303477110d8acb",
+  "figureBased": false,
+  "paper": {
+   "no": 14,
+   "group": "X",
+   "date": "13 Jul 2021 Shift-1",
+   "src": "Prepp"
+  }
+ },
+ {
+  "id": "q_c5f37f6f5eddc256",
+  "subject": "english",
+  "subjectName": "English",
+  "chapter": "Reading Comprehension",
+  "topic": "Passage-based Question",
+  "difficulty": "medium",
+  "questionText": "Direction: Given below is a short passage followed by some items based on the passage. First, read the passage and answer the items based on it. You are required to select your answers based on the contents of the passage and the opinion of the author only. Nearly every night of our lives, we undergo a startling metamorphosis. Our brain profoundly alters its behavior and purpose, dimming our consciousness. For a while, we become almost entirely paralyzed. We can’t even shiver. Our eyes, however, periodically dart about behind closed lids as if seeing, and the tiny muscles in our middle ear, even in silence, move as though hearing. We are stimulated, men and women both, repeatedly. We sometimes believe we can fly. We approach the frontiers of death. We sleep. Around 350 B.C., Aristotle wrote an essay, “On Sleep and Sleeplessness,” wondering just what we were doing and why. For the next 2,300 years, no one had a good answer. In 1924 German psychiatrist Hans Berger invented the electroencephalograph, which records electrical activity in the brain, and the study of sleep shifted from philosophy to science. How does our brain dim our consciousness?",
+  "questionTextHi": "Direction: Given below is a short passage followed by some items based on the passage. First, read the passage and answer the items based on it. You are required to select your answers based on the contents of the passage and the opinion of the author only. Nearly every night of our lives, we undergo a startling metamorphosis. Our brain profoundly alters its behavior and purpose, dimming our consciousness. For a while, we become almost entirely paralyzed. We can’t even shiver. Our eyes, however, periodically dart about behind closed lids as if seeing, and the tiny muscles in our middle ear, even in silence, move as though hearing. We are stimulated, men and women both, repeatedly. We sometimes believe we can fly. We approach the frontiers of death. We sleep. Around 350 B.C., Aristotle wrote an essay, “On Sleep and Sleeplessness,” wondering just what we were doing and why. For the next 2,300 years, no one had a good answer. In 1924 German psychiatrist Hans Berger invented the electroencephalograph, which records electrical activity in the brain, and the study of sleep shifted from philosophy to science. How does our brain dim our consciousness?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "by sleeping"
+   },
+   {
+    "id": "B",
+    "text": "by exercising alot"
+   },
+   {
+    "id": "C",
+    "text": "by extremely changing its behaviour"
+   },
+   {
+    "id": "D",
+    "text": "by using modern techniques"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "The passage says the brain 'profoundly alters its behaviour and purpose, dimming our consciousness' → it dims consciousness by extremely changing its behaviour → (C).",
+  "explanationHi": "The passage says the brain 'profoundly alters its behaviour and purpose, dimming our consciousness' → it dims consciousness by extremely changing its behaviour → (C).",
+  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group Y)",
+  "year": 2021,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0eaee0a5914ba911",
+  "figureBased": false,
+  "paper": {
+   "no": 24,
+   "group": "Y",
+   "date": "15 Jul 2021 Shift-3",
+   "src": "Prepp"
+  }
+ },
+ {
+  "id": "q_0afbf6e408c700e0",
+  "subject": "english",
+  "subjectName": "English",
+  "chapter": "Vocabulary",
+  "topic": "Word Forms",
+  "difficulty": "easy",
+  "questionText": "Select the verb form of an adjective \"pacific\" from the given options:",
+  "questionTextHi": "Select the verb form of an adjective \"pacific\" from the given options:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "pacify"
+   },
+   {
+    "id": "B",
+    "text": "pacifying"
+   },
+   {
+    "id": "C",
+    "text": "pacified"
+   },
+   {
+    "id": "D",
+    "text": "pacification"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "The verb form of the adjective 'pacific' is 'pacify' (A). Pacification is a noun; pacifying/pacified are participles.",
+  "explanationHi": "The verb form of the adjective 'pacific' is 'pacify' (A). Pacification is a noun; pacifying/pacified are participles.",
+  "source": "PYQ · 18 Jan 2023 (MB) · AllExamPYQs (Group Y)",
+  "year": 2023,
+  "tags": [
+   "pyq",
+   "group-y",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "009099f7a10e26a4",
+  "figureBased": false,
+  "paper": {
+   "no": 38,
+   "group": "Y",
+   "date": "18 Jan 2023 (MB)",
+   "src": "AllExamPYQs"
   }
  }
 ]

@@ -546,102 +546,6 @@
   }
  },
  {
-  "id": "q_8a9d2600010d8e60",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Optics",
-  "topic": "Reflection & Plane Mirrors",
-  "difficulty": "medium",
-  "questionText": "The total number of images formed by two mirrors inclined at 72° to each other when the object is placed unsymmetrically will be ___?",
-  "questionTextHi": "दो दर्पण जो एक-दूसरे से 72° के कोण पर झुके हैं, जब वस्तु असममित रूप से रखी जाए तो बनने वाले प्रतिबिंबों की कुल संख्या ___ होगी?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2"
-   },
-   {
-    "id": "B",
-    "text": "3"
-   },
-   {
-    "id": "C",
-    "text": "4"
-   },
-   {
-    "id": "D",
-    "text": "5"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Number of images = 360°/θ (when 360°/θ is odd) = 360/72 = 5\n(Standard rule: n = 360/θ; if n is even → images = n − 1, if n is odd → images = n.)",
-  "explanationHi": "प्रतिबिंबों की संख्या = 360°/θ = 360/72 = 5\n(नियम: n = 360/θ; n सम हो → प्रतिबिंब n − 1, n विषम हो → प्रतिबिंब n)",
-  "source": "PYQ · 04 Nov 2020 · SelfStudys (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "080bc102b10f5b11",
-  "figureBased": false,
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_bd1b401c9fddea1c",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Electrostatics",
-  "topic": "Work Done & Electric Potential",
-  "difficulty": "medium",
-  "questionText": "The work done on moving a charged particle of −5 C in an electric field is 100 J. Find the potential difference.",
-  "questionTextHi": "विद्युत क्षेत्र में −5 C के आवेशित कण को चलाने में किया गया कार्य 100 J है। विभवांतर ज्ञात कीजिए।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "20 volt"
-   },
-   {
-    "id": "B",
-    "text": "−20 volt"
-   },
-   {
-    "id": "C",
-    "text": "10 volt"
-   },
-   {
-    "id": "D",
-    "text": "−10 volt"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "W = qV → V = W/q = 100/(−5) = −20 V",
-  "explanationHi": "W = qV → V = W/q = 100/(−5) = −20 V",
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c7f5f03811b78e2",
-  "figureBased": false,
-  "paper": {
-   "no": 3,
-   "group": "X",
-   "date": "05 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_05ee1008377e476c",
   "subject": "physics",
   "subjectName": "Physics",
@@ -1433,54 +1337,6 @@
    "auto-topic"
   ],
   "dupeHash": "0fa181334112cd7a",
-  "figureBased": false,
-  "paper": {
-   "no": 5,
-   "group": "X",
-   "date": "07 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_91ed321b7de32229",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Gravitation",
-  "topic": "Escape Speed",
-  "difficulty": "medium",
-  "questionText": "The escape velocity from the Earth's surface is equal to ______.",
-  "questionTextHi": "पृथ्वी की सतह से पलायन वेग _________ के बराबर है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "√(2GM_E/R_E)"
-   },
-   {
-    "id": "B",
-    "text": "√(GM_E/R_E)"
-   },
-   {
-    "id": "C",
-    "text": "√(2GR_E/M_E)"
-   },
-   {
-    "id": "D",
-    "text": "√(GR_E/M_E)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Escape velocity is the minimum speed needed to overcome the Earth's gravity: v_e = √(2GM_E/R_E) = √(2gR_E).",
-  "explanationHi": "पलायन वेग वह न्यूनतम चाल है जिससे पिंड पृथ्वी के गुरुत्वाकर्षण से मुक्त हो जाता है: v_e = √(2GM_E/R_E) = √(2gR_E)।",
-  "source": "PYQ · 07 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0a98fe99c11e064e",
   "figureBased": false,
   "paper": {
    "no": 5,
@@ -7081,54 +6937,6 @@
   }
  },
  {
-  "id": "q_677c36ddd0293128",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Thermodynamics",
-  "topic": "Carnot Engine",
-  "difficulty": "medium",
-  "questionText": "An ideal gas heat engine operates in Carnot's cycle between 227° C and 127° C. It absorbs 6 × 10⁴ J at high temperature. The amount of heat converted into work is ____",
-  "questionTextHi": "एक आदर्श गैस ऊष्मा इंजन 227 °C तथा 127 °C के बीच कार्नोट चक्र में कार्य करता है। यह उच्च ताप पर 6 × 10⁴ J ऊष्मा अवशोषित करता है। कार्य में परिवर्तित ऊष्मा है ____",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "4.8 × 10⁴ J"
-   },
-   {
-    "id": "B",
-    "text": "3.5 × 10⁴ J"
-   },
-   {
-    "id": "C",
-    "text": "1.6 × 10⁴ J"
-   },
-   {
-    "id": "D",
-    "text": "1.2 × 10⁴ J"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "T₁ = 227 + 273 = 500 K, T₂ = 127 + 273 = 400 K\nη = 1 − T₂/T₁ = 1 − 400/500 = 0.2\nW = ηQ = 0.2 × 6 × 10⁴ = 1.2 × 10⁴ J.",
-  "explanationHi": "T₁ = 500 K, T₂ = 400 K\nη = 1 − 400/500 = 0.2\nW = ηQ = 0.2 × 6 × 10⁴ = 1.2 × 10⁴ J।",
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08797b973125278d",
-  "figureBased": false,
-  "paper": {
-   "no": 11,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_1227aa5039329888",
   "subject": "physics",
   "subjectName": "Physics",
@@ -7728,54 +7536,6 @@
    "auto-topic"
   ],
   "dupeHash": "03432b45c110578c",
-  "figureBased": false,
-  "paper": {
-   "no": 12,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_4ccc2d989c7759b5",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Electrostatics",
-  "topic": "Coulomb's Law",
-  "difficulty": "medium",
-  "questionText": "Two charges +1μC and +5μC are placed at 2 cm apart, then the ratio of the force exerted on charge +1μC and +5μC will be:",
-  "questionTextHi": "दो आवेश +1μC तथा +5μC, 2 cm की दूरी पर रखे हैं, तो +1μC तथा +5μC पर लगे बलों का अनुपात होगा:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1 : 1"
-   },
-   {
-    "id": "B",
-    "text": "4 : 1"
-   },
-   {
-    "id": "C",
-    "text": "1 : 4"
-   },
-   {
-    "id": "D",
-    "text": "16 : 1"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Coulomb forces obey Newton's third law — the force on both charges is equal in magnitude and opposite in direction.\nSo the ratio is 1 : 1.",
-  "explanationHi": "कूलॉम बल न्यूटन के तृतीय नियम का पालन करते हैं — दोनों आवेशों पर बल परिमाण में समान तथा विपरीत दिशा में होता है।\nअतः अनुपात 1 : 1 है।",
-  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b4d7fd581103a00",
   "figureBased": false,
   "paper": {
    "no": 12,
@@ -10069,58 +9829,6 @@
   }
  },
  {
-  "id": "q_b25b4cb02ba7d4b6",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Magnetic Effects of Current",
-  "topic": "Force Between Parallel Currents",
-  "difficulty": "medium",
-  "questionText": "For two parallel wires separated by distance d carrying currents Ia and Ib in the same direction, the force on a length L of either wire is",
-  "questionTextHi": "d दूरी पर स्थित दो समांतर तारों में समान दिशा में Ia तथा Ib धाराएँ हैं। किसी एक तार की L लंबाई पर बल है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "μ₀LIaIb/2πd — Repulsion",
-    "textHi": "μ₀LIaIb/2πd — प्रतिकर्षण"
-   },
-   {
-    "id": "B",
-    "text": "μ₀LIaIb/2πd — Attraction",
-    "textHi": "μ₀LIaIb/2πd — आकर्षण"
-   },
-   {
-    "id": "C",
-    "text": "μ₀LIaIb/πd — Repulsion",
-    "textHi": "μ₀LIaIb/πd — प्रतिकर्षण"
-   },
-   {
-    "id": "D",
-    "text": "μ₀LIaIb/πd — Attraction",
-    "textHi": "μ₀LIaIb/πd — आकर्षण"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Standard result: F = μ₀IaIbL/2πd and the force is attractive for currents in the same direction.\nAs per the source key the answer is option (D) (attraction); the source option is printed with a factor πd instead of 2πd.",
-  "explanationHi": "मानक परिणाम: F = μ₀IaIbL/2πd तथा समान दिशा की धाराओं के लिए बल आकर्षण होता है।\nस्रोत की कुंजी के अनुसार उत्तर विकल्प (D) (आकर्षण) है; स्रोत में विकल्प 2πd के स्थान पर πd के साथ छपा है।",
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group X)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0d40fdef813574ce",
-  "figureBased": false,
-  "paper": {
-   "no": 16,
-   "group": "X",
-   "date": "25 Jul 2022",
-   "src": "SelfStudys"
-  }
- },
- {
   "id": "q_1e8d4efcc52cda4a",
   "subject": "physics",
   "subjectName": "Physics",
@@ -10879,54 +10587,6 @@
    "no": 17,
    "group": "X",
    "date": "18 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_ea8128447851c5bc",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Oscillations",
-  "topic": "Simple Harmonic Motion",
-  "difficulty": "medium",
-  "questionText": "If 'F' is the force acting on a particle of mass 'm' performing simple harmonic motion, then the time period of the simple harmonic motion is equal to ___________.",
-  "questionTextHi": "यदि 'm' द्रव्यमान के कण पर सरल आवर्त गति में 'F' बल कार्य करता है, तो सरल आवर्त गति का आवर्तकाल ___________ के बराबर होता है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2π √(k/m)"
-   },
-   {
-    "id": "B",
-    "text": "2π √(m/k)"
-   },
-   {
-    "id": "C",
-    "text": "(1/2π) × √(m/k)"
-   },
-   {
-    "id": "D",
-    "text": "(1/2π) × √(k/m)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "For SHM, F = −kx (here k is the force constant) → T = 2π√(m/k).",
-  "explanationHi": "सरल आवर्त गति में F = −kx (k बल नियतांक) → T = 2π√(m/k)",
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0bbf171d8123ee0a",
-  "figureBased": false,
-  "paper": {
-   "no": 18,
-   "group": "X",
-   "date": "19 Jan 2023",
    "src": "SelfStudys"
   }
  },
@@ -15672,54 +15332,6 @@
   }
  },
  {
-  "id": "q_9b1e890d607249bb",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Current Electricity",
-  "topic": "Combination of Resistors",
-  "difficulty": "medium",
-  "questionText": "If three resistors of equal resistance R are in parallel and this combination is in series with another resistance R, then the equivalent resistance across the circuit will be",
-  "questionTextHi": "यदि समान प्रतिरोध R के तीन प्रतिरोधक समानांतर में तथा यह संयोजन एक अन्य प्रतिरोध R के श्रेणी में हो, तो परिपथ का तुल्य प्रतिरोध होगा",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "4R/3"
-   },
-   {
-    "id": "B",
-    "text": "3R/4"
-   },
-   {
-    "id": "C",
-    "text": "R/3"
-   },
-   {
-    "id": "D",
-    "text": "2R/3"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Three R in parallel = R/3.\nIn series with R: R/3 + R = 4R/3.",
-  "explanationHi": "तीन R समानांतर में = R/3\nश्रेणी में R के साथ: R/3 + R = 4R/3",
-  "source": "PYQ · 27 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0523cc7ea111a29e",
-  "figureBased": false,
-  "paper": {
-   "no": 29,
-   "group": "X",
-   "date": "27 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
   "id": "q_ff70e2686bd2da4b",
   "subject": "physics",
   "subjectName": "Physics",
@@ -18534,58 +18146,6 @@
   }
  },
  {
-  "id": "q_6cdef4649cafe066",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Oscillations",
-  "topic": "SHM Parameters",
-  "difficulty": "medium",
-  "questionText": "The velocity of a particle, executing S.H.M, is ______ at its mean position.",
-  "questionTextHi": "सरल आवर्त गति कर रहे किसी कण का वेग माध्य स्थिति पर ______ होता है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "maximum",
-    "textHi": "अधिकतम"
-   },
-   {
-    "id": "B",
-    "text": "minimum",
-    "textHi": "न्यूनतम"
-   },
-   {
-    "id": "C",
-    "text": "infinity",
-    "textHi": "अनंत"
-   },
-   {
-    "id": "D",
-    "text": "zero",
-    "textHi": "शून्य"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "In SHM the velocity is maximum at the mean position (v = aω) and zero at the extremes.",
-  "explanationHi": "सरल आवर्त गति में वेग माध्य स्थिति पर अधिकतम (v = aω) तथा चरम बिंदुओं पर शून्य होता है।",
-  "source": "PYQ · Sample Physics Paper · Prepp Sample (Group X)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0636d145910df1b9",
-  "figureBased": false,
-  "paper": {
-   "no": 33,
-   "group": "X",
-   "date": "Sample Physics Paper",
-   "src": "Prepp Sample"
-  }
- },
- {
   "id": "q_c71a29a4899d4e08",
   "subject": "physics",
   "subjectName": "Physics",
@@ -18625,58 +18185,6 @@
    "auto-topic"
   ],
   "dupeHash": "0284321331230093",
-  "figureBased": false,
-  "paper": {
-   "no": 33,
-   "group": "X",
-   "date": "Sample Physics Paper",
-   "src": "Prepp Sample"
-  }
- },
- {
-  "id": "q_aab59d8c72e2b33c",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Communication Systems",
-  "topic": "Propagation of EM Waves",
-  "difficulty": "medium",
-  "questionText": "Through which mode of wave propagation are the radio waves sent from one place to another?",
-  "questionTextHi": "रेडियो तरंगों को किस तरंग संचरण द्वारा एक स्थान से दूसरे स्थान तक भेजा जाता है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Ground wave propagation",
-    "textHi": "भू तरंग संचरण"
-   },
-   {
-    "id": "B",
-    "text": "Sky wave propagation",
-    "textHi": "व्योम तरंग संचरण"
-   },
-   {
-    "id": "C",
-    "text": "Space wave propagation",
-    "textHi": "अंतरिक्ष तरंग संचरण"
-   },
-   {
-    "id": "D",
-    "text": "All of the above",
-    "textHi": "उपरोक्त सभी"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Radio waves can travel by ground wave, sky wave (ionospheric reflection) and space wave propagation depending on the frequency — all modes are used.",
-  "explanationHi": "रेडियो तरंगें आवृत्ति के अनुसार भू तरंग, व्योम तरंग (आयनमंडलीय परावर्तन) तथा अंतरिक्ष तरंग द्वारा चल सकती हैं — सभी विधियाँ प्रयुक्त होती हैं।",
-  "source": "PYQ · Sample Physics Paper · Prepp Sample (Group X)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0662ea9901112470",
   "figureBased": false,
   "paper": {
    "no": 33,
@@ -18917,106 +18425,6 @@
    "auto-topic"
   ],
   "dupeHash": "0959c7ff2110f85c",
-  "figureBased": false,
-  "paper": {
-   "no": 33,
-   "group": "X",
-   "date": "Sample Physics Paper",
-   "src": "Prepp Sample"
-  }
- },
- {
-  "id": "q_b6b01ae761a9c08f",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Electrostatics",
-  "topic": "Electric Field & Potential",
-  "difficulty": "medium",
-  "questionText": "Two plates are at potentials −10 V and +30 V. If the separation between the plates is 2 cm, then find the electric field between them.",
-  "questionTextHi": "दो समांतर प्लेटें क्रमशः −10 V तथा +30 V विभव पर हैं। यदि प्लेटों के बीच की दूरी 2 cm हो, तो उनके बीच विद्युत क्षेत्र ज्ञात कीजिए।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2000 V/m"
-   },
-   {
-    "id": "B",
-    "text": "1000 V/m"
-   },
-   {
-    "id": "C",
-    "text": "500 V/m"
-   },
-   {
-    "id": "D",
-    "text": "3000 V/m"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "E = ΔV/d = (30 − (−10))/0.02 = 40/0.02 = 2000 V/m.",
-  "explanationHi": "E = ΔV/d = (30 − (−10))/0.02 = 40/0.02 = 2000 V/m",
-  "source": "PYQ · Sample Physics Paper · Prepp Sample (Group X)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b970ae90113e990",
-  "figureBased": false,
-  "paper": {
-   "no": 33,
-   "group": "X",
-   "date": "Sample Physics Paper",
-   "src": "Prepp Sample"
-  }
- },
- {
-  "id": "q_4cd2fd930588c74d",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Optics",
-  "topic": "Resolving Power",
-  "difficulty": "medium",
-  "questionText": "If red light is replaced by blue light illuminating the object in a microscope, the resolving power of the microscope _____.",
-  "questionTextHi": "किसी सूक्ष्मदर्शी में वस्तु को प्रदीप्त करने के लिए यदि लाल प्रकाश के स्थान पर नीले प्रकाश का उपयोग किया जाए, तो सूक्ष्मदर्शी की विभेदन क्षमता ________।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "will decrease",
-    "textHi": "घटेगा"
-   },
-   {
-    "id": "B",
-    "text": "will increase",
-    "textHi": "बढ़ेगा"
-   },
-   {
-    "id": "C",
-    "text": "will get halved",
-    "textHi": "आधा हो जाएगा"
-   },
-   {
-    "id": "D",
-    "text": "will remain unchanged",
-    "textHi": "अपरिवर्तित रहेगा"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Resolving power ∝ 1/λ; blue light has a shorter wavelength than red, so the resolving power increases.",
-  "explanationHi": "विभेदन क्षमता ∝ 1/λ; नीले प्रकाश की तरंगदैर्घ्य लाल से कम होती है, अतः विभेदन क्षमता बढ़ जाती है।",
-  "source": "PYQ · Sample Physics Paper · Prepp Sample (Group X)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "01307f383111c3eb",
   "figureBased": false,
   "paper": {
    "no": 33,
@@ -25404,358 +24812,6 @@
   }
  },
  {
-  "id": "q_498af3ccce1bc034",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Units, Measurement & Errors",
-  "topic": "Dimensional Analysis",
-  "difficulty": "medium",
-  "questionText": "If v = at + bt2 v is velocity and t in seconds, then the dimension of b is:",
-  "questionTextHi": "यदि v = at + bt² (v वेग है तथा t सेकंड में है), तो b का विमीय सूत्र क्या है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "LT0"
-   },
-   {
-    "id": "B",
-    "text": "LT-1"
-   },
-   {
-    "id": "C",
-    "text": "LT-2"
-   },
-   {
-    "id": "D",
-    "text": "LT-3"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Dimensions must match: [bt²] = [v] = LT⁻¹\n[b] = LT⁻¹ / T² = LT⁻³",
-  "explanationHi": "विमाएँ समान होनी चाहिए: [bt²] = [v] = LT⁻¹\n[b] = LT⁻¹/T² = LT⁻³",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ffc8debe10ce06a",
-  "figureBased": false,
-  "paper": {
-   "no": 1,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_7d4491b7ccbfb456",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Oscillations",
-  "topic": "Simple Harmonic Motion",
-  "difficulty": "medium",
-  "questionText": "The ratio of length of two simple pendulums is 2 : 3. Find the ratio of their frequency. −−",
-  "questionTextHi": "दो सरल लोलकों की लंबाइयों का अनुपात 2 : 3 है। उनकी आवृत्तियों का अनुपात ज्ञात कीजिए।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "√(2/3)"
-   },
-   {
-    "id": "B",
-    "text": "√(3/4)"
-   },
-   {
-    "id": "C",
-    "text": "√(3/2)"
-   },
-   {
-    "id": "D",
-    "text": "√(2/9)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "f = (1/2π)√(g/l) → f ∝ 1/√l\nf₁/f₂ = √(l₂/l₁) = √(3/2)",
-  "explanationHi": "f = (1/2π)√(g/l) → f ∝ 1/√l\nf₁/f₂ = √(l₂/l₁) = √(3/2)",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0d9cd90c012655ae",
-  "figureBased": false,
-  "paper": {
-   "no": 1,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_3fd41a8e720baf97",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Electrostatics",
-  "topic": "Coulomb's Law & Electric Field",
-  "difficulty": "medium",
-  "questionText": "The electric field strength and electrostatic potential due to a dipole depends upon distance r as",
-  "questionTextHi": "किसी द्विध्रुव (dipole) के कारण विद्युत क्षेत्र की तीव्रता तथा स्थिर वैद्युत विभव दूरी r पर किस प्रकार निर्भर करते हैं?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1/r and 1/r2",
-    "textHi": "1/r और 1/r2"
-   },
-   {
-    "id": "B",
-    "text": "1/r2 and 1/r3",
-    "textHi": "1/r2 और 1/r3"
-   },
-   {
-    "id": "C",
-    "text": "1/r3 and 1/r2",
-    "textHi": "1/r3 और 1/r2"
-   },
-   {
-    "id": "D",
-    "text": "1/r2 and 1/r",
-    "textHi": "1/r2 और 1/r"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "For a short dipole: E ∝ 1/r³ and V ∝ 1/r².",
-  "explanationHi": "छोटे द्विध्रुव के लिए: E ∝ 1/r³ तथा V ∝ 1/r²",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0d624eed910f6fa7",
-  "figureBased": false,
-  "paper": {
-   "no": 1,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_4ca171cf4f3bb122",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Kinematics",
-  "topic": "Motion in a Straight Line",
-  "difficulty": "medium",
-  "questionText": "The drift velocity of electrons in a current-carrying wire of cross-sectional area A and current I is v. If the electric current and the cross-sectional area is doubled then-new drift velocity will-",
-  "questionTextHi": "किसी धारावाही तार (अनुप्रस्थ काट क्षेत्रफल A, धारा I) में इलेक्ट्रॉनों का अपवाह वेग v है। यदि विद्युत धारा तथा अनुप्रस्थ काट क्षेत्रफल दोनों दो गुने कर दिए जाएँ, तो नया अपवाह वेग:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "become 2 times",
-    "textHi": "2 गुना हो जाता है"
-   },
-   {
-    "id": "B",
-    "text": "become 4 times",
-    "textHi": "4 गुना हो जाता है"
-   },
-   {
-    "id": "C",
-    "text": "become half",
-    "textHi": "आधा हो जाता है"
-   },
-   {
-    "id": "D",
-    "text": "remain same",
-    "textHi": "वही रहता है"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "v_d = I/(nAe). Doubling both I and A → v_d = 2I/(n·2A·e) = I/(nAe) → unchanged.",
-  "explanationHi": "v_d = I/(nAe); I और A दोनों दोगुने → v_d = 2I/(n·2A·e) = I/(nAe) → अपरिवर्तित",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "06038b90211459b2",
-  "figureBased": false,
-  "paper": {
-   "no": 1,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_668a35ddfe30bef1",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Oscillations",
-  "topic": "Simple Harmonic Motion",
-  "difficulty": "medium",
-  "questionText": "The ratio of length of two simple pendulums is 2 : 3. Find the ratio of their frequency.",
-  "questionTextHi": "दो सरल लोलकों की लंबाइयों का अनुपात 2 : 3 है। उनकी आवृत्तियों का अनुपात ज्ञात कीजिए।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "√(2/3)"
-   },
-   {
-    "id": "B",
-    "text": "√(3/4)"
-   },
-   {
-    "id": "C",
-    "text": "√(3/2)"
-   },
-   {
-    "id": "D",
-    "text": "√(2/9)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "f = (1/2π)√(g/l) → f ∝ 1/√l\nf₁/f₂ = √(l₂/l₁) = √(3/2)",
-  "explanationHi": "f = (1/2π)√(g/l) → f ∝ 1/√l\nf₁/f₂ = √(l₂/l₁) = √(3/2)",
-  "source": "PYQ · 04 Nov 2020 · SelfStudys (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c6b3f32a11e1172",
-  "figureBased": false,
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_d27b3e4a6aad823b",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Work, Energy & Power",
-  "topic": "Work, Energy & Power",
-  "difficulty": "medium",
-  "questionText": "TheEinstein’s photoelectric equation is . Here k represents- hν = ϕ + k (h is planck's constant, c is speed of light,λ is wavelength, andϕ is work function)",
-  "questionTextHi": "आइंस्टाइन का प्रकाश-विद्युत समीकरण hν = φ + k है। यहाँ k क्या दर्शाता है? (h = प्लांक नियतांक, ν = प्रकाश की आवृत्ति, φ = कार्य फलन) (नोट: स्रोत में समीकरण करीब-करीब अनुपलब्ध था; यहाँ मानक रूप दिया गया है।)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Minimum kinetic energy of electrons",
-    "textHi": "इलेक्ट्रॉनों की न्यूनतम गतिज ऊर्जा"
-   },
-   {
-    "id": "B",
-    "text": "Maximum kinetic energy of electrons",
-    "textHi": "इलेक्ट्रॉनों की अधिकतम गतिज ऊर्जा"
-   },
-   {
-    "id": "C",
-    "text": "Meankinetic energy of electrons",
-    "textHi": "इलेक्ट्रॉनों की औसत गतिज ऊर्जा"
-   },
-   {
-    "id": "D",
-    "text": "None of the above",
-    "textHi": "उपरोक्त में से कोई नहीं"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "hν = φ + K_max → k = maximum kinetic energy of the emitted photoelectrons.",
-  "explanationHi": "hν = φ + K_max → k = उत्सर्जित प्रकाश-इलेक्ट्रॉनों की अधिकतम गतिज ऊर्जा",
-  "source": "PYQ · 04 Nov 2020 · SelfStudys (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "07fe5929c11af180",
-  "figureBased": false,
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_a6d886c68bf3b50f",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Kinematics",
-  "topic": "Motion in a Straight Line",
-  "difficulty": "medium",
-  "questionText": "The drift velocity of electrons in a current-carrying wire of cross- sectional area A and current I is v. If the electric current and the cross- sectional area is doubled then-new drift velocity will-",
-  "questionTextHi": "किसी धारावाही तार (अनुप्रस्थ काट क्षेत्रफल A, धारा I) में इलेक्ट्रॉनों का अपवाह वेग v है। यदि विद्युत धारा तथा अनुप्रस्थ काट क्षेत्रफल दोनों दो गुने कर दिए जाएँ, तो नया अपवाह वेग:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "become 2 times",
-    "textHi": "2 गुना हो जाता है"
-   },
-   {
-    "id": "B",
-    "text": "become 4 times",
-    "textHi": "4 गुना हो जाता है"
-   },
-   {
-    "id": "C",
-    "text": "become half",
-    "textHi": "आधा हो जाता है"
-   },
-   {
-    "id": "D",
-    "text": "remain same",
-    "textHi": "वही रहता है"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "v_d = I/(nAe). Doubling both I and A → v_d = 2I/(n·2A·e) = I/(nAe) → unchanged.",
-  "explanationHi": "v_d = I/(nAe); I और A दोनों दोगुने → v_d = 2I/(n·2A·e) = I/(nAe) → अपरिवर्तित",
-  "source": "PYQ · 04 Nov 2020 · SelfStudys (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "097d5bb2e1146172",
-  "figureBased": false,
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "SelfStudys"
-  }
- },
- {
   "id": "q_73592f523d8b5bd5",
   "subject": "physics",
   "subjectName": "Physics",
@@ -25800,306 +24856,6 @@
    "no": 3,
    "group": "X",
    "date": "05 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_9ad98ab5ea49217a",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Rotational Motion",
-  "topic": "Rotational Motion",
-  "difficulty": "medium",
-  "questionText": "The centre of mass of a uniform cube will be at-",
-  "questionTextHi": "एक समरूप घन का द्रव्यमान केंद्र कहाँ होगा?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "One corner of the cube",
-    "textHi": "घन का एक कोना"
-   },
-   {
-    "id": "B",
-    "text": "Geographical centre of the cube",
-    "textHi": "घन का भौगोलिक केंद्र"
-   },
-   {
-    "id": "C",
-    "text": "Below geographical centre of the cube",
-    "textHi": "घन के भौगोलिक केंद्र के नीचे"
-   },
-   {
-    "id": "D",
-    "text": "Above geographical centre of the cube",
-    "textHi": "घन के भौगोलिक केंद्र के ऊपर"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "For a uniform (symmetric) cube, the centre of mass lies at its geometrical centre.",
-  "explanationHi": "समरूप (सममित) घन का द्रव्यमान केंद्र उसके ज्यामितीय केंद्र पर होता है।",
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0a566074511112a3",
-  "figureBased": false,
-  "paper": {
-   "no": 3,
-   "group": "X",
-   "date": "05 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_e2d2b2745be69b7e",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "What is the force between two spheres of charges 12 × 10-8 C and 18 × 10-8 C which are separated by a distance of 25 cm?",
-  "questionTextHi": "12 × 10⁻⁸ C तथा 18 × 10⁻⁸ C आवेश वाले दो गोलों के बीच बल क्या होगा, यदि वे 25 cm की दूरी पर हैं?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "3.11 × 10−3N"
-   },
-   {
-    "id": "B",
-    "text": "3.11 × 10−4N"
-   },
-   {
-    "id": "C",
-    "text": "6.2 × 10−3N"
-   },
-   {
-    "id": "D",
-    "text": "12 × 10−3N"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "F = kq₁q₂/r² = (9×10⁹ × 12×10⁻⁸ × 18×10⁻⁸)/(0.25)²\n= (9×10⁹ × 216×10⁻¹⁶)/0.0625 = 3.11 × 10⁻³ N",
-  "explanationHi": "F = kq₁q₂/r² = (9×10⁹ × 216×10⁻¹⁶)/(0.25)²\n= 3.11 × 10⁻³ N",
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0112b771311feead",
-  "figureBased": false,
-  "paper": {
-   "no": 3,
-   "group": "X",
-   "date": "05 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_ff95ad80b2afccf5",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Modern Physics",
-  "topic": "Photoelectric Effect & Dual Nature",
-  "difficulty": "medium",
-  "questionText": "If the threshold frequency for photoelectric effect on sodium metal is 1.6 × 104 Hz, then find its work function (h = 6.6 × 10",
-  "questionTextHi": "यदि सोडियम धातु पर प्रकाश-विद्युत प्रभाव के लिए देहली आवृत्ति 1.6 × 10⁴ Hz है, तो उसका कार्य फलन ज्ञात कीजिए (h = 6.6 × 10⁻³⁴ J·s)।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "10.56 × 10-34 J"
-   },
-   {
-    "id": "B",
-    "text": "15.56 × 10-30 J"
-   },
-   {
-    "id": "C",
-    "text": "15.6 × 10-30 J"
-   },
-   {
-    "id": "D",
-    "text": "10.56 × 10-30 J"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Work function φ = hν₀ = 6.6 × 10⁻³⁴ × 1.6 × 10⁴ = 1.056 × 10⁻²⁹ J = 10.56 × 10⁻³⁰ J\n(स्रोत में h का मान कटा हुआ था — यहाँ मानक मान h = 6.6 × 10⁻³⁴ J·s लिया गया है।)",
-  "explanationHi": "कार्य फलन φ = hν₀ = 6.6 × 10⁻³⁴ × 1.6 × 10⁴ = 10.56 × 10⁻³⁰ J",
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0d4d42db51104869",
-  "figureBased": false,
-  "paper": {
-   "no": 3,
-   "group": "X",
-   "date": "05 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_8acdcce85ffa0c41",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Magnetism & Moving Charges",
-  "topic": "Magnetism & Matter",
-  "difficulty": "medium",
-  "questionText": "When the temperature of a ferromagnetic material is increased above curie temperature then",
-  "questionTextHi": "जब किसी लौहचुंबकीय पदार्थ का ताप क्यूरी ताप से ऊपर बढ़ा दिया जाए, तो:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "The ferromagnetic material changes into paramagnetic material.",
-    "textHi": "लौहचुंबकीय पदार्थ अनुचुंबकीय पदार्थ में बदल जाता है।"
-   },
-   {
-    "id": "B",
-    "text": "The ferromagnetic material changes into diamagnetic material.",
-    "textHi": "लौहचुंबकीय पदार्थ प्रतिचुंबकीय पदार्थ में बदल जाता है।"
-   },
-   {
-    "id": "C",
-    "text": "The ferromagnetic material changes into state from solid to liquid.",
-    "textHi": "लौहचुंबकीय पदार्थ ठोस से द्रव अवस्था में बदल जाता है।"
-   },
-   {
-    "id": "D",
-    "text": "The ferromagnetic material changes into superconducting material.",
-    "textHi": "लौहचुंबकीय पदार्थ अतिचालक पदार्थ में बदल जाता है।"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Above the Curie temperature, the domain structure breaks down and a ferromagnetic material becomes paramagnetic.",
-  "explanationHi": "क्यूरी ताप से ऊपर डोमेन संरचना टूट जाती है और लौहचुंबकीय पदार्थ अनुचुंबकीय हो जाता है।",
-  "source": "PYQ · 06 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b4eea1871193763",
-  "figureBased": false,
-  "paper": {
-   "no": 4,
-   "group": "X",
-   "date": "06 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_1e7aa18dcaee9860",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "The escape speed from the surface of the Earth is equal to?",
-  "questionTextHi": "पृथ्वी की सतह से पलायन चाल किसके बराबर होती है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "√(2GME/RE)"
-   },
-   {
-    "id": "B",
-    "text": "√(GME/RE)"
-   },
-   {
-    "id": "C",
-    "text": "√(2GRE/ME)"
-   },
-   {
-    "id": "D",
-    "text": "√(GRE/ME)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "v_e = √(2GM_E/R_E) (energy conservation: ½mv² = GMm/R)",
-  "explanationHi": "v_e = √(2GM_E/R_E) (½mv² = GMm/R से)",
-  "source": "PYQ · 06 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0aa02682111d6ed1",
-  "figureBased": false,
-  "paper": {
-   "no": 4,
-   "group": "X",
-   "date": "06 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_8adead1a280f6e0f",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Magnetism & Moving Charges",
-  "topic": "Magnetic Effects of Current",
-  "difficulty": "medium",
-  "questionText": "Which one of the following statements is correct regarding the magnetic field inside a current carrying solenoid?",
-  "questionTextHi": "धारावाही परिनालिका के भीतर चुंबकीय क्षेत्र के संबंध में कौन-सा कथन सही है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "The magnetic field inside the solenoid is zero",
-    "textHi": "परिनालिका के अंदर चुंबकीय क्षेत्र शून्य होता है"
-   },
-   {
-    "id": "B",
-    "text": "The magnetic field inside the solenoid is uniform at all the points",
-    "textHi": "परिनालिका के अंदर चुंबकीय क्षेत्र सभी बिंदुओं पर एकसमान है"
-   },
-   {
-    "id": "C",
-    "text": "The magnetic field inside the solenoid increases as we move towards the ends",
-    "textHi": "परिनालिका के अंदर चुंबकीय क्षेत्र सिरों की ओर बढ़ने पर बढ़ता है"
-   },
-   {
-    "id": "D",
-    "text": "The magnetic field inside the solenoid decreases as we move towards the ends",
-    "textHi": "परिनालिका के अंदर चुंबकीय क्षेत्र सिरों की ओर बढ़ने पर घटता है"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "For a long solenoid, B = μ₀nI is uniform inside (along the axis), and nearly zero outside.",
-  "explanationHi": "लंबी परिनालिका के लिए भीतर B = μ₀nI एकसमान होता है और बाहर लगभग शून्य।",
-  "source": "PYQ · 06 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "049a78b0d11a5b39",
-  "figureBased": false,
-  "paper": {
-   "no": 4,
-   "group": "X",
-   "date": "06 Nov 2020",
    "src": "Prepp"
   }
  },
@@ -26873,150 +25629,6 @@
   }
  },
  {
-  "id": "q_39f9ea949f0d45ca",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Rotational Motion",
-  "topic": "Rotational Motion",
-  "difficulty": "medium",
-  "questionText": "F⃗ A force = 2î + 5ĵ - 3k̂̂ is applied on an object. This force vector is applied at a point located at = 2î + ĵ + 2k̂̂. What is the torque applied on the object with respect to origin?",
-  "questionTextHi": "किसी वस्तु पर बल = 2î + 5ĵ − 3k̂ लगाया जाता है। यह बल सदिश बिंदु 2î + ĵ + 2k̂ पर लगता है। मूल बिंदु के सापेक्ष वस्तु पर लगा बलाघूर्ण क्या है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "13î -10ĵ + 8k̂̂"
-   },
-   {
-    "id": "B",
-    "text": "8î + 2ĵ - 12k̂̂"
-   },
-   {
-    "id": "C",
-    "text": "8î - 2ĵ + 12k̂̂"
-   },
-   {
-    "id": "D",
-    "text": "-13î -10ĵ + 8k̂̂"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "τ = r × F with r = 2î + ĵ + 2k̂ and F = 2î + 5ĵ − 3k̂\ni-component: (1)(−3) − (2)(5) = −13\nj-component: (2)(2) − (2)(−3) = 10\nk-component: (2)(5) − (1)(2) = 8\nSo τ = −13î + 10ĵ + 8k̂. The option closest/printed in the source as D is (−13î − 10ĵ + 8k̂) — the î and k̂ components match the calculation; the j-sign differs in the printed option (source printing slip). As per the source key, answer is (D).",
-  "explanationHi": "τ = r × F, जहाँ r = 2î + ĵ + 2k̂ तथा F = 2î + 5ĵ − 3k̂\nî घटक: (1)(−3) − (2)(5) = −13\nĵ घटक: (2)(2) − (2)(−3) = 10\nk̂ घटक: (2)(5) − (1)(2) = 8\nअतः τ = −13î + 10ĵ + 8k̂। स्रोत में विकल्प D (−13î − 10ĵ + 8k̂) दिया है — î तथा k̂ घटक गणना से मेल खाते हैं, केवल ĵ का चिह्न स्रोत में भिन्न है (छपाई/टाइपिंग की चूक)। कुंजी के अनुसार उत्तर (D) है।",
-  "source": "PYQ · 13 Jul 2021 Shift-2 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08ed84a4911ec545",
-  "figureBased": false,
-  "paper": {
-   "no": 8,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_6e23e645e00b647a",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Modern Physics",
-  "topic": "Atomic Models & Nuclei",
-  "difficulty": "medium",
-  "questionText": "The half life of a radioactive element is T and λ, is its decay constant, then:",
-  "questionTextHi": "किसी रेडियोधर्मी तत्व की अर्ध-आयु T तथा क्षय नियतांक λ है, तब:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "λT = 1"
-   },
-   {
-    "id": "B",
-    "text": "λT = 1 / 2"
-   },
-   {
-    "id": "C",
-    "text": "λT = loge 2"
-   },
-   {
-    "id": "D",
-    "text": "λ = - loge 2T"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "T½ = ln2/λ → λT = ln 2 = loge 2 = 0.693.",
-  "explanationHi": "T½ = ln2/λ → λT = ln 2 = loge 2 = 0.693।",
-  "source": "PYQ · 13 Jul 2021 Shift-2 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b8627f6410ff6ea",
-  "figureBased": false,
-  "paper": {
-   "no": 8,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_5d811206da485e2c",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Current Electricity",
-  "topic": "Current Electricity",
-  "difficulty": "medium",
-  "questionText": "The cross sectional area of an aluminum square rod is 5 × 10-3 m2 and length is 1 m. If the resistivity of the aluminum is 2.8 × 10-8 Ωm, resistance will be :",
-  "questionTextHi": "एक ऐलुमिनियम की वर्गाकार छड़ का अनुप्रस्थ काट क्षेत्रफल 5 × 10⁻³ m² तथा लंबाई 1 m है। यदि ऐलुमिनियम की प्रतिरोधकता 2.8 × 10⁻⁸ Ωm है, तो प्रतिरोध होगा:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "11.2 × 10-6 Ω"
-   },
-   {
-    "id": "B",
-    "text": "5.6 × 10-6Ω"
-   },
-   {
-    "id": "C",
-    "text": "2.42 × 10-5Ω"
-   },
-   {
-    "id": "D",
-    "text": "11.4 × 10-5Ω"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "R = ρl/A = (2.8 × 10⁻⁸ × 1)/(5 × 10⁻³) = 5.6 × 10⁻⁶ Ω.",
-  "explanationHi": "R = ρl/A = (2.8 × 10⁻⁸ × 1)/(5 × 10⁻³) = 5.6 × 10⁻⁶ Ω।",
-  "source": "PYQ · 14 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "05a8b70ee1134c24",
-  "figureBased": false,
-  "paper": {
-   "no": 9,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_1edd57483df1bcc3",
   "subject": "physics",
   "subjectName": "Physics",
@@ -27065,54 +25677,6 @@
   }
  },
  {
-  "id": "q_e6491dba84e9b916",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "The weight of an object in the coal mine, sea level and at the top of the mountain, are respectively W1, W2, and W3, then",
-  "questionTextHi": "कोयले की खान में, समुद्र तल पर तथा पर्वत के शिखर पर किसी वस्तु के भार क्रमशः W₁, W₂ तथा W₃ हैं, तो",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "W1 < W2 < W3"
-   },
-   {
-    "id": "B",
-    "text": "W1 > W2 > W3"
-   },
-   {
-    "id": "C",
-    "text": "W1 = W2 = W3"
-   },
-   {
-    "id": "D",
-    "text": "W1 < W2 > W3"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "The value of g is maximum at the surface (sea level) and decreases both below the surface (mine) and above it (mountain top).\nSo W₂ (sea level) is the largest → W₁ < W₂ > W₃.",
-  "explanationHi": "g का मान सतह (समुद्र तल) पर अधिकतम होता है तथा सतह के नीचे (खान) तथा ऊपर (पर्वत शिखर) — दोनों जगह घटता है।\nअतः W₂ (समुद्र तल) सबसे अधिक होगा → W₁ < W₂ > W₃।",
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0989df84410fa1e8",
-  "figureBased": false,
-  "paper": {
-   "no": 11,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_85317e444e223a21",
   "subject": "physics",
   "subjectName": "Physics",
@@ -27157,303 +25721,6 @@
    "no": 11,
    "group": "X",
    "date": "15 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_d0ac21f3165f1494",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Work, Energy & Power",
-  "topic": "Work, Energy & Power",
-  "difficulty": "medium",
-  "questionText": "A carnot engine is working between the temperature range of 227°C and 127°C. If the heat absorbed by the engine is 104 J, the the work done by the engine is:",
-  "questionTextHi": "एक कार्नोट इंजन 227 °C तथा 127 °C के तापमान परिसर में कार्य करता है। यदि इंजन द्वारा अवशोषित ऊष्मा 10⁴ J है, तो इंजन द्वारा किया गया कार्य होगा:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2 × 104 J"
-   },
-   {
-    "id": "B",
-    "text": "6 × 104 J"
-   },
-   {
-    "id": "C",
-    "text": "2 × 103 J"
-   },
-   {
-    "id": "D",
-    "text": "5 × 103 J"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "T₁ = 227 + 273 = 500 K, T₂ = 127 + 273 = 400 K\nη = 1 − 400/500 = 1/5\nW = ηQ = (1/5) × 10⁴ = 2 × 10³ J",
-  "explanationHi": "T₁ = 500 K, T₂ = 400 K\nη = 1 − 400/500 = 1/5\nW = ηQ = (1/5) × 10⁴ = 2 × 10³ J",
-  "source": "PYQ · 18 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0bd028b911110687",
-  "figureBased": false,
-  "paper": {
-   "no": 13,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_f2f0c09fae66c2a0",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Units, Measurement & Errors",
-  "topic": "Dimensional Analysis",
-  "difficulty": "medium",
-  "questionText": "Which one of the following is the dimensional formula resistivity?",
-  "questionTextHi": "निम्नलिखित में से कौन प्रतिरोधकता का विमीय सूत्र है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "ML3T-3A-2"
-   },
-   {
-    "id": "B",
-    "text": "ML3T3A2"
-   },
-   {
-    "id": "C",
-    "text": "ML3T3A-2"
-   },
-   {
-    "id": "D",
-    "text": "ML-3T-3A-2"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "R = ρL/A → ρ = RA/L. R = [ML²T⁻³A⁻²], A = L², L = L\nρ = [ML²T⁻³A⁻²] × L²/L = [ML³T⁻³A⁻²]",
-  "explanationHi": "R = ρL/A → ρ = RA/L; R = [ML²T⁻³A⁻²], A = L², L = L\nρ = [ML³T⁻³A⁻²]",
-  "source": "PYQ · 18 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0761ad87a10d6468",
-  "figureBased": false,
-  "paper": {
-   "no": 13,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_d49ddf3d2a8304aa",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Magnetism & Moving Charges",
-  "topic": "Magnetic Effects of Current",
-  "difficulty": "medium",
-  "questionText": "Which of the following is not correct about the Biot-Savart’s law?",
-  "questionTextHi": "बायो-सावर्ट नियम के संबंध में निम्नलिखित में से कौन गलत है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "The magnitude of the magnetic field is directly proportional to the current through the conductor.",
-    "textHi": "चुंबकीय क्षेत्र का परिमाण चालक से प्रवाहित धारा के समानुपाती होता है।"
-   },
-   {
-    "id": "B",
-    "text": "The magnitude of the magnetic field is directly proportional to the length of the current element.",
-    "textHi": "चुंबकीय क्षेत्र का परिमाण धारा तत्व की लंबाई के समानुपाती होता है।"
-   },
-   {
-    "id": "C",
-    "text": "The magnitude of the magnetic field is directly proportional to the square of the distance from the current / element.",
-    "textHi": "चुंबकीय क्षेत्र का परिमाण धारा तत्व से दूरी के वर्ग के समानुपाती होता है।"
-   },
-   {
-    "id": "D",
-    "text": "The magnitude of the magnetic field is inversely proportional to the square of the distance from the / current element",
-    "textHi": "चुंबकीय क्षेत्र का परिमाण धारा तत्व से दूरी के वर्ग के व्युत्क्रमानुपाती होता है"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Biot-Savart law: dB = (μ₀/4π) I dℓ sinθ / r².\nThe field is INVERSELY proportional to r² — so the statement saying directly proportional to r² is wrong (C).",
-  "explanationHi": "बायो-सावर्ट नियम: dB = (μ₀/4π) I dℓ sinθ / r²\nक्षेत्र r² के व्युत्क्रमानुपाती होता है — अतः r² के अनुक्रमानुपाती वाला कथन गलत है (C)।",
-  "source": "PYQ · 18 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c888e1881238b3a",
-  "figureBased": false,
-  "paper": {
-   "no": 13,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_84239722dd4810bf",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Electrostatics",
-  "topic": "Coulomb's Law & Electric Field",
-  "difficulty": "medium",
-  "questionText": "The magnetic force, experienced by a moving charged particle in the magnetic field, depends on ____________.",
-  "questionTextHi": "चुंबकीय क्षेत्र में गतिशील आवेशित कण पर लगने वाला चुंबकीय बल ____________ पर निर्भर करता है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "velocity of charge particle",
-    "textHi": "आवेशित कण का वेग"
-   },
-   {
-    "id": "B",
-    "text": "charge of charge particle",
-    "textHi": "आवेशित कण का आवेश"
-   },
-   {
-    "id": "C",
-    "text": "magnetic field",
-    "textHi": "चुंबकीय क्षेत्र"
-   },
-   {
-    "id": "D",
-    "text": "All of the above",
-    "textHi": "उपरोक्त सभी"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "F = qvB sinθ, so the force depends on the charge (q), the speed (v), the field (B) and the angle (θ) between v and B.\nHence all of the above.",
-  "explanationHi": "F = qvB sinθ, अतः बल आवेश (q), चाल (v), क्षेत्र (B) तथा v और B के बीच कोण (θ) — सब पर निर्भर करता है।\nअतः उपरोक्त सभी।",
-  "source": "PYQ · 18 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ffb6f347111d3e7",
-  "figureBased": false,
-  "paper": {
-   "no": 13,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_6e6429f52b052f19",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "A motorcycle starts from rest and accelerates uniformly to a speed of 54 kmph over a distance of 450 m. Then the acceleration of the motorcycle is",
-  "questionTextHi": "एक मोटरसाइकिल विराम से चलकर 450 m दूरी में एकसमान त्वरण से 54 km/h की चाल प्राप्त करती है। मोटरसाइकिल का त्वरण है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1.33 m/s2"
-   },
-   {
-    "id": "B",
-    "text": "0.40 m/s2"
-   },
-   {
-    "id": "C",
-    "text": "0.25 m/s2"
-   },
-   {
-    "id": "D",
-    "text": "2 m/s2"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "u = 0, v = 54 km/h = 15 m/s, s = 450 m\nv² = u² + 2as → 225 = 0 + 2a(450) → a = 225/900 = 0.25 m/s²",
-  "explanationHi": "u = 0, v = 15 m/s, s = 450 m\nv² = u² + 2as → 225 = 900a → a = 0.25 m/s²",
-  "source": "PYQ · 18 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0f1c17b46110a832",
-  "figureBased": false,
-  "paper": {
-   "no": 13,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_13d4c4778c66febb",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "F⃗ i^ j^ A force newton displaces a body by = (5 + 3 )",
-  "questionTextHi": "(2î − ĵ) न्यूटन का बल किसी पिंड को किसी सदिश (मीटर में) से विस्थापित करता है। बल द्वारा किया गया कार्य है:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Zero",
-    "textHi": "शून्य"
-   },
-   {
-    "id": "B",
-    "text": "12 Joules"
-   },
-   {
-    "id": "C",
-    "text": "7 Joules"
-   },
-   {
-    "id": "D",
-    "text": "13 Joules"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "The displacement vector is garbled in the source file. As per the source key the work done is 7 J.\n(Note: the question data is incomplete in the source; the answer is retained as printed in the key.)",
-  "explanationHi": "स्रोत फ़ाइल में विस्थापन सदिश गड़बड़ है। स्रोत की कुंजी के अनुसार किया गया कार्य 7 J है।\n(नोट: स्रोत में प्रश्न के आँकड़े अपूर्ण हैं; उत्तर कुंजी के अनुसार ही रखा गया है।)",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0038c0d841109510",
-  "figureBased": false,
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
    "src": "Prepp"
   }
  },
@@ -27510,54 +25777,6 @@
   }
  },
  {
-  "id": "q_76cdf40b7d31aa8e",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Gravitation",
-  "topic": "Gravitation",
-  "difficulty": "medium",
-  "questionText": "If the radius of earth is reduced by 2/3rd of its initial value keeping its mass constant, then acceleration due to gravity becomes-",
-  "questionTextHi": "यदि पृथ्वी का द्रव्यमान स्थिर रखते हुए उसकी त्रिज्या प्रारंभिक मान की 2/3 कर दी जाए, तो गुरुत्वीय त्वरण हो जाता है-",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "4/9"
-   },
-   {
-    "id": "B",
-    "text": "9/4"
-   },
-   {
-    "id": "C",
-    "text": "2/3"
-   },
-   {
-    "id": "D",
-    "text": "3/2"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "g = GM/R² → g ∝ 1/R².\nR' = 2R/3 → g'/g = (R/R')² = (3/2)² = 9/4.\n(Source phrase \"reduced by 2/3rd\" is taken as reduced TO 2/3rd, which agrees with the key option 9/4.)",
-  "explanationHi": "g = GM/R² → g ∝ 1/R²\nR' = 2R/3 → g'/g = (3/2)² = 9/4\n(स्रोत के वाक्य \"reduced by 2/3rd\" को यहाँ \"2/3 तक कम\" के अर्थ में लिया गया है, जो कुंजी विकल्प 9/4 से मेल खाता है।)",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "05759a4dc10f6f0c",
-  "figureBased": false,
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_e59a252df8b11898",
   "subject": "physics",
   "subjectName": "Physics",
@@ -27598,154 +25817,6 @@
    "auto-topic"
   ],
   "dupeHash": "0bc2b014b1121e03",
-  "figureBased": false,
-  "paper": {
-   "no": 15,
-   "group": "X",
-   "date": "18 Jul 2021",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_721c9ab271d81082",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Gravitation",
-  "topic": "Gravitation",
-  "difficulty": "medium",
-  "questionText": "If the radius of the earth is reduced to 2/3rd of its initial value keeping its mass constant, then acceleration due to gravity becomes-",
-  "questionTextHi": "यदि पृथ्वी का द्रव्यमान स्थिर रखते हुए उसकी त्रिज्या प्रारंभिक मान की 2/3 कर दी जाए, तो गुरुत्वीय त्वरण हो जाता है-",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "4/9"
-   },
-   {
-    "id": "B",
-    "text": "9/4"
-   },
-   {
-    "id": "C",
-    "text": "2/3"
-   },
-   {
-    "id": "D",
-    "text": "3/2"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "g = GM/R² → g ∝ 1/R².\nR' = 2R/3 → g'/g = (R/R')² = (3/2)² = 9/4.\n(Source phrase \"reduced by 2/3rd\" is taken as reduced TO 2/3rd, which agrees with the key option 9/4.)",
-  "explanationHi": "g = GM/R² → g ∝ 1/R²\nR' = 2R/3 → g'/g = (3/2)² = 9/4\n(स्रोत के वाक्य \"reduced by 2/3rd\" को यहाँ \"2/3 तक कम\" के अर्थ में लिया गया है, जो कुंजी विकल्प 9/4 से मेल खाता है।)",
-  "source": "PYQ · 18 Jul 2021 · SelfStudys (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "036a6677310f9ac3",
-  "figureBased": false,
-  "paper": {
-   "no": 15,
-   "group": "X",
-   "date": "18 Jul 2021",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_ca44ff1c8b574d11",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Units, Measurement & Errors",
-  "topic": "Dimensional Analysis",
-  "difficulty": "medium",
-  "questionText": "The dimensional formula of constant a in van der Waals gas equation a : (p + V 2 )(V −b) = RT",
-  "questionTextHi": "वान डर वाल्स गैस समीकरण (p + a/V²)(V − b) = RT में नियतांक a का विमीय सूत्र है:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "[ML3T−2]"
-   },
-   {
-    "id": "B",
-    "text": "[ML5T−2]"
-   },
-   {
-    "id": "C",
-    "text": "[ML2T−1]"
-   },
-   {
-    "id": "D",
-    "text": "[ML2T−5]"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "a/V² has the dimensions of pressure → a = pressure × V² = [ML⁻¹T⁻²] × L⁶ = [ML⁵T⁻²].",
-  "explanationHi": "a/V² की विमा दाब की होती है → a = दाब × V² = [ML⁻¹T⁻²] × L⁶ = [ML⁵T⁻²]",
-  "source": "PYQ · 18 Jul 2021 · SelfStudys (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "092fa9aaf1229d85",
-  "figureBased": false,
-  "paper": {
-   "no": 15,
-   "group": "X",
-   "date": "18 Jul 2021",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_d64ddc21e9c36fc1",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Properties of Matter",
-  "topic": "Fluid Mechanics",
-  "difficulty": "medium",
-  "questionText": "The statement \"The loss of weight of a body submerged (partially or fully) in a fluid is equal to the weight of the fluid displaced\" represents which of thefollowing?",
-  "questionTextHi": "\"द्रव में (आंशिक या पूर्ण) डूबे पिंड के भार में कमी, विस्थापित द्रव के भार के बराबर होती है\" — यह कथन किसे दर्शाता है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Archimedes' principle",
-    "textHi": "आर्किमिडीज़ का सिद्धांत"
-   },
-   {
-    "id": "B",
-    "text": "Boyle's law",
-    "textHi": "बॉयल का नियम"
-   },
-   {
-    "id": "C",
-    "text": "Pascal's Law",
-    "textHi": "पास्कल का नियम"
-   },
-   {
-    "id": "D",
-    "text": "Bernoulli's principle",
-    "textHi": "बर्नूली का सिद्धांत"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "This is Archimedes' principle: upthrust (buoyant force) = weight of the fluid displaced, which appears as an equal loss in weight.",
-  "explanationHi": "यह आर्किमिडीज़ का सिद्धांत है: उत्प्लावन बल = विस्थापित द्रव का भार, जो भार में उतनी ही कमी के रूप में दिखाई देता है।",
-  "source": "PYQ · 18 Jul 2021 · SelfStudys (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "07fcd95671139b37",
   "figureBased": false,
   "paper": {
    "no": 15,
@@ -27859,254 +25930,6 @@
   }
  },
  {
-  "id": "q_f09163b7093c1b73",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Current Electricity",
-  "topic": "Current Electricity",
-  "difficulty": "medium",
-  "questionText": "Which of the following equation shows the relationship between current (i) and drift velocity (Vd). (n is number of free electrons/m3, A is the cross-sectional area, e is change on an electron, R is resistance)",
-  "questionTextHi": "निम्नलिखित में से कौन धारा (I) तथा अपवाह वेग (Vd) के बीच संबंध दर्शाता है? (n = प्रति m³ मुक्त इलेक्ट्रॉनों की संख्या, A = अनुप्रस्थ काट क्षेत्रफल, e = इलेक्ट्रॉन का आवेश)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Vd = I R2"
-   },
-   {
-    "id": "B",
-    "text": "I = neAVd"
-   },
-   {
-    "id": "C",
-    "text": "Vd = IR"
-   },
-   {
-    "id": "D",
-    "text": "Vd = I2Rt"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "I = neAVd, i.e. the drift velocity is Vd = I/(neA).",
-  "explanationHi": "I = neAVd, अर्थात् अपवाह वेग Vd = I/(neA)",
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group X)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ae9ab67d1137f1f",
-  "figureBased": false,
-  "paper": {
-   "no": 16,
-   "group": "X",
-   "date": "25 Jul 2022",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_55a646bfc164aec3",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Units, Measurement & Errors",
-  "topic": "Dimensional Analysis",
-  "difficulty": "medium",
-  "questionText": "What is the dimension of mutual Induction ?",
-  "questionTextHi": "अन्योन्य प्रेरण की विमा क्या है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "[ML T A ]2-3-1"
-   },
-   {
-    "id": "B",
-    "text": "[ML T A ]2-2-2"
-   },
-   {
-    "id": "C",
-    "text": "[ML T A ]3-4-1"
-   },
-   {
-    "id": "D",
-    "text": "[ML T A ]3-4-2"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Mutual inductance M is defined by φ = Mi, so M = φ/i = (tesla·m²)/ampere.\nIts dimension is [M L² T⁻² A⁻²], the same as that of self-inductance (henry).",
-  "explanationHi": "अन्योन्य प्रेरण M को φ = Mi से परिभाषित करते हैं, अतः M = φ/i = (टेस्ला·m²)/ऐम्पियर।\nइसकी विमा [M L² T⁻² A⁻²] होती है, जो स्वप्रेरण (हेनरी) की विमा के समान है।",
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group X)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "00b9c1a6110cd7d1",
-  "figureBased": false,
-  "paper": {
-   "no": 16,
-   "group": "X",
-   "date": "25 Jul 2022",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_be6f0da2f8ec314f",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Magnetism & Moving Charges",
-  "topic": "Magnetism & Matter",
-  "difficulty": "medium",
-  "questionText": "Above curie temperaturea ferromagneticsubstance",
-  "questionTextHi": "क्यूरी तापमान से ऊपर लौहचुम्बकीय पदार्थ",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "becomes paramagnetic",
-    "textHi": "अनुचुंबकीय हो जाता है"
-   },
-   {
-    "id": "B",
-    "text": "becomes diamagnetic",
-    "textHi": "प्रतिचुंबकीय हो जाता है"
-   },
-   {
-    "id": "C",
-    "text": "becomes ferromagnetic",
-    "textHi": "लौहचुंबकीय हो जाता है"
-   },
-   {
-    "id": "D",
-    "text": "Ali of the above",
-    "textHi": "उपरोक्त सभी"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Above the Curie temperature thermal agitation destroys domain alignment and the ferromagnetic material becomes paramagnetic.",
-  "explanationHi": "क्यूरी तापमान से ऊपर तापीय गति डोमेनों के संरेखण को नष्ट कर देती है तथा लौहचुम्बकीय पदार्थ अनुचुम्बकीय हो जाता है।",
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group X)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "03e77dfc710f3261",
-  "figureBased": false,
-  "paper": {
-   "no": 16,
-   "group": "X",
-   "date": "25 Jul 2022",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_85c679c4883d63ba",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "The velocity of a particle, executing S.H.M, is ________at its mean position.",
-  "questionTextHi": "सरल आवर्त गति करते कण का वेग माध्य स्थिति पर ________ होता है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "maximum",
-    "textHi": "अधिकतम"
-   },
-   {
-    "id": "B",
-    "text": "minimum",
-    "textHi": "न्यूनतम"
-   },
-   {
-    "id": "C",
-    "text": "infinity",
-    "textHi": "अनंत"
-   },
-   {
-    "id": "D",
-    "text": "zero",
-    "textHi": "शून्य"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "v = ω√(A² − x²); at the mean position x = 0 → v = ωA, which is the maximum velocity.",
-  "explanationHi": "v = ω√(A² − x²); माध्य स्थिति पर x = 0 → v = ωA, जो अधिकतम वेग है।",
-  "source": "PYQ · 18 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08fa88a5d10e04db",
-  "figureBased": false,
-  "paper": {
-   "no": 17,
-   "group": "X",
-   "date": "18 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_0db5c909875d7f19",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Rotational Motion",
-  "topic": "Rotational Motion",
-  "difficulty": "medium",
-  "questionText": "A stone is tied at the end of a string of 2m length and then rotated with a constant angular velocity of 10 rad/sec. The centripetal acceleration of the stone will be:",
-  "questionTextHi": "2 m लंबी डोरी के सिरे पर पत्थर बाँधकर उसे 10 rad/s की नियत कोणीय वेग से घुमाया जाता है। पत्थर का अभिकेंद्री त्वरण होगा:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "200 m/s2"
-   },
-   {
-    "id": "B",
-    "text": "20 m/s2"
-   },
-   {
-    "id": "C",
-    "text": "2000 m/s2"
-   },
-   {
-    "id": "D",
-    "text": "2m/s2"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "a_c = ω²r = (10)² × 2 = 200 m/s².",
-  "explanationHi": "a_c = ω²r = (10)² × 2 = 200 m/s²",
-  "source": "PYQ · 18 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b1a044ba111703e",
-  "figureBased": false,
-  "paper": {
-   "no": 17,
-   "group": "X",
-   "date": "18 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
   "id": "q_1c66e8cb74b10217",
   "subject": "physics",
   "subjectName": "Physics",
@@ -28152,298 +25975,6 @@
    "group": "X",
    "date": "19 Jan 2023",
    "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_d060758cf5eadcee",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Units, Measurement & Errors",
-  "topic": "Dimensional Analysis",
-  "difficulty": "medium",
-  "questionText": "The dimension ofPlank’s constant is _____.",
-  "questionTextHi": "प्लांक नियतांक की विमा _____ है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "[MLT]"
-   },
-   {
-    "id": "B",
-    "text": "[ML1T-1]"
-   },
-   {
-    "id": "C",
-    "text": "[ML2T-1]"
-   },
-   {
-    "id": "D",
-    "text": "[ML2T-2]"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "E = hν → h = E/ν = [ML²T⁻²]/[T⁻¹] = [ML²T⁻¹] (same as angular momentum).",
-  "explanationHi": "E = hν → h = E/ν = [ML²T⁻²]/[T⁻¹] = [ML²T⁻¹] (कोणीय संवेग के समान)",
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "06a80f539110196d",
-  "figureBased": false,
-  "paper": {
-   "no": 18,
-   "group": "X",
-   "date": "19 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_ab7fd407fd130479",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "A 700 gm solid cube having an edge of length 10 cm floats in water. How much volume of the cube is outside the water? The density of the water 1000 kgm-3",
-  "questionTextHi": "10 cm कोर की 700 gm ठोस घनाकार वस्तु जल में तैरती है। घन का कितना आयतन जल के बाहर है? (जल का घनत्व = 1000 kg/m³)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "300 cm3"
-   },
-   {
-    "id": "B",
-    "text": "100 cm3"
-   },
-   {
-    "id": "C",
-    "text": "400 cm3"
-   },
-   {
-    "id": "D",
-    "text": "200 cm3"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Volume = 10³ = 1000 cm³; mass = 700 g → density = 0.7 g/cm³\nFraction submerged = 0.7 → submerged volume = 700 cm³\nVolume outside = 1000 − 700 = 300 cm³.",
-  "explanationHi": "आयतन = 1000 cm³; द्रव्यमान = 700 g → घनत्व = 0.7 g/cm³\nडूबा भाग = 0.7 → डूबा आयतन = 700 cm³\nबाहर का आयतन = 300 cm³",
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0a2e941be1107aaa",
-  "figureBased": false,
-  "paper": {
-   "no": 18,
-   "group": "X",
-   "date": "19 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_f7e5d6773fb1e160",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Optics",
-  "topic": "Reflection & Mirrors",
-  "difficulty": "medium",
-  "questionText": "The angle of incidence at which reflected light is polarized for reflection from air to glass (refraction index μ) is",
-  "questionTextHi": "वायु से काँच (अपवर्तनांक μ) पर परावर्तन में परावर्तित प्रकाश के ध्रुवित होने का आपतन कोण है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "sin-1(μ)"
-   },
-   {
-    "id": "B",
-    "text": "sin-1(1/μ)"
-   },
-   {
-    "id": "C",
-    "text": "tan-1(μ)"
-   },
-   {
-    "id": "D",
-    "text": "tan-1(1/μ)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Brewster's law: at the polarizing angle tan θp = μ → θp = tan⁻¹(μ).",
-  "explanationHi": "ब्रूस्टर का नियम: ध्रुवण कोण पर tan θp = μ → θp = tan⁻¹(μ)",
-  "source": "PYQ · 14 Oct 2023 Shift-1 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "03d64b4c8111ca18",
-  "figureBased": false,
-  "paper": {
-   "no": 20,
-   "group": "X",
-   "date": "14 Oct 2023 Shift-1",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_21981563a13f2023",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Magnetism & Moving Charges",
-  "topic": "Magnetic Effects of Current",
-  "difficulty": "medium",
-  "questionText": "Consider an infinitely long straight conductor carryingcurrent I. The magnetic field B due to this current-carrying conductor at a distance d from it is",
-  "questionTextHi": "धारा I प्रवाहित करने वाले अनंत लंबे सीधे चालक पर विचार कीजिए। इससे d दूरी पर चुंबकीय क्षेत्र B है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "μ0I / πd"
-   },
-   {
-    "id": "B",
-    "text": "μ0I / d"
-   },
-   {
-    "id": "C",
-    "text": "μ0I / 2πd"
-   },
-   {
-    "id": "D",
-    "text": "2πμ0I / d"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "From Ampere's circuital law, B = μ₀I/2πd for an infinitely long straight conductor.",
-  "explanationHi": "ऐम्पियर के परिपथीय नियम से अनंत लंबे सीधे चालक के लिए B = μ₀I/2πd",
-  "source": "PYQ · 14 Oct 2023 Shift-1 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "02e360bc511406bf",
-  "figureBased": false,
-  "paper": {
-   "no": 20,
-   "group": "X",
-   "date": "14 Oct 2023 Shift-1",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_1e05c73b41e4f961",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Electrostatics",
-  "topic": "Electric Potential & Capacitance",
-  "difficulty": "medium",
-  "questionText": "A parallel plate capacitor has a capacitance of 10μF. If the distance between two plates is doubled then the new capacitance will be-",
-  "questionTextHi": "समानांतर प्लेट संधारित्र की धारिता 10 μF है। यदि प्लेटों के बीच की दूरी दोगुनी कर दी जाए, तो नई धारिता होगी-",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "20μF"
-   },
-   {
-    "id": "B",
-    "text": "15μF"
-   },
-   {
-    "id": "C",
-    "text": "10μF"
-   },
-   {
-    "id": "D",
-    "text": "5μF"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "C ∝ 1/d → doubling d halves the capacitance: C' = 5 μF.",
-  "explanationHi": "C ∝ 1/d → d दोगुनी करने पर धारिता आधी: C' = 5 μF",
-  "source": "PYQ · 14 Oct 2023 Shift-1 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c339d7361119f3a",
-  "figureBased": false,
-  "paper": {
-   "no": 20,
-   "group": "X",
-   "date": "14 Oct 2023 Shift-1",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_ecb40615a6481c55",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Waves & Sound",
-  "topic": "Wave Motion",
-  "difficulty": "medium",
-  "questionText": "What is the order of wavelength of X-rays, radio waves, micro wave and visible light?",
-  "questionTextHi": "एक्स-किरणों, रेडियो तरंगों, सूक्ष्म तरंगों तथा दृश्य प्रकाश की तरंगदैर्ध्य का क्रम क्या है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Radio waves < Microwaves > Visible light > X- rays",
-    "textHi": "रेडियो तरंगें < सूक्ष्म तरंगें > दृश्य प्रकाश > X-किरणें"
-   },
-   {
-    "id": "B",
-    "text": "Radio waves < Microwaves < Visible light < X- rays",
-    "textHi": "रेडियो तरंगें < सूक्ष्म तरंगें < दृश्य प्रकाश < X-किरणें"
-   },
-   {
-    "id": "C",
-    "text": "Radio waves < Microwaves < Visible light > X- rays",
-    "textHi": "रेडियो तरंगें < सूक्ष्म तरंगें < दृश्य प्रकाश > X-किरणें"
-   },
-   {
-    "id": "D",
-    "text": "Radio waves > Microwaves > Visible light > X- rays",
-    "textHi": "रेडियो तरंगें > सूक्ष्म तरंगें > दृश्य प्रकाश > X-किरणें"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Wavelengths increase in the order: X-rays < visible < microwaves < radio waves.\nSo radio waves > microwaves > visible light > X-rays.",
-  "explanationHi": "तरंगदैर्ध्य का बढ़ता क्रम: एक्स-किरणें < दृश्य < सूक्ष्म तरंगें < रेडियो तरंगें\nअतः रेडियो तरंगें > सूक्ष्म तरंगें > दृश्य प्रकाश > एक्स-किरणें",
-  "source": "PYQ · 17 Mar 2024 Shift-1 · Utkarsh (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c44c4b041156aa4",
-  "figureBased": false,
-  "paper": {
-   "no": 21,
-   "group": "X",
-   "date": "17 Mar 2024 Shift-1",
-   "src": "Utkarsh"
   }
  },
  {
@@ -28543,546 +26074,6 @@
   }
  },
  {
-  "id": "q_f0c7ae22af73d237",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Work, Energy & Power",
-  "topic": "Work, Energy & Power",
-  "difficulty": "medium",
-  "questionText": "A gas expands from initial state with P1 = 320 kPa, V1 = 0.04 m3 to a final pressure of 80 kPa. If the reversible pressure - volume relation is given by PV2 = Constant, then what will be the work done for the process?",
-  "questionTextHi": "कोई गैस प्रारंभिक अवस्था P₁ = 320 kPa, V₁ = 0.04 m³ से 80 kPa के अंतिम दाब तक प्रसारित होती है। यदि उत्क्रमणीय दाब-आयतन संबंध PV² = नियतांक हो, तो प्रक्रिया में किया गया कार्य क्या होगा?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "6.4 kJ"
-   },
-   {
-    "id": "B",
-    "text": "64 kJ"
-   },
-   {
-    "id": "C",
-    "text": "6.4 MJ"
-   },
-   {
-    "id": "D",
-    "text": "0.64 KJ"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "PV² = C → P₁V₁² = P₂V₂² → 320 × (0.04)² = 80 × V₂² → V₂² = 0.0064 → V₂ = 0.08 m³\nW = (P₁V₁ − P₂V₂)/(n − 1) with n = 2:\nW = (320×0.04 − 80×0.08)/1 = (12.8 − 6.4) kPa·m³ = 6.4 kJ.",
-  "explanationHi": "PV² = C → 320 × (0.04)² = 80 × V₂² → V₂ = 0.08 m³\nn = 2 के लिए W = (P₁V₁ − P₂V₂)/(n − 1) = (12.8 − 6.4)/1 = 6.4 kJ",
-  "source": "PYQ · 17 Mar 2024 Shift-1 · Utkarsh (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "06126101d112e001",
-  "figureBased": false,
-  "paper": {
-   "no": 21,
-   "group": "X",
-   "date": "17 Mar 2024 Shift-1",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_cfe2f0d4beea0cca",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Current Electricity",
-  "topic": "Current Electricity",
-  "difficulty": "medium",
-  "questionText": "Kirchoff's current law is based on conservation of ______ while Kirchoff's voltage law is based on conservation of _________",
-  "questionTextHi": "किरखॉफ का धारा नियम ______ के संरक्षण पर तथा किरखॉफ का वोल्टता नियम _________ के संरक्षण पर आधारित है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Mass, Charge",
-    "textHi": "द्रव्यमान, आवेश"
-   },
-   {
-    "id": "B",
-    "text": "Energy, Charge",
-    "textHi": "ऊर्जा, आवेश"
-   },
-   {
-    "id": "C",
-    "text": "Charge, Energy",
-    "textHi": "आवेश, ऊर्जा"
-   },
-   {
-    "id": "D",
-    "text": "Charge, Mass",
-    "textHi": "आवेश, द्रव्यमान"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Junction (current) law follows from conservation of charge; loop (voltage) law follows from conservation of energy.",
-  "explanationHi": "संधि (धारा) नियम आवेश के संरक्षण से तथा लूप (वोल्टता) नियम ऊर्जा के संरक्षण से प्राप्त होता है।",
-  "source": "PYQ · 16 Nov 2024 · SelfStudys (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "04c0d18ab1111607",
-  "figureBased": false,
-  "paper": {
-   "no": 22,
-   "group": "X",
-   "date": "16 Nov 2024",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_418a23d9b0e5bd78",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Work, Energy & Power",
-  "topic": "Work, Energy & Power",
-  "difficulty": "medium",
-  "questionText": "The turns ratio of a transformer used in half-wave rectifier is n1∶ n2 = 12∶ 1. The primary is connected to the power mains of 220 V, 50 Hz. Assuming the diode resistance in forward bias to be zero, calculate the dc voltage across the load",
-  "questionTextHi": "अर्ध-तरंग दिष्टकारी में प्रयुक्त ट्रांसफार्मर का फेरा अनुपात n₁ : n₂ = 12 : 1 है। प्राथमिक 220 V, 50 Hz की मुख्य लाइन से जुड़ा है। अग्र अभिनति में डायोड प्रतिरोध शून्य मानते हुए, लोड पर दिष्ट वोल्टता ज्ञात कीजिए",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "8.24 V"
-   },
-   {
-    "id": "B",
-    "text": "4.12 V"
-   },
-   {
-    "id": "C",
-    "text": "2.8 V"
-   },
-   {
-    "id": "D",
-    "text": "16.48 V"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "V_secondary = 220/12 = 18.33 V (rms) → V_m = 18.33√2 = 25.9 V\nHalf-wave dc output = V_m/π = 25.9/3.14 = 8.24 V.",
-  "explanationHi": "द्वितीयक वोल्टता = 220/12 = 18.33 V (rms) → V_m = 25.9 V\nअर्ध-तरंग दिष्ट निर्गत = V_m/π = 8.24 V",
-  "source": "PYQ · 16 Nov 2024 · SelfStudys (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c909fc9f11c36e1",
-  "figureBased": false,
-  "paper": {
-   "no": 22,
-   "group": "X",
-   "date": "16 Nov 2024",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_3360197bd80eadd8",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Waves & Sound",
-  "topic": "Wave Motion",
-  "difficulty": "medium",
-  "questionText": "If the empirical formula for the observed wavelengths (λ)for hydrogen is 1/λ = R(1/42 - 1/n2), where 'n' is integral values higher than 4, then it representsthe _____________ series.",
-  "questionTextHi": "यदि हाइड्रोजन के लिए प्रेक्षित तरंगदैर्ध्यों (λ) का सूत्र 1/λ = R(1/4² − 1/n²) है, जहाँ 'n' के पूर्णांक मान 4 से बड़े हैं, तो यह _____________ श्रेणी दर्शाता है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Balmer",
-    "textHi": "बामर"
-   },
-   {
-    "id": "B",
-    "text": "Brackett",
-    "textHi": "ब्रैकेट"
-   },
-   {
-    "id": "C",
-    "text": "Paschen",
-    "textHi": "पाश्चेन"
-   },
-   {
-    "id": "D",
-    "text": "Lyman",
-    "textHi": "लाइमन"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The series with n₁ = 4 (transitions ending at the 4th orbit) is the Brackett series (infrared).",
-  "explanationHi": "n₁ = 4 वाली श्रेणी (चौथी कक्षा पर समाप्त होने वाले संक्रमण) ब्रैकेट श्रेणी है (अवरक्त)।",
-  "source": "PYQ · 16 Nov 2024 · SelfStudys (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0fc0b055a112fdea",
-  "figureBased": false,
-  "paper": {
-   "no": 22,
-   "group": "X",
-   "date": "16 Nov 2024",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_d38eda81f2245bea",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Work, Energy & Power",
-  "topic": "Work, Energy & Power",
-  "difficulty": "medium",
-  "questionText": "A ball of mass M moving with a speed of 2 m/s hits another ball of mass 1 kg moving in the same direction with a speed of 1 m/s. If the 4 kinetic energy of center of mass is Joule, then the magnitude of M is 3",
-  "questionTextHi": "2 m/s की चाल से चलती M द्रव्यमान की गेंद उसी दिशा में 1 m/s की चाल से चलती 1 kg द्रव्यमान की दूसरी गेंद से टकराती है। यदि द्रव्यमान केंद्र की गतिज ऊर्जा 4/3 J हो, तो M का मान है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1 kg"
-   },
-   {
-    "id": "B",
-    "text": "0.25 kg"
-   },
-   {
-    "id": "C",
-    "text": "0.50 kg"
-   },
-   {
-    "id": "D",
-    "text": "2 kg"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "v_cm = (2M + 1)/(M + 1) and KE_cm = ½(M + 1)v_cm² = 4/3\nFor M = 0.5 kg: v_cm = (1 + 1)/1.5 = 4/3 → KE = ½ × 1.5 × 16/9 = 4/3 ✓",
-  "explanationHi": "v_cm = (2M + 1)/(M + 1) तथा KE_cm = ½(M + 1)v_cm² = 4/3\nM = 0.5 kg रखने पर: v_cm = 4/3 → KE = ½ × 1.5 × 16/9 = 4/3 ✓",
-  "source": "PYQ · 16 Nov 2024 · SelfStudys (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "079e19c37112ae5b",
-  "figureBased": false,
-  "paper": {
-   "no": 22,
-   "group": "X",
-   "date": "16 Nov 2024",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_1fbd1ea804c611a0",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "The coefficient of areal expansion of a material is 1.6 × 10-5 K-1. Which one of the following gives the value of coefficient of volume expansion of this material?",
-  "questionTextHi": "किसी पदार्थ का क्षेत्रीय प्रसार गुणांक 1.6 × 10⁻⁵ K⁻¹ है। इस पदार्थ का आयतन प्रसार गुणांक क्या होगा?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "0.8 × 10-5 K-1"
-   },
-   {
-    "id": "B",
-    "text": "2.4 × 10-5 K-1"
-   },
-   {
-    "id": "C",
-    "text": "3.2 × 10-5 K-1"
-   },
-   {
-    "id": "D",
-    "text": "4.8 × 10-5 K-1"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "For a solid: γ = 3α and β = 2α → γ = 1.5β\nγ = 1.5 × 1.6 × 10⁻⁵ = 2.4 × 10⁻⁵ K⁻¹.",
-  "explanationHi": "ठोस के लिए γ = 3α तथा β = 2α → γ = 1.5β\nγ = 1.5 × 1.6 × 10⁻⁵ = 2.4 × 10⁻⁵ K⁻¹",
-  "source": "PYQ · 16 Nov 2024 · SelfStudys (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "062295b2a111e89c",
-  "figureBased": false,
-  "paper": {
-   "no": 22,
-   "group": "X",
-   "date": "16 Nov 2024",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_cc82e4efcd23700b",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Electrostatics",
-  "topic": "Coulomb's Law & Electric Field",
-  "difficulty": "medium",
-  "questionText": "The surface charge density of a thin spherical shell placed in an air medium is 88.54 c/m2 The intensity of the electric field measured 12 mm outside the shell from the centre of theshell is 5.625× 1012 N/C. The thin spherical shell has a radius of:",
-  "questionTextHi": "वायु माध्यम में रखे पतले गोलीय खोल का पृष्ठ आवेश घनत्व 88.54 C/m² है। खोल के केंद्र से 12 mm बाहर मापी गई विद्युत क्षेत्र तीव्रता 5.625 × 10¹² N/C है। गोलीय खोल की त्रिज्या है:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "10.5 mm"
-   },
-   {
-    "id": "B",
-    "text": "6.0 mm"
-   },
-   {
-    "id": "C",
-    "text": "0.35 mm"
-   },
-   {
-    "id": "D",
-    "text": "9.0 mm"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "For a charged shell: E = σR²/(ϵ₀r²)\nR² = Eϵ₀r²/σ = (5.625 × 10¹² × 8.854 × 10⁻¹² × (0.012)²)/88.54 = 8.1 × 10⁻⁵ m²\nR = 0.009 m = 9.0 mm.",
-  "explanationHi": "आवेशित खोल के लिए: E = σR²/(ϵ₀r²)\nR² = Eϵ₀r²/σ = (5.625 × 10¹² × 8.854 × 10⁻¹² × 0.000144)/88.54 = 8.1 × 10⁻⁵ m²\nR = 9.0 mm",
-  "source": "PYQ · 22 Mar 2025 · SelfStudys (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "00ded853f1149717",
-  "figureBased": false,
-  "paper": {
-   "no": 24,
-   "group": "X",
-   "date": "22 Mar 2025",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_bd0edfd2c8439c62",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Magnetism & Moving Charges",
-  "topic": "Magnetic Effects of Current",
-  "difficulty": "medium",
-  "questionText": "A long solenoid of 50 cm length having 100 turns carries a current of 2.5 A. The magnetic field at the centre of the solenoid is : (μ0 = 4π × 10−7 TmA−1)",
-  "questionTextHi": "50 cm लंबी परिनालिका में 100 फेरे हैं तथा 2.5 A धारा प्रवाहित है। परिनालिका के केंद्र पर चुंबकीय क्षेत्र है: (μ₀ = 4π × 10⁻⁷ T m A⁻¹)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "6.28 × 10 T−5"
-   },
-   {
-    "id": "B",
-    "text": "3.14 × 10 T−5"
-   },
-   {
-    "id": "C",
-    "text": "6.28 × 10 T−4"
-   },
-   {
-    "id": "D",
-    "text": "3.14 × 10 T−4"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "n = N/L = 100/0.5 = 200 turns/m\nB = μ₀nI = 4π × 10⁻⁷ × 200 × 2.5 = 6.28 × 10⁻⁴ T.",
-  "explanationHi": "n = 200 प्रति मीटर\nB = μ₀nI = 4π × 10⁻⁷ × 200 × 2.5 = 6.28 × 10⁻⁴ T",
-  "source": "PYQ · 22 Mar 2025 · SelfStudys (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "02bf9e62912a5261",
-  "figureBased": false,
-  "paper": {
-   "no": 24,
-   "group": "X",
-   "date": "22 Mar 2025",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_5a61e04ea309d52d",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "The cyclic integral of (δQ - δW) for a process is",
-  "questionTextHi": "किसी प्रक्रिया के लिए (δQ − δW) का चक्रीय समाकलन है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Positive",
-    "textHi": "धनात्मक"
-   },
-   {
-    "id": "B",
-    "text": "Negative",
-    "textHi": "ऋणात्मक"
-   },
-   {
-    "id": "C",
-    "text": "Zero",
-    "textHi": "शून्य"
-   },
-   {
-    "id": "D",
-    "text": "Unpredictable",
-    "textHi": "अनिश्चित"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "By the first law δQ − δW = dU (a state function).\nOver a complete cycle ∮dU = 0 → ∮(δQ − δW) = 0.",
-  "explanationHi": "प्रथम नियम से δQ − δW = dU (अवस्था फलन)\nपूरे चक्र पर ∮dU = 0 → ∮(δQ − δW) = 0",
-  "source": "PYQ · 22 Mar 2025 · SelfStudys (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "045f39f9410dcdc2",
-  "figureBased": false,
-  "paper": {
-   "no": 24,
-   "group": "X",
-   "date": "22 Mar 2025",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_c31e5576af27b930",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Waves & Sound",
-  "topic": "Wave Motion",
-  "difficulty": "medium",
-  "questionText": "With two slits spaced 0.2 mm apart, a screen at a distance of 1m, the third bright fringe is found to be displaced 7.5 mm from the central fringe. Find the wavelength of the light used?",
-  "questionTextHi": "0.2 mm दूरी पर स्थित दो झिरियों से 1 m दूर पर्दे पर तीसरी दीप्त फ्रिंज केंद्रीय फ्रिंज से 7.5 mm विस्थापित पाई गई। प्रयुक्त प्रकाश की तरंगदैर्ध्य ज्ञात कीजिए।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "500 mm"
-   },
-   {
-    "id": "B",
-    "text": "500 nm"
-   },
-   {
-    "id": "C",
-    "text": "250 nm"
-   },
-   {
-    "id": "D",
-    "text": "250 mm"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "λ = xd/(nD) = (7.5 × 10⁻³ × 0.2 × 10⁻³)/(3 × 1) = 5 × 10⁻⁷ m = 500 nm.",
-  "explanationHi": "λ = xd/(nD) = (7.5 × 10⁻³ × 0.2 × 10⁻³)/3 = 5 × 10⁻⁷ m = 500 nm",
-  "source": "PYQ · 22 Mar 2025 · SelfStudys (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "09d5013b8111ef26",
-  "figureBased": false,
-  "paper": {
-   "no": 24,
-   "group": "X",
-   "date": "22 Mar 2025",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_477cd0b3d4728543",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Waves & Sound",
-  "topic": "Wave Motion",
-  "difficulty": "medium",
-  "questionText": "If wavelength of photon is6000 Å, then its energy will be:",
-  "questionTextHi": "यदि फोटॉन की तरंगदैर्ध्य 6000 Å हो, तो उसकी ऊर्जा होगी:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "0.66 eV"
-   },
-   {
-    "id": "B",
-    "text": "1.66 eV"
-   },
-   {
-    "id": "C",
-    "text": "2.06 eV"
-   },
-   {
-    "id": "D",
-    "text": "3.5 eV"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "E (eV) = 12400/λ(Å) = 12400/6000 = 2.07 ≈ 2.06 eV.",
-  "explanationHi": "E (eV) = 12400/λ(Å) = 12400/6000 ≈ 2.06 eV",
-  "source": "PYQ · 22 Mar 2025 · SelfStudys (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c84d3ef11108cb5",
-  "figureBased": false,
-  "paper": {
-   "no": 24,
-   "group": "X",
-   "date": "22 Mar 2025",
-   "src": "SelfStudys"
-  }
- },
- {
   "id": "q_9a947aad9c2930f6",
   "subject": "physics",
   "subjectName": "Physics",
@@ -29131,246 +26122,6 @@
   }
  },
  {
-  "id": "q_2dbee625c0ffeb09",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Waves & Sound",
-  "topic": "Wave Motion",
-  "difficulty": "medium",
-  "questionText": "E⃗ and k⃗ represent electric field and propagation vectors of the EM waves in vacuum, then magnetic field vector is given by: (ω - angular frequency):",
-  "questionTextHi": "यदि निर्वात में विद्युत चुम्बकीय तरंग के विद्युत क्षेत्र तथा संचरण सदिश को E तथा K से दर्शाया जाए, तो चुंबकीय क्षेत्र सदिश दिया जाता है: (ω = कोणीय आवृत्ति)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "ω (E⃗ × K⃗)"
-   },
-   {
-    "id": "B",
-    "text": "ω (K⃗ × E⃗)"
-   },
-   {
-    "id": "C",
-    "text": "E⃗ × K⃗"
-   },
-   {
-    "id": "D",
-    "text": "(1/ω) (K⃗ × E⃗)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "For an EM wave, B = (1/ω)(K × E) (in magnitude B₀ = E₀/c).",
-  "explanationHi": "विद्युत चुम्बकीय तरंग के लिए B = (1/ω)(K × E) (परिमाण में B₀ = E₀/c)",
-  "source": "PYQ · 25 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0e4b622e513a61ff",
-  "figureBased": false,
-  "paper": {
-   "no": 26,
-   "group": "X",
-   "date": "25 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_b0ffccd1f5dbce33",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "The ratio of the distances travelled by a freely falling body in the1st, 2nd, 3rd, and 4th, second:",
-  "questionTextHi": "स्वतंत्र रूप से गिरते पिंड द्वारा पहले, दूसरे, तीसरे तथा चौथे सेकंड में तय दूरियों का अनुपात है:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1:1:1:1"
-   },
-   {
-    "id": "B",
-    "text": "1:2:3:4"
-   },
-   {
-    "id": "C",
-    "text": "1:49:16"
-   },
-   {
-    "id": "D",
-    "text": "1:3:5:7"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Distance in the nth second = u + (g/2)(2n − 1) → for consecutive seconds the ratio is 1 : 3 : 5 : 7.",
-  "explanationHi": "nवें सेकंड में दूरी = u + (g/2)(2n − 1) → क्रमागत सेकंडों में अनुपात 1 : 3 : 5 : 7",
-  "source": "PYQ · 25 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0d2bb855210e3c32",
-  "figureBased": false,
-  "paper": {
-   "no": 26,
-   "group": "X",
-   "date": "25 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_79c816b02ccf79c2",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Work, Energy & Power",
-  "topic": "Work, Energy & Power",
-  "difficulty": "medium",
-  "questionText": "Given the current i(t) and voltage v(t) of a circuit element, the power p(t) and energy w(t)are given by:",
-  "questionTextHi": "किसी परिपथ अवयव की धारा i(t) तथा वोल्टता v(t) दी गई है। शक्ति p(t) तथा ऊर्जा w(t) दिए जाते हैं:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "𝑝(𝑡) = 𝑣(𝑡) 𝑖(𝑡)and 𝑤(𝑡) = ∫𝑖(𝜏) 𝑑𝜏 𝑡 0 (𝑝(𝑡) = 𝑣(𝑡) 𝑖(𝑡) और 𝑤(𝑡) = ∫𝑖(𝜏) 𝑑𝜏 𝑡 0)"
-   },
-   {
-    "id": "B",
-    "text": "𝑝(𝑡) = 𝑣(𝑡) 𝑖(𝑡)and 𝑤(𝑡) = ∫𝑝(𝜏) 𝑑𝜏 𝑡 0 (𝑝(𝑡) = 𝑣(𝑡) 𝑖(𝑡) और 𝑤(𝑡) = ∫𝑝(𝜏) 𝑑𝜏 𝑡 0)"
-   },
-   {
-    "id": "C",
-    "text": "𝑝(𝑡) = 𝑣(𝑡) 𝑖(𝑡)and 𝑤(𝑡) = ∫𝑣(𝜏) 𝑑𝜏 𝑡 0 (𝑝(𝑡) = 𝑣(𝑡) 𝑖(𝑡) और 𝑤(𝑡) = ∫𝑣(𝜏) 𝑑𝜏 𝑡 0)"
-   },
-   {
-    "id": "D",
-    "text": "𝑝(𝑡) = 𝑣(𝑡) + 𝑖(𝑡)and 𝑤(𝑡) = ∫𝑝(𝜏) 𝑑𝜏 𝑡 0 (𝑝(𝑡) = 𝑣(𝑡) + 𝑖(𝑡) और 𝑤(𝑡) = ∫𝑝(𝜏) 𝑑𝜏 𝑡 0)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Instantaneous power p(t) = v(t)·i(t) and energy is its time integral: w(t) = ∫₀ᵗ p(τ)dτ.",
-  "explanationHi": "तात्क्षणिक शक्ति p(t) = v(t)·i(t) तथा ऊर्जा उसका समय समाकलन है: w(t) = ∫₀ᵗ p(τ)dτ",
-  "source": "PYQ · 25 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "c38cedde16bb408e",
-  "figureBased": false,
-  "paper": {
-   "no": 26,
-   "group": "X",
-   "date": "25 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_bd8010cbe58a7f6d",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "A bus starts from rest and rolls down a hill with a constant acceleration of 0.5 m/s2.what is the force acting on it if its mass is 8 tonnes?",
-  "questionTextHi": "एक बस विराम से चलकर पहाड़ी पर 0.5 m/s² के नियत त्वरण से नीचे आती है। यदि उसका द्रव्यमान 8 टन हो, तो उस पर लगने वाला बल क्या है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "40N"
-   },
-   {
-    "id": "B",
-    "text": "400 N"
-   },
-   {
-    "id": "C",
-    "text": "4000 N"
-   },
-   {
-    "id": "D",
-    "text": "40000 N"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "F = ma = 8000 × 0.5 = 4000 N.",
-  "explanationHi": "F = ma = 8000 × 0.5 = 4000 N",
-  "source": "PYQ · 25 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08c64142810fe0a2",
-  "figureBased": false,
-  "paper": {
-   "no": 26,
-   "group": "X",
-   "date": "25 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_e89048e051770afc",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "An unbalanced force of 90 N acts on an object and produces an acceleration of 15 m/s² in it. Then,the mass of the object is",
-  "questionTextHi": "किसी वस्तु पर 90 N का असंतुलित बल 15 m/s² का त्वरण उत्पन्न करता है। वस्तु का द्रव्यमान है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "15 kg"
-   },
-   {
-    "id": "B",
-    "text": "90 kg"
-   },
-   {
-    "id": "C",
-    "text": "1350 kg"
-   },
-   {
-    "id": "D",
-    "text": "6 kg"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "m = F/a = 90/15 = 6 kg.",
-  "explanationHi": "m = F/a = 90/15 = 6 kg",
-  "source": "PYQ · 25 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0f11dd6f310f331b",
-  "figureBased": false,
-  "paper": {
-   "no": 26,
-   "group": "X",
-   "date": "25 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
   "id": "q_e9f33a8b7397c9dd",
   "subject": "physics",
   "subjectName": "Physics",
@@ -29410,54 +26161,6 @@
    "auto-topic"
   ],
   "dupeHash": "034c237ba1124846",
-  "figureBased": false,
-  "paper": {
-   "no": 29,
-   "group": "X",
-   "date": "27 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_2a6a8782dd6daa44",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Work, Energy & Power",
-  "topic": "Work, Energy & Power",
-  "difficulty": "medium",
-  "questionText": "In an AC circuit V = 100 sin (100t) volts and/ = 100sin (𝟏𝟎𝟎𝒕+ 𝝅 𝟑)mA. The power dissipated in the circuit is",
-  "questionTextHi": "किसी AC परिपथ में V = 100 sin(100t) वोल्ट तथा I = 100 sin(100t + π/3) mA है। परिपथ में व्यय शक्ति है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "104 W"
-   },
-   {
-    "id": "B",
-    "text": "2.5 W"
-   },
-   {
-    "id": "C",
-    "text": "10 W"
-   },
-   {
-    "id": "D",
-    "text": "5.0 W"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "P = V_rms I_rms cosφ = (100/√2)(0.1/√2)cos60° = (10/2)×0.5 = 2.5 W.",
-  "explanationHi": "P = V_rms I_rms cosφ = (100/√2)(0.1/√2)cos60° = 5 × 0.5 = 2.5 W",
-  "source": "PYQ · 27 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "01a849c3424cf986",
   "figureBased": false,
   "paper": {
    "no": 29,
@@ -29570,351 +26273,6 @@
   }
  },
  {
-  "id": "q_f4cfc57f9b67fbdd",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Waves & Sound",
-  "topic": "Wave Motion",
-  "difficulty": "medium",
-  "questionText": "roiDyaao trMgaaoM kao iksa trMga saMcarNa Wara ek sqaana sao dUsaro sqaana tk Baojaa jaata hO ? Through which mode of wave propagation, are the radio waves sent from one place to another ?",
-  "questionTextHi": "रेडियो तरंगों को किस तरंग संचरण द्वारा एक स्थान से दूसरे स्थान तक भेजा जाता है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Ground wave propagation",
-    "textHi": "भू तरंग संचरण"
-   },
-   {
-    "id": "B",
-    "text": "Sky wave propagation",
-    "textHi": "व्योम तरंग संचरण"
-   },
-   {
-    "id": "C",
-    "text": "Space wave propagation",
-    "textHi": "अंतरिक्ष तरंग संचरण"
-   },
-   {
-    "id": "D",
-    "text": "All of the above",
-    "textHi": "उपरोक्त सभी"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Radio waves can travel by ground wave, sky wave (ionospheric reflection) and space wave propagation depending on the frequency — all modes are used.",
-  "explanationHi": "रेडियो तरंगें आवृत्ति के अनुसार भू तरंग, व्योम तरंग (आयनमंडलीय परावर्तन) तथा अंतरिक्ष तरंग द्वारा चल सकती हैं — सभी विधियाँ प्रयुक्त होती हैं।",
-  "source": "PYQ · Sample Physics Paper · Prepp Sample (Group X)",
-  "year": "Model",
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0d7ede7681153806",
-  "figureBased": false,
-  "paper": {
-   "no": 33,
-   "group": "X",
-   "date": "Sample Physics Paper",
-   "src": "Prepp Sample"
-  }
- },
- {
-  "id": "q_6b42f8ada1285058",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Electrostatics",
-  "topic": "Coulomb's Law & Electric Field",
-  "difficulty": "medium",
-  "questionText": "dao samaantr PlaoTaoM ko ivaBava kmaSa: -10V evaM +30V hMO . yaid PlaoTaoM ko baIca kI dUrI 2 saomaI hao tao PlaoTaoM ko maQya ivaVut xao~ &at krao . Two plates are at potentials -10V and +30V. If the separation between the plates is 2 cm then find the electric field between them.",
-  "questionTextHi": "दो समांतर प्लेटें क्रमशः −10 V तथा +30 V विभव पर हैं। यदि प्लेटों के बीच की दूरी 2 cm हो, तो उनके बीच विद्युत क्षेत्र ज्ञात कीजिए।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2000 V/m"
-   },
-   {
-    "id": "B",
-    "text": "1000 V/m"
-   },
-   {
-    "id": "C",
-    "text": "500 V/m"
-   },
-   {
-    "id": "D",
-    "text": "3000 V/m"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "E = ΔV/d = (30 − (−10))/0.02 = 40/0.02 = 2000 V/m.",
-  "explanationHi": "E = ΔV/d = (30 − (−10))/0.02 = 40/0.02 = 2000 V/m",
-  "source": "PYQ · Sample Physics Paper · Prepp Sample (Group X)",
-  "year": "Model",
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "090e96294115aad2",
-  "figureBased": false,
-  "paper": {
-   "no": 33,
-   "group": "X",
-   "date": "Sample Physics Paper",
-   "src": "Prepp Sample"
-  }
- },
- {
-  "id": "q_b86bb2fed822e769",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Thermodynamics & KTG",
-  "topic": "Thermodynamics",
-  "difficulty": "medium",
-  "questionText": "iWprmaaiNvak gaOsa hotu gaOsa ko dao ivaiSaYT }YmaaAaoM ka Anaupat V P C C ka maana @yaa haogaa ? In gases of diatomic molecules, Find the ratio of the two specific heat of gases V P C C .",
-  "questionTextHi": "द्विपरमाणुक गैसों में गैसों की दो विशिष्ट ऊष्माओं का अनुपात CP/CV ज्ञात कीजिए।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1.66"
-   },
-   {
-    "id": "B",
-    "text": "1.33"
-   },
-   {
-    "id": "C",
-    "text": "1.4"
-   },
-   {
-    "id": "D",
-    "text": "1.00"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "For a diatomic gas f = 5 → CP/CV = 1 + 2/f = 1 + 2/5 = 1.4.",
-  "explanationHi": "द्विपरमाणुक गैस के लिए f = 5 → CP/CV = 1 + 2/f = 1 + 0.4 = 1.4",
-  "source": "PYQ · Sample Physics Paper · Prepp Sample (Group X)",
-  "year": "Model",
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "01c8198c51116fe1",
-  "figureBased": false,
-  "paper": {
-   "no": 33,
-   "group": "X",
-   "date": "Sample Physics Paper",
-   "src": "Prepp Sample"
-  }
- },
- {
-  "id": "q_db4056eb16813c59",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Physics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "What is the angle of dip at magnetic poles of earth ?",
-  "questionTextHi": "पृथ्वी के चुंबकीय ध्रुवों पर नति कोण क्या होता है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Zero",
-    "textHi": "शून्य"
-   },
-   {
-    "id": "B",
-    "text": "45°"
-   },
-   {
-    "id": "C",
-    "text": "90°"
-   },
-   {
-    "id": "D",
-    "text": "180°"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "At the magnetic poles the earth's field is vertical, so the angle of dip is 90°.",
-  "explanationHi": "चुंबकीय ध्रुवों पर पृथ्वी का क्षेत्र ऊर्ध्वाधर होता है, अतः नति कोण 90° होता है।",
-  "source": "PYQ · Official XY Model Paper 2 · PW Model (Group XY)",
-  "year": "Model",
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b7f0422710c40b1",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "XY",
-   "date": "Official XY Model Paper 2",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_4392f12cb45d8ff1",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Waves & Sound",
-  "topic": "Wave Motion",
-  "difficulty": "medium",
-  "questionText": "Through which mode of wave propagation, are the radio waves sent from one place to another?",
-  "questionTextHi": "रेडियो तरंगों को किस तरंग संचरण द्वारा एक स्थान से दूसरे स्थान तक भेजा जाता है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "ground wave propagation",
-    "textHi": "भू तरंग संचरण"
-   },
-   {
-    "id": "B",
-    "text": "sky wave propagation",
-    "textHi": "व्योम तरंग संचरण"
-   },
-   {
-    "id": "C",
-    "text": "space wave propagation",
-    "textHi": "अंतरिक्ष तरंग संचरण"
-   },
-   {
-    "id": "D",
-    "text": "all of the above",
-    "textHi": "उपरोक्त सभी"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Radio waves can travel by ground wave, sky wave (ionospheric reflection) and space wave propagation depending on the frequency — all modes are used.",
-  "explanationHi": "रेडियो तरंगें आवृत्ति के अनुसार भू तरंग, व्योम तरंग (आयनमंडलीय परावर्तन) तथा अंतरिक्ष तरंग द्वारा चल सकती हैं — सभी विधियाँ प्रयुक्त होती हैं।",
-  "source": "PYQ · Official XY Model Paper 2 · PW Model (Group XY)",
-  "year": "Model",
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "09e9626641113944",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "XY",
-   "date": "Official XY Model Paper 2",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_85417b82500ca170",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Work, Energy & Power",
-  "topic": "Work, Energy & Power",
-  "difficulty": "medium",
-  "questionText": "When a spring is stretched by 2 cm , the energy stored is 100 J . If it is stretched further by 2 cm , its energy increases by _______ .",
-  "questionTextHi": "जब एक स्प्रिंग को 2 cm खींचा जाता है, तो संचित ऊर्जा 100 J होती है। यदि उसे और 2 cm खींचा जाए, तो ऊर्जा में कितनी वृद्धि होगी?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "300"
-   },
-   {
-    "id": "B",
-    "text": "400"
-   },
-   {
-    "id": "C",
-    "text": "200"
-   },
-   {
-    "id": "D",
-    "text": "100"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "U = ½kx² → U ∝ x². For x: 2 cm → 100 J; for 4 cm → 400 J.\nIncrease = 400 − 100 = 300 J.",
-  "explanationHi": "U = ½kx² → U ∝ x²; x = 2 cm पर 100 J, x = 4 cm पर 400 J\nवृद्धि = 400 − 100 = 300 J",
-  "source": "PYQ · Official XY Model Paper 2 · PW Model (Group XY)",
-  "year": "Model",
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0def28b8e10f3052",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "XY",
-   "date": "Official XY Model Paper 2",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_09d6216ae59a053c",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Electrostatics",
-  "topic": "Coulomb's Law & Electric Field",
-  "difficulty": "medium",
-  "questionText": "Two plates are at potentials -10 V and +30 V . If the separation between the plates is 2 cm then find the electric field between them.",
-  "questionTextHi": "दो समांतर प्लेटें क्रमशः −10 V तथा +30 V विभव पर हैं। यदि प्लेटों के बीच की दूरी 2 cm हो, तो उनके बीच विद्युत क्षेत्र ज्ञात कीजिए।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2000 V/m"
-   },
-   {
-    "id": "B",
-    "text": "1000 V/m"
-   },
-   {
-    "id": "C",
-    "text": "500 V/m"
-   },
-   {
-    "id": "D",
-    "text": "3000 V/m"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "E = ΔV/d = (30 − (−10))/0.02 = 40/0.02 = 2000 V/m.",
-  "explanationHi": "E = ΔV/d = (30 − (−10))/0.02 = 40/0.02 = 2000 V/m",
-  "source": "PYQ · Official XY Model Paper 2 · PW Model (Group XY)",
-  "year": "Model",
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0712b172b10fcd61",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "XY",
-   "date": "Official XY Model Paper 2",
-   "src": "PW Model"
-  }
- },
- {
   "id": "q_22ade056f7ec93e0",
   "subject": "physics",
   "subjectName": "Physics",
@@ -29958,54 +26316,6 @@
    "auto-topic"
   ],
   "dupeHash": "0645ce9be111ecba",
-  "figureBased": false,
-  "paper": {
-   "no": 34,
-   "group": "XY",
-   "date": "Official XY Model Paper 2",
-   "src": "PW Model"
-  }
- },
- {
-  "id": "q_aa399d68fa981128",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Thermodynamics & KTG",
-  "topic": "Thermodynamics",
-  "difficulty": "medium",
-  "questionText": "In gases of diatomic molecules, Find the ratio of the two specific heat of gases.",
-  "questionTextHi": "द्विपरमाणुक गैसों में गैसों की दो विशिष्ट ऊष्माओं का अनुपात CP/CV ज्ञात कीजिए।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1.66"
-   },
-   {
-    "id": "B",
-    "text": "1.33"
-   },
-   {
-    "id": "C",
-    "text": "1.4"
-   },
-   {
-    "id": "D",
-    "text": "1.00"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "For a diatomic gas f = 5 → CP/CV = 1 + 2/f = 1 + 2/5 = 1.4.",
-  "explanationHi": "द्विपरमाणुक गैस के लिए f = 5 → CP/CV = 1 + 2/f = 1 + 0.4 = 1.4",
-  "source": "PYQ · Official XY Model Paper 2 · PW Model (Group XY)",
-  "year": "Model",
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "073d10bdf10d3ccf",
   "figureBased": false,
   "paper": {
    "no": 34,
@@ -32229,54 +28539,6 @@
   }
  },
  {
-  "id": "q_e95c8816395ad4de",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Units, Measurement & Errors",
-  "topic": "Dimensional Analysis",
-  "difficulty": "medium",
-  "questionText": "The dimensional formula of constant a in van der Waals gas equation",
-  "questionTextHi": "वान डर वाल्स गैस समीकरण में नियतांक a का विमीय सूत्र है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "[ML3T−2]"
-   },
-   {
-    "id": "B",
-    "text": "[ML5T−2]"
-   },
-   {
-    "id": "C",
-    "text": "[ML2T−1]"
-   },
-   {
-    "id": "D",
-    "text": "[ML2T−5]"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "In (P + a/V²)(V − b) = RT, a/V² has the dimensions of pressure → a = pressure × V² = [ML⁻¹T⁻²] × L⁶ = [ML⁵T⁻²].",
-  "explanationHi": "(P + a/V²)(V − b) = RT में a/V² की विमा दाब की होती है → a = दाब × V² = [ML⁻¹T⁻²] × L⁶ = [ML⁵T⁻²]",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "037a7c72811ddb32",
-  "figureBased": false,
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
   "id": "q_5bf5dd7c8a049492",
   "subject": "physics",
   "subjectName": "Physics",
@@ -32473,54 +28735,6 @@
    "no": 16,
    "group": "X",
    "date": "25 Jul 2022",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_6efc694593f9470c",
-  "subject": "physics",
-  "subjectName": "Physics",
-  "chapter": "Electrostatics",
-  "topic": "Coulomb's Law & Electric Field",
-  "difficulty": "medium",
-  "questionText": "The ratio between the electric field and the magnetic field is",
-  "questionTextHi": "विद्युत क्षेत्र तथा चुंबकीय क्षेत्र के बीच अनुपात है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "μoϵo"
-   },
-   {
-    "id": "B",
-    "text": "1 / μoϵo"
-   },
-   {
-    "id": "C",
-    "text": "1 / √μoϵo"
-   },
-   {
-    "id": "D",
-    "text": "√μoϵo"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "For an electromagnetic wave E₀/B₀ = c = 1/√(μ₀ϵ₀).",
-  "explanationHi": "विद्युत चुम्बकीय तरंग के लिए E₀/B₀ = c = 1/√(μ₀ϵ₀)",
-  "source": "PYQ · 18 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0cccb773c118ad38",
-  "figureBased": false,
-  "paper": {
-   "no": 17,
-   "group": "X",
-   "date": "18 Jan 2023",
    "src": "SelfStudys"
   }
  },
@@ -34587,6 +30801,532 @@
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
+  }
+ },
+ {
+  "id": "q_008a1a10d11b60c9",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "General",
+  "topic": "General",
+  "difficulty": "medium",
+  "questionText": "1 kWh = _____ J",
+  "questionTextHi": null,
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "3.6 × 10⁴ J"
+   },
+   {
+    "id": "B",
+    "text": "3.6 × 10⁵ J"
+   },
+   {
+    "id": "C",
+    "text": "3.6 × 10⁶ J"
+   },
+   {
+    "id": "D",
+    "text": "3.6 × 10³ J"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "",
+  "explanationHi": null,
+  "source": "PYQ · 05 Nov 2020 · Prepp (Group X)",
+  "year": 2020,
+  "tags": [
+   "master-import",
+   "pyq"
+  ],
+  "figureBased": false,
+  "exam": "airforce",
+  "dupeHash": "056bbe46b116f8eb"
+ },
+ {
+  "id": "q_02a554e7d11fa073",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "General",
+  "topic": "General",
+  "difficulty": "medium",
+  "questionText": "1 Tesla equals to",
+  "questionTextHi": null,
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "10⁴ Gauss"
+   },
+   {
+    "id": "B",
+    "text": "10⁻⁴ Gauss"
+   },
+   {
+    "id": "C",
+    "text": "10⁻³ Gauss"
+   },
+   {
+    "id": "D",
+    "text": "10² Gauss"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "",
+  "explanationHi": null,
+  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group X)",
+  "year": 2021,
+  "tags": [
+   "master-import",
+   "pyq"
+  ],
+  "figureBased": false,
+  "exam": "airforce",
+  "dupeHash": "0fd64ef0511b38d3"
+ },
+ {
+  "id": "q_8a9d2600010d8e60",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "Optics",
+  "topic": "Reflection & Plane Mirrors",
+  "difficulty": "medium",
+  "questionText": "The total number of images formed by two mirrors inclined at 72° to each other when the object is placed unsymmetrically will be ___?",
+  "questionTextHi": "दो दर्पण जो एक-दूसरे से 72° के कोण पर झुके हैं, जब वस्तु असममित रूप से रखी जाए तो बनने वाले प्रतिबिंबों की कुल संख्या ___ होगी?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "2"
+   },
+   {
+    "id": "B",
+    "text": "3"
+   },
+   {
+    "id": "C",
+    "text": "4"
+   },
+   {
+    "id": "D",
+    "text": "5"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Number of images = 360°/θ (when 360°/θ is odd) = 360/72 = 5\n(Standard rule: n = 360/θ; if n is even → images = n − 1, if n is odd → images = n.)",
+  "explanationHi": "प्रतिबिंबों की संख्या = 360°/θ = 360/72 = 5\n(नियम: n = 360/θ; n सम हो → प्रतिबिंब n − 1, n विषम हो → प्रतिबिंब n)",
+  "source": "PYQ · 04 Nov 2020 · SelfStudys (Group X)",
+  "year": 2020,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "080bc102b10f5b11",
+  "figureBased": false,
+  "paper": {
+   "no": 2,
+   "group": "X",
+   "date": "04 Nov 2020",
+   "src": "SelfStudys"
+  }
+ },
+ {
+  "id": "q_91ed321b7de32229",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "Gravitation",
+  "topic": "Escape Speed",
+  "difficulty": "medium",
+  "questionText": "The escape velocity from the Earth's surface is equal to ______.",
+  "questionTextHi": "पृथ्वी की सतह से पलायन वेग _________ के बराबर है।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "√(2GM_E/R_E)"
+   },
+   {
+    "id": "B",
+    "text": "√(GM_E/R_E)"
+   },
+   {
+    "id": "C",
+    "text": "√(2GR_E/M_E)"
+   },
+   {
+    "id": "D",
+    "text": "√(GR_E/M_E)"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Escape velocity is the minimum speed needed to overcome the Earth's gravity: v_e = √(2GM_E/R_E) = √(2gR_E).",
+  "explanationHi": "पलायन वेग वह न्यूनतम चाल है जिससे पिंड पृथ्वी के गुरुत्वाकर्षण से मुक्त हो जाता है: v_e = √(2GM_E/R_E) = √(2gR_E)।",
+  "source": "PYQ · 07 Nov 2020 · Prepp (Group X)",
+  "year": 2020,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0a98fe99c11e064e",
+  "figureBased": false,
+  "paper": {
+   "no": 5,
+   "group": "X",
+   "date": "07 Nov 2020",
+   "src": "Prepp"
+  }
+ },
+ {
+  "id": "q_b25b4cb02ba7d4b6",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "Magnetic Effects of Current",
+  "topic": "Force Between Parallel Currents",
+  "difficulty": "medium",
+  "questionText": "For two parallel wires separated by distance d carrying currents Ia and Ib in the same direction, the force on a length L of either wire is",
+  "questionTextHi": "d दूरी पर स्थित दो समांतर तारों में समान दिशा में Ia तथा Ib धाराएँ हैं। किसी एक तार की L लंबाई पर बल है",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "μ₀LIaIb/2πd — Repulsion",
+    "textHi": "μ₀LIaIb/2πd — प्रतिकर्षण"
+   },
+   {
+    "id": "B",
+    "text": "μ₀LIaIb/2πd — Attraction",
+    "textHi": "μ₀LIaIb/2πd — आकर्षण"
+   },
+   {
+    "id": "C",
+    "text": "μ₀LIaIb/πd — Repulsion",
+    "textHi": "μ₀LIaIb/πd — प्रतिकर्षण"
+   },
+   {
+    "id": "D",
+    "text": "μ₀LIaIb/πd — Attraction",
+    "textHi": "μ₀LIaIb/πd — आकर्षण"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Standard result: F = μ₀IaIbL/2πd and the force is attractive for currents in the same direction.\nAs per the source key the answer is option (D) (attraction); the source option is printed with a factor πd instead of 2πd.",
+  "explanationHi": "मानक परिणाम: F = μ₀IaIbL/2πd तथा समान दिशा की धाराओं के लिए बल आकर्षण होता है।\nस्रोत की कुंजी के अनुसार उत्तर विकल्प (D) (आकर्षण) है; स्रोत में विकल्प 2πd के स्थान पर πd के साथ छपा है।",
+  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group X)",
+  "year": 2022,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0d40fdef813574ce",
+  "figureBased": false,
+  "paper": {
+   "no": 16,
+   "group": "X",
+   "date": "25 Jul 2022",
+   "src": "SelfStudys"
+  }
+ },
+ {
+  "id": "q_d060758cf5eadcee",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "Units, Measurement & Errors",
+  "topic": "Dimensional Analysis",
+  "difficulty": "medium",
+  "questionText": "The dimension ofPlank’s constant is _____.",
+  "questionTextHi": "प्लांक नियतांक की विमा _____ है।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "[MLT]"
+   },
+   {
+    "id": "B",
+    "text": "[ML1T-1]"
+   },
+   {
+    "id": "C",
+    "text": "[ML2T-1]"
+   },
+   {
+    "id": "D",
+    "text": "[ML2T-2]"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "E = hν → h = E/ν = [ML²T⁻²]/[T⁻¹] = [ML²T⁻¹] (same as angular momentum).",
+  "explanationHi": "E = hν → h = E/ν = [ML²T⁻²]/[T⁻¹] = [ML²T⁻¹] (कोणीय संवेग के समान)",
+  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group X)",
+  "year": 2023,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "06a80f539110196d",
+  "figureBased": false,
+  "paper": {
+   "no": 18,
+   "group": "X",
+   "date": "19 Jan 2023",
+   "src": "SelfStudys"
+  }
+ },
+ {
+  "id": "q_2a6a8782dd6daa44",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "Work, Energy & Power",
+  "topic": "Work, Energy & Power",
+  "difficulty": "medium",
+  "questionText": "In an AC circuit V = 100 sin (100t) volts and/ = 100sin (𝟏𝟎𝟎𝒕+ 𝝅 𝟑)mA. The power dissipated in the circuit is",
+  "questionTextHi": "किसी AC परिपथ में V = 100 sin(100t) वोल्ट तथा I = 100 sin(100t + π/3) mA है। परिपथ में व्यय शक्ति है",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "104 W"
+   },
+   {
+    "id": "B",
+    "text": "2.5 W"
+   },
+   {
+    "id": "C",
+    "text": "10 W"
+   },
+   {
+    "id": "D",
+    "text": "5.0 W"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "P = V_rms I_rms cosφ = (100/√2)(0.1/√2)cos60° = (10/2)×0.5 = 2.5 W.",
+  "explanationHi": "P = V_rms I_rms cosφ = (100/√2)(0.1/√2)cos60° = 5 × 0.5 = 2.5 W",
+  "source": "PYQ · 27 Sep 2025 · Utkarsh (Group X)",
+  "year": 2025,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "01a849c3424cf986",
+  "figureBased": false,
+  "paper": {
+   "no": 29,
+   "group": "X",
+   "date": "27 Sep 2025",
+   "src": "Utkarsh"
+  }
+ },
+ {
+  "id": "q_f4cfc57f9b67fbdd",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "Waves & Sound",
+  "topic": "Wave Motion",
+  "difficulty": "medium",
+  "questionText": "roiDyaao trMgaaoM kao iksa trMga saMcarNa Wara ek sqaana sao dUsaro sqaana tk Baojaa jaata hO ? Through which mode of wave propagation, are the radio waves sent from one place to another ?",
+  "questionTextHi": "रेडियो तरंगों को किस तरंग संचरण द्वारा एक स्थान से दूसरे स्थान तक भेजा जाता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Ground wave propagation",
+    "textHi": "भू तरंग संचरण"
+   },
+   {
+    "id": "B",
+    "text": "Sky wave propagation",
+    "textHi": "व्योम तरंग संचरण"
+   },
+   {
+    "id": "C",
+    "text": "Space wave propagation",
+    "textHi": "अंतरिक्ष तरंग संचरण"
+   },
+   {
+    "id": "D",
+    "text": "All of the above",
+    "textHi": "उपरोक्त सभी"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Radio waves can travel by ground wave, sky wave (ionospheric reflection) and space wave propagation depending on the frequency — all modes are used.",
+  "explanationHi": "रेडियो तरंगें आवृत्ति के अनुसार भू तरंग, व्योम तरंग (आयनमंडलीय परावर्तन) तथा अंतरिक्ष तरंग द्वारा चल सकती हैं — सभी विधियाँ प्रयुक्त होती हैं।",
+  "source": "PYQ · Sample Physics Paper · Prepp Sample (Group X)",
+  "year": "Model",
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "0d7ede7681153806",
+  "figureBased": false,
+  "paper": {
+   "no": 33,
+   "group": "X",
+   "date": "Sample Physics Paper",
+   "src": "Prepp Sample"
+  }
+ },
+ {
+  "id": "q_6b42f8ada1285058",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "Electrostatics",
+  "topic": "Coulomb's Law & Electric Field",
+  "difficulty": "medium",
+  "questionText": "dao samaantr PlaoTaoM ko ivaBava kmaSa: -10V evaM +30V hMO . yaid PlaoTaoM ko baIca kI dUrI 2 saomaI hao tao PlaoTaoM ko maQya ivaVut xao~ &at krao . Two plates are at potentials -10V and +30V. If the separation between the plates is 2 cm then find the electric field between them.",
+  "questionTextHi": "दो समांतर प्लेटें क्रमशः −10 V तथा +30 V विभव पर हैं। यदि प्लेटों के बीच की दूरी 2 cm हो, तो उनके बीच विद्युत क्षेत्र ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "2000 V/m"
+   },
+   {
+    "id": "B",
+    "text": "1000 V/m"
+   },
+   {
+    "id": "C",
+    "text": "500 V/m"
+   },
+   {
+    "id": "D",
+    "text": "3000 V/m"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "E = ΔV/d = (30 − (−10))/0.02 = 40/0.02 = 2000 V/m.",
+  "explanationHi": "E = ΔV/d = (30 − (−10))/0.02 = 40/0.02 = 2000 V/m",
+  "source": "PYQ · Sample Physics Paper · Prepp Sample (Group X)",
+  "year": "Model",
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "090e96294115aad2",
+  "figureBased": false,
+  "paper": {
+   "no": 33,
+   "group": "X",
+   "date": "Sample Physics Paper",
+   "src": "Prepp Sample"
+  }
+ },
+ {
+  "id": "q_b86bb2fed822e769",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "Thermodynamics & KTG",
+  "topic": "Thermodynamics",
+  "difficulty": "medium",
+  "questionText": "iWprmaaiNvak gaOsa hotu gaOsa ko dao ivaiSaYT }YmaaAaoM ka Anaupat V P C C ka maana @yaa haogaa ? In gases of diatomic molecules, Find the ratio of the two specific heat of gases V P C C .",
+  "questionTextHi": "द्विपरमाणुक गैसों में गैसों की दो विशिष्ट ऊष्माओं का अनुपात CP/CV ज्ञात कीजिए।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "1.66"
+   },
+   {
+    "id": "B",
+    "text": "1.33"
+   },
+   {
+    "id": "C",
+    "text": "1.4"
+   },
+   {
+    "id": "D",
+    "text": "1.00"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "For a diatomic gas f = 5 → CP/CV = 1 + 2/f = 1 + 2/5 = 1.4.",
+  "explanationHi": "द्विपरमाणुक गैस के लिए f = 5 → CP/CV = 1 + 2/f = 1 + 0.4 = 1.4",
+  "source": "PYQ · Sample Physics Paper · Prepp Sample (Group X)",
+  "year": "Model",
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "01c8198c51116fe1",
+  "figureBased": false,
+  "paper": {
+   "no": 33,
+   "group": "X",
+   "date": "Sample Physics Paper",
+   "src": "Prepp Sample"
+  }
+ },
+ {
+  "id": "q_d27b3e4a6aad823b",
+  "subject": "physics",
+  "subjectName": "Physics",
+  "chapter": "Work, Energy & Power",
+  "topic": "Work, Energy & Power",
+  "difficulty": "medium",
+  "questionText": "TheEinstein’s photoelectric equation is . Here k represents- hν = ϕ + k (h is planck's constant, c is speed of light,λ is wavelength, andϕ is work function)",
+  "questionTextHi": "आइंस्टाइन का प्रकाश-विद्युत समीकरण hν = φ + k है। यहाँ k क्या दर्शाता है? (h = प्लांक नियतांक, ν = प्रकाश की आवृत्ति, φ = कार्य फलन) (नोट: स्रोत में समीकरण करीब-करीब अनुपलब्ध था; यहाँ मानक रूप दिया गया है।)",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Minimum kinetic energy of electrons",
+    "textHi": "इलेक्ट्रॉनों की न्यूनतम गतिज ऊर्जा"
+   },
+   {
+    "id": "B",
+    "text": "Maximum kinetic energy of electrons",
+    "textHi": "इलेक्ट्रॉनों की अधिकतम गतिज ऊर्जा"
+   },
+   {
+    "id": "C",
+    "text": "Meankinetic energy of electrons",
+    "textHi": "इलेक्ट्रॉनों की औसत गतिज ऊर्जा"
+   },
+   {
+    "id": "D",
+    "text": "None of the above",
+    "textHi": "उपरोक्त में से कोई नहीं"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "hν = φ + K_max → k = maximum kinetic energy of the emitted photoelectrons.",
+  "explanationHi": "hν = φ + K_max → k = उत्सर्जित प्रकाश-इलेक्ट्रॉनों की अधिकतम गतिज ऊर्जा",
+  "source": "PYQ · 04 Nov 2020 · SelfStudys (Group X)",
+  "year": 2020,
+  "tags": [
+   "pyq",
+   "group-x",
+   "auto-chapter",
+   "auto-topic"
+  ],
+  "dupeHash": "07fe5929c11af180",
+  "figureBased": false,
+  "paper": {
+   "no": 2,
+   "group": "X",
+   "date": "04 Nov 2020",
+   "src": "SelfStudys"
   }
  }
 ]

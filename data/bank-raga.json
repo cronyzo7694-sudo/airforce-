@@ -24471,55 +24471,6 @@
   "dupeHash": "033fdde4a10db35c"
  },
  {
-  "id": "q_f819c66db7b5d173",
-  "subject": "raga",
-  "subjectName": "RAGA",
-  "chapter": "Number System",
-  "topic": "HCF & LCM",
-  "difficulty": "medium",
-  "questionText": "Two numbers are in the ratio of 15 ∶ 11. If their HCF is 13, then the greater number is∶",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "195"
-   },
-   {
-    "id": "B",
-    "text": "125"
-   },
-   {
-    "id": "C",
-    "text": "175"
-   },
-   {
-    "id": "D",
-    "text": "120"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Numbers = 15 × 13 = 195 and 11 × 13 = 143 (15 and 11 are co-prime, so HCF = 13)\nGreater number = 195",
-  "source": "PYQ · 27 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "03402d4f6115317c",
-  "paper": {
-   "no": 15,
-   "group": "Y",
-   "date": "27 Jul 2022",
-   "src": "SelfStudys"
-  },
-  "exam": "airforce",
-  "questionTextHi": "दो संख्याएँ 15 : 11 के अनुपात में हैं। यदि उनका HCF 13 है, तो बड़ी संख्या क्या है?",
-  "explanationHi": "संख्याएँ = 15 × 13 = 195 तथा 11 × 13 = 143 (15 व 11 सह-अभाज्य हैं, अतः HCF = 13)\nबड़ी संख्या = 195",
-  "figureBased": false
- },
- {
   "id": "q_x_mu7br90hw6l95ht",
   "exam": "airforce",
   "subject": "raga",
@@ -24560,48 +24511,6 @@
    "auto-topic"
   ],
   "dupeHash": "0a6411c091100971"
- },
- {
-  "id": "q_x_mu7br90hpswdcxn",
-  "exam": "airforce",
-  "subject": "raga",
-  "chapter": "Time, Speed & Distance",
-  "topic": "Speed Calculation",
-  "difficulty": "medium",
-  "questionText": "The ratio of speeds of a Bus and Car is 6 : 7. If the car covers 364 km distance in 4 hours, what is the speed of the Bus?",
-  "questionTextHi": "बस और कार की चालों का अनुपात 6 : 7 है। यदि कार 4 घंटे में 364 किमी दूरी तय करती है, तो बस की चाल क्या है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "60 Km/hr"
-   },
-   {
-    "id": "B",
-    "text": "72 Km/hr"
-   },
-   {
-    "id": "C",
-    "text": "78 Km/hr"
-   },
-   {
-    "id": "D",
-    "text": "84 Km/hr"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Car's speed = 364/4 = 91 km/hr\nBus = 91 × 6/7 = 78 km/hr",
-  "explanationHi": "कार की चाल = 364/4 = 91 किमी/घंटा\nबस = 91 × 6/7 = 78 किमी/घंटा",
-  "source": "PYQ · 28 Sep 2025 · Utkarsh (Group Y)",
-  "year": 2025,
-  "figureBased": false,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08bb401c610f2664"
  },
  {
   "id": "q_x_mu7br90h7ghwriq",

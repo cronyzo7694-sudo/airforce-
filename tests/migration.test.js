@@ -1,7 +1,7 @@
 /* ============================================================
  * MIGRATION TEST — real-device simulation:
  *   old v1.4.2 bank + 18-Sep-2026 bad push (wrong subjects) +
- *   orphaned series tests → syncBundled() → clean 643-record
+ *   orphaned series tests → syncBundled() → clean 641-record
  *   fully-bilingual RAGA bank, zero dupes, history preserved.
  * Needs /tmp/old-raga-1221.json (git show c7da952:...) + /tmp/remote-raga.json
  * Run: NODE_PATH=<jsdom dir> node tests/migration.test.js
@@ -80,10 +80,10 @@ const T = (n, ok, x) => { if (ok) { P++; console.log('  ✓', n); } else { F++; 
   /* ── verify final state ── */
   const fin = await G('(async () => { const all = await DB.getAll("questions"); return { total: all.length, subjects: [...new Set(all.map(q => q.subject))], raga: all.filter(q => q.subject === "raga").length, ragaBi: all.filter(q => q.subject === "raga" && q.questionTextHi && q.explanationHi).length, bad: all.filter(q => String(q.subject).match(/reasoning|general-awareness/)).length, hashes: new Set(all.map(q => q.dupeHash)).size }; })()');
   console.log('final state:', JSON.stringify(fin));
-  T('total questions = 2704 core + 643 raga = 3347 (v1.4.15: real-paper-only — figure/AI-generated hata)', fin.total === 3347, fin.total);
+  T('total questions = 2182 core + 641 raga = 2823 (v1.4.16: OCR variant-dupes hata)', fin.total === 2823, fin.total);
   T('no foreign subjects left', fin.bad === 0 && fin.subjects.every(s => ['physics','mathematics','english','raga'].includes(s)), JSON.stringify(fin.subjects));
-  T('raga pool = 643', fin.raga === 643, fin.raga);
-  T('every raga record fully bilingual', fin.ragaBi === 643, fin.ragaBi);
+  T('raga pool = 641', fin.raga === 641, fin.raga);
+  T('every raga record fully bilingual', fin.ragaBi === 641, fin.ragaBi);
   T('zero duplicate dupeHashes', fin.hashes === fin.total, fin.hashes + ' vs ' + fin.total);
   const tst = await G('(async () => { const ts = await DB.getAll("tests"); const qs = new Set((await DB.getAllKeys("questions"))); const ids = ts.map(t => t.id).sort(); const orphans = ts.filter(t => t.series && t.sections.some(s => (s.questionIds||[]).some(qid => !qs.has(qid)))).map(t => t.id); return { ids, orphans }; })()');
   T('orphaned series test deleted, custom + attempted + clean kept (autoBuild ke naye series tests allowed)',

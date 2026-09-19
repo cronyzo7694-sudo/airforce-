@@ -51,9 +51,10 @@ for (const [fname, subject] of FILES) {
     // data files may be a SUPERSET of the master TXT (bilingual records merged in)
     // — v1.4.15: user ka updated English master bank se BADHA hai (zyada real sawal);
     //   user ne extra add karne se mana kiya hai → bank = real-paper subset, 800+ floor
-    if (subject === 'english') {
-      assert(ref.length >= 800, 'english bank 800+ real-paper records (got ' + ref.length + ')');
-      assert(ref.filter(q => q.correctAnswer).length >= 800, 'keyed english bank');
+    if (subject === 'english' || subject === 'physics') {
+      const floor = subject === 'english' ? 700 : 600;
+      assert(ref.length >= floor, subject + ' bank ' + floor + '+ real-paper records (got ' + ref.length + ')');
+      assert(ref.filter(q => q.correctAnswer).length >= floor, 'keyed ' + subject + ' bank');
     } else {
       assert(ref.length >= final.length, 'data file is a superset (' + ref.length + ' >= ' + final.length + ')');
       assert(ref.filter(q => q.correctAnswer).length >= final.filter(q => q.correctAnswer).length, 'keyed superset');
