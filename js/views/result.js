@@ -153,6 +153,25 @@ Views.analysis = async function (attemptId, state) {
     if (f.pq.result === 'correct') t.correct++; else if (f.pq.result === 'wrong') t.wrong++; else t.skip++;
   });
 
+  // ---- reattempt progression (all attempts of THIS test, connected) ----
+  const sibAttempts = ((await Store.getMeta('attemptIndex', [])).filter(x => x.testId === a.testId && !x.abandoned)).sort((x, y) => x.date - y.date);
+
+  // ---- time analysis helpers ----
+  const totalTimeSpent = flat.reduce((s, f) => s + (f.pq.timeSpent || 0), 0);
+  const tBuckets = [
+    { label: 'Fast (<30s)', n: flat.filter(f => (f.pq.timeSpent || 0) > 0 && (f.pq.timeSpent || 0) < 30).length, color: '#4cbf76' },
+    { label: 'Steady (30–60s)', n: flat.filter(f => (f.pq.timeSpent || 0) >= 30 && (f.pq.timeSpent || 0) <= 60).length, color: '#3b6fb6' },
+    { label: 'Slow (1–2 min)', n: flat.filter(f => (f.pq.timeSpent || 0) > 60 && (f.pq.timeSpent || 0) <= 120).length, color: '#f0b429' },
+    { label: 'Very slow (>2 min)', n: flat.filter(f => (f.pq.timeSpent || 0) > 120).length, color: '#e87b78' }
+  ];
+  const avgT = arr => arr.length ? arr.reduce((s, f) => s + (f.pq.timeSpent || 0), 0) / arr.length : null;
+  const tCorrect = flat.filter(f => f.pq.result === 'correct');
+  const tWrong = flat.filter(f => f.pq.result === 'wrong');
+  const tSkip = flat.filter(f => f.pq.result === 'skip');
+  const avgTCorrect = avgT(tCorrect), avgTWrong = avgT(tWrong), avgTSkip = avgT(tSkip);
+  const top2Time = timed.slice(0, 2).reduce((s, f) => s + (f.pq.timeSpent || 0), 0);
+  const top2Share = totalTimeSpent ? Math.round(top2Time / totalTimeSpent * 100) : 0;
+
   // ---- question list pagination ----
   const qFiltered = state.qFilter === 'all' ? flat : flat.filter(f =>
     state.qFilter === 'correct' ? f.pq.result === 'correct' :
@@ -211,6 +230,7 @@ Views.analysis = async function (attemptId, state) {
 
   if (state.tab === 'overview') {
     body.innerHTML = `
+      ${progressionHTML()}
       <section class="stat-row">
         ${ast('Attempted', res.attempted)} ${ast('Correct', res.correct, 'good')} ${ast('Wrong', res.wrong, 'bad')}
         ${ast('Unattempted', res.unattempted)} ${ast('Accuracy', res.accuracy + '%')}
@@ -317,9 +337,29 @@ Views.analysis = async function (attemptId, state) {
       <section class="stat-row">
         ${ast('Total Time', AVUtil.fmtDur(res.timeTaken))}
         ${ast('Avg / Question', res.total ? AVUtil.fmtDur(res.timeTaken / res.total) : '—')}
-        ${ast('Avg / Correct', res.correct ? AVUtil.fmtDur(flat.filter(f => f.pq.result === 'correct').reduce((x, f) => x + (f.pq.timeSpent || 0), 0) / res.correct) : '—')}
-        ${ast('> 60s', over60.length + ' Qs', over60.length > flat.length * 0.3 ? 'bad' : '')}
-        ${ast('> 120s', over120.length + ' Qs', over120.length > 5 ? 'bad' : '')}
+        ${ast('Avg / Correct', avgTCorrect != null ? AVUtil.fmtDur(avgTCorrect) : '—', 'good')}
+        ${ast('Avg / Wrong', avgTWrong != null ? AVUtil.fmtDur(avgTWrong) : '—', avgTWrong != null && avgTCorrect != null && avgTWrong > avgTCorrect ? 'bad' : '')}
+        ${ast('Avg / Skipped', avgTSkip != null ? AVUtil.fmtDur(avgTSkip) : '—')}
+      </section>
+      <section class="two-col">
+        <div class="card chart-card"><h3>Time Distribution <span class="muted small">— har question par kitna time laga</span></h3>
+          ${Charts.barChart(tBuckets.map(b => ({ label: b.label, value: b.n, max: Math.max(1, flat.length), color: b.color, valueLabel: b.n + ' Q' })))}
+          <div class="chart-legend">${tBuckets.map(b => `<span class="chip"><i style="background:${b.color}"></i>${b.label}</span>`).join('')}</div>
+        </div>
+        <div class="card"><h3>Pace Insights</h3>
+          <ul class="pace-insight">
+            <li>${top2Share >= 30
+              ? `⏳ Top 2 questions ne poori exam ka <b>${top2Share}% time</b> kha liya — in par control rakho.`
+              : `⚡ Time acche se distribute raha — koi ek question paper hold nahi kar paya.`}</li>
+            ${avgTWrong != null && avgTCorrect != null ? `<li>${avgTWrong > avgTCorrect
+              ? `🐢 Jahan <b>galat</b> hue wahan avg <b>${AVUtil.fmtDur(avgTWrong)}</b> laga, sahi answers par sirf <b>${AVUtil.fmtDur(avgTCorrect)}</b> — slow questions = doubt wale questions.`
+              : `🎯 Galat answers par bhi time zyada nahi laga — guesswork strong hai.`}</li>` : ''}
+            ${avgTSkip != null ? `<li>${avgTSkip > 60
+              ? `🤔 Skip kiye questions par avg <b>${AVUtil.fmtDur(avgTSkip)}</b> laga — inhe dobara milenge, ab preparation kar lo.`
+              : `↪️ Skip kiye questions par jaldi chhoda — bad decision nahi.`}</li>` : ''}
+            <li>📊 ${over60.length} question 1 min+ · ${over120.length} question 2 min+ (total ${flat.length})</li>
+          </ul>
+        </div>
       </section>
       <section class="two-col">
         <div class="card"><h3>Slowest Questions</h3>${timeTable(slowest)}</div>
@@ -346,6 +386,46 @@ Views.analysis = async function (attemptId, state) {
 
   function ast(l, v, cls) {
     return `<div class="stat-card ${cls || ''}"><div class="stat-val">${AVUtil.esc(String(v))}</div><div class="stat-lbl">${l}</div></div>`;
+  }
+
+  /* reattempt progression — ek hi test ke saare attempts, connected */
+  function progressionHTML() {
+    if (sibAttempts.length < 2) {
+      return `<section class="card prog-card prog-hint">
+        <div class="prog-hint-txt">
+          <b>Attempt Progression</b>
+          <span>Ye test abhi 1 baar diya hai. Reattempt karo — pehla kitna aaya, dusre me kitna aaya, sab yahan connected graph me dikhega.</span>
+        </div>
+        <a class="btn btn-primary" href="#/test/${a.testId}/instructions">↻ Reattempt this test</a>
+      </section>`;
+    }
+    const points = sibAttempts.map(x => ({ x: '#' + x.attemptNo, y: x.maxScore ? Math.round(x.score / x.maxScore * 1000) / 10 : 0 }));
+    const rows = sibAttempts.map((x, i) => {
+      const pct = x.maxScore ? Math.round(x.score / x.maxScore * 1000) / 10 : 0;
+      const prevPct = i > 0 && sibAttempts[i - 1].maxScore ? Math.round(sibAttempts[i - 1].score / sibAttempts[i - 1].maxScore * 1000) / 10 : null;
+      const delta = prevPct != null ? Math.round((pct - prevPct) * 10) / 10 : null;
+      return `<tr class="${x.id === a.id ? 'prog-cur' : ''}">
+        <td><b>#${x.attemptNo}</b></td>
+        <td class="muted small">${AVUtil.fmtDate(x.date)}</td>
+        <td><b>${x.score}</b><span class="muted">/${x.maxScore}</span></td>
+        <td><b>${pct}%</b></td>
+        <td>${x.accuracy != null ? x.accuracy + '%' : '—'}</td>
+        <td>${AVUtil.fmtDur(x.timeTaken || 0)}</td>
+        <td>${delta == null ? '<span class="muted">—</span>' : `<span class="badge ${delta >= 0 ? 'good' : 'bad'}">${delta >= 0 ? '▲ +' : '▼ '}${delta}%</span>`}</td>
+        <td>${x.id === a.id ? '<span class="badge">THIS</span>' : `<a class="link" href="#/attempt/${x.id}/analysis">Analysis</a>`}</td>
+      </tr>`;
+    }).join('');
+    const first = sibAttempts[0], last = sibAttempts[sibAttempts.length - 1];
+    const overall = first.maxScore && last.maxScore
+      ? Math.round((last.score / last.maxScore - first.score / first.maxScore) * 1000) / 10 : null;
+    return `<section class="card prog-card">
+      <div class="card-head">
+        <h3>Attempt Progression</h3>
+        <span class="muted small">${sibAttempts.length} attempts of this test — ek jagah connected${overall != null ? ` · overall ${overall >= 0 ? '<b class="good">▲ +' + overall + '%</b>' : '<b class="bad-txt">▼ ' + overall + '%</b>'}` : ''}</span></div>
+      ${Charts.lineChart(points, { min: 0, max: 100, color: '#3b6fb6' })}
+      <div class="tbl-scroll"><table class="tbl"><thead><tr><th>Attempt</th><th>Date</th><th>Score</th><th>%</th><th>Accuracy</th><th>Time</th><th>Change</th><th></th></tr></thead>
+      <tbody>${rows}</tbody></table></div>
+    </section>`;
   }
 
   // events

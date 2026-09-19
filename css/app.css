@@ -1207,3 +1207,32 @@ body.exam-on { overflow: hidden; }
   .an-hero .th-side { gap: 16px; }
   .an-hero .th-stat b { font-size: 17px; }
 }
+
+/* ============================================================
+ * ATTEMPT PROGRESSION + TIME INSIGHTS + FOOTER INSTAGRAM
+ * ============================================================ */
+.prog-card { border-left: 4px solid var(--navy-2); }
+.prog-card .card-head { margin-bottom: 8px; }
+.prog-cur td { background: #eef4fc; }
+.prog-cur td:first-child { border-left: 3px solid var(--navy-2); }
+.prog-hint {
+  display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  flex-wrap: wrap; border-left: 4px solid var(--navy-2);
+}
+.prog-hint-txt b { display: block; color: var(--navy); margin-bottom: 3px; }
+.prog-hint-txt span { font-size: 12.8px; color: var(--muted); }
+.pace-insight { margin: 0; padding-left: 18px; font-size: 13.2px; color: #37465e; }
+.pace-insight li { margin-bottom: 9px; line-height: 1.55; }
+.pace-insight b { color: var(--navy); }
+
+/* footer instagram pill */
+.sf-insta {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+  color: #fff; border-radius: 999px; padding: 7px 16px;
+  font-weight: 700; font-size: 13px; text-decoration: none;
+  box-shadow: 0 3px 12px rgba(204, 39, 102, .35);
+  transition: filter .12s, transform .12s;
+}
+.sf-insta:hover { filter: brightness(1.1); transform: translateY(-1px); text-decoration: none; }
+.sf-insta svg { width: 15px; height: 15px; }
