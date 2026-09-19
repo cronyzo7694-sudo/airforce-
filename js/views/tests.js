@@ -2,6 +2,20 @@
  * VIEW: TEST LIBRARY + TEST OVERVIEW + CUSTOM TEST BUILDER
  * ============================================================ */
 
+/* tiny inline icon set (stroke style, matches bottom nav) */
+const T2IC = {
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg>',
+  clock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>',
+  list: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h7"/></svg>',
+  star: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 3l2.7 5.6 6.3.9-4.5 4.3 1 6.2-5.5-3-5.5 3 1-6.2L3 9.5l6.3-.9z"/></svg>',
+  bolt: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6z"/></svg>',
+  target: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.4"/></svg>',
+  check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg>',
+  x: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>',
+  sad: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M9 10h.01M15 10h.01M9 16c1-1.2 2-1.8 3-1.8s2 .6 3 1.8"/></svg>'
+};
+
 Views.tests = async function (state) {
   state = state || { filter: 'all', search: '', sort: 'recent', page: 1 };
   const cfg = await App.config();
@@ -14,21 +28,30 @@ Views.tests = async function (state) {
     (attByTest[a.testId] = attByTest[a.testId] || []).push(a);
   });
   const unfinishedByTest = {};
-  {
-    let unf = null;
-    await DB.cursor('attempts', 'completed', false, a => {
-      (unfinishedByTest[a.testId] = unfinishedByTest[a.testId] || []).push(a);
-    });
-  }
+  await DB.cursor('attempts', 'completed', false, a => {
+    (unfinishedByTest[a.testId] = unfinishedByTest[a.testId] || []).push(a);
+  });
 
   const hasUnfinished = t => (unfinishedByTest[t.id] || []).length > 0;
 
   // filters
   const curExam = (App.configCache && App.configCache.exam) || 'airforce';
-  const FNAMES = { all: 'All', series: 'Test Series', full: 'Full Mock', subject: 'Subject', chapter: 'Chapter', topic: 'Topic', custom: 'Custom', completed: 'Completed', incomplete: 'Incomplete' };
-  let list = tests.filter(t => (t.exam || 'airforce') === curExam).filter(t => {
+  const FNAMES = { all: 'All', series: 'Test Series', full: 'Full Mock', subject: 'Subject', chapter: 'Chapter', topic: 'Topic', custom: 'Custom', completed: 'Completed', incomplete: 'In Progress' };
+  const mine = tests.filter(t => (t.exam || 'airforce') === curExam);
+  const isDone = t => (attByTest[t.id] || []).some(a => !a.abandoned);
+  const counts = {
+    all: mine.length, series: mine.filter(t => t.series).length,
+    full: mine.filter(t => t.type === 'full').length,
+    subject: mine.filter(t => t.type === 'subject').length,
+    chapter: mine.filter(t => t.type === 'chapter').length,
+    topic: mine.filter(t => t.type === 'topic').length,
+    custom: mine.filter(t => t.type === 'custom').length,
+    completed: mine.filter(isDone).length,
+    incomplete: mine.filter(hasUnfinished).length
+  };
+  let list = mine.filter(t => {
     if (state.filter === 'all' || FNAMES[state.filter] === undefined) return true;
-    if (state.filter === 'completed') return (attByTest[t.id] || []).some(a => !a.abandoned);
+    if (state.filter === 'completed') return isDone(t);
     if (state.filter === 'incomplete') return hasUnfinished(t);
     if (state.filter === 'series') return !!t.series;
     return t.type === state.filter;
@@ -52,40 +75,85 @@ Views.tests = async function (state) {
     });
   }
 
-  // pagination (lazy — 12 cards/page)
+  // pagination (12 cards/page — e2e contract)
   const PER = 12;
   const pages = Math.max(1, Math.ceil(list.length / PER));
   state.page = AVUtil.clamp(state.page, 1, pages);
   const slice = list.slice((state.page - 1) * PER, state.page * PER);
 
+  // hero stats
+  const doneIdx = idx.filter(a => !a.abandoned);
+  const bestPct = doneIdx.length
+    ? Math.max(...doneIdx.map(a => Math.round(a.score / (a.maxScore || 100) * 100))) : null;
+  const totalQ = cfg.subjects.reduce((a, s) => a + s.questions, 0);
+  const startN = list.length ? (state.page - 1) * PER + 1 : 0;
+  const endN = (state.page - 1) * PER + slice.length;
+
   App.page('page page-tests', `
-    <div class="page-head">
-      <div>
-        <h1>Test Library</h1>
-        <p class="muted">${tests.length} generated test${tests.length === 1 ? '' : 's'} · showing ${slice.length} of ${list.length}</p>
+    ${App.resumeBannerHTML()}
+
+    <section class="tlib-hero" aria-label="Test library">
+      <div class="th-main">
+        <div class="th-kicker">TEST LIBRARY</div>
+        <div class="th-title">Pick a test. Hit the bullseye.</div>
+        <div class="th-meta">${mine.length} auto-built tests from your ${totalQ.toLocaleString('en-IN')}-question bank · ${doneIdx.length} attempt${doneIdx.length === 1 ? '' : 's'} given</div>
+        <div class="th-tools">
+          <label class="th-search">
+            ${T2IC.search}
+            <input type="search" id="test-search" placeholder="Search tests by name…" value="${AVUtil.esc(state.search)}" aria-label="Search tests">
+            ${state.search ? `<button class="th-clear" id="test-clear" title="Clear search" aria-label="Clear search">${T2IC.x}</button>` : ''}
+          </label>
+          <select id="test-sort" aria-label="Sort tests">
+            <option value="recent" ${state.sort === 'recent' ? 'selected' : ''}>Most recent</option>
+            <option value="series" ${state.sort === 'series' ? 'selected' : ''}>Series order</option>
+            <option value="best" ${state.sort === 'best' ? 'selected' : ''}>Best score</option>
+          </select>
+          <button class="th-more" id="ts-build-more" title="Add more ready-made tests from unused questions">${T2IC.bolt} More Tests</button>
+          <button class="th-new" id="ts-new">+ New Test</button>
+        </div>
       </div>
-      <div class="head-actions">
-        <input type="search" id="test-search" placeholder="Search tests by name…" value="${AVUtil.esc(state.search)}" aria-label="Search tests">
-        <select id="test-sort" aria-label="Sort tests">
-          <option value="recent" ${state.sort === 'recent' ? 'selected' : ''}>Most recent</option>
-          <option value="series" ${state.sort === 'series' ? 'selected' : ''}>Series order</option>
-          <option value="best" ${state.sort === 'best' ? 'selected' : ''}>Best score</option>
-        </select>
-        <button class="btn btn-plain" id="ts-build-more" title="Add more ready-made tests from unused questions">⚡ More Tests</button>
-        <button class="btn btn-primary" onclick="location.hash='#/tests/new'">+ New Test</button>
+      <div class="th-side">
+        <div class="th-stat"><b>${mine.length}</b><span>tests</span></div>
+        <div class="th-stat"><b>${counts.completed}</b><span>completed</span></div>
+        <div class="th-stat"><b>${bestPct != null ? bestPct + '%' : '—'}</b><span>best score</span></div>
       </div>
+    </section>
+
+    <div class="filter-tabs ftabs2" role="tablist">
+      ${Object.entries(FNAMES).map(([k, v]) => (counts[k] > 0 || state.filter === k)
+        ? `<button role="tab" class="ftab ${state.filter === k ? 'active' : ''}" data-f="${k}">${v}<span class="fcount">${counts[k]}</span></button>` : '').join('')}
     </div>
-    <div class="filter-tabs" role="tablist">
-      ${Object.entries(FNAMES).map(([k, v]) => `<button role="tab" class="ftab ${state.filter === k ? 'active' : ''}" data-f="${k}">${v}</button>`).join('')}
-    </div>
-    ${slice.length ? `<div class="test-grid">${slice.map(t => testCard(t)).join('')}</div>` :
-      '<div class="empty-state"><p>No tests here yet.</p><button class="btn btn-primary" onclick="location.hash=\'#/tests/new\'">Create a test</button></div>'}
-    ${pages > 1 ? `<div class="pager">
-      <button class="btn btn-plain" data-pg="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''}>← Prev</button>
-      <span>Page ${state.page} of ${pages}</span>
-      <button class="btn btn-plain" data-pg="${state.page + 1}" ${state.page >= pages ? 'disabled' : ''}>Next →</button>
+
+    ${slice.length ? `
+    <div class="tlib-count">Showing <b>${startN}–${endN}</b> of <b>${list.length}</b> test${list.length === 1 ? '' : 's'}${state.search ? ` matching “${AVUtil.esc(state.search)}”` : ''}</div>
+    <div class="tlib-grid">${slice.map(t => testCard(t)).join('')}</div>` : `
+    <div class="tlib-empty">
+      ${T2IC.sad}
+      ${state.search ? `<h3>No tests match “${AVUtil.esc(state.search)}”</h3><p>Try a shorter word — or clear the search to see all ${mine.length} tests.</p>
+        <button class="btn btn-plain" id="ts-clear2">Clear search</button>`
+      : `<h3>No tests here yet</h3><p>Build one yourself — pick subjects, chapters and timing.</p>
+        <button class="btn btn-primary" id="ts-new2">Build a custom test</button>`}
+    </div>`}
+
+    ${pages > 1 ? `<div class="pager t2-pager" aria-label="Pages">
+      <button data-pg="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''} aria-label="Previous page">‹</button>
+      ${pageList(state.page, pages).map(n => n === '…'
+        ? '<span class="pg-gap">…</span>'
+        : `<button data-pg="${n}" class="${n === state.page ? 'on' : ''}">${n}</button>`).join('')}
+      <button data-pg="${state.page + 1}" ${state.page >= pages ? 'disabled' : ''} aria-label="Next page">›</button>
+      <span class="pg-info">${list.length} tests</span>
     </div>` : ''}
   `);
+
+  function pageList(cur, total) {
+    if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+    const out = [1];
+    if (cur > 3) out.push('…');
+    for (let i = Math.max(2, cur - 1); i <= Math.min(total - 1, cur + 1); i++) out.push(i);
+    if (cur < total - 2) out.push('…');
+    out.push(total);
+    return out;
+  }
 
   function testCard(t) {
     const atts = (attByTest[t.id] || []).filter(a => !a.abandoned);
@@ -93,37 +161,70 @@ Views.tests = async function (state) {
     const last = atts.length ? atts[atts.length - 1] : null;
     const unfinished = hasUnfinished(t);
     const acc = atts.length ? Math.round((atts.reduce((a, x) => a + x.correct, 0) / Math.max(1, atts.reduce((a, x) => a + x.correct + x.wrong, 0))) * 1000) / 10 : null;
-    const typeName = { full: 'FULL TEST', subject: 'SUBJECT TEST', chapter: 'CHAPTER TEST', topic: 'TOPIC TEST', custom: 'CUSTOM' }[t.type] || t.type.toUpperCase();
-    return `<div class="test-card ${atts.length ? 'attempted' : ''}" data-id="${t.id}">
-      <div class="tc-top">
-        <span class="tc-type">${typeName}${t.series ? ` <span class="tc-series">#${t.seriesNo}</span>` : ''}</span>
-        <span class="tc-mode">${t.mode === 'exam' ? 'Exam Mode' : 'Practice'}</span>
+    const T2TYPE = { full: 'Full Mock', subject: 'Subject Test', chapter: 'Chapter Test', topic: 'Topic Test', custom: 'Custom' };
+    const typeName = (t.series ? 'SERIES #' + t.seriesNo : (T2TYPE[t.type] || 'Test').toUpperCase());
+    const cls = t.series ? 't2-full t2-series' : 't2-' + (t.type || 'custom');
+    const secs = t.sections.map(s => ({
+      subjectId: s.subjectId, name: cfg.subjects.find(x => x.id === s.subjectId)?.name || s.name, n: s.questionIds.length
+    }));
+    const shownSecs = secs.length > 3 ? secs.slice(0, 3) : secs;
+    const pct = best ? Math.round(best.score / (best.maxScore || 100) * 100) : 0;
+    const barCls = pct >= 75 ? 'hi' : pct >= 50 ? 'mid' : 'lo';
+    const status = unfinished
+      ? '<span class="t2-status live"><i></i>IN PROGRESS</span>'
+      : atts.length ? `<span class="t2-status done">${T2IC.check}DONE</span>`
+        : '<span class="t2-status new">NEW</span>';
+    return `<div class="test-card t2 ${cls} ${atts.length ? 'attempted' : ''} ${unfinished ? 'inprogress' : ''}" data-id="${t.id}">
+      <div class="t2-top">
+        <span class="t2-type">${T2IC.target}${typeName}</span>
+        ${status}
       </div>
-      <h3 class="tc-name">${AVUtil.esc(t.name)}</h3>
-      <div class="tc-meta">
-        <span>${t.sections.map(s => (cfg.subjects.find(x => x.id === s.subjectId)?.name || s.name) + ' ' + s.questionIds.length).join(' · ')}</span>
-        <span>${t.totalQuestions} Q · ${Math.round(t.duration / 60)} min · Max ${t.maxScore} marks</span>
-        <span>${t.timerMode === 'section' ? 'Section-timed' : 'Global timer'}${t.sectionLock ? ' · Section locked' : ''}</span>
+      <h3 class="t2-name">${AVUtil.esc(t.name)}</h3>
+      <div class="t2-chips">
+        ${shownSecs.map(s => `<span class="t2-chip"><i class="subject-dot sd-${s.subjectId}"></i>${AVUtil.esc(s.name)} ${s.n}</span>`).join('')}
+        ${secs.length > 3 ? `<span class="t2-chip t2-more-chip">+${secs.length - 3} more</span>` : ''}
       </div>
-      <div class="tc-scores">
-        <div><span class="lbl">Status</span><b>${unfinished ? 'In Progress' : (atts.length ? 'Attempted' : 'Not Attempted')}</b></div>
-        <div><span class="lbl">Best</span><b>${best ? best.score + '/' + best.maxScore : '—'}</b></div>
-        <div><span class="lbl">Last</span><b>${last ? last.score + '/' + last.maxScore : '—'}</b></div>
-        <div><span class="lbl">Accuracy</span><b>${acc != null ? acc + '%' : '—'}</b></div>
-        <div><span class="lbl">Last time</span><b>${last ? AVUtil.fmtDur(last.timeTaken) : '—'}</b></div>
+      <div class="t2-meta">
+        <span>${T2IC.list}${t.totalQuestions} Q</span>
+        <span>${T2IC.clock}${Math.round(t.duration / 60)} min</span>
+        <span>${T2IC.star}${t.maxScore} marks</span>
+        <span title="${t.mode === 'exam' ? 'Exam mode' : 'Practice mode'}">${t.mode === 'exam' ? T2IC.lock + 'Exam' : T2IC.bolt + 'Practice'}${t.sectionLock ? ' · locked' : ''}</span>
       </div>
-      <div class="tc-actions">
+      <div class="t2-score">
+        ${best ? `
+        <div class="t2-bar"><i class="${barCls}" style="width:${pct}%"></i></div>
+        <div class="t2-best">
+          <span><b>${best.score}/${best.maxScore}</b> best · ${pct}%</span>
+          <span>${acc != null ? acc + '% acc' : ''}${atts.length > 1 ? ` · last ${last.score}/${last.maxScore}` : ''}</span>
+        </div>` : unfinished
+          ? '<span class="t2-live"><i></i>Half-done — resume anytime, timer picks up where you left</span>'
+          : '<span class="t2-fresh">Never attempted — fresh questions waiting</span>'}
+      </div>
+      <div class="t2-actions">
         ${unfinished
-          ? `<button class="btn btn-primary" data-act="resume">RESUME</button>`
-          : `<button class="btn btn-primary" data-act="start">${atts.length ? 'REATTEMPT' : 'START TEST'}</button>`}
-        ${atts.length ? `<button class="btn btn-plain" data-act="analysis">VIEW ANALYSIS</button>` : ''}
+          ? `<button class="btn t2-cta t2-resume" data-act="resume">RESUME TEST</button>`
+          : `<button class="btn t2-cta" data-act="start">${atts.length ? 'REATTEMPT' : 'START TEST'}</button>`}
+        ${atts.length ? `<button class="btn t2-ana" data-act="analysis">Analysis</button>` : ''}
       </div>
     </div>`;
   }
 
   // events
   AVUtil.$$('#app .ftab').forEach(b => b.addEventListener('click', () => { state.filter = b.dataset.f; state.page = 1; Views.tests(state); }));
-  AVUtil.$('#test-search').addEventListener('input', AVUtil.debounce(e => { state.search = e.target.value; state.page = 1; Views.tests(state); }, 250));
+  const searchEl = AVUtil.$('#test-search');
+  searchEl.addEventListener('input', AVUtil.debounce(e => { state.search = e.target.value; state.page = 1; state._refocus = true; Views.tests(state); }, 250));
+  if (state._refocus) { // keep typing across re-renders
+    state._refocus = false;
+    searchEl.focus();
+    const v = searchEl.value; searchEl.setSelectionRange(v.length, v.length);
+  }
+  const clearBtn = AVUtil.$('#test-clear');
+  if (clearBtn) clearBtn.addEventListener('click', () => { state.search = ''; state.page = 1; Views.tests(state); });
+  const clearBtn2 = AVUtil.$('#ts-clear2');
+  if (clearBtn2) clearBtn2.addEventListener('click', () => { state.search = ''; state.page = 1; Views.tests(state); });
+  AVUtil.$('#ts-new').addEventListener('click', () => location.hash = '#/tests/new');
+  const newBtn2 = AVUtil.$('#ts-new2');
+  if (newBtn2) newBtn2.addEventListener('click', () => location.hash = '#/tests/new');
   AVUtil.$('#test-sort').addEventListener('change', e => { state.sort = e.target.value; Views.tests(state); });
   AVUtil.$('#ts-build-more').addEventListener('click', async e => {
     const btn = e.currentTarget; btn.disabled = true; AVUtil.toast('Building more tests from unused questions…');
