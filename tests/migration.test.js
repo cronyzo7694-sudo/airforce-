@@ -80,7 +80,7 @@ const T = (n, ok, x) => { if (ok) { P++; console.log('  ✓', n); } else { F++; 
   /* ── verify final state ── */
   const fin = await G('(async () => { const all = await DB.getAll("questions"); return { total: all.length, subjects: [...new Set(all.map(q => q.subject))], raga: all.filter(q => q.subject === "raga").length, ragaBi: all.filter(q => q.subject === "raga" && q.questionTextHi && q.explanationHi).length, bad: all.filter(q => String(q.subject).match(/reasoning|general-awareness/)).length, hashes: new Set(all.map(q => q.dupeHash)).size }; })()');
   console.log('final state:', JSON.stringify(fin));
-  T('total questions = 2379 core + 732 raga = 3111', fin.total === 3111, fin.total);
+  T('total questions = 2573 core + 732 raga = 3305 (v1.4.11: physics 715 → 909)', fin.total === 3305, fin.total);
   T('no foreign subjects left', fin.bad === 0 && fin.subjects.every(s => ['physics','mathematics','english','raga'].includes(s)), JSON.stringify(fin.subjects));
   T('raga pool = 732', fin.raga === 732, fin.raga);
   T('every raga record fully bilingual', fin.ragaBi === 732, fin.ragaBi);
