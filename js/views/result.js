@@ -13,17 +13,22 @@ Views.result = async function (attemptId) {
   const cfg = await App.config();
   const pct = res.maxScore ? Math.round((res.score / res.maxScore) * 1000) / 10 : 0;
 
+  const R = 34, C = 2 * Math.PI * R;
+  const ringDash = Math.max(0, Math.min(1, pct / 100)) * C;
+  const ringColor = pct >= 75 ? '#4cbf76' : pct >= 50 ? '#f0b429' : '#e87b78';
   const subjectRows = (test ? test.sections : []).map(s => {
     const st = res.subjects[s.subjectId] || {};
     const time = st.timeSpent || 0;
+    const sAcc = st.accuracy ?? 0;
+    const sBarCls = sAcc >= 75 ? 'hi' : sAcc >= 50 ? 'mid' : 'lo';
     return `<tr>
       <td><b>${AVUtil.esc(s.name)}</b></td>
-      <td>${st.correct ?? 0}</td>
-      <td>${st.wrong ?? 0}</td>
-      <td>${st.unattempted ?? 0}</td>
+      <td class="good">${st.correct ?? 0}</td>
+      <td class="bad-txt">${st.wrong ?? 0}</td>
+      <td class="rs-col-u muted">${st.unattempted ?? 0}</td>
       <td><b>${Math.round((st.score ?? 0) * 100) / 100}</b></td>
-      <td>${st.accuracy ?? 0}%</td>
-      <td>${AVUtil.fmtDur(time)}</td>
+      <td><div class="rs-acc"><div class="t2-bar"><i class="${sBarCls}" style="width:${sAcc}%"></i></div><span>${sAcc}%</span></div></td>
+      <td class="rs-col-t muted">${AVUtil.fmtDur(time)}</td>
     </tr>`;
   }).join('');
 
@@ -37,8 +42,17 @@ Views.result = async function (attemptId) {
         </div>
       </div>
       <div class="rh-score">
+        <div class="rh-ring" role="img" aria-label="Score ${res.score} out of ${res.maxScore}, ${pct} percent">
+          <svg viewBox="0 0 80 80">
+            <circle cx="40" cy="40" r="${R}" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="8"/>
+            <circle cx="40" cy="40" r="${R}" fill="none" stroke="${ringColor}" stroke-width="8"
+              stroke-linecap="round" stroke-dasharray="${ringDash} ${C}" transform="rotate(-90 40 40)"/>
+            <text x="40" y="38" text-anchor="middle" fill="#fff" font-size="17" font-weight="800">${pct}%</text>
+            <text x="40" y="52" text-anchor="middle" fill="#b9cdea" font-size="9.5">${res.score}/${res.maxScore}</text>
+          </svg>
+        </div>
         <div class="rh-nums"><b>${res.score}</b><span>/ ${res.maxScore}</span></div>
-        <div class="rh-pct">${pct}%</div>
+        <div class="rh-pct">${pct}% score</div>
       </div>
     </div>
 
@@ -55,10 +69,10 @@ Views.result = async function (attemptId) {
 
     <section class="card">
       <h3>Subject Performance</h3>
-      <table class="tbl">
-        <thead><tr><th>Subject</th><th>Correct</th><th>Wrong</th><th>Unattempted</th><th>Score</th><th>Accuracy</th><th>Time Spent</th></tr></thead>
+      <div class="tbl-scroll"><table class="tbl">
+        <thead><tr><th>Subject</th><th>Correct</th><th>Wrong</th><th class="rs-col-u">Unattempted</th><th>Score</th><th>Accuracy</th><th class="rs-col-t">Time Spent</th></tr></thead>
         <tbody>${subjectRows || '<tr><td colspan="7" class="muted">—</td></tr>'}</tbody>
-      </table>
+      </table></div>
     </section>
 
     <section class="result-actions">
@@ -167,19 +181,28 @@ Views.analysis = async function (attemptId, state) {
     ['topics', 'Topic &amp; Difficulty'], ['time', 'Time Analysis']
   ];
 
+  const anPct = res.maxScore ? Math.round((res.score / res.maxScore) * 1000) / 10 : 0;
+  const anRing = anPct >= 75 ? 'good' : anPct >= 50 ? 'mid' : 'low';
   App.page('page page-analysis', `
-    <div class="page-head">
-      <div>
-        <h1>Detailed Analysis</h1>
-        <p class="muted">${AVUtil.esc(a.testName)} · Attempt #${a.attemptNo} · Score ${res.score}/${res.maxScore} · Accuracy ${res.accuracy}%</p>
+    <section class="tlib-hero an-hero" aria-label="Attempt summary">
+      <div class="th-main">
+        <div class="th-kicker">Detailed Analysis</div>
+        <div class="th-title">${AVUtil.esc(a.testName)}</div>
+        <div class="th-meta">Attempt #${a.attemptNo} · ${AVUtil.fmtDate(a.endTime || a.date)} · ${AVUtil.fmtDur(res.timeTaken)}</div>
+        <div class="th-tools">
+          <a class="th-more" href="#/attempt/${a.id}/result">📊 Result page</a>
+          <a class="th-new" href="#/test/${a.testId}/instructions">↻ Reattempt</a>
+        </div>
       </div>
-      <div class="head-actions">
-        <a class="btn btn-plain" href="#/attempt/${a.id}/result">Result</a>
-        <a class="btn btn-primary" href="#/test/${a.testId}/instructions">Reattempt</a>
+      <div class="th-side">
+        <div class="th-stat"><b>${res.score}<span class="th-of">/${res.maxScore}</span></b><span>score · ${anPct}%</span></div>
+        <div class="th-stat"><b>${res.accuracy}%</b><span>accuracy</span></div>
+        <div class="th-stat"><b>${res.correct}<span class="th-ok">✓</span> <span class="th-bad">✗${res.wrong}</span> <span class="th-mut">–${res.unattempted}</span></b><span>right / wrong / skip</span></div>
       </div>
-    </div>
-    <div class="filter-tabs">
-      ${TABS.map(([k, v]) => `<button class="ftab ${state.tab === k ? 'active' : ''}" data-tab="${k}">${v}</button>`).join('')}
+    </section>
+
+    <div class="filter-tabs ftabs2" role="tablist">
+      ${TABS.map(([k, v]) => `<button role="tab" class="ftab ${state.tab === k ? 'active' : ''}" data-tab="${k}">${v}</button>`).join('')}
     </div>
     <div id="an-body"></div>
   `);
@@ -202,14 +225,14 @@ Views.analysis = async function (attemptId, state) {
       </section>
       <section class="card">
         <h3>Section Summary</h3>
-        <table class="tbl"><thead><tr><th>Subject</th><th>Attempted</th><th>Correct</th><th>Wrong</th><th>Skipped</th><th>Score</th><th>Accuracy</th><th>Avg time/Q</th></tr></thead>
+        <div class="tbl-scroll"><table class="tbl"><thead><tr><th>Subject</th><th>Attempted</th><th>Correct</th><th>Wrong</th><th>Skipped</th><th>Score</th><th>Accuracy</th><th>Avg time/Q</th></tr></thead>
         <tbody>${(test?.sections || []).map(s => {
           const st = res.subjects[s.subjectId] || {};
           const att = (st.correct || 0) + (st.wrong || 0);
           return `<tr><td><b>${AVUtil.esc(s.name)}</b></td><td>${att}</td><td>${st.correct || 0}</td><td>${st.wrong || 0}</td><td>${st.unattempted || 0}</td>
           <td><b>${Math.round((st.score || 0) * 100) / 100}</b></td><td>${st.accuracy || 0}%</td>
           <td>${st.total ? AVUtil.fmtDur((st.timeSpent || 0) / st.total) : '—'}</td></tr>`;
-        }).join('')}</tbody></table>
+        }).join('')}</tbody></table></div>
       </section>`;
   } else if (state.tab === 'questions') {
     const chipDef = [['all', `All (${flat.length})`], ['wrong', `Wrong (${res.wrong})`], ['correct', `Correct (${res.correct})`], ['skip', `Skipped (${res.unattempted})`], ['marked', 'Marked'], ['slow', '> 60s']];
@@ -262,10 +285,12 @@ Views.analysis = async function (attemptId, state) {
           </div>
         </div>`;
       }).join('') : '<div class="empty-state"><p>No questions in this filter.</p></div>'}
-      ${qPages > 1 ? `<div class="pager">
-        <button class="btn btn-plain" data-qp="${state.qPage - 1}" ${state.qPage <= 1 ? 'disabled' : ''}>← Prev</button>
-        <span>Page ${state.qPage} of ${qPages}</span>
-        <button class="btn btn-plain" data-qp="${state.qPage + 1}" ${state.qPage >= qPages ? 'disabled' : ''}>Next →</button>
+      ${qPages > 1 ? `<div class="pager t2-pager" aria-label="Pages">
+        <button data-qp="${state.qPage - 1}" ${state.qPage <= 1 ? 'disabled' : ''} aria-label="Previous page">‹</button>
+        ${Array.from({ length: qPages }, (_, i) => i + 1).slice(Math.max(0, state.qPage - 3), Math.max(0, state.qPage - 3) + 5).map(n =>
+          `<button data-qp="${n}" class="${n === state.qPage ? 'on' : ''}">${n}</button>`).join('')}
+        <button data-qp="${state.qPage + 1}" ${state.qPage >= qPages ? 'disabled' : ''} aria-label="Next page">›</button>
+        <span class="pg-info">${qFiltered.length} questions</span>
       </div>` : ''}`;
   } else if (state.tab === 'topics') {
     body.innerHTML = `
@@ -282,10 +307,10 @@ Views.analysis = async function (attemptId, state) {
       </section>
       <section class="card">
         <h3>Difficulty-wise Accuracy</h3>
-        <table class="tbl"><thead><tr><th>Difficulty</th><th>Correct</th><th>Wrong</th><th>Skipped</th><th>Accuracy</th></tr></thead>
+        <div class="tbl-scroll"><table class="tbl"><thead><tr><th>Difficulty</th><th>Correct</th><th>Wrong</th><th>Skipped</th><th>Accuracy</th></tr></thead>
         <tbody>${Object.entries(diffAgg).sort().map(([d, t]) => `<tr>
           <td><b>${AVUtil.esc(d)}</b></td><td>${t.correct}</td><td>${t.wrong}</td><td>${t.skip}</td>
-          <td>${(t.correct + t.wrong) ? Math.round(t.correct / (t.correct + t.wrong) * 100) : 0}%</td></tr>`).join('') || '<tr><td colspan="5" class="muted">—</td></tr>'}</tbody></table>
+          <td>${(t.correct + t.wrong) ? Math.round(t.correct / (t.correct + t.wrong) * 100) : 0}%</td></tr>`).join('') || '<tr><td colspan="5" class="muted">—</td></tr>'}</tbody></table></div>
       </section>`;
   } else if (state.tab === 'time') {
     body.innerHTML = `
@@ -309,13 +334,13 @@ Views.analysis = async function (attemptId, state) {
 
     function timeTable(rows) {
       if (!rows.length) return '<p class="muted pad">—</p>';
-      return `<table class="tbl"><thead><tr><th>Q#</th><th>Subject</th><th>Topic</th><th>Result</th><th>Time</th></tr></thead><tbody>
+      return `<div class="tbl-scroll"><table class="tbl"><thead><tr><th>Q#</th><th>Subject</th><th>Topic</th><th>Result</th><th>Time</th></tr></thead><tbody>
         ${rows.map(f => `<tr>
           <td><b>${f.gn}</b></td><td>${AVUtil.esc(f.sname)}</td>
           <td>${AVUtil.esc(f.q?.topic || '—')}</td>
           <td><span class="badge ${f.pq.result === 'correct' ? 'good' : (f.pq.result === 'wrong' ? 'bad' : '')}">${f.pq.result}</span></td>
           <td><b>${AVUtil.fmtDur(f.pq.timeSpent || 0)}</b></td></tr>`).join('')}
-      </tbody></table>`;
+      </tbody></table></div>`;
     }
   }
 

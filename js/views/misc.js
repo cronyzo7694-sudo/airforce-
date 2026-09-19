@@ -23,6 +23,13 @@ Views.attempts = async function (state) {
   state.page = AVUtil.clamp(state.page, 1, pages);
   const slice = list.slice((state.page - 1) * PER, state.page * PER);
 
+  // summary strip
+  const done = idx.filter(a => !a.abandoned);
+  const avgPct = done.length ? Math.round(done.reduce((s, a) => s + (a.maxScore ? a.score / a.maxScore : 0), 0) / done.length * 1000) / 10 : null;
+  const bestPct = done.length ? Math.max(...done.map(a => a.maxScore ? Math.round(a.score / a.maxScore * 1000) / 10 : 0)) : null;
+  const avgAcc = done.length ? Math.round(done.reduce((s, a) => s + (a.accuracy || 0), 0) / done.length * 10) / 10 : null;
+  const th = cfg.thresholds || { average: 60 };
+
   const painted = App.page('page page-attempts', `
     ${unfinished.length ? `<div class="resume-banner" role="alert">
       <div><b>${unfinished.length} unfinished attempt${unfinished.length > 1 ? 's' : ''}.</b>
@@ -31,7 +38,7 @@ Views.attempts = async function (state) {
         <button class="btn btn-primary" onclick="App.resumePending()">RESUME EXAM</button>
       </div></div>` : ''}
     <div class="page-head">
-      <div><h1>My Attempts</h1><p class="muted">${idx.length} completed · ${unfinished.length} in progress</p></div>
+      <div><h1>My Attempts</h1><p class="muted">${done.length} completed · ${unfinished.length} in progress</p></div>
       <div class="head-actions">
         <input type="search" id="at-search" placeholder="Search by test name…" value="${AVUtil.esc(state.search)}">
         <select id="at-filter">
@@ -40,32 +47,53 @@ Views.attempts = async function (state) {
         </select>
       </div>
     </div>
+
+    <section class="stat-row" aria-label="Attempt summary">
+      ${astrip('Tests Given', done.length)}
+      ${astrip('In Progress', unfinished.length)}
+      ${astrip('Avg Score', avgPct != null ? avgPct + '%' : '—', avgPct != null && avgPct >= th.average ? 'good' : (avgPct != null && avgPct < th.average ? 'bad' : ''))}
+      ${astrip('Best Score', bestPct != null ? bestPct + '%' : '—', 'good')}
+      ${astrip('Avg Accuracy', avgAcc != null ? avgAcc + '%' : '—')}
+    </section>
+
     <div class="card">
-      ${slice.length ? `<table class="tbl"><thead>
-        <tr><th>Test</th><th>Date</th><th>Attempt</th><th>Score</th><th>Accuracy</th><th>Correct/Wrong/Skip</th><th>Time</th><th>Actions</th></tr>
+      ${slice.length ? `<div class="tbl-scroll"><table class="tbl"><thead>
+        <tr><th>Test</th><th class="at-col-type">Type</th><th class="at-col-date">Date</th><th class="at-col-no">Attempt</th><th>Score</th><th>Accuracy</th><th class="at-col-cws">Correct/Wrong/Skip</th><th class="at-col-time">Time</th><th>Actions</th></tr>
       </thead><tbody>
-        ${slice.map(a => `<tr data-id="${a.id}">
-          <td>${AVUtil.esc(a.testName)}</td>
-          <td class="muted small">${AVUtil.fmtDate(a.date)}</td>
-          <td>#${a.attemptNo}</td>
-          <td><b>${a.score}</b>/${a.maxScore}</td>
-          <td>${a.accuracy}%</td>
-          <td>${a.correct}/${a.wrong}/${a.unattempted}</td>
-          <td>${AVUtil.fmtDur(a.timeTaken)}</td>
+        ${slice.map(a => {
+          const accCls = (a.accuracy || 0) >= th.average ? 'good' : 'bad';
+          return `<tr data-id="${a.id}">
+          <td><b class="at-test">${AVUtil.esc(a.testName)}</b></td>
+          <td class="at-col-type"><span class="chip-type ct-${a.testType || 'custom'}">${(a.testType || 'test').toUpperCase()}</span></td>
+          <td class="muted small at-col-date">${AVUtil.fmtDate(a.date)}</td>
+          <td class="at-col-no">#${a.attemptNo}</td>
+          <td><b>${a.score}</b><span class="muted">/${a.maxScore}</span></td>
+          <td><span class="badge ${accCls}">${a.accuracy}%</span></td>
+          <td class="at-col-cws">${a.correct}/<span class="bad-txt">${a.wrong}</span>/${a.unattempted}</td>
+          <td class="at-col-time">${AVUtil.fmtDur(a.timeTaken)}</td>
           <td class="qb-actions">
             <a class="btn btn-mini" href="#/attempt/${a.id}/analysis">Analysis</a>
             <a class="btn btn-mini" href="#/test/${a.testId}/instructions">Reattempt</a>
             <button class="btn btn-mini danger" data-del="${a.id}">Delete</button>
           </td>
-        </tr>`).join('')}
-      </tbody></table>` : '<p class="muted pad">No attempts yet.</p>'}
-      ${pages > 1 ? `<div class="pager">
-        <button class="btn btn-plain" data-pg="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''}>← Prev</button>
-        <span>Page ${state.page} of ${pages}</span>
-        <button class="btn btn-plain" data-pg="${state.page + 1}" ${state.page >= pages ? 'disabled' : ''}>Next →</button>
+        </tr>`; }).join('')}
+      </tbody></table></div>` : `<div class="tlib-empty">
+        ${'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>'}
+        <h3>No attempts yet</h3><p>Ek test do — phir yahan har attempt ka pura record milega.</p>
+        <a class="btn btn-primary" href="#/tests">Browse tests</a>
+      </div>`}
+      ${pages > 1 ? `<div class="pager t2-pager" aria-label="Pages">
+        <button data-pg="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''} aria-label="Previous page">‹</button>
+        ${Array.from({ length: pages }, (_, i) => i + 1).slice(Math.max(0, state.page - 3), Math.max(0, state.page - 3) + 5).map(n =>
+          `<button data-pg="${n}" class="${n === state.page ? 'on' : ''}">${n}</button>`).join('')}
+        <button data-pg="${state.page + 1}" ${state.page >= pages ? 'disabled' : ''} aria-label="Next page">›</button>
+        <span class="pg-info">${list.length} attempts</span>
       </div>` : ''}
     </div>
   `, '/attempts');
+  function astrip(l, v, cls) {
+    return `<div class="stat-card ${cls || ''}"><div class="stat-val">${AVUtil.esc(String(v))}</div><div class="stat-lbl">${l}</div></div>`;
+  }
   if (!painted) return; // user navigated away while this render was building
 
   AVUtil.$('#at-search').addEventListener('input', AVUtil.debounce(e => { state.search = e.target.value; state.page = 1; Views.attempts(state); }, 250));
@@ -95,11 +123,11 @@ Views.settings = async function () {
   const cfg = await App.config();
 
   App.page('page page-settings', `
-    <div class="page-head"><div><h1>Settings</h1><p class="muted">All data stays on this device (IndexedDB). No account, no cloud.</p></div></div>
+    <div class="page-head"><div><h1>Settings</h1><p class="muted">All data stays on this device (IndexedDB). No account, no cloud — ek bhi cheez bahar nahi jaati.</p></div></div>
 
     <div class="two-col">
       <div class="card">
-        <h3>Candidate</h3>
+        <div class="card-head"><h3>👤 Candidate</h3><span class="muted small">exam panel me yahi dikhega</span></div>
         <div class="b-row"><label>Name (shown in the exam panel)</label>
           <input type="text" id="st-name" value="${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}"></div>
         <div class="b-row"><label>Default language (instructions &amp; exam UI)</label>
@@ -111,7 +139,7 @@ Views.settings = async function () {
       </div>
 
       <div class="card">
-        <h3>Exam Configuration <span class="muted small">(EXAM_CONFIG)</span></h3>
+        <div class="card-head"><h3>⚙️ Exam Configuration</h3><span class="muted small">naye tests inhi settings se bante hain</span></div>
         <div class="qe-grid">
           <label>Timer mode
             <select id="st-timermode">
@@ -141,23 +169,27 @@ Views.settings = async function () {
     </div>
 
     <div class="card">
-      <h3>Data Management</h3>
+      <div class="card-head"><h3>💾 Data Management</h3><span class="muted small">backup · restore · storage</span></div>
       <div class="dm-grid">
         <div><b>Storage used</b><div id="st-usage" class="muted">Calculating…</div></div>
         <div><b>Question bank</b><div class="muted" id="st-qcount">…</div></div>
       </div>
       <div class="head-actions" style="margin-top:12px">
-        <button class="btn btn-plain" id="st-export">Export all data (JSON backup)</button>
-        <button class="btn btn-plain" id="st-reseed">Reload bundled PYQ bank</button>
-        <p class="muted small" style="margin-top:8px">The backup JSON restores your questions, tests, attempts and analytics — drop it on the <a href="#/import">Import</a> page to restore.</p>
-        <button class="btn btn-danger" id="st-wipe">Erase all data</button>
+        <button class="btn btn-plain" id="st-export">⬇ Export all data (JSON backup)</button>
+        <button class="btn btn-plain" id="st-reseed">♻ Reload bundled PYQ bank</button>
       </div>
-      <p class="muted small" style="margin-top:8px">Backup includes the full question bank, tests, attempts and analytics. Restore by importing the JSON on the Import page (as a questions file it restores the bank; full restore replaces everything).</p>
+      <p class="muted small" style="margin:8px 0 0">Backup JSON me questions, tests, attempts aur analytics sab aata hai — <a href="#/import">Import</a> page par drop karke restore karo.</p>
     </div>
 
     <div class="card">
-      <h3>Install / Offline</h3>
+      <div class="card-head"><h3>📱 Install / Offline</h3><span class="muted small">PWA — bilkul offline chalta hai</span></div>
       <p class="muted">This app is a PWA — install it from your browser menu ("Install app" / "Add to Home Screen") and it works fully offline, including exams. For permanent local use, keep a copy of the app folder and serve it with any static server (e.g. <code>python -m http.server</code>).</p>
+    </div>
+
+    <div class="card danger-zone">
+      <div class="card-head"><h3>⚠️ Danger Zone</h3><span class="muted small">sab kuch mit jaata hai</span></div>
+      <p class="muted small" style="margin:0 0 12px">Question bank, tests, attempts aur analytics — sab permanently delete ho jaayega. Pehle backup le lo!</p>
+      <button class="btn btn-danger" id="st-wipe">Erase all data</button>
     </div>
   `);
 

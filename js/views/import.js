@@ -10,23 +10,33 @@ Views.importPage = async function () {
   App.page('page page-import', `
     <div class="page-head">
       <div><h1>Import Question Bank</h1>
-      <p class="muted">${total.toLocaleString('en-IN')} questions currently on this device. Imports merge into the bank — duplicates are detected by content. <b>Naye questions se tests apne aap ban jaati hain</b> — tumhe manually kuch nahi banana.</p></div>
+      <p class="muted"><b>${total.toLocaleString('en-IN')}</b> questions currently on this device. Imports merge ho jaate hain — duplicates content se detect hote hain. <b>Naye questions se tests apne aap ban jaati hain</b> — tumhe manually kuch nahi banana.</p></div>
     </div>
 
     <div class="import-grid">
       <div class="card import-card">
-        <h3>1 · Choose files</h3>
-        <p class="muted small">Supported formats:</p>
-        <ul class="fmt-list">
-          <li><b>TXT</b> — the master PYQ format (Q1. / (A)–(D) / Answer:), numbered-option variants, and generic formats. Auto-detected.</li>
-          <li><b>JSON</b> — array of questions, or <code>{ "questions": [...] }</code>. Keys: subject, question, optionA–D, answer, explanation, chapter, topic, difficulty, year, source, image. <b>Hindi+English bilingual:</b> <code>questionTextHi</code>, <code>explanationHi</code>.</li>
-          <li><b>CSV</b> — same columns as JSON (header row required, quote fields containing commas).</li>
-          <li><b>DOCX</b> — unzipped locally in your browser; embedded images are kept as data URIs.</li>
-          <li><b>PDF</b> — best-effort text extraction (text-layer PDFs only). Scanned PDFs must be converted to TXT/DOCX first.</li>
-        </ul>
+        <div class="card-head"><h3>1 · Choose files</h3></div>
+        <div class="fmt-chips">
+          <span class="fmt-chip"><b>TXT</b> master + auto-detect</span>
+          <span class="fmt-chip"><b>JSON</b> bilingual ready</span>
+          <span class="fmt-chip"><b>CSV</b></span>
+          <span class="fmt-chip"><b>DOCX</b> images kept</span>
+          <span class="fmt-chip"><b>PDF</b> text-layer only</span>
+        </div>
+        <details class="fmt-details">
+          <summary>Format details</summary>
+          <ul class="fmt-list">
+            <li><b>TXT</b> — the master PYQ format (Q1. / (A)–(D) / Answer:), numbered-option variants, and generic formats. Auto-detected.</li>
+            <li><b>JSON</b> — array of questions, or <code>{ "questions": [...] }</code>. Keys: subject, question, optionA–D, answer, explanation, chapter, topic, difficulty, year, source, image. <b>Hindi+English bilingual:</b> <code>questionTextHi</code>, <code>explanationHi</code>.</li>
+            <li><b>CSV</b> — same columns as JSON (header row required, quote fields containing commas).</li>
+            <li><b>DOCX</b> — unzipped locally in your browser; embedded images are kept as data URIs.</li>
+            <li><b>PDF</b> — best-effort text extraction (text-layer PDFs only). Scanned PDFs must be converted to TXT/DOCX first.</li>
+          </ul>
+        </details>
         <div class="drop-zone" id="drop-zone" tabindex="0" role="button" aria-label="Choose question files to import">
-          <div class="dz-ic">📁</div>
+          <div class="dz-ic">📥</div>
           <b>Drop files here</b> or <span class="link">browse</span>
+          <span class="dz-hint">TXT · JSON · CSV · DOCX · PDF</span>
           <input type="file" id="file-input" multiple accept=".txt,.json,.csv,.docx,.pdf" class="visually-hidden">
         </div>
         <div class="b-row" style="margin-top:14px">
@@ -51,7 +61,7 @@ Views.importPage = async function () {
       </div>
 
       <div class="card import-card">
-        <h3>2 · Import report</h3>
+        <div class="card-head"><h3>2 · Import report</h3></div>
         <div id="imp-progress" hidden>
           <div class="progress-bar"><div class="progress-fill" id="imp-fill"></div></div>
           <div class="muted small" id="imp-status">Working…</div>
@@ -62,7 +72,7 @@ Views.importPage = async function () {
     </div>
 
     <div class="card">
-      <h3>Templates</h3>
+      <div class="card-head"><h3>📄 Templates</h3><span class="muted small">download → fill → import back</span></div>
       <p class="muted small">Download a template, fill it, and import it back.</p>
       <button class="btn btn-plain" id="tpl-json">JSON template</button>
       <button class="btn btn-plain" id="tpl-csv">CSV template</button>

@@ -60,7 +60,10 @@ Views.questionBank = async function (state) {
     <div class="page-head">
       <div>
         <h1>Question Bank</h1>
-        <p class="muted">${['physics','mathematics','english','raga'].map(s => `${cfg.subjects.find(x => x.id === s)?.name || s}: <b>${(bank[s] || {}).total || 0}</b> (${(bank[s] || {}).usable || 0} usable)`).join(' · ')}</p>
+        <div class="qb-subj-chips">
+          ${['physics','mathematics','english','raga'].map(s => `<span class="t2-chip"><i class="subject-dot sd-${s}"></i>${cfg.subjects.find(x => x.id === s)?.name || s} <b>${(bank[s] || {}).total || 0}</b><span class="muted">·${(bank[s] || {}).usable || 0} usable</span></span>`).join('')}
+          <span class="t2-chip t2-more-chip"><b>${bankTotal.toLocaleString('en-IN')}</b> total</span>
+        </div>
       </div>
       <div class="head-actions">
         <a class="btn btn-plain" href="#/import" title="Import question files">⬆ Import</a>
@@ -107,8 +110,8 @@ Views.questionBank = async function (state) {
         <p class="muted small" style="margin:6px 0">Bundled PYQ bank (3,000+ questions) ek click me wapas restore ho jayegi — tumhare tests/attempts/notes ko koi nuksan nahi hoga.</p>
         <button class="btn btn-primary" id="qb-restore">♻️ Restore Bundled Question Bank</button>
       </div>` : ''}
-      <table class="tbl qb-tbl">
-        <thead><tr><th style="width:44px">#</th><th>Question</th><th style="width:110px">Subject</th><th style="width:150px">Chapter</th><th style="width:70px">Diff</th><th style="width:90px">Key</th><th style="width:150px">Actions</th></tr></thead>
+      <div class="tbl-scroll"><table class="tbl qb-tbl">
+        <thead><tr><th style="width:44px">#</th><th>Question</th><th style="width:110px">Subject</th><th class="qb-col-chapter" style="width:150px">Chapter</th><th class="qb-col-diff" style="width:70px">Diff</th><th style="width:90px">Key</th><th style="width:150px">Actions</th></tr></thead>
         <tbody>
         ${slice.map((q, i) => `<tr class="qb-row" data-id="${q.id}">
           <td class="muted">${(state.page - 1) * PER + i + 1}</td>
@@ -117,8 +120,8 @@ Views.questionBank = async function (state) {
             <div class="muted small">${AVUtil.esc(q.source || '')}${q.year ? ' · ' + q.year : ''}${q.figureBased ? ' · <b>figure-based</b>' : ''}${seen[q.id] ? ` · seen ${seen[q.id]}×` : ''}${wrong[q.id] ? ` · <span class="bad-txt">wrong ${wrong[q.id]}×</span>` : ''}</div>
           </td>
           <td>${AVUtil.esc((cfg.subjects.find(s => s.id === q.subject)?.name) || q.subject)}</td>
-          <td class="small">${AVUtil.esc(q.chapter)}</td>
-          <td class="small">${AVUtil.esc(q.difficulty || 'medium')}</td>
+          <td class="small qb-col-chapter">${AVUtil.esc(q.chapter)}</td>
+          <td class="small qb-col-diff">${AVUtil.esc(q.difficulty || 'medium')}</td>
           <td>${q.correctAnswer ? `<span class="badge good">${q.correctAnswer}</span>` : '<span class="badge">—</span>'}</td>
           <td class="qb-actions">
             <button class="btn btn-mini" data-act="view">Preview</button>
@@ -127,11 +130,13 @@ Views.questionBank = async function (state) {
           </td>
         </tr>`).join('') || '<tr><td colspan="7" class="muted pad">No questions match these filters.</td></tr>'}
         </tbody>
-      </table>
-      ${pages > 1 ? `<div class="pager">
-        <button class="btn btn-plain" data-pg="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''}>← Prev</button>
-        <span>Page ${state.page} of ${pages}</span>
-        <button class="btn btn-plain" data-pg="${state.page + 1}" ${state.page >= pages ? 'disabled' : ''}>Next →</button>
+      </table></div>
+      ${pages > 1 ? `<div class="pager t2-pager" aria-label="Pages">
+        <button data-pg="${state.page - 1}" ${state.page <= 1 ? 'disabled' : ''} aria-label="Previous page">‹</button>
+        ${Array.from({ length: pages }, (_, i) => i + 1).slice(Math.max(0, state.page - 3), Math.max(0, state.page - 3) + 5).map(n =>
+          `<button data-pg="${n}" class="${n === state.page ? 'on' : ''}">${n}</button>`).join('')}
+        <button data-pg="${state.page + 1}" ${state.page >= pages ? 'disabled' : ''} aria-label="Next page">›</button>
+        <span class="pg-info">${rows.length.toLocaleString('en-IN')} questions</span>
       </div>` : ''}
     </div>
     <div id="qb-modal-host"></div>
