@@ -172,7 +172,7 @@ async function main() {
   const t2qids = await G('ExamScreen.attempt.sections.physics.questionIds');
   const overlap = t1qids.filter(q => t2qids.includes(q)).length;
   const sameOrder = JSON.stringify(t1qids) === JSON.stringify(t2qids);
-  T('retake repeats the SAME paper (100% overlap, same order)', overlap === 25 && sameOrder, overlap + ' of 25 overlap, order=' + sameOrder);
+  T('retake gives a FRESH paper (retakeMode v2 — kam repeat, same blueprint)', overlap <= 5, overlap + ' of 25 overlap — thoda hi repeat hona chahiye');
   // abandon this attempt cleanly
   await G('Engine.submitExam(ExamScreen.attempt, TREF2, "user", Date.now()); ExamScreen.finalize("user", true)');
 

@@ -164,30 +164,27 @@ const Generator = (() => {
         break;
       }
       case 'smart': {
-        /* Real-paper feel:
-           ~70% brand-new questions, ~20% revision of previously-wrong/skipped ones,
-           ~10% one-more-confirmation of once-correct ones.
-           Skipped questions count as revision — they MUST come back.
-           A question answered correctly MASTERED_AFTER times is RETIRED — it only
-           comes back if the pool literally cannot fill the paper without it. */
-        const t1 = AVUtil.shuffle(p.filter(q => seenCount(q) === 0));          // fresh
-        const t2 = AVUtil.shuffle(p.filter(q => seenCount(q) > 0 && okCount(q) === 0)) // seen, never correct → revise
-          .sort((a, b) => reviseWeight(b) - reviseWeight(a));                  // wrong+skipped first
-        const t3 = AVUtil.shuffle(p.filter(q => okCount(q) === 1));            // correct once → re-confirm
-        const t4 = p.filter(q => okCount(q) >= MASTERED_AFTER)                 // mastered → last resort
+        /* User-tuned repetition budget — paper hamesha fresh-heavy rahe:
+           ~5% previously-SKIPPED + ~5% previously-WRONG + ~1% once-correct
+           revision; baaki sab brand-new questions.
+           (Pehle 20-35% + 10% revision quota tha — "same paper" feel aa
+           raha tha. Backlog kuch bhi ho, ye caps kabhi nahi badhte.) */
+        const fresh = AVUtil.shuffle(p.filter(q => seenCount(q) === 0));
+        const wrongQ = AVUtil.shuffle(p.filter(q => wrongCount(q) > 0 && okCount(q) === 0))
+          .sort((a, b) => reviseWeight(b) - reviseWeight(a));   // sabse purana galti pehle
+        const skipQ = AVUtil.shuffle(p.filter(q => skipCount(q) > 0 && wrongCount(q) === 0 && okCount(q) === 0))
+          .sort((a, b) => reviseWeight(b) - reviseWeight(a));   // jo kabhi face hi nahi hua
+        const t3 = AVUtil.shuffle(p.filter(q => okCount(q) === 1));            // correct once → 1% re-confirm
+        const t4 = p.filter(q => okCount(q) >= MASTERED_AFTER)                 // mastered → absolute last resort
           .sort((a, b) => seenCount(a) - seenCount(b));
-        // revision quota: 20% natural mix, but if the pending wrong/skipped backlog
-        // is bigger, grow up to 35% so skipped questions are GUARANTEED to come back
-        const pendingRevise = t2.length;
-        const want2 = Math.min(Math.round(n * 0.35), Math.max(Math.round(n * 0.2), pendingRevise));
-        const want3 = Math.round(n * 0.1);
         const take = (arr, k) => arr.splice(0, Math.max(0, k));
-        let picked = take(t2, want2).concat(take(t3, want3));
-        // revision candidates go FIRST so content-dupes in the fresh pool can never
-        // steal their slot in the dedupe pass — skipped/wrong questions are guaranteed
-        picked = picked.concat(take(t1, n - picked.length));
-        for (const arr of [t2, t3, t1, t4]) { if (picked.length >= n) break; picked = picked.concat(take(arr, n - picked.length)); }
-        ranked = picked.concat(t1, t2, t3, t4);
+        let picked = take(skipQ, Math.round(n * 0.05))
+          .concat(take(wrongQ, Math.round(n * 0.05)))
+          .concat(take(t3, Math.max(0, Math.round(n * 0.01))));
+        picked = picked.concat(take(fresh, n - picked.length));
+        // safety valve: unseen pool khatam ho gaya ho to hi baaki se bharo
+        for (const arr of [fresh, skipQ, wrongQ, t3, t4]) { if (picked.length >= n) break; picked = picked.concat(take(arr, n - picked.length)); }
+        ranked = picked.concat(fresh, skipQ, wrongQ, t3, t4);
         break;
       }
       case 'weak-topic': {

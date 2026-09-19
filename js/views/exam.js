@@ -124,11 +124,12 @@ const ExamScreen = {
     const optionsHtml = optOrder.map(({ letter, orig }) => {
       const o = q.options.find(x => x.id === orig) || { text: '' };
       const selected = r.sel === orig;
+      const oText = (this.qLang === 'hi' && o.textHi) ? o.textHi : o.text; // हिन्दी view me option bhi हिन्दी
       return `<label class="opt ${selected ? 'selected' : ''}" data-opt="${orig}">
         <input type="radio" name="opt" value="${orig}" ${selected ? 'checked' : ''} aria-label="Option ${letter}">
         <span class="opt-radio" aria-hidden="true"></span>
         <span class="opt-letter">${letter}</span>
-        <span class="opt-text">${AVUtil.qtext(o.text)}</span>
+        <span class="opt-text">${AVUtil.qtext(oText)}</span>
       </label>`;
     }).join('');
 

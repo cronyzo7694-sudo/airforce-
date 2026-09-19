@@ -74,7 +74,7 @@ async function main() {
     try { qCount = await G('DB.count("questions")'); } catch (e) {}
     if (qCount >= 3100) break;
   }
-  T('question bank seeded (2573 core + 732 bilingual RAGA master = 3305, v1.4.11 physics bilingual)', qCount >= 3290 && qCount <= 3320, 'got ' + qCount);
+  T('question bank seeded (2475 core + 732 bilingual RAGA master = 3207, v1.4.13 physics deduped)', qCount >= 3180 && qCount <= 3230, 'got ' + qCount);
   const seededFlag = await G('Store.getMeta("seeded", false)');
   T('seeded flag set', seededFlag === true);
   let testCount = 0;

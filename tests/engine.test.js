@@ -452,9 +452,9 @@ T('smart composition is mostly fresh with some revision', () => {
   const nWrong = picked.filter(q => qstats.wrong[q.id]).length;
   const nOnce = picked.filter(q => qstats.correct[q.id] === 1).length;
   const nFresh = picked.filter(q => !qstats.seen[q.id]).length;
-  eq(nWrong, 9, 'revision grows to the 35% cap when the wrong/skipped backlog is big (round(25×0.35))');
-  eq(nOnce, 3, '~10% re-confirm of once-correct (round(25×0.1))');
-  eq(nFresh, 13, 'rest is fresh — paper still majority new questions');
+  eq(nWrong, 1, 'wrong revision capped at 5% (round(25×0.05)) — user-tuned, backlog kuch bhi ho');
+  eq(nOnce, 0, 'once-correct re-confirm capped at 1% (round(25×0.01)=0)');
+  eq(nFresh, 24, 'rest is fresh — paper overwhelmingly new questions');
 });
 
 T('smart guarantees SKIPPED questions come back in the next paper', () => {
@@ -464,19 +464,19 @@ T('smart guarantees SKIPPED questions come back in the next paper', () => {
   const picked = Generator.pick(pool, 25, 'smart', qstats);
   eq(picked.length, 25, '25 picked');
   const nSkipped = picked.filter(q => qstats.skipped[q.id]).length;
-  eq(nSkipped, 5, 'every skipped question repeats');
+  eq(nSkipped, 1, 'skipped questions repeat at the 5% budget (round(25×0.05)) — kam repeat, user-tuned');
 });
 
-T('smart prioritises skipped over wrong in revision slots', () => {
-  const pool = mkPool(40, 'sw');
+T('smart gives skipped & wrong their own separate revision budgets', () => {
+  const pool = mkPool(80, 'sw');
   const qstats = { seen: {}, wrong: {}, correct: {}, skipped: {} };
-  pool.slice(0, 4).forEach(q => { qstats.seen[q.id] = 1; qstats.skipped[q.id] = 1; });  // 4 skipped
-  pool.slice(4, 8).forEach(q => { qstats.seen[q.id] = 1; qstats.wrong[q.id] = 1; });   // 4 wrong
-  const picked = Generator.pick(pool, 8, 'smart', qstats); // want2 = min(3, max(2, 8)) = 3
+  pool.slice(0, 10).forEach(q => { qstats.seen[q.id] = 1; qstats.skipped[q.id] = 1; }); // 10 skipped
+  pool.slice(10, 20).forEach(q => { qstats.seen[q.id] = 1; qstats.wrong[q.id] = 1; });  // 10 wrong
+  const picked = Generator.pick(pool, 40, 'smart', qstats); // skip 5% + wrong 5% = 2 + 2 slots
   const nSkipped = picked.filter(q => qstats.skipped[q.id]).length;
   const nWrong = picked.filter(q => qstats.wrong[q.id]).length;
-  eq(nSkipped, 3, 'all 3 revision slots go to skipped questions (weight 2)');
-  eq(nWrong, 0, 'wrong questions wait for the next paper');
+  eq(nSkipped, 2, 'skipped budget round(40×0.05)=2 — apna guaranteed hissa');
+  eq(nWrong, 2, 'wrong budget round(40×0.05)=2 — dono alag-alag slots paate hain');
 });
 
 /* ---------- fixed test-series planner ---------- */

@@ -80,13 +80,15 @@ const T = (n, ok, x) => { if (ok) { P++; console.log('  ✓', n); } else { F++; 
   /* ── verify final state ── */
   const fin = await G('(async () => { const all = await DB.getAll("questions"); return { total: all.length, subjects: [...new Set(all.map(q => q.subject))], raga: all.filter(q => q.subject === "raga").length, ragaBi: all.filter(q => q.subject === "raga" && q.questionTextHi && q.explanationHi).length, bad: all.filter(q => String(q.subject).match(/reasoning|general-awareness/)).length, hashes: new Set(all.map(q => q.dupeHash)).size }; })()');
   console.log('final state:', JSON.stringify(fin));
-  T('total questions = 2582 core + 732 raga = 3314 (v1.4.12: physics 918)', fin.total === 3314, fin.total);
+  T('total questions = 2475 core + 732 raga = 3207 (v1.4.13: physics deduped 811)', fin.total === 3207, fin.total);
   T('no foreign subjects left', fin.bad === 0 && fin.subjects.every(s => ['physics','mathematics','english','raga'].includes(s)), JSON.stringify(fin.subjects));
   T('raga pool = 732', fin.raga === 732, fin.raga);
   T('every raga record fully bilingual', fin.ragaBi === 732, fin.ragaBi);
   T('zero duplicate dupeHashes', fin.hashes === fin.total, fin.hashes + ' vs ' + fin.total);
-  const tst = await G('(async () => (await DB.getAll("tests")).map(t => t.id).sort())()');
-  T('orphaned series test deleted, custom + attempted + clean kept', JSON.stringify(tst) === JSON.stringify(['t_att','t_custom','t_ok']), JSON.stringify(tst));
+  const tst = await G('(async () => { const ts = await DB.getAll("tests"); const qs = new Set((await DB.getAllKeys("questions"))); const ids = ts.map(t => t.id).sort(); const orphans = ts.filter(t => t.series && t.sections.some(s => (s.questionIds||[]).some(qid => !qs.has(qid)))).map(t => t.id); return { ids, orphans }; })()');
+  T('orphaned series test deleted, custom + attempted + clean kept (autoBuild ke naye series tests allowed)',
+    ['t_att','t_custom','t_ok'].every(x => tst.ids.includes(x)) && !tst.ids.includes('t_orphan'),
+    JSON.stringify(tst.ids));
   const notes = await G('(async () => { await DB.put("notes", { id: "n1", qid: "' + newQ.id + '", text: "mera note" }); return true; })()');
   T('note write ok on survivor', notes === true);
   const rerun = await G('Bank.syncBundled()');

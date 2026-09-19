@@ -50,15 +50,26 @@ const Bank = (() => {
           (q.correctAnswer && dupe.correctAnswer && q.correctAnswer !== dupe.correctAnswer); // bundle corrects a wrong key
         const needsHi = (q.questionTextHi && !dupe.questionTextHi) || (q.explanationHi && !dupe.explanationHi) || (q.explanation && !dupe.explanation);
         const needsCh = dupe.chapter === 'General' && q.chapter && q.chapter !== 'General'; // bundle has the real chapter
-        if (needsKey || needsHi || needsCh) {
+        // option-level Hindi upgrade: English texts same hain aur naye options me
+        // textHi bhara hai → dupe ke options me textHi merge kar do (ids/text safe)
+        let opts = dupe.options;
+        if (Array.isArray(q.options) && q.options.length === (dupe.options || []).length &&
+            q.options.every((o, i) => (o.text || '').trim() === String((((dupe.options || [])[i]) || {}).text || '').trim())) {
+          const upgraded = (dupe.options || []).map((d, i) =>
+            (q.options[i].textHi && !d.textHi) ? Object.assign({}, d, { textHi: q.options[i].textHi }) : d);
+          if (upgraded.some((d, i) => d.textHi && !dupe.options[i].textHi)) opts = upgraded;
+        }
+        const needsOpts = opts !== dupe.options;
+        if (needsKey || needsHi || needsCh || needsOpts) {
           // upgrade the existing record: fill/correct the answer key, Hindi fields,
-          // real chapter-topic — bundle is authoritative (same question, both
-          // languages in ONE record — never a duplicate row)
+          // real chapter-topic, option-level Hindi — bundle is authoritative (same
+          // question, both languages in ONE record — never a duplicate row)
           const merged = Object.assign({}, dupe, {
             correctAnswer: q.correctAnswer || dupe.correctAnswer,
             explanation: q.explanation || dupe.explanation,
             questionTextHi: q.questionTextHi || dupe.questionTextHi || null,
             explanationHi: q.explanationHi || dupe.explanationHi || null,
+            options: opts,
             chapter: (dupe.chapter === 'General' && q.chapter && q.chapter !== 'General') ? q.chapter : (dupe.chapter || q.chapter),
             topic: (dupe.chapter === 'General' && q.topic && q.topic !== 'General') ? q.topic : (dupe.topic || q.topic),
             id: dupe.id,
@@ -157,7 +168,7 @@ const Bank = (() => {
      RAGA sawal) — ye list devices se saaf ho jaati hai. List version badalne
      par dobara chalta hai. Kabhi bhi user ke khud ke questions/delete nahi karta
      — sirf exact dupeHash match. */
-  const RETIRED_V = 1;
+  const RETIRED_V = 2;   // v2: physics spelling-twins + purane variants bhi prune honge
   async function pruneRetired() {
     try {
       const done = await Store.getMeta('retiredV', 0);
@@ -165,7 +176,7 @@ const Bank = (() => {
       const r = await fetch('data/retired-raga.json');
       if (!r.ok) return 0;
       const ret = await r.json();
-      const hs = new Set([].concat(ret.raga || [], ret.foreign || []));
+      const hs = new Set([].concat(ret.raga || [], ret.foreign || [], ret.physics || []));
       const doomed = [];
       await DB.cursor('questions', null, q => { if (hs.has(q.dupeHash)) doomed.push(q.id); });
       for (const id of doomed) { try { await DB.delete('questions', id); } catch (e) {} }
@@ -214,7 +225,14 @@ const Bank = (() => {
     // import ke BAAD prune — naya bank pehle purani records ko upgrade karta
     // hai, phir retired list wale (jo naye bank me nahi) saaf ho jaate hain
     const pr = await pruneRetired();
-    return { synced: true, imported, pruned: pr ? pr.questions : 0, testsDropped: pr ? pr.tests : 0 };
+    // naya material aaya hai to ready-made library bhi top-up ho — warna
+    // user baar-baar wahi purane papers dekhta hai (autoBuild zero-overlap
+    // naye tests banata hai, sirf unused questions se)
+    let built = 0;
+    if (imported > 0 || (pr && pr.tests > 0)) {
+      try { built = (await Generator.autoBuild()) || 0; } catch (e) { /* library top-up optional */ }
+    }
+    return { synced: true, imported, pruned: pr ? pr.questions : 0, testsDropped: pr ? pr.tests : 0, built };
   }
 
   return { importBatch, seedIfNeeded, syncBundled, pruneRetired, bankStats, contentId, dupeId };

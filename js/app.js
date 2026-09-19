@@ -15,12 +15,13 @@ const App = {
   async config() {
     const saved = await Store.getSetting('config', null);
     if (saved) {
-      // one-time migration: the old default was 'fresh' (new questions on reattempt)
-      // — reattempt should repeat the SAME paper. Users who explicitly pick
-      // 'fresh' in settings after this migration keep their choice.
-      if (saved.retakeMode === 'fresh' && !saved._retakeMigrated) {
-        saved.retakeMode = 'same';
-        saved._retakeMigrated = true;
+      // one-time migration v2 (user-tuned): reattempt ab HAMESHA naya paper deta
+      // hai (same blueprint, naye questions) — repeat kam karne ka faisla.
+      // Generator.pick('smart') me bhi revision caps tight kar diye gaye hain
+      // (5% skipped + 5% wrong + 1% once-correct).
+      if (!saved._retakeMigrated2) {
+        saved._retakeMigrated2 = true;
+        if (saved.retakeMode !== 'random') saved.retakeMode = 'fresh';
         try { await Store.setSetting('config', saved); } catch (e) { /* non-fatal */ }
       }
       this.configCache = saved;
