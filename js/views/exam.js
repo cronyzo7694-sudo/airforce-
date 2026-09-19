@@ -175,6 +175,7 @@ const ExamScreen = {
     const header = `
       <header class="exam-header">
         <button class="palette-toggle" id="drawer-btn" aria-label="${t('questionPalette')}"><span aria-hidden="true">☰</span></button>
+        <img class="eh-logo" src="icons/icon-96.png" alt="Kineora Exam logo">
         <div class="eh-name">
           <div class="eh-exam">${AVUtil.esc(App.configCache?.name || 'Air Force Agniveervayu')}</div>
           <div class="eh-test small muted">${AVUtil.esc(test.name)}</div>

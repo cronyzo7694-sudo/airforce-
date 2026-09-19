@@ -28,7 +28,7 @@ const T = (n, ok, x) => { if (ok) { P++; console.log('  ✓', n); } else { F++; 
   window.scrollTo = () => {}; window.HTMLElement.prototype.scrollTo = () => {};
   const G = e => window.eval(e);
   await waitFor(() => (doc.getElementById('app') || {}).innerHTML.includes('FULL MOCK TEST'), 60000);
-  await waitFor(async () => { try { return (await G('DB.count("questions")')) >= 3000; } catch (e) { return false; } }, 60000);
+  await waitFor(async () => { try { return (await G('DB.count("questions")')) >= 2700; } catch (e) { return false; } }, 60000);
   console.log('fresh boot:', await G('DB.count("questions")'), 'questions |', await G('DB.count("tests")'), 'tests');
 
   /* ── turn into a real v1.4.2 device ── */
@@ -37,7 +37,7 @@ const T = (n, ok, x) => { if (ok) { P++; console.log('  ✓', n); } else { F++; 
   const core = ['physics', 'mathematics', 'english'].flatMap(s => JSON.parse(fs.readFileSync('data/bank-' + s + '.json', 'utf-8')));
   window.__oldArr = core.concat(old);
   const rep = await G('(async () => Bank.importBatch(window.__oldArr))()');
-  T('old v1.4.2 bank imported (2379 core + 1197 raga)', rep && rep.imported > 3400, JSON.stringify(rep && { i: rep.imported, d: rep.duplicates }));
+  T('old v1.4.2 bank imported (v1.4.17 core 2098 + old raga 1221)', rep && rep.imported > 3300, JSON.stringify(rep && { i: rep.imported, d: rep.duplicates }));
 
   /* ── bad push pollution (as it really happened: original subjects, direct DB write) ── */
   const his = JSON.parse(fs.readFileSync(path.join(ROOT, 'tests', 'fixtures', 'remote-raga-802.json'), 'utf-8'));
@@ -80,7 +80,7 @@ const T = (n, ok, x) => { if (ok) { P++; console.log('  ✓', n); } else { F++; 
   /* ── verify final state ── */
   const fin = await G('(async () => { const all = await DB.getAll("questions"); return { total: all.length, subjects: [...new Set(all.map(q => q.subject))], raga: all.filter(q => q.subject === "raga").length, ragaBi: all.filter(q => q.subject === "raga" && q.questionTextHi && q.explanationHi).length, bad: all.filter(q => String(q.subject).match(/reasoning|general-awareness/)).length, hashes: new Set(all.map(q => q.dupeHash)).size }; })()');
   console.log('final state:', JSON.stringify(fin));
-  T('total questions = 2182 core + 641 raga = 2823 (v1.4.16: OCR variant-dupes hata)', fin.total === 2823, fin.total);
+  T('total questions = 2098 core + 641 raga = 2739 (v1.4.17: math descramble-twins hata)', fin.total === 2739, fin.total);
   T('no foreign subjects left', fin.bad === 0 && fin.subjects.every(s => ['physics','mathematics','english','raga'].includes(s)), JSON.stringify(fin.subjects));
   T('raga pool = 641', fin.raga === 641, fin.raga);
   T('every raga record fully bilingual', fin.ragaBi === 641, fin.ragaBi);

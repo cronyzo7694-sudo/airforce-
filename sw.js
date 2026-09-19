@@ -3,7 +3,7 @@
  * Cache-first for the immutable app shell + bundled bank data.
  * ============================================================ */
 
-const SW_VERSION = 'kineora-exam-v1.4.16';
+const SW_VERSION = 'kineora-exam-v1.4.17';
 
 const APP_SHELL = [
   './',
@@ -35,7 +35,8 @@ const APP_SHELL = [
   './data/bank-raga.json',
   './data/retired-raga.json',
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './icons/icon-96.png'
 ];
 
 self.addEventListener('install', e => {

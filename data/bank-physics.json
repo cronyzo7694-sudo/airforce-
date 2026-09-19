@@ -30811,7 +30811,7 @@
   "topic": "General",
   "difficulty": "medium",
   "questionText": "1 kWh = _____ J",
-  "questionTextHi": null,
+  "questionTextHi": "1 kWh बराबर होता है _____ जूल (J) के?",
   "image": null,
   "options": [
    {
@@ -30832,8 +30832,8 @@
    }
   ],
   "correctAnswer": "C",
-  "explanation": "",
-  "explanationHi": null,
+  "explanation": "1 kWh = 1000 W × 3600 s = 3.6 × 10⁶ J (commercial unit of electrical energy).",
+  "explanationHi": "1 kWh = 1000 W × 3600 s = 3.6 × 10⁶ J — यह विद्युत ऊर्जा की व्यावसायिक इकाई (1 यूनिट) है।",
   "source": "PYQ · 05 Nov 2020 · Prepp (Group X)",
   "year": 2020,
   "tags": [
@@ -30852,7 +30852,7 @@
   "topic": "General",
   "difficulty": "medium",
   "questionText": "1 Tesla equals to",
-  "questionTextHi": null,
+  "questionTextHi": "1 टेस्ला (Tesla) बराबर है:",
   "image": null,
   "options": [
    {
@@ -30873,8 +30873,8 @@
    }
   ],
   "correctAnswer": "A",
-  "explanation": "",
-  "explanationHi": null,
+  "explanation": "1 Tesla = 1 Wb/m² = 1 kg/(A·s²) = 10⁴ Gauss (SI unit of magnetic field).",
+  "explanationHi": "1 T = 1 Wb/m² = 1 kg/(A·s²) = 10⁴ गॉस — चुंबकीय क्षेत्र B का SI मात्रक टेस्ला है।",
   "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group X)",
   "year": 2021,
   "tags": [

@@ -48,7 +48,7 @@ const App = {
       const needSeed = !(await Store.getMeta('seeded', false));
       if (needSeed) {
         document.getElementById('app').innerHTML =
-          `<div class="page"><div class="seed-box"><div class="seed-spin"></div>
+          `<div class="page"><div class="seed-box"><img class="seed-logo" src="icons/icon-192.png" alt="Kineora Exam logo"><div class="seed-spin"></div>
            <h3>Preparing your question bank…</h3>
            <p>Loading previous-year questions into local storage. This happens only once.</p></div></div>`;
         await Bank.seedIfNeeded();

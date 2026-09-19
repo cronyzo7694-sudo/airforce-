@@ -27880,13 +27880,13 @@
   }
  },
  {
-  "id": "q_75f42ef92fcb04c4",
+  "id": "q_0b682d8381136782",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Differentiation & Applications",
   "topic": "Differentiation",
   "difficulty": "medium",
-  "questionText": "d2 x20 ( ) Find dx2",
+  "questionText": "Find d²/dx² (x²⁰).",
   "image": null,
   "options": [
    {
@@ -27916,22 +27916,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0e4b62a2f10ae9c1",
+  "dupeHash": "049bca29610effa4",
   "paper": {
    "no": 1,
    "group": "X",
    "date": "04 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "d²/dx² (x²⁰) का मान ज्ञात कीजिए।",
+  "explanationHi": "d/dx(x²⁰) = 20x¹⁹ → दोबारा अवकलन: 20 × 19·x¹⁸ = 380x¹⁸।"
  },
  {
-  "id": "q_6aa43c56d06f372a",
+  "id": "q_0244dee40119802a",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "− −−−− − is equal to ? ∫ √ ax + b dx",
+  "questionText": "∫ √(ax + b) dx is equal to?",
   "image": null,
   "options": [
    {
@@ -27961,22 +27963,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0f86d4e7712de2f1",
+  "dupeHash": "037c5ff4e115184c",
   "paper": {
    "no": 1,
    "group": "X",
    "date": "04 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "∫ √(ax + b) dx किसके बराबर है?",
+  "explanationHi": "ax + b = t रखें → dt = a·dx → ∫√t·dt/a = (2/3a)(ax+b)^(3/2) + c।"
  },
  {
-  "id": "q_a702d2a6aaad27c9",
+  "id": "q_0737f07851127d31",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Sets, Relations & Functions",
   "topic": "Sets",
   "difficulty": "medium",
-  "questionText": "If n elements in a set A then the elements presents in power set are ?",
+  "questionText": "If there are n elements in set A, then the number of elements in its power set is?",
   "image": null,
   "options": [
    {
@@ -28006,67 +28010,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "07c9df90710d928b",
+  "dupeHash": "0b049225810e1572",
   "paper": {
    "no": 1,
    "group": "X",
    "date": "04 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि समुच्चय A में n अवयव हैं, तो उसके घात समुच्चय (power set) में अवयवों की संख्या कितनी है?",
+  "explanationHi": "प्रत्येक अवयव के लिए 2 विकल्प (रखना/न रखना) → कुल 2ⁿ उपसमुच्चय।"
  },
  {
-  "id": "q_dd6bd482c0c29016",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Binomial Theorem",
-  "topic": "Binomial Theorem",
-  "difficulty": "medium",
-  "questionText": "Find middle terms in the expansion of (x −",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2 × C510 / 5"
-   },
-   {
-    "id": "B",
-    "text": "C10 / 5"
-   },
-   {
-    "id": "C",
-    "text": "-2 × C510 / 5"
-   },
-   {
-    "id": "D",
-    "text": "None of the above"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "021bf018c111098e",
-  "paper": {
-   "no": 1,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_45d0bff97f265f82",
+  "id": "q_04f9331e81318b9a",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Vectors & 3D Geometry",
   "topic": "Vectors",
   "difficulty": "medium",
-  "questionText": "b⃗ If vectors then a3 is ? a⃗ = i^ j^ a3k^ b⃗ 3⃗ i^ Where and a⃗ = 3 −2 + =",
+  "questionText": "If vectors a⃗ = 3î − 2ĵ + a₃k̂ and b⃗ = 3î − 2ĵ + k̂, where a⃗ = b⃗, then a₃ is:",
   "image": null,
   "options": [
    {
@@ -28096,22 +28057,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0aac568071241527",
+  "dupeHash": "03f459c0112d23db",
   "paper": {
    "no": 1,
    "group": "X",
    "date": "04 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि सदिश a⃗ = 3î − 2ĵ + a₃k̂ और b⃗ = 3î − 2ĵ + k̂ हैं, जहाँ a⃗ = b⃗, तो a₃ का मान है:",
+  "explanationHi": "a⃗ = b⃗ होने पर संगत घटक बराबर होते हैं → a₃ = 1।"
  },
  {
-  "id": "q_188b6496be033441",
+  "id": "q_07bb975d51110a67",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Matrices & Determinants",
   "topic": "Matrices",
   "difficulty": "medium",
-  "questionText": "Find the determinant of the matrix",
+  "questionText": "Find the determinant of the matrix [[3, 2, 1], [3, 2, 1], [1, 0, 1]].",
   "image": null,
   "options": [
    {
@@ -28141,22 +28104,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "02954d00b10bc093",
+  "dupeHash": "054692b2d10ca2c7",
   "paper": {
    "no": 1,
    "group": "X",
    "date": "04 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "आव्यूह [3 2 1; 3 2 1; 1 0 1] के सारणिक का मान ज्ञात कीजिए।",
+  "explanationHi": "R₁ व R₂ समान पंक्तियाँ हैं → सारणिक = 0।"
  },
  {
-  "id": "q_51ccf19fc6ac71ed",
+  "id": "q_0207fe4c4119e012",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Differentiation & Applications",
   "topic": "Differentiation",
   "difficulty": "medium",
-  "questionText": "Find the order of the differential equation",
+  "questionText": "Find the order of the differential equation d³y/dx³ − 2d²y/dx² − y = 0.",
   "image": null,
   "options": [
    {
@@ -28186,22 +28151,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "004e83aba10c28d6",
+  "dupeHash": "0ea7ccd601157872",
   "paper": {
    "no": 1,
    "group": "X",
    "date": "04 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "अवकल समीकरण d³y/dx³ − 2d²y/dx² − y = 0 की कोटि (order) ज्ञात कीजिए।",
+  "explanationHi": "सबसे उच्च कोटि का व्युत्पन्न d³y/dx³ है → कोटि = 3।"
  },
  {
-  "id": "q_319f1eac739c70c5",
+  "id": "q_0304a884b117cc1b",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Coordinate Geometry",
   "topic": "Circles",
   "difficulty": "medium",
-  "questionText": "Find the equation of the circle whose end points of the diameter are (- 2, 4) and (4, 2) ?",
+  "questionText": "Find the equation of the circle whose end points of the diameter are (−2, 4) and (4, 2).",
   "image": null,
   "options": [
    {
@@ -28231,22 +28198,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "006f98fbb10f5351",
+  "dupeHash": "094c38871113643d",
   "paper": {
    "no": 1,
    "group": "X",
    "date": "04 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "उस वृत्त का समीकरण ज्ञात कीजिए जिसके व्यास के अंत बिंदु (−2, 4) और (4, 2) हैं।",
+  "explanationHi": "केंद्र = मध्यबिंदु (1, 3); r² = (4−1)² + (2−3)² = 10 → x² + y² − 2x − 6y = 0।"
  },
  {
-  "id": "q_1dfd22fb284521e0",
+  "id": "q_08ce83e8111f2093",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Sets, Relations & Functions",
   "topic": "Sets",
   "difficulty": "medium",
-  "questionText": "1 If and tan(A −B) = tan(A + B) = 3– √",
+  "questionText": "If tan(A + B) = √3 and tan(A − B) = 1/√3, then the values of A and B are respectively:",
   "image": null,
   "options": [
    {
@@ -28276,202 +28245,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0262208041188124",
+  "dupeHash": "044cd366111ab8f3",
   "paper": {
    "no": 1,
    "group": "X",
    "date": "04 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि tan(A + B) = √3 और tan(A − B) = 1/√3 है, तो A और B के मान क्रमशः हैं:",
+  "explanationHi": "A + B = 60°, A − B = 30° → A = 45°, B = 15°।"
  },
  {
-  "id": "q_47ee14cad1d193e2",
+  "id": "q_0a723aee51194d2f",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Binomial Theorem",
   "topic": "Binomial Theorem",
   "difficulty": "medium",
-  "questionText": "10 (x −2 Find middle termsin the expansion of x )",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "52 × C10 / 5"
-   },
-   {
-    "id": "B",
-    "text": "10C / 5"
-   },
-   {
-    "id": "C",
-    "text": "5-2 × C10 / 5"
-   },
-   {
-    "id": "D",
-    "text": "None of the above"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 04 Nov 2020 · SelfStudys (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08abb74c0111369a",
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_d30f9747b0741f08",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Vectors & 3D Geometry",
-  "topic": "Vectors",
-  "difficulty": "medium",
-  "questionText": "→b = →3^i −2^j + ^k →a = 3^i −2^j + a3^k Ifvectors then a3is ? Where and",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "-1"
-   },
-   {
-    "id": "B",
-    "text": "1"
-   },
-   {
-    "id": "C",
-    "text": "0"
-   },
-   {
-    "id": "D",
-    "text": "2"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 04 Nov 2020 · SelfStudys (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0d0d610ec1208ea4",
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_5f1954f3dc4a75b4",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "Find the area of the region bounded by the curves y =",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "8sq. units / 3"
-   },
-   {
-    "id": "B",
-    "text": "1sq. units / 3"
-   },
-   {
-    "id": "C",
-    "text": "2sq. units / 3"
-   },
-   {
-    "id": "D",
-    "text": "4sq. units / 3"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "00983928a10de0a6",
-  "paper": {
-   "no": 3,
-   "group": "X",
-   "date": "05 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_59282d7af2b8af74",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "n n+1 n+2 The value of i + i + i + i",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "-1"
-   },
-   {
-    "id": "C",
-    "text": "0"
-   },
-   {
-    "id": "D",
-    "text": "i"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "02f5efbba10ae44e",
-  "paper": {
-   "no": 3,
-   "group": "X",
-   "date": "05 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_5668a96a4db2003b",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Binomial Theorem",
-  "topic": "Binomial Theorem",
-  "difficulty": "medium",
-  "questionText": "Find the middle terms in the expansion of (x −",
+  "questionText": "Find the middle term in the expansion of (x − 1/x)¹⁸.",
   "image": null,
   "options": [
    {
@@ -28501,67 +28292,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "09ea79539110c5dd",
+  "dupeHash": "022f1e2b8114e570",
   "paper": {
    "no": 3,
    "group": "X",
    "date": "05 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "(x − 1/x)¹⁸ के प्रसार में मध्य पद ज्ञात कीजिए।",
+  "explanationHi": "n = 18 (सम) → मध्य पद T₁₀ = ¹⁸C₉·x⁹·(−1/x)⁹ = −¹⁸C₉।"
  },
  {
-  "id": "q_7a0de2352373bf10",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Coordinate Geometry",
-  "topic": "Conic Sections",
-  "difficulty": "medium",
-  "questionText": "The length of latus rectum of the ellipse",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "10"
-   },
-   {
-    "id": "B",
-    "text": "12"
-   },
-   {
-    "id": "C",
-    "text": "15"
-   },
-   {
-    "id": "D",
-    "text": "20"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "09fcad6aa10b9650",
-  "paper": {
-   "no": 3,
-   "group": "X",
-   "date": "05 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_2ad15b66c346f852",
+  "id": "q_0c39ae55c11bcbb6",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Differentiation & Applications",
   "topic": "Differentiation",
   "difficulty": "medium",
-  "questionText": "d2 log x Find dx2",
+  "questionText": "Find d²/dx² (log x).",
   "image": null,
   "options": [
    {
@@ -28591,22 +28339,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "01940100711733c5",
+  "dupeHash": "0dd5802ed11763f7",
   "paper": {
    "no": 3,
    "group": "X",
    "date": "05 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "d²/dx² (log x) का मान ज्ञात कीजिए।",
+  "explanationHi": "d/dx(log x) = 1/x → d²/dx²(log x) = −1/x²।"
  },
  {
-  "id": "q_fc5ad8513441c4e7",
+  "id": "q_09a9c45b01103bb2",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "sin3 Find d x dx",
+  "questionText": "Find d/dx (sin³x).",
   "image": null,
   "options": [
    {
@@ -28636,22 +28386,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "07b128c2a10bb702",
+  "dupeHash": "0a88252de10bd3d4",
   "paper": {
    "no": 3,
    "group": "X",
    "date": "05 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "d/dx (sin³x) का मान ज्ञात कीजिए।",
+  "explanationHi": "शृंखला नियम से d/dx(sin³x) = 3sin²x·cos x।"
  },
  {
-  "id": "q_a52afb6764fb2d6e",
+  "id": "q_0a24b59c4129e9e0",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "1 is equal to ? ∫ dx √ 4−9x2",
+  "questionText": "∫ dx/√(4 − 9x²) is equal to?",
   "image": null,
   "options": [
    {
@@ -28681,67 +28433,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "00c64c8a212570d0",
+  "dupeHash": "0d1487f051258221",
   "paper": {
    "no": 3,
    "group": "X",
    "date": "05 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "∫ dx/√(4 − 9x²) किसके बराबर है?",
+  "explanationHi": "मानक रूप: (1/3)sin⁻¹(3x/2) + c (a = 2, 3x = 2sinθ रखने पर)।"
  },
  {
-  "id": "q_41406b4a5a67abdc",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "Find the value of x if [ 2x 4",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "0"
-   },
-   {
-    "id": "B",
-    "text": "2"
-   },
-   {
-    "id": "C",
-    "text": "3"
-   },
-   {
-    "id": "D",
-    "text": "4"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b9ea5e0810ac874",
-  "paper": {
-   "no": 3,
-   "group": "X",
-   "date": "05 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_41ffc97004832b1c",
+  "id": "q_0efecf8621189c82",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Coordinate Geometry",
   "topic": "Straight Lines",
   "difficulty": "medium",
-  "questionText": "Find the equation of the line which makes intercepts 2 and - 3 on the line x-axis and the y-axis respectively ?",
+  "questionText": "Find the equation of the line which makes intercepts 2 and −3 on the x-axis and the y-axis respectively.",
   "image": null,
   "options": [
    {
@@ -28771,22 +28480,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "076e33a251105b0f",
+  "dupeHash": "07f86010311434c3",
   "paper": {
    "no": 3,
    "group": "X",
    "date": "05 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "उस रेखा का समीकरण ज्ञात कीजिए जो x-अक्ष और y-अक्ष पर क्रमशः 2 और −3 अंतःखंड बनाती है।",
+  "explanationHi": "x/a + y/b = 1 → x/2 + y/(−3) = 1 → 3x − 2y − 6 = 0।"
  },
  {
-  "id": "q_492a81794af56a61",
+  "id": "q_0d8c86cda1538412",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Matrices & Determinants",
   "topic": "Determinants",
   "difficulty": "medium",
-  "questionText": "Find the angle between the vectors and",
+  "questionText": "Find the angle between the vectors a⃗ and b⃗.",
   "image": null,
   "options": [
    {
@@ -28816,67 +28527,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "06c64f6341470352",
+  "dupeHash": "04d9492cb14f1c53",
   "paper": {
    "no": 4,
    "group": "X",
    "date": "06 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "सदिशों a⃗ और b⃗ के बीच का कोण ज्ञात कीजिए।",
+  "explanationHi": "cos θ = (a⃗·b⃗)/(|a⃗||b⃗|) → θ = cos⁻¹(a⃗·b⃗ / |a⃗||b⃗|)।"
  },
  {
-  "id": "q_03da1320509080c7",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "[ ] 4 2 If x + y = and x - y = 0 9",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "[68] / 010"
-   },
-   {
-    "id": "B",
-    "text": "[311] / 0−7"
-   },
-   {
-    "id": "C",
-    "text": "[34] / 05"
-   },
-   {
-    "id": "D",
-    "text": "None of the above"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 06 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0f5b6754b1102833",
-  "paper": {
-   "no": 4,
-   "group": "X",
-   "date": "06 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_dc0fe476eca5ef8c",
+  "id": "q_03131fbf1113dec9",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "Find the value of lim cos x x→0",
+  "questionText": "Find the value of lim(x→0) cos x.",
   "image": null,
   "options": [
    {
@@ -28906,22 +28574,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "03ca4b9c110f6b89",
+  "dupeHash": "018e0604c10f770a",
   "paper": {
    "no": 4,
    "group": "X",
    "date": "06 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "lim(x→0) cos x का मान ज्ञात कीजिए।",
+  "explanationHi": "cos x सतत फलन है → lim(x→0) cos x = cos 0 = 1।"
  },
  {
-  "id": "q_be1c38ba77c61478",
+  "id": "q_0f4fb036a1193d14",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "1 is equal to? ∫ dx √ 3x+4",
+  "questionText": "∫ dx/√(3x + 4) is equal to?",
   "image": null,
   "options": [
    {
@@ -28951,22 +28621,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0c8d3794c114cfa4",
+  "dupeHash": "09cac507b114d555",
   "paper": {
    "no": 4,
    "group": "X",
    "date": "06 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "∫ dx/√(3x + 4) किसके बराबर है?",
+  "explanationHi": "∫(3x+4)^(−1/2)dx = 2√(3x+4)/3 + c।"
  },
  {
-  "id": "q_0a089ff6b3b8ae29",
+  "id": "q_05f8b087f124bd3b",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "What is the eccentricity of the conic 4x2 + 9y2 = 144 ? 5–",
+  "questionText": "What is the eccentricity of the conic 4x² + 9y² = 144?",
   "image": null,
   "options": [
    {
@@ -28996,22 +28668,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "04f89ca611242713",
+  "dupeHash": "0c4e4b753120559b",
   "paper": {
    "no": 4,
    "group": "X",
    "date": "06 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "शांकव 4x² + 9y² = 144 की उत्केंद्रता (eccentricity) क्या है?",
+  "explanationHi": "x²/36 + y²/16 = 1 → a = 6, b = 4 → e = √(1 − 16/36) = √5/3।"
  },
  {
-  "id": "q_0fa36104bb2a36b2",
+  "id": "q_0b722a16512d6db9",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "d tan x √ Find dx",
+  "questionText": "Find d/dx (tan √x).",
   "image": null,
   "options": [
    {
@@ -29041,67 +28715,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0c9e8ea8f128f889",
+  "dupeHash": "056e5b49312905db",
   "paper": {
    "no": 4,
    "group": "X",
    "date": "06 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "d/dx (tan √x) का मान ज्ञात कीजिए।",
+  "explanationHi": "शृंखला नियम: sec²√x · d/dx(√x) = sec²√x/(2√x)।"
  },
  {
-  "id": "q_961849f38b6d9055",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "dy x1/3 If y = then = dx",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "x2/3 / 3"
-   },
-   {
-    "id": "B",
-    "text": "1 / 3x2/3"
-   },
-   {
-    "id": "C",
-    "text": "x−1/3"
-   },
-   {
-    "id": "D",
-    "text": "1 / 3x−2/3"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 06 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0cb3e54ed1137341",
-  "paper": {
-   "no": 4,
-   "group": "X",
-   "date": "06 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_49af6a99232c2ae0",
+  "id": "q_0d8c08de21205c82",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "d2 tan−1 x Find dx2",
+  "questionText": "Find d²/dx² (tan⁻¹x).",
   "image": null,
   "options": [
    {
@@ -29131,22 +28762,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "09b1eb88111be961",
+  "dupeHash": "0cb68087211bf4e2",
   "paper": {
    "no": 4,
    "group": "X",
    "date": "06 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "d²/dx² (tan⁻¹x) का मान ज्ञात कीजिए।",
+  "explanationHi": "dy/dx = 1/(1+x²) → d²y/dx² = −2x/(1+x²)²।"
  },
  {
-  "id": "q_d99c0ba1ed53ce62",
+  "id": "q_0c6d8b809119aec9",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Integration",
   "topic": "Indefinite Integration",
   "difficulty": "medium",
-  "questionText": "y2 dy x2 यदि है, तो का मान क्याा है? + = 1 = dx a2 b2",
+  "questionText": "If x²/a² + y²/b² = 1, then what is the value of dy/dx?",
   "image": null,
   "options": [
    {
@@ -29176,22 +28809,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "05dc9ce801292402",
+  "dupeHash": "0ed2288b4115470a",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि x²/a² + y²/b² = 1 है, तो dy/dx का मान क्या है?",
+  "explanationHi": "अचर पदों के अवकलन से: 2x/a² + (2y/b²)dy/dx = 0 → dy/dx = −b²x/(a²y)।"
  },
  {
-  "id": "q_e7f87cb31b83a5bf",
+  "id": "q_0581983ea135bcbc",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Integration",
   "topic": "Indefinite Integration",
   "difficulty": "medium",
-  "questionText": "∫π किसके बराबर है? 0 sin6 cos5 x x dx",
+  "questionText": "∫₀^π sin⁶x · cos⁵x dx is equal to?",
   "image": null,
   "options": [
    {
@@ -29221,112 +28856,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0fd0b7449132685b",
+  "dupeHash": "00cfe016013154de",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "∫₀^π sin⁶x · cos⁵x dx किसके बराबर है?",
+  "explanationHi": "cos की घात विषम है → x को π − x से बदलने पर व्यंजक चिह्न बदल देता है → समाकल = 0।"
  },
  {
-  "id": "q_33d7bf2fac034fc5",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "यदि A ∪ B = A है, तो A ∩ B किसके बराबर है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "A"
-   },
-   {
-    "id": "B",
-    "text": "B"
-   },
-   {
-    "id": "C",
-    "text": "ϕ"
-   },
-   {
-    "id": "D",
-    "text": "A'"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 07 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "091191fce12807ec",
-  "paper": {
-   "no": 5,
-   "group": "X",
-   "date": "07 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_6f5f15c3511708eb",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Sets, Relations & Functions",
-  "topic": "Sets",
-  "difficulty": "medium",
-  "questionText": "π xsin( ) का मान ज्ञाात कीजिए। lim x x→∞",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1 / π"
-   },
-   {
-    "id": "B",
-    "text": "0"
-   },
-   {
-    "id": "C",
-    "text": "π"
-   },
-   {
-    "id": "D",
-    "text": "1"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 07 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "05628532e126d22a",
-  "paper": {
-   "no": 5,
-   "group": "X",
-   "date": "07 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_cb701eab7f8e38f1",
+  "id": "q_0c8597dac11d4450",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "का मान क्याा है? ∫sin4x dx =",
+  "questionText": "What is the value of ∫ sin 4x dx?",
   "image": null,
   "options": [
    {
@@ -29356,22 +28903,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0cbc133111256ec1",
+  "dupeHash": "0861baa38118dcb0",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "∫ sin 4x dx का मान क्या है?",
+  "explanationHi": "∫sin(ax)dx = −cos(ax)/a → −cos 4x/4 + c।"
  },
  {
-  "id": "q_e96047cbf2619423",
+  "id": "q_05e3cf17f1102c13",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Differentiation & Applications",
   "topic": "Differentiation",
   "difficulty": "medium",
-  "questionText": "d2 y यदि y = e है, तो किसके बराबर है? 2x dx2",
+  "questionText": "If y = e²ˣ, then d²y/dx² is equal to?",
   "image": null,
   "options": [
    {
@@ -29401,22 +28950,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0a6c9342f11fc1a1",
+  "dupeHash": "038a8b99d10bc435",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि y = e²ˣ है, तो d²y/dx² किसके बराबर है?",
+  "explanationHi": "dy/dx = 2e²ˣ = 2y → d²y/dx² = 4e²ˣ = 4y।"
  },
  {
-  "id": "q_8df26604e7066e1b",
+  "id": "q_09e7045c91261b6f",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "वृत्त x + y + 4x + 4y + 4 = 0 की त्रिज्याा क्याा है? 2 2",
+  "questionText": "What is the radius of the circle x² + y² + 4x + 4y + 4 = 0?",
   "image": null,
   "options": [
    {
@@ -29446,22 +28997,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0a0ac670d139efed",
+  "dupeHash": "05b74c5f4121b3b0",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "वृत्त x² + y² + 4x + 4y + 4 = 0 की त्रिज्या क्या है?",
+  "explanationHi": "केंद्र (−2, −2); r = √(4 + 4 − 4) = 2 इकाई।"
  },
  {
-  "id": "q_4b0255a954b09faf",
+  "id": "q_08c26ad3f129e61f",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Integration",
   "topic": "Indefinite Integration",
   "difficulty": "medium",
-  "questionText": "(log x)2 किसके बराबर है? ∫ dx x",
+  "questionText": "∫ (log x)²/x dx is equal to?",
   "image": null,
   "options": [
    {
@@ -29491,67 +29044,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "01e09e5041325368",
+  "dupeHash": "03929f4dd1257e41",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "∫ (log x)²/x dx किसके बराबर है?",
+  "explanationHi": "log x = t रखें → dt = dx/x → ∫t²dt = t³/3 + c = (log x)³/3 + c।"
  },
  {
-  "id": "q_cae171b97cbb2a2a",
+  "id": "q_0024657da11223f2",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "(5, -2) और (-4, 7) से गुजरने वाली सीधी रेखा का समीकरण क्याा है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "5x - 2y = 4"
-   },
-   {
-    "id": "B",
-    "text": "-4x + 7y = 9"
-   },
-   {
-    "id": "C",
-    "text": "x + y = 3"
-   },
-   {
-    "id": "D",
-    "text": "x - y = -1"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 07 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c994463f13468d3",
-  "paper": {
-   "no": 5,
-   "group": "X",
-   "date": "07 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_3bb51308a3c702dc",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "एक जोड़ीी पासों के एक साथ फेंकने में कुल 7 से अधिक होने की प्राायिकता क्याा है?",
+  "questionText": "Two dice are thrown together. What is the probability that the total is more than 7?",
   "image": null,
   "options": [
    {
@@ -29581,22 +29091,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0cfad2ee514e38ab",
+  "dupeHash": "0a4140a7010dbc14",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "एक जोड़ी पासों को एक साथ फेंकने पर कुल योग 7 से अधिक होने की प्रायिकता क्या है?",
+  "explanationHi": "योग 8 से 12 तक के कुल 15 क्रम हैं → 15/36 = 5/12।"
  },
  {
-  "id": "q_422ca5298fc4fd53",
+  "id": "q_0f9d7eccf125c157",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Sets, Relations & Functions",
   "topic": "Sets",
   "difficulty": "medium",
-  "questionText": "पहली n प्रााकृतिक संख्यााओं का माध्य क्याा है?",
+  "questionText": "What is the mean of the first n natural numbers?",
   "image": null,
   "options": [
    {
@@ -29626,58 +29138,15 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "086cd26581489f86",
+  "dupeHash": "09d735cf21215998",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
- },
- {
-  "id": "q_299d74dc59ae4782",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "3 dy ( ) अवकल समीकरण y = x dx",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "3"
-   },
-   {
-    "id": "B",
-    "text": "2"
-   },
-   {
-    "id": "C",
-    "text": "1"
-   },
-   {
-    "id": "D",
-    "text": "परिभाषित नहीं"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 07 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "07280fe1a122a5e0",
-  "paper": {
-   "no": 5,
-   "group": "X",
-   "date": "07 Nov 2020",
-   "src": "Prepp"
-  }
+  },
+  "questionTextHi": "पहली n प्राकृतिक संख्याओं का माध्य क्या है?",
+  "explanationHi": "माध्य = [n(n+1)/2]/n = (n+1)/2।"
  },
  {
   "id": "q_08c60861a74747bf",
@@ -29725,13 +29194,13 @@
   }
  },
  {
-  "id": "q_510d627a037ae89b",
+  "id": "q_012ef1dc21287e98",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Logarithms",
   "topic": "Logarithms",
   "difficulty": "medium",
-  "questionText": "1 1 1 1 1 + + + + +..... 1! 2! 3! 4!",
+  "questionText": "1 + 1/1! + 1/2! + 1/3! + 1/4! + … is equal to?",
   "image": null,
   "options": [
    {
@@ -29761,67 +29230,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0b853311e11fb88c",
+  "dupeHash": "09420dc0812416ba",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "1 + 1/1! + 1/2! + 1/3! + 1/4! + … किसके बराबर है?",
+  "explanationHi": "eˣ = Σ xⁿ/n! में x = 1 रखने पर e = 1 + 1/1! + 1/2! + …।"
  },
  {
-  "id": "q_2eadd8f41ca18ab6",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "x− का मान क्याा है? ∫4 x dx = √ 1",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "63 / 5"
-   },
-   {
-    "id": "B",
-    "text": "61 / 5"
-   },
-   {
-    "id": "C",
-    "text": "62 / 5"
-   },
-   {
-    "id": "D",
-    "text": "62"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 07 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "030bc55081243f2c",
-  "paper": {
-   "no": 5,
-   "group": "X",
-   "date": "07 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_3a2ec87ef168db3c",
+  "id": "q_08ac23851127a72b",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Probability",
   "topic": "Probability",
   "difficulty": "medium",
-  "questionText": "यदि A और B दो स्वतंत्र घटनाएं हैं तो निम्न में से क्याा सही है?",
+  "questionText": "If A and B are two independent events, then which of the following is true?",
   "image": null,
   "options": [
    {
@@ -29851,22 +29277,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "04892ab66153850a",
+  "dupeHash": "05651c7d11233f8b",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि A और B दो स्वतंत्र घटनाएँ हैं, तो निम्न में से क्या सही है?",
+  "explanationHi": "स्वतंत्र घटनाओं के लिए P(A ∩ B) = P(A)·P(B)।"
  },
  {
-  "id": "q_3eb1ac5e6a2eb823",
+  "id": "q_08cf26bb61110ee2",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "∣ ∣ 1 x y + z ∣ ∣ सारणिक का मान क्याा है? 1 y z + x ∣ ∣ ∣ ∣ 1 z x + y",
+  "questionText": "What is the value of the determinant |1 x y+z; 1 y z+x; 1 z x+y|?",
   "image": null,
   "options": [
    {
@@ -29896,22 +29324,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "004f7d7b61404448",
+  "dupeHash": "05dc3106d10ca6e5",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "सारणिक |1 x y+z; 1 y z+x; 1 z x+y| का मान क्या है?",
+  "explanationHi": "R₂ − R₁ और R₃ − R₁ लेने पर पंक्तियाँ रैखिक निर्भर हो जाती हैं → सारणिक = 0।"
  },
  {
-  "id": "q_676762a0e368622f",
+  "id": "q_0f8b746ac1123a3a",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "यदि एक समांतर श्रेेणी के n पदों का योग 300 है, पहला पद 10 है और अंतिम पद 50 है, तो n किसके बराबर है?",
+  "questionText": "If the sum of n terms of an A.P. is 300, its first term is 10 and the last term is 50, then n is equal to?",
   "image": null,
   "options": [
    {
@@ -29941,22 +29371,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "07f107bb6151950a",
+  "dupeHash": "0e2aabc3f10dd23d",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि किसी समान्तर श्रेणी के n पदों का योग 300 है, पहला पद 10 है और अंतिम पद 50 है, तो n किसके बराबर है?",
+  "explanationHi": "Sₙ = n(a + l)/2 → 300 = n(10 + 50)/2 = 30n → n = 10।"
  },
  {
-  "id": "q_1e083bfd58fa8a51",
+  "id": "q_03ad1b666132cf2a",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "sin-1 (sin x), x∈ [-π/2, π/2] का मान ज्ञाात कीजिए।",
+  "questionText": "Find the value of sin⁻¹(sin x), where x ∈ [−π/2, π/2].",
   "image": null,
   "options": [
    {
@@ -29986,112 +29418,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "08a78225b1384151",
+  "dupeHash": "0b7c0fc4e12e678a",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "sin⁻¹(sin x) का मान ज्ञात कीजिए, जहाँ x ∈ [−π/2, π/2]।",
+  "explanationHi": "x मुख्य मान परिसर में है → sin⁻¹(sin x) = x।"
  },
  {
-  "id": "q_e31be307cf51695f",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "− ( ) √ 3 का प्रमुख मान क्याा है? sin−1 2",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "-45°"
-   },
-   {
-    "id": "B",
-    "text": "-60°"
-   },
-   {
-    "id": "C",
-    "text": "-30°"
-   },
-   {
-    "id": "D",
-    "text": "120°"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 07 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08836a00e12b1576",
-  "paper": {
-   "no": 5,
-   "group": "X",
-   "date": "07 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_3a7343efc6918731",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "का मान क्याा है, जहाँ 4n + 1 i i = √",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "0"
-   },
-   {
-    "id": "C",
-    "text": "-i"
-   },
-   {
-    "id": "D",
-    "text": "i"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 07 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "008e20fdf1201c35",
-  "paper": {
-   "no": 5,
-   "group": "X",
-   "date": "07 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_15cf4aae15f1a023",
+  "id": "q_06c1d155811053ea",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Integration",
   "topic": "Indefinite Integration",
   "difficulty": "medium",
-  "questionText": "e4x2 d( +1) का मान क्याा है? = dx",
+  "questionText": "What is the value of d/dx(e^(4x² + 1))?",
   "image": null,
   "options": [
    {
@@ -30121,22 +29465,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0434d9e1c1185f7a",
+  "dupeHash": "05c55961110bec2b",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "d/dx(e^(4x² + 1)) का मान क्या है?",
+  "explanationHi": "शृंखला नियम: e^(4x²+1) × 8x = 8x·e^(4x²+1)।"
  },
  {
-  "id": "q_da67f37e5832fbf8",
+  "id": "q_0dc3b2dd31106eeb",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "A = [ ] 1 6 यदि है, तो आव्यूूह A का ट्रेेस क्याा है? 0 7",
+  "questionText": "If A = [[1, 6], [0, 7]], then what is the trace of the matrix A?",
   "image": null,
   "options": [
    {
@@ -30166,67 +29512,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0f791851e12a9a30",
+  "dupeHash": "05aedd69810c06ee",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि A = [1 6; 0 7] है, तो आव्यूह A का अदिशोत्तर (trace) क्या है?",
+  "explanationHi": "trace = मुख्य विकर्ण तत्वों का योग = 1 + 7 = 8।"
  },
  {
-  "id": "q_a97927a43d6d818a",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "k का मान ज्ञाात कीजिए जिसके लिए बिंंदुओं (2, 4, 8) और (1, 2, 4) के माध्यम से रेखा बिंंदुओं (3, 6, k) और (1, 2, 1) के माध्यम से रेखा के समानांतर है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "10"
-   },
-   {
-    "id": "B",
-    "text": "9"
-   },
-   {
-    "id": "C",
-    "text": "8"
-   },
-   {
-    "id": "D",
-    "text": "0"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 07 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0f5d8341e16955e2",
-  "paper": {
-   "no": 5,
-   "group": "X",
-   "date": "07 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_e87affdd3f4e66c7",
+  "id": "q_0945d8ab212f9646",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "x = y2 वक्र के नाभिलंब की लम्बााई क्याा है? 21",
+  "questionText": "What is the length of the latus rectum of the parabola x = y²/21?",
   "image": null,
   "options": [
    {
@@ -30256,13 +29559,15 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "03e71b3871491cdb",
+  "dupeHash": "0d5849ef312b2e87",
   "paper": {
    "no": 5,
    "group": "X",
    "date": "07 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "परवलय x = y²/21 के नाभिलंब की लंबाई क्या है?",
+  "explanationHi": "y² = 21x → 4a = 21 → नाभिलंब = 4a = 21 इकाई।"
  },
  {
   "id": "q_627615b20846f74d",
@@ -30312,13 +29617,13 @@
   "explanationHi": "x, y, z G.P. में → y² = xz. x^a = y^b = z^c = k लेकर log लेने पर 2/b = 1/a + 1/c → a, b, c हरात्मक श्रेढ़ी में।"
  },
  {
-  "id": "q_3e5c16eb0110057f",
+  "id": "q_083c2fc3913e636b",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Coordinate Geometry",
   "topic": "Circles",
   "difficulty": "medium",
-  "questionText": "Find the center of the circle (x −",
+  "questionText": "Find the centre of the circle (x − x₁)(x − x₂) + (y − y₁)(y − y₂) = 0.",
   "image": null,
   "options": [
    {
@@ -30348,157 +29653,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0ad3dffd011d1136",
+  "dupeHash": "0a5ee92c4139fbac",
   "paper": {
    "no": 6,
    "group": "X",
    "date": "12 Jul 2021 Shift-2",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "वृत्त (x − x₁)(x − x₂) + (y − y₁)(y − y₂) = 0 का केंद्र ज्ञात कीजिए।",
+  "explanationHi": "केंद्र = व्यास के सिरों (x₁, y₁) व (x₂, y₂) का मध्यबिंदु = ((x₁+x₂)/2, (y₁+y₂)/2)।"
  },
  {
-  "id": "q_ae4d3eacd0514cb3",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "Find the focus of the ellipse if equation of the ellipse is 7–",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "(±√, 0) / 3–"
-   },
-   {
-    "id": "B",
-    "text": "(±√, 0) / 6–"
-   },
-   {
-    "id": "C",
-    "text": "(±√, 0) / −−"
-   },
-   {
-    "id": "D",
-    "text": "(±√11, 0)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "05992daca131992a",
-  "paper": {
-   "no": 6,
-   "group": "X",
-   "date": "12 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_c82a8e9cc29c9b15",
+  "id": "q_036a13bbd119ba2b",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "s−1 s−1 s−1 If co x + co y + co z = π",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1 / 2"
-   },
-   {
-    "id": "B",
-    "text": "1 / 4"
-   },
-   {
-    "id": "C",
-    "text": "3 / 4"
-   },
-   {
-    "id": "D",
-    "text": "0"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08386d1ca117c7a0",
-  "paper": {
-   "no": 6,
-   "group": "X",
-   "date": "12 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_5d43688db2abe364",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "1 1 ∫ dx = 1 + x2 0",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "π / 4"
-   },
-   {
-    "id": "B",
-    "text": "0"
-   },
-   {
-    "id": "C",
-    "text": "π / 2"
-   },
-   {
-    "id": "D",
-    "text": "π / 3"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "07088363b10fc5df",
-  "paper": {
-   "no": 6,
-   "group": "X",
-   "date": "12 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_3af6ceab05ceed88",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "What is the principal value of",
+  "questionText": "What is the principal value of tan⁻¹(√3)?",
   "image": null,
   "options": [
    {
@@ -30528,22 +29700,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "067359c4b10ce941",
+  "dupeHash": "0b3a46bbb115524d",
   "paper": {
    "no": 6,
    "group": "X",
    "date": "12 Jul 2021 Shift-2",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "tan⁻¹(√3) का प्रमुख मान क्या है?",
+  "explanationHi": "tan 60° = √3 → tan⁻¹(√3) = π/3।"
  },
  {
-  "id": "q_7fe7e856219c4126",
+  "id": "q_0c26288b5126bd37",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "If nC4 = nC6, then C4 = n",
+  "questionText": "If ⁿC₄ = ⁿC₆, then ⁿC₄ equals?",
   "image": null,
   "options": [
    {
@@ -30573,22 +29747,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "06815abe410aa708",
+  "dupeHash": "0315853e81225578",
   "paper": {
    "no": 6,
    "group": "X",
    "date": "12 Jul 2021 Shift-2",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि ⁿC₄ = ⁿC₆ है, तो ⁿC₄ का मान क्या है?",
+  "explanationHi": "ⁿCᵣ = ⁿCₛ ⟹ r + s = n → n = 10 → ¹⁰C₄ = 210।"
  },
  {
-  "id": "q_34b7568e83e5e05b",
+  "id": "q_0a1b0b65a113e01e",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Coordinate Geometry",
   "topic": "Circles",
   "difficulty": "medium",
-  "questionText": "If the line y = mx + c is a tangent to the circle is a tangent to the circle x + y = a2 then find condition of tangency ?",
+  "questionText": "If the line y = mx + c is a tangent to the circle x² + y² = a², then the condition of tangency is?",
   "image": null,
   "options": [
    {
@@ -30618,13 +29794,15 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "042413ccc1105048",
+  "dupeHash": "0cb0eecf010f7840",
   "paper": {
    "no": 6,
    "group": "X",
    "date": "12 Jul 2021 Shift-2",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि रेखा y = mx + c वृत्त x² + y² = a² की स्पर्श रेखा है, तो स्पर्शता की शर्त क्या है?",
+  "explanationHi": "केंद्र से दूरी = त्रिज्या: |c|/√(1+m²) = a → c² = a²(1 + m²) — दोनों चिह्न संभव।"
  },
  {
   "id": "q_47a02e6db930064f",
@@ -30672,58 +29850,13 @@
   }
  },
  {
-  "id": "q_c32b56f7a585c6cd",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "∫π/4 sin x Evaluate: dx 0 cos3 x",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1 / 16"
-   },
-   {
-    "id": "B",
-    "text": "1 / 2"
-   },
-   {
-    "id": "C",
-    "text": "1 / 4"
-   },
-   {
-    "id": "D",
-    "text": "0"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "059ef323310fa7d7",
-  "paper": {
-   "no": 7,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_d92909085da3eb2c",
+  "id": "q_0ac9c975811a8b0e",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "If M and B are two sets, such that X ∩Y has 15%, M has 35% and Y has 25%, how many percentage does X U Y have ?",
+  "questionText": "If M and B are two sets such that M ∩ B has 15%, M has 35% and B has 25%, then what percentage does M ∪ B have?",
   "image": null,
   "options": [
    {
@@ -30753,202 +29886,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "04a9ab1781120f1e",
+  "dupeHash": "0f8f10cb61162330",
   "paper": {
    "no": 7,
    "group": "X",
    "date": "13 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि M और B दो समुच्चय इस प्रकार हैं कि M ∩ B में 15%, M में 35% और B में 25% हैं, तो M ∪ B में कितने प्रतिशत हैं?",
+  "explanationHi": "n(M ∪ B) = 35 + 25 − 15 = 45%।"
  },
  {
-  "id": "q_1dd3c68ef9973f3c",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "etan x sec2 ∫π/4 Evaluate: xdx 0",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "e"
-   },
-   {
-    "id": "B",
-    "text": "e - 1"
-   },
-   {
-    "id": "C",
-    "text": "2e + 1"
-   },
-   {
-    "id": "D",
-    "text": "0"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "02c0a173610fabd6",
-  "paper": {
-   "no": 7,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_c7225efe8bb00651",
+  "id": "q_056cc1c4411ca3fc",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "i^ j^ k^ b⃗ If and a⃗ = 2 + 2 + 2",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "4"
-   },
-   {
-    "id": "B",
-    "text": "3"
-   },
-   {
-    "id": "C",
-    "text": "2"
-   },
-   {
-    "id": "D",
-    "text": "1"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0fee25fbf1128c73",
-  "paper": {
-   "no": 7,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_794458c0fb67b038",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "(1−cos x) What is equal to? limx→0 √ x+1 −1",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "0"
-   },
-   {
-    "id": "B",
-    "text": "1 / 2"
-   },
-   {
-    "id": "C",
-    "text": "1 / 4"
-   },
-   {
-    "id": "D",
-    "text": "1"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "034d5aee611bb6e2",
-  "paper": {
-   "no": 7,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_0c16172c95366b12",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "= [ A = [ ] 2 x A−1 If and 4 3",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "28 / 3"
-   },
-   {
-    "id": "B",
-    "text": "32 / 3"
-   },
-   {
-    "id": "C",
-    "text": "34 / 3"
-   },
-   {
-    "id": "D",
-    "text": "10"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 13 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b1f0d6a110eeecf",
-  "paper": {
-   "no": 7,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_d4b64868d8cf7f47",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "d(si Which statement true for",
+  "questionText": "Which statement is true for sin⁻¹x?",
   "image": null,
   "options": [
    {
@@ -30978,22 +29933,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0b356e6b111405c7",
+  "dupeHash": "0ca8dda2a1183c1e",
   "paper": {
    "no": 7,
    "group": "X",
    "date": "13 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "sin⁻¹x के लिए कौन-सा कथन सही है?",
+  "explanationHi": "sin⁻¹x का प्रांत [−1, 1] है → |x| ≤ 1।"
  },
  {
-  "id": "q_997fca5d2dce9ec8",
+  "id": "q_04cb40cba114d4ba",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "∣ 1 1 ∣ The value of 1 1 + x ∣ ∣ 1 1 1 + y",
+  "questionText": "What is the value of the determinant |1 1 1; 1 1+x 1; 1 1 1+y|?",
   "image": null,
   "options": [
    {
@@ -31023,67 +29980,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "05d88239511fb8ab",
+  "dupeHash": "0c2d709d01106cdc",
   "paper": {
    "no": 7,
    "group": "X",
    "date": "13 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "सारणिक |1 1 1; 1 1+x 1; 1 1 1+y| का मान क्या है?",
+  "explanationHi": "R₂ − R₁ तथा R₃ − R₁ लेने पर |1 1 1; 0 x 0; 0 0 y| = 1·x·y = xy।"
  },
  {
-  "id": "q_034bd1e3c1e60607",
+  "id": "q_0abb762d41166dc8",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "logx The value of will be limx→1 x−1",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "-1"
-   },
-   {
-    "id": "C",
-    "text": "0"
-   },
-   {
-    "id": "D",
-    "text": "∞"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 13 Jul 2021 Shift-2 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0324ec00011768b0",
-  "paper": {
-   "no": 8,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_fdba6b45e8789a36",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "What is C(n, 1) + C(n, 2) + _ _ _ _ _ + C(n, n) equal to",
+  "questionText": "What is C(n, 1) + C(n, 2) + … + C(n, n) equal to?",
   "image": null,
   "options": [
    {
@@ -31113,22 +30027,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "026aab36c10e62b4",
+  "dupeHash": "0065e74da11205ea",
   "paper": {
    "no": 8,
    "group": "X",
    "date": "13 Jul 2021 Shift-2",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "C(n, 1) + C(n, 2) + … + C(n, n) किसके बराबर है?",
+  "explanationHi": "Σᵣ₌₁ⁿ ⁿCᵣ = 2ⁿ − 1 = 1 + 2 + 2² + … + 2ⁿ⁻¹।"
  },
  {
-  "id": "q_f5a4344b6d710543",
+  "id": "q_0edfa5e0e1120daa",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Coordinate Geometry",
   "topic": "Circles",
   "difficulty": "medium",
-  "questionText": "What is the radius and the center of the circle 2y2 + 2x2 + 12y = 32",
+  "questionText": "What is the radius and the centre of the circle 2y² + 2x² + 12y = 32?",
   "image": null,
   "options": [
    {
@@ -31158,112 +30074,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0bd51b5af10d7f2b",
+  "dupeHash": "06718109c10da5cc",
   "paper": {
    "no": 8,
    "group": "X",
    "date": "13 Jul 2021 Shift-2",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "वृत्त 2y² + 2x² + 12y = 32 की त्रिज्या और केंद्र क्या है?",
+  "explanationHi": "x² + y² + 6y − 16 = 0 → केंद्र (0, −3), r = √(9 + 16) = 5।"
  },
  {
-  "id": "q_996e5fc0e4073538",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Differentiation & Applications",
-  "topic": "Differentiation",
-  "difficulty": "medium",
-  "questionText": "Find the degree of the differential equation y = x",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "-1"
-   },
-   {
-    "id": "C",
-    "text": "2"
-   },
-   {
-    "id": "D",
-    "text": "None of these"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 13 Jul 2021 Shift-2 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "01eeade7710c67ed",
-  "paper": {
-   "no": 8,
-   "group": "X",
-   "date": "13 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_11e4d34fe300ff56",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "∫π/4 sin3 x Evaluate dx 0 x cos5",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "3 / 4"
-   },
-   {
-    "id": "B",
-    "text": "1 / 2"
-   },
-   {
-    "id": "C",
-    "text": "1 / 4"
-   },
-   {
-    "id": "D",
-    "text": "1 / 5"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 14 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "01a481b5210fb548",
-  "paper": {
-   "no": 9,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_b169209d3fcaca40",
+  "id": "q_0019c170f11fa399",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Probability",
   "topic": "Probability",
   "difficulty": "medium",
-  "questionText": "If A and B are two independent event such that P(A) = 1/2, and P(B) = 1/5, then which is NOT true?",
+  "questionText": "If A and B are two independent events such that P(A) = 1/2 and P(B) = 1/5, then which of the following is NOT true?",
   "image": null,
   "options": [
    {
@@ -31293,22 +30121,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0bac1492511a7089",
+  "dupeHash": "0f3a0b60d11b3bbb",
   "paper": {
    "no": 9,
    "group": "X",
    "date": "14 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि A और B दो स्वतंत्र घटनाएँ इस प्रकार हैं कि P(A) = 1/2 और P(B) = 1/5 है, तो निम्न में से कौन-सा सत्य नहीं है?",
+  "explanationHi": "P(A∪B) = 1/2+1/5−1/10 = 3/5 (सत्य)। P(A/A∪B) = (1/2)/(3/5) = 5/6 होता है, 1/6 नहीं → यह सत्य नहीं।"
  },
  {
-  "id": "q_19edebce0b1d15f8",
+  "id": "q_08a6065ca12c8e4e",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "n−1 s−1 The equation si x −co",
+  "questionText": "The equation sin⁻¹x − cos⁻¹x = c, where −π ≤ c ≤ π, has:",
   "image": null,
   "options": [
    {
@@ -31338,112 +30168,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0a7f4264911a490f",
+  "dupeHash": "06fc84e5b128268f",
   "paper": {
    "no": 9,
    "group": "X",
    "date": "14 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "समीकरण sin⁻¹x − cos⁻¹x = c, जहाँ −π ≤ c ≤ π, के होते हैं:",
+  "explanationHi": "2sin⁻¹x = c + π/2 → sin⁻¹x एक निश्चित मान → x का अद्वितीय हल।"
  },
  {
-  "id": "q_81d556ddbb6ebc79",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "dy Find the integral factor of + dx",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "ex"
-   },
-   {
-    "id": "B",
-    "text": "x"
-   },
-   {
-    "id": "C",
-    "text": "e(1/x)"
-   },
-   {
-    "id": "D",
-    "text": "none of these"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 14 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0138843ae10bfd00",
-  "paper": {
-   "no": 9,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_5a4b9b5d40171d0d",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Matrices & Determinants",
-  "topic": "Determinants",
-  "difficulty": "medium",
-  "questionText": "Find the value of k if |A| = k such that",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2"
-   },
-   {
-    "id": "B",
-    "text": "1"
-   },
-   {
-    "id": "C",
-    "text": "0"
-   },
-   {
-    "id": "D",
-    "text": "None of these"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 14 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "03a6d90b910bd88d",
-  "paper": {
-   "no": 9,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_afeea97328a63fd7",
+  "id": "q_0f16feea811d3d88",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "[ ] dy 8x tan−1 Find , if y = 1−15x2 dx",
+  "questionText": "Find dy/dx, if y = tan⁻¹(8x/(1 − 15x²)).",
   "image": null,
   "options": [
    {
@@ -31473,67 +30215,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "07b820f9e118e850",
+  "dupeHash": "0a277e041118d5c9",
   "paper": {
    "no": 9,
    "group": "X",
    "date": "14 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "dy/dx ज्ञात कीजिए, यदि y = tan⁻¹(8x/(1 − 15x²))।",
+  "explanationHi": "tan⁻¹5x + tan⁻¹3x = tan⁻¹[(8x)/(1−15x²)] → dy/dx = 5/(1+25x²) + 3/(1+9x²)।"
  },
  {
-  "id": "q_ed6b1a9dc8e0ec34",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Coordinate Geometry",
-  "topic": "Circles",
-  "difficulty": "medium",
-  "questionText": "Find the radius and center of the circle",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Radius = 5, Center = (2, 3)"
-   },
-   {
-    "id": "B",
-    "text": "Radius = 5, Center = (3, 2)"
-   },
-   {
-    "id": "C",
-    "text": "Radius = 1, Center = (2, 3)"
-   },
-   {
-    "id": "D",
-    "text": "Radius = 1, Center = (3, 2)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 14 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0aa43cb5310ed61b",
-  "paper": {
-   "no": 9,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_e9dca0886e0eeeb4",
+  "id": "q_0ccb5734f1173387",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Matrices & Determinants",
   "topic": "Matrices",
   "difficulty": "medium",
-  "questionText": "If A is an invertible matrix of order n and k is any positive real number, then the value of [det(kA)]-1 det A is",
+  "questionText": "If A is an invertible matrix of order n and k is any positive real number, then the value of [det(kA)]⁻¹ · det A is?",
   "image": null,
   "options": [
    {
@@ -31563,67 +30262,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0a8547d7710eb053",
+  "dupeHash": "0bb7e0983112cbe7",
   "paper": {
    "no": 9,
    "group": "X",
    "date": "14 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि A, कोटि n का व्युत्क्रमणीय आव्यूह है और k कोई धनात्मक वास्तविक संख्या है, तो [det(kA)]⁻¹ · det A का मान है?",
+  "explanationHi": "det(kA) = kⁿ·det A → [kⁿ·det A]⁻¹·det A = 1/kⁿ = k⁻ⁿ।"
  },
  {
-  "id": "q_246b77d892aca29b",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Binomial Theorem",
-  "topic": "Binomial Theorem",
-  "difficulty": "medium",
-  "questionText": "Find the coefficient of x11 in the expansion of",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "-143"
-   },
-   {
-    "id": "B",
-    "text": "-572"
-   },
-   {
-    "id": "C",
-    "text": "143"
-   },
-   {
-    "id": "D",
-    "text": "715"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 14 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0e8c81a8410bee3a",
-  "paper": {
-   "no": 9,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_07f55ec1bba5935b",
+  "id": "q_0755f342b12561eb",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "tan−1 x e Evaluate: ∫ dx 1+x2",
+  "questionText": "Evaluate: ∫ e^(tan⁻¹x)/(1 + x²) dx.",
   "image": null,
   "options": [
    {
@@ -31653,67 +30309,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "00472c174120e51a",
+  "dupeHash": "0d34d6b76120fa2c",
   "paper": {
    "no": 9,
    "group": "X",
    "date": "14 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "∫ e^(tan⁻¹x)/(1 + x²) dx का मान ज्ञात कीजिए।",
+  "explanationHi": "tan⁻¹x = t → dt = dx/(1+x²) → ∫eᵗdt = e^(tan⁻¹x) + c।"
  },
  {
-  "id": "q_5a9eea3582b4e14c",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "cot[ ( x−y tan−1 tan−1 If a − x+y",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "a =y / x"
-   },
-   {
-    "id": "B",
-    "text": "a = x / y"
-   },
-   {
-    "id": "C",
-    "text": "a =x−y / x"
-   },
-   {
-    "id": "D",
-    "text": "a =x+y / x−y"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ca14078b124a02b",
-  "paper": {
-   "no": 10,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_fd2a2ab051fad958",
+  "id": "q_033612b79135b6cd",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Vectors & 3D Geometry",
   "topic": "Vectors",
   "difficulty": "medium",
-  "questionText": "b⃗ If vectors then a3 is ? a⃗ = i^ j^ a3k^ b⃗ 5⃗ i^ Where and a⃗ = 5 −3 + =",
+  "questionText": "If vectors a⃗ = 5î − 3ĵ + a₃k̂ and b⃗ = 5î − 3ĵ − 2k̂, where a⃗ = b⃗, then a₃ is:",
   "image": null,
   "options": [
    {
@@ -31743,157 +30356,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "07b705add1241f53",
+  "dupeHash": "0aa66df291314f2d",
   "paper": {
    "no": 10,
    "group": "X",
    "date": "14 Jul 2021 Shift-3",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि सदिश a⃗ = 5î − 3ĵ + a₃k̂ और b⃗ = 5î − 3ĵ − 2k̂ हैं, जहाँ a⃗ = b⃗, तो a₃ का मान है:",
+  "explanationHi": "a⃗ = b⃗ होने पर संगत घटक बराबर होते हैं → a₃ = −2।"
  },
  {
-  "id": "q_330ffce88a377916",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "√ 1+x −1 What is equal to? limx→0 x",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "0"
-   },
-   {
-    "id": "B",
-    "text": "1 / 2"
-   },
-   {
-    "id": "C",
-    "text": "1"
-   },
-   {
-    "id": "D",
-    "text": "-1 / 2"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c40601e411760f0",
-  "paper": {
-   "no": 10,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_865a0f348b915094",
+  "id": "q_06ed1b67a1294d2e",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "1+cos 2x Evaluate: ∫ dx cos2 1− x",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "-2 tan x – 2x + c"
-   },
-   {
-    "id": "B",
-    "text": "2 cot x – 2x + c"
-   },
-   {
-    "id": "C",
-    "text": "-2 cot x + 2x + c"
-   },
-   {
-    "id": "D",
-    "text": "-2 cot x – 2x + c"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0f82a582a120a014",
-  "paper": {
-   "no": 10,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_773e49999df0c895",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "Find the angle θ between the vectors",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "cos−1( )4 / 7"
-   },
-   {
-    "id": "B",
-    "text": "cos−1( )5 / 7"
-   },
-   {
-    "id": "C",
-    "text": "cos−1( )5 / 9"
-   },
-   {
-    "id": "D",
-    "text": "None of these"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ffebeed411984c4",
-  "paper": {
-   "no": 10,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_2af8aa4900101b79",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "π cos x Evaluate dx ∫ 2 0 sin2 1+ x",
+  "questionText": "Evaluate ∫₀^(π/2) cos x/(1 + sin²x) dx.",
   "image": null,
   "options": [
    {
@@ -31923,22 +30403,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "01369d1f5120cbcb",
+  "dupeHash": "074c21b6b124e56f",
   "paper": {
    "no": 10,
    "group": "X",
    "date": "14 Jul 2021 Shift-3",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "∫₀^(π/2) cos x/(1 + sin²x) dx का मान ज्ञात कीजिए।",
+  "explanationHi": "sin x = t रखें → tan⁻¹t की सीमाएँ 0 से 1 → tan⁻¹1 = π/4 = 45°।"
  },
  {
-  "id": "q_bf7c42ad16d30be6",
+  "id": "q_0f993fd0e11b283c",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Matrices & Determinants",
   "topic": "Matrices",
   "difficulty": "medium",
-  "questionText": "A = [ ] B = [ 0 −i If and i 0",
+  "questionText": "If A = [[0, −i], [i, 0]] and B = [[0, i], [−i, 0]], then A + B is:",
   "image": null,
   "options": [
    {
@@ -31968,58 +30450,15 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "09bfacca51116f27",
+  "dupeHash": "0dbc87695116c03f",
   "paper": {
    "no": 10,
    "group": "X",
    "date": "14 Jul 2021 Shift-3",
    "src": "Prepp"
-  }
- },
- {
-  "id": "q_5a7fb41bafb69aaf",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Differentiation & Applications",
-  "topic": "Applications of Derivatives",
-  "difficulty": "medium",
-  "questionText": "Find the interval in which the function",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Strictly increasing on R"
-   },
-   {
-    "id": "B",
-    "text": "Strictly decreasing on R"
-   },
-   {
-    "id": "C",
-    "text": "Strictly increasing on (1/5, ∞)"
-   },
-   {
-    "id": "D",
-    "text": "Strictly decreasing on (1/5, ∞)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "095c75ffb1182d39",
-  "paper": {
-   "no": 10,
-   "group": "X",
-   "date": "14 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि A = [0 −i; i 0] और B = [0 i; −i 0] हैं, तो A + B है:",
+  "explanationHi": "A + B के सभी संगत तत्व जुड़कर शून्य हो जाते हैं → शून्य आव्यूह (null matrix)।"
  },
  {
   "id": "q_ecda6697d29f019c",
@@ -32067,13 +30506,13 @@
   }
  },
  {
-  "id": "q_90567fdf819c5034",
+  "id": "q_0303e450c1194e08",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Integration",
   "topic": "Indefinite Integration",
   "difficulty": "medium",
-  "questionText": "π sec2 x The value of is: ∫ dx 2 0 tan2 2+2 x",
+  "questionText": "The value of ∫₀^(π/2) sec²x/(2tan²x + 2) dx is:",
   "image": null,
   "options": [
    {
@@ -32103,67 +30542,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "065805a41110c659",
+  "dupeHash": "0ff8fee1f114e60b",
   "paper": {
    "no": 11,
    "group": "X",
    "date": "15 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "∫₀^(π/2) sec²x/(2tan²x + 2) dx का मान है:",
+  "explanationHi": "tan x = t रखें → (1/2)∫₀^∞ dt/(1 + t²) = (1/2)·(π/2) = π/4।"
  },
  {
-  "id": "q_54c24b0cbdf53b35",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "If nC6 : n - 3C3 = 7 : 4, then find the value of nC3",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "10"
-   },
-   {
-    "id": "B",
-    "text": "12"
-   },
-   {
-    "id": "C",
-    "text": "32"
-   },
-   {
-    "id": "D",
-    "text": "35"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0d39d9bc310b8217",
-  "paper": {
-   "no": 11,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_13d41ba9d97417f0",
+  "id": "q_0eaf477ff12087fb",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "√ ( (1−cos2x)) 1 2 is equal to lim x x→0",
+  "questionText": "lim(x→0) √(1 − cos 2x)/(√2 · x) is equal to:",
   "image": null,
   "options": [
    {
@@ -32193,22 +30589,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "00b1ef0f4117dbf8",
+  "dupeHash": "09744ece411c1ffe",
   "paper": {
    "no": 11,
    "group": "X",
    "date": "15 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "lim(x→0) √(1 − cos 2x)/(√2 · x) किसके बराबर है?",
+  "explanationHi": "√(1 − cos2x) = √2|sin x| → दायाँ पक्ष = 1, बायाँ पक्ष = −1 → सीमा अस्तित्व में नहीं → इनमें से कोई नहीं।"
  },
  {
-  "id": "q_a012b01c704194a7",
+  "id": "q_0f288a6431109aff",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "d2 tan x Find dx2",
+  "questionText": "Find d²/dx² (tan x).",
   "image": null,
   "options": [
    {
@@ -32238,67 +30636,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "09ce1ae4e10c030e",
+  "dupeHash": "0ec09d9de10c3340",
   "paper": {
    "no": 11,
    "group": "X",
    "date": "15 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "d²/dx² (tan x) का मान ज्ञात कीजिए।",
+  "explanationHi": "d/dx(tanx) = sec²x → d²/dx² = 2sec x·sec x·tan x = 2sec²x·tan x।"
  },
  {
-  "id": "q_b4825d4f17a375dc",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "1−cos 2x Evaluate: ∫ dx sin2 1− x",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "tan x – 2x + c"
-   },
-   {
-    "id": "B",
-    "text": "2 tan x – x + c"
-   },
-   {
-    "id": "C",
-    "text": "2 tan x – 2x + c"
-   },
-   {
-    "id": "D",
-    "text": "2 tan x + 2x + c"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "017140d401249a3c",
-  "paper": {
-   "no": 11,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_e21fdfd436694819",
+  "id": "q_040e73429122d5b5",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "Find the length of latus rectum of ellipse , 5x2 + 3y2 = 60 .",
+  "questionText": "Find the length of the latus rectum of the ellipse 5x² + 3y² = 60.",
   "image": null,
   "options": [
    {
@@ -32328,67 +30683,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0d2ea61b411e068c",
+  "dupeHash": "0226ca7d411e6df6",
   "paper": {
    "no": 11,
    "group": "X",
    "date": "15 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "दीर्घवृत्त (ellipse) 5x² + 3y² = 60 के नाभिलंब की लंबाई ज्ञात कीजिए।",
+  "explanationHi": "x²/12 + y²/20 = 1 → a = 2√5, b² = 12 → नाभिलंब = 2b²/a = 24/2√5 = 12/√5 इकाई।"
  },
  {
-  "id": "q_63456c2af91d396d",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Multiple Angle & Transformation Formulae",
-  "difficulty": "medium",
-  "questionText": "xlogx xn If then dy/dx y = logcosx + sinx2",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "sinx2(1+logx)−xlogxcos22x / (sinx2 2)"
-   },
-   {
-    "id": "B",
-    "text": "nxn - 1logcosx"
-   },
-   {
-    "id": "C",
-    "text": "- xntanx"
-   },
-   {
-    "id": "D",
-    "text": "nxn−1logcosx −xntanx +sinx2(1+logx)−xlogxcos22x / (sinx2 2)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0eaf675461208380",
-  "paper": {
-   "no": 11,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_30cfaab534f4f52e",
+  "id": "q_084d1a74d111fc1b",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "If y = b sin3t and x = a cos3t, then find the value of",
+  "questionText": "If y = b sin³t and x = a cos³t, then find the value of dy/dx.",
   "image": null,
   "options": [
    {
@@ -32418,22 +30730,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "020a1037710d30f1",
+  "dupeHash": "0d7b7077510d947b",
   "paper": {
    "no": 11,
    "group": "X",
    "date": "15 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि y = b sin³t और x = a cos³t है, तो dy/dx का मान ज्ञात कीजिए।",
+  "explanationHi": "dy/dt = 3b sin²t·cos t, dx/dt = −3a cos²t·sin t → dy/dx = −(b/a)·tan t।"
  },
  {
-  "id": "q_2849b5f93cd7cf1f",
+  "id": "q_0223709af1184669",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Limits, Continuity & Differentiability",
   "topic": "Limits",
   "difficulty": "medium",
-  "questionText": "5x −1 What is equal to? lim x x→0",
+  "questionText": "What is lim(x→0) (5ˣ − 1)/x equal to?",
   "image": null,
   "options": [
    {
@@ -32463,22 +30777,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "013727ed71137e65",
+  "dupeHash": "02d68a0e3113dec9",
   "paper": {
    "no": 12,
    "group": "X",
    "date": "15 Jul 2021 Shift-3",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "lim(x→0) (5ˣ − 1)/x किसके बराबर है?",
+  "explanationHi": "मानक सीमा: lim(aˣ − 1)/x = logₑa → logₑ5।"
  },
  {
-  "id": "q_accce78742382923",
+  "id": "q_0f03e74be12534fe",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "π 3 sin2 ∫ xdx =? −π 3",
+  "questionText": "∫₋π/3^π/3 sin²x dx = ?",
   "image": null,
   "options": [
    {
@@ -32508,67 +30824,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "00780c20a120e1f4",
+  "dupeHash": "08e3fcc87120cd3f",
   "paper": {
    "no": 12,
    "group": "X",
    "date": "15 Jul 2021 Shift-3",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "∫₋π/3^π/3 sin²x dx का मान क्या है?",
+  "explanationHi": "sin²x सम फलन है → 2∫₀^(π/3)(1 − cos2x)/2 dx = 2[x/2 − sin2x/4]₀^(π/3) = π/3 − √3/4।"
  },
  {
-  "id": "q_2ccd8d9cac2852ef",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "What is the degree of the equation [",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "2"
-   },
-   {
-    "id": "C",
-    "text": "3"
-   },
-   {
-    "id": "D",
-    "text": "4"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "098181c7f10b38f3",
-  "paper": {
-   "no": 12,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_9f909521b7318d98",
+  "id": "q_07679d05a11fd97c",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "2−i Find the modulus of 1−3i 2–",
+  "questionText": "Find the modulus of (2 − i)/(1 − 3i).",
   "image": null,
   "options": [
    {
@@ -32598,112 +30871,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0cdb9423711f3377",
+  "dupeHash": "0a74baa4b11b71bd",
   "paper": {
    "no": 12,
    "group": "X",
    "date": "15 Jul 2021 Shift-3",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "(2 − i)/(1 − 3i) का मापांक (modulus) ज्ञात कीजिए।",
+  "explanationHi": "|2 − i|/|1 − 3i| = √5/√10 = 1/√2।"
  },
  {
-  "id": "q_d4dd6fb571efc836",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "1 Evaluate . ∫ dx sin4 1− x 2–",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "tan x +√tan−11(√tan x) + C / 2"
-   },
-   {
-    "id": "B",
-    "text": "1[tan x −√tan−11(√2–tan x)] + C / 2 / 2"
-   },
-   {
-    "id": "C",
-    "text": "1[tan x +√tan−11(√2–tan x)] + C / 2 / 2"
-   },
-   {
-    "id": "D",
-    "text": "None of these."
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0be88dd9114b59a1",
-  "paper": {
-   "no": 12,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_05649e2e4725fa64",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Matrices & Determinants",
-  "topic": "Matrices",
-  "difficulty": "medium",
-  "questionText": "For what value of x is the matrix",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "5"
-   },
-   {
-    "id": "C",
-    "text": "3"
-   },
-   {
-    "id": "D",
-    "text": "7"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0445e9c7210b1b0a",
-  "paper": {
-   "no": 12,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_7250e2fde7969e7a",
+  "id": "q_0141b99f811ce332",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Sets, Relations & Functions",
   "topic": "Relations & Functions",
   "difficulty": "medium",
-  "questionText": "For all x such that x > 0, f(x) = log8 x. What does f-1(x) equal?",
+  "questionText": "For all x such that x > 0, f(x) = log₈x. What does f⁻¹(x) equal?",
   "image": null,
   "options": [
    {
@@ -32733,202 +30918,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "07780cad21109bd8",
+  "dupeHash": "0c59f628c1187b92",
   "paper": {
    "no": 13,
    "group": "X",
    "date": "18 Jul 2021 Shift-1",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "सभी x > 0 के लिए f(x) = log₈x है। f⁻¹(x) किसके बराबर है?",
+  "explanationHi": "y = log₈x ⇔ x = 8^y → प्रतिलोम फलन f⁻¹(x) = 8ˣ।"
  },
  {
-  "id": "q_dbfadf3fe0a34c4a",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "Find the number of terms in ( √",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "10"
-   },
-   {
-    "id": "B",
-    "text": "7"
-   },
-   {
-    "id": "C",
-    "text": "8"
-   },
-   {
-    "id": "D",
-    "text": "9"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 18 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "03f23cf9e10f0f24",
-  "paper": {
-   "no": 13,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_0f642b7de601e7f7",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "− −−−−−−− − √ 2 d2 1 + ( ) y Order of = 3y dx2",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "2"
-   },
-   {
-    "id": "C",
-    "text": "3"
-   },
-   {
-    "id": "D",
-    "text": "None"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 18 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "00dfdb4731342259",
-  "paper": {
-   "no": 13,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_cbe0e80b0c8207ab",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Matrices & Determinants",
-  "topic": "Determinants",
-  "difficulty": "medium",
-  "questionText": "Find the minor of element 6 in the determinant",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "6"
-   },
-   {
-    "id": "B",
-    "text": "-6"
-   },
-   {
-    "id": "C",
-    "text": "9"
-   },
-   {
-    "id": "D",
-    "text": "8"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 18 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0fd40de4010bb458",
-  "paper": {
-   "no": 13,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_04bc96d5a6e4eba6",
+  "id": "q_03e8f5c1912934d7",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Coordinate Geometry",
   "topic": "Conic Sections",
   "difficulty": "medium",
-  "questionText": "Find the length of the minor axis if the equation of the ellipse is",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "4"
-   },
-   {
-    "id": "B",
-    "text": "9"
-   },
-   {
-    "id": "C",
-    "text": "2"
-   },
-   {
-    "id": "D",
-    "text": "3"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 18 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0d590f3c310c9955",
-  "paper": {
-   "no": 13,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_c031f4de47b0ab91",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Coordinate Geometry",
-  "topic": "Conic Sections",
-  "difficulty": "medium",
-  "questionText": "Find the equation of the tangents to the parabola y2 = 4x, which also passes from the point (3, 4).",
+  "questionText": "Find the equations of the tangents to the parabola y² = 4x, which also pass through the point (3, 4).",
   "image": null,
   "options": [
    {
@@ -32958,58 +30965,15 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0bb1be7a9124a19f",
+  "dupeHash": "0c9518449124cd37",
   "paper": {
    "no": 14,
    "group": "X",
    "date": "18 Jul 2021 Shift-3",
    "src": "Prepp"
-  }
- },
- {
-  "id": "q_98f0a65cb8810915",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Differentiation & Applications",
-  "topic": "Differentiation",
-  "difficulty": "medium",
-  "questionText": "d2 y If y = e2x then is equal to ? dx2",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "y"
-   },
-   {
-    "id": "B",
-    "text": "2y"
-   },
-   {
-    "id": "C",
-    "text": "4y"
-   },
-   {
-    "id": "D",
-    "text": "6y"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0fed642d910b4b5b",
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
+  },
+  "questionTextHi": "परवलय y² = 4x की उन स्पर्श रेखाओं के समीकरण ज्ञात कीजिए जो बिंदु (3, 4) से भी गुजरती हैं।",
+  "explanationHi": "स्पर्श रेखा y = mx + 1/m; बिंदु रखने पर 3m² − 4m + 1 = 0 → m = 1, 1/3 → y = x + 1 तथा y = x/3 + 3।"
  },
  {
   "id": "q_ccc72657c9d6bf06",
@@ -33059,148 +31023,13 @@
   "explanationHi": "[स्रोत नोट: सदिशों के घटक मूल PDF में टूटे हुए थे; ये SelfStudys प्रति से पूरे किए गए हैं।]\na⃗ − 2b⃗ = (−3, 4, 0) तथा 2a⃗ − c⃗ = (1, 5, 3); अदिश गुणनफल = −3 + 20 + 0 = 17।"
  },
  {
-  "id": "q_43c0adedf2901bca",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Differentiation & Applications",
-  "topic": "Differentiation",
-  "difficulty": "medium",
-  "questionText": "General solution of differential equation",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "log∣∣1−y ∣∣1= x + C"
-   },
-   {
-    "id": "B",
-    "text": "log |1 - y| = x + C"
-   },
-   {
-    "id": "C",
-    "text": "log |1 + y| = x + C"
-   },
-   {
-    "id": "D",
-    "text": "log∣∣1−y ∣∣1= −x + C"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0138dc61413b14da",
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_48d75b99cf43377b",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "− −−−−−−−−−−−−−−− √ − −−−−−−−−−− − −−−−− If y = x + √ x + x+. . . ∞ √",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "1 / xy"
-   },
-   {
-    "id": "C",
-    "text": "1 / 2y−x"
-   },
-   {
-    "id": "D",
-    "text": "1 / 2y−1"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 18 Jul 2021 Shift-3 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c38572a21abda16",
-  "paper": {
-   "no": 14,
-   "group": "X",
-   "date": "18 Jul 2021 Shift-3",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_4e391f1d8e3d4773",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "1 1 ∫ 1 + x2 dx = 0",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "π / 4"
-   },
-   {
-    "id": "B",
-    "text": "0"
-   },
-   {
-    "id": "C",
-    "text": "π / 2"
-   },
-   {
-    "id": "D",
-    "text": "π / 3"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 18 Jul 2021 · SelfStudys (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "00843e3bd10fc5df",
-  "paper": {
-   "no": 15,
-   "group": "X",
-   "date": "18 Jul 2021",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_9599720fa8b52b61",
+  "id": "q_090527870116792a",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mensuration",
   "topic": "Mensuration",
   "difficulty": "medium",
-  "questionText": "∣ ∣ ∣∣ ∣ ∣ Area of the triangle having the coordinates (4, 2), (-1, 2) and (3, a) is 10 sq. units. Find the value of 'a'.",
+  "questionText": "The area of the triangle having coordinates (4, 2), (−1, 2) and (3, a) is 10 sq. units. Find the value of 'a'.",
   "image": null,
   "options": [
    {
@@ -33230,22 +31059,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "08eb22c1f126d79d",
+  "dupeHash": "0f3fa40d4112118a",
   "paper": {
    "no": 15,
    "group": "X",
    "date": "18 Jul 2021",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "शीर्षों (4, 2), (−1, 2) और (3, a) वाले त्रिभुज का क्षेत्रफल 10 वर्ग इकाई है। 'a' का मान ज्ञात कीजिए।",
+  "explanationHi": "क्षेत्रफल = ½|10 − 5a| = 10 → |10 − 5a| = 20 → a = −2 या 6।"
  },
  {
-  "id": "q_e284784add7ec364",
+  "id": "q_0906d2fda12c82ae",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "y = √x + √x + √x+. . . ∞ dy If , then is dx",
+  "questionText": "If y = √(x + √(x + √x + … ∞)), then dy/dx is:",
   "image": null,
   "options": [
    {
@@ -33275,22 +31106,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0d0b15fa21242e38",
+  "dupeHash": "068e45c811281ab1",
   "paper": {
    "no": 15,
    "group": "X",
    "date": "18 Jul 2021",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि y = √(x + √(x + √x + … ∞)) है, तो dy/dx का मान है:",
+  "explanationHi": "y = √(x + y) → y² = x + y → 2y·dy/dx = 1 + dy/dx → dy/dx = 1/(2y − 1)।"
  },
  {
-  "id": "q_2282e6bac39cc860",
+  "id": "q_0a662fb691135c7d",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Probability",
   "topic": "Probability",
   "difficulty": "medium",
-  "questionText": "What is the probability that a die is thrown? 1) A even number 2)A odd number 3)A prime number",
+  "questionText": "A die is thrown. What are the probabilities of getting: (1) an even number, (2) an odd number, (3) a prime number?",
   "image": null,
   "options": [
    {
@@ -33320,22 +31153,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0ca44986910e3d0b",
+  "dupeHash": "088771f3910ef4dd",
   "paper": {
    "no": 16,
    "group": "X",
    "date": "25 Jul 2022",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "एक पासा फेंका जाता है। (1) सम संख्या, (2) विषम संख्या, (3) अभाज्य संख्या आने की प्रायिकताएँ क्या हैं?",
+  "explanationHi": "सम {2,4,6} → 1/2; विषम {1,3,5} → 1/2; अभाज्य {2,3,5} → 1/2।"
  },
  {
-  "id": "q_c21dbc9797235984",
+  "id": "q_0fab6f2a111ce5fb",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Integration",
   "topic": "Indefinite Integration",
   "difficulty": "medium",
-  "questionText": "y = 1 −x + x2 2! −x3 dy If then what is the value of ? 3! +. . . dx",
+  "questionText": "If y = 1 − x + x²/2! − x³/3! + …, then what is the value of dy/dx?",
   "image": null,
   "options": [
    {
@@ -33365,22 +31200,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "061fb29331148091",
+  "dupeHash": "02bdfeb9c1187e3c",
   "paper": {
    "no": 16,
    "group": "X",
    "date": "25 Jul 2022",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि y = 1 − x + x²/2! − x³/3! + … है, तो dy/dx का मान क्या है?",
+  "explanationHi": "y = e⁻ˣ → dy/dx = −e⁻ˣ।"
  },
  {
-  "id": "q_e5291e4674cabbd8",
+  "id": "q_033a270051135df1",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Integration",
   "topic": "Indefinite Integration",
   "difficulty": "medium",
-  "questionText": "dy Ify = tanx.tan2x.tan3x,then find the value of . dx",
+  "questionText": "If y = tan x · tan 2x · tan 3x, then find the value of dy/dx.",
   "image": null,
   "options": [
    {
@@ -33410,67 +31247,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "00bedf3d910eb3f5",
+  "dupeHash": "0e0f6b58e10ef5f4",
   "paper": {
    "no": 16,
    "group": "X",
    "date": "25 Jul 2022",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि y = tan x · tan 2x · tan 3x है, तो dy/dx का मान ज्ञात कीजिए।",
+  "explanationHi": "सर्वसमिका: tan x·tan 2x·tan 3x = tan 3x − tan 2x − tan x → dy/dx = 3sec²3x − 2sec²2x − sec²x।"
  },
  {
-  "id": "q_9af8f68fa3e85806",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "Let . Then find the value of a.(b× c)",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "40"
-   },
-   {
-    "id": "B",
-    "text": "0"
-   },
-   {
-    "id": "C",
-    "text": "60"
-   },
-   {
-    "id": "D",
-    "text": "85"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 18 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "092f7d05c10b3858",
-  "paper": {
-   "no": 17,
-   "group": "X",
-   "date": "18 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_9880e2fc08e6797d",
+  "id": "q_0af1a533e11bc37a",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Sets, Relations & Functions",
   "topic": "Relations & Functions",
   "difficulty": "medium",
-  "questionText": "Find the domain and range of following function f(x) = (x2 - 1)/(x - 1)",
+  "questionText": "Find the domain and range of the function f(x) = (x² − 1)/(x − 1).",
   "image": null,
   "options": [
    {
@@ -33500,67 +31294,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0afbd035410f6084",
+  "dupeHash": "0d18c63ac1175b9c",
   "paper": {
    "no": 17,
    "group": "X",
    "date": "18 Jan 2023",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "फलन f(x) = (x² − 1)/(x − 1) का प्रांत (domain) और परिसर (range) ज्ञात कीजिए।",
+  "explanationHi": "x ≠ 1 → प्रांत R − {1}; f(x) = x + 1 (x ≠ 1) → परिसर R − {2}।"
  },
  {
-  "id": "q_1a236f3b3d5d34c6",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "1 −cos 2x is lim x2 x→0",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2"
-   },
-   {
-    "id": "B",
-    "text": "0"
-   },
-   {
-    "id": "C",
-    "text": "1"
-   },
-   {
-    "id": "D",
-    "text": "4"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 18 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "072c95e281129f76",
-  "paper": {
-   "no": 17,
-   "group": "X",
-   "date": "18 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_d943bff95281a318",
+  "id": "q_0883e598511d1193",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Binomial Theorem",
   "topic": "Binomial Theorem",
   "difficulty": "medium",
-  "questionText": "10 1 (2x − 3x ) Central term in the expansion of is:",
+  "questionText": "The central term in the expansion of (2x − 3/x)¹⁰ is:",
   "image": null,
   "options": [
    {
@@ -33590,112 +31341,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "03532951b114927d",
+  "dupeHash": "0d436db0e118a996",
   "paper": {
    "no": 17,
    "group": "X",
    "date": "18 Jan 2023",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "(2x − 3/x)¹⁰ के प्रसार में मध्य पद (central term) है:",
+  "explanationHi": "T₆ = ¹⁰C₅(2x)⁵(−3/x)⁵ = −¹⁰C₅(2·3)⁵ — x की घातेँ कट जाती हैं।"
  },
  {
-  "id": "q_0ea85f39c4835d76",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "sin θ + 1 What is equal to? cos θ",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "sin θ + cos θ −1 / sin θ + cos θ + 1"
-   },
-   {
-    "id": "B",
-    "text": "sin θ + cos θ −1 / sin θ + cos θ −1"
-   },
-   {
-    "id": "C",
-    "text": "sin θ −cos θ −1 / sin θ + cos θ + 1"
-   },
-   {
-    "id": "D",
-    "text": "cos θ −sin θ + 1 / sin θ + cos θ −1"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 18 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b9eb5285133698f",
-  "paper": {
-   "no": 17,
-   "group": "X",
-   "date": "18 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_8d65c570eec99635",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "2 tan θ What is equal to? 1+tan2θ",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "cos 2θ"
-   },
-   {
-    "id": "B",
-    "text": "tan 2θ"
-   },
-   {
-    "id": "C",
-    "text": "sin 2θ"
-   },
-   {
-    "id": "D",
-    "text": "cosec 2θ"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "06f4becd810e546a",
-  "paper": {
-   "no": 18,
-   "group": "X",
-   "date": "19 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_188269c984086b09",
+  "id": "q_0bbc33c5912e4f71",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "(→a −→b) If and then the angle between and is?",
+  "questionText": "If |a⃗| = |b⃗|, then the angle between (a⃗ + b⃗) and (a⃗ − b⃗) is:",
   "image": null,
   "options": [
    {
@@ -33725,67 +31388,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "082ead99a119b43c",
+  "dupeHash": "070fd3bff129e793",
   "paper": {
    "no": 18,
    "group": "X",
    "date": "19 Jan 2023",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि |a⃗| = |b⃗| है, तो (a⃗ + b⃗) और (a⃗ − b⃗) के बीच का कोण है:",
+  "explanationHi": "(a⃗+b⃗)·(a⃗−b⃗) = |a⃗|² − |b⃗|² = 0 → दोनों लंबवत → कोण π/2।"
  },
  {
-  "id": "q_d6f08c8e90661049",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "π 2 dx The value of is ∫ 1+tan3 x 0",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "0"
-   },
-   {
-    "id": "B",
-    "text": "1"
-   },
-   {
-    "id": "C",
-    "text": "π/2"
-   },
-   {
-    "id": "D",
-    "text": "π/4"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0e02d3f0e110636a",
-  "paper": {
-   "no": 18,
-   "group": "X",
-   "date": "19 Jan 2023",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_0914651af0bae294",
+  "id": "q_0675adeeb11c0861",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Sets, Relations & Functions",
   "topic": "Sets",
   "difficulty": "medium",
-  "questionText": "sin(2 + x) −sin(2 −x) lim =? x x→0",
+  "questionText": "lim(x→0) [sin(2 + x) − sin(2 − x)]/x = ?",
   "image": null,
   "options": [
    {
@@ -33815,22 +31435,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0a81fa91911776db",
+  "dupeHash": "0f91c1e11117a083",
   "paper": {
    "no": 18,
    "group": "X",
    "date": "19 Jan 2023",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "lim(x→0) [sin(2 + x) − sin(2 − x)]/x का मान क्या है?",
+  "explanationHi": "sinA − sinB = 2cos((A+B)/2)·sin((A−B)/2) → 2cos2·(sin x/x) → 2cos2।"
  },
  {
-  "id": "q_cdb1f6523584c937",
+  "id": "q_0844af24a121990c",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Sets, Relations & Functions",
   "topic": "Sets",
   "difficulty": "medium",
-  "questionText": "1 ∫ ex+e−x dx =",
+  "questionText": "∫ dx/(eˣ + e⁻ˣ) =",
   "image": null,
   "options": [
    {
@@ -33860,22 +31482,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "065b8dd1511cc2dd",
+  "dupeHash": "0ceb75d9111d310f",
   "paper": {
    "no": 18,
    "group": "X",
    "date": "19 Jan 2023",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "∫ dx/(eˣ + e⁻ˣ) का मान है:",
+  "explanationHi": "eˣ = t → dt = eˣdx → ∫dt/(t² + 1) = tan⁻¹(eˣ) + c।"
  },
  {
-  "id": "q_e13eb303eb5a67f1",
+  "id": "q_0db53d44512335db",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "1+i Argument and modulus of are respectively 1−i",
+  "questionText": "The modulus and argument of (1 − i)/(1 + i) are respectively:",
   "image": null,
   "options": [
    {
@@ -33905,22 +31529,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "003080c5811e772a",
+  "dupeHash": "0de935a4e11ecdde",
   "paper": {
    "no": 18,
    "group": "X",
    "date": "19 Jan 2023",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "(1 − i)/(1 + i) का मापांक और कोणांक (argument) क्रमशः हैं:",
+  "explanationHi": "(1−i)/(1+i) = (1−i)²/2 = −i → मापांक 1, कोणांक −π/2।"
  },
  {
-  "id": "q_b6b2d0535679dfc5",
+  "id": "q_0b5edafec11c164e",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "200 If i2 = -1 then the value of in is ∑ n=1",
+  "questionText": "If i² = −1, then the value of ∑(n = 1 to 200) iⁿ is:",
   "image": null,
   "options": [
    {
@@ -33950,202 +31576,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0ab47df6210f68c0",
+  "dupeHash": "013d78602117ae70",
   "paper": {
    "no": 19,
    "group": "X",
    "date": "13 Oct 2023 Shift-1",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि i² = −1 है, तो ∑(n = 1 से 200) iⁿ का मान है:",
+  "explanationHi": "iⁿ का चक्र (i, −1, −i, 1) हर 4 पदों में दोहराता है; 200 = 4 × 50 → योग = 0।"
  },
  {
-  "id": "q_d928dc1e5eb34486",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "∫1 1 √4−x2 dx = 0",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "π / 6"
-   },
-   {
-    "id": "B",
-    "text": "π / 4"
-   },
-   {
-    "id": "C",
-    "text": "π / 3"
-   },
-   {
-    "id": "D",
-    "text": "π / 2"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 13 Oct 2023 Shift-1 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0cff88f641187926",
-  "paper": {
-   "no": 19,
-   "group": "X",
-   "date": "13 Oct 2023 Shift-1",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_306f5db2e62b65e2",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "If nC10 = nC15, then 27Cn equals",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "702"
-   },
-   {
-    "id": "B",
-    "text": "351"
-   },
-   {
-    "id": "C",
-    "text": "729"
-   },
-   {
-    "id": "D",
-    "text": "243"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 13 Oct 2023 Shift-1 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0df4a29ab10aff4f",
-  "paper": {
-   "no": 19,
-   "group": "X",
-   "date": "13 Oct 2023 Shift-1",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_81601b693e1c3789",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "If y = , find (sinx−cosx) dy sin2x dx",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "12 (secx. cotx + cosecx. tanx)"
-   },
-   {
-    "id": "B",
-    "text": "12 (secx. cotx −cosecx. tanx)"
-   },
-   {
-    "id": "C",
-    "text": "12 (secx. tanx + cosecx. cotx)"
-   },
-   {
-    "id": "D",
-    "text": "12 (secx. tanx −cosecx. cotx)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 13 Oct 2023 Shift-1 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c219469e11beb32",
-  "paper": {
-   "no": 19,
-   "group": "X",
-   "date": "13 Oct 2023 Shift-1",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_e8c6ef3bd8a2c904",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "dy π If y = 1 - cosθ, x = 1 - sinθ then atθ = is 4 dx",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "- 1"
-   },
-   {
-    "id": "B",
-    "text": "1"
-   },
-   {
-    "id": "C",
-    "text": "1/2"
-   },
-   {
-    "id": "D",
-    "text": "1 / √2"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 14 Oct 2023 Shift-1 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "076ba24971116061",
-  "paper": {
-   "no": 20,
-   "group": "X",
-   "date": "14 Oct 2023 Shift-1",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_aacace3506faa167",
+  "id": "q_0d1903c3f11252cf",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "If y = (sin x)y, then dy dx is _______:",
+  "questionText": "If y = (sin x)^y, then dy/dx is:",
   "image": null,
   "options": [
    {
@@ -34175,22 +31623,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "03548cbcd10e3263",
+  "dupeHash": "09c865a9310deb2f",
   "paper": {
    "no": 21,
    "group": "X",
    "date": "17 Mar 2024 Shift-1",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "यदि y = (sin x)^y है, तो dy/dx का मान है:",
+  "explanationHi": "log y = y·log(sin x) → अवकलन करने पर dy/dx = y²·cot x/(1 − y·log sin x)।"
  },
  {
-  "id": "q_443c5549f043e9a4",
+  "id": "q_0bfff9ee6110a034",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Coordinate Geometry",
   "topic": "Conic Sections",
   "difficulty": "medium",
-  "questionText": "Focii of ellipse 16x2 + 144 y2 = 400 is",
+  "questionText": "The foci of the ellipse 16x² + 25y² = 400 are:",
   "image": null,
   "options": [
    {
@@ -34220,202 +31670,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "03f3fc1bb10bc891",
+  "dupeHash": "0c60d48ce10c3894",
   "paper": {
    "no": 21,
    "group": "X",
    "date": "17 Mar 2024 Shift-1",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "दीर्घवृत्त 16x² + 25y² = 400 की नाभियाँ (foci) हैं:",
+  "explanationHi": "x²/25 + y²/16 = 1 → a = 5, b = 4 → c = √(25 − 16) = 3 → नाभियाँ ±(3, 0)।"
  },
  {
-  "id": "q_11756fa9dd3c5956",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Differentiation & Applications",
-  "topic": "Differentiation",
-  "difficulty": "medium",
-  "questionText": "If y = ax2 then dy/dx at x = 2 is equal to",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "4a"
-   },
-   {
-    "id": "B",
-    "text": "-4a"
-   },
-   {
-    "id": "C",
-    "text": "a"
-   },
-   {
-    "id": "D",
-    "text": "-a"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 17 Mar 2024 Shift-1 · Utkarsh (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "05450635910b6f71",
-  "paper": {
-   "no": 21,
-   "group": "X",
-   "date": "17 Mar 2024 Shift-1",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_bb8cdbf653facda8",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "( ) -2+2 3i = ?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "± (√3 + i)"
-   },
-   {
-    "id": "B",
-    "text": "± (√3 - i)"
-   },
-   {
-    "id": "C",
-    "text": "± (1 +i√3)"
-   },
-   {
-    "id": "D",
-    "text": "± (1 -i√3)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 17 Mar 2024 Shift-1 · Utkarsh (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b065a85c11b7dba",
-  "paper": {
-   "no": 21,
-   "group": "X",
-   "date": "17 Mar 2024 Shift-1",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_8dc7103358d3929d",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "nP5 = 42×nP3then n =",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "3"
-   },
-   {
-    "id": "B",
-    "text": "10"
-   },
-   {
-    "id": "C",
-    "text": "8"
-   },
-   {
-    "id": "D",
-    "text": "20"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 16 Nov 2024 · SelfStudys (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "00c00f15310a782b",
-  "paper": {
-   "no": 22,
-   "group": "X",
-   "date": "16 Nov 2024",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_9c6dedaac2238acc",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "2→a −→b + 3→c If , and , and a unit vector parallel to the vector ?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "√22^i −9√22 ^j +3√22 ^k1"
-   },
-   {
-    "id": "B",
-    "text": "√22^i −2√22 ^j +3√22 ^k2"
-   },
-   {
-    "id": "C",
-    "text": "√22^i −3√22 ^j +3√22 ^k3"
-   },
-   {
-    "id": "D",
-    "text": "√22^i −3√22 ^j +3√22 ^k2"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 16 Nov 2024 · SelfStudys (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "049154a58160b3ae",
-  "paper": {
-   "no": 22,
-   "group": "X",
-   "date": "16 Nov 2024",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_41ebbcbfe9d07dce",
+  "id": "q_0c7a9e2041287bee",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "d2y Find if y = sin (log x) ? dx2",
+  "questionText": "Find d²y/dx² if y = sin(log x).",
   "image": null,
   "options": [
    {
@@ -34445,67 +31717,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "03bee03af123fd2d",
+  "dupeHash": "0291cefc5124142f",
   "paper": {
    "no": 24,
    "group": "X",
    "date": "22 Mar 2025",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि y = sin(log x) है, तो d²y/dx² ज्ञात कीजिए।",
+  "explanationHi": "dy/dx = cos(log x)/x → d²y/dx² = −[sin(log x) + cos(log x)]/x²।"
  },
  {
-  "id": "q_aab190c813b81b08",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Limits, Continuity & Differentiability",
-  "topic": "Limits",
-  "difficulty": "medium",
-  "questionText": "Find x→0+ x ln x lim",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "0"
-   },
-   {
-    "id": "B",
-    "text": "∞"
-   },
-   {
-    "id": "C",
-    "text": "1"
-   },
-   {
-    "id": "D",
-    "text": "-1"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 22 Mar 2025 · SelfStudys (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b517f6041129642",
-  "paper": {
-   "no": 24,
-   "group": "X",
-   "date": "22 Mar 2025",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_3d5e6e808d7c4732",
+  "id": "q_007dc3a2311e01d3",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Matrices & Determinants",
   "topic": "Matrices",
   "difficulty": "medium",
-  "questionText": "A−1 If A is an orthogonal Matrix. Then Inverse of the Matrix is 2",
+  "questionText": "If A is an orthogonal matrix, then the inverse of the matrix A/2 is:",
   "image": null,
   "options": [
    {
@@ -34535,22 +31764,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "00afeba6211d7d78",
+  "dupeHash": "0955acccf1199a33",
   "paper": {
    "no": 24,
    "group": "X",
    "date": "22 Mar 2025",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि A एक लांबिक (orthogonal) आव्यूह है, तो आव्यूह A/2 का व्युत्क्रम है:",
+  "explanationHi": "(A/2)⁻¹ = 2A⁻¹ = 2Aᵀ (लांबिक आव्यूह के लिए A⁻¹ = Aᵀ)।"
  },
  {
-  "id": "q_0fffa0b7f51e4b16",
+  "id": "q_0cc52576b116c327",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "Solve the following: 1 1 1+cos θ + 1−cos θ =?",
+  "questionText": "Solve: 1/(1 + cos θ) + 1/(1 − cos θ) = ?",
   "image": null,
   "options": [
    {
@@ -34580,22 +31811,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "03084685f112d5d5",
+  "dupeHash": "070db71471125b87",
   "paper": {
    "no": 24,
    "group": "X",
    "date": "22 Mar 2025",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "हल कीजिए: 1/(1 + cos θ) + 1/(1 − cos θ) = ?",
+  "explanationHi": "अंश जोड़ने पर: 2/sin²θ = 2cosec²θ।"
  },
  {
-  "id": "q_cbc2f09deca863a1",
+  "id": "q_0788b57e21301f98",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Inverse Trigonometric Functions",
   "difficulty": "medium",
-  "questionText": "Simplify the following: (2 +√y)4+ (2 -√y)4",
+  "questionText": "Simplify: (2 + √y)⁴ + (2 − √y)⁴.",
   "image": null,
   "options": [
    {
@@ -34625,22 +31858,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0ad4e37b6120615a",
+  "dupeHash": "0624abc8312bb7d9",
   "paper": {
    "no": 24,
    "group": "X",
    "date": "22 Mar 2025",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "सरल कीजिए: (2 + √y)⁴ + (2 − √y)⁴।",
+  "explanationHi": "(a+b)⁴ + (a−b)⁴ = 2(a⁴ + 6a²b² + b⁴) = 2(16 + 24y + y²) = 2y² + 48y + 32।"
  },
  {
-  "id": "q_16142f360f1e2a0c",
+  "id": "q_0e170f5ad3db7153",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Integration",
   "topic": "Indefinite Integration",
   "difficulty": "medium",
-  "questionText": "The value of ∫ 𝒍𝒐𝒈𝒙 (𝒙+𝟏) 𝟐𝒅𝒙 is",
+  "questionText": "The value of ∫ log x/(x + 1)² dx is:",
   "image": null,
   "options": [
    {
@@ -34670,22 +31905,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "096a939b858514c0",
+  "dupeHash": "084ea56d53d709b3",
   "paper": {
    "no": 26,
    "group": "X",
    "date": "25 Sep 2025",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "∫ log x/(x + 1)² dx का मान है:",
+  "explanationHi": "खंडश: अवकलन से −log x/(x+1) + ∫dx/[x(x+1)] = −log x/(x+1) + log x − log(x+1) + c।"
  },
  {
-  "id": "q_f2d10c943e32a182",
+  "id": "q_057a06fd211cfe52",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "| 𝟏 𝒂 𝒂𝟐−𝒃𝒄 𝟏 𝒃 𝒃𝟐−𝒂𝒄 𝟏 𝒄 𝒄𝟐−𝒂𝒃 | is equal to ?",
+  "questionText": "|1 a a²−bc; 1 b b²−ca; 1 c c²−ab| is equal to?",
   "image": null,
   "options": [
    {
@@ -34715,112 +31952,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0dab2a90e4d201ce",
+  "dupeHash": "0ef6f8a4211896b2",
   "paper": {
    "no": 26,
    "group": "X",
    "date": "25 Sep 2025",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "सारणिक |1 a a²−bc; 1 b b²−ca; 1 c c²−ab| किसके बराबर है?",
+  "explanationHi": "R₂ − R₁ तथा R₃ − R₁ लेने पर दोनों नई पंक्तियाँ (b−a), (c−a) और (a+b+c) के गुणज हैं → सारणिक = 0।"
  },
  {
-  "id": "q_5575c3aed1800c2f",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "If 5 tan A = 3, then the value of 𝟓𝒔𝒊𝒏 𝑨−𝟐𝒄𝒐𝒔𝑨 𝑺𝒊𝒏 𝑨+𝟐𝒄𝒐𝒔𝑨 is",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "7/9"
-   },
-   {
-    "id": "B",
-    "text": "5/13"
-   },
-   {
-    "id": "C",
-    "text": "9/13"
-   },
-   {
-    "id": "D",
-    "text": "5/7"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 25 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0fd2b60664fd7292",
-  "paper": {
-   "no": 26,
-   "group": "X",
-   "date": "25 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_55459c61632796db",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "∫ 𝒅𝒙 𝐬𝐢𝐧𝟐𝒙.𝐜𝐨𝐬𝟐𝒙 equals :",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "tan x. cot x + c"
-   },
-   {
-    "id": "B",
-    "text": "tan x - cot x + c"
-   },
-   {
-    "id": "C",
-    "text": "tan x - cot 2x + c"
-   },
-   {
-    "id": "D",
-    "text": "tan x cot x + c"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 25 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0388f142238bacec",
-  "paper": {
-   "no": 26,
-   "group": "X",
-   "date": "25 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_3a1e5e69b6129918",
+  "id": "q_0dac8e46f4a46709",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "The solution 𝒅𝒙 𝒅𝒕= 𝟑𝒙+ 𝟖 will be",
+  "questionText": "The solution of dx/dt = 3x + 8 will be:",
   "image": null,
   "options": [
    {
@@ -34850,22 +31999,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0a71140225d4ece4",
+  "dupeHash": "02b2be91249fff4a",
   "paper": {
    "no": 26,
    "group": "X",
    "date": "25 Sep 2025",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "dx/dt = 3x + 8 का हल होगा:",
+  "explanationHi": "dx/(3x+8) = dt → (1/3)ln|3x+8| = t + c → x = (1/3)e^(3(t+c)) − 8/3।"
  },
  {
-  "id": "q_6bce6dc05ef92bef",
+  "id": "q_026a818d62e1d310",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "For any n 𝜺 N, 𝟏 𝟐.𝟓+ 𝟏 𝟓.𝟖+. . . + 𝟏 (𝟑𝒏−𝟏)(𝟑𝒏+𝟐) =",
+  "questionText": "For any n ∈ N, 1/(2·5) + 1/(5·8) + … + 1/((3n−1)(3n+2)) =",
   "image": null,
   "options": [
    {
@@ -34895,22 +32046,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "09157f2ec59f2352",
+  "dupeHash": "02695e2de2dd6b70",
   "paper": {
    "no": 26,
    "group": "X",
    "date": "25 Sep 2025",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "किसी n ∈ N के लिए 1/(2·5) + 1/(5·8) + … + 1/((3n−1)(3n+2)) का मान है:",
+  "explanationHi": "1/((3k−1)(3k+2)) = (1/3)[1/(3k−1) − 1/(3k+2)] → श्रेणी = (1/3)[1/2 − 1/(3n+2)] = n/(6n+4)।"
  },
  {
-  "id": "q_624527392de649a4",
+  "id": "q_097fd647e313a4a8",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Binomial Theorem",
   "topic": "Binomial Theorem",
   "difficulty": "medium",
-  "questionText": "The middle term in the expansion of (𝒙𝟐+ 𝟏 𝒙𝟐+𝟐) 𝒏 is",
+  "questionText": "The middle term in the expansion of (x² + 1/x² + 2)ⁿ is:",
   "image": null,
   "options": [
    {
@@ -34940,22 +32093,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "05d4ec4df45c1297",
+  "dupeHash": "09ece46b630f3d08",
   "paper": {
    "no": 26,
    "group": "X",
    "date": "25 Sep 2025",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "(x² + 1/x² + 2)ⁿ के प्रसार में मध्य पद है:",
+  "explanationHi": "x² + 1/x² + 2 = (x + 1/x)² → प्रसार (x + 1/x)^(2n) → मध्य पद = ^(2n)Cₙ = (2n)!/(n!)²।"
  },
  {
-  "id": "q_566f597bc99cd9ca",
+  "id": "q_0f142a14d4b121e9",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "If 3x + 3y = 3x + y then what is 𝒅𝒚 𝒅𝒙 equal to ?",
+  "questionText": "If 3ˣ + 3ʸ = 3^(x+y), then what is dy/dx equal to?",
   "image": null,
   "options": [
    {
@@ -34985,238 +32140,15 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "028463a56541d936",
+  "dupeHash": "0b2a0ecd04acba2a",
   "paper": {
    "no": 29,
    "group": "X",
    "date": "27 Sep 2025",
    "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_a2aa9e28fba9da1b",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Sets, Relations & Functions",
-  "topic": "Sets",
-  "difficulty": "medium",
-  "questionText": "Find 𝒅𝟐𝒚 𝒅𝒙𝟐 if y = sin (log x)?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "sin(log𝑥)+𝑥.cos(log𝑥) 𝑥2"
-   },
-   {
-    "id": "B",
-    "text": "− .sin(log 𝑥)+𝑐𝑜𝑠(log 𝑥) 𝑥2"
-   },
-   {
-    "id": "C",
-    "text": "𝑥.sin(log 𝑥)−cos(log 𝑥) 2𝑥"
-   },
-   {
-    "id": "D",
-    "text": "sin(log 𝑥)+cos(log 𝑥) 2𝑥"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 27 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0bb37a8cf5d6a35f",
-  "paper": {
-   "no": 29,
-   "group": "X",
-   "date": "27 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_4aa7c969b6f56b5d",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "If 5 tan A = 3, then the value of 𝟓𝐬𝐢𝐧𝑨−𝟐𝐜𝐨𝐬 𝑨 𝑺𝒊𝒏 𝑨+𝟐𝐜𝐨𝐬𝑨 is",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "7/9"
-   },
-   {
-    "id": "B",
-    "text": "5/13"
-   },
-   {
-    "id": "C",
-    "text": "9/13"
-   },
-   {
-    "id": "D",
-    "text": "5/7"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 27 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c54482784fd013a",
-  "paper": {
-   "no": 29,
-   "group": "X",
-   "date": "27 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_aabda0083a9b2aa2",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "What is the value of∫ (𝐭𝐚𝐧𝟑𝒙+ 𝐭𝐚𝐧𝒙)𝒅𝒙? 𝝅𝟒 ⁄ 𝟎",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1 4"
-   },
-   {
-    "id": "B",
-    "text": "1 2"
-   },
-   {
-    "id": "C",
-    "text": "1"
-   },
-   {
-    "id": "D",
-    "text": "2"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 27 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "01ad4ef093f87db1",
-  "paper": {
-   "no": 29,
-   "group": "X",
-   "date": "27 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_40bf4607ebf4005c",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "The value of 𝐬𝐢𝐧𝟕𝟐° 𝐜𝐨𝐬𝟏𝟖° is :",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "-1"
-   },
-   {
-    "id": "B",
-    "text": "1"
-   },
-   {
-    "id": "C",
-    "text": "2"
-   },
-   {
-    "id": "D",
-    "text": "0"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 27 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "04fbc487431cbfb6",
-  "paper": {
-   "no": 29,
-   "group": "X",
-   "date": "27 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_213ce8292e08724b",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "𝐥𝐢𝐦 𝒙→𝟎 𝒆𝒙−𝟏−𝒙−𝒙𝟐 𝒙𝟐 =",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "0"
-   },
-   {
-    "id": "B",
-    "text": "1 2"
-   },
-   {
-    "id": "C",
-    "text": "−1 2"
-   },
-   {
-    "id": "D",
-    "text": "-1"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 27 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0dae649803cf6de8",
-  "paper": {
-   "no": 29,
-   "group": "X",
-   "date": "27 Sep 2025",
-   "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "यदि 3ˣ + 3ʸ = 3^(x+y) है, तो dy/dx किसके बराबर है?",
+  "explanationHi": "अवकलन करने पर y′(3ʸ − 3^(x+y)) = 3^(x+y) − 3ˣ; शर्त से 3^(x+y) = 3ˣ + 3ʸ प्रतिस्थापित करने पर y′ = −3ʸ/3ˣ (विकल्प B इसी का रूप है)।"
  },
  {
   "id": "q_ba7a6e3e9bb4c984",
@@ -35264,13 +32196,13 @@
   }
  },
  {
-  "id": "q_0a2a0acbe87f35ce",
+  "id": "q_0aa0ef6cb116900d",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "A relation defined as R = {(1, 2), (3, 4), (2, 4)} find R-¹.",
+  "questionText": "A relation is defined as R = {(1, 2), (3, 4), (2, 4)}. Find R⁻¹.",
   "image": null,
   "options": [
    {
@@ -35300,72 +32232,29 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "047d79ab310e1e87",
+  "dupeHash": "01f65f2f1112282f",
   "paper": {
    "no": 29,
    "group": "X",
    "date": "27 Sep 2025",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "एक संबंध R = {(1, 2), (3, 4), (2, 4)} परिभाषित है। R⁻¹ ज्ञात कीजिए।",
+  "explanationHi": "प्रतिलोम संबंध में क्रमित युग्मों के अवयव आपस में बदल जाते हैं → {(2, 1), (4, 3), (4, 2)}।"
  },
  {
-  "id": "q_0a0f1c13dcfde620",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "If y = 5 cos x -3 sin x, then 𝒅𝟐𝒚 𝒅𝒙𝟐 + y equals",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "8 sin x cos x"
-   },
-   {
-    "id": "B",
-    "text": "3 sin x cos x"
-   },
-   {
-    "id": "C",
-    "text": "1"
-   },
-   {
-    "id": "D",
-    "text": "0"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 27 Sep 2025 · Utkarsh (Group X)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "04763a93724a3fa9",
-  "paper": {
-   "no": 29,
-   "group": "X",
-   "date": "27 Sep 2025",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_b02875c8747dd7f1",
+  "id": "q_05f8dd07f114caad",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Matrices & Determinants",
   "topic": "Matrices",
   "difficulty": "medium",
-  "questionText": "If A is 3 x 3 matrix such that det",
+  "questionText": "If A is a 3×3 matrix such that det A = −2, then det(adj(adj A)) is:",
   "image": null,
   "options": [
    {
     "id": "A",
-    "text": "= -2, what is the value of det (adj (adj A))? (a) -32"
+    "text": "-32"
    },
    {
     "id": "B",
@@ -35390,13 +32279,15 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0401a087f10cd945",
+  "dupeHash": "02f7ccd0211062ee",
   "paper": {
    "no": 32,
    "group": "XY",
    "date": "30 Mar 2026",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "यदि A एक 3×3 आव्यूह है जिसके लिए det A = −2 है, तो det(adj(adj A)) का मान है:",
+  "explanationHi": "det(adj(adj A)) = (det A)^((n−1)²) = (−2)⁴ = 16।"
  },
  {
   "id": "q_0745aea01381c69b",
@@ -36122,148 +33013,13 @@
   "dupeHash": "06518ca5210de0e4"
  },
  {
-  "id": "q_fef4147faca8d6d1",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "Find the area of the region bounded by the curves y = x3, the line x = 2, x = 5 and the x - axis?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "173.50"
-   },
-   {
-    "id": "B",
-    "text": "230.25"
-   },
-   {
-    "id": "C",
-    "text": "175.35"
-   },
-   {
-    "id": "D",
-    "text": "152.25"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "",
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0909c578110deb2f",
-  "paper": {
-   "no": 1,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_1f71d91c43233af9",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Sets, Relations & Functions",
-  "topic": "Sets",
-  "difficulty": "medium",
-  "questionText": "1 If and , then the values of A and B tan(A + B) = √3 tan(A −B) = √3 are respectively:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "45°, 15°"
-   },
-   {
-    "id": "B",
-    "text": "30°, 60°"
-   },
-   {
-    "id": "C",
-    "text": "30°, 30°"
-   },
-   {
-    "id": "D",
-    "text": "40°, 20°"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 04 Nov 2020 · SelfStudys (Group X)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0b24a2b0f11a23c3",
-  "paper": {
-   "no": 2,
-   "group": "X",
-   "date": "04 Nov 2020",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_0e61a3f7b464251e",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Integration",
-  "topic": "Indefinite Integration",
-  "difficulty": "medium",
-  "questionText": "∫π Find the value of sinx dx −π",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "0"
-   },
-   {
-    "id": "C",
-    "text": "2"
-   },
-   {
-    "id": "D",
-    "text": "3"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "004ef7b52113f3bc",
-  "paper": {
-   "no": 6,
-   "group": "X",
-   "date": "12 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_f92b00ffa0942e6c",
+  "id": "q_078130a2012032da",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Sequences & Series",
   "topic": "Arithmetic Progression",
   "difficulty": "medium",
-  "questionText": "If the ninth term of an A.P. is zero, then th t denotes the n term of AP. n",
+  "questionText": "If the ninth term of an A.P. is zero, then t₂₇/t₁₈ is equal to:",
   "image": null,
   "options": [
    {
@@ -36293,67 +33049,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "05a60a5d910caa0b",
+  "dupeHash": "0054ff82e11bcafc",
   "paper": {
    "no": 4,
    "group": "X",
    "date": "06 Nov 2020",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि किसी समान्तर श्रेणी का नौवाँ पद शून्य है, तो t₂₇/t₁₈ किसके बराबर है?",
+  "explanationHi": "t₉ = 0 → a + 8d = 0 → a = −8d; t₂₇ = 18d, t₁₈ = 9d → अनुपात = 2।"
  },
  {
-  "id": "q_f0bf48231535ad40",
+  "id": "q_00837d109115466f",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Quadratic Equations & Complex Numbers",
   "topic": "Quadratic Equations",
   "difficulty": "medium",
-  "questionText": "The roots of the equation 3x2 + 8x + 9 = 0 are α, β, then equation whose roots are",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "3x2 - 8x + 9 = 0"
-   },
-   {
-    "id": "B",
-    "text": "9x2 - 8x + 3 = 0"
-   },
-   {
-    "id": "C",
-    "text": "9x2 + 8x + 3 = 0"
-   },
-   {
-    "id": "D",
-    "text": "3y2 + 9y + 8 = 0"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "015c9994910f34cd",
-  "paper": {
-   "no": 6,
-   "group": "X",
-   "date": "12 Jul 2021 Shift-2",
-   "src": "Prepp"
-  }
- },
- {
-  "id": "q_1019a95ccabadaa5",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Quadratic Equations & Complex Numbers",
-  "topic": "Quadratic Equations",
-  "difficulty": "medium",
-  "questionText": "The roots of the equation 3x2 + 8x + 9 = 0 are α, β, then equation whose α , 1 1 roots are is β",
+  "questionText": "If α, β are the roots of the equation 3x² + 8x + 9 = 0, then the equation whose roots are 1/α and 1/β is:",
   "image": null,
   "options": [
    {
@@ -36383,22 +33096,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "07a140a861105ce0",
+  "dupeHash": "097cfbd0f110de91",
   "paper": {
    "no": 18,
    "group": "X",
    "date": "19 Jan 2023",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि समीकरण 3x² + 8x + 9 = 0 के मूल α, β हैं, तो जिस समीकरण के मूल 1/α और 1/β हैं, वह है:",
+  "explanationHi": "1/α + 1/β = (α+β)/αβ = (−8/3)/3 = −8/9; 1/(αβ) = 1/3 → x² + (8/9)x + 1/3 = 0 → 9x² + 8x + 3 = 0।"
  },
  {
-  "id": "q_35863b29c3565700",
+  "id": "q_035334ffa113f20a",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Sets, Relations & Functions",
   "topic": "Relations & Functions",
   "difficulty": "medium",
-  "questionText": "If f (x) = 16x4, g(x) = x1/4 then gof (x) is",
+  "questionText": "If f(x) = 16x⁴ and g(x) = x^(1/4), then gof(x) is:",
   "image": null,
   "options": [
    {
@@ -36428,67 +33143,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0f94f930910b64c9",
+  "dupeHash": "012cc77a110f8a0d",
   "paper": {
    "no": 10,
    "group": "X",
    "date": "14 Jul 2021 Shift-3",
    "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि f(x) = 16x⁴ और g(x) = x^(1/4) है, तो gof(x) क्या है?",
+  "explanationHi": "gof(x) = g(16x⁴) = (16x⁴)^(1/4) = 2x।"
  },
  {
-  "id": "q_2e32fabf390c22d9",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Limits, Continuity & Differentiability",
-  "topic": "Limits",
-  "difficulty": "medium",
-  "questionText": "sinx + log(1−x) What is equal to? lim x2 x→0",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "0"
-   },
-   {
-    "id": "B",
-    "text": "1"
-   },
-   {
-    "id": "C",
-    "text": "-1/2"
-   },
-   {
-    "id": "D",
-    "text": "1/2"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group X)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "05f725bda1139b94",
-  "paper": {
-   "no": 16,
-   "group": "X",
-   "date": "25 Jul 2022",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_940fd42b18832dba",
+  "id": "q_0675b916b1193d33",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "n! n! If are in the ratio 2 : 1 then find the value of n ? and 2(n−2)! 4!(n−4)!",
+  "questionText": "If n!/[2(n−2)!] and n!/[4!(n−4)!] are in the ratio 2 : 1, then find the value of n.",
   "image": null,
   "options": [
    {
@@ -36518,58 +33190,15 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "05f32804b114a59f",
+  "dupeHash": "031bcf240114d536",
   "paper": {
    "no": 10,
    "group": "X",
    "date": "14 Jul 2021 Shift-3",
    "src": "Prepp"
-  }
- },
- {
-  "id": "q_9b02245071ce6e0c",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "What is the degree of the following differential equation? − −−−− − √ d2 y x = 1 + dx2",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1"
-   },
-   {
-    "id": "B",
-    "text": "2"
-   },
-   {
-    "id": "C",
-    "text": "3"
-   },
-   {
-    "id": "D",
-    "text": "Degree is not defined"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0ddda0e9712a9ee9",
-  "paper": {
-   "no": 11,
-   "group": "X",
-   "date": "15 Jul 2021 Shift-1",
-   "src": "Prepp"
-  }
+  },
+  "questionTextHi": "यदि n!/[2(n−2)!] और n!/[4!(n−4)!] का अनुपात 2 : 1 है, तो n का मान ज्ञात कीजिए।",
+  "explanationHi": "n(n−1)/2 और n(n−1)(n−2)(n−3)/24 का अनुपात = 12/[(n−2)(n−3)] = 2 → (n−2)(n−3) = 6 → n = 5।"
  },
  {
   "id": "q_f30a53625a3caa5e",
@@ -36621,13 +33250,13 @@
   }
  },
  {
-  "id": "q_1e7e0eb4a4b7fba2",
+  "id": "q_036cf61e51228ccf",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Quadratic Equations & Complex Numbers",
   "topic": "Quadratic Equations",
   "difficulty": "medium",
-  "questionText": "If (1−p) is a root of quadratic equation x2 + px + (1−p) = 0, then the roots are equal to",
+  "questionText": "If (1 − p) is a root of the quadratic equation x² + px + (1 − p) = 0, then the roots are equal to:",
   "image": null,
   "options": [
    {
@@ -36657,58 +33286,15 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0d64cd5f911dd40d",
+  "dupeHash": "0a3d2dc6e11e24d2",
   "paper": {
    "no": 12,
    "group": "X",
    "date": "15 Jul 2021 Shift-3",
    "src": "Prepp"
-  }
- },
- {
-  "id": "q_5a50a7e72aa8722b",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Sequences & Series",
-  "topic": "Arithmetic Progression",
-  "difficulty": "medium",
-  "questionText": "Three numbers 3, q and 5are in arithmetic progression if q= ?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "4"
-   },
-   {
-    "id": "B",
-    "text": "5"
-   },
-   {
-    "id": "C",
-    "text": "3"
-   },
-   {
-    "id": "D",
-    "text": "None of these"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 18 Jul 2021 · SelfStudys (Group X)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0cd51977510ccafb",
-  "paper": {
-   "no": 15,
-   "group": "X",
-   "date": "18 Jul 2021",
-   "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि (1 − p) द्विघात समीकरण x² + px + (1 − p) = 0 का एक मूल है, तो मूल हैं:",
+  "explanationHi": "x = 1−p रखने पर 2(1−p) = 0 → p = 1 → समीकरण x² + x = 0 → मूल 0 तथा −1।"
  },
  {
   "id": "q_c5951a4ffa8b8606",
@@ -36756,13 +33342,13 @@
   }
  },
  {
-  "id": "q_6a6a83e8e7d33170",
+  "id": "q_05f38e54c11503f4",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "dy Find the degree and order of given equation ? dx = −a cos x",
+  "questionText": "Find the degree and order of the equation d²y/dx² = −a cos x.",
   "image": null,
   "options": [
    {
@@ -36792,22 +33378,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "02e18e26c1108f7e",
+  "dupeHash": "071fea0d81109c54",
   "paper": {
    "no": 15,
    "group": "X",
    "date": "18 Jul 2021",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "समीकरण d²y/dx² = −a cos x की घात (degree) और कोटि (order) ज्ञात कीजिए।",
+  "explanationHi": "सर्वोच्च व्युत्पन्न d²y/dx² → कोटि 2; व्युत्पन्न की घात 1 → घात 1, कोटि 2।"
  },
  {
-  "id": "q_f88484938c0d873a",
+  "id": "q_0e9db4a1614126f8",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Vectors & 3D Geometry",
   "topic": "Vectors",
   "difficulty": "medium",
-  "questionText": "→a, b and →c (→a − 2→b). ( →2a − →c) ^i + 2^j + 2^k If three vectors are represented by , 2^i − ^j + ^k ^i − ^j + ^k and thenthe value of will be:",
+  "questionText": "If three vectors are represented by a⃗ = î + 2ĵ + 2k̂, b⃗ = 2î − ĵ + k̂ and c⃗ = î − ĵ + k̂, then the value of (a⃗ − 2b⃗)·(2a⃗ − c⃗) will be:",
   "image": null,
   "options": [
    {
@@ -36837,22 +33425,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "05c210a601382004",
+  "dupeHash": "011f1cb5413cbf1a",
   "paper": {
    "no": 15,
    "group": "X",
    "date": "18 Jul 2021",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि तीन सदिश a⃗ = î + 2ĵ + 2k̂, b⃗ = 2î − ĵ + k̂ और c⃗ = î − ĵ + k̂ हैं, तो (a⃗ − 2b⃗)·(2a⃗ − c⃗) का मान होगा:",
+  "explanationHi": "a⃗ − 2b⃗ = −3î + 4ĵ; 2a⃗ − c⃗ = î + 5ĵ + 3k̂ → डॉट गुणनफल = −3 + 20 + 0 = 17।"
  },
  {
-  "id": "q_a183742c0fd14048",
+  "id": "q_095af0084115bf2a",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Trigonometry",
   "topic": "Trigonometric Ratios & Identities",
   "difficulty": "medium",
-  "questionText": "cos 2x ∫ cos2 x.sin2 x dx = ?",
+  "questionText": "∫ cos 2x/(cos²x·sin²x) dx = ?",
   "image": null,
   "options": [
    {
@@ -36882,22 +33472,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "02486d4b31112413",
+  "dupeHash": "08567c5a0111578a",
   "paper": {
    "no": 17,
    "group": "X",
    "date": "18 Jan 2023",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "∫ cos 2x/(cos²x·sin²x) dx का मान क्या है?",
+  "explanationHi": "cos 2x = cos²x − sin²x → भिन्न करने पर cosec²x − sec²x → −cot x − tan x + c।"
  },
  {
-  "id": "q_1702c7e4bed94287",
+  "id": "q_0e003ac29126aa53",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Matrices & Determinants",
   "topic": "Matrices",
   "difficulty": "medium",
-  "questionText": "The inverse of matrix A, where A = [[2, 5], [1, 3]], is",
+  "questionText": "The inverse of the matrix A, where A = [[2, 5], [1, 3]], is:",
   "image": null,
   "options": [
    {
@@ -36927,13 +33519,15 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "00502dab312210cf",
+  "dupeHash": "0d2661fd41224294",
   "paper": {
    "no": 17,
    "group": "X",
    "date": "18 Jan 2023",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "आव्यूह A = [2 5; 1 3] का व्युत्क्रम (inverse) है:",
+  "explanationHi": "det A = 1 → A⁻¹ = [[3, −5], [−1, 2]]।"
  },
  {
   "id": "q_46cf75116c6f6245",
@@ -36981,193 +33575,13 @@
   }
  },
  {
-  "id": "q_603539f7c711dcd1",
+  "id": "q_0bca585f7119e29d",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Mathematics (Miscellaneous)",
   "topic": "General",
   "difficulty": "medium",
-  "questionText": "If the point (2k -3, k + 1) lies on the linear equation 2x - 3y + 12 = 0 then value of k is :",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2"
-   },
-   {
-    "id": "B",
-    "text": "3"
-   },
-   {
-    "id": "C",
-    "text": "-3"
-   },
-   {
-    "id": "D",
-    "text": "-1"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "",
-  "source": "PYQ · 17 Mar 2024 Shift-1 · Utkarsh (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "04f7a4ae110d1327",
-  "paper": {
-   "no": 21,
-   "group": "X",
-   "date": "17 Mar 2024 Shift-1",
-   "src": "Utkarsh"
-  }
- },
- {
-  "id": "q_1baae53e7408c7e8",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "∫( sin2 x )dx 1 1 What is equal to ? cos2 x − Where c is the constant of integration",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "2 cosec 2x + c"
-   },
-   {
-    "id": "B",
-    "text": "-2 cot 2x + c"
-   },
-   {
-    "id": "C",
-    "text": "2 sec 2x + c"
-   },
-   {
-    "id": "D",
-    "text": "-2 tan 2x + c"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 13 Oct 2023 Shift-1 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "037188e15116c707",
-  "paper": {
-   "no": 19,
-   "group": "X",
-   "date": "13 Oct 2023 Shift-1",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_41e20665ed31bd23",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Trigonometric Ratios & Identities",
-  "difficulty": "medium",
-  "questionText": "π 2 cos x ∫ (1+sin x)(2+sin x) dx = 0",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "log 4 / 3"
-   },
-   {
-    "id": "B",
-    "text": "log 1 / 3"
-   },
-   {
-    "id": "C",
-    "text": "log 3 / 4"
-   },
-   {
-    "id": "D",
-    "text": "None of these"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "",
-  "source": "PYQ · 14 Oct 2023 Shift-1 · SelfStudys (Group X)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "03b6e708c110accc",
-  "paper": {
-   "no": 20,
-   "group": "X",
-   "date": "14 Oct 2023 Shift-1",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_282b6365a31bbc4b",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Trigonometry",
-  "topic": "Inverse Trigonometric Functions",
-  "difficulty": "medium",
-  "questionText": "π ∫ 4 x. sec2 xdx Solve: 0",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "π / 4 + log √2"
-   },
-   {
-    "id": "B",
-    "text": "π / 4 −log √2"
-   },
-   {
-    "id": "C",
-    "text": "1 + log √2"
-   },
-   {
-    "id": "D",
-    "text": "1 −1 / 2 log 2"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "",
-  "source": "PYQ · 16 Nov 2024 · SelfStudys (Group X)",
-  "year": 2024,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "04cecdc44125c366",
-  "paper": {
-   "no": 22,
-   "group": "X",
-   "date": "16 Nov 2024",
-   "src": "SelfStudys"
-  }
- },
- {
-  "id": "q_3a3ebb3e2ced4b17",
-  "subject": "mathematics",
-  "subjectName": "Mathematics",
-  "chapter": "Mathematics (Miscellaneous)",
-  "topic": "General",
-  "difficulty": "medium",
-  "questionText": "What will be the value of y''(x) for the given parametric form x = at, andy = a/t",
+  "questionText": "What will be the value of y″(x) for the given parametric form x = at and y = a/t?",
   "image": null,
   "options": [
    {
@@ -37197,22 +33611,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0dfc1a6f211197f6",
+  "dupeHash": "0b6b5c54a1157ade",
   "paper": {
    "no": 22,
    "group": "X",
    "date": "16 Nov 2024",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "दिए गए प्राचलिक रूप x = at तथा y = a/t के लिए y″(x) का मान क्या होगा?",
+  "explanationHi": "dy/dx = −1/t²; d/dt(−t⁻²) = 2t⁻³; dx/dt = a → y″ = 2/(at³)।"
  },
  {
-  "id": "q_bc3b62ded8b88294",
+  "id": "q_0b55f89ae1372e8e",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Probability",
   "topic": "Probability",
   "difficulty": "medium",
-  "questionText": "If E and E are two events such thatP(E ) = 0.3, P(E ∪ E ) = 0.4 andP(E ) 1 2 1 1 2 2 = x then find the value of x such thatE and E are two independent 1 2 events ?",
+  "questionText": "If E₁ and E₂ are two events such that P(E₁) = 0.3, P(E₁ ∪ E₂) = 0.4 and P(E₂) = x, then find the value of x such that E₁ and E₂ are independent events.",
   "image": null,
   "options": [
    {
@@ -37242,22 +33658,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0e4f721dd113c691",
+  "dupeHash": "0aff26b3c132c6b0",
   "paper": {
    "no": 22,
    "group": "X",
    "date": "16 Nov 2024",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि E₁ और E₂ दो घटनाएँ इस प्रकार हैं कि P(E₁) = 0.3, P(E₁ ∪ E₂) = 0.4 और P(E₂) = x, तो x का मान ज्ञात कीजिए यदि E₁ और E₂ स्वतंत्र घटनाएँ हैं।",
+  "explanationHi": "P(E₁∩E₂) = 0.3x → 0.3 + x − 0.3x = 0.4 → 0.7x = 0.1 → x = 1/7।"
  },
  {
-  "id": "q_7254303266e90f07",
+  "id": "q_01310ed0a11d16c8",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Integration",
   "topic": "Indefinite Integration",
   "difficulty": "medium",
-  "questionText": "∫1 −1 x e|x|dx The value (round off to one decimal place) of ______",
+  "questionText": "The value (round off to one decimal place) of ∫₋₁¹ x·e^|x| dx is ______.",
   "image": null,
   "options": [
    {
@@ -37287,22 +33705,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0e7d4a392114a25a",
+  "dupeHash": "07949c580118aeea",
   "paper": {
    "no": 22,
    "group": "X",
    "date": "16 Nov 2024",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "∫₋₁¹ x·e^|x| dx का मान (एक दशमलव तक) ______ है।",
+  "explanationHi": "x·e^|x| विषम (odd) फलन है → समाकल = 0।"
  },
  {
-  "id": "q_f383fc7ab452f9c7",
+  "id": "q_0645c5f22111bc4a",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Differentiation & Applications",
   "topic": "Differentiation",
   "difficulty": "medium",
-  "questionText": "4 ( dy dx ) + 3 d2y The degree of the differential equation = 0 ________ dx2",
+  "questionText": "The degree of the differential equation 4(dy/dx) + 3(d²y/dx²) = 0 is ________.",
   "image": null,
   "options": [
    {
@@ -37332,22 +33752,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0489d5c1a10d1346",
+  "dupeHash": "0cc03e63910d544d",
   "paper": {
    "no": 22,
    "group": "X",
    "date": "16 Nov 2024",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "अवकल समीकरण 4(dy/dx) + 3(d²y/dx²) = 0 की घात ________ है।",
+  "explanationHi": "सर्वोच्च व्युत्पन्न की घात 1 है → घात = 1।"
  },
  {
-  "id": "q_3a28447883eaf0d0",
+  "id": "q_027cacf921139d84",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Differentiation & Applications",
   "topic": "Differentiation",
   "difficulty": "medium",
-  "questionText": "d2y If y = e5xthen = dx2",
+  "questionText": "If y = e⁵ˣ, then d²y/dx² =",
   "image": null,
   "options": [
    {
@@ -37377,22 +33799,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0764a31be10ad92a",
+  "dupeHash": "0f86b6e8210f35e4",
   "paper": {
    "no": 24,
    "group": "X",
    "date": "22 Mar 2025",
    "src": "SelfStudys"
-  }
+  },
+  "questionTextHi": "यदि y = e⁵ˣ है, तो d²y/dx² का मान है:",
+  "explanationHi": "dy/dx = 5e⁵ˣ; d²y/dx² = 25e⁵ˣ = 25y।"
  },
  {
-  "id": "q_6c83af05c30a7546",
+  "id": "q_0bb4011f612ef022",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Coordinate Geometry",
   "topic": "Circles",
   "difficulty": "medium",
-  "questionText": "Let x⃗ = 2i - pj + 3k and y⃗ = qi + 4j - k. If the vector x⃗ + y⃗ has magnitude 4, then equation of which of the following curve is satisfied by the point (p, q)?",
+  "questionText": "Let x⃗ = 2î − pj + 3k̂ and y⃗ = qî + 4ĵ − k̂. If the vector x⃗ + y⃗ has magnitude 4, then the equation of which of the following curves is satisfied by the point (p, q)?",
   "image": null,
   "options": [
    {
@@ -37422,22 +33846,24 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "05f6914231212719",
+  "dupeHash": "063a9617e12a8882",
   "paper": {
    "no": 32,
    "group": "XY",
    "date": "30 Mar 2026",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "मान लीजिए x⃗ = 2î − pj + 3k̂ और y⃗ = qî + 4ĵ − k̂। यदि सदिश x⃗ + y⃗ का परिमाण 4 है, तो बिंदु (p, q) निम्न में से किस वक्र को संतुष्ट करता है?",
+  "explanationHi": "x⃗+y⃗ = (2+q)î + (4−p)ĵ + 2k̂ → (q+2)² + (4−p)² + 4 = 16 → (p−4)² + (q+2)² = 12 → वृत्त।"
  },
  {
-  "id": "q_78fd4b1f091a75e2",
+  "id": "q_0d6cb26261196a9c",
   "subject": "mathematics",
   "subjectName": "Mathematics",
   "chapter": "Differentiation & Applications",
   "topic": "Applications of Derivatives",
   "difficulty": "medium",
-  "questionText": "A tank is draining such that the rate of change of water volume V with respect to time t is constant dV dt = - 5. What is the general solution for V?",
+  "questionText": "A tank is draining such that the rate of change of water volume V with respect to time t is constant: dV/dt = −5. What is the general solution for V?",
   "image": null,
   "options": [
    {
@@ -37467,12 +33893,14 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0a864c551110e32b",
+  "dupeHash": "08500f5df11502dd",
   "paper": {
    "no": 32,
    "group": "XY",
    "date": "30 Mar 2026",
    "src": "Utkarsh"
-  }
+  },
+  "questionTextHi": "एक टैंक इस प्रकार खाली हो रहा है कि जल के आयतन V में समय t के साथ परिवर्तन की दर अचर है: dV/dt = −5। V का व्यापक हल क्या है?",
+  "explanationHi": "dV = −5dt → समाकलन करने पर V = −5t + C।"
  }
 ]
