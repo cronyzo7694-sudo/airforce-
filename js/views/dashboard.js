@@ -43,12 +43,6 @@ Views.dashboard = async function () {
     return { label: (cfg.subjects.find(x => x.id === sid)?.name || s.name), value: att ? Math.round((s.correct / att) * 100) : 0, max: 100, color: subjColors[sid] || '#3b6fb6', valueLabel: (att ? Math.round((s.correct / att) * 100) : 0) + '%' };
   });
 
-  const donutParts = [
-    { label: 'Correct', value: totCorrect, color: '#2e9e5b' },
-    { label: 'Wrong', value: totWrong, color: '#d9534f' },
-    { label: 'Skipped', value: totUnatt, color: '#a8b3c2' }
-  ];
-
   // weak / strong topics
   const th = cfg.thresholds || { strong: 80, average: 60 };
   const topicRows = [];
@@ -62,100 +56,111 @@ Views.dashboard = async function () {
   const weak = topicRows.slice(0, 6);
   const strong = topicRows.filter(r => r.acc >= th.strong).slice(-6).reverse();
 
+  // greeting by time of day — personal, not robotic
+  const hr = new Date().getHours();
+  const greet = hr < 12 ? 'Good morning' : (hr < 17 ? 'Good afternoon' : 'Good evening');
+  const today = new Date().toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long' });
+  const totalMockQ = cfg.subjects.reduce((a, s) => a + s.questions, 0);
+  const seriesPct = seriesTests.length ? Math.round(seriesDone / seriesTests.length * 100) : 0;
+  const hasData = done.length > 0;
+
   App.page('page page-dashboard', `
     ${App.resumeBannerHTML()}
-    <section class="hero-row">
-      <div class="hero-info">
-        <h1>${AVUtil.esc(cfg.name)} <span class="mode-pill">Mode: ${AVUtil.esc(cfg.mode)}</span></h1>
-        <p class="muted">Full mock: <b>${cfg.subjects.reduce((a, s) => a + s.questions, 0)} questions · ${cfg.duration / 60} minutes · ${cfg.subjects.map(s => `${s.name} ${s.questions}`).join(' / ')}</b> · Marking: +1 / −0.25 / 0</p>
-        <p class="muted">Question bank: <b>${totalQ.toLocaleString('en-IN')}</b> previous-year questions loaded on this device (offline ready).</p>
+
+    <div class="dash-greet">
+      <div>
+        <h1>${greet}, ${AVUtil.esc((cfg.candidateName || 'Practice Candidate').split(' ')[0])}</h1>
+        <p class="muted">${today} · ${AVUtil.esc(cfg.name)}</p>
       </div>
+      <div class="dg-right">
+        <span class="dg-chip" title="Question bank works fully offline">⚡ Offline ready</span>
+        <span class="dg-chip">${totalQ.toLocaleString('en-IN')} PYQs</span>
+      </div>
+    </div>
+
+    <section class="dash-hero" aria-label="Start a test">
+      <div class="dh-main">
+        <div class="dh-kicker">FULL MOCK TEST</div>
+        <div class="dh-title">${totalMockQ} questions · ${cfg.duration / 60} minutes</div>
+        <div class="dh-meta">${cfg.subjects.map(s => `${s.name} ${s.questions}`).join(' · ')} &nbsp;|&nbsp; Marking +1 / −0.25 / 0</div>
+        <div class="dh-actions">
+          <button class="dh-cta" id="qs-full">Start Full Mock <span aria-hidden="true">→</span></button>
+          <a class="dh-secondary" href="#/tests">Test Series <b>${seriesTests.length}</b> <span aria-hidden="true">›</span></a>
+        </div>
+      </div>
+      ${hasData ? `<div class="dh-side">
+        <div class="dh-stat"><b>${accuracy}%</b><span>accuracy</span></div>
+        <div class="dh-stat"><b>${avgScore}</b><span>avg score</span></div>
+        <div class="dh-stat"><b>${totalTests}</b><span>tests given</span></div>
+      </div>` : `<div class="dh-side dh-side-empty">
+        <p>Har mock bilkul naya banta hai — apni performance ke hisaab se questions.</p>
+      </div>`}
+    </section>
+
+    <section class="stat-row" aria-label="Your performance">
+      ${statCard('Tests Given', totalTests)}
+      ${statCard('Avg Score', hasData ? avgScore : '—')}
+      ${statCard('Accuracy', hasData ? accuracy + '%' : '—', accuracy >= th.average ? 'good' : (accuracy > 0 && accuracy < th.average ? 'bad' : ''))}
+      ${statCard('Best Score', totalTests ? `${bestScore}/${bestMax}` : '—', 'good')}
+      ${statCard('Questions Attempted', attemptedQ.toLocaleString('en-IN'))}
+      ${statCard('Avg Time / Question', avgPerQ ? avgPerQ + 's' : '—')}
     </section>
 
     <section class="qs-grid" aria-label="Quick start">
-      <button class="qs-card qs-full" id="qs-full">
-        <div class="qs-title">FULL MOCK TEST</div>
-        <div class="qs-sub">100 Questions · 85 min · Physics 25 · Maths 25 · English 20 · RAGA 30</div>
-        <div class="qs-cta">Generate &amp; Start →</div>
-      </button>
       <button class="qs-card qs-series" onclick="location.hash='#/tests'">
-        <div class="qs-title">TEST SERIES 📚</div>
-        <div class="qs-sub">${seriesTests.length} bane-banaye tests — ek bhi question repeat nahi</div>
-        <div class="qs-cta">${seriesTests.length ? `${seriesDone}/${seriesTests.length} done · Library kholo →` : 'Library kholo →'} </div>
+        <div class="qs-toprow"><span class="qs-title">Test Series</span><span class="qs-badge">${seriesTests.length} tests</span></div>
+        <div class="qs-sub">Ready-made mocks — har test me naye questions</div>
+        <div class="qs-progress"><i style="width:${seriesPct}%"></i></div>
+        <div class="qs-cta">${seriesTests.length ? `${seriesDone}/${seriesTests.length} completed` : 'Open library'} <span aria-hidden="true">→</span></div>
       </button>
       ${cfg.subjects.map(s => {
         const usable = bankStats[s.id]?.usable || 0;
         const att = subjAgg[s.id];
         const acc = att && (att.correct + att.wrong) ? Math.round(att.correct / (att.correct + att.wrong) * 100) : null;
         return `<button class="qs-card" data-subject="${s.id}">
-          <div class="qs-title">${AVUtil.esc(s.name)}</div>
-          <div class="qs-sub">${s.questions} questions · ${s.duration / 60} min · ${usable} in bank</div>
-          <div class="qs-cta">${acc != null ? `Accuracy so far: ${acc}% · ` : ''}Start Practice →</div>
+          <div class="qs-toprow"><span class="qs-title"><i class="subject-dot sd-${s.id}" aria-hidden="true"></i>${AVUtil.esc(s.name)}</span>${acc != null ? `<span class="qs-badge ${acc >= th.average ? 'ok' : 'low'}">${acc}%</span>` : ''}</div>
+          <div class="qs-sub">${s.questions} questions · ${s.duration / 60} min · ${usable.toLocaleString('en-IN')} in bank</div>
+          <div class="qs-cta">Start practice <span aria-hidden="true">→</span></div>
         </button>`;
       }).join('')}
       <button class="qs-card qs-custom" onclick="location.hash='#/tests/new'">
-        <div class="qs-title">CUSTOM TEST</div>
-        <div class="qs-sub">Choose subjects, chapters, topics, count, difficulty &amp; timing</div>
-        <div class="qs-cta">Build a Test →</div>
+        <div class="qs-toprow"><span class="qs-title">Custom Test</span></div>
+        <div class="qs-sub">Choose subjects, chapters, difficulty &amp; timing</div>
+        <div class="qs-cta">Build a test <span aria-hidden="true">→</span></div>
       </button>
     </section>
 
-    <section class="stat-row">
-      ${statCard('Total Tests', totalTests)}
-      ${statCard('Questions Attempted', attemptedQ.toLocaleString('en-IN'))}
-      ${statCard('Correct', totCorrect.toLocaleString('en-IN'), 'good')}
-      ${statCard('Wrong', totWrong.toLocaleString('en-IN'), 'bad')}
-      ${statCard('Accuracy', accuracy + '%', accuracy >= th.average ? 'good' : (accuracy > 0 && accuracy < th.average ? 'bad' : ''))}
-      ${statCard('Average Score', avgScore)}
-      ${statCard('Best Score', totalTests ? `${bestScore}/${bestMax}` : '—')}
-      ${statCard('Avg Time / Question', avgPerQ ? avgPerQ + 's' : '—')}
-    </section>
-
-    <section class="charts-grid">
+    <section class="charts-grid dash-charts">
       <div class="card chart-card">
-        <h3>Score Trend <span class="muted small">(% of max, last ${trend.length || 0} attempts)</span></h3>
-        ${Charts.lineChart(trend, { max: 100, min: 0, color: '#3b6fb6' })}
+        <h3>Score Trend <span class="muted small">— % of max, last ${trend.length || 0} attempt${trend.length === 1 ? '' : 's'}</span></h3>
+        ${trend.length ? Charts.lineChart(trend, { max: 100, min: 0, color: '#3b6fb6' }) : '<div class="chart-empty">Take a test to see your trend here.</div>'}
       </div>
       <div class="card chart-card">
-        <h3>Subject Performance <span class="muted small">(accuracy)</span></h3>
-        ${subjBars.length ? Charts.barChart(subjBars) : '<p class="muted pad">Take a test to see subject-wise accuracy.</p>'}
-      </div>
-      <div class="card chart-card chart-donut">
-        <h3>Answer Distribution</h3>
-        ${Charts.donut(donutParts, { center: accuracy + '%', centerSub: 'accuracy' })}
-        ${Charts.legend(donutParts.map(p => ({ ...p, valueLabel: p.value })))}
+        <h3>Subject Accuracy</h3>
+        ${subjBars.length ? Charts.barChart(subjBars) : '<div class="chart-empty">Attempt a few questions to unlock this.</div>'}
       </div>
     </section>
 
     <section class="two-col">
       <div class="card">
-        <div class="card-head"><h3>Weak Topics</h3><span class="muted small">accuracy &lt; ${th.average}% (min 3 attempted)</span></div>
-        ${weak.length ? `<table class="tbl"><thead><tr><th>Subject</th><th>Topic</th><th>Accuracy</th><th>Attempted</th></tr></thead><tbody>
-          ${weak.map(r => `<tr><td>${AVUtil.esc((cfg.subjects.find(s => s.id === r.sid)?.name) || r.sid)}</td><td>${AVUtil.esc(r.topic)}</td>
-          <td><span class="badge ${r.acc < th.average ? 'bad' : ''}">${r.acc}%</span></td><td>${r.attempted}</td></tr>`).join('')}
-        </tbody></table>` : '<p class="muted pad">No weak topics identified yet — take a few tests.</p>'}
+        <div class="card-head"><h3>Focus Areas</h3><span class="muted small">accuracy &lt; ${th.average}%</span></div>
+        ${weak.length ? `<table class="tbl"><thead><tr><th>Topic</th><th>Accuracy</th><th>Attempted</th></tr></thead><tbody>
+          ${weak.map(r => `<tr><td><span class="muted small">${AVUtil.esc((cfg.subjects.find(s => s.id === r.sid)?.name) || r.sid)}</span><br>${AVUtil.esc(r.topic)}</td>
+          <td><span class="badge bad">${r.acc}%</span></td><td>${r.attempted}</td></tr>`).join('')}
+        </tbody></table>` : '<div class="chart-empty">No weak topics yet — take a few tests and this list will build itself.</div>'}
+        ${strong.length ? `<div class="focus-strong"><span class="muted small">Strong areas:</span> ${strong.slice(0, 5).map(r => `<span class="badge good">${AVUtil.esc(r.topic)}</span>`).join(' ')}</div>` : ''}
       </div>
       <div class="card">
-        <div class="card-head"><h3>Strong Topics</h3><span class="muted small">accuracy ≥ ${th.strong}%</span></div>
-        ${strong.length ? `<table class="tbl"><thead><tr><th>Subject</th><th>Topic</th><th>Accuracy</th><th>Attempted</th></tr></thead><tbody>
-          ${strong.map(r => `<tr><td>${AVUtil.esc((cfg.subjects.find(s => s.id === r.sid)?.name) || r.sid)}</td><td>${AVUtil.esc(r.topic)}</td>
-          <td><span class="badge good">${r.acc}%</span></td><td>${r.attempted}</td></tr>`).join('')}
-        </tbody></table>` : '<p class="muted pad">No strong topics yet — keep practising.</p>'}
+        <div class="card-head"><h3>Recent Attempts</h3><a href="#/attempts" class="link">View all →</a></div>
+        ${done.length ? `<table class="tbl"><thead><tr><th>Test</th><th>Score</th><th>Accuracy</th><th></th></tr></thead><tbody>
+          ${done.slice(-6).reverse().map(a => `<tr>
+            <td>${AVUtil.esc(a.testName)}<span class="muted small"> · ${AVUtil.fmtDate(a.date)}</span></td>
+            <td><b>${a.score}</b><span class="muted">/${a.maxScore}</span></td>
+            <td>${a.accuracy}%</td>
+            <td><a class="link" href="#/attempt/${a.id}/analysis">Analysis</a></td>
+          </tr>`).join('')}
+        </tbody></table>` : '<div class="chart-empty">No attempts yet — your first full mock is one tap away.</div>'}
       </div>
-    </section>
-
-    <section class="card">
-      <div class="card-head"><h3>Recent Attempts</h3><a href="#/attempts" class="link">View all →</a></div>
-      ${done.length ? `<table class="tbl"><thead><tr><th>Test</th><th>Date</th><th>Score</th><th>Accuracy</th><th>Time</th><th></th></tr></thead><tbody>
-        ${done.slice(-8).reverse().map(a => `<tr>
-          <td>${AVUtil.esc(a.testName)}<span class="muted small"> · attempt #${a.attemptNo}</span></td>
-          <td class="muted">${AVUtil.fmtDate(a.date)}</td>
-          <td><b>${a.score}</b>/${a.maxScore}</td>
-          <td>${a.accuracy}%</td>
-          <td>${AVUtil.fmtDur(a.timeTaken)}</td>
-          <td><a class="link" href="#/attempt/${a.id}/analysis">Analysis</a></td>
-        </tr>`).join('')}
-      </tbody></table>` : '<p class="muted pad">No attempts yet. Start with a Full Mock Test above.</p>'}
     </section>
   `);
 
