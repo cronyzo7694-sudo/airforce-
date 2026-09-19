@@ -14,7 +14,7 @@ const Bank = (() => {
   }
 
   /* --------- import a batch of parsed questions --------- */
-  const SUBJECT_ALIAS = { reasoning: 'raga', 'reasoning-and-general-awareness': 'raga', 'general-awareness': 'raga', 'general-knowledge': 'raga', gk: 'raga', 'general-science': 'raga' };
+  const SUBJECT_ALIAS = { reasoning: 'raga', 'reasoning-and-general-awareness': 'raga', 'general-awareness': 'raga', 'general-knowledge': 'raga', gk: 'raga', 'general-science': 'raga', maths: 'mathematics', math: 'mathematics', phy: 'physics', phys: 'physics', eng: 'english' };
 
   async function importBatch(questions, onProgress, exam) {
     const report = {
@@ -168,7 +168,7 @@ const Bank = (() => {
      RAGA sawal) — ye list devices se saaf ho jaati hai. List version badalne
      par dobara chalta hai. Kabhi bhi user ke khud ke questions/delete nahi karta
      — sirf exact dupeHash match. */
-  const RETIRED_V = 2;   // v2: physics spelling-twins + purane variants bhi prune honge
+  const RETIRED_V = 3;   // v3: physics v2 + math variants/dupe-extras bhi prune honge
   async function pruneRetired() {
     try {
       const done = await Store.getMeta('retiredV', 0);
@@ -176,7 +176,7 @@ const Bank = (() => {
       const r = await fetch('data/retired-raga.json');
       if (!r.ok) return 0;
       const ret = await r.json();
-      const hs = new Set([].concat(ret.raga || [], ret.foreign || [], ret.physics || []));
+      const hs = new Set([].concat(ret.raga || [], ret.foreign || [], ret.physics || [], ret.mathematics || []));
       const doomed = [];
       await DB.cursor('questions', null, q => { if (hs.has(q.dupeHash)) doomed.push(q.id); });
       for (const id of doomed) { try { await DB.delete('questions', id); } catch (e) {} }
