@@ -1,7 +1,7 @@
 /* ============================================================
  * MIGRATION TEST — real-device simulation:
  *   old v1.4.2 bank + 18-Sep-2026 bad push (wrong subjects) +
- *   orphaned series tests → syncBundled() → clean 732-record
+ *   orphaned series tests → syncBundled() → clean 643-record
  *   fully-bilingual RAGA bank, zero dupes, history preserved.
  * Needs /tmp/old-raga-1221.json (git show c7da952:...) + /tmp/remote-raga.json
  * Run: NODE_PATH=<jsdom dir> node tests/migration.test.js
@@ -74,16 +74,16 @@ const T = (n, ok, x) => { if (ok) { P++; console.log('  ✓', n); } else { F++; 
   const r = await G('Bank.syncBundled()');
   console.log('syncBundled →', JSON.stringify(r));
   T('sync ran', r && r.synced === true);
-  T('imported new records (' + (r && r.imported) + ')', r && r.imported > 50 && r.imported < 200);
+  T('imported new records (' + (r && r.imported) + ')', r && r.imported > 0 && r.imported < 200); // v1.4.15 cleanup: mostly prunes, sirf restored/merged records naye
   T('pruned pollution + retired (' + (r && r.pruned) + ')', r && r.pruned > 1000);
 
   /* ── verify final state ── */
   const fin = await G('(async () => { const all = await DB.getAll("questions"); return { total: all.length, subjects: [...new Set(all.map(q => q.subject))], raga: all.filter(q => q.subject === "raga").length, ragaBi: all.filter(q => q.subject === "raga" && q.questionTextHi && q.explanationHi).length, bad: all.filter(q => String(q.subject).match(/reasoning|general-awareness/)).length, hashes: new Set(all.map(q => q.dupeHash)).size }; })()');
   console.log('final state:', JSON.stringify(fin));
-  T('total questions = 3023 core + 732 raga = 3755 (v1.4.14: math 770 → 1318)', fin.total === 3755, fin.total);
+  T('total questions = 2704 core + 643 raga = 3347 (v1.4.15: real-paper-only — figure/AI-generated hata)', fin.total === 3347, fin.total);
   T('no foreign subjects left', fin.bad === 0 && fin.subjects.every(s => ['physics','mathematics','english','raga'].includes(s)), JSON.stringify(fin.subjects));
-  T('raga pool = 732', fin.raga === 732, fin.raga);
-  T('every raga record fully bilingual', fin.ragaBi === 732, fin.ragaBi);
+  T('raga pool = 643', fin.raga === 643, fin.raga);
+  T('every raga record fully bilingual', fin.ragaBi === 643, fin.ragaBi);
   T('zero duplicate dupeHashes', fin.hashes === fin.total, fin.hashes + ' vs ' + fin.total);
   const tst = await G('(async () => { const ts = await DB.getAll("tests"); const qs = new Set((await DB.getAllKeys("questions"))); const ids = ts.map(t => t.id).sort(); const orphans = ts.filter(t => t.series && t.sections.some(s => (s.questionIds||[]).some(qid => !qs.has(qid)))).map(t => t.id); return { ids, orphans }; })()');
   T('orphaned series test deleted, custom + attempted + clean kept (autoBuild ke naye series tests allowed)',

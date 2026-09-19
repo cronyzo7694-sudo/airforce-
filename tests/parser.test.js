@@ -49,10 +49,23 @@ for (const [fname, subject] of FILES) {
     }
     const ref = JSON.parse(fs.readFileSync(`data/bank-${subject}.json`, 'utf-8'));
     // data files may be a SUPERSET of the master TXT (bilingual records merged in)
-    assert(ref.length >= final.length, 'data file is a superset (' + ref.length + ' >= ' + final.length + ')');
-    assert(ref.filter(q => q.correctAnswer).length >= final.filter(q => q.correctAnswer).length, 'keyed superset');
-    eq(final.filter(q => (q.tags || []).includes('auto-reconstructed')).length,
-       ref.filter(q => (q.tags || []).includes('auto-reconstructed')).length, 'reconstructed parity');
+    // — v1.4.15: user ka updated English master bank se BADHA hai (zyada real sawal);
+    //   user ne extra add karne se mana kiya hai → bank = real-paper subset, 800+ floor
+    if (subject === 'english') {
+      assert(ref.length >= 800, 'english bank 800+ real-paper records (got ' + ref.length + ')');
+      assert(ref.filter(q => q.correctAnswer).length >= 800, 'keyed english bank');
+    } else {
+      assert(ref.length >= final.length, 'data file is a superset (' + ref.length + ' >= ' + final.length + ')');
+      assert(ref.filter(q => q.correctAnswer).length >= final.filter(q => q.correctAnswer).length, 'keyed superset');
+    }
+    // v1.4.15: english bank = subset (user ke naye master me scrambled blocks parser
+    // auto-reconstruct karta hai) — bank me reconstructed records kabhi nahi hote
+    if (subject === 'english') {
+      eq(ref.filter(q => (q.tags || []).includes('auto-reconstructed')).length, 0, 'bank me zero reconstructed');
+    } else {
+      eq(final.filter(q => (q.tags || []).includes('auto-reconstructed')).length,
+         ref.filter(q => (q.tags || []).includes('auto-reconstructed')).length, 'reconstructed parity');
+    }
     // every question valid shape
     final.forEach(q => {
       assert(q.subject === subject, 'subject set');
@@ -210,7 +223,7 @@ T('subject files carry bilingual (EN+HI) records — no separate hindi file', ()
   assert(!fs.existsSync('data/bank-hindi-1.json'), 'no separate hindi bundle file');
   const raga = JSON.parse(fs.readFileSync('data/bank-raga.json', 'utf-8'));
   // RAGA: 100% bilingual + 100% dual explanations + real chapters (user-curated master)
-  assert(raga.length >= 700, 'raga bank has 700+ records (got ' + raga.length + ')');
+  assert(raga.length >= 600, 'raga bank has 600+ records (got ' + raga.length + ')'); // v1.4.15: figure-based hata (80)
   assert(raga.every(q => q.questionTextHi), 'EVERY raga question is bilingual');
   assert(raga.every(q => q.explanation && q.explanationHi), 'EVERY raga question has EN+HI explanations');
   assert(raga.every(q => q.subject === 'raga'), 'no stray subjects (reasoning/GK aliases all raga)');

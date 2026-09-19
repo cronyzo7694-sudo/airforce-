@@ -1,134 +1,5 @@
 [
  {
-  "id": "q_0164452401103338",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Choose the correct figure which will replace the question mark?",
-  "questionTextHi": "प्रश्नचिह्न (?) के स्थान पर आने वाली सही आकृति चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "This is a figure-based series question. Count the changes in the problem figures and apply the same change to get the next figure. As per the source, the correct figure is option C.",
-  "explanationHi": "यह आकृति आधारित श्रृंखला का प्रश्न है। दी गई आकृतियों में हो रहे परिवर्तन (घूर्णन/जुड़ने-घटने वाली रेखाएँ) गिनकर वही परिवर्तन अगली आकृति पर लगाइए। स्रोत के अनुसार सही आकृति विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "08215790e10f84d8"
- },
- {
-  "id": "q_08f2393041140a80",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Analogy",
-  "difficulty": "medium",
-  "questionText": "Study the following pattern and select the figure that relates to the third figure in the same way that the second figure relates to the first figure:",
-  "questionTextHi": "निम्न पैटर्न को ध्यान से देखिए और वह आकृति चुनिए जिसका तीसरी आकृति से वही संबंध है जो दूसरी आकृति का पहली आकृति से है:",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Analogy of figures: find the single change (side count / rotation / shading) between figure 1 and figure 2, then apply the same change to figure 3. Answer as per source: C.",
-  "explanationHi": "आकृति सादृश्य (Analogy): पहली और दूसरी आकृति के बीच हुए परिवर्तन (भुजाओं की संख्या, घूर्णन, छायांकन) को पहचानिए और वही परिवर्तन तीसरी आकृति पर लगाइए। स्रोत के अनुसार उत्तर: C.",
-  "figureBased": true,
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "048d16e721135c20"
- },
- {
-  "id": "q_0e26c7835110ecdb",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the answer figure that will come next in the given problem figure series.",
-  "questionTextHi": "दी गई प्रश्न-आकृति श्रृंखला में आगे आने वाली उत्तर-आकृति चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Continue the same movement/rotation of elements shown in the series; the next figure is option D.",
-  "explanationHi": "श्रृंखला में दिख रहे तत्वों की गति/घूर्णन को उसी क्रम में आगे बढ़ाइए; अगली आकृति विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · 04 Nov 2020 · Prepp (Group Y)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0abece0de1103e5c"
- },
- {
   "id": "q_902c7836e7f36835",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -1289,178 +1160,6 @@
    "auto-topic"
   ],
   "dupeHash": "031ab03fe12a7180"
- },
- {
-  "id": "q_0c8dc960f10ff785",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Find the following figure which complete the given series-",
-  "questionTextHi": "दी गई श्रृंखला को पूरा करने वाली आकृति ज्ञात कीजिए-",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Figure-based series question. Compare the consecutive problem figures, note the rotation/repetition (e.g. element turning by a fixed angle or repeating after fixed steps) and pick the option that continues it — option C as per the source.",
-  "explanationHi": "आकृति आधारित श्रृंखला प्रश्न। क्रमागत आकृतियों की तुलना करके घूर्णन/पुनरावृत्ति का नियम पहचानिए और उसी क्रम की अगली आकृति चुनिए — स्रोत के अनुसार विकल्प C।",
-  "figureBased": true,
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0d97dd6e310f4925"
- },
- {
-  "id": "q_0304e039e1112758",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Find the correct figure from the following figures which completes the given series-",
-  "questionTextHi": "निम्न आकृतियों में से वह सही आकृति चुनिए जो दी गई श्रृंखला को पूरा करती है-",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Figure-based question — follow the same change of shape/shading shown between the given figures; the completing figure is option A.",
-  "explanationHi": "आकृति आधारित प्रश्न — दी गई आकृतियों के बीच हो रहे आकार/छायांकन के परिवर्तन को आगे बढ़ाइए; श्रृंखला पूरी करने वाली आकृति विकल्प A है।",
-  "figureBased": true,
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "07931af961107936"
- },
- {
-  "id": "q_0dbcaf54010fb640",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Choose the image that will complete the given series.",
-  "questionTextHi": "वह आकृति चुनिए जो दी गई श्रृंखला को पूरा करेगी।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Count the number of elements/lines added or removed in each step and continue the same; correct option is A.",
-  "explanationHi": "हर चरण में जुड़ने या घटने वाले तत्वों/रेखाओं की गिनती कीजिए और वही क्रम आगे बढ़ाइए; सही विकल्प A है।",
-  "figureBased": true,
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0bbec0fc010f081e"
- },
- {
-  "id": "q_069d1ca3f1101dc9",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure that will come next in the following series.",
-  "questionTextHi": "निम्न श्रृंखला में आगे आने वाली आकृति चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Continue the same rotation/movement of the element; next figure = option A.",
-  "explanationHi": "तत्व के उसी घूर्णन/गति को आगे बढ़ाइए; अगली आकृति = विकल्प A।",
-  "figureBased": true,
-  "source": "PYQ · 05 Nov 2020 · Prepp (Group Y)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "099ccacad10f6fa7"
  },
  {
   "id": "q_83aac749d9f8260e",
@@ -3647,135 +3346,6 @@
   "figureBased": false
  },
  {
-  "id": "q_0a7f3c8511125bc5",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Identify the diagram that best represents the relationship among classes given below. Females, Sisters, Mothers",
-  "questionTextHi": "नीचे दिए वर्गों के बीच संबंध को सर्वोत्तम रूप से दर्शाने वाला आरेख पहचानिए। Females (स्त्रियाँ), Sisters (बहनें), Mothers (माताएँ)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "All sisters are females and all mothers are females, so both circles lie inside the \"Females\" circle.\nA sister can also be a mother (and vice-versa), so the circles of Sisters and Mothers intersect each other.\nThe matching Venn diagram is option C.",
-  "explanationHi": "सभी बहनें स्त्रियाँ होती हैं और सभी माताएँ स्त्रियाँ होती हैं, अतः दोनों वृत्त \"Females\" वृत्त के अंदर होंगे।\nएक बहन माता भी हो सकती है (और इसके विपरीत), इसलिए Sisters और Mothers के वृत्त एक-दूसरे को काटेंगे।\nइसी को दर्शाने वाला आरेख विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0507d88a9111ad65"
- },
- {
-  "id": "q_09b213b841102a04",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure which will come next in the following series.",
-  "questionTextHi": "निम्न श्रृंखला में आगे आने वाली आकृति चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Continue the same change (rotation/addition of lines) shown step by step in the series; the next figure is option D.",
-  "explanationHi": "श्रृंखला में चरण-दर-चरण हो रहे परिवर्तन (घूर्णन/रेखाओं का जुड़ना) को आगे बढ़ाइए; अगली आकृति विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "00c4488c910f7b85"
- },
- {
-  "id": "q_005f696e2110dcfe",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Which answer figure will complete the series given in the following question?",
-  "questionTextHi": "निम्न प्रश्न में दी गई श्रृंखला को कौन-सी उत्तर-आकृति पूरा करेगी?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Fill the missing figure so that the same sequence continues — option B as per the source.",
-  "explanationHi": "लुप्त आकृति वह होगी जिससे वही क्रम आगे चलता रहे — स्रोत के अनुसार विकल्प B।",
-  "figureBased": true,
-  "source": "PYQ · 06 Nov 2020 · Prepp (Group Y)",
-  "year": 2020,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "090a2261d1102ebd"
- },
- {
   "id": "q_52b99c59d85ffe51",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -3972,49 +3542,6 @@
   "figureBased": false
  },
  {
-  "id": "q_0aa74735a11059f8",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Which figure will replace the question mark (?) in the figure series?",
-  "questionTextHi": "आकृति श्रृंखला में प्रश्नचिह्न (?) के स्थान पर कौन-सी आकृति आएगी?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Continue the same step-wise change (rotation/element count) of the figure series; the required figure is option B.",
-  "explanationHi": "आकृति श्रृंखला में हो रहे उसी चरणबद्ध परिवर्तन (घूर्णन/तत्वों की संख्या) को आगे बढ़ाइए; अभीष्ट आकृति विकल्प B है।",
-  "figureBased": true,
-  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0e637230510fabb7"
- },
- {
   "id": "q_x_mu7br90g7ykqw6x",
   "exam": "airforce",
   "subject": "raga",
@@ -4153,49 +3680,6 @@
   "questionTextHi": "एक श्रृंखला दी गई है जिसमें एक संख्या लुप्त है। दिए गए विकल्पों में से वह सही विकल्प चुनिए जो श्रृंखला को पूरा करेगा। − 4.5, − 2.6, − 0.7, ?, 3.1",
   "explanationHi": "क्रमागत पदों का अंतर: −2.6 − (−4.5) = +1.9; −0.7 − (−2.6) = +1.9\nअतः हर पद में +1.9 होता है: −0.7 + 1.9 = 1.2, और 1.2 + 1.9 = 3.1 ✔\n? = 1.2",
   "figureBased": false
- },
- {
-  "id": "q_0c3cc92d911207f9",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Select the option that correctly represents the relationship among the following: Woman, Mother, Sister",
-  "questionTextHi": "निम्नलिखित के बीच संबंध को सही रूप से दर्शाने वाला विकल्प चुनिए: Woman (स्त्री), Mother (माँ), Sister (बहन)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Every mother and every sister is a woman → both circles lie inside the \"Woman\" circle.\nA mother can also be a sister → the two inner circles intersect.\nOption A shows this arrangement.",
-  "explanationHi": "प्रत्येक माँ और प्रत्येक बहन स्त्री होती है → दोनों वृत्त \"Woman\" वृत्त के अंदर होंगे।\nएक माँ बहन भी हो सकती है → दोनों भीतरी वृत्त एक-दूसरे को काटेंगे।\nयही व्यवस्था विकल्प A में है।",
-  "figureBased": true,
-  "source": "PYQ · 12 Jul 2021 Shift-1 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0b6a9c8f711159d7"
  },
  {
   "id": "q_7636b423c73c75c4",
@@ -5633,49 +5117,6 @@
   "dupeHash": "07524feda10e75d6"
  },
  {
-  "id": "q_093aef4311127c77",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Mirror & Water Image",
-  "topic": "Mirror Image",
-  "difficulty": "medium",
-  "questionText": "If a mirror is placed on the line MN, then which of the answer figures is the right image of the given question figure?",
-  "questionTextHi": "यदि रेखा MN पर दर्पण रखा जाए, तो कौन-सी उत्तर-आकृति दी गई प्रश्न-आकृति का सही प्रतिबिंब है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Mirror image: the figure reverses horizontally while the top–bottom arrangement stays the same. As per the source, option D is the correct mirror image.",
-  "explanationHi": "दर्पण प्रतिबिंब में आकृति क्षैतिज रूप से उलट जाती है, ऊपर-नीचे का क्रम वैसा ही रहता है। स्रोत के अनुसार सही विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0ba1e20b2111cdf8"
- },
- {
   "id": "q_x_mu7br90gjv5hmzb",
   "exam": "airforce",
   "subject": "raga",
@@ -5998,49 +5439,6 @@
   "figureBased": false
  },
  {
-  "id": "q_069c49cd910fd467",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Completion",
-  "difficulty": "medium",
-  "questionText": "Which answer figure will complete the question figure?",
-  "questionTextHi": "कौन-सी उत्तर-आकृति प्रश्न-आकृति को पूरा करेगी?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "The missing portion of the pattern is exactly the part that makes the figure symmetrical/complete — option D.",
-  "explanationHi": "पैटर्न का छूटा हुआ भाग वही होगा जिससे आकृति पूर्ण/सममित बन जाए — विकल्प D।",
-  "figureBased": true,
-  "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "087a194ca10f25e8"
- },
- {
   "id": "q_6e3ecb3b3e52d559",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -6137,49 +5535,6 @@
   "explanationHi": "VOCABULARY में अक्षर हैं: V, O, C, A, B, U, L, A, R, Y (E नहीं है)।\nCABLE के लिए E चाहिए, जो उपलब्ध नहीं है → CABLE नहीं बनाया जा सकता।",
   "exam": "airforce",
   "figureBased": false
- },
- {
-  "id": "q_05c4b8cc5112894d",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Identify the diagram that best represents the relationship among the given classes. Pandemic, Coronavirus, Diabetes",
-  "questionTextHi": "दिए गए वर्गों के बीच संबंध को सर्वोत्तम रूप से दर्शाने वाला आरेख पहचानिए। Pandemic (महामारी), Coronavirus (कोरोनावायरस), Diabetes (मधुमेह)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Coronavirus is a type of pandemic (its circle lies inside the Pandemic circle), while Diabetes is a completely different disease (a separate circle).\nOption B shows this.",
-  "explanationHi": "कोरोनावायरस एक महामारी है (उसका वृत्त Pandemic वृत्त के अंदर), जबकि मधुमेह एक अलग रोग है (स्वतंत्र वृत्त)।\nयही विकल्प B में दिखाया गया है।",
-  "figureBased": true,
-  "source": "PYQ · 12 Jul 2021 Shift-2 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "075723b0c111db0c"
  },
  {
   "id": "q_6b7e0e2accfe3bda",
@@ -7470,55 +6825,6 @@
   "figureBased": false
  },
  {
-  "id": "q_c46afa2029eb7317",
-  "subject": "raga",
-  "subjectName": "RAGA",
-  "chapter": "Counting of Figures",
-  "topic": "Rectangles",
-  "difficulty": "medium",
-  "questionText": "How many rectangles are there in the given figure?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "11"
-   },
-   {
-    "id": "B",
-    "text": "10"
-   },
-   {
-    "id": "C",
-    "text": "13"
-   },
-   {
-    "id": "D",
-    "text": "9"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Count the rectangles formed by the grid lines (single + combined). As per the source, the total is 9.",
-  "source": "PYQ · 13 Jul 2021 · SelfStudys (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c12a342910b9919",
-  "paper": {
-   "no": 6,
-   "group": "Y",
-   "date": "13 Jul 2021",
-   "src": "SelfStudys"
-  },
-  "questionTextHi": "दी गई आकृति में कितने आयत हैं?",
-  "explanationHi": "आकृति की रेखाओं से बनने वाले आयत (एकल + संयुक्त) गिनिए। स्रोत के अनुसार कुल 9 हैं।",
-  "exam": "airforce",
-  "figureBased": false
- },
- {
   "id": "q_x_mu7br90gk7izbdx",
   "exam": "airforce",
   "subject": "raga",
@@ -7559,135 +6865,6 @@
    "auto-topic"
   ],
   "dupeHash": "0fb7b7715127364f"
- },
- {
-  "id": "q_015ca9e6f10f02ab",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "What is the next figure in the series:",
-  "questionTextHi": "श्रृंखला में अगली आकृति कौन-सी है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Continue the same movement/rotation of the element shown in the series; the next figure is option A.",
-  "explanationHi": "श्रृंखला में दिख रही तत्व की उसी गति/घूर्णन को आगे बढ़ाइए; अगली आकृति विकल्प A है।",
-  "figureBased": true,
-  "source": "PYQ · 13 Jul 2021 · SelfStudys (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0df2dbc3d10e5489"
- },
- {
-  "id": "q_05bff216d110406b",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure from the choice which will continue the series.",
-  "questionTextHi": "विकल्पों में से वह आकृति चुनिए जो श्रृंखला को आगे बढ़ाएगी।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Apply the same step-wise change of the series to the last figure; the required figure is option C.",
-  "explanationHi": "श्रृंखला में हो रहे उसी चरणबद्ध परिवर्तन को अंतिम आकृति पर लगाइए; अभीष्ट आकृति विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 13 Jul 2021 · SelfStudys (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0a4d3bc8510f920b"
- },
- {
-  "id": "q_0457bb37d11256af",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Identify the diagram that best represents the relationship among the classes given below: Coffee, Tea, Beverages",
-  "questionTextHi": "नीचे दिए वर्गों के बीच संबंध को सर्वोत्तम दर्शाने वाला आरेख पहचानिए: Coffee (कॉफी), Tea (चाय), Beverages (पेय)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Coffee and Tea are two different types of Beverages → two separate circles inside a bigger circle (Beverages). Option B shows this.",
-  "explanationHi": "कॉफी और चाय, पेय (Beverages) के दो भिन्न प्रकार हैं → बड़े वृत्त (Beverages) के अंदर दो अलग वृत्त। यही विकल्प B में है।",
-  "figureBased": true,
-  "source": "PYQ · 13 Jul 2021 · SelfStudys (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "03f52e9b4111a86e"
  },
  {
   "id": "q_ead9bbf16310ebe5",
@@ -8635,55 +7812,6 @@
   "figureBased": false
  },
  {
-  "id": "q_698827bf3757b9f1",
-  "subject": "raga",
-  "subjectName": "RAGA",
-  "chapter": "Counting of Figures",
-  "topic": "Triangles",
-  "difficulty": "medium",
-  "questionText": "How many triangles are there in the following figure.",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "16"
-   },
-   {
-    "id": "B",
-    "text": "17"
-   },
-   {
-    "id": "C",
-    "text": "15"
-   },
-   {
-    "id": "D",
-    "text": "9"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Count the small triangles and the triangles formed by their combinations in the figure. As per the source, the total is 16.\n(आकृति स्रोत में चित्र में थी — विकल्पों के आधार पर गिनती कीजिए।)",
-  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0fe55000110bc283",
-  "paper": {
-   "no": 8,
-   "group": "Y",
-   "date": "14 Jul 2021 Shift-3",
-   "src": "Prepp"
-  },
-  "exam": "airforce",
-  "questionTextHi": "निम्नलिखित आकृति में कितने त्रिभुज हैं?",
-  "explanationHi": "आकृति में छोटे त्रिभुज और उनके संयोजन से बने त्रिभुज गिनिए। स्रोत के अनुसार कुल 16 हैं।\n(आकृति स्रोत में चित्र रूप में थी — विकल्पों के आधार पर गिनती कीजिए।)",
-  "figureBased": false
- },
- {
   "id": "q_8ffbbb2655f420dc",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -8824,92 +7952,6 @@
   "figureBased": false
  },
  {
-  "id": "q_088fc809711214cf",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Completion",
-  "difficulty": "medium",
-  "questionText": "Select the option figure that can replace the question mark (?) in the given figure to complete the pattern.",
-  "questionTextHi": "दी गई आकृति में प्रश्नचिह्न (?) के स्थान पर आने वाली विकल्प-आकृति चुनिए जो पैटर्न पूरा करे।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The missing part must complete the symmetry/repeating pattern of the figure; the matching option is A.",
-  "explanationHi": "लुप्त भाग वही होगा जो आकृति का पैटर्न/सममिति पूरी करे; मेल खाता विकल्प A है।",
-  "figureBased": true,
-  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0f6a37a7511166ad"
- },
- {
-  "id": "q_07367aca9114bbe7",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Paper Folding & Cutting",
-  "topic": "Paper Folding",
-  "difficulty": "medium",
-  "questionText": "The sequence of folding a piece of paper and the manner in which the folded paper has been cut is shown in the following figure. How would this paper look when unfolded?",
-  "questionTextHi": "कागज़ को मोड़ने का क्रम तथा मुड़े कागज़ पर कटाई का तरीका निम्न आकृति में दिखाया गया है। खोलने पर यह कागज़ कैसा दिखेगा?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Mirror the cut pattern about each fold line (in the reverse order of folding) to get the unfolded design — that design is option B.",
-  "explanationHi": "कटाई के पैटर्न को हर मोड़-रेखा के अनुदिश दर्पण की तरह दोहराइए (मोड़ने के क्रम के उल्टे क्रम में) — वही डिज़ाइन विकल्प B है।",
-  "figureBased": true,
-  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0a92d60501140da6"
- },
- {
   "id": "q_0476ece38cc75581",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -8957,49 +7999,6 @@
   "questionTextHi": "निम्न शब्दों को शब्दकोश क्रम में व्यवस्थित कीजिए: 1. Programmer 2. Processor 3. Progress 4. Permanent 5. Persistent",
   "explanationHi": "वर्णमाला (शब्दकोश) क्रम:\nPermanent (Per-m) → Persistent (Per-s) → Processor (Proc) → Programmer (Progr-a) → Progress (Progr-e)\nअतः क्रम है 4, 5, 2, 1, 3",
   "figureBased": false
- },
- {
-  "id": "q_03bb2bd52112497c",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Mirror & Water Image",
-  "topic": "Mirror Image",
-  "difficulty": "medium",
-  "questionText": "Choose the correct mirror image of the given problem figure when the mirror is placed to the left of the figure.",
-  "questionTextHi": "यदि दर्पण आकृति के बाईं ओर रखा जाए, तो दी गई प्रश्न-आकृति का सही दर्पण प्रतिबिंब चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "In a mirror placed on the left, the figure reverses left–right while the top–bottom remains unchanged — that image is option C.",
-  "explanationHi": "बाईं ओर रखे दर्पण में आकृति बाएँ-दाएँ उलट जाती है, ऊपर-नीचे वैसा ही रहता है — वही प्रतिबिंब विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 14 Jul 2021 Shift-3 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0c5ed452c1119b1c"
  },
  {
   "id": "q_03356ef93e936c97",
@@ -9926,49 +8925,6 @@
   "dupeHash": "0ff014f34113a544"
  },
  {
-  "id": "q_0f3569aa1112a717",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Identify the diagram that best represents the relationship among the classes given below: Bachelors, Teachers, Fathers",
-  "questionTextHi": "नीचे दिए वर्गों के बीच संबंध को सर्वोत्तम दर्शाने वाला आरेख पहचानिए: Bachelors (अविवाहित), Teachers (शिक्षक), Fathers (पिता)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "A bachelor cannot be a father, so \"Bachelors\" and \"Fathers\" are two separate circles; teachers can be bachelors or fathers, so the \"Teachers\" circle intersects both. Option A shows this.",
-  "explanationHi": "अविवाहित व्यक्ति पिता नहीं हो सकता, इसलिए \"Bachelors\" और \"Fathers\" दो अलग वृत्त हैं; शिक्षक अविवाहित भी हो सकता है और पिता भी, इसलिए \"Teachers\" वृत्त दोनों को काटता है। यही विकल्प A में है।",
-  "figureBased": true,
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0cbb01d8f111f8f5"
- },
- {
   "id": "q_3298cdd279546bae",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -10107,49 +9063,6 @@
   "questionTextHi": "यदि 'P' के स्थान पर '+', 'Q' के स्थान पर '−', 'R' के स्थान पर '×' और 'S' के स्थान पर '÷' रखा जाए, तो निम्न व्यंजक का मान ज्ञात कीजिए। 70S7P21R2Q15",
   "explanationHi": "हल:\n70 ÷ 7 + 21 × 2 − 15\n= 10 + 42 − 15 = 37\nअतः सही उत्तर विकल्प (B) है।",
   "figureBased": false
- },
- {
-  "id": "q_0a4f0fa71110f7c1",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Completion",
-  "difficulty": "medium",
-  "questionText": "Which answer figure will complete the pattern in the following question figure?",
-  "questionTextHi": "निम्न प्रश्न-आकृति में पैटर्न को कौन-सी उत्तर-आकृति पूरा करेगी?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "The completing figure must continue the symmetry of the pattern — option C.",
-  "explanationHi": "पूरा करने वाली आकृति वही होगी जो पैटर्न की सममिति बनाए रखे — विकल्प C।",
-  "figureBased": true,
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0b8e2d6491104961"
  },
  {
   "id": "q_x_mu7br90gcadwszv",
@@ -10451,49 +9364,6 @@
    "auto-topic"
   ],
   "dupeHash": "023efb77712349b7"
- },
- {
-  "id": "q_0ab829c9910f74fb",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Mirror & Water Image",
-  "topic": "Mirror Image",
-  "difficulty": "medium",
-  "questionText": "Choose the mirror image of the following: A!B@C#D$E%",
-  "questionTextHi": "निम्नलिखित का दर्पण प्रतिबिंब चुनिए: A!B@C#D$E%",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "In the mirror image the order of characters gets reversed (E%D#C@B!A) with each symbol mirrored — option C.",
-  "explanationHi": "दर्पण प्रतिबिंब में अक्षरों/चिह्नों का क्रम उलट जाता है (E%D#C@B!A) और हर चिह्न दर्पण-रूप में आता है — विकल्प C।",
-  "figureBased": true,
-  "source": "PYQ · 15 Jul 2021 Shift-1 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0ebfc9ea110ec69b"
  },
  {
   "id": "q_x_mu7br90ggedh71x",
@@ -11574,49 +10444,6 @@
   "figureBased": false
  },
  {
-  "id": "q_0eca57f8e11213f6",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Mirror & Water Image",
-  "topic": "Mirror Image",
-  "difficulty": "medium",
-  "questionText": "If the mirror is placed on line AB, then which of the answer figures is the correct image of the given figure?",
-  "questionTextHi": "यदि रेखा AB पर दर्पण रखा जाए, तो कौन-सी उत्तर-आकृति दी गई आकृति का सही प्रतिबिंब है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Mirror image reverses the figure left–right (or top–bottom according to the mirror line) — the correct image is option B.",
-  "explanationHi": "दर्पण प्रतिबिंब आकृति को बाएँ-दाएँ (या दर्पण रेखा के अनुसार ऊपर-नीचे) उलट देता है — सही प्रतिबिंब विकल्प B है।",
-  "figureBased": true,
-  "source": "PYQ · 15 Jul 2021 Shift-2 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "08d5b60d911165b5"
- },
- {
   "id": "q_x_mu7br90gfwc9zuh",
   "exam": "airforce",
   "subject": "raga",
@@ -11657,49 +10484,6 @@
    "auto-topic"
   ],
   "dupeHash": "0df80403b129dc31"
- },
- {
-  "id": "q_08ea2768f1125b87",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Identify the Venn diagram that best represents the relationship among the classes given below. Food, Noodles, Fan",
-  "questionTextHi": "नीचे दिए वर्गों के बीच संबंध को सर्वोत्तम दर्शाने वाला वेन आरेख पहचानिए। Food (भोजन), Noodles (नूडल्स), Fan (पंखा)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Noodles is a type of food, so its circle lies inside the Food circle; Fan has no relation to food → a separate circle. Option D shows this.",
-  "explanationHi": "नूडल्स भोजन का एक प्रकार है, इसलिए उसका वृत्त Food वृत्त के अंदर; फैन (पंखा) का भोजन से कोई संबंध नहीं → अलग वृत्त। यही विकल्प D में है।",
-  "figureBased": true,
-  "source": "PYQ · 15 Jul 2021 Shift-2 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0173c1d90111ad08"
  },
  {
   "id": "q_d51f59904d7aa058",
@@ -12500,92 +11284,6 @@
   "dupeHash": "01d57fd3e12310ae"
  },
  {
-  "id": "q_05084b9651122547",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Mirror & Water Image",
-  "topic": "Mirror Image",
-  "difficulty": "medium",
-  "questionText": "If the mirror is placed on the line AB, then which of the answer figures is the right image of the given figure?",
-  "questionTextHi": "यदि रेखा AB पर दर्पण रखा जाए, तो कौन-सी उत्तर-आकृति दी गई आकृति का सही प्रतिबिंब है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Mirror image reverses the figure as per the mirror line — correct image is option D.",
-  "explanationHi": "दर्पण प्रतिबिंब आकृति को दर्पण रेखा के अनुसार उलट देता है — सही प्रतिबिंब विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0214ffdae11176c8"
- },
- {
-  "id": "q_00f00e2e31107db1",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Completion",
-  "difficulty": "medium",
-  "questionText": "Which answer figure will complete the pattern in the question figure?",
-  "questionTextHi": "प्रश्न-आकृति में पैटर्न को कौन-सी उत्तर-आकृति पूरा करेगी?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "The part that makes the figure complete/symmetrical is option D.",
-  "explanationHi": "जो भाग आकृति को पूर्ण/सममित बनाता है वही विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0cd59103c10fcf32"
- },
- {
   "id": "q_x_mu7br90grlxhly7",
   "exam": "airforce",
   "subject": "raga",
@@ -12675,92 +11373,6 @@
   "explanationHi": "नियम: n × (n + 2)\n11 × 13 = 143 ✔\n15 × 17 = 255",
   "exam": "airforce",
   "figureBased": false
- },
- {
-  "id": "q_017badc1210eeb4c",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Classification & Odd One Out",
-  "topic": "Odd Figure",
-  "difficulty": "medium",
-  "questionText": "Choose the odd figure in the series.",
-  "questionTextHi": "श्रृंखला में विषम आकृति चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Three figures follow the same pattern while one does not — that odd figure is option C.",
-  "explanationHi": "तीन आकृतियाँ एक ही पैटर्न का पालन करती हैं, एक नहीं — वही विषम आकृति विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "06173b96c10e3cec"
- },
- {
-  "id": "q_0793d7628110d95c",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Choose the figure from the options that would follow next in the given series.",
-  "questionTextHi": "दी गई श्रृंखला में आगे आने वाली आकृति विकल्पों में से चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Continue the same step-wise rotation/change of the series — the next figure is option B.",
-  "explanationHi": "श्रृंखला में हो रहे उसी चरणबद्ध घूर्णन/परिवर्तन को आगे बढ़ाइए — अगली आकृति विकल्प B है।",
-  "figureBased": true,
-  "source": "PYQ · 15 Jul 2021 Shift-3 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "01690214f1102b1b"
  },
  {
   "id": "q_x_mu7br90g8huhtzc",
@@ -14079,49 +12691,6 @@
   "dupeHash": "01a5d1ea510e7df3"
  },
  {
-  "id": "q_08ccbf241112f4d5",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Which of the following Venn diagrams best represents the relationship among the following classes? Students, Brothers, Males",
-  "questionTextHi": "निम्न में से कौन-सा वेन आरेख इन वर्गों का संबंध सर्वोत्तम दर्शाता है? Students (विद्यार्थी), Brothers (भाई), Males (पुरुष)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "All brothers are males, so the \"Brothers\" circle lies inside the \"Males\" circle; a student may be a male (brother) or not, so the \"Students\" circle intersects the \"Males\" circle. Option C shows this.",
-  "explanationHi": "सभी भाई पुरुष होते हैं, इसलिए \"Brothers\" वृत्त \"Males\" वृत्त के अंदर; विद्यार्थी पुरुष (भाई) भी हो सकता है और नहीं भी, इसलिए \"Students\" वृत्त \"Males\" वृत्त को काटता है। यही विकल्प C में है।",
-  "figureBased": true,
-  "source": "PYQ · 16 Jul 2021 Shift-2 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0e0bcce791124675"
- },
- {
   "id": "q_x_mu7br90gx0r6zlo",
   "exam": "airforce",
   "subject": "raga",
@@ -14330,49 +12899,6 @@
    "auto-topic"
   ],
   "dupeHash": "0b2303e671114df9"
- },
- {
-  "id": "q_0c4e39954112c53e",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Study the given pattern carefully and select the image from among the given options that can replace the question mark (?).",
-  "questionTextHi": "दिए गए पैटर्न को ध्यान से देखिए और विकल्पों में से वह आकृति चुनिए जो प्रश्नचिह्न (?) के स्थान पर आ सकती है।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The missing figure must continue the same sequence of the pattern — option A.",
-  "explanationHi": "लुप्त आकृति वही होगी जो पैटर्न का वही क्रम आगे बढ़ाती है — विकल्प A।",
-  "figureBased": true,
-  "source": "PYQ · 16 Jul 2021 Shift-2 · Prepp (Group Y)",
-  "year": 2021,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0b00dff64112171c"
  },
  {
   "id": "q_x_mu7br90gplgisml",
@@ -15166,221 +13692,6 @@
   "dupeHash": "0c233dc4410f3850"
  },
  {
-  "id": "q_05b8fd4c1110a015",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "In the following question, select the wrong figure from the given series.",
-  "questionTextHi": "निम्न प्रश्न में दी गई श्रृंखला से गलत आकृति चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Three figures follow the series rule smoothly; the figure that breaks the pattern is option B.",
-  "explanationHi": "तीन आकृतियाँ श्रृंखला के नियम का पालन करती हैं; जो आकृति पैटर्न तोड़ती है वही विकल्प B है।",
-  "figureBased": true,
-  "source": "PYQ · 24 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0835061d810ff1d4"
- },
- {
-  "id": "q_01d74d48c111423a",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure that will replace the question mark (?) in the following figure series.",
-  "questionTextHi": "निम्न आकृति श्रृंखला में प्रश्नचिह्न (?) के स्थान पर आने वाली आकृति चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Continue the same step-wise change of the series — the required figure is option A.",
-  "explanationHi": "श्रृंखला में हो रहे उसी चरणबद्ध परिवर्तन को आगे बढ़ाइए — अभीष्ट आकृति विकल्प A है।",
-  "figureBased": true,
-  "source": "PYQ · 24 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "03c34748c1109418"
- },
- {
-  "id": "q_08f7f0e6e1109510",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Paper Folding & Cutting",
-  "topic": "Paper Folding",
-  "difficulty": "medium",
-  "questionText": "A paper is folded and cut as shown below. How will it appear when unfolded?",
-  "questionTextHi": "एक कागज़ को नीचे दिखाए अनुसार मोड़कर काटा गया है। खोलने पर वह कैसा दिखेगा?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Mirror the cut pattern about the fold lines (in reverse order of folding) — the unfolded paper looks like option A.",
-  "explanationHi": "कटाई के पैटर्न को मोड़-रेखाओं के अनुदिश दर्पण की तरह दोहराइए (मोड़ने के उल्टे क्रम में) — खुला कागज़ विकल्प A जैसा दिखेगा।",
-  "figureBased": true,
-  "source": "PYQ · 24 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0acf4494610fe6ee"
- },
- {
-  "id": "q_04f584003114c9f3",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Paper Folding & Cutting",
-  "topic": "Paper Folding",
-  "difficulty": "medium",
-  "questionText": "The sequence of folding a piece of paper and the manner in which the folded paper has been cut is shown in the following figures. How would this paper look when unfolded?",
-  "questionTextHi": "कागज़ को मोड़ने का क्रम और मुड़े कागज़ पर कटाई का तरीका निम्न आकृतियों में दिखाया गया है। खोलने पर यह कागज़ कैसा दिखेगा?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Repeat the cut about each fold line in reverse order — the unfolded design is option C.",
-  "explanationHi": "कटाई को हर मोड़-रेखा के अनुदिश उल्टे क्रम में दोहराइए — खुला डिज़ाइन विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 24 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "097753a671141b93"
- },
- {
-  "id": "q_012f9ef1a111b0aa",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Completion",
-  "difficulty": "medium",
-  "questionText": "Select the figure from the options that can replace the question mark (?) and complete the pattern.",
-  "questionTextHi": "विकल्पों में से वह आकृति चुनिए जो प्रश्नचिह्न (?) के स्थान पर आकर पैटर्न पूरा कर सके।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "The figure that completes the symmetry of the pattern is option A.",
-  "explanationHi": "पैटर्न की सममिति पूरी करने वाली आकृति विकल्प A है।",
-  "figureBased": true,
-  "source": "PYQ · 24 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "039a3eb021110288"
- },
- {
   "id": "q_x_mu7br90g3d2rn7k",
   "exam": "airforce",
   "subject": "raga",
@@ -15603,49 +13914,6 @@
   "explanationHi": "मान लीजिए वर्तमान आयु = x\n2x − 3(x − 6) = x\n2x − 3x + 18 = x → 18 = 2x → x = 9 वर्ष",
   "exam": "airforce",
   "figureBased": false
- },
- {
-  "id": "q_0c577c5ed112c9b9",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Select the Venn diagram that best represents the relationship between the following set of classes. Mother, Female, Doctor",
-  "questionTextHi": "निम्न वर्गों के समूह के बीच संबंध सर्वोत्तम दर्शाने वाला वेन आरेख चुनिए। Mother (माँ), Female (स्त्री), Doctor (डॉक्टर)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "All mothers are females → \"Mother\" circle inside \"Female\" circle. Doctors can be male or female, so the \"Doctor\" circle intersects the \"Female\" circle. Option C shows this.",
-  "explanationHi": "सभी माँएँ स्त्रियाँ हैं → \"Mother\" वृत्त \"Female\" वृत्त के अंदर। डॉक्टर पुरुष या स्त्री हो सकते हैं, इसलिए \"Doctor\" वृत्त \"Female\" वृत्त को काटता है। यही विकल्प C में है।",
-  "figureBased": true,
-  "source": "PYQ · 24 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0ac3efe051121b59"
  },
  {
   "id": "q_c5cde41aefc14e6e",
@@ -16397,49 +14665,6 @@
   "figureBased": false
  },
  {
-  "id": "q_0df2136e911373fb",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Select the Venn diagram that best represents the relationship between the following set of classes: Taller, Black hair people and Indians",
-  "questionTextHi": "निम्न वर्गों का संबंध सर्वोत्तम दर्शाने वाला वेन आरेख चुनिए: Taller (लंबे), Black hair people (काले बाल वाले) और Indians (भारतीय)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "All three classes can overlap with one another (a person may be tall, black-haired and Indian; or any two, or none) → three intersecting circles. Option B shows this.",
-  "explanationHi": "तीनों वर्ग एक-दूसरे को काट सकते हैं (व्यक्ति लंबा, काले बाल वाला और भारतीय हो सकता है; कोई भी दो हों, या कोई नहीं) → तीन प्रतिच्छेदी वृत्त। यही विकल्प B में है।",
-  "figureBased": true,
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0d3c15410112c5ba"
- },
- {
   "id": "q_fc52b76da64266b7",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -16489,49 +14714,6 @@
   "figureBased": false
  },
  {
-  "id": "q_0afe189281126002",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Select the Venn diagram that best represents the relationship between the following: Mother, Father and Engineer",
-  "questionTextHi": "निम्न का संबंध सर्वोत्तम दर्शाने वाला वेन आरेख चुनिए: Mother (माँ), Father (पिता) और Engineer (इंजीनियर)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Mother and Father are separate classes (no overlap), while an engineer can be a mother or a father → the Engineer circle intersects both. Option D shows this.",
-  "explanationHi": "माँ और पिता अलग वर्ग हैं (कोई अतिव्यापन नहीं), जबकि इंजीनियर माँ या पिता हो सकता है → Engineer वृत्त दोनों को काटता है। यही विकल्प D में है।",
-  "figureBased": true,
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0a128ebc5111b183"
- },
- {
   "id": "q_x_mu7br90g1ckkn6x",
   "exam": "airforce",
   "subject": "raga",
@@ -16572,49 +14754,6 @@
    "auto-topic"
   ],
   "dupeHash": "0e5a3804911e294d"
- },
- {
-  "id": "q_0b75c02cb1127913",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Select the Venn diagram that best represents the relationship between the following classes: Women, Mother, Doctor",
-  "questionTextHi": "निम्न वर्गों का संबंध सर्वोत्तम दर्शाने वाला वेन आरेख चुनिए: Women (स्त्रियाँ), Mother (माँ), Doctor (डॉक्टर)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "All mothers are women → Mother circle inside Women circle; doctors can be women or not → Doctor circle intersects the Women circle. Option B shows this.",
-  "explanationHi": "सभी माँएँ स्त्रियाँ हैं → Mother वृत्त Women वृत्त के अंदर; डॉक्टर स्त्री हो भी सकते हैं और नहीं → Doctor वृत्त Women वृत्त को काटता है। यही विकल्प B में है।",
-  "figureBased": true,
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0c6ed4ad6111cad2"
  },
  {
   "id": "q_0c6b99cb911c0025",
@@ -16846,135 +14985,6 @@
   "questionTextHi": "यदि + का अर्थ ×, × का अर्थ −, − का अर्थ ÷ और ÷ का अर्थ + हो, तो निम्न व्यंजक का मान क्या होगा? 37 + 73 − 23 ÷ 32 × 29 = ?",
   "explanationHi": "हल:\n37 × 73 ÷ 23 + 32 − 29\n= 2701/23 + 32 − 29\n= 117.43 + 3 = 120.43\nअतः सही उत्तर विकल्प (D) है।",
   "figureBased": false
- },
- {
-  "id": "q_0e844ee3f1122f73",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure from among the given options that can replace the question mark (?) in the following series.",
-  "questionTextHi": "दिए गए विकल्पों में से वह आकृति चुनिए जो निम्न श्रृंखला में प्रश्नचिह्न (?) के स्थान पर आ सके।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Continue the same movement/rotation of elements shown in the series — the required figure is option D.",
-  "explanationHi": "श्रृंखला में दिख रही तत्वों की उसी गति/घूर्णन को आगे बढ़ाइए — अभीष्ट आकृति विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0ca65c3e011180f4"
- },
- {
-  "id": "q_0a96ced23111d5d7",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Mirror & Water Image",
-  "topic": "Mirror Image",
-  "difficulty": "medium",
-  "questionText": "Select the correct mirror image of figure (X) when the mirror is placed at the right side of the figure.",
-  "questionTextHi": "जब दर्पण आकृति (X) के दाईं ओर रखा जाए, तो उसका सही दर्पण प्रतिबिंब चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "With the mirror on the right, the figure reverses left–right while the top–bottom stay the same — that image is option A.",
-  "explanationHi": "दाईं ओर दर्पण होने पर आकृति बाएँ-दाएँ उलट जाती है, ऊपर-नीचे वैसा ही रहता है — वही प्रतिबिंब विकल्प A है।",
-  "figureBased": true,
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0eeac7eb111127b5"
- },
- {
-  "id": "q_0145c378b114923f",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Cubes & Dice",
-  "topic": "Dice",
-  "difficulty": "hard",
-  "questionText": "Two different positions of the same dice are shown below, the six faces of which are numbered 1 to 6 dots. Find the number on the face opposite to the one having 2 dots.",
-  "questionTextHi": "नीचे एक ही पासे की दो भिन्न स्थितियाँ दिखाई गई हैं, जिसके छह फलकों पर 1 से 6 बिंदु हैं। 2 बिंदु वाले फलक के विपरीत फलक पर कौन-सी संख्या होगी?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Using the two positions of the dice (common-face rule), the face opposite 2 dots is 3 (as per the source key).",
-  "explanationHi": "पासे की दो स्थितियों से (सामान्य फलक नियम) 2 बिंदु वाले फलक के विपरीत फलक पर 3 है (स्रोत की कुंजी के अनुसार)।",
-  "figureBased": true,
-  "source": "PYQ · 25 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "01b6f2bff113e3df"
  },
  {
   "id": "q_x_mu7br90gxpff1he",
@@ -17712,98 +15722,6 @@
   "dupeHash": "0bdd4ddeb10d02af"
  },
  {
-  "id": "q_3e36932cdd137811",
-  "subject": "raga",
-  "subjectName": "RAGA",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Choose the Venn diagram that best represents the three classes given in the question below: Copper, Book, Wire",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "A"
-   },
-   {
-    "id": "B",
-    "text": "B"
-   },
-   {
-    "id": "C",
-    "text": "C"
-   },
-   {
-    "id": "D",
-    "text": "D"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Wire can be made of copper (so the Copper circle lies inside/overlaps the Wire circle), while a Book has no relation with either → a separate circle. Option C shows this.\n(कुछ में तार अन्य धातुओं का भी होता है, इसलिए Copper वृत्त, Wire वृत्त के भीतर है।)",
-  "source": "PYQ · 27 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "08967c77e10e2f1e",
-  "paper": {
-   "no": 15,
-   "group": "Y",
-   "date": "27 Jul 2022",
-   "src": "SelfStudys"
-  },
-  "questionTextHi": "नीचे दिए तीन वर्गों को सर्वोत्तम दर्शाने वाला वेन आरेख चुनिए: Copper (तांबा), Book (पुस्तक), Wire (तार)",
-  "explanationHi": "तार तांबे का बन सकता है (इसलिए Copper वृत्त, Wire वृत्त के भीतर), जबकि पुस्तक का इनसे कोई संबंध नहीं → अलग वृत्त। यही विकल्प C में है।",
-  "exam": "airforce",
-  "figureBased": false
- },
- {
-  "id": "q_09728f63a1126c9a",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Select the option that correctly represents the relationship among the following: Smokers, Lawyers, Non-smokers",
-  "questionTextHi": "निम्न का संबंध सही रूप से दर्शाने वाला विकल्प चुनिए: Smokers (धूम्रपान करने वाले), Lawyers (वकील), Non-smokers (धूम्रपान न करने वाले)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Smokers and Non-smokers are two separate circles (no overlap, since no person can be both), while lawyers can be smokers or non-smokers → the Lawyers circle intersects both. Option D shows this.",
-  "explanationHi": "धूम्रपान करने वाले और न करने वाले दो अलग वृत्त हैं (कोई व्यक्ति दोनों नहीं हो सकता), जबकि वकील धूम्रपान करने वाला या न करने वाला कोई भी हो सकता है → Lawyers वृत्त दोनों को काटता है। यही विकल्प D में है।",
-  "figureBased": true,
-  "source": "PYQ · 27 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "04395dfef111be1b"
- },
- {
   "id": "q_7a14e9dc13cd3017",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -17851,49 +15769,6 @@
   "explanationHi": "दो बारी-बारी श्रृंखलाएँ:\nविषम स्थान: 65, 80, 110, ? → अंतर +15, +30, (+45) → 110 + 45 = 155\nसम स्थान: 70, 80, 100 → अंतर +10, +20\nअतः ? = 155",
   "exam": "airforce",
   "figureBased": false
- },
- {
-  "id": "q_08946cd81113dfc1",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Completion",
-  "difficulty": "medium",
-  "questionText": "Select a figure amongst the four alternatives that when placed in the blank space (?) of figure X will complete the pattern. (Rotation is not allowed)",
-  "questionTextHi": "चार विकल्पों में से वह आकृति चुनिए जो आकृति X के रिक्त स्थान (?) में रखने पर पैटर्न पूरा करेगी। (घुमाने की अनुमति नहीं है)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "The figure whose lines exactly fit the blank (without rotation) is option D.",
-  "explanationHi": "जिस आकृति की रेखाएँ रिक्त स्थान में ठीक बैठती हैं (बिना घुमाए) वही विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · 27 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0ac053fa21133142"
  },
  {
   "id": "q_f9611fb975c2fa41",
@@ -18169,49 +16044,6 @@
   "figureBased": false
  },
  {
-  "id": "q_014c3cc231115027",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure that will replace the question mark (?) in the following figures series.",
-  "questionTextHi": "निम्न आकृति श्रृंखला में प्रश्नचिह्न (?) के स्थान पर आने वाली आकृति चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Continue the same step-wise change of the figure series — the required figure is option A.",
-  "explanationHi": "आकृति श्रृंखला में हो रहे उसी चरणबद्ध परिवर्तन को आगे बढ़ाइए — अभीष्ट आकृति विकल्प A है।",
-  "figureBased": true,
-  "source": "PYQ · 27 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "07b46b3b1110a205"
- },
- {
   "id": "q_fb44a598c5e3f072",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -18259,49 +16091,6 @@
   "explanationHi": "ADMINISTRATION के अक्षर हैं: A, D, M, I, N, I, S, T, R, A, T, I, O, N — इसमें U नहीं है।\nSITUATION के लिए U चाहिए, जो उपलब्ध नहीं → SITUATION नहीं बनाया जा सकता।",
   "exam": "airforce",
   "figureBased": false
- },
- {
-  "id": "q_0559def9b111b23d",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Mirror & Water Image",
-  "topic": "Mirror Image",
-  "difficulty": "medium",
-  "questionText": "Select the correct mirror image of the given combination when the mirror is placed at 'PQ' as shown.",
-  "questionTextHi": "जैसा दिखाया गया है, जब दर्पण 'PQ' पर रखा जाए, तो दिए गए संयोजन का सही दर्पण प्रतिबिंब चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "The mirror image reverses the arrangement about the line PQ — the matching image is option C.",
-  "explanationHi": "दर्पण प्रतिबिंब रेखा PQ के अनुदिश व्यवस्था को उलट देता है — मेल खाता प्रतिबिंब विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 27 Jul 2022 · SelfStudys (Group Y)",
-  "year": 2022,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0f5f7baaf11103dd"
  },
  {
   "id": "q_5ebe9a991e574920",
@@ -19430,9 +17219,8 @@
   "chapter": "Analogy",
   "topic": "City-Country",
   "difficulty": "medium",
-  "questionText": "Select the pair from the alternatives that is similar to the pair given in the question. Tokyo : Japan :: Vienna : ?",
+  "questionText": "Select the pair from the alternatives that is similar to the pair given in the question. Tokyo : Japan : : Vienna : ?",
   "questionTextHi": "दिए विकल्पों में से वह युग्म चुनिए जो प्रश्न में दिए युग्म के समान है। Tokyo : Japan :: Vienna : ?",
-  "image": "",
   "options": [
    {
     "id": "A",
@@ -19463,7 +17251,7 @@
    "auto-chapter",
    "auto-topic"
   ],
-  "dupeHash": "0827d68dd132453d"
+  "dupeHash": "01eb898d1132491d"
  },
  {
   "id": "q_0a98e470a1436ea4",
@@ -19548,98 +17336,6 @@
    "auto-topic"
   ],
   "dupeHash": "047f59a2710d78df"
- },
- {
-  "id": "q_e7c009c98c8ab5e1",
-  "subject": "raga",
-  "subjectName": "RAGA",
-  "chapter": "Counting of Figures",
-  "topic": "Triangles",
-  "difficulty": "medium",
-  "questionText": "Find how many triangles are there in the given figure.",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "12"
-   },
-   {
-    "id": "B",
-    "text": "13"
-   },
-   {
-    "id": "C",
-    "text": "14"
-   },
-   {
-    "id": "D",
-    "text": "11"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Count the smallest triangles then the composite triangles in the figure. As per the source, the total is 13.",
-  "source": "PYQ · 18 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0a1f905d610bc77a",
-  "paper": {
-   "no": 16,
-   "group": "Y",
-   "date": "18 Jan 2023",
-   "src": "SelfStudys"
-  },
-  "questionTextHi": "दी गई आकृति में कितने त्रिभुज हैं?",
-  "explanationHi": "आकृति में छोटे त्रिभुज, फिर संयुक्त त्रिभुज गिनिए। स्रोत के अनुसार कुल 13 हैं।",
-  "exam": "airforce",
-  "figureBased": false
- },
- {
-  "id": "q_0b7b8734b111f7fd",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure from the options that can replace the question mark (?) in the following figure series.",
-  "questionTextHi": "विकल्पों में से वह आकृति चुनिए जो निम्न आकृति श्रृंखला में प्रश्नचिह्न (?) के स्थान पर आ सके।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Continue the same step-wise change of the series — the required figure is option C.",
-  "explanationHi": "श्रृंखला में हो रहे उसी चरणबद्ध परिवर्तन को आगे बढ़ाइए — अभीष्ट आकृति विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 18 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0f002003f111499d"
  },
  {
   "id": "q_aed637dab134eb1b",
@@ -19943,92 +17639,6 @@
   "dupeHash": "0189d476a12cf998"
  },
  {
-  "id": "q_0078a570c1119aa0",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure that will come in place of the question mark (?) in the following figure series.",
-  "questionTextHi": "वह आकृति चुनिए जो निम्न आकृति श्रृंखला में प्रश्नचिह्न (?) के स्थान पर आएगी।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Continue the same rotation/change of the figure series — the required figure is option B.",
-  "explanationHi": "आकृति श्रृंखला में हो रहे उसी घूर्णन/परिवर्तन को आगे बढ़ाइए — अभीष्ट आकृति विकल्प B है।",
-  "figureBased": true,
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "09b6b0013110ec5f"
- },
- {
-  "id": "q_0bac9d02511028af",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Classification & Odd One Out",
-  "topic": "Odd Figure",
-  "difficulty": "medium",
-  "questionText": "Select the figure that does not belong in the following series.",
-  "questionTextHi": "वह आकृति चुनिए जो निम्न श्रृंखला में शामिल नहीं है।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Three figures follow the same pattern while one breaks it — that figure is option C.",
-  "explanationHi": "तीन आकृतियाँ एक ही पैटर्न का पालन करती हैं, एक नहीं — वही आकृति विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "05621ceed10f7a4f"
- },
- {
   "id": "q_x_mu7br90hkn6thw2",
   "exam": "airforce",
   "subject": "raga",
@@ -20069,49 +17679,6 @@
    "auto-topic"
   ],
   "dupeHash": "04b7da2ac1298be8"
- },
- {
-  "id": "q_0707f7a681127dcc",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Mirror & Water Image",
-  "topic": "Mirror Image",
-  "difficulty": "medium",
-  "questionText": "If a mirror is placed on the shaded line, then which of the following options is the mirror image of the given figure?",
-  "questionTextHi": "यदि छायांकित रेखा पर दर्पण रखा जाए, तो निम्न में से कौन-सा विकल्प दी गई आकृति का दर्पण प्रतिबिंब है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Mirror image reverses the figure about the mirror line — the matching image is option D.",
-  "explanationHi": "दर्पण प्रतिबिंब आकृति को दर्पण रेखा के अनुदिश उलट देता है — मेल खाता प्रतिबिंब विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0e97a7085111cf4d"
  },
  {
   "id": "q_x_mu7br90hljsdzns",
@@ -20282,49 +17849,6 @@
   "dupeHash": "0bbc9d8e413bf93c"
  },
  {
-  "id": "q_0e4cf948e111156c",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Which of the following represents the correct relationship between Cat, Dog and Pet?",
-  "questionTextHi": "निम्न में से कौन-सा Cat (बिल्ली), Dog (कुत्ता) और Pet (पालतू) के बीच सही संबंध दर्शाता है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Cat and Dog are two separate classes, both lying inside \"Pet\" → two separate circles inside a bigger circle. Option B shows this.",
-  "explanationHi": "बिल्ली और कुत्ता दो अलग वर्ग हैं, दोनों \"Pet (पालतू)\" के अंदर → बड़े वृत्त के भीतर दो अलग वृत्त। यही विकल्प B में है।",
-  "figureBased": true,
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "094297fd9110672b"
- },
- {
   "id": "q_71c18713a87dfa65",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -20470,49 +17994,6 @@
   "questionTextHi": "लुप्त संख्या ज्ञात कीजिए। 0, 3, 8, 15, 24, ?, 48",
   "explanationHi": "अंतर: 3, 5, 7, 9, 11, 13 → अगला = 24 + 11 = 35\n(n² − 1 पैटर्न: 36 − 1 = 35 ✔)",
   "figureBased": false
- },
- {
-  "id": "q_0b7245ce4112b314",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Analogy",
-  "difficulty": "medium",
-  "questionText": "Select the option that is related to the third figure in the same way as the second figure is related to the first figure.",
-  "questionTextHi": "वह विकल्प चुनिए जिसका तीसरी आकृति से वही संबंध है जो दूसरी आकृति का पहली आकृति से है।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Find the single change between figure 1 and figure 2 and apply the same to figure 3 — the answer is option C.",
-  "explanationHi": "पहली और दूसरी आकृति के बीच का परिवर्तन पहचानिए और वही तीसरी आकृति पर लगाइए — उत्तर विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 19 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "08135b95211204b4"
  },
  {
   "id": "q_x_mu7br90h3kplpv1",
@@ -21383,49 +18864,6 @@
   "dupeHash": "0970850821109dc8"
  },
  {
-  "id": "q_0ce282bae10f46d8",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Simplification",
-  "topic": "Miscellaneous Simplification",
-  "difficulty": "medium",
-  "questionText": "The value of the given expression is ______.",
-  "questionTextHi": "दिए गए व्यंजक का मान ______ है।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The expression of this question is not available in the source file (only the options and key were present). As per the paper's answer key, the correct option is B.",
-  "explanationHi": "स्रोत फाइल में इस प्रश्न का व्यंजक उपलब्ध नहीं था (केवल विकल्प व कुंजी थी)। पेपर की उत्तर-कुंजी के अनुसार सही विकल्प B है।",
-  "figureBased": true,
-  "source": "PYQ · 20 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "072e95f7910e9897"
- },
- {
   "id": "q_x_mu7br90horfbnzx",
   "exam": "airforce",
   "subject": "raga",
@@ -21466,135 +18904,6 @@
    "auto-topic"
   ],
   "dupeHash": "0e6c5a98b11ed4c5"
- },
- {
-  "id": "q_013d9b82c1103908",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Hidden Figure",
-  "difficulty": "medium",
-  "questionText": "Figure X is hidden in the option figures. Find the correct option.",
-  "questionTextHi": "आकृति X विकल्प-आकृतियों में छिपी हुई है। सही विकल्प ज्ञात कीजिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Locate the exact shape/outline of figure X inside the option figures — it is embedded in option B.",
-  "explanationHi": "आकृति X का आकार/रूपरेखा विकल्प-आकृतियों में खोजिए — वह विकल्प B में छिपी है।",
-  "figureBased": true,
-  "source": "PYQ · 20 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0220fc4b310f8ac7"
- },
- {
-  "id": "q_0151d33af11982f3",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Analogy",
-  "difficulty": "hard",
-  "questionText": "Figure 1, 2, 3, 4 constitute the Problem Set while a, b, c, d constitute the Answer Set. There is a definite relationship between figures (1) and (2). Establish a similar relationship between figures (3) and (4) by selecting a suitable figure that would replace the Question mark (?) in fig. (4).",
-  "questionTextHi": "आकृतियाँ 1, 2, 3, 4 समस्या-समूह हैं तथा a, b, c, d उत्तर-समूह हैं। आकृति (1) और (2) के बीच एक निश्चित संबंध है। वही संबंध आकृति (3) और (4) के बीच बनाकर आकृति (4) के प्रश्नचिह्न (?) के स्थान पर उपयुक्त आकृति चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Identify the transformation from figure (1) to (2) and apply the same to figure (3) — the answer is option C.",
-  "explanationHi": "आकृति (1) से (2) में हुआ परिवर्तन पहचानिए और वही आकृति (3) पर लगाइए — उत्तर विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 20 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "05060b203118d493"
- },
- {
-  "id": "q_02e7d014c110559c",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Which of the following diagrams represents Mammals, Cows and Crows?",
-  "questionTextHi": "निम्न में से कौन-सा आरेख Mammals (स्तनधारी), Cows (गाय) और Crows (कौए) को दर्शाता है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "All cows are mammals → the Cow circle lies inside the Mammal circle; crows are birds → a separate circle. Option B shows this.",
-  "explanationHi": "सभी गाय स्तनधारी हैं → Cow वृत्त Mammal वृत्त के अंदर; कौए पक्षी हैं → अलग वृत्त। यही विकल्प B में है।",
-  "figureBased": true,
-  "source": "PYQ · 20 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "076ca04d310fa75b"
  },
  {
   "id": "q_x_mu7br90heppvhiq",
@@ -21728,49 +19037,6 @@
   "questionTextHi": "दिए गए समीकरण को सही करने के लिए किन दो संख्याओं को आपस में बदलना होगा? 24 + 96 − 36 ÷ 6 × 18 = 108",
   "explanationHi": "विकल्प D जाँचिए (6 और 18 बदलिए):\n24 + 96 − 36 ÷ 18 × 6 = 24 + 96 − 2 × 6 = 120 − 12 = 108 ✔",
   "figureBased": false
- },
- {
-  "id": "q_0b8b0a6bf10fa4b1",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Classification & Odd One Out",
-  "topic": "Odd Figure",
-  "difficulty": "medium",
-  "questionText": "Select the figure which does NOT belong to the group.",
-  "questionTextHi": "वह आकृति चुनिए जो समूह से संबंधित नहीं है।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Three figures share the same property (e.g. number of lines/shading) while one does not — that figure is option B.",
-  "explanationHi": "तीन आकृतियों में एक ही गुण (रेखाओं की संख्या/छायांकन) है, एक में नहीं — वही आकृति विकल्प B है।",
-  "figureBased": true,
-  "source": "PYQ · 20 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "05655680a10ef670"
  },
  {
   "id": "q_657b72468773a214",
@@ -22053,92 +19319,6 @@
   "figureBased": false
  },
  {
-  "id": "q_09a7f2f79111f5cf",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Which of the following Venn diagrams best represents the relationship between Europe, Paris and France?",
-  "questionTextHi": "निम्न में से कौन-सा वेन आरेख Europe (यूरोप), Paris (पेरिस) और France (फ्रांस) का संबंध सर्वोत्तम दर्शाता है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Paris is a city inside France, and France is a country inside Europe → three concentric circles (Paris inside France inside Europe). Option A shows this.",
-  "explanationHi": "पेरिस, फ्रांस का शहर है और फ्रांस, यूरोप का देश → तीन संकेंद्री वृत्त (पेरिस, फ्रांस के अंदर; फ्रांस, यूरोप के अंदर)। यही विकल्प A में है।",
-  "figureBased": true,
-  "source": "PYQ · 20 Jan 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0ae6fce9711147ad"
- },
- {
-  "id": "q_040501f8f1106fa5",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure that will come next in the following figure series.",
-  "questionTextHi": "वह आकृति चुनिए जो निम्न आकृति श्रृंखला में आगे आएगी।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Continue the same movement of elements — the next figure is option C.",
-  "explanationHi": "तत्वों की उसी गति को आगे बढ़ाइए — अगली आकृति विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 13 Oct 2023 Shift-1 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "08e11776310fc145"
- },
- {
   "id": "q_x_mu7br90hp98op5q",
   "exam": "airforce",
   "subject": "raga",
@@ -22410,49 +19590,6 @@
   "explanationHi": "अंतर: 4, 9, 16, 25 → 2, 3, 4, 5 के वर्ग\nअगला अंतर = 6² = 36\n59 + 36 = 95",
   "exam": "airforce",
   "figureBased": false
- },
- {
-  "id": "q_0c9e3ab221122c2e",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Identify the diagram that best represents the relationship among the given classes. Language, Hindi, English",
-  "questionTextHi": "दिए गए वर्गों के बीच संबंध सर्वोत्तम दर्शाने वाला आरेख पहचानिए। Language (भाषा), Hindi (हिंदी), English (अंग्रेज़ी)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Hindi and English are two different languages, both inside \"Language\" → two separate circles inside a bigger circle. Option D shows this.",
-  "explanationHi": "हिंदी और अंग्रेज़ी दो भिन्न भाषाएँ हैं, दोनों \"Language\" के अंदर → बड़े वृत्त के भीतर दो अलग वृत्त। यही विकल्प D में है।",
-  "figureBased": true,
-  "source": "PYQ · 13 Oct 2023 Shift-1 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0d7fd08271117daf"
  },
  {
   "id": "q_x_mu7br90h6b8y8ss",
@@ -23288,49 +20425,6 @@
   "dupeHash": "090f162d8121e6ca"
  },
  {
-  "id": "q_0361452ac1125be4",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Select the Venn diagram that best represents the relationship between the following classes: Animals, Cows, Dogs",
-  "questionTextHi": "निम्न वर्गों के बीच संबंध सर्वोत्तम दर्शाने वाला वेन आरेख चुनिए: Animals (जानवर), Cows (गाय), Dogs (कुत्ते)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Cows and dogs are two separate groups, both coming under animals → two different circles inside one big circle. Option C shows this.",
-  "explanationHi": "गाय और कुत्ते दो अलग समूह हैं, दोनों जानवरों के अंतर्गत आते हैं → बड़े वृत्त के भीतर दो अलग वृत्त। यही विकल्प C में है।",
-  "figureBased": true,
-  "source": "PYQ · 13 Oct 2023 Shift-2 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0a4ca948a111ad84"
- },
- {
   "id": "q_2a1e41dd56f4f2c0",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -23378,92 +20472,6 @@
   "explanationHi": "घंटे की सुई 4:30 पर = 4 × 30 + 30 × 0.5 = 135°\nमिनट की सुई = 30 × 6 = 180°\nकोण = 180° − 135° = 45°",
   "exam": "airforce",
   "figureBased": false
- },
- {
-  "id": "q_035a70060111eb08",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure from the given options that can replace the question mark (?) in the following series.",
-  "questionTextHi": "दिए गए विकल्पों में से वह आकृति चुनिए जो निम्न श्रृंखला में प्रश्नचिह्न (?) के स्थान पर आ सके।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Apply the same relation shown between the given figures — the next figure is option A.",
-  "explanationHi": "दी गई आकृतियों के बीच दिख रहा वही संबंध लगाइए — अगली आकृति विकल्प A है।",
-  "figureBased": true,
-  "source": "PYQ · 13 Oct 2023 Shift-2 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0195189e01113ce6"
- },
- {
-  "id": "q_0b7e2a63e110b82e",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Choose one of the possibilities to represent the next figure in the series.",
-  "questionTextHi": "श्रृंखला में अगली आकृति दर्शाने वाला विकल्प चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Continue the same movement/rotation of the elements — the next figure is option C.",
-  "explanationHi": "तत्वों की वही गति/घूर्णन आगे बढ़ाइए — अगली आकृति विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 13 Oct 2023 Shift-2 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "05fa4fd8811009ce"
  },
  {
   "id": "q_x_mu7br90h63ychj3",
@@ -24810,92 +21818,6 @@
   "dupeHash": "0720d872712d2701"
  },
  {
-  "id": "q_05355341b110177d",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Which diagram depicts relationship between Nitrogen, Ice, Air?",
-  "questionTextHi": "कौन-सा आरेख Nitrogen (नाइट्रोजन), Ice (बर्फ) और Air (वायु) के बीच संबंध दर्शाता है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Air contains nitrogen (so one circle inside another), while ice is separate → option D shows this relation.",
-  "explanationHi": "वायु में नाइट्रोजन होती है (एक वृत्त दूसरे के अंदर), जबकि बर्फ अलग है → यही संबंध विकल्प D में है।",
-  "figureBased": true,
-  "source": "PYQ · 14 Oct 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0ddea11e410f68fe"
- },
- {
-  "id": "q_09fdcd6ce10e279c",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "The next figure is",
-  "questionTextHi": "अगली आकृति है",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Continue the same pattern of the figure series — the next figure is option A.",
-  "explanationHi": "आकृति श्रृंखला का वही पैटर्न आगे बढ़ाइए — अगली आकृति विकल्प A है।",
-  "figureBased": true,
-  "source": "PYQ · 14 Oct 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "01fd013a610d797a"
- },
- {
   "id": "q_x_mu7br90hiun4t1y",
   "exam": "airforce",
   "subject": "raga",
@@ -24936,48 +21858,6 @@
    "auto-topic"
   ],
   "dupeHash": "03b1dfd0d10e4e7b"
- },
- {
-  "id": "q_x_mu7br90hufu7u04",
-  "exam": "airforce",
-  "subject": "raga",
-  "chapter": "Algebra",
-  "topic": "Algebraic Equations",
-  "difficulty": "medium",
-  "questionText": "If [the given expression], then the value of x is?",
-  "questionTextHi": "यदि [दिया गया व्यंजक], तो x का मान क्या है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "(स्रोत में उपलब्ध नहीं)"
-   },
-   {
-    "id": "B",
-    "text": "(स्रोत में उपलब्ध नहीं)"
-   },
-   {
-    "id": "C",
-    "text": "4"
-   },
-   {
-    "id": "D",
-    "text": "25"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "The expression of this question is not available in the source file (options A and B were also blank). As per the paper's answer key, the correct option is D (25).",
-  "explanationHi": "स्रोत फाइल में इस प्रश्न का व्यंजक उपलब्ध नहीं था (विकल्प A व B भी खाली थे)। पेपर की उत्तर-कुंजी के अनुसार सही विकल्प D (25) है।",
-  "source": "PYQ · 14 Oct 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "figureBased": false,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0762eb8fb133a371"
  },
  {
   "id": "q_x_mu7br90hb29tkvg",
@@ -25111,49 +21991,6 @@
    "auto-topic"
   ],
   "dupeHash": "0862b3fb4110e768"
- },
- {
-  "id": "q_0ba15d6b010eef6a",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Simplification",
-  "topic": "Fractions",
-  "difficulty": "medium",
-  "questionText": "The L.C.M. of [the given fractions] is:",
-  "questionTextHi": "[दी गई भिन्नों] का LCM है:",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "The fractions were shown as a figure in the source. As per the answer key, option D is correct (LCM = LCM of numerators / HCF of denominators).",
-  "explanationHi": "भिन्नें स्रोत में चित्र के रूप में थीं। उत्तर-कुंजी के अनुसार सही विकल्प D है (भिन्नों का LCM = अंशों का LCM / हरों का HCF)।",
-  "figureBased": true,
-  "source": "PYQ · 14 Oct 2023 · SelfStudys (Group Y)",
-  "year": 2023,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0c3ee07dd10e40eb"
  },
  {
   "id": "q_x_mu7br90hjti38j2",
@@ -25905,49 +22742,6 @@
   "figureBased": false
  },
  {
-  "id": "q_0526e219110fc715",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Which of the given shapes would complete the sequence?",
-  "questionTextHi": "दी गई आकृतियों में से कौन-सी श्रृंखला को पूरा करेगी?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Continue the same pattern of shapes in the sequence — option C completes it.",
-  "explanationHi": "क्रम में आकृतियों का वही पैटर्न आगे बढ़ाइए — विकल्प C इसे पूरा करता है।",
-  "figureBased": true,
-  "source": "PYQ · 22 Mar 2025 · SelfStudys (Group Y)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "04fbfb66910f18b5"
- },
- {
   "id": "q_a01eb004f437a855",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -26086,49 +22880,6 @@
   "explanationHi": "दोनों घंटियाँ LCM(63, 74) सेकंड बाद पुनः साथ बजेंगी।\n63 = 7 × 9, 74 = 2 × 37 → कोई सामान्य गुणक नहीं → LCM = 63 × 74 = 4662 सेकंड",
   "exam": "airforce",
   "figureBased": false
- },
- {
-  "id": "q_0f1a20b15111cd1f",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Mirror & Water Image",
-  "topic": "Mirror Image",
-  "difficulty": "medium",
-  "questionText": "Which answer figure is the exact mirror image of the given question figure when mirror is held at PQ?",
-  "questionTextHi": "दर्पण को PQ पर रखने पर दी गई प्रश्न-आकृति का सही दर्पण प्रतिबिंब कौन-सी उत्तर-आकृति है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Take the left-right reversed image of the question figure along PQ — option C matches.",
-  "explanationHi": "PQ के अनुदिश प्रश्न-आकृति का बाएँ-दाएँ परावर्तन कीजिए — विकल्प C मेल खाता है।",
-  "figureBased": true,
-  "source": "PYQ · 22 Mar 2025 · SelfStudys (Group Y)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0c4dffcbd1111ebf"
  },
  {
   "id": "q_x_mu7br90huacp9ni",
@@ -26402,48 +23153,6 @@
   "questionTextHi": "दिए गए पैटर्न का ध्यानपूर्वक अध्ययन कर वह संख्या चुनिए जो प्रश्नचिह्न (?) के स्थान पर आएगी: 16 14 18 / 58 44 ? / 13 8 4",
   "explanationHi": "स्तंभ-वार नियम: मध्य संख्या = 2 × (ऊपर + नीचे)\nस्तंभ 1: 2 × (16 + 13) = 58 ✔\nस्तंभ 2: 2 × (14 + 8) = 44 ✔\nस्तंभ 3: 2 × (18 + 4) = 44",
   "figureBased": false
- },
- {
-  "id": "q_x_mu7br90hp58nrqc",
-  "exam": "airforce",
-  "subject": "raga",
-  "chapter": "Simplification",
-  "topic": "Fractions",
-  "difficulty": "medium",
-  "questionText": "Simplify [the given expression].",
-  "questionTextHi": "[दिया गया व्यंजक] को सरल कीजिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "(स्रोत में उपलब्ध नहीं)"
-   },
-   {
-    "id": "B",
-    "text": "102/15"
-   },
-   {
-    "id": "C",
-    "text": "132/15"
-   },
-   {
-    "id": "D",
-    "text": "(स्रोत में उपलब्ध नहीं)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "The expression of this question was garbled in the source file. As per the paper's answer key, the correct option is C (132/15 = 44/5).",
-  "explanationHi": "इस प्रश्न का व्यंजक स्रोत फाइल में टूटा हुआ था। पेपर की उत्तर-कुंजी के अनुसार सही विकल्प C (132/15) है।",
-  "source": "PYQ · 22 Mar 2025 · SelfStudys (Group Y)",
-  "year": 2025,
-  "figureBased": false,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0e41ee8661332bae"
  },
  {
   "id": "q_ff453fbf12db25f7",
@@ -27489,92 +24198,6 @@
   "figureBased": false
  },
  {
-  "id": "q_004627b23110e0bf",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the figure that can replace the question mark (?) in the following series.",
-  "questionTextHi": "वह आकृति चुनिए जो निम्न श्रृंखला में प्रश्नचिह्न (?) के स्थान पर आ सकती है।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Continue the same pattern of the series — the required figure is option D.",
-  "explanationHi": "श्रृंखला का वही पैटर्न आगे बढ़ाइए — अभीष्ट आकृति विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · 28 Sep 2025 · Utkarsh (Group Y)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "048acc7fc1103240"
- },
- {
-  "id": "q_0b88a4645110ef47",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Embedded Figure",
-  "difficulty": "medium",
-  "questionText": "Select the option that is embedded in the given figure (X). (Rotation is NOT allowed)",
-  "questionTextHi": "वह विकल्प चुनिए जो दी गई आकृति (X) में अंतर्निहित है। (घूर्णन की अनुमति नहीं है)",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Look for the exact shape embedded inside figure X without rotating it — option C is embedded.",
-  "explanationHi": "आकृति X के भीतर बिना घुमाए ठीक वही आकार खोजिए — विकल्प C अंतर्निहित है।",
-  "figureBased": true,
-  "source": "PYQ · 28 Sep 2025 · Utkarsh (Group Y)",
-  "year": 2025,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0e29a4b8d11040e7"
- },
- {
   "id": "q_9c334962d28842a9",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -27981,49 +24604,6 @@
   "dupeHash": "08bb401c610f2664"
  },
  {
-  "id": "q_0b8fbcf6c1120856",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Identify the figure given in the options which when put in place of '?' will logically complete the series.",
-  "questionTextHi": "दिए गए विकल्पों में से वह आकृति पहचानिए, जो '?' के स्थान पर रखने पर श्रृंखला को तार्किक रूप से पूरा करेगी।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Continue the same step-wise change shown in the series — option B completes it.",
-  "explanationHi": "श्रृंखला में दिख रहा वही चरणबद्ध परिवर्तन आगे बढ़ाइए — विकल्प B इसे पूरा करता है।",
-  "figureBased": true,
-  "source": "PYQ · 30 Mar 2026 (Other than Science) · Utkarsh (Group XY)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0593e30731115a15"
- },
- {
   "id": "q_x_mu7br90h7ghwriq",
   "exam": "airforce",
   "subject": "raga",
@@ -28064,49 +24644,6 @@
    "auto-topic"
   ],
   "dupeHash": "026d6606a11371ae"
- },
- {
-  "id": "q_0519c202b111f743",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Mirror & Water Image",
-  "topic": "Mirror Image",
-  "difficulty": "medium",
-  "questionText": "Select the correct mirror image of the given combination when the mirror is placed at 'PQ' as shown below.",
-  "questionTextHi": "नीचे दर्शाए अनुसार दर्पण को 'PQ' पर रखने पर दिए संयोजन का सही दर्पण प्रतिबिंब चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Take the left-right reversed image of the given combination about PQ — option D matches.",
-  "explanationHi": "PQ के सापेक्ष दिए संयोजन का बाएँ-दाएँ परावर्तन कीजिए — विकल्प D मेल खाता है।",
-  "figureBased": true,
-  "source": "PYQ · 30 Mar 2026 (Other than Science) · Utkarsh (Group XY)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "088b034d411148c4"
  },
  {
   "id": "q_b0606417975c7a87",
@@ -28424,49 +24961,6 @@
   "dupeHash": "09bc78c7812b6980"
  },
  {
-  "id": "q_02441b9db114e9ad",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Analogy",
-  "difficulty": "medium",
-  "questionText": "Figure A is related to B in a certain pattern. Following the same pattern, figure C is related to D. Study the pattern and select the figure which should be placed in place of D.",
-  "questionTextHi": "आकृति A का B से एक निश्चित पैटर्न के अनुसार संबंध है। उसी पैटर्न के अनुसार आकृति C का D से संबंध है। पैटर्न का अध्ययन कर वह आकृति चुनिए जो D के स्थान पर रखी जाए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Apply the same change from A→B to C — the required figure is option C.",
-  "explanationHi": "A→B में हुआ वही परिवर्तन C पर लगाइए — अभीष्ट आकृति विकल्प C है।",
-  "figureBased": true,
-  "source": "PYQ · 30 Mar 2026 (Other than Science) · Utkarsh (Group XY)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0c0246e6f1143b4d"
- },
- {
   "id": "q_0d6334a6e137e90a",
   "subject": "raga",
   "exam": "airforce",
@@ -28507,49 +25001,6 @@
    "auto-topic"
   ],
   "dupeHash": "0c2f26bae126a616"
- },
- {
-  "id": "q_0dbf584c11126a4d",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Select the option figure that will replace the question mark (?) in the figure given below to complete the pattern.",
-  "questionTextHi": "वह विकल्प आकृति चुनिए जो नीचे दी गई आकृति में प्रश्नचिह्न (?) के स्थान पर रखने से पैटर्न पूरा होगा।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Complete the pattern with the matching option — the required figure is option D.",
-  "explanationHi": "पैटर्न को मेल खाते विकल्प से पूरा कीजिए — अभीष्ट आकृति विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · 30 Mar 2026 (Other than Science) · Utkarsh (Group XY)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-xy",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0330e7162111bbce"
  },
  {
   "id": "q_x_mu7br90hg09fjne",
@@ -29413,55 +25864,6 @@
   "dupeHash": "00a0bedd011fe0fe"
  },
  {
-  "id": "q_5bca696bf1f23ba6",
-  "subject": "raga",
-  "subjectName": "RAGA",
-  "chapter": "Classification & Odd One Out",
-  "topic": "Odd Figure",
-  "difficulty": "medium",
-  "questionText": "Three of the following four figures are alike in a certain way and thus form a group. Which figure DOES NOT belong to that group?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "c"
-   },
-   {
-    "id": "B",
-    "text": "a"
-   },
-   {
-    "id": "C",
-    "text": "d"
-   },
-   {
-    "id": "D",
-    "text": "b"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Figures a, b and d share the same design property; figure 'c' breaks it → 'c' does not belong.\n(आकृतियाँ स्रोत में चित्र रूप में थीं।)",
-  "source": "PYQ · 31 Mar 2026 Shift-1 · Utkarsh (Group Y)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "05881440210eeeb0",
-  "paper": {
-   "no": 25,
-   "group": "Y",
-   "date": "31 Mar 2026 Shift-1",
-   "src": "Utkarsh"
-  },
-  "questionTextHi": "निम्न चार आकृतियों में से तीन किसी प्रकार समान हैं और समूह बनाती हैं। कौन-सी आकृति उस समूह से संबंधित नहीं है?",
-  "explanationHi": "आकृतियाँ a, b और d एक ही गुण रखती हैं; आकृति 'c' उसे तोड़ती है → 'c' समूह से संबंधित नहीं।\n(आकृतियाँ स्रोत में चित्र रूप में थीं।)",
-  "exam": "airforce",
-  "figureBased": false
- },
- {
   "id": "q_bed19d0239abdecb",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -29817,49 +26219,6 @@
   "explanationHi": "हल:\n12 : 78 : : 78 : x → 12x = 6084 → x = 507\nअतः सही उत्तर विकल्प (D) है।",
   "exam": "airforce",
   "figureBased": false
- },
- {
-  "id": "q_0d88066ac111ff22",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Identify the figure given in the options which when put in place of ? will logically complete the series.",
-  "questionTextHi": "दिए गए विकल्पों में से वह आकृति पहचानिए, जो ? के स्थान पर रखने पर श्रृंखला को तार्किक रूप से पूरा करेगी।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Continue the same change shown in the series — option D completes it.",
-  "explanationHi": "श्रृंखला में दिख रहा वही परिवर्तन आगे बढ़ाइए — विकल्प D इसे पूरा करता है।",
-  "figureBased": true,
-  "source": "PYQ · 31 Mar 2026 Shift-1 · Utkarsh (Group Y)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "05f492c2111150a3"
  },
  {
   "id": "q_x_mu7br90hg457uny",
@@ -30765,55 +27124,6 @@
   "figureBased": false
  },
  {
-  "id": "q_680d4aeb91dad5c3",
-  "subject": "raga",
-  "subjectName": "RAGA",
-  "chapter": "Missing Number in Figure",
-  "topic": "Figure Matrix",
-  "difficulty": "medium",
-  "questionText": "Study the given pattern carefully and select the number that can replace the question mark (?) in it.",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "8"
-   },
-   {
-    "id": "B",
-    "text": "6"
-   },
-   {
-    "id": "C",
-    "text": "12"
-   },
-   {
-    "id": "D",
-    "text": "7"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "The pattern was shown as a figure in the source paper; as per the answer key the missing number is 6.",
-  "source": "PYQ · 31 Mar 2026 Shift-2 · Utkarsh (Group Y)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0c29125ca10dbff4",
-  "paper": {
-   "no": 26,
-   "group": "Y",
-   "date": "31 Mar 2026 Shift-2",
-   "src": "Utkarsh"
-  },
-  "questionTextHi": "दिए गए पैटर्न का ध्यानपूर्वक अध्ययन कर वह संख्या चुनिए जो उसमें प्रश्नचिह्न (?) के स्थान पर आएगी।",
-  "explanationHi": "यह पैटर्न स्रोत पेपर में चित्र के रूप में था; उत्तर-कुंजी के अनुसार लुप्त संख्या 6 है।",
-  "exam": "airforce",
-  "figureBased": false
- },
- {
   "id": "q_92bfd0f21b066b0c",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -31260,98 +27570,6 @@
    "auto-topic"
   ],
   "dupeHash": "04de8c4551879957"
- },
- {
-  "id": "q_a9fe20284fcbe2a7",
-  "subject": "raga",
-  "subjectName": "RAGA",
-  "chapter": "Classification & Odd One Out",
-  "topic": "Odd Figure",
-  "difficulty": "medium",
-  "questionText": "Three of the following four figures are alike in a certain way and thus form a group. Which figure DOES NOT belong to that group?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "D"
-   },
-   {
-    "id": "B",
-    "text": "A"
-   },
-   {
-    "id": "C",
-    "text": "B"
-   },
-   {
-    "id": "D",
-    "text": "C"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Figures A, B and C share the same property; figure D does not belong to that group.\n(स्रोत में विकल्प इसी क्रम में (A) D, (B) A, (C) B, (D) C दिए गए थे।)",
-  "source": "PYQ · 31 Mar 2026 Shift-2 · Utkarsh (Group Y)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic"
-  ],
-  "dupeHash": "0f28c198210edf30",
-  "paper": {
-   "no": 26,
-   "group": "Y",
-   "date": "31 Mar 2026 Shift-2",
-   "src": "Utkarsh"
-  },
-  "questionTextHi": "निम्न चार आकृतियों में से तीन किसी प्रकार समान हैं और समूह बनाती हैं। कौन-सी आकृति उस समूह से संबंधित नहीं है?",
-  "explanationHi": "आकृतियाँ A, B और C एक ही गुण रखती हैं; आकृति D समूह से संबंधित नहीं है।",
-  "exam": "airforce",
-  "figureBased": false
- },
- {
-  "id": "q_0a735b2ed1120131",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Non-Verbal Reasoning",
-  "topic": "Figure Series",
-  "difficulty": "medium",
-  "questionText": "Identify the figure given in the options which when put in place of ? will logically complete the series?",
-  "questionTextHi": "दिए गए विकल्पों में से वह आकृति पहचानिए, जो ? के स्थान पर रखने पर श्रृंखला को तार्किक रूप से पूरा करेगी।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Continue the same change shown in the series — option D completes it.",
-  "explanationHi": "श्रृंखला में दिख रहा वही परिवर्तन आगे बढ़ाइए — विकल्प D इसे पूरा करता है।",
-  "figureBased": true,
-  "source": "PYQ · 31 Mar 2026 Shift-2 · Utkarsh (Group Y)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-y",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "02566ab6611152b2"
  },
  {
   "id": "q_x_mu7br90halp6tls",
@@ -32397,49 +28615,6 @@
   "figureBased": false
  },
  {
-  "id": "q_090e87d4c10e3bb6",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Classification & Odd One Out",
-  "topic": "Odd Figure",
-  "difficulty": "medium",
-  "questionText": "Find the odd one out.",
-  "questionTextHi": "विषम आकृति चुनिए।",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Three of the figures share the same property and one does not — that figure is option D.",
-  "explanationHi": "तीन आकृतियों में एक ही गुण है, एक में नहीं — वही आकृति विकल्प D है।",
-  "figureBased": true,
-  "source": "PYQ · Sample RAGA Paper · Prepp Sample (Group X)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "06d72b44110d8d37"
- },
- {
   "id": "q_189d00ad7e062e38",
   "subject": "raga",
   "subjectName": "RAGA",
@@ -32725,48 +28900,5 @@
    "auto-topic"
   ],
   "dupeHash": "0475fdf421234f2a"
- },
- {
-  "id": "q_0da20c104112094e",
-  "subject": "raga",
-  "exam": "airforce",
-  "chapter": "Syllogism & Venn Diagram",
-  "topic": "Venn Diagram",
-  "difficulty": "medium",
-  "questionText": "Which of the following Venn diagrams depicts the correct relation among Doctors, Lawyers, Professionals?",
-  "questionTextHi": "निम्न में से कौन-सा वेन आरेख Doctors (डॉक्टर), Lawyers (वकील) और Professionals (पेशेवर) के बीच सही संबंध दर्शाता है?",
-  "image": "",
-  "options": [
-   {
-    "id": "A",
-    "text": "Figure A (see source)"
-   },
-   {
-    "id": "B",
-    "text": "Figure B (see source)"
-   },
-   {
-    "id": "C",
-    "text": "Figure C (see source)"
-   },
-   {
-    "id": "D",
-    "text": "Figure D (see source)"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Both doctors and lawyers are professionals → two separate circles inside a bigger circle (Professional). Option A shows this.",
-  "explanationHi": "डॉक्टर और वकील दोनों पेशेवर हैं → बड़े वृत्त (Professional) के भीतर दो अलग वृत्त। यही विकल्प A में है।",
-  "figureBased": true,
-  "source": "PYQ · Sample RAGA Paper · Prepp Sample (Group X)",
-  "year": 2026,
-  "tags": [
-   "pyq",
-   "group-x",
-   "auto-chapter",
-   "auto-topic",
-   "figure-based"
-  ],
-  "dupeHash": "0be621c741115b2c"
  }
 ]
