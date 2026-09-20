@@ -458,7 +458,26 @@ async function handleRequest(req, env) {
     return json(req, 404, { ok: false, error: 'not found' });
   }
 
-  // auth: har /v1 request pe verified Google token
+  // 🔗 SHARE — link kholne wale ke liye NO auth (signed-out dost bhi test de sake)
+  if (path.indexOf('/v1/share/') === 0) {
+    var ipSh = req.headers.get('cf-connecting-ip') || 'local';
+    if (!rateOk('share|' + ipSh + '|' + path, path === '/v1/share/attempt' ? 30 : 90, 60000)) {
+      return json(req, 429, { ok: false, error: 'rate limit — thodi der baad' });
+    }
+    var shBody = {};
+    try { shBody = await req.json(); } catch (e) { shBody = {}; }
+    var sAuth = null;
+    if (path === '/v1/share/create') {   // sirf banane wale ko token chahiye
+      try { sAuth = await authenticate(req, env); }
+      catch (e) { return json(req, 401, { ok: false, error: e.message }); }
+    }
+    try {
+      var sr = await shareHandler(req, env, sAuth, path, shBody);
+      if (sr) return sr;
+    } catch (e) { return json(req, 500, { ok: false, error: 'share: ' + e.message }); }
+  }
+
+  // auth: har baaki /v1 request pe verified Google token
   var auth;
   try { auth = await authenticate(req, env); }
   catch (e) { return json(req, 401, { ok: false, error: e.message }); }
@@ -508,13 +527,6 @@ async function handleRequest(req, env) {
   if (path === '/v1/media' && req.method === 'POST') {
     try { return await mediaUpload(req, env, auth, body); }
     catch (e) { return json(req, 500, { ok: false, error: 'media: ' + e.message }); }
-  }
-
-  if (path.indexOf('/v1/share/') === 0) {
-    try {
-      var sr = await shareHandler(req, env, auth, path, body);
-      if (sr) return sr;
-    } catch (e) { return json(req, 500, { ok: false, error: 'share: ' + e.message }); }
   }
 
   return json(req, 404, { ok: false, error: 'not found' });

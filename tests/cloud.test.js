@@ -227,22 +227,23 @@ async function call(port, p, body, opts = {}) {
   const sc = await call(port, '/v1/share/create', { name: 'Mera Test', playerName: 'Host Bhai', data: sData });
   T('share: create → 6-char code + total echo', sc.j.ok && /^[A-Z2-9]{6}$/.test(sc.j.code || '') && sc.j.total === 5, sc.j);
   T('share: create — invalid sections → 400', (await call(port, '/v1/share/create', { name: 'X', data: { sections: [] } })).status === 400);
-  const sg = await call(port, '/v1/share/get', { code: sc.j.code });
+  T('share: create — NO token → 401', (await call(port, '/v1/share/create', { name: 'X', data: sData }, { token: null })).status === 401);
+  const sg = await call(port, '/v1/share/get', { code: sc.j.code }, { token: null });   // REAL no-auth
   T('share: get → same sections/order (NO auth — link kholte hi mile)', sg.j.ok && sg.j.data.sections[0].questionIds.join() === 'q1,q2,q3' && sg.j.data.sections[1].questionIds.length === 2, sg.j.data && sg.j.data.sections && sg.j.data.sections.length);
-  T('share: invalid code → 404', (await call(port, '/v1/share/get', { code: 'ZZZZZZ' })).status === 404);
+  T('share: invalid code → 404 (no-auth)', (await call(port, '/v1/share/get', { code: 'ZZZZZZ' }, { token: null })).status === 404);
   const sa1 = await call(port, '/v1/share/attempt', { code: sc.j.code, name: 'Host Bhai', score: 4, correct: 4, wrong: 1, unattempted: 0, accuracy: 80, answers: [
     { qid: 'q1', opt: 'A', correct: true }, { qid: 'q2', opt: 'B', correct: true }, { qid: 'q3', opt: 'C', correct: false }, { qid: 'q4', opt: 'A', correct: true }, { qid: 'q5', opt: 'D', correct: true }
-  ] });
+  ] }, { token: null });
   T('share: attempt upload (NO auth — dost bhi bhej sake)', sa1.j.ok, sa1.j);
   const sa2 = await call(port, '/v1/share/attempt', { code: sc.j.code, name: 'Dost Ji', score: 2.5, correct: 3, wrong: 2, unattempted: 0, accuracy: 60, answers: [
     { qid: 'q1', opt: 'A', correct: true }, { qid: 'q2', opt: 'C', correct: false }, { qid: 'q3', opt: 'C', correct: true }, { qid: 'q4', opt: 'B', correct: false }, { qid: 'q5', opt: '', correct: false }
-  ] });
+  ] }, { token: null });
   T('share: doosra candidate upload', sa2.j.ok);
-  T('share: flood guard 5s (429)', (await call(port, '/v1/share/attempt', { code: sc.j.code, name: 'Dost Ji', score: 1, answers: [] })).status === 429);
-  const sl = await call(port, '/v1/share/attempts', { code: sc.j.code });
+  T('share: flood guard 5s (429)', (await call(port, '/v1/share/attempt', { code: sc.j.code, name: 'Dost Ji', score: 1, answers: [] }, { token: null })).status === 429);
+  const sl = await call(port, '/v1/share/attempts', { code: sc.j.code }, { token: null });
   T('share: attempts list — sorted by score (View with all)', sl.j.ok && sl.j.total === 2 && sl.j.attempts[0].name === 'Host Bhai' && sl.j.attempts[0].score === 4, sl.j.attempts && sl.j.attempts.map(a => a.name + ':' + a.score));
   T('share: matrix data — kisne kya chuna', sl.j.attempts[0].answers.length === 5 && sl.j.attempts[1].answers[4].opt === '');
-  T('share: attempts — invalid code 404', (await call(port, '/v1/share/attempts', { code: 'ZZZZZZ' })).status === 404);
+  T('share: attempts — invalid code 404 (no-auth)', (await call(port, '/v1/share/attempts', { code: 'ZZZZZZ' }, { token: null })).status === 404);
 
   // REAL JWKS verification (internet se Google ke public keys) — forged token  // REAL JWKS verification (internet se Google ke public keys) — forged token
   const jwks = await (await fetch('https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com')).json();

@@ -336,8 +336,8 @@ async function main() {
   if (stCat && stState) {
     stCat.value = 'OBC'; stState.value = 'Bihar';
     doc.getElementById('st-save-cand').dispatchEvent(new window.Event('click', { bubbles: true }));
-    await sleep(400);
-    const cfgSaved = await G('Store.getSetting("config", {})');
+    let cfgSaved = {};
+    for (let i = 0; i < 50 && !(cfgSaved && cfgSaved.candidateCategory === 'OBC'); i++) { await sleep(200); cfgSaved = await G('Store.getSetting("config", {})'); }
     T('settings: category (OBC) + state (Bihar) saved', cfgSaved.candidateCategory === 'OBC' && cfgSaved.candidateState === 'Bihar');
   }
   window.location.hash = '#/import';
