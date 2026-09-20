@@ -1308,3 +1308,14 @@ body.exam-on { overflow: hidden; }
   .cl-band-right { display: none; }
   .cl-card { padding: 22px 18px 18px; }
 }
+
+/* ══════════ cutoff analysis card ══════════ */
+.co-status { border-radius: 10px; padding: 14px 18px; }
+.co-safe { background: #e8f8ee; border: 1px solid #b7e2c6; }
+.co-border { background: #fff7e0; border: 1px solid #f0d9a4; }
+.co-below { background: #fdecea; border: 1px solid #f2c1bd; }
+.co-big { font-weight: 800; font-size: 16px; letter-spacing: .3px; }
+.co-safe .co-big { color: #1a7a3c; }
+.co-border .co-big { color: #9a6b00; }
+.co-below .co-big { color: #b3362e; }
+.co-row { display: flex; flex-wrap: wrap; gap: 6px 26px; margin-top: 6px; font-size: 13.5px; color: #33455e; }

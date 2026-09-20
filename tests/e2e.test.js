@@ -250,6 +250,10 @@ async function main() {
   window.location.hash = '#/attempt/' + a2.id + '/result';
   await sleep(400);
   T('result page renders', doc.body.textContent.includes('TEST COMPLETED') && doc.body.textContent.includes('Subject Performance'));
+  T('cutoff analysis card renders (category range + state)',
+    !!doc.getElementById('cutoff-card') && doc.body.textContent.includes('Cutoff Analysis') && doc.body.textContent.includes('cutoff range'));
+  T('phase-2 readiness card renders (official PFT standards)',
+    doc.body.textContent.includes('Phase-2 Readiness') && doc.body.textContent.includes('1.6 km run'));
 
   // analysis page
   window.location.hash = '#/attempt/' + a2.id + '/analysis';
@@ -305,6 +309,15 @@ async function main() {
   window.location.hash = '#/settings';
   await sleep(400);
   T('settings renders', doc.getElementById('st-save-cfg') && doc.getElementById('st-wipe'));
+  const stCat = doc.getElementById('st-category'), stState = doc.getElementById('st-state');
+  T('settings: category + state dropdowns present', !!stCat && !!stState && stState.options.length > 30);
+  if (stCat && stState) {
+    stCat.value = 'OBC'; stState.value = 'Bihar';
+    doc.getElementById('st-save-cand').dispatchEvent(new window.Event('click', { bubbles: true }));
+    await sleep(400);
+    const cfgSaved = await G('Store.getSetting("config", {})');
+    T('settings: category (OBC) + state (Bihar) saved', cfgSaved.candidateCategory === 'OBC' && cfgSaved.candidateState === 'Bihar');
+  }
   window.location.hash = '#/import';
   await waitFor(() => doc.getElementById('drop-zone'), 10000);
   T('import page renders', doc.getElementById('drop-zone') && doc.getElementById('tpl-csv'));

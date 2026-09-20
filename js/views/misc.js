@@ -152,6 +152,14 @@ Views.settings = async function () {
             <option value="en" ${cfg.defaultLanguage === 'en' ? 'selected' : ''}>English</option>
             <option value="hi" ${cfg.defaultLanguage === 'hi' ? 'selected' : ''}>हिन्दी</option>
           </select></div>
+        <div class="b-row"><label>Category (cutoff analysis ke liye)</label>
+          <select id="st-category">
+            ${Object.keys(Cutoffs.CATEGORY_LABELS).map(c => `<option value="${c}" ${((cfg.candidateCategory || 'GEN') === c) ? 'selected' : ''}>${Cutoffs.CATEGORY_LABELS[c]}</option>`).join('')}
+          </select></div>
+        <div class="b-row"><label>Domicile State (IAF state-wise merit inhi se banti hai)</label>
+          <select id="st-state">
+            ${Cutoffs.STATES.map(s => `<option value="${AVUtil.esc(s)}" ${((cfg.candidateState || '') === s) ? 'selected' : ''}>${s}</option>`).join('')}
+          </select></div>
         <div class="b-row"><label>Profile photo (navbar me dikhega)</label>
           <div class="pf-row">
             <span class="nav-avatar nav-avatar-lg" id="st-pf-avatar">${AVUtil.esc((cfg.candidateName || 'P').trim()[0] || 'P')}</span>
@@ -230,6 +238,8 @@ Views.settings = async function () {
   AVUtil.$('#st-save-cand').addEventListener('click', async () => {
     cfg.candidateName = AVUtil.$('#st-name').value.trim() || 'Practice Candidate';
     cfg.defaultLanguage = AVUtil.$('#st-lang').value;
+    cfg.candidateCategory = AVUtil.$('#st-category').value;
+    cfg.candidateState = AVUtil.$('#st-state').value;
     App.lang = cfg.defaultLanguage;
     localStorage.setItem('av_lang', App.lang);
     await Store.setSetting('config', cfg);

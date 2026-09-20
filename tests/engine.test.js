@@ -368,6 +368,42 @@ T('double submit of a section is rejected', () => {
   assert(!res.ok, 'rejected');
 });
 
+console.log('\n━━━ CUTOFFS · real exam data (verified)');
+const Cutoffs = require('../js/cutoffs.js');
+T('cutoffs: safe zone above range', () => {
+  const ev = Cutoffs.evaluate(85, 100, 'GEN');
+  eq(ev.status, 'safe', '85% >= 80 safe');
+  eq(ev.lo, 70, 'GEN lo'); eq(ev.hi, 80, 'GEN hi');
+});
+T('cutoffs: borderline inside range', () => {
+  const ev = Cutoffs.evaluate(72, 100, 'GEN');
+  eq(ev.status, 'borderline', '72 in 70-80');
+  eq(ev.label.includes('8% aur'), true, 'gap message');
+});
+T('cutoffs: below range + gap', () => {
+  const ev = Cutoffs.evaluate(50, 100, 'GEN');
+  eq(ev.status, 'below', '50 < 70');
+});
+T('cutoffs: science paper (70 marks) scales correctly', () => {
+  const ev = Cutoffs.evaluate(56, 70, 'GEN');   // 80% → safe
+  eq(ev.status, 'safe', '80% of 70');
+  eq(ev.hiMarks, 56, 'hi scaled 80% of 70 = 56');
+  const ev2 = Cutoffs.evaluate(40, 70, 'GEN');  // 57.1% → below
+  eq(ev2.status, 'below', '57% below 70');
+  eq(ev2.loMarks, 49, 'lo scaled 70% of 70 = 49');
+});
+T('cutoffs: category ranges differ (SC lower than GEN)', () => {
+  eq(Cutoffs.evaluate(65, 100, 'SC').status, 'borderline', 'SC 65 in 60-70');
+  eq(Cutoffs.evaluate(65, 100, 'GEN').status, 'below', 'GEN 65 below 70');
+});
+T('cutoffs: PFT/medical official data present', () => {
+  eq(Cutoffs.PFT.run.male.includes('07:00'), true, 'official male run 7 min');
+  eq(Cutoffs.PFT.run.female.includes('08:00'), true, 'official female run 8 min');
+  eq(Cutoffs.PFT.male.length, 3, 'pushups/situps/squats');
+  eq(Cutoffs.STATES.length >= 36, true, 'all states+UTs');
+  eq(Cutoffs.MARKING.includes('0.25'), true, 'negative marking');
+});
+
 console.log('\n━━━ GENERATOR · selection strategies + dedupe + insufficiency');
 global.DB = { byIndex: async () => [] }; // not used by pick()
 const Generator = require('../js/generator.js');

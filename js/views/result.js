@@ -67,6 +67,58 @@ Views.result = async function (attemptId) {
       ${rstat('Marking', `+${res.marking?.correct ?? 1} / ${res.marking?.wrong ?? -0.25} / 0`)}
     </section>
 
+    <section class="card cutoff-card" id="cutoff-card">
+      <div class="card-head">
+        <h3>🎯 Cutoff Analysis <span class="muted small">(${AVUtil.esc(Cutoffs.CYCLE)})</span></h3>
+        <span class="muted small" id="co-cat"></span>
+      </div>
+      ${(() => {
+        const cat = cfg.candidateCategory || 'GEN';
+        const ev = Cutoffs.evaluate(res.score, res.maxScore, cat);
+        const cls = { safe: 'co-safe', borderline: 'co-border', below: 'co-below' }[ev.status];
+        const st = cfg.candidateState ? AVUtil.esc(cfg.candidateState) : '— (Settings me set karo)';
+        return `
+        <div class="co-status ${cls}">
+          <div class="co-big">${ev.label}</div>
+          <div class="co-row">
+            <span>Tumhara score: <b>${res.score}/${res.maxScore}</b> (${ev.pct}%)</span>
+            <span>${Cutoffs.CATEGORY_LABELS[cat]} cutoff range: <b>${ev.lo}–${ev.hi}%</b> <span class="muted">(is paper par ≈ ${ev.loMarks}–${ev.hiMarks} marks)</span></span>
+          </div>
+        </div>
+        <div class="dm-grid" style="margin-top:12px">
+          <div><b>Domicile State</b><div class="muted">${st}</div></div>
+          <div><b>Cycle</b><div class="muted">${AVUtil.esc(Cutoffs.CYCLE)}</div></div>
+        </div>
+        <p class="muted small" style="margin:10px 0 0">📌 IAF <b>normalised marks</b> par cutoff lagata hai aur <b>state-wise (domicile)</b> shortlist karta hai — official fact. Category ranges 2025-cycle analysis par based expected values hain; IAF exact state-wise numbers publish nahi karta. Marginal case me top-of-range (+${ev.hi}%) target karo.</p>`;
+      })()}
+    </section>
+
+    <section class="card">
+      <div class="card-head"><h3>🏅 Phase-2 Readiness <span class="muted small">(PFT + Medical — official standards)</span></h3></div>
+      <div class="dm-grid">
+        <div>
+          <b>PFT-I (run)</b>
+          <div class="muted small">${Cutoffs.PFT.run.male}</div>
+          <div class="muted small">${Cutoffs.PFT.run.female}</div>
+        </div>
+        <div>
+          <b>PFT-II (male)</b>
+          ${Cutoffs.PFT.male.map(x => `<div class="muted small">${x[0]} — ${x[1]}</div>`).join('')}
+        </div>
+        <div>
+          <b>PFT-II (female)</b>
+          ${Cutoffs.PFT.female.map(x => `<div class="muted small">${x[0]} — ${x[1]}</div>`).join('')}
+        </div>
+        <div>
+          <b>Medical</b>
+          <div class="muted small">Height: ${Cutoffs.MEDICAL.height}</div>
+          <div class="muted small">Chest: ${Cutoffs.MEDICAL.chest}</div>
+          <div class="muted small">Vision: ${Cutoffs.MEDICAL.vision}</div>
+        </div>
+      </div>
+      <p class="muted small" style="margin:8px 0 0">Source: agnipathvayu.cdac.in (CASB official). ${AVUtil.esc(Cutoffs.PFT.note)}</p>
+    </section>
+
     <section class="card">
       <h3>Subject Performance</h3>
       <div class="tbl-scroll"><table class="tbl">
