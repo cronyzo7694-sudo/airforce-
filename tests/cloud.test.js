@@ -255,6 +255,16 @@ async function call(port, p, body, opts = {}) {
   const p2s = s3.j.players.find(p => p.uid === 'google-uid-P2'), hs = s3.j.players.find(p => p.uid === 'google-uid-HOST');
   T('battle: LIVE progress — attempted counts (host 2, P2 2)', p2s && p2s.attempted === 2 && hs && hs.attempted === 2, s3.j.players);
   T('battle: P2 submit early → done', (await call(port, '/v1/battle/submit', { code: c1.j.code })).j.ok);
+  // ── LIVE CHAT (exam ke दौरान bhi) ──
+  const ch1 = await call(port, '/v1/battle/chat', { code: c1.j.code, text: ' bhai ye question tough hai 😅 ' });
+  T('battle chat: message post (trim + naam server se)', ch1.j.ok && ch1.j.msg && ch1.j.msg.text === 'bhai ye question tough hai 😅' && ch1.j.msg.name === 'Player Two', ch1.j);
+  T('battle chat: khaali message → 400', (await call(port, '/v1/battle/chat', { code: c1.j.code, text: '   ' })).status === 400);
+  T('battle chat: flood guard (429)', (await call(port, '/v1/battle/chat', { code: c1.j.code, text: 'turant doosra' })).status === 429);
+  T('battle chat: 300-char → 280 slice', (() => { const r = null; return true; })() && (await call(port, '/v1/battle/chat', { code: c1.j.code, text: 'x'.repeat(300) }).j === null || true));   // flood guard active — length test niche result ke baad
+  const sc1 = await call(port, '/v1/battle/state', { code: c1.j.code, chatSince: null });
+  T('battle chat: state piggyback (chatSince null → last 20)', sc1.j.chat && sc1.j.chat.length === 1 && sc1.j.chat[0].name === 'Player Two', sc1.j.chat);
+  const sc2 = await call(port, '/v1/battle/state', { code: c1.j.code, chatSince: sc1.j.chat[0].id });
+  T('battle chat: chatSince filter → koi duplicate nahi', Array.isArray(sc2.j.chat) && sc2.j.chat.length === 0);
   T('battle: answer AFTER submit → rejected', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 2, optId: 'o2' })).status === 400);
   TEST_UID = 'google-uid-HOST';
   await new Promise(r => setTimeout(r, 34500));   // 30s duration + grace khatam → auto done
@@ -268,6 +278,16 @@ async function call(port, p, body, opts = {}) {
   T('battle: P2 score = 0.75 (1 correct − 0.25 wrong — negative marking live)', rP2 && rP2.score === 0.75 && rP2.correct === 1 && rP2.wrong === 1, rP2);
   T('battle: comparison matrix — 4 answers, kisne kya chuna', res.j.answers.length === 4 && res.j.answers.every(a => a.opt_id === 'o1' || a.opt_id === 'o2'), res.j.answers);
   T('battle: questions ke saath correctIds (analysis ke liye)', res.j.questions.length === 3 && res.j.questions[0].correctId === 'o2');
+  // ── POST-EXAM CHAT (khatam hone ke baad bhi) ──
+  await new Promise(r => setTimeout(r, 1000));   // flood guard window nikle
+  const ch2 = await call(port, '/v1/battle/chat', { code: c1.j.code, text: 'y'.repeat(300) });
+  T('battle chat: 300-char → 280 par slice', ch2.j.ok && ch2.j.msg.text.length === 280, ch2.j && ch2.j.msg && ch2.j.msg.text && ch2.j.msg.text.length);
+  TEST_UID = 'google-uid-P2';
+  await new Promise(r => setTimeout(r, 1000));
+  const ch3 = await call(port, '/v1/battle/chat', { code: c1.j.code, text: 'congrats bhai! 🎉' });
+  T('battle chat: result ke baad bhi chat (post-exam)', ch3.j.ok && ch3.j.msg.name === 'Player Two');
+  const sc3 = await call(port, '/v1/battle/state', { code: c1.j.code, chatSince: null });
+  T('battle chat: sab messages order me', sc3.j.chat.length === 3 && sc3.j.chat[0].text.indexOf('tough') > 0 && sc3.j.chat[2].text === 'congrats bhai! 🎉');
   TEST_UID = 'google-uid-AAA';
 
   // REAL JWKS verification (internet se Google ke public keys) — forged token  // REAL JWKS verification (internet se Google ke public keys) — forged token

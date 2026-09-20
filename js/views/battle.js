@@ -24,6 +24,9 @@ window.BT = (function () {
     catch (e) { return { name: 'Player', photo: null }; }
   }
   const testIdOf = code => 'battle-' + code;
+  const PCOLORS = ['#c0392b', '#27508f', '#2e7d32', '#7b5fc4', '#b45309', '#0e7490', '#be185d', '#4d7c0f'];
+  function colorOf(S, uid) { const ps = (S && S.players) || []; const i = ps.findIndex(p => p.uid === uid); return PCOLORS[i < 0 ? 0 : i % PCOLORS.length]; }
+  const hhmm = t => new Date(t).toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' });
 
   /* ---------------- local (asli) test object ----------------
      plan = [{id, subject}] room-order me — engine-identical test */
@@ -213,21 +216,24 @@ window.BT = (function () {
       const me = await playerName();
       await Cloud.authed('/v1/battle/join', { code, playerName: me.name, photo: me.photo });
     } catch (e) { /* done/invalid — state poll asli sach batayega */ }
+    dock.mount({ examMode: false });   // 💬 chat + 🔴 live — sab battle pages par (default hidden)
 
     let uiTimer = setInterval(() => { if (gen === GEN && room.S) uiTick(); }, 300);
     while (gen === GEN && room.code === code && Router.path === '/battle/' + code) {
       let S;
-      try { S = await Cloud.authed('/v1/battle/state', { code }); }
+      try { S = await Cloud.authed('/v1/battle/state', { code, chatSince: dock.lastId }); }
       catch (e) { S = null; room.err = e.message; }
       if (gen !== GEN) break;
       if (!S) { paintErr(esc(room.err) + '<br><button class="btn" onclick="location.hash=\'#/battle\'">← Wapas</button>'); break; }
       room.err = null; room.S = S; room.offset = S.now - Date.now();
+      dock.feed(S, S.chat);
       if (S.room.status === 'done' && !room.result) await loadResult(code);
       if (S.room.status !== 'done') await buildLocalTest(code, S);   // asli test ready (sab ke paas)
       paint(S);
       if (S.room.status === 'live' && !(S.you && S.you.done) && !room.result) {
         // exam chal raha hai aur tumne abhi nahi diya → ASLI exam me andar jao
         clearInterval(uiTimer);
+        dock.unmount();
         location.hash = '#/test/' + testIdOf(code) + '/instructions';
         return;
       }
@@ -235,6 +241,18 @@ window.BT = (function () {
       await sleep(3000);
     }
     clearInterval(uiTimer);
+    // result ke baad bhi chat zinda rahe (post-exam baatein) — jab tak page par ho
+    if (gen === GEN && room.result && room.code === code) {
+      while (gen === GEN && room.code === code && Router.path === '/battle/' + code) {
+        await sleep(5000);
+        try {
+          const S2 = await Cloud.authed('/v1/battle/state', { code, chatSince: dock.lastId });
+          if (gen !== GEN) break;
+          dock.feed(S2, S2.chat);
+        } catch (e) { /* offline */ }
+      }
+    }
+    if (gen === GEN) dock.unmount();
   };
 
   async function loadResult(code) {
@@ -279,9 +297,9 @@ window.BT = (function () {
     return `<div class="bt-players card">
       <h3>🔴 LIVE <span class="bt-hint">${S.players.length} candidates</span></h3>
       ${S.players.map(p => `
-        <div class="bt-pl ${p.uid === myUid ? 'me' : ''}">
+        <div class="bt-pl ${p.uid === myUid ? 'me' : ''}" style="border-left:3px solid ${colorOf(S, p.uid)}">
           <span class="bt-pl-img">${p.photo ? `<img src="${esc(p.photo)}" alt="">` : '🙂'}</span>
-          <span class="bt-pl-name">${esc(p.name)}${p.uid === S.room.host ? ' 👑' : ''}</span>
+          <span class="bt-pl-name" style="color:${colorOf(S, p.uid)}">${esc(p.name)}${p.uid === S.room.host ? ' 👑' : ''}</span>
           ${S.room.status === 'live'
         ? (p.done ? '<span class="bt-pl-sub">✅ submitted</span>' : `<span class="bt-pl-sub">${p.attempted || 0}/${S.room.total} attempting</span>`)
         : ''}
@@ -355,7 +373,7 @@ window.BT = (function () {
           <div class="bt-hint">real marking: +1 correct · −0.25 wrong · ${total} questions</div>
           <div class="bt-podium">
             ${R.players.slice(0, 3).map((p, i) => `
-              <div class="bt-pod bt-p${i + 1} ${p.uid === myUid ? 'me' : ''}">
+              <div class="bt-pod bt-p${i + 1} ${p.uid === myUid ? 'me' : ''}" style="border-top:4px solid ${colorOf(R, p.uid)}">
                 <div class="bt-pod-med">${medals[i]}</div>
                 <div class="bt-pod-img">${p.photo ? `<img src="${esc(p.photo)}" alt="">` : '🙂'}</div>
                 <div class="bt-pod-name">${esc(p.name)}</div>
@@ -369,7 +387,7 @@ window.BT = (function () {
           <div class="tablewrap"><table class="bt-table">
             <thead><tr><th>#</th><th>Candidate</th><th>Score</th><th>Correct</th><th>Wrong</th><th>Left</th><th>Accuracy</th></tr></thead>
             <tbody>${R.players.map((p, i) => `
-              <tr class="${p.uid === myUid ? 'me' : ''}"><td>${medals[i] || i + 1}</td><td>${esc(p.name)}</td>
+              <tr class="${p.uid === myUid ? 'me' : ''}"><td>${medals[i] || i + 1}</td><td><i class="bt-cdot" style="background:${colorOf(R, p.uid)}"></i>${esc(p.name)}</td>
               <td><b>${p.score}</b></td><td>${p.correct}</td><td>${p.wrong}</td><td>${p.unattempted}</td>
               <td>${p.attempted ? Math.round(100 * p.correct / p.attempted) : 0}%</td></tr>`).join('')}</tbody>
           </table></div>
@@ -379,7 +397,7 @@ window.BT = (function () {
           <div class="bt-mxwrap"><table class="bt-matrix">
             <thead><tr><th></th>${Array.from({ length: total }, (_, i) => `<th title="${esc((R.questions[i] || {}).text || '').slice(0, 120)}">${i + 1}</th>`).join('')}</tr></thead>
             <tbody>${R.players.map(p => `
-              <tr class="${p.uid === myUid ? 'me' : ''}"><td class="bt-mxname">${esc(p.name.slice(0, 12))}</td>
+              <tr class="${p.uid === myUid ? 'me' : ''}"><td class="bt-mxname"><i class="bt-cdot" style="background:${colorOf(R, p.uid)}"></i>${esc(p.name.slice(0, 12))}</td>
               ${Array.from({ length: total }, (_, qi) => {
       const a = R.answers.find(x => x.uid === p.uid && x.q_no === qi);
       return `<td class="${a ? (a.correct ? 'g' : 'w') : 'n'}" title="${a ? (esc(names[a.uid] || '') + ' ne option ' + esc(a.opt_id) + ' chuna — ' + (a.correct ? 'sahi ✓ (+1)' : 'galat ✗ (−0.25)')) : 'not attempted'}">${a ? esc(a.opt_id) : '·'}</td>`;
@@ -420,21 +438,152 @@ window.BT = (function () {
     }
   }
 
+  /* ══════════════ DOCK — floating pill + panel (live + CHAT + exit) ══════════════
+     Sab battle pages aur battle exam me bottom-left pill:
+     khula rahe chhota pill (⚔️ n · 💬 unread), click → panel:
+     LIVE players (apne-apne colors) + chat + (exam me) Submit & Bahar.
+     Panel default HIDDEN hai — button se show/hide. */
+  const dock = {
+    open: false, unread: 0, lastId: null, msgs: [], S: null, examMode: false, mounted: false,
+
+    mount(opts) {
+      if (this.mounted) { this.examMode = !!(opts && opts.examMode); this.renderPanel(); return; }
+      this.mounted = true; this.open = false; this.unread = 0; this.lastId = null; this.msgs = [];
+      this.examMode = !!(opts && opts.examMode);
+      const d = document.createElement('div');
+      d.id = 'bt-dock';
+      d.innerHTML = `
+        <button id="bt-dock-pill" aria-label="Battle live panel aur chat">
+          <span class="bt-pill-live">⚔️ <b id="bt-pill-n">–</b><i class="bt-pill-dot"></i></span>
+          <span class="bt-pill-chat">💬<em id="bt-pill-unread" hidden>0</em></span>
+        </button>
+        <div id="bt-dock-panel" hidden>
+          <div class="bt-dock-head">
+            <b>🔴 LIVE BATTLE</b>
+            <button id="bt-dock-close" aria-label="Band karo">✕</button>
+          </div>
+          <div id="bt-dock-players" class="bt-dock-players"></div>
+          <div class="bt-dock-chathead">💬 Chat <span class="bt-hint">— live test me bhi chalta hai</span></div>
+          <div id="bt-dock-msgs" class="bt-dock-msgs"><div class="bt-chat-empty">Abhi koi message nahi — sabko 'hi' bolo! 👋</div></div>
+          <div class="bt-dock-inputrow">
+            <input id="bt-dock-input" maxlength="280" placeholder="Message likho…" autocomplete="off">
+            <button id="bt-dock-send" aria-label="Bhejo">➤</button>
+          </div>
+          <button id="bt-dock-leave" class="bt-dock-leave" hidden>🏳️ Submit &amp; Bahar Jao</button>
+        </div>`;
+      document.body.appendChild(d);
+      d.querySelector('#bt-dock-pill').addEventListener('click', () => this.toggle());
+      d.querySelector('#bt-dock-close').addEventListener('click', () => this.toggle(false));
+      d.querySelector('#bt-dock-send').addEventListener('click', () => this.send());
+      d.querySelector('#bt-dock-input').addEventListener('keydown', e => { if (e.key === 'Enter') this.send(); });
+      d.querySelector('#bt-dock-leave').addEventListener('click', () => {
+        if (this.onLeave) { try { this.onLeave(); } catch (e) { } }
+      });
+      this.renderPanel();
+    },
+
+    unmount() {
+      this.mounted = false; this.open = false; this.unread = 0; this.lastId = null; this.msgs = []; this.S = null; this.onLeave = null;
+      const d = document.getElementById('bt-dock');
+      if (d) d.remove();
+    },
+
+    toggle(force) {
+      this.open = force != null ? force : !this.open;
+      const panel = document.querySelector('#bt-dock-panel');
+      if (!panel) return;
+      panel.hidden = !this.open;
+      if (this.open) {
+        this.unread = 0;
+        const u = document.getElementById('bt-pill-unread'); if (u) u.hidden = true;
+        const inp = document.getElementById('bt-dock-input');
+        if (inp && window.innerWidth > 820) inp.focus();
+        this.scrollMsgs();
+      }
+    },
+
+    feed(S, chat) {   // poll se: state + naye messages
+      this.S = S;
+      if (chat && chat.length) {
+        chat.forEach(m => { if (!this.msgs.some(x => x.id === m.id)) this.msgs.push(m); });
+        if (this.msgs.length > 200) this.msgs = this.msgs.slice(-200);
+        this.lastId = this.msgs[this.msgs.length - 1].id;
+        if (!this.open) {
+          this.unread += chat.filter(m => m.uid !== (Cloud.user && Cloud.user.uid)).length;
+          const u = document.getElementById('bt-pill-unread');
+          if (u) { u.textContent = this.unread > 99 ? '99+' : this.unread; u.hidden = this.unread === 0; }
+        }
+        this.renderMsgs();
+        if (this.open) this.scrollMsgs();
+      }
+      this.renderPanel();
+    },
+
+    renderPanel() {
+      const n = document.getElementById('bt-pill-n');
+      if (n && this.S && this.S.players) n.textContent = this.S.players.filter(p => !p.done).length + '/' + this.S.players.length;
+      const lv = document.getElementById('bt-dock-leave');
+      if (lv) lv.hidden = !this.examMode;
+      const box = document.getElementById('bt-dock-players');
+      if (box && this.S) {
+        const myUid = Cloud.user && Cloud.user.uid, S = this.S;
+        box.innerHTML = S.players.map(p => `
+          <div class="bt-pl ${p.uid === myUid ? 'me' : ''}" style="border-left:3px solid ${colorOf(S, p.uid)}">
+            <span class="bt-pl-img">${p.photo ? `<img src="${esc(p.photo)}" alt="">` : '🙂'}</span>
+            <span class="bt-pl-name" style="color:${colorOf(S, p.uid)}">${esc(p.name)}${p.uid === S.room.host ? ' 👑' : ''}</span>
+            ${p.done ? '<span class="bt-pl-sub">✅ done</span>' : (S.room.status === 'live' ? `<span class="bt-pl-sub">${p.attempted || 0}/${S.room.total}</span>` : '<span class="bt-pl-sub">ready</span>')}
+          </div>`).join('');
+      }
+    },
+
+    renderMsgs() {
+      const box = document.getElementById('bt-dock-msgs');
+      if (!box) return;
+      if (!this.msgs.length) { box.innerHTML = '<div class="bt-chat-empty">Abhi koi message nahi — sabko "hi" bolo! 👋</div>'; return; }
+      const myUid = Cloud.user && Cloud.user.uid, S = this.S;
+      box.innerHTML = this.msgs.map(m => `
+        <div class="bt-msg ${m.uid === myUid ? 'mine' : ''}">
+          <b style="color:${colorOf(S, m.uid)}">${esc(m.name)}${m.uid === myUid ? ' (tum)' : ''}</b>
+          <span>${esc(m.text)}</span>
+          <i>${hhmm(m.at)}</i>
+        </div>`).join('');
+    },
+
+    scrollMsgs() {
+      const box = document.getElementById('bt-dock-msgs');
+      if (box) box.scrollTop = box.scrollHeight;
+    },
+
+    async send() {
+      const inp = document.getElementById('bt-dock-input');
+      if (!inp || !inp.value.trim()) return;
+      const text = inp.value.trim().slice(0, 280);
+      inp.value = '';
+      try {
+        const r = await Cloud.authed('/v1/battle/chat', { code: room.code, text });
+        if (r && r.ok && r.msg && !this.msgs.some(x => x.id === r.msg.id)) {
+          this.msgs.push(r.msg);
+          this.lastId = r.msg.id;
+          this.renderMsgs(); this.scrollMsgs();
+        }
+      } catch (e) { AVUtil.toast(e.message, 'error'); }
+    }
+  };
+
   /* ══════════════ LIVE LAYER — asli exam (exam.js) ke andar ══════════════
-     Sirf yahi battle ka extra hai exam me: palette me live panel +
-     answers server par. exam.js me chhote guarded hooks hain. */
+     exam.js ke chhote hooks yahi use karte hain (test.battle truthy). */
   const live = {
-    screen: null, test: null, code: null, qidx: null, timer: null, lastKey: '',
-    mounted: false,
+    screen: null, test: null, code: null, qidx: null, timer: null, mounted: false,
 
     mount(screen) {
       this.screen = screen; this.test = screen.test; this.code = this.test.battle && this.test.battle.code;
       if (!this.code) return;
-      // qid → qNo map (sections order = room order)
       this.qidx = new Map(); let n = 0;
       this.test.sections.forEach(s => s.questionIds.forEach(qid => this.qidx.set(qid, n++)));
       this.mounted = true;
-      this.paint(null);
+      dock.mount({ examMode: true });
+      dock.onLeave = () => { if (this.screen && this.screen.confirmSubmit) { try { this.screen.confirmSubmit(); } catch (e) { } } };
+      AVUtil.toast('⚔️ Live battle: players + 💬 chat ke liye neeche wala pill dabao', 'info');
       this.timer = setInterval(() => this.poll(), 3000);
       this.poll();
     },
@@ -442,17 +591,16 @@ window.BT = (function () {
     unmount() {
       this.mounted = false;
       if (this.timer) { clearInterval(this.timer); this.timer = null; }
-      const el = document.getElementById('bt-livepanel');
-      if (el) el.remove();
+      dock.unmount();
     },
 
     async poll() {
       if (!this.mounted || !this.code) return;
       try {
-        const S = await Cloud.authed('/v1/battle/state', { code: this.code });
+        const S = await Cloud.authed('/v1/battle/state', { code: this.code, chatSince: dock.lastId });
         if (!this.mounted) return;
-        this.paint(S);
-        if (S.room.status === 'done') {   // sab ho gaya / time up — comparison ready
+        dock.feed(S, S.chat);
+        if (S.room.status === 'done') {
           this.unmount();
           AVUtil.toast('🏁 Battle khatam — full comparison ready!', 'success');
           if (this.screen && this.screen.attempt && !this.screen.attempt.completed) { try { this.screen.confirmSubmit(); } catch (e) { } }
@@ -460,49 +608,19 @@ window.BT = (function () {
       } catch (e) { /* offline — agli poll */ }
     },
 
-    paint(S) {
-      let el = document.getElementById('bt-livepanel');
-      if (!el) {
-        const pal = document.querySelector('.palette-panel');
-        if (!pal) return;
-        el = document.createElement('div');
-        el.id = 'bt-livepanel';
-        el.className = 'bt-livepanel';
-        pal.appendChild(el);
-      }
-      const myUid = Cloud.user && Cloud.user.uid;
-      const ps = (S && S.players) || [];
-      const key = JSON.stringify(ps.map(p => [p.uid, p.attempted, p.done])) + (S && S.room.status);
-      if (key === this.lastKey) return;
-      this.lastKey = key;
-      el.innerHTML = `
-        <div class="bt-lp-title">🔴 LIVE BATTLE <span class="bt-hint">${ps.length} candidates</span></div>
-        ${ps.map(p => `
-          <div class="bt-pl ${p.uid === myUid ? 'me' : ''}">
-            <span class="bt-pl-img">${p.photo ? `<img src="${esc(p.photo)}" alt="">` : '🙂'}</span>
-            <span class="bt-pl-name">${esc(p.name)}</span>
-            ${p.done ? '<span class="bt-pl-sub">✅ done</span>' : `<span class="bt-pl-sub">${p.attempted || 0}${S && S.room ? '/' + S.room.total : ''}</span>`}
-          </div>`).join('')}
-        <button class="xbtn xbtn-ghost bt-lp-leave" id="bt-lp-leave" title="Exam submit karke battle room me jao">🏳️ Submit &amp; Bahar</button>`;
-      const lb = el.querySelector('#bt-lp-leave');
-      if (lb) lb.addEventListener('click', () => {
-        if (this.screen && this.screen.confirmSubmit) { try { this.screen.confirmSubmit(); } catch (e) { } }
-      });
-    },
-
-    answered(qid, optId) {   // exam.js select() hook — fire and forget
+    answered(qid, optId) {
       const qNo = this.qidx && this.qidx.get(qid);
       if (qNo == null || !this.code) return;
       Cloud.authed('/v1/battle/answer', { code: this.code, qNo, optId }).catch(() => { });
     },
 
-    cleared(qid) {           // exam.js clear hook
+    cleared(qid) {
       const qNo = this.qidx && this.qidx.get(qid);
       if (qNo == null || !this.code) return;
       Cloud.authed('/v1/battle/answer', { code: this.code, qNo, optId: null }).catch(() => { });
     },
 
-    async submitted() {      // exam.js finalize() hook
+    async submitted() {
       const c = this.code;
       this.unmount();
       if (!c) return;

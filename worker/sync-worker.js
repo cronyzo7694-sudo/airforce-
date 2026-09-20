@@ -362,6 +362,14 @@ function battleNeon(env) {
     },
     allAnswers: function (code) {
       return neonSQL(env, 'SELECT uid, q_no, opt_id, correct FROM battle_answers WHERE room_code = $1 ORDER BY q_no, uid', [code]);
+    },
+    postChat: function (code, uid, name, text, at) {
+      return neonSQL(env, 'INSERT INTO battle_chat (room_code, uid, name, text, at) VALUES ($1,$2,$3,$4,$5) RETURNING id', [code, uid, name, text, at]);
+    },
+    chats: function (code, since) {   // since = last id client ke paas; null → latest 20
+      if (since == null) return neonSQL(env, 'SELECT id, uid, name, text, at FROM battle_chat WHERE room_code = $1 ORDER BY id DESC LIMIT 20', [code])
+        .then(function (rows) { return rows.reverse(); });
+      return neonSQL(env, 'SELECT id, uid, name, text, at FROM battle_chat WHERE room_code = $1 AND id > $2 ORDER BY id ASC LIMIT 50', [code, Number(since)]);
     }
   };
 }
@@ -410,6 +418,21 @@ function battleMem() {
       B.answers.forEach(function (v) { if (v.room_code === code) out.push(v); });
       out.sort(function (a, b) { return a.q_no - b.q_no || (a.uid < b.uid ? -1 : 1); });
       return Promise.resolve(out);
+    },
+    postChat: function (code, uid, name, text, at) {
+      if (!B.chats) B.chats = new Map();
+      if (!B.chatSeq) B.chatSeq = 1;
+      var msg = { id: B.chatSeq++, room_code: code, uid: uid, name: name, text: text, at: at };
+      var arr = B.chats.get(code) || [];
+      arr.push(msg); if (arr.length > 200) arr.splice(0, arr.length - 200);
+      B.chats.set(code, arr);
+      return Promise.resolve([{ id: msg.id }]);
+    },
+    chats: function (code, since) {
+      if (!B.chats) B.chats = new Map();
+      var arr = B.chats.get(code) || [];
+      if (since == null) return Promise.resolve(arr.slice(-20));
+      return Promise.resolve(arr.filter(function (m) { return m.id > Number(since); }).slice(0, 50));
     }
   };
 }
@@ -477,6 +500,9 @@ async function battleHandler(req, env, auth, path, body) {
       plan: room.questions.map(function (q) { return { id: q.id, subject: q.subject || null }; })   // sirf ids — joiner local test banata hai
     };
     for (var yi = 0; yi < players.length; yi++) if (players[yi].uid === auth.uid) out.you = players[yi];
+    if (body.chatSince !== undefined) {   // chat piggyback (dock poll)
+      out.chat = await st.chats(room.code, body.chatSince == null ? null : Number(body.chatSince));
+    }
     return json(req, 200, out);
   }
 
@@ -512,6 +538,28 @@ async function battleHandler(req, env, auth, path, body) {
     if (!room) return json(req, 404, { ok: false, error: 'room nahi mila' });
     await st.setPlayerDone(room.code, auth.uid);
     return json(req, 200, { ok: true });
+  }
+
+  if (path === '/v1/battle/chat') {
+    var room = await st.getRoom(codeOf(body));
+    if (!room) return json(req, 404, { ok: false, error: 'room nahi mila' });
+    var text = String(body.text == null ? '' : body.text).trim().slice(0, 280);
+    if (!text) return json(req, 400, { ok: false, error: 'khaali message' });
+    var pl = await st.players(room.code);
+    var me = null;
+    for (var pi = 0; pi < pl.length; pi++) if (pl[pi].uid === auth.uid) me = pl[pi];
+    if (!me) return json(req, 403, { ok: false, error: 'pehle battle join karo' });
+    var now2 = Date.now();
+    // flood guard: same user 1s me 2 message nahi
+    var recent = await st.chats(room.code, null);
+    for (var ri = recent.length - 1; ri >= 0; ri--) {
+      if (recent[ri].uid === auth.uid && now2 - recent[ri].at < 900 && recent[ri].name === me.name) {
+        // last-20 me mila — thoda dheere (memory mode me last-200 hota hai, neon me 20 — dono theek)
+        if (recent[ri].at > now2 - 900) return json(req, 429, { ok: false, error: 'thoda dheere bhai 😄' });
+      }
+    }
+    var ins = await st.postChat(room.code, auth.uid, me.name, text, now2);
+    return json(req, 200, { ok: true, id: ins && ins[0] && ins[0].id, msg: { id: ins && ins[0] && ins[0].id, uid: auth.uid, name: me.name, text: text, at: now2 } });
   }
 
   if (path === '/v1/battle/result') {
