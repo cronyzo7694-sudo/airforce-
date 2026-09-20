@@ -123,7 +123,24 @@ Views.settings = async function () {
   const cfg = await App.config();
 
   App.page('page page-settings', `
-    <div class="page-head"><div><h1>Settings</h1><p class="muted">All data stays on this device (IndexedDB) — plus optional cloud backup (Neon), sirf tumhare sync code se.</p></div></div>
+    <div class="page-head"><div><h1>Settings</h1><p class="muted">Data is device par safe hai (IndexedDB) — aur Google se login karke apne account me cloud backup bhi.</p></div></div>
+
+    <div class="card">
+      <div class="card-head"><h3>☁️ Cloud Backup</h3><span class="muted small" id="cs-state">…</span></div>
+      <div class="dm-grid">
+        <div><b>Google account</b><div class="muted" id="cs-account">…</div></div>
+        <div><b>Status</b><div id="cs-status" class="muted">…</div></div>
+      </div>
+      <div class="head-actions" style="margin-top:12px" id="cs-actions">
+        <button class="btn btn-primary btn-lg" id="cs-login" style="display:none">🔑 &nbsp;Sign in with Google</button>
+        <button class="btn btn-primary" id="cs-sync" style="display:none">⟳ Sync now</button>
+        <button class="btn btn-plain" id="cs-restore" style="display:none">⬇ Restore from cloud</button>
+        <button class="btn btn-plain" id="cs-auto" style="display:none">auto-sync: …</button>
+        <button class="btn btn-plain" id="cs-media" style="display:none">🖼️ Test image upload</button>
+        <button class="btn btn-plain btn-mini" id="cs-logout" style="display:none">Sign out</button>
+      </div>
+      <p class="muted small" style="margin:8px 0 0">Login karo — attempts, custom questions, tests, notes aur settings tumhare Google account me cloud par safe ho jaate hain. Browser data reset ho jaye ya naya device lo → bas login karo, sab wapas. 🔒 Data sirf tumhare account ke liye isolated hai — koi password ya code share nahi hota.</p>
+    </div>
 
     <div class="two-col">
       <div class="card">
@@ -179,23 +196,6 @@ Views.settings = async function () {
         <button class="btn btn-plain" id="st-reseed">♻ Reload bundled PYQ bank</button>
       </div>
       <p class="muted small" style="margin:8px 0 0">Backup JSON me questions, tests, attempts aur analytics sab aata hai — <a href="#/import">Import</a> page par drop karke restore karo.</p>
-    </div>
-
-    <div class="card">
-      <div class="card-head"><h3>☁️ Cloud Backup <span class="muted small">(Google + Neon)</span></h3><span class="muted small" id="cs-state">…</span></div>
-      <div class="dm-grid">
-        <div><b>Account</b><div class="muted" id="cs-account">…</div></div>
-        <div><b>Status</b><div id="cs-status" class="muted">…</div></div>
-      </div>
-      <div class="head-actions" style="margin-top:12px" id="cs-actions">
-        <button class="btn btn-primary" id="cs-login" style="display:none">🔑 Sign in with Google</button>
-        <button class="btn btn-plain" id="cs-logout" style="display:none">Sign out</button>
-        <button class="btn btn-primary" id="cs-sync" style="display:none">⟳ Sync now</button>
-        <button class="btn btn-plain" id="cs-restore" style="display:none">⬇ Restore from cloud</button>
-        <button class="btn btn-plain" id="cs-auto" style="display:none">auto-sync: …</button>
-        <button class="btn btn-plain" id="cs-media" style="display:none">🖼️ Test image upload</button>
-      </div>
-      <p class="muted small" style="margin:8px 0 0">Google se login karo — attempts, custom questions, tests, notes aur settings tumhare account me cloud par safe rehte hain. Browser reset ho jaye ya naya device lo → login karo, sab wapas. 🔒 Data sirf tumhare Google account ke liye isolated hai — koi password ya code share nahi hota.</p>
     </div>
 
     <div class="card">
@@ -293,7 +293,7 @@ Views.settings = async function () {
       return;
     }
     if (Cloud.user) {
-      show('#cs-logout'); show('#cs-sync'); show('#cs-restore'); show('#cs-auto'); show('#cs-media');
+      show('#cs-sync'); show('#cs-restore'); show('#cs-auto'); show('#cs-media'); show('#cs-logout');
       acct.innerHTML = '👤 <b>' + AVUtil.esc(Cloud.user.name || 'user') + '</b> <span class="muted">' + AVUtil.esc(Cloud.user.email || '') + '</span>';
       if (st.lastError) {
         state.textContent = '⚠️ error'; state.style.color = '#c0392b';
@@ -301,10 +301,10 @@ Views.settings = async function () {
       } else if (st.lastPushAt) {
         state.textContent = '● synced'; state.style.color = '#1a9850';
         const ago = Math.max(1, Math.round((Date.now() - Math.max(st.lastPushAt, st.lastPullAt)) / 60000));
-        AVUtil.$('#cs-status').textContent = `last sync ${ago} min pehle${(st.pending || 0) ? ` · ${st.pending} pending` : ' · sab clear'}`;
+        AVUtil.$('#cs-status').textContent = `last sync ${ago} min pehle${(st.pending || 0) ? ` · ${st.pending} pending` : ' · sab clear'}${st.fullBackupAt ? ' · full backup ✓' : ''}`;
       } else {
         state.textContent = '○ signed in'; state.style.color = '#2563eb';
-        AVUtil.$('#cs-status').textContent = 'pehla sync apne aap chal raha hai…';
+        AVUtil.$('#cs-status').textContent = 'pehla backup + sync apne aap chal raha hai…';
       }
     } else {
       show('#cs-login');
@@ -317,7 +317,7 @@ Views.settings = async function () {
     AVUtil.$('#cs-login').textContent = 'Signing in…';
     try {
       const u = await Cloud.signIn();
-      AVUtil.toast('✓ Swagat hai, ' + (u.name || u.email) + '!');
+      AVUtil.toast('✓ Swagat hai, ' + (u.name || u.email) + '! Pehla backup chal raha hai…');
     } catch (e) { AVUtil.toast('⚠️ ' + e.message, 'error'); }
     AVUtil.$('#cs-login').textContent = '🔑 Sign in with Google';
     csRender();

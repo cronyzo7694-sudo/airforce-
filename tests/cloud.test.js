@@ -165,7 +165,7 @@ async function call(port, p, body, opts = {}) {
   await new Promise(r => setTimeout(r, 500));
   const r1 = await G('Cloud.syncNow("manual")');
   T('client syncNow ok (worker roundtrip)', r1 && r1.ok === true, r1);
-  T('client pushed 2 (attempt + config)', r1 && r1.pushed === 2, r1);
+  T('client first-sync: outbox 2 + full backup 2 (backup flag)', r1 && r1.pushed >= 2 && r1.backup === 2, r1);
   const stC = await call(port, '/v1/status', {});
   T('server has client data', stC.j.counts.some(c => c.kind === 'attempt'), stC.j.counts);
 
@@ -185,6 +185,21 @@ async function call(port, p, body, opts = {}) {
   T('applyRecords: bundled question skip + attempt apply', applied === 1, applied);
   const att9 = await G('(async () => DB.get("attempts", "att-9"))()');
   T('applied attempt saved', att9 && att9.id === 'att-9');
+
+  // FIRST-LOGIN FULL BACKUP — naya account, khali outbox → poora local data push
+  await G('Cloud._test.setUser({uid: "google-uid-EEE", email: "eee@example.com", name: "Full"})');
+  TEST_UID = 'google-uid-EEE';
+  await G('Cloud.status.fullBackupAt = 0');
+  await G('Cloud._test.resetOutbox()');
+  const r2 = await G('Cloud.syncNow("manual")');
+  T('full backup sync ok', r2 && r2.ok === true, r2);
+  T('full backup pushed local data (4 records: 2 attempts + note + config)', r2 && r2.pushed === 4 && r2.backup === 4, r2);
+  const stE = await call(port, '/v1/status', {});
+  const totE = (stE.j.counts || []).reduce((a, c) => a + c.n, 0);
+  T('server pe full backup data aaya', totE >= 4, stE.j.counts);
+  // dobara sync → full backup dobara nahi chalega
+  const r3 = await G('Cloud.syncNow("manual")');
+  T('second sync — full backup skip (already done)', r3 && r3.ok && r3.backup === 0, r3);
 
   // REAL JWKS verification (internet se Google ke public keys) — forged token
   const jwks = await (await fetch('https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com')).json();

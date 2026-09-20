@@ -155,6 +155,7 @@ var Cloud = (() => {
     if (store === 'settings' && SETTING_SYNCABLE.indexOf(rid) === -1) return;
     if (store === 'meta' && META_SYNCABLE.indexOf(rid) === -1) return;
     if (['cloudOutbox', 'cloudSync', 'bundledIds'].indexOf(rid) !== -1) return;
+    if (store === 'questions' && bundledIds && bundledIds.has(rid)) return;   // bank questions dirty nahi
     loadOutbox().then(() => {
       if (!outbox.some(x => x.kind === kind && x.rid === rid)) {
         outbox.push({ kind: kind, rid: rid, deleted: false });
@@ -206,37 +207,39 @@ var Cloud = (() => {
   /* ---------------- push ---------------- */
   async function buildPushRecords() {
     await loadOutbox();
-    if (!outbox.length) return [];
     const recs = [];
+    const consumed = new Set();   // push/skip — dono me outbox se hatana hai
+    const kOf = x => x.kind + '␟' + x.rid;
     for (const item of outbox.slice(0, 300)) {
       let data = null;
       if (!item.deleted) {
         if (item.kind === 'attempt') data = await DB.get('attempts', item.rid);
         else if (item.kind === 'test') data = await DB.get('tests', item.rid);
         else if (item.kind === 'question') {
-          if (bundledIds && bundledIds.has(item.rid)) continue;   // bundled kabhi push nahi
+          if (bundledIds && bundledIds.has(item.rid)) { consumed.add(kOf(item)); continue; }   // bundled kabhi push nahi
           data = await DB.get('questions', item.rid);
         }
         else if (item.kind === 'note') data = await DB.get('notes', item.rid);
         else if (item.kind === 'setting') data = await DB.get('settings', item.rid);
         else if (item.kind === 'meta') data = await DB.get('meta', item.rid);
-        if (!data) continue;
+        if (!data) { consumed.add(kOf(item)); continue; }   // record gaya — tombstone hi kaafi
       }
-      if (item.kind === 'test' && data && data.series) continue;  // series local rebuild hoti hai
+      if (item.kind === 'test' && data && data.series) { consumed.add(kOf(item)); continue; }  // series local rebuild hoti hai
       recs.push({ kind: item.kind, rid: item.rid, data: data, updatedAt: Date.now(), deleted: !!item.deleted });
+      consumed.add(kOf(item));
     }
-    return recs;
+    return { recs: recs, consumed: consumed };
   }
 
   async function doPush() {
-    const recs = await buildPushRecords();
-    const pushedRids = new Set(recs.map(r => r.kind + '␟' + r.rid));
+    const built = await buildPushRecords();
+    const recs = built.recs;
     let acceptedTotal = 0;
     for (let i = 0; i < recs.length; i += 200) {
       const j = await authed('/v1/push', { device: await deviceId(), records: recs.slice(i, i + 200) });
       acceptedTotal += (j.accepted || 0);
     }
-    outbox = outbox.filter(x => !pushedRids.has(x.kind + '␟' + x.rid));
+    outbox = outbox.filter(x => !built.consumed.has(x.kind + '␟' + x.rid));
     return acceptedTotal;
   }
 
@@ -293,6 +296,51 @@ var Cloud = (() => {
     return n;
   }
 
+  /* ---------------- pehla full backup ----------------
+     Naya account / khali cloud → local ka poora syncable data push
+     (warna sirf outbox changes jaate — pehli baar kuch nahi jata). */
+  async function fullExport() {
+    await loadBundledIds();
+    const dev = await deviceId();
+    const now = Date.now();
+    let pushed = 0, requests = 0;
+    const batch = [];
+    const flush = async () => {
+      while (batch.length && requests < 40) {   // ~8000 records/sync safety cap
+        const chunk = batch.splice(0, 200);
+        await authed('/v1/push', { device: dev, records: chunk });
+        pushed += chunk.length;
+        requests++;
+      }
+    };
+    const add = (kind, rid, data) => {
+      if (rid != null && data) batch.push({ kind: kind, rid: String(rid), data: data, updatedAt: now, deleted: false });
+    };
+
+    const cfgRow = await DB.get('settings', 'config');
+    add('setting', 'config', cfgRow);
+    for (const mk of META_SYNCABLE) add('meta', mk, await DB.get('meta', mk));
+
+    const tables = [['attempts', 'attempt', 'id'], ['tests', 'test', 'id'], ['questions', 'question', 'id'], ['notes', 'note', 'qid']];
+    for (const t of tables) {
+      const keys = await DB.getAllKeys(t[0]);
+      for (const k of keys) {
+        if (batch.length >= 400) {
+          await flush();
+          if (requests >= 40) return pushed;
+        }
+        const row = await DB.get(t[0], k);
+        if (!row) continue;
+        if (t[1] === 'test' && row.series) continue;                    // series local rebuild
+        const rid = row[t[2]] != null ? row[t[2]] : k;
+        if (t[1] === 'question' && bundledIds.has(rid)) continue;       // bundled bank kabhi nahi
+        add(t[1], rid, row);
+      }
+    }
+    await flush();
+    return pushed;
+  }
+
   /* ---------------- public sync ---------------- */
   async function syncNow(reason) {
     if (running) return { ok: false, skipped: true };
@@ -301,11 +349,22 @@ var Cloud = (() => {
     running = true;
     try {
       await loadBundledIds();
-      const pushed = await doPush();
-      const pulled = await doPull(false);
+      let pushed = 0, pulled = 0, backup = 0;
+      if (!status.fullBackupAt) {
+        // is device ka pehla sync is account par: cloud ka data pehle lao,
+        // phir outbox changes, phir local ka POORA backup (purane data bhi)
+        pulled += await doPull(false);
+        pushed += await doPush();
+        backup = await fullExport();
+        pulled += await doPull(false);
+        status.fullBackupAt = Date.now();
+      } else {
+        pushed = await doPush();
+        pulled += await doPull(false);
+      }
       status.lastPushAt = Date.now(); status.lastPullAt = Date.now(); status.lastError = null;
       await persistOutbox(); await saveStatus();
-      return { ok: true, pushed: pushed, pulled: pulled };
+      return { ok: true, pushed: pushed + backup, pulled: pulled, backup: backup };
     } catch (e) {
       status.lastError = e.message;
       await saveStatus();
@@ -390,6 +449,7 @@ var Cloud = (() => {
       setUser(u) { user = u; },
       setBundledIds(a) { bundledIds = new Set(a); },
       flushOutbox() { return persistOutbox(); },
+      resetOutbox() { outbox = []; outboxInit = Promise.resolve(outbox); },
       hooks: TEST_HOOKS
     }
   };
