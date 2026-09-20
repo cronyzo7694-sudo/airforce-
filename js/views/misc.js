@@ -123,7 +123,7 @@ Views.settings = async function () {
   const cfg = await App.config();
 
   App.page('page page-settings', `
-    <div class="page-head"><div><h1>Settings</h1><p class="muted">All data stays on this device (IndexedDB). No account, no cloud — ek bhi cheez bahar nahi jaati.</p></div></div>
+    <div class="page-head"><div><h1>Settings</h1><p class="muted">All data stays on this device (IndexedDB) — plus optional cloud backup (Neon), sirf tumhare sync code se.</p></div></div>
 
     <div class="two-col">
       <div class="card">
@@ -179,6 +179,23 @@ Views.settings = async function () {
         <button class="btn btn-plain" id="st-reseed">♻ Reload bundled PYQ bank</button>
       </div>
       <p class="muted small" style="margin:8px 0 0">Backup JSON me questions, tests, attempts aur analytics sab aata hai — <a href="#/import">Import</a> page par drop karke restore karo.</p>
+    </div>
+
+    <div class="card">
+      <div class="card-head"><h3>☁️ Cloud Backup <span class="muted small">(Google + Neon)</span></h3><span class="muted small" id="cs-state">…</span></div>
+      <div class="dm-grid">
+        <div><b>Account</b><div class="muted" id="cs-account">…</div></div>
+        <div><b>Status</b><div id="cs-status" class="muted">…</div></div>
+      </div>
+      <div class="head-actions" style="margin-top:12px" id="cs-actions">
+        <button class="btn btn-primary" id="cs-login" style="display:none">🔑 Sign in with Google</button>
+        <button class="btn btn-plain" id="cs-logout" style="display:none">Sign out</button>
+        <button class="btn btn-primary" id="cs-sync" style="display:none">⟳ Sync now</button>
+        <button class="btn btn-plain" id="cs-restore" style="display:none">⬇ Restore from cloud</button>
+        <button class="btn btn-plain" id="cs-auto" style="display:none">auto-sync: …</button>
+        <button class="btn btn-plain" id="cs-media" style="display:none">🖼️ Test image upload</button>
+      </div>
+      <p class="muted small" style="margin:8px 0 0">Google se login karo — attempts, custom questions, tests, notes aur settings tumhare account me cloud par safe rehte hain. Browser reset ho jaye ya naya device lo → login karo, sab wapas. 🔒 Data sirf tumhare Google account ke liye isolated hai — koi password ya code share nahi hota.</p>
     </div>
 
     <div class="card">
@@ -259,14 +276,102 @@ Views.settings = async function () {
     Views.settings();
   });
 
+  /* ---------- ☁️ cloud backup (Google login + Neon) ---------- */
+  const csRender = () => {
+    const st = Cloud.status;
+    AVUtil.$('#cs-auto').textContent = 'auto-sync: ' + (st.auto ? 'ON' : 'OFF');
+    const state = AVUtil.$('#cs-state');
+    const acct = AVUtil.$('#cs-account');
+    const show = id => { AVUtil.$(id).style.display = ''; };
+    const hide = id => { AVUtil.$(id).style.display = 'none'; };
+    hide('#cs-login'); hide('#cs-logout'); hide('#cs-sync'); hide('#cs-restore'); hide('#cs-auto'); hide('#cs-media');
+
+    if (!Cloud.configured()) {
+      state.textContent = '⏳ setup pending'; state.style.color = '#c77700';
+      acct.textContent = 'Google login config baaki hai (jald hi live hoga)';
+      AVUtil.$('#cs-status').textContent = 'Local data poora safe hai — cloud jald activate hoga.';
+      return;
+    }
+    if (Cloud.user) {
+      show('#cs-logout'); show('#cs-sync'); show('#cs-restore'); show('#cs-auto'); show('#cs-media');
+      acct.innerHTML = '👤 <b>' + AVUtil.esc(Cloud.user.name || 'user') + '</b> <span class="muted">' + AVUtil.esc(Cloud.user.email || '') + '</span>';
+      if (st.lastError) {
+        state.textContent = '⚠️ error'; state.style.color = '#c0392b';
+        AVUtil.$('#cs-status').textContent = st.lastError;
+      } else if (st.lastPushAt) {
+        state.textContent = '● synced'; state.style.color = '#1a9850';
+        const ago = Math.max(1, Math.round((Date.now() - Math.max(st.lastPushAt, st.lastPullAt)) / 60000));
+        AVUtil.$('#cs-status').textContent = `last sync ${ago} min pehle${(st.pending || 0) ? ` · ${st.pending} pending` : ' · sab clear'}`;
+      } else {
+        state.textContent = '○ signed in'; state.style.color = '#2563eb';
+        AVUtil.$('#cs-status').textContent = 'pehla sync apne aap chal raha hai…';
+      }
+    } else {
+      show('#cs-login');
+      state.textContent = '○ not signed in'; state.style.color = '';
+      acct.textContent = '—';
+      AVUtil.$('#cs-status').textContent = 'Google se login karo — data cloud me safe ho jayega.';
+    }
+  };
+  AVUtil.$('#cs-login').addEventListener('click', async () => {
+    AVUtil.$('#cs-login').textContent = 'Signing in…';
+    try {
+      const u = await Cloud.signIn();
+      AVUtil.toast('✓ Swagat hai, ' + (u.name || u.email) + '!');
+    } catch (e) { AVUtil.toast('⚠️ ' + e.message, 'error'); }
+    AVUtil.$('#cs-login').textContent = '🔑 Sign in with Google';
+    csRender();
+  });
+  AVUtil.$('#cs-logout').addEventListener('click', async () => {
+    await Cloud.signOut();
+    AVUtil.toast('Signed out — cloud data account me safe hai.');
+    csRender();
+  });
+  AVUtil.$('#cs-sync').addEventListener('click', async () => {
+    AVUtil.toast('Syncing…');
+    const r = await Cloud.syncNow('manual');
+    AVUtil.toast(r.ok ? `✓ Synced — ${r.pushed || 0} push, ${r.pulled || 0} pull` : '⚠️ ' + (r.error || 'skip'));
+    csRender();
+  });
+  AVUtil.$('#cs-restore').addEventListener('click', async () => {
+    const ok = await AVUtil.confirmModal({ title: 'Restore from cloud?', body: 'Cloud ka poora data (attempts, custom questions, notes, settings) is device par laaya jayega. Local data overwrite ho sakta hai.', yesLabel: 'Restore' });
+    if (!ok) return;
+    AVUtil.toast('Restore chal raha hai…');
+    const r = await Cloud.restore();
+    AVUtil.toast(r.ok ? `✓ ${r.pulled} records restore hue` : '⚠️ ' + (r.error || 'fail'));
+    csRender();
+  });
+  AVUtil.$('#cs-auto').addEventListener('click', async () => {
+    await Cloud.setAuto(!Cloud.status.auto);
+    csRender();
+  });
+  AVUtil.$('#cs-media').addEventListener('click', async () => {
+    AVUtil.toast('Test image upload…');
+    try {
+      const c = document.createElement('canvas'); c.width = 640; c.height = 200;
+      const g = c.getContext('2d');
+      g.fillStyle = '#0d1b2a'; g.fillRect(0, 0, 640, 200);
+      g.fillStyle = '#4cc9f0'; g.font = 'bold 34px sans-serif';
+      g.fillText('KINEORA CLOUD ✓ ' + new Date().toLocaleDateString('en-IN'), 30, 115);
+      const blob = await new Promise(res => c.toBlob(res, 'image/png'));
+      const url = await Cloud.uploadImage(new File([blob], 'cloud-test.png', { type: 'image/png' }));
+      AVUtil.toast('✓ Image cloud par gayi — URL copied');
+      try { await navigator.clipboard.writeText(url); } catch (e) {}
+      window.open(url, '_blank');
+    } catch (e) { AVUtil.toast('⚠️ ' + e.message, 'error'); }
+  });
+  csRender();
+
+
   AVUtil.$('#st-wipe').addEventListener('click', async () => {
     const ok = await AVUtil.confirmModal({
       serious: true,
       title: 'Erase ALL data?',
-      body: 'Question bank, tests, attempts and analytics will be permanently deleted from this device.',
+      body: 'Question bank, tests, attempts and analytics will be permanently deleted from this device. Cloud backup account me SAFE rahega — login karke wapas laya ja sakta hai.',
       yesLabel: 'Erase Everything', yesClass: 'btn-danger'
     });
     if (!ok) return;
+    try { if (typeof Cloud !== 'undefined' && Cloud.user) await Cloud.signOut(); } catch (e) {}
     for (const s of ['questions', 'tests', 'attempts', 'settings', 'meta']) await DB.clear(s);
     AVUtil.toast('All data erased. Reloading…');
     setTimeout(() => location.reload(), 900);

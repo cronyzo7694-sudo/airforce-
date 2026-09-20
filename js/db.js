@@ -76,15 +76,43 @@ const DB = (() => {
     });
   }
 
+  /* ---------- change observers (cloud sync ke liye) ----------
+     put/bulkPut/delete par emit — cloud module dirty-tracking karta hai. */
+  const _observers = [];
+  function _emit(store, keyOrObj) {
+    for (let i = 0; i < _observers.length; i++) {
+      try { _observers[i].change(store, keyOrObj); } catch (e) {}
+    }
+  }
+  function _emitDelete(store, key) {
+    for (let i = 0; i < _observers.length; i++) {
+      try { _observers[i].remove(store, key); } catch (e) {}
+    }
+  }
+
   return {
     open,
 
-    async put(store, obj) { return tx(store, 'readwrite', os => os.put(obj)); },
+    onChange(changeFn, removeFn) {
+      const o = { change: changeFn, remove: removeFn };
+      _observers.push(o);
+      return () => { const i = _observers.indexOf(o); if (i > -1) _observers.splice(i, 1); };
+    },
+
+    async put(store, obj) {
+      const r = await tx(store, 'readwrite', os => os.put(obj));
+      _emit(store, obj);
+      return r;
+    },
     async get(store, key) {
       const db = await open();
       return reqToPromise(db.transaction(store).objectStore(store).get(key));
     },
-    async delete(store, key) { return tx(store, 'readwrite', os => os.delete(key)); },
+    async delete(store, key) {
+      const r = await tx(store, 'readwrite', os => os.delete(key));
+      _emitDelete(store, key);
+      return r;
+    },
     async clear(store) { return tx(store, 'readwrite', os => os.clear()); },
     async count(store) {
       const db = await open();
@@ -135,6 +163,7 @@ const DB = (() => {
         });
         if (onProgress) onProgress(Math.min(i + CHUNK, items.length), items.length);
       }
+      for (const it of items) _emit(store, it);
       return items.length;
     },
 

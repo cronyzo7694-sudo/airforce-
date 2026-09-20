@@ -78,6 +78,12 @@ const App = {
       }
     } catch (e) { /* series is a bonus — never block boot */ }
 
+    // storage ko eviction se bachao (PWA installed = persistent)
+    try { if (navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => {}); } catch (e) {}
+
+    // cloud backup (Neon) + media (Cloudinary) — optional, kabhi block nahi karta
+    try { if (typeof Cloud !== 'undefined') Cloud.init(); } catch (e) { /* cloud is a bonus */ }
+
     // find an unfinished attempt (browser closed during exam)
     const unfinished = await this.findUnfinishedAttempt();
     this.pendingResume = unfinished;
