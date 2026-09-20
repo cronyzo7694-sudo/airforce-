@@ -50,7 +50,6 @@ Views.tests = async function (state) {
     incomplete: mine.filter(hasUnfinished).length
   };
   let list = mine.filter(t => {
-    if (t.type === 'battle') return false;   // battle tests alag feature hain — yahan nahi
     if (state.filter === 'all' || FNAMES[state.filter] === undefined) return true;
     if (state.filter === 'completed') return isDone(t);
     if (state.filter === 'incomplete') return hasUnfinished(t);
@@ -256,7 +255,6 @@ Views.tests = async function (state) {
 Views.testOverview = async function (id) {
   const t = await DB.get('tests', id);
   if (!t) { AVUtil.toast('Test not found', 'error'); return Router.go('/tests'); }
-  if (t.battle) return Router.go('/battle/' + t.battle.code);   // battle test ka ghar = battle room
   const cfg = await App.config();
   const idx = (await Store.getMeta('attemptIndex', [])).filter(a => a.testId === id);
   const questions = await DB.getMany('questions', t.sections.flatMap(s => s.questionIds));
@@ -271,6 +269,7 @@ Views.testOverview = async function (id) {
       <div class="head-actions">
         <button class="btn btn-primary" id="ov-start">${idx.length ? 'REATTEMPT' : 'START TEST'}</button>
         ${idx.length ? `<button class="btn btn-plain" id="ov-analysis">VIEW ANALYSIS</button>` : ''}
+        <button class="btn btn-plain" id="ov-share" title="Is test ka link banao — dost wahi test de sakega">🔗 Share</button>
         <button class="btn btn-plain" id="ov-delete">Delete Test</button>
       </div>
     </div>
@@ -314,7 +313,8 @@ Views.testOverview = async function (id) {
     if (!atts.length) return AVUtil.toast('No completed attempt found.', 'error');
     location.hash = '#/attempt/' + atts[atts.length - 1].id + '/analysis';
   });
-  AVUtil.$('#ov-delete').addEventListener('click', async () => {
+  AVUtil.$('#ov-share')?.addEventListener('click', () => { if (window.Share) Share.shareTest(id); });
+AVUtil.$('#ov-delete').addEventListener('click', async () => {
     const ok = await AVUtil.confirmModal({
       title: 'Delete this test?',
       body: 'The test and its attempts will be removed. Questions in the bank are not affected.',

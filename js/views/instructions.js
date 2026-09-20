@@ -4,18 +4,7 @@
  * ============================================================ */
 
 Views.instructions = async function (testId) {
-  let test = await DB.get('tests', testId);
-  if (!test && testId.indexOf('battle-') === 0 && window.BT) {
-    // ⚔️ battle joiner race: test abhi bana nahi — server se plan lekar khud bana lo
-    const code = testId.slice(7);
-    try {
-      const S = await Cloud.authed('/v1/battle/state', { code });
-      test = await BT._test.buildLocalTest(code, S);
-    } catch (e) { /* sign-out/offline — niche ka fallback */ }
-    if (test) return Views.instructions(testId);   // ab test hai — dobara render
-    AVUtil.toast('Battle test load nahi hua — battle room se dobara try karo', 'error');
-    return Router.go('/battle/' + code);
-  }
+  const test = await DB.get('tests', testId);
   if (!test) { AVUtil.toast('Test not found', 'error'); return Router.go('/tests'); }
   const cfg = await App.config();
   const lang = App.lang;
@@ -71,7 +60,7 @@ Views.instructions = async function (testId) {
             <p class="cl-note">Real exam me User ID / Password <b>invigilator</b> deta hai — practice test ke liye auto-filled hai.</p>
             <button class="btn-begin" id="login-btn">SIGN IN</button>
             <div class="cl-warn">⚠ Do not carry mobile phones, bluetooth devices, calculators or any other prohibited items into the examination hall.</div>
-            <a class="bt-backlink" href="${test.battle ? '#/battle/' + AVUtil.esc(test.battle.code) : '#/dashboard'}">← ${test.battle ? 'Battle Room wapas jao' : 'Back to Dashboard'}</a>
+            <a class="bt-backlink" href="#/dashboard">← Back to Dashboard</a>
           </div>
         </div>
         <div class="cl-foot">This is a computer based test (CBT). The clock is set at the server — the countdown timer at the top right of the screen will display the remaining time.</div>
@@ -124,8 +113,8 @@ Views.instructions = async function (testId) {
   document.getElementById('app').innerHTML = `
     <div class="cbt cbt-instructions">
       <header class="ins-header">
-        <div class="ins-exam"><a class="bt-backlink ins-back-top" href="${test.battle ? '#/battle/' + AVUtil.esc(test.battle.code) : '#/test/' + AVUtil.esc(test.id)}">← Back</a> ${AVUtil.esc(cfg.name)} — ${AVUtil.esc(test.mode === 'exam' ? 'Computer Based Test' : 'Practice Test')}</div>
-        <div class="ins-test">${AVUtil.esc(test.name)}${test.battle ? ' ⚔️ LIVE BATTLE' : ''}</div>
+        <div class="ins-exam"><a class="bt-backlink ins-back-top" href="#/test/${AVUtil.esc(test.id)}">← Back</a> ${AVUtil.esc(cfg.name)} — ${AVUtil.esc(test.mode === 'exam' ? 'Computer Based Test' : 'Practice Test')}</div>
+        <div class="ins-test">${AVUtil.esc(test.name)}</div>
       </header>
       <div class="ins-body">
         <div class="ins-left">
@@ -168,7 +157,7 @@ Views.instructions = async function (testId) {
               <tr><td>Marks per question</td><td><b>+${mk.correct}</b> · wrong <b>${mk.wrong}</b> · skipped <b>0</b></td></tr>
               <tr><td>Maximum marks</td><td><b>${test.maxScore}</b></td></tr>
             </table>
-            <div class="ins-back"><a href="${test.battle ? '#/battle/' + AVUtil.esc(test.battle.code) : '#/test/' + AVUtil.esc(test.id)}">${test.battle ? '← Battle Room (live) me jao' : '← Back to test details'}</a></div>
+            <div class="ins-back"><a href="#/test/${AVUtil.esc(test.id)}">← Back to test details</a></div>
           </div>
         </aside>
       </div>
@@ -188,7 +177,6 @@ Views.instructions = async function (testId) {
           <span>${App.t('readInstructions')}</span>
         </label>
         <button class="btn-begin" id="ins-begin" disabled>${App.t('readyToBegin').toUpperCase()}</button>
-        ${test.battle ? '<div class="bt-gate" id="bt-gate">⏱ Battle start ka wait…</div>' : ''}
       </footer>
     </div>`;
   window.scrollTo(0, 0);
@@ -199,29 +187,7 @@ Views.instructions = async function (testId) {
     localStorage.setItem('av_lang', e.target.value);
     Views.instructions(testId); // re-render in chosen language
   });
-  let btGateBlocked = !!test.battle;   // battle: live hone tak begin bandha rehta hai
-  AVUtil.$('#ins-agree').addEventListener('change', e => { AVUtil.$('#ins-begin').disabled = !e.target.checked || btGateBlocked; });
-  if (test.battle && window.BT) {   // ⚔️ LIVE countdown — server start karte hi khud enable
-    const gateEl = AVUtil.$('#bt-gate'), beginBtn = AVUtil.$('#ins-begin'), code = test.battle.code;
-    const paintGate = (html, blocked) => {
-      if (gateEl) gateEl.innerHTML = html;
-      btGateBlocked = blocked;
-      const chk = AVUtil.$('#ins-agree');
-      if (beginBtn && chk) beginBtn.disabled = !chk.checked || blocked;
-    };
-    const tick = async () => {
-      if (!document.getElementById('bt-gate')) { clearInterval(iv); return; }   // page badal gaya — poll band
-      const g = await BT.gate(test).catch(() => null);
-      if (!document.getElementById('bt-gate')) { clearInterval(iv); return; }
-      if (g && g.done) { paintGate('🏁 Battle khatam ho chuki — <a href="#/battle/' + AVUtil.esc(code) + '">comparison dekho →</a>', true); clearInterval(iv); return; }
-      if (g && g.ok) { paintGate('🟢 Battle START ho chuki hai — checkbox lagao aur <b>I am ready to begin</b> dabao!', false); clearInterval(iv); return; }
-      const wait = g && g.wait != null ? g.wait : 0;
-      const mm = Math.floor(wait / 60000), ss = Math.ceil((wait % 60000) / 1000);
-      paintGate('⏱ Battle start hota hai: <b>' + (mm > 0 ? mm + 'm ' + ss + 's' : Math.max(1, Math.ceil(wait / 1000)) + 's') + '</b> — sab log EK SAATH shuru honge. Tab tak rules padhte raho!', true);
-    };
-    const iv = setInterval(tick, 2000);
-    tick();
-  }
+  AVUtil.$('#ins-agree').addEventListener('change', e => { AVUtil.$('#ins-begin').disabled = !e.target.checked; });
   AVUtil.$('#ins-begin').addEventListener('click', async () => {
     const btn = AVUtil.$('#ins-begin');
     btn.disabled = true; btn.textContent = 'STARTING…';
@@ -252,7 +218,7 @@ Views.instructions = async function (testId) {
       else if (retakeMode === 'fresh') questionSets = freshSets;
       else questionSets = null; // random: engine shuffles via generator below
     }
-    if (prevAttempts.length && retakeMode === 'random' && !test.battle) {   // battle me SAME test — kabhi regenerate nahi
+    if (prevAttempts.length && retakeMode === 'random') {
       const r = await Generator.generate({
         name: test.name, type: test.type, mode: test.mode,
         sections: test.sections.map(s => ({ subjectId: s.subjectId, count: s.questionIds.length, chapters: s.chapters, topics: s.topics, difficulty: s.difficulty })),
@@ -261,15 +227,7 @@ Views.instructions = async function (testId) {
       if (r.ok) { test.id = r.test.id; }
     }
 
-    if (test.battle && window.BT) {   // battle: SERVER se asli status (host start-now bhi sahi pakde)
-      const g = await BT.gate(test);
-      if (!g.ok) {
-        if (g.done) { AVUtil.toast('Battle khatam ho chuki — comparison dekho!', 'info'); return location.hash = '#/battle/' + test.battle.code; }
-        AVUtil.toast('Battle start hone do — countdown neeche chal rahi hai. ' + Math.ceil(g.wait / 1000) + 's!', 'warn');
-        return;
-      }
-    }
-    const now = (test.battle && test.battle.liveStartsAt) ? test.battle.liveStartsAt : Date.now();   // sabka timer SERVER time se — ek jaisa
+    const now = Date.now();
     // a blocked (reported) question must never enter a new attempt — swap in
     // fresh replacements, even for ready-made series tests built before the block
     questionSets = await Generator.sanitizeSections(test, questionSets);

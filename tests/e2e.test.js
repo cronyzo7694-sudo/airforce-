@@ -306,77 +306,30 @@ async function main() {
   window.location.hash = '#/attempts';
   await sleep(400);
   T('my attempts renders', doc.body.textContent.includes('My Attempts') && doc.querySelectorAll('.tbl tbody tr').length >= 1);
-  window.location.hash = '#/battle';       // ⚔️ LIVE BATTLE — alag feature (CBT se independent)
-  await waitFor(() => doc.getElementById('bt-home'), 8000);
-  T('battle home renders (hero + create + join)', doc.body.textContent.includes('LIVE BATTLE') &&
-    doc.getElementById('bt-subject') && doc.getElementById('bt-code'));
-  T('battle home: signed-out — sign-in card + hint + buttons clickable (click par prompt milega)',
-    doc.body.textContent.includes('sign-in') && !!doc.querySelector('.bt-signin') && !!doc.querySelector('.bt-signin-hint') && !doc.getElementById('bt-home').querySelector('.bt-big').disabled, 'signin-hint');
-  window.location.hash = '#/battle/ZZZZZZ';   // invalid code — graceful error, crash nahi
+  // ═══ 🔗 SHARE — simple shareable test link (battle REPLACE ho gaya) ═══
+  window.location.hash = '#/battle';   // purana battle route ab nahi — safe 404/dashboard jaisa
+  await sleep(700);
+  T('battle route gone — no crash (blank/dashboard, battle.js removed)', !doc.body.textContent.includes('LIVE BATTLE'));
+  const shBtn = await G(`(async () => {   // testOverview me Share button
+    const t = (await DB.getAll('tests')).find(x => x.series) || (await DB.getAll('tests'))[0];
+    window.location.hash = '#/test/' + t.id;
+    await new Promise(r => setTimeout(r, 700));
+    return { has: !!document.getElementById('ov-share'), name: t.name.slice(0, 20) };
+  })()`);
+  T('share: testOverview me 🔗 Share button', shBtn && shBtn.has === true, shBtn);
+  window.location.hash = '#/shared/ZZZZZZ';   // invalid link — graceful error
   await sleep(2500);
-  T('battle invalid room: error box (no crash)', (doc.getElementById('bt-room') && doc.body.textContent.includes('room nahi mila')) || doc.getElementById('bt-room'), 'errbox');
-  // ⚔️ battle = ASLI test object → asli instructions + asli engine flow
-  const bt = await G(`(async () => {
-    const ids = (await DB.getAll('questions')).slice(0, 3).map(q => ({ id: q.id, subject: q.subject }));
-    const t = await BT._test.buildLocalTest('E2EQQ3', { room: { name: 'E2E Battle', durationMs: 120000, startsAt: Date.now() + 30000, plan: ids } });
-    return t && { id: t.id, type: t.type, secs: t.sections.length, total: t.totalQuestions, dur: t.duration, mark: t.marking.wrong, battle: !!t.battle, sections: t.sections.map(s => s.subjectId) };
-  })()`);
-  T('battle: asli test object built (engine schema, marking, sections)', bt && bt.id === 'battle-E2EQQ3' && bt.type === 'battle' && bt.dur === 120 && bt.mark === -0.25 && bt.battle === true && bt.total === 3, bt);
-  window.location.hash = '#/test/battle-E2EQQ3/instructions';
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 10000);
-  if (doc.getElementById('login-btn')) {   // real C-DAC candidate-login stage (asli flow ka hissa)
-    doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
-    await waitFor(() => doc.getElementById('ins-agree'), 10000);
-  }
-  T('battle: ASLI instructions page khulta hai (login + same rules)', !!doc.getElementById('ins-agree'), 'ins');
-  const gate = await G(`(async () => {   // fixed-time gate: checkbox + BEGIN dono dabaya BEFORE start → attempt NAHI banta
-    const before = (await DB.byIndex('attempts', 'testId', 'battle-E2EQQ3')).length;
-    document.getElementById('ins-agree').click();
-    const btn = document.getElementById('ins-begin');
-    if (btn && !btn.disabled) btn.dispatchEvent(new window.Event('click', { bubbles: true }));
-    await new Promise(r => setTimeout(r, 1200));
-    const after = (await DB.byIndex('attempts', 'testId', 'battle-E2EQQ3')).length;
-    const gateEl = document.getElementById('bt-gate');
-    const backTop = document.querySelector('.ins-back-top');
-    return { before, after, gate: gateEl ? gateEl.textContent : null, back: !!backTop, beginDisabled: btn ? btn.disabled : null };
-  })()`);
-  T('battle: fixed-time gate — early "I am ready" blocked (attempt nahi bana)', gate && gate.before === 0 && gate.after === 0, gate);
-  T('battle: live countdown dikhta hai (seconds + message)', gate && gate.gate && /Battle start hota hai/.test(gate.gate) && gate.beginDisabled === true, gate && gate.gate);
-  T('battle: instructions par BACK button hai (stuck nahi)', gate && gate.back === true);
-  window.location.hash = '#/tests';
-  await sleep(600);
-  T('battle: battle tests normal Tests list me nahi (alag feature)', !doc.body.textContent.includes('E2E Battle'));
-  // ── FIX-VERIFY 1: exact question count (mixed split — total HAMESHA count) ──
-  const splits = await G(`[10,25,50,70,100].map(c => { const s = BT._test.splitMixed(c); return { c, sum: s.reduce((a,b)=>a+b,0) }; })`);
-  T('battle: mixed split EXACT — 10→10, 50→50, 100→100', splits && splits.every(x => x.sum === x.c), splits);
-  // ── FIX-VERIFY 2: purana adhura attempt doosre battle me resume NAHI hota ('direct analysis' bug) ──
-  const seq = await G(`(async () => {
-    // E2EQQ4 battle test banao
-    const ids2 = (await DB.getAll('questions')).slice(3, 6).map(q => ({ id: q.id, subject: q.subject }));
-    const t4 = await BT._test.buildLocalTest('E2EQQ4', { room: { name: 'Battle Do', durationMs: 120000, startsAt: Date.now() - 60000, plan: ids2 } });
-    // E2EQQ3 ka EK GHANTE PURANA adhura attempt daalo (chhoda hua exam)
-    const t3 = await DB.get('tests', 'battle-E2EQQ3');
-    const old = Engine.createAttempt(t3, 1, Date.now() - 3600000, null);
-    await DB.put('attempts', old);
-    // ab E2EQQ4 ka attempt page kholo
-    window.location.hash = '#/test/battle-E2EQQ4/attempt';
-    await new Promise(r => setTimeout(r, 1500));
-    return { hash: window.location.hash, exam: !!document.querySelector('.exam-screen'), oldTest: document.body.textContent.includes('E2E Battle') };
-  })()`);
-  T('battle: naya battle PURANE adhure attempt me nahi fashta', seq && seq.exam === false, seq);
-  T('battle: attempt → instructions redirect (test hi nahi diya)', seq && /instructions/.test(seq.hash), seq && seq.hash);
-  // ── FIX-VERIFY 3: signed-out par join → sign-in prompt, navigation nahi ──
-  const so = await G(`(async () => {
-    window.location.hash = '#/battle';
-    await new Promise(r => setTimeout(r, 600));
-    const hint = !!document.querySelector('.bt-signin-hint');
-    BT.joinGo();
+  T('share: invalid link → error card (no crash)', doc.getElementById('sh-room') && doc.body.textContent.includes('link'), 'errbox');
+  const shTest = await G(`(async () => {   // Views.shared valid data se local test banata hai (worker ke bina error path)
+    window.location.hash = '#/dashboard';
     await new Promise(r => setTimeout(r, 400));
-    return { hint, hash: window.location.hash, stayed: window.location.hash === '#/battle' };
+    return true;
   })()`);
-  T('battle: signed-out join → sign-in hint + kahin nahi gaya', so && so.hint === true && so.stayed === true, so);
+  T('share: navigation back safe', shTest === true);
+
   window.location.hash = '#/settings';
   await sleep(400);
+  await waitFor(() => doc.getElementById('st-save-cfg'), 10000);   // jsdom me dashboard render slow — queue serial hai
   T('settings renders', doc.getElementById('st-save-cfg') && doc.getElementById('st-wipe'));
   const stCat = doc.getElementById('st-category'), stState = doc.getElementById('st-state');
   T('settings: category + state dropdowns present', !!stCat && !!stState && stState.options.length > 30);

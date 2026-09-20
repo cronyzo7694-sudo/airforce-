@@ -214,81 +214,35 @@ async function call(port, p, body, opts = {}) {
   T('pulled note locally applied', noteSync && noteSync.text === 'dusre device se aaya');
   await G('Cloud.setAuto(true)');
 
-  // ═══ BATTLE v2: REAL-EXAM MODE lifecycle (2 players, live timings ~45s) ═══
-  console.log('━━━ BATTLE · real-exam group mode (same test, live, +1/−0.25)');
-  TEST_UID = 'google-uid-HOST';
-  const bq = [
-    { id: 'bq1', subject: 'physics', text: '2 + 2 = ?', options: [{ id: 'o1', text: '3' }, { id: 'o2', text: '4' }], correctId: 'o2' },
-    { id: 'bq2', subject: 'physics', text: 'Capital of India?', options: [{ id: 'o1', text: 'Mumbai' }, { id: 'o2', text: 'New Delhi' }], correctId: 'o2' },
-    { id: 'bq3', subject: 'raga', text: '5 * 5 = ?', options: [{ id: 'o1', text: '10' }, { id: 'o2', text: '25' }], correctId: 'o2' }
-  ];
-  const c1 = await call(port, '/v1/battle/create', { name: 'Real Exam Battle', subject: 'mixed', startsAt: Date.now() + 60000, durationMs: 30000, questions: bq, playerName: 'Host Bhai' });
-  T('battle: create → 6-char code (real-exam mode)', c1.j.ok && /^[A-Z2-9]{6}$/.test(c1.j.code || ''), c1.j);
-  TEST_UID = 'google-uid-P2';
-  T('battle: player 2 join', (await call(port, '/v1/battle/join', { code: c1.j.code, playerName: 'Player Two' })).j.ok);
-  TEST_UID = 'google-uid-HOST';
-  const s1 = await call(port, '/v1/battle/state', { code: c1.j.code });
-  T('battle: lobby state, 2 players, host + duration flag', s1.j.room.status === 'lobby' && s1.j.players.length === 2 && s1.j.room.host === 'google-uid-HOST' && s1.j.room.durationMs === 30000, s1.j.room);
-  const qearly = await call(port, '/v1/battle/questions', { code: c1.j.code });
-  T('battle: questions BEFORE start → 400 (no leak)', qearly.status === 400);
-  T('battle: host start-now (10s warning)', (await call(port, '/v1/battle/start', { code: c1.j.code })).j.ok);
-  TEST_UID = 'google-uid-P2';
-  T('battle: non-host start rejected (403)', (await call(port, '/v1/battle/start', { code: c1.j.code })).status === 403);
-  TEST_UID = 'google-uid-HOST';
-  await new Promise(r => setTimeout(r, 10800));   // 10s warning + margin → LIVE
-  const s2 = await call(port, '/v1/battle/state', { code: c1.j.code });
-  T('battle: live + endsAt set', s2.j.room.status === 'live' && s2.j.room.endsAt > s2.j.now, s2.j.room);
-  T('battle: state me PLAN (ids+subjects — joiner local test ke liye)', Array.isArray(s2.j.plan) && s2.j.plan.length === 3 && s2.j.plan[0].id === 'bq1' && s2.j.plan[2].subject === 'raga' && !s2.j.plan.some(x => x.correctId || x.text), s2.j.plan && s2.j.plan.length);
-  const Q = await call(port, '/v1/battle/questions', { code: c1.j.code });
-  T('battle: 3 questions, correctId NOT leaked, sections grouped', Q.j.ok && Q.j.questions.length === 3 &&
-    !Q.j.questions.some(q => 'correctId' in q) && Q.j.questions[0].subject === 'physics' && Q.j.sections.physics.length === 2 && Q.j.sections.raga.length === 1, Q.j.questions && Q.j.questions.length);
-  // dono answer karte hain — host: q0+q1 correct; P2: q0 wrong→update→clear→re-answer, q1 wrong
-  T('battle: host answer q0 (correct)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o2' })).j.ok);
-  T('battle: host answer q1 (correct)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 1, optId: 'o2' })).j.ok);
-  TEST_UID = 'google-uid-P2';
-  T('battle: P2 answer q0 (wrong)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o1' })).j.ok);
-  T('battle: P2 CHANGES q0 → correct (exam me badalna allowed)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o2' })).j.ok);
-  T('battle: P2 CLEAR q0 (Clear Response)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: null })).j.ok);
-  T('battle: P2 re-answer q0 (final correct)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o2' })).j.ok);
-  T('battle: P2 answer q1 (wrong −0.25)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 1, optId: 'o1' })).j.ok);
-  const s3 = await call(port, '/v1/battle/state', { code: c1.j.code });
-  const p2s = s3.j.players.find(p => p.uid === 'google-uid-P2'), hs = s3.j.players.find(p => p.uid === 'google-uid-HOST');
-  T('battle: LIVE progress — attempted counts (host 2, P2 2)', p2s && p2s.attempted === 2 && hs && hs.attempted === 2, s3.j.players);
-  T('battle: P2 submit early → done', (await call(port, '/v1/battle/submit', { code: c1.j.code })).j.ok);
-  // ── LIVE CHAT (exam ke दौरान bhi) ──
-  const ch1 = await call(port, '/v1/battle/chat', { code: c1.j.code, text: ' bhai ye question tough hai 😅 ' });
-  T('battle chat: message post (trim + naam server se)', ch1.j.ok && ch1.j.msg && ch1.j.msg.text === 'bhai ye question tough hai 😅' && ch1.j.msg.name === 'Player Two', ch1.j);
-  T('battle chat: khaali message → 400', (await call(port, '/v1/battle/chat', { code: c1.j.code, text: '   ' })).status === 400);
-  T('battle chat: flood guard (429)', (await call(port, '/v1/battle/chat', { code: c1.j.code, text: 'turant doosra' })).status === 429);
-  T('battle chat: 300-char → 280 slice', (() => { const r = null; return true; })() && (await call(port, '/v1/battle/chat', { code: c1.j.code, text: 'x'.repeat(300) }).j === null || true));   // flood guard active — length test niche result ke baad
-  const sc1 = await call(port, '/v1/battle/state', { code: c1.j.code, chatSince: null });
-  T('battle chat: state piggyback (chatSince null → last 20)', sc1.j.chat && sc1.j.chat.length === 1 && sc1.j.chat[0].name === 'Player Two', sc1.j.chat);
-  const sc2 = await call(port, '/v1/battle/state', { code: c1.j.code, chatSince: sc1.j.chat[0].id });
-  T('battle chat: chatSince filter → koi duplicate nahi', Array.isArray(sc2.j.chat) && sc2.j.chat.length === 0);
-  T('battle: answer AFTER submit → rejected', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 2, optId: 'o2' })).status === 400);
-  TEST_UID = 'google-uid-HOST';
-  await new Promise(r => setTimeout(r, 34500));   // 30s duration + grace khatam → auto done
-  const fin = await call(port, '/v1/battle/state', { code: c1.j.code });
-  T('battle: finished after duration (done)', fin.j.room.status === 'done', fin.j.room && fin.j.room.status);
-  T('battle: answer after time up → rejected', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 2, optId: 'o2' })).status === 400);
-  const res = await call(port, '/v1/battle/result', { code: c1.j.code });
-  const rHost = res.j.players.find(p => p.uid === 'google-uid-HOST'), rP2 = res.j.players.find(p => p.uid === 'google-uid-P2');
-  T('battle: result — standings sorted, real marking', res.j.ok && res.j.players.length === 2 && res.j.players[0].uid === 'google-uid-HOST', res.j.players);
-  T('battle: host score = 2.0 (2 correct, 1 left)', rHost && rHost.score === 2 && rHost.correct === 2 && rHost.unattempted === 1, rHost);
-  T('battle: P2 score = 0.75 (1 correct − 0.25 wrong — negative marking live)', rP2 && rP2.score === 0.75 && rP2.correct === 1 && rP2.wrong === 1, rP2);
-  T('battle: comparison matrix — 4 answers, kisne kya chuna', res.j.answers.length === 4 && res.j.answers.every(a => a.opt_id === 'o1' || a.opt_id === 'o2'), res.j.answers);
-  T('battle: questions ke saath correctIds (analysis ke liye)', res.j.questions.length === 3 && res.j.questions[0].correctId === 'o2');
-  // ── POST-EXAM CHAT (khatam hone ke baad bhi) ──
-  await new Promise(r => setTimeout(r, 1000));   // flood guard window nikle
-  const ch2 = await call(port, '/v1/battle/chat', { code: c1.j.code, text: 'y'.repeat(300) });
-  T('battle chat: 300-char → 280 par slice', ch2.j.ok && ch2.j.msg.text.length === 280, ch2.j && ch2.j.msg && ch2.j.msg.text && ch2.j.msg.text.length);
-  TEST_UID = 'google-uid-P2';
-  await new Promise(r => setTimeout(r, 1000));
-  const ch3 = await call(port, '/v1/battle/chat', { code: c1.j.code, text: 'congrats bhai! 🎉' });
-  T('battle chat: result ke baad bhi chat (post-exam)', ch3.j.ok && ch3.j.msg.name === 'Player Two');
-  const sc3 = await call(port, '/v1/battle/state', { code: c1.j.code, chatSince: null });
-  T('battle chat: sab messages order me', sc3.j.chat.length === 3 && sc3.j.chat[0].text.indexOf('tough') > 0 && sc3.j.chat[2].text === 'congrats bhai! 🎉');
-  TEST_UID = 'google-uid-AAA';
+  // ═══ 🔗 SHARE — test ka shareable link (worker endpoints) ═══
+  console.log('━━━ SHARE · link se same test + group comparison');
+  const sData = {
+    sections: [
+      { subjectId: 'physics', name: 'Physics', questionIds: ['q1', 'q2', 'q3'] },
+      { subjectId: 'raga', name: 'RAGA', questionIds: ['q4', 'q5'] }
+    ],
+    duration: 1200, mode: 'exam', marking: { correct: 1, wrong: -0.25, unattempted: 0 },
+    totalQuestions: 5, maxScore: 5
+  };
+  const sc = await call(port, '/v1/share/create', { name: 'Mera Test', playerName: 'Host Bhai', data: sData });
+  T('share: create → 6-char code + total echo', sc.j.ok && /^[A-Z2-9]{6}$/.test(sc.j.code || '') && sc.j.total === 5, sc.j);
+  T('share: create — invalid sections → 400', (await call(port, '/v1/share/create', { name: 'X', data: { sections: [] } })).status === 400);
+  const sg = await call(port, '/v1/share/get', { code: sc.j.code });
+  T('share: get → same sections/order (NO auth — link kholte hi mile)', sg.j.ok && sg.j.data.sections[0].questionIds.join() === 'q1,q2,q3' && sg.j.data.sections[1].questionIds.length === 2, sg.j.data && sg.j.data.sections && sg.j.data.sections.length);
+  T('share: invalid code → 404', (await call(port, '/v1/share/get', { code: 'ZZZZZZ' })).status === 404);
+  const sa1 = await call(port, '/v1/share/attempt', { code: sc.j.code, name: 'Host Bhai', score: 4, correct: 4, wrong: 1, unattempted: 0, accuracy: 80, answers: [
+    { qid: 'q1', opt: 'A', correct: true }, { qid: 'q2', opt: 'B', correct: true }, { qid: 'q3', opt: 'C', correct: false }, { qid: 'q4', opt: 'A', correct: true }, { qid: 'q5', opt: 'D', correct: true }
+  ] });
+  T('share: attempt upload (NO auth — dost bhi bhej sake)', sa1.j.ok, sa1.j);
+  const sa2 = await call(port, '/v1/share/attempt', { code: sc.j.code, name: 'Dost Ji', score: 2.5, correct: 3, wrong: 2, unattempted: 0, accuracy: 60, answers: [
+    { qid: 'q1', opt: 'A', correct: true }, { qid: 'q2', opt: 'C', correct: false }, { qid: 'q3', opt: 'C', correct: true }, { qid: 'q4', opt: 'B', correct: false }, { qid: 'q5', opt: '', correct: false }
+  ] });
+  T('share: doosra candidate upload', sa2.j.ok);
+  T('share: flood guard 5s (429)', (await call(port, '/v1/share/attempt', { code: sc.j.code, name: 'Dost Ji', score: 1, answers: [] })).status === 429);
+  const sl = await call(port, '/v1/share/attempts', { code: sc.j.code });
+  T('share: attempts list — sorted by score (View with all)', sl.j.ok && sl.j.total === 2 && sl.j.attempts[0].name === 'Host Bhai' && sl.j.attempts[0].score === 4, sl.j.attempts && sl.j.attempts.map(a => a.name + ':' + a.score));
+  T('share: matrix data — kisne kya chuna', sl.j.attempts[0].answers.length === 5 && sl.j.attempts[1].answers[4].opt === '');
+  T('share: attempts — invalid code 404', (await call(port, '/v1/share/attempts', { code: 'ZZZZZZ' })).status === 404);
 
   // REAL JWKS verification (internet se Google ke public keys) — forged token  // REAL JWKS verification (internet se Google ke public keys) — forged token
   const jwks = await (await fetch('https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com')).json();

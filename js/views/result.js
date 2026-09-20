@@ -9,7 +9,6 @@ Views.result = async function (attemptId) {
     return Router.go('/dashboard');
   }
   const test = await DB.get('tests', a.testId);
-  const battleCode = (a.testId || '').indexOf('battle-') === 0 ? a.testId.slice(7) : null;   // battle attempt
   const res = a.result;
   const cfg = await App.config();
   const pct = res.maxScore ? Math.round((res.score / res.maxScore) * 1000) / 10 : 0;
@@ -34,7 +33,6 @@ Views.result = async function (attemptId) {
   }).join('');
 
   App.page('page page-result', `
-      ${battleCode ? '<div class="bt-resbanner"><span>⚔️ LIVE BATTLE — group comparison: kaun jeeta, kisne kya chuna!</span><a class="bt-b-btn" href="#/battle/' + AVUtil.esc(battleCode) + '">Comparison →</a></div>' : ''}
     <div class="result-hero">
       <div class="rh-left">
         <div class="rh-check" aria-hidden="true">✓</div>
@@ -131,7 +129,7 @@ Views.result = async function (attemptId) {
 
     <section class="result-actions">
       <a class="btn btn-primary" href="#/attempt/${a.id}/analysis">VIEW DETAILED ANALYSIS</a>
-      ${battleCode ? `<a class="btn btn-plain" href="#/battle/${AVUtil.esc(battleCode)}" style="background:var(--purple-bg);color:var(--purple)">⚔️ BATTLE COMPARISON</a>` : `<a class="btn btn-plain" href="#/test/${a.testId}/instructions">REATTEMPT</a>`}
+      <a class="btn btn-plain" href="#/test/${a.testId}/instructions">REATTEMPT</a>
       <a class="btn btn-plain" href="#/dashboard">BACK TO DASHBOARD</a>
     </section>
   `);
@@ -264,7 +262,7 @@ Views.analysis = async function (attemptId, state) {
         <div class="th-meta">Attempt #${a.attemptNo} · ${AVUtil.fmtDate(a.endTime || a.date)} · ${AVUtil.fmtDur(res.timeTaken)}</div>
         <div class="th-tools">
           <a class="th-more" href="#/attempt/${a.id}/result">📊 Result page</a>
-          ${((a.testId || '').indexOf('battle-') === 0) ? `<a class="th-new" href="#/battle/${AVUtil.esc(a.testId.slice(7))}">⚔️ Battle comparison</a>` : `<a class="th-new" href="#/test/${a.testId}/instructions">↻ Reattempt</a>`}
+          <a class="th-new" href="#/test/${a.testId}/instructions">↻ Reattempt</a>
         </div>
       </div>
       <div class="th-side">
@@ -284,6 +282,7 @@ Views.analysis = async function (attemptId, state) {
 
   if (state.tab === 'overview') {
     body.innerHTML = `
+      ${groupCompareHTML(a)}
       ${progressionHTML()}
       <section class="stat-row">
         ${ast('Attempted', res.attempted)} ${ast('Correct', res.correct, 'good')} ${ast('Wrong', res.wrong, 'bad')}
@@ -442,17 +441,27 @@ Views.analysis = async function (attemptId, state) {
     return `<div class="stat-card ${cls || ''}"><div class="stat-val">${AVUtil.esc(String(v))}</div><div class="stat-lbl">${l}</div></div>`;
   }
 
+  /* 🔗 GROUP COMPARISON — "View with all": jinhone YE shared test diya un sab ka comparison
+     (shared test nahi hai to section render hi nahi hota — normal tests par zero effect) */
+  async function groupCompareHTML(a) {
+    const test = await DB.get('tests', a.testId).catch(() => null);
+    if (!test || !test.sharedCode) return '';
+    const tid = 'gc-' + test.sharedCode;
+    return `<section class="card gc-card" id="${tid}">
+      <div class="gc-head" id="${tid}-h"><h3>👥 View With All <span class="gc-hint">— jinhone ye test diya un sab ka comparison</span></h3><span class="gc-arrow">▸</span></div>
+      <div class="gc-body" id="${tid}-b" hidden><p class="muted small">📊 Load ho raha hai…</p></div>
+    </section>`;
+  }
+
   /* reattempt progression — ek hi test ke saare attempts, connected */
   function progressionHTML() {
     if (sibAttempts.length < 2) {
       return `<section class="card prog-card prog-hint">
         <div class="prog-hint-txt">
           <b>Attempt Progression</b>
-          <span>Ye test abhi 1 baar diya hai. ${(a.testId || '').indexOf('battle-') === 0 ? 'Battle me reattempt nahi hota — nayi battle banao!' : 'Reattempt karo — pehla kitna aaya, dusre me kitna aaya, sab yahan connected graph me dikhega.'}</span>
+          <span>Ye test abhi 1 baar diya hai. Reattempt karo — pehla kitna aaya, dusre me kitna aaya, sab yahan connected graph me dikhega.</span>
         </div>
-        ${(a.testId || '').indexOf('battle-') === 0
-          ? `<a class="btn btn-primary" href="#/battle/${AVUtil.esc(a.testId.slice(7))}">⚔️ Battle Comparison dekho</a>`
-          : `<a class="btn btn-primary" href="#/test/${a.testId}/instructions">↻ Reattempt this test</a>`}
+        <a class="btn btn-primary" href="#/test/${a.testId}/instructions">↻ Reattempt this test</a>
       </section>`;
     }
     const points = sibAttempts.map(x => ({ x: '#' + x.attemptNo, y: x.maxScore ? Math.round(x.score / x.maxScore * 1000) / 10 : 0 }));
@@ -501,6 +510,13 @@ Views.analysis = async function (attemptId, state) {
     AVUtil.$$('#an-body .qa-toggle').forEach(b => b.setAttribute('aria-expanded', 'false'));
   });
   AVUtil.$('#an-body [data-qp]') && AVUtil.$$('#an-body [data-qp]').forEach(b => b.addEventListener('click', () => { state.qPage = +b.dataset.qp; Views.analysis(attemptId, state); }));
+  AVUtil.$('#gc-head')?.addEventListener('click', () => {
+    const card = AVUtil.$('#gc-card'); const body = AVUtil.$('#gc-body'); const arr = card && card.querySelector('.gc-arrow');
+    if (!card || !body) return;
+    body.hidden = !body.hidden;
+    if (arr) arr.textContent = body.hidden ? '▸' : '▾';
+    if (!body.hidden) gcLoad(card);
+  });
   AVUtil.$$('#app .filter-tabs [data-tab]').forEach(b => b.addEventListener('click', () => { state.tab = b.dataset.tab; Views.analysis(attemptId, state); }));
 
   // notebook: save per-question custom notes (Ctrl+Enter or button)

@@ -257,7 +257,6 @@ const ExamScreen = {
   bindCommon() {
     document.body.classList.add('exam-on'); // hides site footer + chat during the exam
     document.body.classList.add('cbt-on');  // + bottom tab bar
-    if (this.test && this.test.battle && window.BT) { try { BT.live.mount(this); } catch (e) { } }   // battle: live layer (sirf battle tests)
     const a = this.attempt;
     // submit (header — always available, with confirmation)
     const subBtn = AVUtil.$('#x-submit');
@@ -339,7 +338,6 @@ const ExamScreen = {
     AVUtil.$('#x-clear').addEventListener('click', async () => {
       Engine.clearResponse(a, qid);
       await this.persist();
-      if (this.test && this.test.battle && window.BT) BT.live.cleared(qid);   // battle sync
       this.render();
     });
     AVUtil.$('#x-prev').addEventListener('click', () => this.previous());
@@ -384,7 +382,6 @@ const ExamScreen = {
     const qid = sec.questionIds[a.currentQIdx];
     Engine.selectOption(a, qid, origId);
     await this.persist();
-    if (this.test && this.test.battle && window.BT) BT.live.answered(qid, origId);   // battle sync
     // light re-render (keep scroll) — update option styles + palette + counts
     this.render();
   },
@@ -562,7 +559,6 @@ const ExamScreen = {
     this.stopTick();
     document.body.classList.remove('exam-on');
     document.body.classList.remove('cbt-on');
-    if (this.test && this.test.battle && window.BT) { try { BT.live.unmount(); } catch (e) { } }   // battle: live layer off
     if (this.keyHandler) { document.removeEventListener('keydown', this.keyHandler); this.keyHandler = null; }
   },
 
@@ -668,7 +664,7 @@ const ExamScreen = {
 
     App.activeAttempt = null;
     if (this.keyHandler) document.removeEventListener('keydown', this.keyHandler);
-    if (test.battle && window.BT) { try { await BT.live.submitted(); } catch (e) { } }   // battle: server lock
+    if (test.sharedCode && window.Share) { try { Share.uploadAttempt(test, a, a.result); } catch (e) { } }   // 🔗 shared: comparison upload
     if (!silent) {
       this.renderComplete();
     } else {
@@ -694,8 +690,7 @@ const ExamScreen = {
             <tr><td>Time Used</td><td><b>${AVUtil.fmtDur(res.timeTaken)}</b></td></tr>
           </table>
           <div class="se-actions">
-            ${(this.test && this.test.battle) ? `<a class="xbtn xbtn-save" href="#/battle/${AVUtil.esc(this.test.battle.code)}" style="background:#7a4fb3">⚔️ BATTLE COMPARISON</a>` : ''}
-            <a class="xbtn ${(this.test && this.test.battle) ? 'xbtn-plain' : 'xbtn-save'}" href="#/attempt/${a.id}/result">VIEW RESULT</a>
+            <a class="xbtn xbtn-save" href="#/attempt/${a.id}/result">VIEW RESULT</a>
             <a class="xbtn xbtn-plain" href="#/attempt/${a.id}/analysis">VIEW ANALYSIS</a>
             <a class="xbtn xbtn-plain" href="#/test/${a.testId}/instructions">REATTEMPT</a>
             <a class="xbtn xbtn-plain" href="#/dashboard">BACK TO DASHBOARD</a>
