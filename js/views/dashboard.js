@@ -96,6 +96,12 @@ Views.dashboard = async function () {
         <p>Har mock bilkul naya banta hai — apni performance ke hisaab se questions.</p>
       </div>`}
     </section>
+      <section class="bt-banner" aria-label="Live battle with friends">
+        <div class="bt-b-l"><span class="bt-b-ico">⚔️</span>
+          <div><b>LIVE BATTLE</b><span>doston ke saath live quiz — link bhejo, ek saath khelo 🏆</span></div>
+        </div>
+        <a class="bt-b-btn" href="#/battle">Battle Banao →</a>
+      </section>
 
     <section class="stat-row" aria-label="Your performance">
       ${statCard('Tests Given', totalTests)}

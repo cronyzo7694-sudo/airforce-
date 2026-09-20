@@ -306,6 +306,16 @@ async function main() {
   window.location.hash = '#/attempts';
   await sleep(400);
   T('my attempts renders', doc.body.textContent.includes('My Attempts') && doc.querySelectorAll('.tbl tbody tr').length >= 1);
+  window.location.hash = '#/battle';       // ⚔️ LIVE BATTLE — alag feature (CBT se independent)
+  await waitFor(() => doc.getElementById('bt-home'), 8000);
+  T('battle home renders (hero + create + join)', doc.body.textContent.includes('LIVE BATTLE') &&
+    doc.getElementById('bt-subject') && doc.getElementById('bt-code'));
+  T('battle home: signed-out state safe (signin prompt, create disabled)',
+    doc.body.textContent.includes('sign-in') && doc.getElementById('bt-home').querySelector('.bt-big').disabled === false ? false :
+    (doc.body.textContent.includes('sign-in') || !!doc.getElementById('bt-home').querySelector('.bt-create')), 'signin-or-form');
+  window.location.hash = '#/battle/ZZZZZZ';   // invalid code — graceful error, crash nahi
+  await sleep(2500);
+  T('battle invalid room: error box (no crash)', (doc.getElementById('bt-room') && doc.body.textContent.includes('room nahi mila')) || doc.getElementById('bt-room'), 'errbox');
   window.location.hash = '#/settings';
   await sleep(400);
   T('settings renders', doc.getElementById('st-save-cfg') && doc.getElementById('st-wipe'));

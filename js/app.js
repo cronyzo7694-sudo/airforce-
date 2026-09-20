@@ -287,6 +287,8 @@ const App = {
     Router.add('/import', () => Views.importPage());
     Router.add('/attempts', () => Views.attempts());
     Router.add('/settings', () => Views.settings());
+    Router.add('/battle', () => Views.battle());                       // ⚔️ LIVE BATTLE (alag feature)
+    Router.add('/battle/:code', p => Views.battleRoom(p.code));
     Router.notFound = () => Router.go('/dashboard');
   }
 };

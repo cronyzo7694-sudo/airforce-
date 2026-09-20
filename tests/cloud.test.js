@@ -214,7 +214,53 @@ async function call(port, p, body, opts = {}) {
   T('pulled note locally applied', noteSync && noteSync.text === 'dusre device se aaya');
   await G('Cloud.setAuto(true)');
 
-  // REAL JWKS verification (internet se Google ke public keys) — forged token
+  // ═══ BATTLE MODE: full lifecycle (2 players, live timings) ═══
+  console.log('━━━ BATTLE · live group quiz lifecycle (~35s real timings)');
+  TEST_UID = 'google-uid-HOST';
+  const bq = [
+    { id: 'bq1', text: '2 + 2 = ?', options: [{ id: 'o1', text: '3' }, { id: 'o2', text: '4' }], correctId: 'o2' },
+    { id: 'bq2', text: 'Capital of India?', options: [{ id: 'o1', text: 'Mumbai' }, { id: 'o2', text: 'New Delhi' }], correctId: 'o2' }
+  ];
+  const c1 = await call(port, '/v1/battle/create', { name: 'Test Battle', subject: 'physics', startsAt: Date.now() + 60000, perQMs: 10000, questions: bq, playerName: 'Host Bhai' });
+  T('battle: create → 6-char code', c1.j.ok && /^[A-Z2-9]{6}$/.test(c1.j.code || ''), c1.j);
+  TEST_UID = 'google-uid-P2';
+  T('battle: player 2 join', (await call(port, '/v1/battle/join', { code: c1.j.code, playerName: 'Player Two' })).j.ok);
+  TEST_UID = 'google-uid-HOST';
+  const s1 = await call(port, '/v1/battle/state', { code: c1.j.code });
+  T('battle: lobby state, 2 players, host flag', s1.j.room.status === 'lobby' && s1.j.players.length === 2 && s1.j.room.host === 'google-uid-HOST', s1.j.players && s1.j.players.length);
+  T('battle: host start-now', (await call(port, '/v1/battle/start', { code: c1.j.code })).j.ok);
+  TEST_UID = 'google-uid-P2';
+  T('battle: non-host start rejected (403)', (await call(port, '/v1/battle/start', { code: c1.j.code })).status === 403);
+  TEST_UID = 'google-uid-HOST';
+  await new Promise(r => setTimeout(r, 4800));   // 4s warning + margin
+  const s2 = await call(port, '/v1/battle/state', { code: c1.j.code });
+  T('battle: live Q1, correct answer NOT leaked', s2.j.room.status === 'live' && s2.j.qNo === 0 && s2.j.question && !('correctId' in s2.j.question), s2.j.qNo);
+  const a1 = await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o2' });
+  T('battle: fast correct answer → 10 + speed bonus', a1.j.ok && a1.j.correct === true && a1.j.points >= 13 && a1.j.points <= 15, a1.j);
+  TEST_UID = 'google-uid-P2';
+  const a2 = await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o1' });
+  T('battle: wrong answer → 0 points', a2.j.ok && a2.j.correct === false && a2.j.points === 0, a2.j);
+  const rv0 = await call(port, '/v1/battle/reveal', { code: c1.j.code, qNo: 0 });
+  T('battle: reveal BEFORE deadline → early (400)', rv0.status === 400);
+  await new Promise(r => setTimeout(r, 9300));   // deadline ke baad (start+4+10)
+  const rv1 = await call(port, '/v1/battle/reveal', { code: c1.j.code, qNo: 0 });
+  T('battle: reveal — dono ke answers + correctId', rv1.j.ok && rv1.j.correctId === 'o2' && rv1.j.answers.length === 2, rv1.j);
+  await new Promise(r => setTimeout(r, 10000));  // Q2 window (start+19)
+  TEST_UID = 'google-uid-HOST';
+  const s3 = await call(port, '/v1/battle/state', { code: c1.j.code });
+  T('battle: auto-advance Q2 (time-driven sync)', s3.j.qNo === 1, s3.j.qNo);
+  const a3 = await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 1, optId: 'o2' });
+  T('battle: last answer accepted', a3.j.ok && a3.j.score >= 20, a3.j);
+  await new Promise(r => setTimeout(r, 21000));  // lastDeadline + reveal window (start+34)
+  TEST_UID = 'google-uid-P2';
+  const fin = await call(port, '/v1/battle/state', { code: c1.j.code });
+  T('battle: finished (done)', fin.j.room.status === 'done', fin.j.room && fin.j.room.status);
+  const res = await call(port, '/v1/battle/result', { code: c1.j.code });
+  T('battle: result — standings sorted, comparison data', res.j.ok && res.j.players.length === 2 && res.j.players[0].score > res.j.players[1].score && res.j.answers.length === 3, res.j.players);
+  T('battle: winner = host (sab correct)', res.j.players[0].uid === 'google-uid-HOST' && res.j.players[0].correct === 2);
+  TEST_UID = 'google-uid-AAA';
+
+  // REAL JWKS verification (internet se Google ke public keys) — forged token  // REAL JWKS verification (internet se Google ke public keys) — forged token
   const jwks = await (await fetch('https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com')).json();
   const kid = jwks.keys[0].kid;
   const b64u = b => Buffer.from(b).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');

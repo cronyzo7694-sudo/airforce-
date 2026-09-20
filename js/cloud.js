@@ -462,7 +462,7 @@ var Cloud = (() => {
   async function setAuto(on) { status.auto = !!on; await saveStatus(); }
 
   return {
-    init, syncNow, restore, uploadImage, setAuto, signIn, signOut,
+    init, syncNow, restore, uploadImage, setAuto, signIn, signOut, authed,
     get status() { return status; },
     get user() { return user; },
     endpoint, configured,

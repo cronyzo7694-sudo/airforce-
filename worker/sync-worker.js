@@ -306,6 +306,249 @@ async function mediaUpload(req, env, auth, body) {
   return json(req, 200, { ok: true, url: j.secure_url, publicId: j.public_id, bytes: j.bytes, format: j.format });
 }
 
+/* ---------------- BATTLE (live group quiz, server-authoritative) ---------------- */
+var BATTLE_REVEAL_MS = 5000, BATTLE_GRACE_MS = 2000, BATTLE_MAX_Q = 30;
+var BATTLE_CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';
+
+function battleCode() {
+  var c = '';
+  for (var i = 0; i < 6; i++) c += BATTLE_CODE_CHARS[Math.floor(Math.random() * BATTLE_CODE_CHARS.length)];
+  return c;
+}
+function battleDeadline(room, qNo) { return room.starts_at + qNo * (room.per_q_ms + room.reveal_ms) + room.per_q_ms; }
+function battleQIndex(room, now) { return Math.floor((now - room.starts_at) / (room.per_q_ms + room.reveal_ms)); }
+function sanitizeQ(q) { return q ? { id: q.id, text: q.text, hi: q.hi || null, options: (q.options || []).map(function (o) { return { id: o.id, text: o.text, hi: o.hi || null }; }) } : null; }
+
+function battleNeon(env) {
+  return {
+    createRoom: function (r) {
+      return neonSQL(env, 'INSERT INTO battle_rooms (code, host_uid, name, subject, status, starts_at, per_q_ms, reveal_ms, questions, created_at) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',
+        [r.code, r.host_uid, r.name, r.subject, r.status, r.starts_at, r.per_q_ms, r.reveal_ms, JSON.stringify(r.questions), r.created_at]);
+    },
+    getRoom: function (code) {
+      return neonSQL(env, 'SELECT * FROM battle_rooms WHERE code = $1', [code]).then(function (rows) {
+        if (!rows.length) return null;
+        var r = rows[0];
+        if (typeof r.questions === 'string') r.questions = JSON.parse(r.questions);
+        return r;
+      });
+    },
+    setStart: function (code, startsAt) {
+      return neonSQL(env, 'UPDATE battle_rooms SET starts_at = $2 WHERE code = $1', [code, startsAt]);
+    },
+    setDone: function (code) {
+      return neonSQL(env, "UPDATE battle_rooms SET status = 'done' WHERE code = $1", [code]);
+    },
+    upsertPlayer: function (p) {
+      return neonSQL(env, 'INSERT INTO battle_players (room_code, uid, name, photo, joined_at) VALUES ($1,$2,$3,$4,$5) ' +
+        'ON CONFLICT (room_code, uid) DO UPDATE SET name = $3, photo = $4', [p.room_code, p.uid, p.name, p.photo, p.joined_at]);
+    },
+    players: function (code) {
+      return neonSQL(env, 'SELECT uid, name, photo, score, correct, q_no, done FROM battle_players WHERE room_code = $1 ORDER BY joined_at', [code]);
+    },
+    updPlayer: function (code, uid, addScore, addCorrect, qNo) {
+      return neonSQL(env, 'UPDATE battle_players SET score = score + $3, correct = correct + $4, q_no = GREATEST(q_no, $5) WHERE room_code = $1 AND uid = $2',
+        [code, uid, addScore, addCorrect, qNo]);
+    },
+    setPlayerDone: function (code, uid) {
+      return neonSQL(env, 'UPDATE battle_players SET done = true WHERE room_code = $1 AND uid = $2', [code, uid]);
+    },
+    insertAnswer: function (a) {
+      // first answer counts — re-answer ignored (server-authoritative)
+      return neonSQL(env, 'INSERT INTO battle_answers (room_code, uid, q_no, opt_id, correct, points, ms_left, answered_at) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) ON CONFLICT (room_code, uid, q_no) DO NOTHING', [a.room_code, a.uid, a.q_no, a.opt_id, a.correct, a.points, a.ms_left, a.answered_at])
+        .then(function () { return neonSQL(env, 'SELECT points, correct FROM battle_answers WHERE room_code = $1 AND uid = $2 AND q_no = $3', [a.room_code, a.uid, a.q_no]); });
+    },
+    answers: function (code, qNo) {
+      return neonSQL(env, 'SELECT a.uid, a.opt_id, a.correct, a.points FROM battle_answers a WHERE a.room_code = $1 AND a.q_no = $2', [code, qNo]);
+    },
+    allAnswers: function (code) {
+      return neonSQL(env, 'SELECT uid, q_no, opt_id, correct, points FROM battle_answers WHERE room_code = $1 ORDER BY q_no, uid', [code]);
+    }
+  };
+}
+function battleMem() {
+  if (!MEM.battle) MEM.battle = { rooms: new Map(), players: new Map(), answers: new Map() };
+  var B = MEM.battle;
+  var pkey = function (c, u) { return c + '␟' + u; };
+  return {
+    createRoom: function (r) { B.rooms.set(r.code, r); return Promise.resolve(); },
+    getRoom: function (code) { return Promise.resolve(B.rooms.get(code) || null); },
+    setStart: function (code, t) { var r = B.rooms.get(code); if (r) r.starts_at = t; return Promise.resolve(); },
+    setDone: function (code) { var r = B.rooms.get(code); if (r) r.status = 'done'; return Promise.resolve(); },
+    upsertPlayer: function (p) {
+      var k = pkey(p.room_code, p.uid);
+      if (!B.players.has(k)) B.players.set(k, { room_code: p.room_code, uid: p.uid, name: p.name, photo: p.photo, score: 0, correct: 0, q_no: 0, done: false, joined_at: p.joined_at });
+      else { var e = B.players.get(k); e.name = p.name; e.photo = p.photo; }
+      return Promise.resolve();
+    },
+    players: function (code) {
+      var out = [];
+      B.players.forEach(function (v, k) { if (k.split('␟')[0] === code) out.push(v); });
+      out.sort(function (a, b) { return a.joined_at - b.joined_at; });
+      return Promise.resolve(out);
+    },
+    updPlayer: function (code, uid, addScore, addCorrect, qNo) {
+      var p = B.players.get(pkey(code, uid));
+      if (p) { p.score += addScore; p.correct += addCorrect; if (qNo > p.q_no) p.q_no = qNo; }
+      return Promise.resolve();
+    },
+    setPlayerDone: function (code, uid) { var p = B.players.get(pkey(code, uid)); if (p) p.done = true; return Promise.resolve(); },
+    insertAnswer: function (a) {
+      var k = a.room_code + '␟' + a.uid + '␟' + a.q_no;
+      if (!B.answers.has(k)) B.answers.set(k, { room_code: a.room_code, uid: a.uid, q_no: a.q_no, opt_id: a.opt_id, correct: a.correct, points: a.points, ms_left: a.ms_left });
+      var cur = B.answers.get(k);
+      return Promise.resolve([{ points: cur.points, correct: cur.correct }]);
+    },
+    answers: function (code, qNo) {
+      var out = [];
+      B.answers.forEach(function (v) { if (v.room_code === code && v.q_no === qNo) out.push({ uid: v.uid, opt_id: v.opt_id, correct: v.correct, points: v.points }); });
+      return Promise.resolve(out);
+    },
+    allAnswers: function (code) {
+      var out = [];
+      B.answers.forEach(function (v) { if (v.room_code === code) out.push({ uid: v.uid, q_no: v.q_no, opt_id: v.opt_id, correct: v.correct, points: v.points }); });
+      out.sort(function (a, b) { return a.q_no - b.q_no || (a.uid < b.uid ? -1 : 1); });
+      return Promise.resolve(out);
+    }
+  };
+}
+
+async function battleHandler(req, env, auth, path, body) {
+  var st = battleNeonOrMem(env);
+  var now = Date.now();
+
+  if (path === '/v1/battle/create') {
+    var qs = Array.isArray(body.questions) ? body.questions.slice(0, BATTLE_MAX_Q) : [];
+    if (!body.name || String(body.name).length > 60) return json(req, 400, { ok: false, error: 'battle ka naam chahiye (max 60)' });
+    if (!qs.length || qs.length > BATTLE_MAX_Q) return json(req, 400, { ok: false, error: 'questions 1-' + BATTLE_MAX_Q });
+    var perQ = Number(body.perQMs) || 30000;
+    if (perQ < 10000 || perQ > 120000) return json(req, 400, { ok: false, error: 'per-question time 10s–120s' });
+    var startsAt = Number(body.startsAt) || 0;
+    if (startsAt < now - 60000 || startsAt > now + 7 * 86400000) return json(req, 400, { ok: false, error: 'start time galat' });
+    for (var i = 0; i < qs.length; i++) {
+      var q = qs[i];
+      if (!q || !q.text || !Array.isArray(q.options) || q.options.length < 2 || !q.correctId) return json(req, 400, { ok: false, error: 'question ' + (i + 1) + ' invalid' });
+      if (!q.options.some(function (o) { return o.id === q.correctId; })) return json(req, 400, { ok: false, error: 'question ' + (i + 1) + ' ka correctId options me nahi' });
+    }
+    var room = {
+      code: battleCode(), host_uid: auth.uid, name: String(body.name).slice(0, 60), subject: String(body.subject || 'mixed').slice(0, 30),
+      status: 'lobby', starts_at: startsAt, per_q_ms: perQ, reveal_ms: BATTLE_REVEAL_MS,
+      questions: qs.map(function (q) { return { id: q.id, text: String(q.text).slice(0, 3000), hi: q.hi ? String(q.hi).slice(0, 3000) : null, options: q.options.map(function (o) { return { id: String(o.id).slice(0, 40), text: String(o.text).slice(0, 1000), hi: o.hi ? String(o.hi).slice(0, 1000) : null }; }), correctId: String(q.correctId).slice(0, 40) }; }),
+      created_at: now
+    };
+    // unique code (memory me collision check; neon PK bhi guard karta hai)
+    try { await st.createRoom(room); } catch (e) { room.code = battleCode(); await st.createRoom(room); }
+    await st.upsertPlayer({ room_code: room.code, uid: auth.uid, name: String(body.playerName || 'Host').slice(0, 40), photo: body.photo ? String(body.photo).slice(0, 500) : null, joined_at: now });
+    return json(req, 200, { ok: true, code: room.code });
+  }
+
+  if (path === '/v1/battle/join') {
+    var room = await st.getRoom(String(body.code || '').toUpperCase().trim());
+    if (!room) return json(req, 404, { ok: false, error: 'room nahi mila — code check karo' });
+    if (room.status === 'done') return json(req, 400, { ok: false, error: 'battle khatam ho chuka' });
+    await st.upsertPlayer({ room_code: room.code, uid: auth.uid, name: String(body.playerName || 'Player').slice(0, 40), photo: body.photo ? String(body.photo).slice(0, 500) : null, joined_at: now });
+    return json(req, 200, { ok: true, code: room.code });
+  }
+
+  if (path === '/v1/battle/start') {   // host: abhi shuru karo
+    var room = await st.getRoom(String(body.code || '').toUpperCase().trim());
+    if (!room) return json(req, 404, { ok: false, error: 'room nahi mila' });
+    if (room.host_uid !== auth.uid) return json(req, 403, { ok: false, error: 'sirf host start kar sakta hai' });
+    if (room.status === 'done') return json(req, 400, { ok: false, error: 'khatam' });
+    await st.setStart(room.code, now + 4000);   // 4s warning
+    return json(req, 200, { ok: true });
+  }
+
+  if (path === '/v1/battle/state') {
+    var room = await st.getRoom(String(body.code || '').toUpperCase().trim());
+    if (!room) return json(req, 404, { ok: false, error: 'room nahi mila' });
+    var players = await st.players(room.code);
+    var live = now >= room.starts_at;
+    var total = room.questions.length;
+    var lastDeadline = battleDeadline(room, total - 1) + room.reveal_ms;
+    var allDone = players.length > 0 && players.every(function (p) { return p.done || p.q_no >= total; });
+    var finished = room.status === 'done' || (live && (allDone || now > lastDeadline));
+    if (finished && room.status !== 'done') await st.setDone(room.code);
+    // lazy q_no advance (skipped questions)
+    if (live) {
+      var qi = battleQIndex(room, now);
+      for (var pi = 0; pi < players.length; pi++) {
+        if (players[pi].q_no < qi) {
+          players[pi].q_no = qi;
+          await st.updPlayer(room.code, players[pi].uid, 0, 0, qi);
+        }
+      }
+    }
+    var out = {
+      ok: true, now: now,
+      room: { code: room.code, name: room.name, subject: room.subject, host: room.host_uid, startsAt: room.starts_at, perQMs: room.per_q_ms, revealMs: room.reveal_ms, total: total, status: finished ? 'done' : (live ? 'live' : 'lobby') },
+      players: players,
+      you: null
+    };
+    for (var yi = 0; yi < players.length; yi++) if (players[yi].uid === auth.uid) out.you = players[yi];
+    if (live && !finished) {
+      var curQ = battleQIndex(room, now);
+      if (curQ >= 0 && curQ < total) {
+        var q = room.questions[curQ];
+        out.question = sanitizeQ(q);
+        out.qNo = curQ;
+        out.deadline = battleDeadline(room, curQ);
+        out.revealAt = out.deadline;
+      }
+    }
+    return json(req, 200, out);
+  }
+
+  if (path === '/v1/battle/answer') {
+    var room = await st.getRoom(String(body.code || '').toUpperCase().trim());
+    if (!room) return json(req, 404, { ok: false, error: 'room nahi mila' });
+    var qNo = Number(body.qNo), optId = String(body.optId || '');
+    if (!(qNo >= 0) || qNo >= room.questions.length) return json(req, 400, { ok: false, error: 'question invalid' });
+    var deadline = battleDeadline(room, qNo);
+    if (Date.now() > deadline + BATTLE_GRACE_MS) return json(req, 400, { ok: false, error: 'time up — ye question chhoot gaya' });
+    if (Date.now() < room.starts_at) return json(req, 400, { ok: false, error: 'abhi start nahi hua' });
+    var q = room.questions[qNo];
+    var correct = optId === q.correctId;
+    var msLeft = Math.max(0, deadline - Date.now());
+    var bonus = correct ? Math.max(0, Math.min(5, Math.floor(5 * msLeft / room.per_q_ms))) : 0;
+    var points = correct ? 10 + bonus : 0;
+    var res = await st.insertAnswer({ room_code: room.code, uid: auth.uid, q_no: qNo, opt_id: optId, correct: correct, points: points, ms_left: msLeft, answered_at: Date.now() });
+    var first = res && res[0];
+    await st.updPlayer(room.code, auth.uid, first ? first.points : 0, first && first.correct ? 1 : 0, qNo + 1);
+    if (qNo + 1 >= room.questions.length) await st.setPlayerDone(room.code, auth.uid);
+    var ps = await st.players(room.code);
+    var me = null; for (var i = 0; i < ps.length; i++) if (ps[i].uid === auth.uid) me = ps[i];
+    return json(req, 200, { ok: true, correct: !!(first && first.correct), points: first ? first.points : 0, alreadyAnswered: !first, score: me ? me.score : 0 });
+  }
+
+  if (path === '/v1/battle/reveal') {
+    var room = await st.getRoom(String(body.code || '').toUpperCase().trim());
+    if (!room) return json(req, 404, { ok: false, error: 'room nahi mila' });
+    var qNo = Number(body.qNo);
+    if (!(qNo >= 0) || qNo >= room.questions.length) return json(req, 400, { ok: false, error: 'question invalid' });
+    if (Date.now() < battleDeadline(room, qNo) - 100) return json(req, 400, { ok: false, error: 'early — reveal deadline ke baad' });
+    var ans = await st.answers(room.code, qNo);
+    return json(req, 200, { ok: true, qNo: qNo, correctId: room.questions[qNo].correctId, answers: ans });
+  }
+
+  if (path === '/v1/battle/result') {
+    var room = await st.getRoom(String(body.code || '').toUpperCase().trim());
+    if (!room) return json(req, 404, { ok: false, error: 'room nahi mila' });
+    var players = await st.players(room.code);
+    var answers = await st.allAnswers(room.code);
+    return json(req, 200, {
+      ok: true,
+      room: { code: room.code, name: room.name, subject: room.subject, total: room.questions.length, perQMs: room.per_q_ms },
+      players: players.sort(function (a, b) { return b.score - a.score; }),
+      answers: answers,
+      questions: room.questions.map(function (q) { return { id: q.id, text: q.text, correctId: q.correctId, options: q.options }; })
+    });
+  }
+
+  return null;   // not a battle route
+}
+function battleNeonOrMem(env) { return env.NEON_CS ? battleNeon(env) : battleMem(); }
+
 /* ---------------- main handler ---------------- */
 async function handleRequest(req, env) {
   var url = new URL(req.url);
@@ -376,6 +619,13 @@ async function handleRequest(req, env) {
   if (path === '/v1/media' && req.method === 'POST') {
     try { return await mediaUpload(req, env, auth, body); }
     catch (e) { return json(req, 500, { ok: false, error: 'media: ' + e.message }); }
+  }
+
+  if (path.indexOf('/v1/battle/') === 0) {
+    try {
+      var br = await battleHandler(req, env, auth, path, body);
+      if (br) return br;
+    } catch (e) { return json(req, 500, { ok: false, error: 'battle: ' + e.message }); }
   }
 
   return json(req, 404, { ok: false, error: 'not found' });
