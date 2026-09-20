@@ -36,7 +36,7 @@ const EXAM_CONFIG = {
   defaultLanguage: 'en',           // 'en' | 'hi' (UI + instructions)
 
   /* ---------------- GENERATION ---------------- */
-  selectionStrategy: 'smart', // smart (no repeat after 2× correct) | balanced-unseen | random | balanced | unseen-first | weak-topic | wrong-weighted
+  selectionStrategy: 'realpaper', // realpaper (asli exam ka chapter-weightage blueprint) | smart | balanced-unseen | random | balanced | unseen-first | weak-topic | wrong-weighted
   retakeMode: 'fresh',             // 'fresh' (reattempt = NEW questions, same blueprint — kam repeat) | 'same' | 'random'
 
   /* ---------------- WEAK/STRONG TOPIC THRESHOLDS ---------------- */

@@ -121,6 +121,64 @@ const Generator = (() => {
 
     let ranked;
     switch (strategy) {
+      case 'realpaper': {
+        /* ═══ REAL PAPER BLUEPRINT ═══
+           Bank 100% asli PYQs se bana hai — isliye bank ka chapter-ratio
+           HI asli exam ka blueprint hai (e.g. Optics ≈ 9% of real physics
+           questions → 25 Q ke section me ~2). Har test isi weightage se
+           banta hai. Candidate ke marks/performance ka isme KOI role nahi —
+           bilkul asli exam jaisa. Andar sirf itna rotation hai ki naye
+           (unseen) questions pehle aayein, taaki har paper fresh lage. */
+        const byCh = {};
+        p.forEach(q => { const c = q.chapter || 'General'; (byCh[c] = byCh[c] || []).push(q); });
+        const chapters = Object.keys(byCh);
+        const totalPool = p.length;
+        const alloc = {};
+        let used = 0;
+        const rem = [];
+        chapters.forEach(c => {
+          const exact = byCh[c].length * n / totalPool;
+          alloc[c] = Math.floor(exact);
+          used += alloc[c];
+          rem.push({ c: c, frac: exact - alloc[c] });
+        });
+        rem.sort((a, b) => b.frac - a.frac);          // largest remainder first
+        let left = n - used;
+        for (let i = 0; i < rem.length && left > 0; i++)
+          if (alloc[rem[i].c] < byCh[rem[i].c].length) { alloc[rem[i].c]++; left--; }
+        while (left > 0) {                             // pool skewed ho to bharo
+          const before = left;
+          const order = chapters.slice().sort((a, b) => byCh[b].length - byCh[a].length);
+          for (const c of order) {
+            if (!left) break;
+            if (alloc[c] < byCh[c].length) { alloc[c]++; left--; }
+          }
+          if (left === before) break;
+        }
+        const queues = {};
+        chapters.forEach(c => {
+          const unseen = AVUtil.shuffle(byCh[c].filter(q => seenCount(q) === 0));
+          const seenQ = AVUtil.shuffle(byCh[c].filter(q => seenCount(q) > 0));
+          queues[c] = unseen.concat(seenQ);           // rotation only — performance nahi
+        });
+        const taken = {}; chapters.forEach(c => taken[c] = 0);
+        const pickedSet = new Set();
+        ranked = [];
+        while (ranked.length < n) {
+          let added = false;
+          const order = chapters.slice().sort((a, b) => alloc[b] - alloc[a]);
+          for (const c of order) {                    // round-robin → natural mixed order
+            if (ranked.length >= n) break;
+            if (taken[c] < alloc[c]) {
+              const q = queues[c][taken[c]++];
+              ranked.push(q); pickedSet.add(q.id); added = true;
+            }
+          }
+          if (!added) break;
+        }
+        ranked = ranked.concat(AVUtil.shuffle(p.filter(q => !pickedSet.has(q.id))));
+        break;
+      }
       case 'random':
         ranked = AVUtil.shuffle(p.slice());
         break;
@@ -282,7 +340,7 @@ const Generator = (() => {
       shuffleOptions: !!opts.shuffleOptions,
       instantExplanation: !!opts.instantExplanation && opts.mode === 'practice',
       marking,
-      strategy: opts.strategy || C.selectionStrategy || 'smart',
+      strategy: opts.strategy || C.selectionStrategy || 'realpaper',
       sections: builtSections,
       totalQuestions: total,
       maxScore: Math.round(total * marking.correct * 100) / 100
@@ -304,7 +362,7 @@ const Generator = (() => {
     const cfg = await Store.getSetting('config', null);
     const C = cfg || EXAM_CONFIG;
     const qstats = await Store.getMeta('qstats', { seen: {}, wrong: {}, correct: {}, skipped: {}, topicAcc: {} });
-    const strategy = opts.strategy || C.selectionStrategy || 'balanced-unseen';
+    const strategy = opts.strategy || C.selectionStrategy || 'realpaper';
 
     const availability = [];
     const builtSections = [];

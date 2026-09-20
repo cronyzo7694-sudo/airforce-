@@ -109,7 +109,7 @@ async function main() {
     await waitFor(() => doc.querySelector('.cbt-instructions'), 8000);
   }
   const genTest = await G('DB.get("tests", "' + testId + '")');
-  T('quick-start test uses smart strategy', genTest.strategy === 'smart');
+  T('quick-start test uses realpaper strategy', genTest.strategy === 'realpaper');
   T('series tests untouched by quick-start (36 total)', (await G('DB.count("tests")')) === 36);
   T('instructions page renders (Digialm style)',
     doc.querySelector('.cbt-instructions') && doc.body.textContent.includes('INSTRUCTIONS TO CANDIDATES'));

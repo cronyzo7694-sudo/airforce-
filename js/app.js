@@ -24,6 +24,14 @@ const App = {
         if (saved.retakeMode !== 'random') saved.retakeMode = 'fresh';
         try { await Store.setSetting('config', saved); } catch (e) { /* non-fatal */ }
       }
+      // one-time migration v3: default strategy ab REAL PAPER BLUEPRINT hai
+      // (asli exam ka chapter-weightage — performance-based nahi). Purana
+      // default 'smart' tha; explicitly chuna hua option respect hota hai.
+      if (!saved._strategyMigrated3) {
+        saved._strategyMigrated3 = true;
+        if (!saved.selectionStrategy || saved.selectionStrategy === 'smart') saved.selectionStrategy = 'realpaper';
+        try { await Store.setSetting('config', saved); } catch (e) { /* non-fatal */ }
+      }
       this.configCache = saved;
     } else {
       this.configCache = EXAM_CONFIG;

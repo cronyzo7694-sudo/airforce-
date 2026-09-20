@@ -387,6 +387,49 @@ T('pick returns null when pool < n (insufficient handling)', () => {
   const pool = mkPool(24, 'y');
   eq(Generator.pick(pool, 25, 'random', {}), null, 'null');
 });
+T('realpaper: chapter allocation follows pool proportions (largest remainder)', () => {
+  // chapters A:50, B:30, C:20 → 10 Q should be A:5, B:3, C:2
+  const pool = [];
+  for (let i = 0; i < 50; i++) pool.push({ id: 'A' + i, chapter: 'A', correctAnswer: 'X', dupeHash: 'a' + i });
+  for (let i = 0; i < 30; i++) pool.push({ id: 'B' + i, chapter: 'B', correctAnswer: 'X', dupeHash: 'b' + i });
+  for (let i = 0; i < 20; i++) pool.push({ id: 'C' + i, chapter: 'C', correctAnswer: 'X', dupeHash: 'c' + i });
+  const picked = Generator.pick(pool, 10, 'realpaper', {});
+  const cnt = { A: 0, B: 0, C: 0 };
+  picked.forEach(q => cnt[q.chapter]++);
+  eq(picked.length, 10, 'exact count');
+  eq(cnt.A, 5, 'A=5 (50%)'); eq(cnt.B, 3, 'B=3 (30%)'); eq(cnt.C, 2, 'C=2 (20%)');
+});
+T('realpaper: allocation within ±1 when proportions fractional', () => {
+  const pool = [];
+  for (let i = 0; i < 55; i++) pool.push({ id: 'A' + i, chapter: 'A', correctAnswer: 'X', dupeHash: 'x' + i });
+  for (let i = 0; i < 45; i++) pool.push({ id: 'B' + i, chapter: 'B', correctAnswer: 'X', dupeHash: 'y' + i });
+  for (let t = 0; t < 20; t++) {
+    const picked = Generator.pick(pool, 10, 'realpaper', {});
+    const a = picked.filter(q => q.chapter === 'A').length;
+    assert(a === 5 || a === 6, 'A is 5 or 6 (5.5 expected), got ' + a);
+    eq(picked.length, 10, 'exact count');
+  }
+});
+T('realpaper: small chapters get 0, big chapters carry (real skew)', () => {
+  // 90 vs 10 → 25 Q me ~22-23 A, 2-3 B — chhota chapter gayab nahi hota proportionally
+  const pool = [];
+  for (let i = 0; i < 90; i++) pool.push({ id: 'A' + i, chapter: 'A', correctAnswer: 'X', dupeHash: 'p' + i });
+  for (let i = 0; i < 10; i++) pool.push({ id: 'B' + i, chapter: 'B', correctAnswer: 'X', dupeHash: 'q' + i });
+  const picked = Generator.pick(pool, 25, 'realpaper', {});
+  const a = picked.filter(q => q.chapter === 'A').length;
+  const b = picked.filter(q => q.chapter === 'B').length;
+  eq(a + b, 25, 'total 25');
+  assert(a >= 21 && a <= 23, 'A ~22.5 (got ' + a + ')'); assert(b >= 2 && b <= 4, 'B ~2.5 (got ' + b + ')');
+});
+T('realpaper: rotation — unseen questions first, performance ignored', () => {
+  const pool = [];
+  for (let i = 0; i < 30; i++) pool.push({ id: 'R' + i, chapter: 'Ch', correctAnswer: 'X', dupeHash: 'r' + i });
+  const qstats = { seen: {}, wrong: {}, correct: {} };
+  pool.slice(0, 12).forEach(q => qstats.seen[q.id] = 1);
+  const picked = Generator.pick(pool, 10, 'realpaper', qstats);
+  const unseenPicked = picked.filter(q => !qstats.seen[q.id]).length;
+  eq(unseenPicked, 10, 'sab unseen (18 available the) — marks ka role nahi');
+});
 T('unseen-first prefers unseen questions', () => {
   const pool = mkPool(30, 'z');
   const qstats = { seen: {} };
