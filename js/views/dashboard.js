@@ -68,7 +68,6 @@ Views.dashboard = async function () {
     ${App.resumeBannerHTML()}
 
     <div class="dash-greet">
-      <img class="dg-logo" src="icons/icon-192.png" alt="Kineora Exam logo">
       <div>
         <h1>${greet}, ${AVUtil.esc((cfg.candidateName || 'Practice Candidate').split(' ')[0])}</h1>
         <p class="muted">${today} · ${AVUtil.esc(cfg.name)}</p>

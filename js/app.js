@@ -137,12 +137,7 @@ const App = {
     return `<header class="topnav">
       <a class="brand" href="#/dashboard" aria-label="Home">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
-            <circle cx="10" cy="14" r="7" stroke="currentColor" stroke-width="2.2"/>
-            <circle cx="10" cy="14" r="2.3" fill="currentColor"/>
-            <path d="M15.4 8.6 20.5 3.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M16.4 3.5h4.1v4.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
+          <img src="icons/icon-96.png" alt="">
         </span>
         <span class="brand-text">Kineora <b>Exam</b></span>
       </a>
