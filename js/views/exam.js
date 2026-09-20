@@ -112,11 +112,15 @@ const ExamScreen = {
         <div class="legend-row"><button class="qbtn ansmarked" tabindex="-1" aria-hidden="true">9</button> <span>${t('answeredMarked')} <em class="small muted">(${t('willBeEvaluated')})</em><span class="lg-count">${summary.answeredMarked}</span></span></div>
       </div>`;
 
+    const candPhoto = (App.configCache?.profileImage)
+      ? `<img src="${AVUtil.esc(App.configCache.profileImage)}" alt="Candidate photo">`
+      : AVUtil.esc(((App.configCache?.candidateName) || 'Practice Candidate').trim()[0] || 'P').toUpperCase();
     const candidatePanel = `
       <div class="cand-panel">
-        <div class="avatar" aria-hidden="true"><svg viewBox="0 0 24 24" width="34" height="34"><path fill="#b9c6d8" d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg></div>
+        <div class="nav-avatar cand-photo" aria-hidden="true">${candPhoto}</div>
         <div class="cand-info">
           <div class="cand-name">${AVUtil.esc((App.configCache?.candidateName) || 'Practice Candidate')}</div>
+          <div class="cand-sub muted small">Roll No: ${AVUtil.esc(App.configCache?.rollNumber || '—')}</div>
           <div class="cand-sub muted small">${AVUtil.esc(test.name)}</div>
         </div>
       </div>`;
@@ -137,7 +141,7 @@ const ExamScreen = {
       <div class="q-head">
         <div class="q-no">
           ${t('questionNo')} ${gnum}<span class="q-of"> / ${sec.questionIds.length}</span>
-          <span class="q-marks" title="${AVUtil.esc(secName)} · marking scheme">+${test.marking.correct} · ${test.marking.wrong} · 0</span>
+          <span class="q-marks" title="${AVUtil.esc(secName)} · marking scheme — correct +${test.marking.correct} / wrong ${test.marking.wrong} / unattempted 0">Marks +${test.marking.correct} · ${test.marking.wrong}</span>
         </div>
         <div class="q-viewin">
           <button class="q-report" id="x-report" title="🚩 Report / Block — ye question hamesha ke liye hat jayega aur turant naya aa jayega" aria-label="Report and block this question">🚩<span class="q-report-lbl">Report</span></button>
@@ -177,7 +181,7 @@ const ExamScreen = {
         <button class="palette-toggle" id="drawer-btn" aria-label="${t('questionPalette')}"><span aria-hidden="true">☰</span></button>
         <img class="eh-logo" src="icons/icon-96.png" alt="Kineora Exam logo">
         <div class="eh-name">
-          <div class="eh-exam">${AVUtil.esc(App.configCache?.name || 'Air Force Agniveervayu')}</div>
+          <div class="eh-exam">${AVUtil.esc((App.configCache?.name || 'Air Force Agniveervayu').toUpperCase())} <span class="eh-online">ONLINE EXAMINATION</span></div>
           <div class="eh-test small muted">${AVUtil.esc(test.name)}</div>
         </div>
         <div class="eh-right">

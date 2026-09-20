@@ -102,6 +102,12 @@ async function main() {
   }
   testId = (window.location.hash.match(/#\/test\/([^/]+)\/instructions/) || [])[1];
   T('full mock generated → instructions page', !!testId, window.location.hash);
+  await waitFor(() => doc.getElementById('login-btn') || doc.querySelector('.cbt-instructions'), 15000);
+  if (doc.getElementById('login-btn')) {   // real C-DAC candidate-login stage
+    T('candidate login screen (User ID + photo)', doc.querySelector('.cl-card') && doc.getElementById('login-btn'));
+    doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
+    await waitFor(() => doc.querySelector('.cbt-instructions'), 8000);
+  }
   const genTest = await G('DB.get("tests", "' + testId + '")');
   T('quick-start test uses smart strategy', genTest.strategy === 'smart');
   T('series tests untouched by quick-start (36 total)', (await G('DB.count("tests")')) === 36);
@@ -308,7 +314,11 @@ async function main() {
   const r = await G('Generator.subjectTest("physics")');
   T('subject test generated (25 Q)', r.ok && r.test.totalQuestions === 25);
   window.location.hash = '#/test/' + r.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('ins-agree'), 10000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 10000);
+  if (doc.getElementById('login-btn')) {
+    doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
+    await waitFor(() => doc.getElementById('ins-agree'), 8000);
+  }
   doc.getElementById('ins-agree').checked = true;
   doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
   doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));

@@ -86,6 +86,13 @@ async function main() {
   const p = await G('Generator.generate({ name: "Pause test", type: "subject", mode: "practice", allowPause: true, sections: [{ subjectId: "physics", count: 5 }] })');
   window.location.hash = '#/test/' + p.test.id + '/instructions';
   await sleep(500); // let double-render settle (jsdom fires hashchange twice)
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 15000);
+  if (doc.getElementById('login-btn')) {   // real C-DAC candidate-login stage
+    doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
+    await waitFor(() => doc.getElementById('ins-agree'), 8000);
+  }
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 15000);
+    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-agree'), 8000); }
   await waitFor(() => doc.getElementById('ins-agree'), 15000);
   await sleep(300);
   await G('const ag = document.getElementById("ins-agree"); ag.checked = true; ag.dispatchEvent(new Event("change", {bubbles:true})); document.getElementById("ins-begin").disabled = false;');
@@ -135,6 +142,8 @@ async function main() {
   const f = await G('Generator.fullMock()');
   window.location.hash = '#/test/' + f.test.id + '/instructions';
   await sleep(500);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 15000);
+    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-agree'), 8000); }
   const insUp = await waitFor(() => doc.getElementById('ins-agree'), 15000);
   await sleep(300);
   await G('const ag = document.getElementById("ins-agree"); ag.checked = true; ag.dispatchEvent(new Event("change", {bubbles:true})); document.getElementById("ins-begin").disabled = false;');
@@ -164,6 +173,8 @@ async function main() {
   const t1qids = t1Attempt.sections.physics.questionIds;
   window.location.hash = '#/test/' + f.test.id + '/instructions';
   await sleep(500);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 15000);
+    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-agree'), 8000); }
   await waitFor(() => doc.getElementById('ins-agree'), 15000);
   await sleep(300);
   await G('const ag = document.getElementById("ins-agree"); ag.checked = true; ag.dispatchEvent(new Event("change", {bubbles:true})); document.getElementById("ins-begin").disabled = false;');
@@ -228,6 +239,8 @@ async function main() {
   const s3 = await G('Generator.subjectTest("english")');
   window.location.hash = '#/test/' + s3.test.id + '/instructions';
   await sleep(500);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 15000);
+    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-agree'), 8000); }
   const engIns = await waitFor(() => doc.getElementById('ins-agree'), 15000);
   await sleep(300);
   await G('const ag = document.getElementById("ins-agree"); ag.checked = true; ag.dispatchEvent(new Event("change", {bubbles:true})); document.getElementById("ins-begin").disabled = false;');
@@ -278,6 +291,8 @@ async function main() {
   if (reat) {
     window.location.hash = reat.getAttribute('href').slice(1);
     await sleep(500);
+    await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 15000);
+      if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-agree'), 8000); }
     const reatIns = await waitFor(() => doc.getElementById('ins-agree'), 15000);
     T('reattempt → instructions', reatIns);
     await G('Router.go("/attempts")'); await sleep(500);

@@ -29,28 +29,85 @@ Views.instructions = async function (testId) {
   const total = test.totalQuestions;
   const mk = test.marking;
 
+  /* ══════════ STAGE 1 — CANDIDATE LOGIN (real C-DAC exam center feel) ══════════ */
+  if (!sessionStorage.getItem('examLogin_' + test.id)) {
+    let roll = cfg.rollNumber;
+    if (!roll) {
+      roll = 'AV' + String(Date.now()).slice(-6) + String(Math.floor(Math.random() * 90) + 10);
+      cfg.rollNumber = roll;
+      await Store.setSetting('config', cfg);
+      App.configCache = cfg;
+    }
+    const photo = cfg.profileImage
+      ? `<img src="${AVUtil.esc(cfg.profileImage)}" alt="Candidate photo">`
+      : `<span class="cl-ph-initial">${AVUtil.esc((cfg.candidateName || 'P').trim()[0] || 'P').toUpperCase()}</span>`;
+    document.getElementById('app').innerHTML = `
+      <div class="cbt cbt-login">
+        <div class="cl-band">
+          <div class="cl-band-left"><img src="icons/icon-96.png" alt="" class="cl-band-logo"><span>${AVUtil.esc(cfg.name || 'AIR FORCE AGNIVEERVAYU')} — ONLINE EXAMINATION</span></div>
+          <div class="cl-band-right">PHASE I : ONLINE TEST</div>
+        </div>
+        <div class="cl-wrap">
+          <div class="cl-card">
+            <div class="cl-head">CANDIDATE LOGIN</div>
+            <div class="cl-photo">${photo}</div>
+            <div class="cl-cand-name">${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}</div>
+            <div class="cl-cand-sub">Roll No : <b>${AVUtil.esc(roll)}</b> · ${AVUtil.esc(test.name)}</div>
+            <div class="cl-fields">
+              <label>User ID<input type="text" value="${AVUtil.esc(roll)}" readonly aria-readonly="true"></label>
+              <label>Password<input type="password" value="agniveer@${AVUtil.esc(roll.slice(-4))}" readonly aria-readonly="true"></label>
+            </div>
+            <p class="cl-note">Real exam me User ID / Password <b>invigilator</b> deta hai — practice test ke liye auto-filled hai.</p>
+            <button class="btn-begin" id="login-btn">SIGN IN</button>
+            <div class="cl-warn">⚠ Do not carry mobile phones, bluetooth devices, calculators or any other prohibited items into the examination hall.</div>
+          </div>
+        </div>
+        <div class="cl-foot">This is a computer based test (CBT). The clock is set at the server — the countdown timer at the top right of the screen will display the remaining time.</div>
+      </div>`;
+    window.scrollTo(0, 0);
+    document.body.classList.add('cbt-on');
+    AVUtil.$('#login-btn').addEventListener('click', () => {
+      const b = AVUtil.$('#login-btn');
+      b.disabled = true; b.textContent = 'SIGNING IN…';
+      sessionStorage.setItem('examLogin_' + test.id, '1');
+      setTimeout(() => Views.instructions(testId), 450);
+    });
+    return;
+  }
+
   const rules = [
-    `<b>Duration: ${Math.round(test.duration / 60)} minutes.</b> ${test.timerMode === 'section'
-      ? `Section-wise timing: ${secs.map(s => `${s.name} ${Math.round(s.duration / 60)} min`).join(' · ')}. When a section's time expires it is submitted automatically and the next section starts with its full time — leftover time is <b>not</b> carried forward.`
-      : `A single countdown timer (top-right) shows the remaining time. At 00:00 the examination ends automatically.`}`,
-    `The <b>Question Palette</b> on the right shows the status of every question:
-      <span class="pal-demo"><button class="qbtn answered" tabindex="-1">1</button> answered</span>
-      <span class="pal-demo"><button class="qbtn notanswered" tabindex="-1">2</button> not answered</span>
-      <span class="pal-demo"><button class="qbtn notvisited" tabindex="-1">3</button> not visited</span>
-      <span class="pal-demo"><button class="qbtn marked" tabindex="-1">4</button> marked for review</span>
-      <span class="pal-demo"><button class="qbtn ansmarked" tabindex="-1">5</button> answered &amp; marked — <b>will be evaluated</b></span>`,
-    `To answer: select an option and press <b>SAVE &amp; NEXT</b>. Selections are also auto-saved instantly — a refresh never loses your work.`,
-    `To change an answer, pick the question from the palette and select the new option. To deselect, use <b>CLEAR RESPONSE</b>.`,
-    `<b>MARK FOR REVIEW &amp; NEXT</b> flags a question — if it also has a selected answer, that answer <b>is evaluated</b>.`,
-    `Questions appear in the language chosen below${test.timerMode === 'section' ? ' (section timers keep running while you switch)' : ''}. Where content is available in only one language, it is shown in that language.`,
-    `Marking: <b>+${mk.correct}</b> correct · <b>${mk.wrong}</b> wrong · <b>0</b> unattempted. Maximum marks: <b>${test.maxScore}</b>.`,
+    `<b>Duration of the examination: ${Math.round(test.duration / 60)} minutes.</b> The clock is set at the server — the countdown timer at the top right corner of the screen will display the remaining time available. ${test.timerMode === 'section'
+      ? `Section-wise timing: ${secs.map(s => `${s.name} ${Math.round(s.duration / 60)} min`).join(' · ')}. When a section's time expires, it is submitted automatically and the next section starts with its full time — leftover time is <b>not</b> carried forward.`
+      : `When the timer reaches zero, the examination will end by itself.`}`,
+    `The <b>Question Palette</b> displayed on the right side of the screen will show the status of each question using one of the following symbols:
+      <span class="pal-demo"><button class="qbtn answered" tabindex="-1">1</button> Answered</span>
+      <span class="pal-demo"><button class="qbtn notanswered" tabindex="-1">2</button> Not Answered</span>
+      <span class="pal-demo"><button class="qbtn notvisited" tabindex="-1">3</button> Not Visited</span>
+      <span class="pal-demo"><button class="qbtn marked" tabindex="-1">4</button> Marked for Review</span>
+      <span class="pal-demo"><button class="qbtn ansmarked" tabindex="-1">5</button> Answered &amp; Marked for Review — <b>will be considered for evaluation</b></span>`,
+    `To answer a question, click the option button of your choice. To <b>save</b> your answer, you <b>MUST</b> click on the <b>SAVE &amp; NEXT</b> button.`,
+    `To change your chosen answer, click the button of another option. To deselect your chosen answer, click on <b>CLEAR RESPONSE</b>.`,
+    `To mark a question for review, click on <b>MARK FOR REVIEW &amp; NEXT</b>. If an answer is selected for a question that is Marked for Review, that answer <b>will be considered in the evaluation</b>.`,
     test.sectionLock
-      ? `Sections are <b>locked in order</b>: ${secs.map(s => AVUtil.esc(s.name)).join(' → ')}. Submit the current section (button in the top bar) to unlock the next. A submitted section cannot be reopened.`
-      : `You may move freely between sections using the subject tabs at the top.`,
-    `Navigate with the palette, Previous / Next buttons or the <b>arrow keys</b>; keys <b>1–4</b> select options.`,
-    `You may <b>PAUSE</b> the exam anytime (⏸ button, top bar) — the timer stops completely and resumes exactly where you left it.`,
-    `Submit anytime via the <b>SUBMIT</b> button (a confirmation is always shown first). ${test.sectionLock ? 'The examination ends when the last section is submitted.' : 'Do not submit before completing — a confirmation lets you return to the paper.'}`
+      ? `Sections in this paper are <b>locked in order</b>: ${secs.map(s => AVUtil.esc(s.name)).join(' → ')}. You cannot move to the next section until you submit the current section. A submitted section cannot be re-opened.`
+      : `You may shuffle between sections and questions anytime during the examination by clicking the subject names on the top bar.`,
+    `Marking pattern — <b>+${mk.correct}</b> mark for each correct answer, <b>${mk.wrong}</b> mark deducted for each wrong answer, <b>0</b> for unattempted questions. Maximum marks: <b>${test.maxScore}</b>.`,
+    `Questions will be displayed in the language chosen below (bilingual — English &amp; हिन्दी, except English subject). Where content is available in only one language, it will be displayed in that language.`,
+    `You may submit the paper anytime by clicking the <b>SUBMIT</b> button — a confirmation is always shown first. ${test.sectionLock ? 'The examination ends when the last section is submitted.' : 'You may return to the paper from the confirmation dialog.'}`,
+    `Do not click any unnecessary button on the computer and do not close or refresh the browser — in case of any interruption, your attempt is preserved and can be resumed from the same point.`
   ];
+
+  const practiceExtras = `
+      <details class="ins-extras">
+        <summary>🧰 Practice-mode extras (real exam me NAHI milte)</summary>
+        <ul>
+          <li><b>Auto-save:</b> selections are saved instantly — a refresh never loses your work.</li>
+          <li><b>Pause (⏸):</b> exam timer ko rok sakte ho, wahi se resume hota hai.</li>
+          <li><b>Keyboard:</b> arrow keys navigation, 1–4 se option select.</li>
+          <li><b>Report (🚩):</b> galat/questionable question turant block + fresh replacement.</li>
+          <li><b>My Notebook (practice tests):</b> har question pe apna note likho.</li>
+        </ul>
+      </details>`;
 
   document.getElementById('app').innerHTML = `
     <div class="cbt cbt-instructions">
@@ -72,21 +129,26 @@ Views.instructions = async function (testId) {
               <li>Unattempted questions receive <b>0 marks</b>.</li>
               <li>${test.sectionLock ? 'Section order: <b>' + secs.map(s => AVUtil.esc(s.name)).join(' → ') + '</b>.' : 'Free navigation between sections is allowed.'}</li>
               <li>Do not refresh or close the browser during the examination — your attempt is preserved and can be resumed.</li>
+              <li>The question paper is the property of the examination conducting authority — copying / recording any part of it is prohibited.</li>
             </ul>
           </div>
+          ${practiceExtras}
         </div>
         <aside class="ins-right">
           <div class="ins-panel">
             <div class="ins-cand">
-              <div class="avatar" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="40" height="40"><path fill="#b9c6d8" d="M12 12c2.7 0 4.8-2.2 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
+              <div class="nav-avatar nav-avatar-lg ins-cand-photo" aria-hidden="true">
+                ${cfg.profileImage ? `<img src="${AVUtil.esc(cfg.profileImage)}" alt="Candidate photo">` : AVUtil.esc((cfg.candidateName || 'P').trim()[0] || 'P').toUpperCase()}
               </div>
               <div>
                 <div class="ins-cand-name">${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}</div>
-                <div class="muted small">${AVUtil.esc(test.name)} · Attempt #${attemptNo}</div>
+                <div class="muted small">Roll No: <b>${AVUtil.esc(cfg.rollNumber || '—')}</b> · ${AVUtil.esc(test.name)}</div>
+                <div class="muted small">Attempt #${attemptNo}</div>
               </div>
             </div>
             <table class="ins-tbl">
+              <tr><td>Candidate Name</td><td><b>${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}</b></td></tr>
+              <tr><td>Roll Number</td><td><b>${AVUtil.esc(cfg.rollNumber || '—')}</b></td></tr>
               <tr><td>Examination</td><td><b>${AVUtil.esc(cfg.name)}</b></td></tr>
               <tr><td>Total Questions</td><td><b>${total}</b> (${secs.map(s => `${AVUtil.esc(s.name)}: ${s.questionIds.length}`).join(', ')})</td></tr>
               <tr><td>Total Duration</td><td><b>${Math.round(test.duration / 60)} minutes</b></td></tr>
@@ -106,6 +168,9 @@ Views.instructions = async function (testId) {
             <option value="hi" ${lang === 'hi' ? 'selected' : ''}>हिन्दी</option>
           </select>
         </label>
+        <div class="ins-declare-box">
+          <b>Declaration:</b> I have read and understood all the instructions given above. I declare that I am not in possession of / not wearing / not carrying any prohibited gadget like mobile phone, bluetooth device, camera, calculator etc. or any prohibited material with me into the examination hall.
+        </div>
         <label class="ins-declare">
           <input type="checkbox" id="ins-agree">
           <span>${App.t('readInstructions')}</span>
