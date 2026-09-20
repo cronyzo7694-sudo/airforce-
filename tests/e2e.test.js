@@ -316,6 +316,31 @@ async function main() {
   window.location.hash = '#/battle/ZZZZZZ';   // invalid code — graceful error, crash nahi
   await sleep(2500);
   T('battle invalid room: error box (no crash)', (doc.getElementById('bt-room') && doc.body.textContent.includes('room nahi mila')) || doc.getElementById('bt-room'), 'errbox');
+  // ⚔️ battle = ASLI test object → asli instructions + asli engine flow
+  const bt = await G(`(async () => {
+    const ids = (await DB.getAll('questions')).slice(0, 3).map(q => ({ id: q.id, subject: q.subject }));
+    const t = await BT._test.buildLocalTest('E2EQQ3', { room: { name: 'E2E Battle', durationMs: 120000, startsAt: Date.now() + 30000, plan: ids } });
+    return t && { id: t.id, type: t.type, secs: t.sections.length, total: t.totalQuestions, dur: t.duration, mark: t.marking.wrong, battle: !!t.battle, sections: t.sections.map(s => s.subjectId) };
+  })()`);
+  T('battle: asli test object built (engine schema, marking, sections)', bt && bt.id === 'battle-E2EQQ3' && bt.type === 'battle' && bt.dur === 120 && bt.mark === -0.25 && bt.battle === true && bt.total === 3, bt);
+  window.location.hash = '#/test/battle-E2EQQ3/instructions';
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 10000);
+  if (doc.getElementById('login-btn')) {   // real C-DAC candidate-login stage (asli flow ka hissa)
+    doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
+    await waitFor(() => doc.getElementById('ins-agree'), 10000);
+  }
+  T('battle: ASLI instructions page khulta hai (login + same rules)', !!doc.getElementById('ins-agree'), 'ins');
+  const gate = await G(`(async () => {   // fixed-time gate: ready dabaya BEFORE startsAt → attempt NAHI banta
+    const before = (await DB.byIndex('attempts', 'testId', 'battle-E2EQQ3')).length;
+    document.getElementById('ins-agree').click();
+    await new Promise(r => setTimeout(r, 800));
+    const after = (await DB.byIndex('attempts', 'testId', 'battle-E2EQQ3')).length;
+    return { before, after };
+  })()`);
+  T('battle: fixed-time gate — early "I am ready" blocked', gate && gate.before === 0 && gate.after === 0, gate);
+  window.location.hash = '#/tests';
+  await sleep(600);
+  T('battle: battle tests normal Tests list me nahi (alag feature)', !doc.body.textContent.includes('E2E Battle'));
   window.location.hash = '#/settings';
   await sleep(400);
   T('settings renders', doc.getElementById('st-save-cfg') && doc.getElementById('st-wipe'));

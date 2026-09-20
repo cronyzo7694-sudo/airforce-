@@ -217,7 +217,7 @@ Views.instructions = async function (testId) {
       else if (retakeMode === 'fresh') questionSets = freshSets;
       else questionSets = null; // random: engine shuffles via generator below
     }
-    if (prevAttempts.length && retakeMode === 'random') {
+    if (prevAttempts.length && retakeMode === 'random' && !test.battle) {   // battle me SAME test — kabhi regenerate nahi
       const r = await Generator.generate({
         name: test.name, type: test.type, mode: test.mode,
         sections: test.sections.map(s => ({ subjectId: s.subjectId, count: s.questionIds.length, chapters: s.chapters, topics: s.topics, difficulty: s.difficulty })),
@@ -226,6 +226,10 @@ Views.instructions = async function (testId) {
       if (r.ok) { test.id = r.test.id; }
     }
 
+    if (test.battle && Date.now() < test.battle.startsAt) {   // battle: fixed time — sab ek saath
+      AVUtil.toast('Battle fixed time par start hogi — ' + Math.ceil((test.battle.startsAt - Date.now()) / 1000) + 's baad. Rules padhte raho!', 'warn');
+      return;
+    }
     const now = Date.now();
     // a blocked (reported) question must never enter a new attempt — swap in
     // fresh replacements, even for ready-made series tests built before the block

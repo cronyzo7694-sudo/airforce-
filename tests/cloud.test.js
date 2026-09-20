@@ -238,6 +238,7 @@ async function call(port, p, body, opts = {}) {
   await new Promise(r => setTimeout(r, 10800));   // 10s warning + margin → LIVE
   const s2 = await call(port, '/v1/battle/state', { code: c1.j.code });
   T('battle: live + endsAt set', s2.j.room.status === 'live' && s2.j.room.endsAt > s2.j.now, s2.j.room);
+  T('battle: state me PLAN (ids+subjects — joiner local test ke liye)', Array.isArray(s2.j.plan) && s2.j.plan.length === 3 && s2.j.plan[0].id === 'bq1' && s2.j.plan[2].subject === 'raga' && !s2.j.plan.some(x => x.correctId || x.text), s2.j.plan && s2.j.plan.length);
   const Q = await call(port, '/v1/battle/questions', { code: c1.j.code });
   T('battle: 3 questions, correctId NOT leaked, sections grouped', Q.j.ok && Q.j.questions.length === 3 &&
     !Q.j.questions.some(q => 'correctId' in q) && Q.j.questions[0].subject === 'physics' && Q.j.sections.physics.length === 2 && Q.j.sections.raga.length === 1, Q.j.questions && Q.j.questions.length);

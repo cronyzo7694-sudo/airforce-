@@ -473,7 +473,8 @@ async function battleHandler(req, env, auth, path, body) {
     var out = {
       ok: true, now: now,
       room: { code: room.code, name: room.name, subject: room.subject, host: room.host_uid, startsAt: room.starts_at, durationMs: room.duration_ms, total: room.questions.length, status: finished ? 'done' : (live ? 'live' : 'lobby'), endsAt: battleEnd(room) },
-      players: players, you: null
+      players: players, you: null,
+      plan: room.questions.map(function (q) { return { id: q.id, subject: q.subject || null }; })   // sirf ids — joiner local test banata hai
     };
     for (var yi = 0; yi < players.length; yi++) if (players[yi].uid === auth.uid) out.you = players[yi];
     return json(req, 200, out);

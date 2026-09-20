@@ -50,6 +50,7 @@ Views.tests = async function (state) {
     incomplete: mine.filter(hasUnfinished).length
   };
   let list = mine.filter(t => {
+    if (t.type === 'battle') return false;   // battle tests alag feature hain — yahan nahi
     if (state.filter === 'all' || FNAMES[state.filter] === undefined) return true;
     if (state.filter === 'completed') return isDone(t);
     if (state.filter === 'incomplete') return hasUnfinished(t);

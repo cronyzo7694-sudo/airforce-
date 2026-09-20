@@ -9,6 +9,7 @@ Views.result = async function (attemptId) {
     return Router.go('/dashboard');
   }
   const test = await DB.get('tests', a.testId);
+  const battleCode = (a.testId || '').indexOf('battle-') === 0 ? a.testId.slice(7) : null;   // battle attempt
   const res = a.result;
   const cfg = await App.config();
   const pct = res.maxScore ? Math.round((res.score / res.maxScore) * 1000) / 10 : 0;
@@ -33,6 +34,7 @@ Views.result = async function (attemptId) {
   }).join('');
 
   App.page('page page-result', `
+      ${battleCode ? '<div class="bt-resbanner"><span>⚔️ LIVE BATTLE — group comparison: kaun jeeta, kisne kya chuna!</span><a class="bt-b-btn" href="#/battle/' + AVUtil.esc(battleCode) + '">Comparison →</a></div>' : ''}
     <div class="result-hero">
       <div class="rh-left">
         <div class="rh-check" aria-hidden="true">✓</div>
