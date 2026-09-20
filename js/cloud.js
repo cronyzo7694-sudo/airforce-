@@ -86,20 +86,28 @@ var Cloud = (() => {
   async function loadBundledIds() {
     if (bundledIds) return bundledIds;
     bundledIds = new Set();
+    const CACHE_KEY = 'bundledIdsV2';   // V1 galat thi (file-ids only) — fresh build zaroori
     try {
-      const cached = await Store.getMeta('bundledIds', null);
+      const cached = await Store.getMeta(CACHE_KEY, null);
       if (cached && cached.ids && Date.now() - (cached.at || 0) < 86400000) {
         bundledIds = new Set(cached.ids); return bundledIds;
       }
     } catch (e) {}
     try {
+      // contentId formula = seed.js wala — importBatch DB ids inhi se banata hai,
+      // isliye file-id ALAWA contentId bhi set me (warna bank questions cloud me chali jaati hain)
+      const cid = q => 'q_' + AVUtil.hash([q.subject, q.questionText, (q.options || []).map(o => o && o.text).join(' | '), q.correctAnswer || '?'].join('␟'));
       await Promise.all(BANK_FILES.map(async f => {
         const r = await fetch(f);
         if (!r.ok) return;
         const arr = await r.json();
-        (arr || []).forEach(q => { if (q && q.id) bundledIds.add(q.id); });
+        (arr || []).forEach(q => {
+          if (!q) return;
+          if (q.id) bundledIds.add(q.id);
+          try { bundledIds.add(cid(q)); } catch (e) {}
+        });
       }));
-      try { await Store.setMeta('bundledIds', { at: Date.now(), ids: Array.from(bundledIds) }); } catch (e) {}
+      try { await Store.setMeta(CACHE_KEY, { at: Date.now(), ids: Array.from(bundledIds) }); } catch (e) {}
     } catch (e) { /* offline — next sync me dobara */ }
     return bundledIds;
   }
