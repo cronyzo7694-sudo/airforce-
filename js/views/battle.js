@@ -19,6 +19,17 @@ window.BT = (function () {
   const esc = s => AVUtil.esc(String(s == null ? '' : s));
   const shareLink = code => location.href.split('#')[0] + '#/battle/' + code;
   function fmt(ms) { ms = Math.max(0, ms); const s = Math.ceil(ms / 1000); return s >= 60 ? Math.floor(s / 60) + 'm ' + (s % 60) + 's' : s + 's'; }
+  /* mixed exact split: P25 M25 E20 R30 — total HAMESHA count (largest remainder method) */
+  function splitMixed(count) {
+    const R = [25, 25, 20, 30];
+    const raw = R.map(r => count * r / 100);
+    const out = raw.map(Math.floor);
+    let rem = count - out.reduce((a, b) => a + b, 0);
+    const order = raw.map((v, i) => i).sort((a, b) => (raw[b] % 1) - (raw[a] % 1));
+    for (let k = 0; rem > 0 && k < 4; k++, rem--) out[order[k]]++;
+    return out;
+  }
+
   async function playerName() {
     try { const cfg = await App.config(); return { name: (cfg.candidateName || 'Player').slice(0, 40), photo: cfg.profileImage || null }; }
     catch (e) { return { name: 'Player', photo: null }; }
@@ -123,14 +134,15 @@ window.BT = (function () {
               <option value="10">10 minute baad</option>
               <option value="30">30 minute baad</option>
             </select>
-            <button class="btn btn-primary bt-big" onclick="BT.create()" ${!u ? 'disabled title="Pehle sign in karo"' : ''}>⚔️ Battle Banao</button>
+            <button class="btn btn-primary bt-big" onclick="BT.create()">⚔️ Battle Banao</button>
           </div>
           <div class="card bt-joinc">
             <h3>🚪 Battle Me Jao</h3>
             <p>Dost ne link bheja hai? Link kholo — ya code yahan daalo:</p>
+            ${!u ? '<div class="bt-signin-hint">🔑 Pehle Google sign-in karo — phir battle banao/join karo</div>' : ''}
             <div class="bt-joinrow">
               <input id="bt-code" maxlength="6" placeholder="ABC123" autocapitalize="characters" style="text-transform:uppercase" onkeydown="if(event.key==='Enter')BT.joinGo()">
-              <button class="btn btn-primary" onclick="BT.joinGo()" ${!u ? 'disabled' : ''}>Join →</button>
+              <button class="btn btn-primary" onclick="BT.joinGo()">Join →</button>
             </div>
             ${hist.length ? `<label style="margin-top:14px">🕘 Pichhli battles</label>
               <div class="bt-hist">${hist.map(h => `
@@ -156,8 +168,14 @@ window.BT = (function () {
   };
 
   /* ---------------- create ---------------- */
+  function needSignin() {
+    AVUtil.toast('Pehle Google sign-in karo — sabse upar wala 🔑 button!', 'warn');
+    const card = document.querySelector('.bt-signin');
+    if (card) { try { if (card.scrollIntoView) card.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) { } card.classList.add('bt-flash'); setTimeout(() => card.classList.remove('bt-flash'), 1800); }
+  }
+
   async function create() {
-    if (!Cloud.user) { AVUtil.toast('Pehle Google sign-in karo', 'error'); return; }
+    if (!Cloud.user) { needSignin(); return; }
     const btn = document.querySelector('#bt-home .bt-big');
     const subject = document.getElementById('bt-subject').value;
     const count = +document.getElementById('bt-count').value;
@@ -167,22 +185,17 @@ window.BT = (function () {
     try {
       if (btn) { btn.disabled = true; btn.textContent = '🎲 Real questions chun rahe hain…'; }
       const pools = await Promise.all(SUBJ_ORDER.map(s => Generator.poolFor({ subjectId: s })));
+      pools.forEach(pl => { for (let k = pl.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1));[pl[k], pl[j]] = [pl[j], pl[k]]; } });
       let pool;
-      if (subject === 'mixed') {   // real paper ratio P25 M25 E20 R30
-        const RATIO = { physics: 25, mathematics: 25, english: 20, raga: 30 };
-        const sel = [];
-        SUBJ_ORDER.forEach((s, i) => {
-          for (let k = pools[i].length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1));[pools[i][k], pools[i][j]] = [pools[i][j], pools[i][k]]; }
-          sel.push(...pools[i].slice(0, Math.round(count * RATIO[s] / 100)));
-        });
-        pool = sel;
+      if (subject === 'mixed') {   // real paper ratio P25 M25 E20 R30 — EXACT total (largest remainder)
+        const take = splitMixed(count);
+        pool = [];
+        SUBJ_ORDER.forEach((s, i) => pool.push(...pools[i].slice(0, take[i])));
       } else {
-        const i = SUBJ_ORDER.indexOf(subject);
-        for (let k = pools[i].length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1));[pools[i][k], pools[i][j]] = [pools[i][j], pools[i][k]]; }
-        pool = pools[i];
+        pool = pools[SUBJ_ORDER.indexOf(subject)];
       }
       if (pool.length < Math.min(count, 5)) throw new Error('Bank me kaafi questions nahi mile');
-      pool = pool.slice(0, count);
+      pool = pool.slice(0, count);   // GUARANTEE: count se zyada KABHI nahi
       pool.sort((a, b) => SUBJ_ORDER.indexOf(a.subject) - SUBJ_ORDER.indexOf(b.subject));   // sections P→M→E→R
       const qs = pool.map(q => ({
         id: q.id, subject: q.subject, text: q.questionText, hi: q.questionTextHi || null,
@@ -191,9 +204,11 @@ window.BT = (function () {
       }));
       const me = await playerName();
       if (btn) btn.textContent = '📡 Room ban rahi hai…';
+      if (qs.length !== pool.length) throw new Error('question count mismatch — dobara try karo');
       const r = await Cloud.authed('/v1/battle/create', {
         name, subject, startsAt: Date.now() + whenMin * 60000, durationMs, questions: qs, playerName: me.name, photo: me.photo
       });
+      if (r && r.total != null && r.total !== qs.length) throw new Error('server par ' + r.total + ' questions gaye (expected ' + qs.length + ') — dobara try karo');
       // ASLI test object locally (engine-identical) — instructions/attempt/result sab native
       await buildLocalTest(r.code, { room: { name, durationMs, startsAt: Date.now() + whenMin * 60000, plan: qs.map(q => ({ id: q.id, subject: q.subject })) } });
       location.hash = '#/battle/' + r.code;
@@ -204,6 +219,7 @@ window.BT = (function () {
   }
 
   function joinGo() {
+    if (!Cloud.user) { needSignin(); return; }
     const code = (document.getElementById('bt-code').value || '').toUpperCase().trim();
     if (!/^[A-Z2-9]{6}$/.test(code)) { AVUtil.toast('6-ka code daalo (jo host ne bheja)', 'error'); return; }
     location.hash = '#/battle/' + code;
@@ -227,7 +243,7 @@ window.BT = (function () {
     dock.mount({ examMode: false });   // 💬 chat + 🔴 live — sab battle pages par (default hidden)
 
     let uiTimer = setInterval(() => { if (gen === GEN && room.S) uiTick(); }, 300);
-    while (gen === GEN && room.code === code && Router.path === '/battle/' + code) {
+    while (gen === GEN && room.code === code && location.hash === '#/battle/' + code) {
       let S;
       try { S = await Cloud.authed('/v1/battle/state', { code, chatSince: dock.lastId }); }
       catch (e) { S = null; room.err = e.message; }
@@ -236,9 +252,17 @@ window.BT = (function () {
       room.err = null; room.S = S; room.offset = S.now - Date.now();
       dock.feed(S, S.chat);
       if (S.room.status === 'done' && !room.result) await loadResult(code);
-      if (S.room.status !== 'done') await buildLocalTest(code, S);   // asli test ready (sab ke paas)
+      let localTest = null;
+      if (S.room.status !== 'done') localTest = await buildLocalTest(code, S);   // asli test ready (sab ke paas)
       paint(S);
       if (S.room.status === 'live' && !(S.you && S.you.done) && !room.result) {
+        if (!localTest) {   // bank sync/test build fail — bounce NAHI (warna 'Test not found')
+          clearInterval(uiTimer);
+          paintErr(`⚠️ Battle ka test is device par ban nahi paaya (bank sync pending).<br><br>
+            <button class="btn btn-primary" onclick="BT.retryRoom('${esc(code)}')">🔁 Dobara Koshish Karo</button>
+            &nbsp; <a class="btn" href="#/dashboard">🏠 Dashboard</a>`);
+          break;
+        }
         // exam chal raha hai aur tumne abhi nahi diya → ASLI exam me andar jao
         clearInterval(uiTimer);
         dock.unmount();
@@ -251,7 +275,7 @@ window.BT = (function () {
     clearInterval(uiTimer);
     // result ke baad bhi chat zinda rahe (post-exam baatein) — jab tak page par ho
     if (gen === GEN && room.result && room.code === code) {
-      while (gen === GEN && room.code === code && Router.path === '/battle/' + code) {
+      while (gen === GEN && room.code === code && location.hash === '#/battle/' + code) {
         await sleep(5000);
         try {
           const S2 = await Cloud.authed('/v1/battle/state', { code, chatSince: dock.lastId });
@@ -432,6 +456,15 @@ window.BT = (function () {
     if (left <= 0) location.hash = '#/test/' + testIdOf(S.room.code) + '/instructions';   // ASLI flow shuru
   }
 
+  async function retryRoom(code) {   // bank sync + test rebuild → room dobara kholo
+    try {
+      if (typeof Bank !== 'undefined' && Bank.syncBundled) await Bank.syncBundled();
+      if (room.S) await buildLocalTest(code, room.S);
+    } catch (e) { }
+    location.hash = '#/battle';
+    setTimeout(() => { location.hash = '#/battle/' + code; }, 120);   // room re-render
+  }
+
   async function startNow() {
     try { await Cloud.authed('/v1/battle/start', { code: room.code }); AVUtil.toast('Exam shuru — 10 second me! Sab ready? 🚀', 'success'); }
     catch (e) { AVUtil.toast(e.message, 'error'); }
@@ -447,16 +480,19 @@ window.BT = (function () {
   }
 
   /* SAFETY SWEEPER: dock (chat/live box) SIRF battle pages + battle exam par rehta hai.
-     Kahin bhi route change ho — ye pakka uthata hai. Kabhi kahin chipkega nahi. */
+     location.hash SYNCHRONOUS hota hai (router resolve ka wait nahi) — isliye
+     wahi use karte hain + 3 retries (slow views / guard confirm ke liye). */
+  function btSweep() {
+    try {
+      const h = location.hash || '';
+      const onBattlePage = h.indexOf('#/battle/') === 0;
+      const inExam = h.indexOf('#/test/') === 0 && document.body.classList.contains('exam-on');
+      if (dock.mounted && !onBattlePage && !inExam) { dock.unmount(); return true; }
+    } catch (e) { }
+    return false;
+  }
   window.addEventListener('hashchange', () => {
-    setTimeout(() => {   // router resolve ke baad
-      try {
-        const onBattlePage = (Router.path || '').indexOf('/battle/') === 0;
-        const inExam = document.body.classList.contains('exam-on');
-        if (dock.mounted && !onBattlePage && !inExam) { dock.unmount(); }
-        else if (dock.mounted && !dock.open) { const pn = document.getElementById('bt-dock-panel'); if (pn) pn.hidden = true; }
-      } catch (e) { }
-    }, 50);
+    [60, 300, 1200].forEach(ms => setTimeout(() => btSweep(), ms));
   });
 
   /* ══════════════ DOCK — floating pill + panel (live + CHAT + exit) ══════════════
@@ -672,5 +708,5 @@ window.BT = (function () {
     }
   }
 
-  return { create, joinGo, startNow, copyLink, live, gate, _test: { buildLocalTest } };
+  return { create, joinGo, startNow, copyLink, retryRoom, live, gate, _test: { buildLocalTest, splitMixed } };
 })();

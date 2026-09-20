@@ -4,7 +4,18 @@
  * ============================================================ */
 
 Views.instructions = async function (testId) {
-  const test = await DB.get('tests', testId);
+  let test = await DB.get('tests', testId);
+  if (!test && testId.indexOf('battle-') === 0 && window.BT) {
+    // ⚔️ battle joiner race: test abhi bana nahi — server se plan lekar khud bana lo
+    const code = testId.slice(7);
+    try {
+      const S = await Cloud.authed('/v1/battle/state', { code });
+      test = await BT._test.buildLocalTest(code, S);
+    } catch (e) { /* sign-out/offline — niche ka fallback */ }
+    if (test) return Views.instructions(testId);   // ab test hai — dobara render
+    AVUtil.toast('Battle test load nahi hua — battle room se dobara try karo', 'error');
+    return Router.go('/battle/' + code);
+  }
   if (!test) { AVUtil.toast('Test not found', 'error'); return Router.go('/tests'); }
   const cfg = await App.config();
   const lang = App.lang;

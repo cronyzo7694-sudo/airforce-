@@ -14,11 +14,13 @@ const ExamScreen = {
 
   /* ================= entry ================= */
   async start(testId) {
-    // an in-progress attempt for this test? → resume. Else → instructions.
+    // an in-progress attempt for THIS test? → resume. Else → instructions.
+    // (scoped byIndex — kabhi bhi doosre test ka adhura attempt nahi uthega)
     let attempt = null;
-    await DB.cursor('attempts', 'testId', a => {
-      if (!a.completed) attempt = a;
-    });
+    {
+      const mine = await DB.byIndex('attempts', 'testId', testId);
+      mine.forEach(a => { if (!a.completed) attempt = a; });
+    }
     if (!attempt) {
       // completed? go to latest result
       const done = await DB.byIndex('attempts', 'testId_completed', [testId, 1]);

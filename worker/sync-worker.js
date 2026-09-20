@@ -465,7 +465,7 @@ async function battleHandler(req, env, auth, path, body) {
     };
     try { await st.createRoom(room); } catch (e) { room.code = battleCode(); await st.createRoom(room); }
     await st.upsertPlayer({ room_code: room.code, uid: auth.uid, name: String(body.playerName || 'Host').slice(0, 40), photo: body.photo ? String(body.photo).slice(0, 500) : null, joined_at: now });
-    return json(req, 200, { ok: true, code: room.code });
+    return json(req, 200, { ok: true, code: room.code, total: room.questions.length });   // echo — client verify karta hai
   }
 
   if (path === '/v1/battle/join') {

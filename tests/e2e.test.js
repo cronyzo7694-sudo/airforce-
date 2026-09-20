@@ -310,9 +310,8 @@ async function main() {
   await waitFor(() => doc.getElementById('bt-home'), 8000);
   T('battle home renders (hero + create + join)', doc.body.textContent.includes('LIVE BATTLE') &&
     doc.getElementById('bt-subject') && doc.getElementById('bt-code'));
-  T('battle home: signed-out state safe (signin prompt, create disabled)',
-    doc.body.textContent.includes('sign-in') && doc.getElementById('bt-home').querySelector('.bt-big').disabled === false ? false :
-    (doc.body.textContent.includes('sign-in') || !!doc.getElementById('bt-home').querySelector('.bt-create')), 'signin-or-form');
+  T('battle home: signed-out — sign-in card + hint + buttons clickable (click par prompt milega)',
+    doc.body.textContent.includes('sign-in') && !!doc.querySelector('.bt-signin') && !!doc.querySelector('.bt-signin-hint') && !doc.getElementById('bt-home').querySelector('.bt-big').disabled, 'signin-hint');
   window.location.hash = '#/battle/ZZZZZZ';   // invalid code — graceful error, crash nahi
   await sleep(2500);
   T('battle invalid room: error box (no crash)', (doc.getElementById('bt-room') && doc.body.textContent.includes('room nahi mila')) || doc.getElementById('bt-room'), 'errbox');
@@ -347,6 +346,35 @@ async function main() {
   window.location.hash = '#/tests';
   await sleep(600);
   T('battle: battle tests normal Tests list me nahi (alag feature)', !doc.body.textContent.includes('E2E Battle'));
+  // ── FIX-VERIFY 1: exact question count (mixed split — total HAMESHA count) ──
+  const splits = await G(`[10,25,50,70,100].map(c => { const s = BT._test.splitMixed(c); return { c, sum: s.reduce((a,b)=>a+b,0) }; })`);
+  T('battle: mixed split EXACT — 10→10, 50→50, 100→100', splits && splits.every(x => x.sum === x.c), splits);
+  // ── FIX-VERIFY 2: purana adhura attempt doosre battle me resume NAHI hota ('direct analysis' bug) ──
+  const seq = await G(`(async () => {
+    // E2EQQ4 battle test banao
+    const ids2 = (await DB.getAll('questions')).slice(3, 6).map(q => ({ id: q.id, subject: q.subject }));
+    const t4 = await BT._test.buildLocalTest('E2EQQ4', { room: { name: 'Battle Do', durationMs: 120000, startsAt: Date.now() - 60000, plan: ids2 } });
+    // E2EQQ3 ka EK GHANTE PURANA adhura attempt daalo (chhoda hua exam)
+    const t3 = await DB.get('tests', 'battle-E2EQQ3');
+    const old = Engine.createAttempt(t3, 1, Date.now() - 3600000, null);
+    await DB.put('attempts', old);
+    // ab E2EQQ4 ka attempt page kholo
+    window.location.hash = '#/test/battle-E2EQQ4/attempt';
+    await new Promise(r => setTimeout(r, 1500));
+    return { hash: window.location.hash, exam: !!document.querySelector('.exam-screen'), oldTest: document.body.textContent.includes('E2E Battle') };
+  })()`);
+  T('battle: naya battle PURANE adhure attempt me nahi fashta', seq && seq.exam === false, seq);
+  T('battle: attempt → instructions redirect (test hi nahi diya)', seq && /instructions/.test(seq.hash), seq && seq.hash);
+  // ── FIX-VERIFY 3: signed-out par join → sign-in prompt, navigation nahi ──
+  const so = await G(`(async () => {
+    window.location.hash = '#/battle';
+    await new Promise(r => setTimeout(r, 600));
+    const hint = !!document.querySelector('.bt-signin-hint');
+    BT.joinGo();
+    await new Promise(r => setTimeout(r, 400));
+    return { hint, hash: window.location.hash, stayed: window.location.hash === '#/battle' };
+  })()`);
+  T('battle: signed-out join → sign-in hint + kahin nahi gaya', so && so.hint === true && so.stayed === true, so);
   window.location.hash = '#/settings';
   await sleep(400);
   T('settings renders', doc.getElementById('st-save-cfg') && doc.getElementById('st-wipe'));
