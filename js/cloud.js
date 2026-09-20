@@ -17,10 +17,10 @@ var Cloud = (() => {
   /* Firebase web config — PUBLIC by design (identifier hai, secret nahi;
      asli security = verified tokens + per-account scoping server pe). */
   const FIREBASE_CONFIG = {
-    apiKey: '',                       // ← deploy se pehle fill hoga
+    apiKey: 'AIzaSyBTeY4PV83cAhbsc8sT2IXNxFySMwW1708',   // public identifier — secret nahi
     authDomain: 'kineora-exam.firebaseapp.com',
     projectId: 'kineora-exam',
-    appId: ''                         // ← deploy se pehle fill hoga
+    appId: '1:927751408408:web:856110ca18a657f56a2c6d'
   };
   const FB_VER = '10.12.2';
   const DEFAULT_ENDPOINT = 'https://sync-kineora.cronyzo7694.workers.dev';

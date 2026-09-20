@@ -3,7 +3,7 @@
  * Cache-first for the immutable app shell + bundled bank data.
  * ============================================================ */
 
-const SW_VERSION = 'kineora-exam-v1.4.20';
+const SW_VERSION = 'kineora-exam-v1.4.21';
 
 const APP_SHELL = [
   './',

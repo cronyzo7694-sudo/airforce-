@@ -154,7 +154,7 @@ async function call(port, p, body, opts = {}) {
   w.eval(fs.readFileSync(path.join(ROOT, 'js/cloud.js'), 'utf8') + '\n;window.Cloud = Cloud;');
   const G = expr => w.eval(expr);
 
-  T('not configured → signIn guard (setup pending)', G('Cloud.configured()') === false);
+  T('firebase config present (public values)', G('Cloud.configured()') === true);
 
   // test hooks se full client roundtrip
   await G('Cloud._test.setUser({uid: "google-uid-CCC", email: "test@example.com", name: "Test"})');
