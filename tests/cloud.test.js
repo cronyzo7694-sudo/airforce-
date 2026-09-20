@@ -214,50 +214,59 @@ async function call(port, p, body, opts = {}) {
   T('pulled note locally applied', noteSync && noteSync.text === 'dusre device se aaya');
   await G('Cloud.setAuto(true)');
 
-  // ═══ BATTLE MODE: full lifecycle (2 players, live timings) ═══
-  console.log('━━━ BATTLE · live group quiz lifecycle (~35s real timings)');
+  // ═══ BATTLE v2: REAL-EXAM MODE lifecycle (2 players, live timings ~45s) ═══
+  console.log('━━━ BATTLE · real-exam group mode (same test, live, +1/−0.25)');
   TEST_UID = 'google-uid-HOST';
   const bq = [
-    { id: 'bq1', text: '2 + 2 = ?', options: [{ id: 'o1', text: '3' }, { id: 'o2', text: '4' }], correctId: 'o2' },
-    { id: 'bq2', text: 'Capital of India?', options: [{ id: 'o1', text: 'Mumbai' }, { id: 'o2', text: 'New Delhi' }], correctId: 'o2' }
+    { id: 'bq1', subject: 'physics', text: '2 + 2 = ?', options: [{ id: 'o1', text: '3' }, { id: 'o2', text: '4' }], correctId: 'o2' },
+    { id: 'bq2', subject: 'physics', text: 'Capital of India?', options: [{ id: 'o1', text: 'Mumbai' }, { id: 'o2', text: 'New Delhi' }], correctId: 'o2' },
+    { id: 'bq3', subject: 'raga', text: '5 * 5 = ?', options: [{ id: 'o1', text: '10' }, { id: 'o2', text: '25' }], correctId: 'o2' }
   ];
-  const c1 = await call(port, '/v1/battle/create', { name: 'Test Battle', subject: 'physics', startsAt: Date.now() + 60000, perQMs: 10000, questions: bq, playerName: 'Host Bhai' });
-  T('battle: create → 6-char code', c1.j.ok && /^[A-Z2-9]{6}$/.test(c1.j.code || ''), c1.j);
+  const c1 = await call(port, '/v1/battle/create', { name: 'Real Exam Battle', subject: 'mixed', startsAt: Date.now() + 60000, durationMs: 30000, questions: bq, playerName: 'Host Bhai' });
+  T('battle: create → 6-char code (real-exam mode)', c1.j.ok && /^[A-Z2-9]{6}$/.test(c1.j.code || ''), c1.j);
   TEST_UID = 'google-uid-P2';
   T('battle: player 2 join', (await call(port, '/v1/battle/join', { code: c1.j.code, playerName: 'Player Two' })).j.ok);
   TEST_UID = 'google-uid-HOST';
   const s1 = await call(port, '/v1/battle/state', { code: c1.j.code });
-  T('battle: lobby state, 2 players, host flag', s1.j.room.status === 'lobby' && s1.j.players.length === 2 && s1.j.room.host === 'google-uid-HOST', s1.j.players && s1.j.players.length);
-  T('battle: host start-now', (await call(port, '/v1/battle/start', { code: c1.j.code })).j.ok);
+  T('battle: lobby state, 2 players, host + duration flag', s1.j.room.status === 'lobby' && s1.j.players.length === 2 && s1.j.room.host === 'google-uid-HOST' && s1.j.room.durationMs === 30000, s1.j.room);
+  const qearly = await call(port, '/v1/battle/questions', { code: c1.j.code });
+  T('battle: questions BEFORE start → 400 (no leak)', qearly.status === 400);
+  T('battle: host start-now (10s warning)', (await call(port, '/v1/battle/start', { code: c1.j.code })).j.ok);
   TEST_UID = 'google-uid-P2';
   T('battle: non-host start rejected (403)', (await call(port, '/v1/battle/start', { code: c1.j.code })).status === 403);
   TEST_UID = 'google-uid-HOST';
-  await new Promise(r => setTimeout(r, 4800));   // 4s warning + margin
+  await new Promise(r => setTimeout(r, 10800));   // 10s warning + margin → LIVE
   const s2 = await call(port, '/v1/battle/state', { code: c1.j.code });
-  T('battle: live Q1, correct answer NOT leaked', s2.j.room.status === 'live' && s2.j.qNo === 0 && s2.j.question && !('correctId' in s2.j.question), s2.j.qNo);
-  const a1 = await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o2' });
-  T('battle: fast correct answer → 10 + speed bonus', a1.j.ok && a1.j.correct === true && a1.j.points >= 13 && a1.j.points <= 15, a1.j);
+  T('battle: live + endsAt set', s2.j.room.status === 'live' && s2.j.room.endsAt > s2.j.now, s2.j.room);
+  const Q = await call(port, '/v1/battle/questions', { code: c1.j.code });
+  T('battle: 3 questions, correctId NOT leaked, sections grouped', Q.j.ok && Q.j.questions.length === 3 &&
+    !Q.j.questions.some(q => 'correctId' in q) && Q.j.questions[0].subject === 'physics' && Q.j.sections.physics.length === 2 && Q.j.sections.raga.length === 1, Q.j.questions && Q.j.questions.length);
+  // dono answer karte hain — host: q0+q1 correct; P2: q0 wrong→update→clear→re-answer, q1 wrong
+  T('battle: host answer q0 (correct)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o2' })).j.ok);
+  T('battle: host answer q1 (correct)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 1, optId: 'o2' })).j.ok);
   TEST_UID = 'google-uid-P2';
-  const a2 = await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o1' });
-  T('battle: wrong answer → 0 points', a2.j.ok && a2.j.correct === false && a2.j.points === 0, a2.j);
-  const rv0 = await call(port, '/v1/battle/reveal', { code: c1.j.code, qNo: 0 });
-  T('battle: reveal BEFORE deadline → early (400)', rv0.status === 400);
-  await new Promise(r => setTimeout(r, 9300));   // deadline ke baad (start+4+10)
-  const rv1 = await call(port, '/v1/battle/reveal', { code: c1.j.code, qNo: 0 });
-  T('battle: reveal — dono ke answers + correctId', rv1.j.ok && rv1.j.correctId === 'o2' && rv1.j.answers.length === 2, rv1.j);
-  await new Promise(r => setTimeout(r, 10000));  // Q2 window (start+19)
-  TEST_UID = 'google-uid-HOST';
+  T('battle: P2 answer q0 (wrong)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o1' })).j.ok);
+  T('battle: P2 CHANGES q0 → correct (exam me badalna allowed)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o2' })).j.ok);
+  T('battle: P2 CLEAR q0 (Clear Response)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: null })).j.ok);
+  T('battle: P2 re-answer q0 (final correct)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 0, optId: 'o2' })).j.ok);
+  T('battle: P2 answer q1 (wrong −0.25)', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 1, optId: 'o1' })).j.ok);
   const s3 = await call(port, '/v1/battle/state', { code: c1.j.code });
-  T('battle: auto-advance Q2 (time-driven sync)', s3.j.qNo === 1, s3.j.qNo);
-  const a3 = await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 1, optId: 'o2' });
-  T('battle: last answer accepted', a3.j.ok && a3.j.score >= 20, a3.j);
-  await new Promise(r => setTimeout(r, 21000));  // lastDeadline + reveal window (start+34)
-  TEST_UID = 'google-uid-P2';
+  const p2s = s3.j.players.find(p => p.uid === 'google-uid-P2'), hs = s3.j.players.find(p => p.uid === 'google-uid-HOST');
+  T('battle: LIVE progress — attempted counts (host 2, P2 2)', p2s && p2s.attempted === 2 && hs && hs.attempted === 2, s3.j.players);
+  T('battle: P2 submit early → done', (await call(port, '/v1/battle/submit', { code: c1.j.code })).j.ok);
+  T('battle: answer AFTER submit → rejected', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 2, optId: 'o2' })).status === 400);
+  TEST_UID = 'google-uid-HOST';
+  await new Promise(r => setTimeout(r, 34500));   // 30s duration + grace khatam → auto done
   const fin = await call(port, '/v1/battle/state', { code: c1.j.code });
-  T('battle: finished (done)', fin.j.room.status === 'done', fin.j.room && fin.j.room.status);
+  T('battle: finished after duration (done)', fin.j.room.status === 'done', fin.j.room && fin.j.room.status);
+  T('battle: answer after time up → rejected', (await call(port, '/v1/battle/answer', { code: c1.j.code, qNo: 2, optId: 'o2' })).status === 400);
   const res = await call(port, '/v1/battle/result', { code: c1.j.code });
-  T('battle: result — standings sorted, comparison data', res.j.ok && res.j.players.length === 2 && res.j.players[0].score > res.j.players[1].score && res.j.answers.length === 3, res.j.players);
-  T('battle: winner = host (sab correct)', res.j.players[0].uid === 'google-uid-HOST' && res.j.players[0].correct === 2);
+  const rHost = res.j.players.find(p => p.uid === 'google-uid-HOST'), rP2 = res.j.players.find(p => p.uid === 'google-uid-P2');
+  T('battle: result — standings sorted, real marking', res.j.ok && res.j.players.length === 2 && res.j.players[0].uid === 'google-uid-HOST', res.j.players);
+  T('battle: host score = 2.0 (2 correct, 1 left)', rHost && rHost.score === 2 && rHost.correct === 2 && rHost.unattempted === 1, rHost);
+  T('battle: P2 score = 0.75 (1 correct − 0.25 wrong — negative marking live)', rP2 && rP2.score === 0.75 && rP2.correct === 1 && rP2.wrong === 1, rP2);
+  T('battle: comparison matrix — 4 answers, kisne kya chuna', res.j.answers.length === 4 && res.j.answers.every(a => a.opt_id === 'o1' || a.opt_id === 'o2'), res.j.answers);
+  T('battle: questions ke saath correctIds (analysis ke liye)', res.j.questions.length === 3 && res.j.questions[0].correctId === 'o2');
   TEST_UID = 'google-uid-AAA';
 
   // REAL JWKS verification (internet se Google ke public keys) — forged token  // REAL JWKS verification (internet se Google ke public keys) — forged token

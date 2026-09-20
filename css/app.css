@@ -1440,3 +1440,17 @@ body.exam-on { overflow: hidden; }
   .bt-pod { min-width:86px; padding:10px 8px; }
   .bt-count { font-size:36px; }
 }
+
+/* ─── battle v2: real-exam live layer ─── */
+.bt-livepill { background:#3a1040; border:1px solid #e74c5b; color:#ff8fa0; font-weight:800; font-size:12px;
+  padding:5px 10px; border-radius:14px; white-space:nowrap; animation:btPulse 2.5s infinite; }
+.bt-livepanel { border-top:1px dashed #2a3348; margin-top:12px; padding-top:10px; }
+.bt-lp-title { font-size:11px; font-weight:800; color:#ff8fa0; letter-spacing:.5px; margin-bottom:6px; }
+.bt-pl-sub { font-size:11px; color:#8b93a7; font-variant-numeric:tabular-nums; white-space:nowrap; }
+.bt-submodal { position:fixed; inset:0; background:rgba(5,8,16,.78); z-index:220; display:flex; align-items:center; justify-content:center; padding:16px; }
+.bt-submodal[hidden] { display:none; }
+.bt-subbox { background:#141a29; border:1px solid #2a3348; border-radius:14px; padding:22px; max-width:420px; width:100%; }
+.bt-subbox h3 { margin:0 0 12px; }
+.bt-subbox .se-actions { display:flex; gap:10px; margin-top:14px; }
+.bt-subbox .se-actions button { flex:1; }
+.bt-examwrap .bt-pl { font-size:12px; padding:5px 4px; }
