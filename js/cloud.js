@@ -27,8 +27,8 @@ var Cloud = (() => {
   const BANK_FILES = ['data/bank-physics.json', 'data/bank-mathematics.json', 'data/bank-english.json', 'data/bank-raga.json'];
   const META_SYNCABLE = ['qstats', 'topicStats', 'attemptIndex'];
   const SETTING_SYNCABLE = ['config'];
-  const SYNC_EVERY_MS = 5 * 60 * 1000;
-  const PUSH_DEBOUNCE_MS = 8000;
+  const SYNC_EVERY_MS = 90 * 1000;
+  const PUSH_DEBOUNCE_MS = 3000;
 
   let fb = null;                 // {auth, mod}
   let user = null;               // {uid, email, name}
@@ -50,6 +50,13 @@ var Cloud = (() => {
   async function loadStatus() {
     const s = await Store.getMeta('cloudSync', null);
     if (s) status = Object.assign({}, status, s);
+    // one-time fix: v1.4.27 tak auto=OFF pura sync (pull bhi) block karta
+    // tha — user device utha bhi toh naya data nahi aata tha. Ab pull
+    // hamesha chalta hai; ye ek baar galti se OFF hue ko wapas ON karta hai.
+    if (status.auto === false && !status._autoFix) {
+      status._autoFix = true; status.auto = true;
+      try { await Store.setMeta('cloudSync', status); } catch (e) {}
+    }
     if (s && s.user) user = s.user;   // last known (UI ke liye) — asli source onAuthStateChanged
     return status;
   }
@@ -353,7 +360,8 @@ var Cloud = (() => {
   async function syncNow(reason) {
     if (running) return { ok: false, skipped: true };
     if (!user) return { ok: false, error: 'sign in required' };
-    if (!status.auto && reason !== 'manual' && reason !== 'restore') return { ok: false, skipped: true };
+    const manual = reason === 'manual' || reason === 'restore';
+    const wantPush = manual || status.auto;   // auto OFF → sirf manual push (PULL hamesha)
     running = true;
     try {
       await loadBundledIds();
@@ -362,13 +370,14 @@ var Cloud = (() => {
         // is device ka pehla sync is account par: cloud ka data pehle lao,
         // phir outbox changes, phir local ka POORA backup (purane data bhi)
         pulled += await doPull(false);
-        pushed += await doPush();
-        backup = await fullExport();
+        if (wantPush) { pushed += await doPush(); backup = await fullExport(); status.fullBackupAt = Date.now(); }
         pulled += await doPull(false);
-        status.fullBackupAt = Date.now();
       } else {
-        pushed = await doPush();
+        if (wantPush) pushed = await doPush();
         pulled += await doPull(false);
+      }
+      if (pulled > 0 && typeof window !== 'undefined' && window.dispatchEvent) {
+        try { window.dispatchEvent(new CustomEvent('cloud-pulled', { detail: { applied: pulled } })); } catch (e) {}
       }
       status.lastPushAt = Date.now(); status.lastPullAt = Date.now(); status.lastError = null;
       await persistOutbox(); await saveStatus();
@@ -443,6 +452,11 @@ var Cloud = (() => {
     if (timer) clearInterval(timer);
     timer = setInterval(() => { if (user && navigator.onLine !== false) syncNow('interval'); }, SYNC_EVERY_MS);
     window.addEventListener('online', () => { if (user) syncNow('online'); });
+    // device uthaya / tab kholA → turant sync (dusre device ke changes foran aayein)
+    document.addEventListener('visibilitychange', () => {
+      if (!document.hidden && user && navigator.onLine !== false) syncNow('visible');
+    });
+    window.addEventListener('focus', () => { if (user && navigator.onLine !== false) syncNow('focus'); });
   }
 
   async function setAuto(on) { status.auto = !!on; await saveStatus(); }

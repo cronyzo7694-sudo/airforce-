@@ -92,6 +92,19 @@ const App = {
     // cloud backup (Neon) + media (Cloudinary) — optional, kabhi block nahi karta
     try { if (typeof Cloud !== 'undefined') Cloud.init(); } catch (e) { /* cloud is a bonus */ }
 
+    // cloud se naya data aaya → khula data-view turant refresh (exam/result kabhi nahi)
+    let _cloudPullT = null;
+    window.addEventListener('cloud-pulled', () => {
+      try {
+        if (document.hidden || !Router.path) return;
+        if (document.body.classList.contains('exam-on') || App.activeAttempt) return;   // live exam safe
+        const p = Router.path;
+        if (!['/dashboard', '/attempts', '/tests', '/questions'].some(x => p === x || p.startsWith(x + '/'))) return;
+        clearTimeout(_cloudPullT);
+        _cloudPullT = setTimeout(() => { if (Router.path === p) Router.resolve(); }, 700);
+      } catch (e) { /* non-fatal */ }
+    });
+
     // find an unfinished attempt (browser closed during exam)
     const unfinished = await this.findUnfinishedAttempt();
     this.pendingResume = unfinished;

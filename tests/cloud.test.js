@@ -201,6 +201,19 @@ async function call(port, p, body, opts = {}) {
   const r3 = await G('Cloud.syncNow("manual")');
   T('second sync — full backup skip (already done)', r3 && r3.ok && r3.backup === 0, r3);
 
+  // CROSS-DEVICE: auto OFF → push nahi, par PULL hamesha (naya data aata rahe)
+  await G('Cloud._test.setUser({uid: "google-uid-FFF", email: "fff@example.com", name: "Cross"})');
+  await G('Cloud.setAuto(false)');
+  TEST_UID = 'google-uid-FFF';
+  await call(port, '/v1/push', { device: 'dev-other', records: [
+    { kind: 'note', rid: 'n_sync', data: { qid: 'n_sync', text: 'dusre device se aaya' }, updatedAt: Date.now() + 50, deleted: false }
+  ] });
+  const r4 = await G('Cloud.syncNow("interval")');
+  T('auto OFF: interval sync still PULLS (cross-device)', r4 && r4.ok === true && r4.pulled >= 1, r4);
+  const noteSync = await G('(async () => DB.get("notes", "n_sync"))()');
+  T('pulled note locally applied', noteSync && noteSync.text === 'dusre device se aaya');
+  await G('Cloud.setAuto(true)');
+
   // REAL JWKS verification (internet se Google ke public keys) — forged token
   const jwks = await (await fetch('https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com')).json();
   const kid = jwks.keys[0].kid;

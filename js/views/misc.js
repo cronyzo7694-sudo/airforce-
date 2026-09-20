@@ -354,7 +354,10 @@ Views.settings = async function () {
     if (Cloud.user) {
       show('#cs-sync'); show('#cs-restore'); show('#cs-auto'); show('#cs-media'); show('#cs-logout');
       acct.innerHTML = '👤 <b>' + AVUtil.esc(Cloud.user.name || 'user') + '</b> <span class="muted">' + AVUtil.esc(Cloud.user.email || '') + '</span>';
-      if (st.lastError) {
+      if (!st.auto) {
+        state.textContent = '⏸ auto OFF'; state.style.color = '#c0392b';
+        AVUtil.$('#cs-status').innerHTML = '⚠️ <b>auto-sync OFF hai — is device ke changes cloud par nahi jayenge!</b> Neeche "auto-sync" button dabake ON karo.';
+      } else if (st.lastError) {
         state.textContent = '⚠️ error'; state.style.color = '#c0392b';
         AVUtil.$('#cs-status').textContent = st.lastError;
       } else if (st.lastPushAt) {
