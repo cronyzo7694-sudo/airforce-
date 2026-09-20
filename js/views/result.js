@@ -131,7 +131,7 @@ Views.result = async function (attemptId) {
 
     <section class="result-actions">
       <a class="btn btn-primary" href="#/attempt/${a.id}/analysis">VIEW DETAILED ANALYSIS</a>
-      <a class="btn btn-plain" href="#/test/${a.testId}/instructions">REATTEMPT</a>
+      ${battleCode ? `<a class="btn btn-plain" href="#/battle/${AVUtil.esc(battleCode)}" style="background:var(--purple-bg);color:var(--purple)">⚔️ BATTLE COMPARISON</a>` : `<a class="btn btn-plain" href="#/test/${a.testId}/instructions">REATTEMPT</a>`}
       <a class="btn btn-plain" href="#/dashboard">BACK TO DASHBOARD</a>
     </section>
   `);
@@ -264,7 +264,7 @@ Views.analysis = async function (attemptId, state) {
         <div class="th-meta">Attempt #${a.attemptNo} · ${AVUtil.fmtDate(a.endTime || a.date)} · ${AVUtil.fmtDur(res.timeTaken)}</div>
         <div class="th-tools">
           <a class="th-more" href="#/attempt/${a.id}/result">📊 Result page</a>
-          <a class="th-new" href="#/test/${a.testId}/instructions">↻ Reattempt</a>
+          ${((a.testId || '').indexOf('battle-') === 0) ? `<a class="th-new" href="#/battle/${AVUtil.esc(a.testId.slice(7))}">⚔️ Battle comparison</a>` : `<a class="th-new" href="#/test/${a.testId}/instructions">↻ Reattempt</a>`}
         </div>
       </div>
       <div class="th-side">
@@ -448,9 +448,11 @@ Views.analysis = async function (attemptId, state) {
       return `<section class="card prog-card prog-hint">
         <div class="prog-hint-txt">
           <b>Attempt Progression</b>
-          <span>Ye test abhi 1 baar diya hai. Reattempt karo — pehla kitna aaya, dusre me kitna aaya, sab yahan connected graph me dikhega.</span>
+          <span>Ye test abhi 1 baar diya hai. ${(a.testId || '').indexOf('battle-') === 0 ? 'Battle me reattempt nahi hota — nayi battle banao!' : 'Reattempt karo — pehla kitna aaya, dusre me kitna aaya, sab yahan connected graph me dikhega.'}</span>
         </div>
-        <a class="btn btn-primary" href="#/test/${a.testId}/instructions">↻ Reattempt this test</a>
+        ${(a.testId || '').indexOf('battle-') === 0
+          ? `<a class="btn btn-primary" href="#/battle/${AVUtil.esc(a.testId.slice(7))}">⚔️ Battle Comparison dekho</a>`
+          : `<a class="btn btn-primary" href="#/test/${a.testId}/instructions">↻ Reattempt this test</a>`}
       </section>`;
     }
     const points = sibAttempts.map(x => ({ x: '#' + x.attemptNo, y: x.maxScore ? Math.round(x.score / x.maxScore * 1000) / 10 : 0 }));

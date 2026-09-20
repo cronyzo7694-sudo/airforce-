@@ -256,6 +256,7 @@ Views.tests = async function (state) {
 Views.testOverview = async function (id) {
   const t = await DB.get('tests', id);
   if (!t) { AVUtil.toast('Test not found', 'error'); return Router.go('/tests'); }
+  if (t.battle) return Router.go('/battle/' + t.battle.code);   // battle test ka ghar = battle room
   const cfg = await App.config();
   const idx = (await Store.getMeta('attemptIndex', [])).filter(a => a.testId === id);
   const questions = await DB.getMany('questions', t.sections.flatMap(s => s.questionIds));

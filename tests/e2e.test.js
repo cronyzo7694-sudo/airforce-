@@ -330,14 +330,20 @@ async function main() {
     await waitFor(() => doc.getElementById('ins-agree'), 10000);
   }
   T('battle: ASLI instructions page khulta hai (login + same rules)', !!doc.getElementById('ins-agree'), 'ins');
-  const gate = await G(`(async () => {   // fixed-time gate: ready dabaya BEFORE startsAt → attempt NAHI banta
+  const gate = await G(`(async () => {   // fixed-time gate: checkbox + BEGIN dono dabaya BEFORE start → attempt NAHI banta
     const before = (await DB.byIndex('attempts', 'testId', 'battle-E2EQQ3')).length;
     document.getElementById('ins-agree').click();
-    await new Promise(r => setTimeout(r, 800));
+    const btn = document.getElementById('ins-begin');
+    if (btn && !btn.disabled) btn.dispatchEvent(new window.Event('click', { bubbles: true }));
+    await new Promise(r => setTimeout(r, 1200));
     const after = (await DB.byIndex('attempts', 'testId', 'battle-E2EQQ3')).length;
-    return { before, after };
+    const gateEl = document.getElementById('bt-gate');
+    const backTop = document.querySelector('.ins-back-top');
+    return { before, after, gate: gateEl ? gateEl.textContent : null, back: !!backTop, beginDisabled: btn ? btn.disabled : null };
   })()`);
-  T('battle: fixed-time gate — early "I am ready" blocked', gate && gate.before === 0 && gate.after === 0, gate);
+  T('battle: fixed-time gate — early "I am ready" blocked (attempt nahi bana)', gate && gate.before === 0 && gate.after === 0, gate);
+  T('battle: live countdown dikhta hai (seconds + message)', gate && gate.gate && /Battle start hota hai/.test(gate.gate) && gate.beginDisabled === true, gate && gate.gate);
+  T('battle: instructions par BACK button hai (stuck nahi)', gate && gate.back === true);
   window.location.hash = '#/tests';
   await sleep(600);
   T('battle: battle tests normal Tests list me nahi (alag feature)', !doc.body.textContent.includes('E2E Battle'));

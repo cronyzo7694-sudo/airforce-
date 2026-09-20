@@ -33,7 +33,15 @@ window.BT = (function () {
   async function buildLocalTest(code, S) {
     const tid = testIdOf(code);
     const existing = await DB.get('tests', tid);
-    if (existing) return existing;
+    if (existing) {
+      // host 'start now' kar sakta hai → server ka asli startsAt local test me sync karo
+      if (S && S.room && S.room.startsAt && existing.battle && existing.battle.startsAt !== S.room.startsAt) {
+        existing.battle.startsAt = S.room.startsAt;
+        existing.duration = Math.round(S.room.durationMs / 1000);
+        await DB.put('tests', existing);
+      }
+      return existing;
+    }
     const plan = S.room.plan;
     if (!plan || !plan.length) return null;
     // bank me sab hone chahiye (host aur joiner same bundled bank se)
@@ -438,6 +446,19 @@ window.BT = (function () {
     }
   }
 
+  /* SAFETY SWEEPER: dock (chat/live box) SIRF battle pages + battle exam par rehta hai.
+     Kahin bhi route change ho — ye pakka uthata hai. Kabhi kahin chipkega nahi. */
+  window.addEventListener('hashchange', () => {
+    setTimeout(() => {   // router resolve ke baad
+      try {
+        const onBattlePage = (Router.path || '').indexOf('/battle/') === 0;
+        const inExam = document.body.classList.contains('exam-on');
+        if (dock.mounted && !onBattlePage && !inExam) { dock.unmount(); }
+        else if (dock.mounted && !dock.open) { const pn = document.getElementById('bt-dock-panel'); if (pn) pn.hidden = true; }
+      } catch (e) { }
+    }, 50);
+  });
+
   /* ══════════════ DOCK — floating pill + panel (live + CHAT + exit) ══════════════
      Sab battle pages aur battle exam me bottom-left pill:
      khula rahe chhota pill (⚔️ n · 💬 unread), click → panel:
@@ -628,5 +649,28 @@ window.BT = (function () {
     }
   };
 
-  return { create, joinGo, startNow, copyLink, live, _test: { buildLocalTest } };
+  /* instructions gate — SERVER se asli status (host 'start now' ke baad bhi sahi) */
+  async function gate(test) {
+    const code = test.battle && test.battle.code;
+    if (!code) return { ok: true };
+    try {
+      const S = await Cloud.authed('/v1/battle/state', { code });
+      if (S.room.status === 'done') return { ok: false, done: true };
+      if (S.room.status === 'live') {
+        if (test.battle.startsAt !== S.room.startsAt) {
+          test.battle.startsAt = S.room.startsAt;
+          test.battle.liveStartsAt = S.room.startsAt;
+          await DB.put('tests', test);   // local test bhi fresh
+        }
+        return { ok: true };
+      }
+      return { ok: false, wait: Math.max(0, S.room.startsAt - Date.now()), startsAt: S.room.startsAt };
+    } catch (e) {
+      // offline / sign-out (e2e) — local time fallback
+      if (test.battle.startsAt && Date.now() < test.battle.startsAt) return { ok: false, wait: test.battle.startsAt - Date.now(), startsAt: test.battle.startsAt };
+      return { ok: true };
+    }
+  }
+
+  return { create, joinGo, startNow, copyLink, live, gate, _test: { buildLocalTest } };
 })();
