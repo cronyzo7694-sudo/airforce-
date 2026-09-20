@@ -311,8 +311,13 @@ async function handleRequest(req, env) {
   if (req.method === 'OPTIONS') {
     return new Response(null, { status: 204, headers: corsHeaders(req) });
   }
-  if (path === '/health') {
-    return json(req, 200, { ok: true, ts: Date.now(), storage: storage(env).name, media: !!(env.CLOUDINARY_KEY) });
+  if (path === '/' || path === '/health') {
+    return json(req, 200, {
+      ok: true, service: 'kineora-cloud-sync', ts: Date.now(),
+      storage: storage(env).name, media: !!(env.CLOUDINARY_KEY && env.CLOUDINARY_SECRET && env.CLOUDINARY_CLOUD),
+      endpoints: ['/health', '/v1/push', '/v1/pull', '/v1/status', '/v1/media'],
+      note: 'ye backend API hai (site nahi) — app khud ise use karti hai'
+    });
   }
   if (path.indexOf('/v1/') !== 0) {
     return json(req, 404, { ok: false, error: 'not found' });
