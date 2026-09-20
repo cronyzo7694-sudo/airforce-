@@ -109,8 +109,10 @@ async function verifyFirebaseToken(token, env) {
   if (!JWKS.keys || Date.now() - JWKS.at > 6 * 3600 * 1000) {
     var r = await fetch(JWKS_URL);
     if (!r.ok) throw new Error('jwks fetch failed');
-    JWKS = { keys: await r.json(), at: Date.now() };
-    if (!JWKS.keys || !JWKS.keys.length) throw new Error('jwks empty');
+    var jr = await r.json();
+    var jkeys = jr && jr.keys ? jr.keys : (Array.isArray(jr) ? jr : null);
+    if (!jkeys || !jkeys.length) throw new Error('jwks empty');
+    JWKS = { keys: jkeys, at: Date.now() };
   }
   var jwk = null;
   for (var i = 0; i < JWKS.keys.length; i++) if (JWKS.keys[i].kid === header.kid) { jwk = JWKS.keys[i]; break; }
@@ -118,8 +120,10 @@ async function verifyFirebaseToken(token, env) {
     JWKS = { keys: null, at: 0 };
     var r2 = await fetch(JWKS_URL);
     if (!r2.ok) throw new Error('jwks refresh failed');
-    JWKS = { keys: await r2.json(), at: Date.now() };
-    for (var k = 0; k < JWKS.keys.length; k++) if (JWKS.keys[k].kid === header.kid) { jwk = JWKS.keys[k]; break; }
+    var jr2 = await r2.json();
+    var jkeys2 = jr2 && jr2.keys ? jr2.keys : (Array.isArray(jr2) ? jr2 : []);
+    JWKS = { keys: jkeys2, at: Date.now() };
+    for (var k = 0; k < jkeys2.length; k++) if (jkeys2[k].kid === header.kid) { jwk = jkeys2[k]; break; }
     if (!jwk) throw new Error('token kid unknown');
   }
 

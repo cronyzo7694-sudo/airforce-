@@ -186,6 +186,27 @@ async function call(port, p, body, opts = {}) {
   const att9 = await G('(async () => DB.get("attempts", "att-9"))()');
   T('applied attempt saved', att9 && att9.id === 'att-9');
 
+  // REAL JWKS verification (internet se Google ke public keys) — forged token
+  const jwks = await (await fetch('https://www.googleapis.com/service_accounts/v1/jwk/securetoken@system.gserviceaccount.com')).json();
+  const kid = jwks.keys[0].kid;
+  const b64u = b => Buffer.from(b).toString('base64').replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+  const forgedJWT = [
+    b64u(JSON.stringify({ alg: 'RS256', kid })),
+    b64u(JSON.stringify({ aud: 'kineora-exam', iss: 'https://securetoken.google.com/kineora-exam', exp: 9999999999, sub: 'attacker', auth_time: 1 })),
+    b64u(Buffer.alloc(256, 7))  // nakli signature
+  ].join('.');
+  let verr = null;
+  try { await W.verifyFirebaseToken(forgedJWT, { FIREBASE_PROJECT: 'kineora-exam' }); } catch (e) { verr = e.message; }
+  T('REAL JWKS: forged signature reject', verr === 'token signature invalid', verr);
+  let audErr = null;
+  const wrongAud = [
+    b64u(JSON.stringify({ alg: 'RS256', kid: 'no-such-kid' })),
+    b64u(JSON.stringify({ aud: 'x', iss: 'x', exp: 1, sub: 'x' })),
+    b64u('x')
+  ].join('.');
+  try { await W.verifyFirebaseToken(wrongAud, { FIREBASE_PROJECT: 'kineora-exam' }); } catch (e) { audErr = e.message; }
+  T('REAL JWKS: unknown kid reject', /kid unknown/.test(audErr || ''), audErr);
+
   srv.close();
   console.log(`\nCLOUD RESULT: ${passed} passed, ${failed} failed`);
   process.exit(failed ? 1 : 0);
