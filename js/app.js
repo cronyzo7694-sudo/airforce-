@@ -159,7 +159,10 @@ const App = {
             <option value="army" disabled>Indian Army — coming soon</option>
           </select>
         </label>
-        <span class="nav-badge">${AVUtil.esc(((this.configCache && this.configCache.candidateName) || 'Practice Candidate').split(' ')[0])}</span>
+        <a class="nav-user" href="#/settings" title="Profile & Settings">
+          <span class="nav-avatar">${(this.configCache && this.configCache.profileImage) ? `<img src="${AVUtil.esc(this.configCache.profileImage)}" alt="">` : AVUtil.esc((((this.configCache && this.configCache.candidateName) || 'Practice Candidate').trim()[0] || 'P').toUpperCase())}</span>
+          <span class="nav-user-name">${AVUtil.esc(((this.configCache && this.configCache.candidateName) || 'Practice Candidate').split(' ')[0])}</span>
+        </a>
       </div>
     </header>`;
   },

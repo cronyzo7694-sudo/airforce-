@@ -152,6 +152,15 @@ Views.settings = async function () {
             <option value="en" ${cfg.defaultLanguage === 'en' ? 'selected' : ''}>English</option>
             <option value="hi" ${cfg.defaultLanguage === 'hi' ? 'selected' : ''}>हिन्दी</option>
           </select></div>
+        <div class="b-row"><label>Profile photo (navbar me dikhega)</label>
+          <div class="pf-row">
+            <span class="nav-avatar nav-avatar-lg" id="st-pf-avatar">${AVUtil.esc((cfg.candidateName || 'P').trim()[0] || 'P')}</span>
+            <input type="file" id="st-pf-file" accept="image/png,image/jpeg,image/webp,image/gif" hidden>
+            <button class="btn btn-plain" id="st-pf-upload">📷 &nbsp;Upload photo</button>
+            <button class="btn btn-plain btn-mini" id="st-pf-remove" style="display:none">Remove</button>
+          </div>
+          <p class="muted small" style="margin:6px 0 0">Google login ke baad photo Cloudinary par safe hoti hai — har device par wapas milti hai.</p>
+        </div>
         <button class="btn btn-primary" id="st-save-cand">Save</button>
       </div>
 
@@ -225,7 +234,47 @@ Views.settings = async function () {
     localStorage.setItem('av_lang', App.lang);
     await Store.setSetting('config', cfg);
     App.configCache = cfg;
+    updateNavUser();
     AVUtil.toast('Saved.');
+  });
+
+  /* ---------- profile photo (Cloudinary via cloud worker) ---------- */
+  const avatarHTML = c => c.profileImage
+    ? '<span class="nav-avatar"><img src="' + AVUtil.esc(c.profileImage) + '" alt=""></span>'
+    : '<span class="nav-avatar">' + AVUtil.esc((c.candidateName || 'P').trim()[0] || 'P').toUpperCase() + '</span>';
+  function updateNavUser() {
+    const chip = document.querySelector('.nav-user');
+    if (chip) chip.innerHTML = avatarHTML(cfg) + '<span class="nav-user-name">' + AVUtil.esc((cfg.candidateName || 'Practice Candidate').split(' ')[0]) + '</span>';
+    const pv = document.getElementById('st-pf-avatar');
+    if (pv) pv.outerHTML = '<span class="nav-avatar nav-avatar-lg" id="st-pf-avatar">' + (cfg.profileImage ? '<img src="' + AVUtil.esc(cfg.profileImage) + '" alt="">' : AVUtil.esc((cfg.candidateName || 'P').trim()[0] || 'P').toUpperCase()) + '</span>';
+    const rm = document.getElementById('st-pf-remove');
+    if (rm) rm.style.display = cfg.profileImage ? '' : 'none';
+  }
+  updateNavUser();
+  AVUtil.$('#st-pf-upload').addEventListener('click', () => AVUtil.$('#st-pf-file').click());
+  AVUtil.$('#st-pf-file').addEventListener('change', async () => {
+    const f = AVUtil.$('#st-pf-file').files[0];
+    if (!f) return;
+    if (f.size > 5 * 1024 * 1024) { AVUtil.toast('⚠️ Max 5 MB photo', 'error'); return; }
+    AVUtil.toast('Photo upload ho rahi hai…');
+    try {
+      const url = await Cloud.uploadImage(f);
+      cfg.profileImage = url;
+      await Store.setSetting('config', cfg);
+      App.configCache = cfg;
+      updateNavUser();
+      AVUtil.toast('✓ Profile photo set ho gayi');
+    } catch (e) {
+      AVUtil.toast('⚠️ ' + (e.message === 'sign in required' ? 'Photo ke liye pehle Google se login karo (upar ☁️ Cloud Backup)' : e.message), 'error');
+    }
+    AVUtil.$('#st-pf-file').value = '';
+  });
+  AVUtil.$('#st-pf-remove').addEventListener('click', async () => {
+    cfg.profileImage = null;
+    await Store.setSetting('config', cfg);
+    App.configCache = cfg;
+    updateNavUser();
+    AVUtil.toast('Photo hata di — naam ka initial dikhega');
   });
 
   AVUtil.$('#st-save-cfg').addEventListener('click', async () => {

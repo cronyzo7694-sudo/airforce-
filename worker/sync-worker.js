@@ -185,17 +185,17 @@ function storage(env) {
     return {
       name: 'neon',
       push: function (uid, device, recs) {
-        var k = [], r = [], d = [], u = [], del = [];
-        for (var i = 0; i < recs.length; i++) {
-          k.push(recs[i].kind); r.push(recs[i].rid);
-          d.push(JSON.stringify(recs[i].data));
-          u.push(recs[i].updatedAt); del.push(!!recs[i].deleted);
-        }
+        // NOTE: Neon HTTP /sql params scalars hi hote hain (arrays nahi) —
+        // isliye batch ek hi jsonb param me jata hai (jsonb_to_recordset).
+        var payload = recs.map(function (x) {
+          return { kind: x.kind, rid: x.rid, data: x.data || null, updatedAt: x.updatedAt, deleted: !!x.deleted };
+        });
         return neonSQL(env,
           'INSERT INTO sync_records (uid, kind, rid, data, updated_at, deleted) ' +
-          "SELECT * FROM unnest($1::text[], $2::text[], $3::text[], $4::jsonb[], $5::bigint[], $6::bool[]) " +
+          'SELECT $1, r.kind, r.rid, r.data, r."updatedAt"::bigint, r.deleted::bool ' +
+          'FROM jsonb_to_recordset($2::jsonb) AS r(kind text, rid text, data jsonb, "updatedAt" bigint, deleted bool) ' +
           'ON CONFLICT (uid, kind, rid) DO UPDATE SET data = EXCLUDED.data, updated_at = EXCLUDED.updated_at, deleted = EXCLUDED.deleted ' +
-          'WHERE sync_records.updated_at < EXCLUDED.updated_at', [uid, k, r, d, u, del])
+          'WHERE sync_records.updated_at < EXCLUDED.updated_at', [uid, JSON.stringify(payload)])
           .then(function () {
             return neonSQL(env,
               'INSERT INTO sync_devices (uid, device, last_seen, platform) VALUES ($1,$2,$3,$4) ' +
@@ -208,7 +208,10 @@ function storage(env) {
           'SELECT kind, rid, data, updated_at as "updatedAt", deleted FROM sync_records ' +
           'WHERE uid = $1 AND updated_at > $2 ORDER BY updated_at ASC LIMIT $3',
           [uid, since, limit]).then(function (rows) {
-            rows.forEach(function (x) { x.data = typeof x.data === 'string' ? JSON.parse(x.data) : x.data; });
+            rows.forEach(function (x) {
+              x.data = typeof x.data === 'string' ? JSON.parse(x.data) : x.data;
+              x.updatedAt = Number(x.updatedAt);   // bigint string → number
+            });
             return rows;
           });
       },
