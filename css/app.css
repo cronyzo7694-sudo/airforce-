@@ -1548,3 +1548,31 @@ html.sm-dark   { --smf: invert(1) hue-rotate(180deg) brightness(.9) contrast(.94
 
 /* 8) dark mode scrollbar bhi sahi dikhe */
 html.sm-dark ::-webkit-scrollbar-thumb { background: #8a93a5; }
+
+/* ═══════════════════════════════════════════════════════════════════
+   v1.4.45 — SAB DEVICE RESPONSIVE (mobile tap-targets + tables + exam
+   header + builder inputs). Har page mobile/tablet/PC par sahi.
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  /* exam header: ONLINE badge viewport se bahar jata tha (286..444 @375px) */
+  .eh-online { display: none; }
+}
+@media (max-width: 720px) {
+  /* 1) touch targets — chhote buttons kabhi 36px se kam nahi (28px the) */
+  .btn { min-height: 40px; }
+  .btn-sm { padding: 8px 13px; min-height: 36px; font-size: 12.8px; }
+  /* text-links: layout same, tap area bada (padding + negative margin) */
+  a.link, .bt-backlink, .crumbs a, .sf-links a { padding: 8px 4px; margin: -8px -4px; }
+  /* 2) saari tables mobile par swipe-scroll (bank/settings/overview/attempts) */
+  .tbl { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  /* 3) builder ke number inputs + checkboxes thumb-friendly */
+  .b-count, .b-min { min-height: 38px; min-width: 64px; }
+  .b-use { width: 24px; height: 24px; flex: none; }
+  /* saare bare checkboxes/radios bhi (shuffle/instant/import opts) */
+  input[type="checkbox"], input[type="radio"] { width: 20px; height: 20px; flex: none; }
+  /* 4) iOS zoom-proof: focused input < 16px page ko zoom karta hai */
+  input[type="text"], input[type="search"], input[type="number"],
+  input[type="email"], input[type="password"], select, textarea { font-size: 16px; }
+  /* 5) attempt/result pages ke mini action rows */
+  .xbtn { min-height: 40px; }
+}
