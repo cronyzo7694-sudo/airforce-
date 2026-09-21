@@ -138,7 +138,7 @@ async function main() {
   T('Physics active, others locked',
     attempt.sections.physics.state === 'ACTIVE' && attempt.sections.mathematics.state === 'LOCKED' &&
     attempt.sections.english.state === 'LOCKED' && attempt.sections.raga.state === 'LOCKED');
-  T('exam mode: pause button hidden (allowPause=false)', !doc.getElementById('x-pause'), 'pause button exam mode me nahi dikhna chahiye');
+  T('pause button present in exam mode (har test me pause — user setting)', !!doc.getElementById('x-pause'));
   T('exam mode: instant explanation off', (await G('!!ExamScreen.showExplain')) === false);
   T('subject tabs render with lock icons',
     doc.querySelectorAll('.subtab').length === 4 && doc.querySelector('.subtab.locked'));
@@ -234,6 +234,10 @@ async function main() {
   console.log('\n━━━ E2E · complete exam');
   const test = await G('DB.get("tests", "' + a2.testId + '")');
   window.TESTREF = test;
+  // final state me kam-se-kam 1 answered (flow ke clear-response step ne purane
+  // answers hata diye the; 0 final answers = attempt discard ho jata — by design)
+  await G('Engine.selectOption(ExamScreen.attempt, ExamScreen.attempt.sections.mathematics.questionIds[0], "A")');
+  await G('ExamScreen.persist()');
   for (const sid of ['mathematics', 'english', 'raga']) {
     await G('Engine.submitSection(ExamScreen.attempt, TESTREF, "' + sid + '", "user", Date.now())');
     await G('ExamScreen.persist()');
@@ -242,7 +246,7 @@ async function main() {
   await sleep(500);
   const fin = await G('DB.get("attempts", "' + a2.id + '")');
   T('attempt completed + evaluated', fin.completed && fin.result && fin.result.maxScore === 100);
-  T('score arithmetic consistent (0 ≤ score ≤ 100)', fin.result.score >= 0 && fin.result.score <= 100);
+  T('score arithmetic consistent (negative marking ok)', fin.result.score >= -25 && fin.result.score <= 100);
 
   // attempt index updated
   const idx = await G('Store.getMeta("attemptIndex", [])');
@@ -325,11 +329,50 @@ async function main() {
   window.location.hash = '#/attempts';
   await waitFor(() => doc.body.textContent.includes('in progress'), 10000);
   T('attempts page: 1 in progress count', /1 in progress/.test(doc.body.textContent));
+
+  // AWAY-RESUME: 35 min band reha attempt — jahan chhoda wahin se + same time bacha
+  const aw = await G('(async () => { const t = await DB.get("tests", "' + attempt.testId + '"); const a = Engine.createAttempt(t, 98, Date.now() - 40 * 60 * 1000); a.heartbeatAt = Date.now() - 35 * 60 * 1000; const remBefore = Engine.remainingMs(a, t, a.heartbeatAt); await DB.put("attempts", a); return { id: a.id, remBefore: Math.round(remBefore / 1000) }; })()');
+  window.location.hash = '#/test/' + attempt.testId + '/attempt';
+  await waitFor(() => doc.querySelector('.exam-screen'), 10000);
+  T('away-resume: exam khula — "time expired" auto-submit NAHI', !!doc.querySelector('.exam-screen') && !doc.body.textContent.includes('TEST COMPLETED'));
+  const remNowS = await G('Math.round(Engine.remainingMs(ExamScreen.attempt, ExamScreen.test, Date.now()) / 1000)');
+  T('away-resume: jitna time bacha tha wahi bacha (±5s)', Math.abs(remNowS - aw.remBefore) <= 5, 'before=' + aw.remBefore + 's now=' + remNowS + 's');
+  T('away-resume: toast "expired while away" nahi aaya', !doc.body.textContent.includes('while you were away'));
+  await G('(async () => { ExamScreen.teardown(); App.activeAttempt = null; await DB.delete("attempts", "' + aw.id + '"); })()');
+  window.location.hash = '#/dashboard';
+  await sleep(600);
+
   await G('(async () => { await DB.delete("attempts", "' + ures.id + '"); App.pendingResume = null; })()');
   // completed test par /attempt route → latest result (pehle [testId,1] index kabhi match nahi hota tha)
   window.location.hash = '#/test/' + attempt.testId + '/attempt';
   await waitFor(() => window.location.hash.includes('/result'), 10000);
   T('completed test → start → latest result redirect', window.location.hash.includes('/result'), window.location.hash);
+
+  /* ---------- 9c. 0-ANSWER submit → attempt discard, test FRESH ---------- */
+  console.log('\n━━━ E2E · 0-answer paper → fresh test (koi analysis nahi)');
+  const zr = await G('Generator.subjectTest("mathematics")');
+  window.location.hash = '#/test/' + zr.test.id + '/instructions';
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 10000);
+  if (doc.getElementById('login-btn')) {
+    doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
+    await waitFor(() => doc.getElementById('ins-agree'), 8000);
+  }
+  doc.getElementById('ins-agree').checked = true;
+  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.querySelector('.exam-screen'), 20000);
+  const attBefore = await G('DB.count("attempts")');
+  const idxBefore = (await G('Store.getMeta("attemptIndex", [])')).length;
+  // koi question attempt NAHI — seedha submit
+  doc.getElementById('x-submit').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.querySelector('.av-modal-overlay'), 8000);
+  doc.querySelector('.av-modal-overlay [data-act="yes"]').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(1500);
+  T('0-answer: result page nahi — test overview par wapas', window.location.hash.includes('#/test/' + zr.test.id), window.location.hash);
+  await waitFor(() => doc.getElementById('ov-share') || doc.body.textContent.includes('RESUME') || doc.body.textContent.includes('BEGIN'), 8000);
+  T('0-answer: test overview dikhta hai (fresh)', !!doc.getElementById('ov-share') || /BEGIN|START|RESUME/i.test(doc.body.textContent));
+  T('0-answer: attempt record delete hua', (await G('DB.count("attempts")')) === attBefore - 1, 'attempt bacha reh gaya');
+  T('0-answer: attemptIndex me entry nahi', (await G('Store.getMeta("attemptIndex", [])')).length === idxBefore);
   // ═══ 🔗 SHARE — simple shareable test link (battle REPLACE ho gaya) ═══
   window.location.hash = '#/battle';   // purana battle route ab nahi — safe 404/dashboard jaisa
   await sleep(700);

@@ -138,6 +138,35 @@ T('state round-trip (JSON) restores exam exactly', () => {
 });
 
 console.log('\n━━━ TEST 7 · Physics timer expiry auto-submits and unlocks Mathematics');
+T('recoverAway: band rehne ka time timer me wapas (pause-on-close)', () => {
+  const t = mkTest({ timerMode: 'global', duration: 20 * 60, sectionLock: false, sections: [{ subjectId: 'physics', name: 'Physics', questionIds: Array.from({ length: 5 }, (_, i) => 'p' + (i + 1)), duration: 20 * 60 }] });
+  const a = Engine.createAttempt(t, 1, NOW);
+  const remBefore = Engine.remainingMs(a, t, NOW);
+  eq(remBefore, 20 * 60 * SEC, '20 min full');
+  a.heartbeatAt = NOW + 10 * SEC;                       // 10 min tak active tha
+  const away = Engine.recoverAway(a, NOW + 10 * SEC + 30 * 60 * SEC);  // phir 30 min band
+  eq(away, 30 * 60 * SEC, 'away = 30 min');
+  const remAfter = Engine.remainingMs(a, t, NOW + 10 * SEC + 30 * 60 * SEC);
+  eq(remAfter, 20 * 60 * SEC - 10 * SEC, 'jitna bacha tha wahi bacha (19m50s)');
+  assert(Engine.fastForward(a, t, NOW + 10 * SEC + 30 * 60 * SEC).completed === false, 'expire nahi hua — jahan chhoda wahin se');
+});
+T('recoverAway: section mode me active section ka endsAt bhi extend', () => {
+  const t = mkTest();
+  const a = Engine.createAttempt(t, 1, NOW);
+  const secBefore = Engine.remainingMs(a, t, NOW);
+  a.heartbeatAt = NOW + 5 * SEC;
+  const away = Engine.recoverAway(a, NOW + 5 * SEC + 10 * 60 * SEC);
+  eq(away, 10 * 60 * SEC, 'away');
+  const secAfter = Engine.remainingMs(a, t, NOW + 5 * SEC + 10 * 60 * SEC);
+  eq(secAfter, secBefore - 5 * SEC, 'section time same bacha');
+});
+T('recoverAway: paused attempt par 0 (Engine.resume khud sambhalta hai)', () => {
+  const t = mkTest({ timerMode: 'global', duration: 10 * 60, sections: [{ subjectId: 'physics', name: 'Physics', questionIds: ['p1'], duration: 10 * 60 }] });
+  const a = Engine.createAttempt(t, 1, NOW);
+  Engine.pause(a, NOW + 60 * SEC);
+  eq(Engine.recoverAway(a, NOW + 60 * SEC + 5 * 60 * SEC), 0, 'paused → recoverAway kuch nahi karta');
+});
+
 T('fastForward applies expiry chain with zero interaction', () => {
   const t = mkTest();
   const a = Engine.createAttempt(t, 1, NOW);

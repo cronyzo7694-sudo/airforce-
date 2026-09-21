@@ -53,7 +53,9 @@ const ExamScreen = {
     this.qmap = {};
     rows.forEach(q => { if (q) this.qmap[q.id] = q; });
 
-    // recover: apply expiries that happened while away
+    // recover: band rehne ka time timer me WAAPAS (pause-on-close) —
+    // jahan chhoda tha wahin se + jitna time bacha tha wahi rahe.
+    Engine.recoverAway(attempt, Date.now());
     const ff = Engine.fastForward(attempt, test, Date.now());
     Engine.assertValidPosition(attempt);
 
@@ -69,6 +71,7 @@ const ExamScreen = {
 
     this.render();
     this.startTick();
+    if (attempt.pauseStarted) this.showPauseVeil();   // paused hi band hua tha — veil wapas
   },
 
   /* ================= render ================= */
@@ -193,7 +196,7 @@ const ExamScreen = {
             <span class="timer-lbl">${t('timeLeft')}</span>
             <span class="timer-val" id="x-timer-val">${AVUtil.fmtTime(remaining)}</span>
           </div>
-          ${test.allowPause ? `<button class="xbtn xbtn-ghost icon-only" id="x-pause" title="Pause — timer ruk jaayega" aria-label="Pause">⏸</button>` : ''}
+          <button class="xbtn xbtn-ghost icon-only" id="x-pause" title="Pause — timer ruk jaayega" aria-label="Pause">⏸</button>
           <button class="xbtn xbtn-ghost" id="x-instructions" title="${t('instructions')}"><span aria-hidden="true">📄</span><span class="ilbl">${t('instructions')}</span></button>
           <button class="xbtn xbtn-submit" id="x-submit" title="Submit anytime — koi restriction nahi. Confirmation milegi.">${test.timerMode === 'section' ? t('submitSection').toUpperCase() : t('submitTest').toUpperCase()}</button>
         </div>
@@ -577,6 +580,9 @@ const ExamScreen = {
   },
 
   async tick() {
+    // heartbeat: exam khula hai = timer chal raha hai. Band hone par
+    // recoverAway isi heartbeat se away nikaalta hai.
+    if (this.attempt && !this.attempt.pauseStarted && Date.now() - (this.attempt.heartbeatAt || 0) > 30000) this.persist();
     const a = this.attempt, test = this.test;
     if (!a || a.completed) return this.stopTick();
     const cfg = App.configCache || EXAM_CONFIG;
@@ -620,19 +626,23 @@ const ExamScreen = {
     }
   },
 
-  /* ---------- pause (allowed modes only — timer freezes, no data lost) ---------- */
+  /* ---------- pause (HAR test me — timer freezes, no data lost) ---------- */
+  showPauseVeil() {
+    AVUtil.$('#pause-veil')?.remove();
+    const a = this.attempt;
+    const veil = AVUtil.el('div', { id: 'pause-veil', class: 'pause-veil' });
+    veil.innerHTML = `<div class="pause-box"><h2>Exam Paused</h2><p>The timer is stopped${a && a.timerMode === 'section' ? ' — section time bhi freeze hai' : ''}. Jab ready ho, resume kar do.</p><button class="xbtn xbtn-save" id="pause-resume">RESUME EXAM</button></div>`;
+    document.body.appendChild(veil);
+    veil.querySelector('#pause-resume').addEventListener('click', () => this.togglePause());
+  },
   async togglePause() {
-    if (!this.test || !this.test.allowPause) return AVUtil.toast('Pause allowed nahi hai — ye exam mode test hai.', 'warn');
     const a = this.attempt;
     if (a.pauseStarted) {
       Engine.resume(a, Date.now());
       AVUtil.$('#pause-veil')?.remove();
     } else {
       Engine.pause(a, Date.now());
-      const veil = AVUtil.el('div', { id: 'pause-veil', class: 'pause-veil' });
-      veil.innerHTML = `<div class="pause-box"><h2>Exam Paused</h2><p>The timer is stopped${a.timerMode === 'section' ? ' — section time bhi freeze hai' : ''}. Jab ready ho, resume kar do.</p><button class="xbtn xbtn-save" id="pause-resume">RESUME EXAM</button></div>`;
-      document.body.appendChild(veil);
-      veil.querySelector('#pause-resume').addEventListener('click', () => this.togglePause());
+      this.showPauseVeil();
     }
     await this.persist();
   },
@@ -656,6 +666,17 @@ const ExamScreen = {
       else Engine.submitExam(a, test, reason, Date.now());
     }
     a.result = Engine.evaluate(a, this.qmap);
+
+    // 0-answer paper: koi question attempt hi nahi hua — na result, na analysis,
+    // na attemptIndex. Attempt record delete — test wapas FRESH milta hai.
+    if (!(a.result.correct || 0) && !(a.result.wrong || 0)) {
+      await DB.delete('attempts', a.id);
+      App.activeAttempt = null;
+      if (this.keyHandler) document.removeEventListener('keydown', this.keyHandler);
+      AVUtil.toast('Koi question attempt nahi hua — test fresh hai, kabhi bhi dobara de sakte ho.', 'info');
+      location.hash = '#/test/' + a.testId;
+      return;
+    }
 
     // attempt summary index (lightweight — powers dashboards)
     const subjectStats = {}, subjectNames = {};

@@ -335,7 +335,7 @@ const Generator = (() => {
       timerMode,
       sectionLock,
       sectionSubmitRequired: opts.sectionSubmitRequired != null ? opts.sectionSubmitRequired : (opts.mode === 'practice' ? false : C.sectionSubmitRequired),
-      allowPause: opts.mode === 'practice' && (opts.allowPause != null ? !!opts.allowPause : true),  // practice default ON; exam kabhi nahi
+      allowPause: opts.allowPause != null ? !!opts.allowPause : true,  // HAR test me pause (user setting)
       shuffleQuestions: !!opts.shuffleQuestions,
       shuffleOptions: !!opts.shuffleOptions,
       instantExplanation: !!opts.instantExplanation && opts.mode === 'practice',

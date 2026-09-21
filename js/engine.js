@@ -308,6 +308,25 @@ const Engine = (() => {
     attempt.heartbeatAt = now;
   }
 
+  function recoverAway(attempt, now) {
+    /* Band rehne ka time timer ke liye PAUSE tha (pause-on-close semantics).
+       Away ka poora time endsAt me wapas add hota hai — resume par test
+       JAHAN CHHODA THA wahin se khulta hai, aur JITNA TIME BACHA THA wahi
+       bacha rehta hai. Paused attempts Engine.resume se handle hote hain. */
+    now = now || Date.now();
+    if (attempt.completed || attempt.pauseStarted) return 0;
+    const away = now - (attempt.heartbeatAt || now);
+    if (away <= 2000) return 0;   // 2s se kam = glitch, ignore
+    if (attempt.endsAt) attempt.endsAt += away;
+    if (attempt.timerMode === 'section') {
+      const sec = attempt.sections && attempt.sections[attempt.currentSectionId];
+      if (sec && sec.endsAt) sec.endsAt += away;
+    }
+    attempt.awayTotal = (attempt.awayTotal || 0) + away;
+    attempt.heartbeatAt = now;
+    return away;
+  }
+
   function remainingMs(attempt, test, now) {
     now = now || Date.now();
     if (attempt.timerMode === 'section') {
@@ -459,7 +478,7 @@ const Engine = (() => {
     createAttempt, touch, selectOption, clearResponse, markForReview,
     canOpenSection, gotoSection, gotoQuestion, saveNext, markReviewNext, previous,
     sectionSummary, submitSection, submitExam,
-    accumulateTime, remainingMs, fastForward, pause, resume,
+    accumulateTime, remainingMs, fastForward, pause, resume, recoverAway,
     assertValidPosition, globalNumber, allQuestionIds, evaluate,
     activeSection, sectionOf
   };

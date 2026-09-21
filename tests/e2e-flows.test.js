@@ -161,6 +161,9 @@ async function main() {
       await G('ExamScreen.attempt.currentSectionId') + '#' + await G('ExamScreen.attempt.currentQIdx'));
   }
   // finish the whole exam quickly via engine
+  // (1 answer zaroori — 0 final answers par attempt discard hota hai, by design)
+  await G('Engine.selectOption(ExamScreen.attempt, ExamScreen.attempt.sections.mathematics.questionIds[0], "A")');
+  await G('ExamScreen.persist()');
   await G('(function(){ const a=ExamScreen.attempt; const t=window.__T; })()');
   const TREF2 = await G('DB.get("tests", ExamScreen.attempt.testId)'); window.TREF2 = TREF2;
   await G('Engine.submitExam(ExamScreen.attempt, TREF2, "user", Date.now()); ExamScreen.finalize("user", true)');
@@ -252,6 +255,7 @@ async function main() {
   await sleep(600);
   const candShown = examUp && await G('document.querySelector(".cand-name") ? document.querySelector(".cand-name").textContent : "no el"');
   T('candidate name shows in exam header', candShown === 'Manash Test', 'got: ' + candShown);
+  await G('Engine.selectOption(ExamScreen.attempt, Engine.allQuestionIds(ExamScreen.attempt)[0], "A")');   // 0-answer discard se bachne ke liye 1 answer
   await G('(async () => { const t = await DB.get("tests", ExamScreen.attempt.testId); Engine.submitExam(ExamScreen.attempt, t, "user", Date.now()); await ExamScreen.finalize("user", true); })()');
 
   /* ============ 9. real CSV import through the UI ============ */

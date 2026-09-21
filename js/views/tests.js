@@ -441,7 +441,7 @@ Views.builder = async function () {
       strategy: AVUtil.$('#b-strategy').value,
       shuffleQuestions: AVUtil.$('#b-shuffle-q').checked,
       instantExplanation: AVUtil.$('#b-instant').checked,
-      allowPause: true // practice me pause ON; exam mode me generator override karke OFF karta hai (mock integrity)
+      allowPause: true // pause HAR test me available hai
     });
     if (!r.ok) {
       btn.disabled = false; btn.textContent = 'GENERATE TEST →';
