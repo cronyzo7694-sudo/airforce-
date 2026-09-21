@@ -9,6 +9,19 @@
   <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" href="icons/icon-192.png" type="image/png">
   <link rel="stylesheet" href="css/app.css">
+  <script>
+    /* v1.4.42 STUDY MODES — saved mode turant apply (koi flash nahi) */
+    (function () {
+      try {
+        var m = localStorage.getItem('studyMode') || 'normal';
+        var h = parseInt(localStorage.getItem('studyHue') || '0', 10) || 0;
+        var r = document.documentElement;
+        if (m && m !== 'normal') r.classList.add('sm-' + m);
+        else if (h > 0) r.classList.add('sm-normal');
+        if (h > 0) r.style.setProperty('--hue', h + 'deg');
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
   <div id="app">
@@ -36,7 +49,31 @@
       <span>Kineora Exam — har exam, ek platform 🇮🇳</span>
     </div>
   </footer>
-  <button id="chat-fab" aria-label="Open community chat" aria-expanded="false" title="Community Chat">💬</button>
+  <button id="chat-fab" aria-label="Menu — chat + study modes" aria-expanded="false" title="Menu — Chat + Study Modes">☰</button>
+  <div id="menu-panel" role="dialog" aria-label="Menu">
+    <div class="menu-head">
+      <b>☰ Menu</b>
+      <button class="chat-close" id="menu-close" aria-label="Close menu" title="Close">✕</button>
+    </div>
+    <div class="menu-body">
+      <button class="menu-row" id="menu-chat">
+        <span class="mr-ico">💬</span>
+        <span class="mr-txt"><b>Message / Community Chat</b><small>doston se connect karo</small></span>
+        <span class="mr-go" aria-hidden="true">›</span>
+      </button>
+      <div class="menu-sec">🎨 Study Mode — aankhon ka aaram</div>
+      <div class="mode-grid">
+        <button class="mode-btn" data-mode="normal"><span>☀️</span>Normal</button>
+        <button class="mode-btn" data-mode="bw"><span>⚫⚪</span>Black &amp; White</button>
+        <button class="mode-btn" data-mode="night"><span>🌙</span>Night</button>
+        <button class="mode-btn" data-mode="paper"><span>📄</span>Paper</button>
+        <button class="mode-btn" data-mode="dark"><span>🕶️</span>Dark</button>
+      </div>
+      <div class="menu-sec">🌈 Colour Adjuster <small id="hue-val" class="muted">0°</small></div>
+      <input type="range" id="hue-slider" min="0" max="360" step="5" value="0" aria-label="Website colour adjuster">
+      <div class="muted small menu-hint">Slider ghumao — poori website ka rang badlega. Mode ke saath bhi chalega.</div>
+    </div>
+  </div>
   <div id="chat-panel" role="dialog" aria-label="Community chat">
     <div class="chat-head">
       <b>💬 Community Chat</b>

@@ -920,7 +920,7 @@ body.exam-on .bottomnav, body.cbt-on .bottomnav { display: none !important; }
 .exam-sel select:disabled { cursor: not-allowed; }
 
 /* hide site chrome during a live exam (full CBT focus) + lock background scroll */
-body.exam-on #site-footer, body.exam-on #chat-fab, body.exam-on #chat-panel { display: none !important; }
+body.exam-on #site-footer, body.exam-on #chat-panel { display: none !important; }
 body.exam-on { overflow: hidden; }
 
 @media (max-width: 720px) {
@@ -1388,3 +1388,62 @@ body.exam-on { overflow: hidden; }
 .unfinished-list .ul-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .unfinished-list .ul-info b { font-size: 14px; }
 .unfinished-list .resume-actions { display: flex; gap: 8px; flex-shrink: 0; }
+
+/* ═══════════ v1.4.42 — MENU FAB + STUDY MODES (aankhon ka aaram) ═══════════
+   Filters SIRF body ke direct children par — fixed nav/modal/panels ka
+   positioning kabhi nahi tootta. Text contrast har mode me preserve:
+   grayscale/sepia/brightness luminance badalte nahi, dark me contrast
+   utna hi rehta (inverted). Test/question text kabhi invisible nahi. */
+html.sm-bw     { --smf: grayscale(1) contrast(1.08) hue-rotate(var(--hue, 0deg)); }
+html.sm-night  { --smf: brightness(.8) sepia(.22) saturate(.9) hue-rotate(var(--hue, 0deg)); }
+html.sm-paper  { --smf: sepia(.3) contrast(.94) brightness(1.02) hue-rotate(var(--hue, 0deg)); }
+html.sm-dark   { --smf: invert(1) hue-rotate(180deg) brightness(.92) contrast(.96); }
+html.sm-normal { --smf: hue-rotate(var(--hue, 0deg)); }
+html[class*="sm-"] body > * { filter: var(--smf, none); }
+/* dark mode: photos/charts double-invert = original */
+html.sm-dark img, html.sm-dark video, html.sm-dark canvas, html.sm-dark iframe,
+html.sm-dark .chat-frame, html.sm-dark .no-invert { filter: invert(1) hue-rotate(180deg); }
+
+/* menu panel */
+#menu-panel {
+  position: fixed; right: 16px; bottom: 80px; z-index: 97;
+  width: min(320px, calc(100vw - 28px));
+  background: #fff; border: 1px solid var(--line); border-radius: 14px;
+  box-shadow: 0 14px 44px rgba(10, 25, 50, .28);
+  display: none; flex-direction: column; overflow: hidden;
+}
+#menu-panel.open { display: flex; }
+.menu-head { display: flex; justify-content: space-between; align-items: center; padding: 11px 14px; background: var(--navy); color: #fff; font-size: 14px; }
+.menu-head .chat-close { background: none; border: none; color: #fff; font-size: 15px; cursor: pointer; }
+.menu-body { padding: 10px 12px 14px; display: flex; flex-direction: column; gap: 10px; max-height: min(70vh, 520px); overflow: auto; }
+.menu-row {
+  display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
+  background: #f4f7fc; border: 1px solid var(--line-soft); border-radius: 10px;
+  padding: 10px 12px; cursor: pointer; font-size: 14px;
+}
+.menu-row:hover { border-color: var(--navy-2); }
+.mr-ico { font-size: 20px; }
+.mr-txt { display: flex; flex-direction: column; gap: 1px; flex: 1; }
+.mr-txt small { color: #66788f; font-size: 11.5px; }
+.mr-go { color: var(--navy-2); font-size: 18px; }
+.menu-sec { font-size: 12px; font-weight: 800; color: var(--navy); text-transform: uppercase; letter-spacing: .4px; margin-top: 4px; display: flex; justify-content: space-between; align-items: baseline; }
+.mode-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; }
+.mode-grid .mode-btn:nth-child(5) { grid-column: span 2; }
+.mode-btn {
+  display: flex; flex-direction: column; align-items: center; gap: 4px;
+  border: 1.5px solid var(--line); background: #fff; border-radius: 10px;
+  padding: 10px 6px; font-size: 12.3px; font-weight: 700; cursor: pointer; color: var(--navy);
+}
+.mode-btn span { font-size: 21px; }
+.mode-btn:hover { border-color: var(--navy-2); }
+.mode-btn.active { border-color: var(--navy); background: #eef3fb; box-shadow: 0 0 0 2px rgba(30, 58, 110, .14); }
+#hue-slider { width: 100%; accent-color: var(--navy); cursor: pointer; }
+.menu-hint { font-size: 11.3px; }
+/* exam me menu chhota-sa dikhta rahe (study modes exam ke liye hi to hai) */
+body.exam-on #menu-panel .menu-row#menu-chat { display: none; }   /* exam focus — chat band */
+body.exam-on #chat-panel { display: none !important; }
+@media (max-width: 720px) {
+  #menu-panel { right: 12px; bottom: calc(130px + env(safe-area-inset-bottom, 0px)); width: min(300px, calc(100vw - 24px)); }
+  .mode-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media print { #menu-panel { display: none !important; } }

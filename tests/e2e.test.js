@@ -531,6 +531,61 @@ async function main() {
   T('site chrome visible again after exam', !(await G('document.body.classList.contains("exam-on")')));
   T('practice test completes with result', (await G('DB.get("attempts", "' + pa.id + '")')).result.maxScore === 25);
 
+  /* ---------- 15. STUDY MODES MENU (v1.4.42) ---------- */
+  console.log('\n━━━ E2E · study modes menu (aankhon ka aaram)');
+  const fabEl = doc.getElementById('chat-fab');
+  T('menu FAB shell me (chat + modes)', !!fabEl && !!doc.getElementById('menu-panel'));
+  fabEl.dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(300);
+  T('menu panel khula', doc.getElementById('menu-panel').classList.contains('open'));
+  T('menu: chat row + 5 modes + colour slider', !!doc.getElementById('menu-chat') && doc.querySelectorAll('#menu-panel .mode-btn').length === 5 && !!doc.getElementById('hue-slider'));
+  doc.querySelector('#menu-panel .mode-btn[data-mode="bw"]').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(200);
+  T('Black & White: html class + localStorage persist', doc.documentElement.classList.contains('sm-bw') && window.localStorage.getItem('studyMode') === 'bw');
+  T('B&W mode me content intact (text invisible nahi)', doc.getElementById('app').textContent.length > 100);
+  doc.querySelector('#menu-panel .mode-btn[data-mode="night"]').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(200);
+  T('Night mode: class + persist', doc.documentElement.classList.contains('sm-night') && window.localStorage.getItem('studyMode') === 'night');
+  doc.querySelector('#menu-panel .mode-btn[data-mode="paper"]').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(150);
+  T('Paper mode: class', doc.documentElement.classList.contains('sm-paper'));
+  doc.querySelector('#menu-panel .mode-btn[data-mode="dark"]').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(150);
+  T('Dark mode: class + persist', doc.documentElement.classList.contains('sm-dark') && window.localStorage.getItem('studyMode') === 'dark');
+  const sl = doc.getElementById('hue-slider');
+  sl.value = '120';
+  sl.dispatchEvent(new window.Event('input', { bubbles: true }));
+  await sleep(150);
+  T('colour slider: --hue applied + persist', doc.documentElement.style.getPropertyValue('--hue').includes('120') && parseInt(window.localStorage.getItem('studyHue') || '0', 10) === 120);
+  // exam screen bhi mode ke saath theek
+  const smT = await G('Generator.subjectTest("english")');
+  window.location.hash = '#/test/' + smT.test.id + '/instructions';
+  await waitFor(() => doc.getElementById('ins-agree') || doc.getElementById('login-btn'), 12000);
+  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-agree'), 8000); }
+  doc.getElementById('ins-agree').checked = true;
+  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  const smExam = await waitFor(() => doc.querySelector('.exam-screen'), 15000);
+  T('mode ON + exam screen: question text VISIBLE', smExam && doc.querySelector('.exam-screen').textContent.length > 50 && doc.documentElement.classList.contains('sm-dark'));
+  T('exam me menu FAB dikhta hai (mode switch exam me bhi)', (await G('getComputedStyle(document.getElementById("chat-fab")).display')) !== 'none');
+  doc.getElementById('chat-fab').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(150);
+  doc.querySelector('#app').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(200);
+  T('menu: bahar click par band', !doc.getElementById('menu-panel').classList.contains('open'));
+  await G('Engine.submitExam(ExamScreen.attempt, ExamScreen.test, "user", Date.now())');
+  await G('ExamScreen.finalize("user", true)');
+  window.location.hash = '#/dashboard';
+  await sleep(400);
+  fabEl.dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(200);
+  doc.querySelector('#menu-panel .mode-btn[data-mode="normal"]').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(200);
+  sl.value = '0';
+  sl.dispatchEvent(new window.Event('input', { bubbles: true }));
+  await sleep(200);
+  T('Normal reset: saari mode classes gayi (hue bhi 0)', !doc.documentElement.className.includes('sm-') && parseInt(window.localStorage.getItem('studyHue') || '0', 10) === 0);
+
   /* ---------- summary ---------- */
   console.log(`\n════════════════════════════════════════`);
   console.log(`  E2E RESULT: ${passed} passed, ${failed} failed`);
