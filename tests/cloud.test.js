@@ -94,13 +94,16 @@ async function call(port, p, body, opts = {}) {
   const pl2 = await call(port, '/v1/pull', { since: pl1.j.maxTs });
   T('pull since=maxTs → empty', pl2.j.records.length === 0);
 
-  // LWW
+  // LWW — v1.4.39: SERVER timestamps (client clock skew-proof). Har push
+  // server-time se jaata hai, isliye baad wala push hamesha jeetega — chahe
+  // client ka updatedAt kitna bhi purana/未来 ho.
   await call(port, '/v1/push', { device: 'dev-b', records: [{ kind: 'attempt', rid: 'a1', data: { id: 'a1', score: 99 }, updatedAt: now - 5000 }] });
   let pl3 = await call(port, '/v1/pull', { since: 0 });
-  T('LWW: older push ignored (score 20)', pl3.j.records.find(r => r.rid === 'a1').data.score === 20);
+  T('server-ts: stale-clock push bhi latest (score 99)', pl3.j.records.find(r => r.rid === 'a1').data.score === 99);
   await call(port, '/v1/push', { device: 'dev-b', records: [{ kind: 'attempt', rid: 'a1', data: { id: 'a1', score: 42 }, updatedAt: now + 5000 }] });
   pl3 = await call(port, '/v1/pull', { since: 0 });
-  T('LWW: newer push wins (score 42)', pl3.j.records.find(r => r.rid === 'a1').data.score === 42);
+  T('server-ts: doosra push jeeta (score 42)', pl3.j.records.find(r => r.rid === 'a1').data.score === 42);
+  T('server-ts: record updatedAt server se aaya (>= push time)', pl3.j.records.find(r => r.rid === 'a1').updatedAt >= now - 1000);
 
   // tombstone
   await call(port, '/v1/push', { device: 'dev-b', records: [{ kind: 'question', rid: 'q1', updatedAt: now + 9000, deleted: true }] });
@@ -213,6 +216,147 @@ async function call(port, p, body, opts = {}) {
   const noteSync = await G('(async () => DB.get("notes", "n_sync"))()');
   T('pulled note locally applied', noteSync && noteSync.text === 'dusre device se aaya');
   await G('Cloud.setAuto(true)');
+
+  /* ═══ v1.4.39 — META MERGE + HISTORY REPAIR + PURGE + FAIL-SAFE ═══ */
+  console.log('━━━ CLOUD v1.4.39 · merge/repair/purge (do-device race fixes)');
+
+  // --- mergeMetaValue unit tests ---
+  const mg1 = await G(`(async () => {
+    const dead = new Set(['a_dead']);
+    // attemptIndex: local 2 entries, remote 2 (1 common-purana, 1 naya), 1 dead
+    const loc = [
+      { id: 'a1', date: 100, score: 10 },
+      { id: 'a2', date: 200, score: 20 },
+      { id: 'a_dead', date: 300, score: 99 }
+    ];
+    const rem = [
+      { id: 'a1', date: 150, score: 11 },   // same id, newer date → remote jeete
+      { id: 'a3', date: 400, score: 30 }    // naya
+    ];
+    const m = Cloud._test.mergeMetaValue('attemptIndex', rem, loc, dead);
+    return m && m.value;
+  })()`);
+  T('merge attemptIndex: union 3 (a1 newer-remote + a2 + a3), dead OUT', mg1 && mg1.length === 3 &&
+    mg1.find(e => e.id === 'a1').score === 11 && mg1.find(e => e.id === 'a2') && mg1.find(e => e.id === 'a3') &&
+    !mg1.find(e => e.id === 'a_dead'), mg1);
+
+  const mg2 = await G(`(async () => {
+    const loc = { seen: { q1: 3, q2: 1 }, wrong: { q1: 1 }, correct: { q1: 2 }, skipped: {}, topicAcc: { 'phy␟Motion': 50 } };
+    const rem = { seen: { q1: 2, q3: 5 }, wrong: { q3: 1 }, correct: { q3: 4 }, skipped: { q2: 1 }, topicAcc: { 'phy␟Motion': 66, 'phy␟Optics': 80 } };
+    const m = Cloud._test.mergeMetaValue('qstats', rem, loc, null);
+    return m && m.value;
+  })()`);
+  T('merge qstats: per-qid MAX + union keys + skipped merged', mg2 &&
+    mg2.seen.q1 === 3 && mg2.seen.q2 === 1 && mg2.seen.q3 === 5 &&
+    mg2.correct.q3 === 4 && mg2.skipped.q2 === 1 &&
+    mg2.topicAcc['phy␟Optics'] === 80, mg2);
+
+  const mg3 = await G(`(async () => {
+    const loc = { 'phy␟Motion': { attempted: 10, correct: 5, wrong: 5 }, 'phy␟Optics': { attempted: 2, correct: 2, wrong: 0 } };
+    const rem = { 'phy␟Motion': { attempted: 12, correct: 6, wrong: 5 }, 'eng␟Idiom': { attempted: 4, correct: 1, wrong: 3 } };
+    const m = Cloud._test.mergeMetaValue('topicStats', rem, loc, null);
+    return m && m.value;
+  })()`);
+  T('merge topicStats: per-topic field MAX + union', mg3 &&
+    mg3['phy␟Motion'].attempted === 12 && mg3['phy␟Motion'].correct === 6 &&
+    mg3['phy␟Optics'].attempted === 2 && mg3['eng␟Idiom'].wrong === 3, mg3);
+
+  const mg4 = await G(`Cloud._test.mergeMetaValue('deletedAttempts', ['d1'], ['d2'], null)`);
+  T('merge deletedAttempts: union append-only', mg4 && mg4.dirty === true && mg4.value.indexOf('d1') !== -1 && mg4.value.indexOf('d2') !== -1, mg4);
+
+  // --- applyRecords meta merge (raw {key,value} row — cloud format) ---
+  await G(`(async () => {
+    await Store.setMeta('attemptIndex', [{ id: 'locA', date: 100, score: 5 }]);
+    await Store.setMeta('deletedAttempts', ['a_dead']);
+    const applied = await Cloud._test.applyRecords([
+      { kind: 'meta', rid: 'attemptIndex', data: { key: 'attemptIndex', value: [
+        { id: 'remA', date: 200, score: 7 }, { id: 'a_dead', date: 900, score: 50 }
+      ] }, updatedAt: 1 },
+      { kind: 'meta', rid: 'topicStats', data: { key: 'topicStats', value: { 'phy␟X': { attempted: 3, correct: 2, wrong: 1 } } }, updatedAt: 1 }
+    ]);
+    return applied;
+  })()`);
+  const idxAfter = await G('(async () => Store.getMeta("attemptIndex", []))()');
+  T('apply meta: index merged (locA + remA, dead OUT)', idxAfter && idxAfter.length === 2 &&
+    idxAfter.some(e => e.id === 'locA') && idxAfter.some(e => e.id === 'remA') && !idxAfter.some(e => e.id === 'a_dead'), idxAfter);
+  const tsAfter = await G('(async () => Store.getMeta("topicStats", {}))()');
+  T('apply meta: topicStats applied', tsAfter && tsAfter['phy␟X'] && tsAfter['phy␟X'].attempted === 3, tsAfter);
+
+  // --- attempt tombstone: delete propagation + revive-vaccination ---
+  await G(`(async () => {
+    await DB.put('attempts', { id: 'att-kill', testId: 't1', completed: true, result: { score: 5, correct: 5, wrong: 0 } });
+    const idx = await Store.getMeta('attemptIndex', []);
+    idx.push({ id: 'att-kill', date: 500, score: 5 });
+    await Store.setMeta('attemptIndex', idx);
+    return true;
+  })()`);
+  const tombApplied = await G(`(async () => Cloud._test.applyRecords([
+    { kind: 'attempt', rid: 'att-kill', data: null, updatedAt: 2, deleted: true }
+  ]))()`);
+  const killRow = await G('(async () => DB.get("attempts", "att-kill"))()');
+  const killIdx = await G('(async () => Store.getMeta("attemptIndex", []))()');
+  const killDel = await G('(async () => Store.getMeta("deletedAttempts", []))()');
+  T('attempt tombstone: local row deleted', !killRow);
+  T('attempt tombstone: index entry removed', killIdx && !killIdx.some(e => e.id === 'att-kill'), killIdx);
+  T('attempt tombstone: deletedAttempts vaccinated', killDel && killDel.indexOf('att-kill') !== -1, killDel);
+
+  // --- repairHistory: missing entries wapas + 0-answer junk delete ---
+  await G(`(async () => {
+    Cloud._test.resetRepairFlags();
+    await DB.put('attempts', { id: 'att-lost', testId: 't9', testName: 'Lost Mock', testType: 'mock', attemptNo: 1, endTime: 12345, completed: true,
+      result: { score: 15, maxScore: 20, correct: 15, wrong: 5, unattempted: 0, accuracy: 75, timeTaken: 600, total: 20 } });
+    await DB.put('attempts', { id: 'att-junk', testId: 't8', completed: true, result: { score: 0, correct: 0, wrong: 0 } });
+    return true;
+  })()`);
+  const recovered = await G('Cloud._test.repairHistory()');
+  const idxRep = await G('(async () => Store.getMeta("attemptIndex", []))()');
+  const junkRow = await G('(async () => DB.get("attempts", "att-junk"))()');
+  T('repairHistory: missing attempt recovered in index', recovered >= 1 && idxRep.some(e => e.id === 'att-lost' && e.score === 15 && e.date === 12345), { recovered, idxRep });
+  T('repairHistory: 0-answer junk deleted', !junkRow);
+  T('repairHistory: junk vaccinated (revive-proof)', (await G('(async () => Store.getMeta("deletedAttempts", []))()')).indexOf('att-junk') !== -1);
+
+  // --- purgeDuplicateBankQuestions: bundled content copy (random id) hatao, apna rakho ---
+  await G(`(async () => {
+    Cloud._test.resetRepairFlags();
+    await Store.setMeta('purgedDupQ1', null);
+    Cloud._test.setBundledIds(['q_bundled_official']);
+    // BANK_FILES fetch intercept: physics me 1 question (dupeHash DH_OFFICIAL)
+    window.__realFetch = window.fetch;
+    window.fetch = (u) => {
+      const s = String(u);
+      if (s.indexOf('bank-physics') !== -1) return Promise.resolve({ ok: true, json: () => Promise.resolve([
+        { id: 'q_bundled_official', dupeHash: 'DH_OFFICIAL', subject: 'physics', questionText: 'Q', options: [], correctAnswer: 0 }
+      ]) });
+      if (s.indexOf('bank-') !== -1) return Promise.resolve({ ok: true, json: () => Promise.resolve([]) });
+      return window.__realFetch(u);
+    };
+    await DB.put('questions', { id: 'q_old_copy', dupeHash: 'DH_OFFICIAL', subject: 'physics', questionText: 'Q' });
+    await DB.put('questions', { id: 'q_mera_apna', dupeHash: 'DH_MERA', subject: 'physics', questionText: 'apna sawaal' });
+    return true;
+  })()`);
+  const purged = await G('Cloud._test.purgeDuplicateBankQuestions()');
+  await G('Cloud._test.flushOutbox()');   // persist debounce flush
+  const oldCopy = await G('(async () => DB.get("questions", "q_old_copy"))()');
+  const apna = await G('(async () => DB.get("questions", "q_mera_apna"))()');
+  const obQ = await G('(async () => Store.getMeta("cloudOutbox", []).then(a => a.filter(x => x.kind === "question" && x.rid === "q_old_copy" && x.deleted)))()');
+  await G('(window.fetch = window.__realFetch)');   // fetch restore
+  T('purge: bundled-copy (random id) deleted', purged === 1 && !oldCopy, { purged });
+  T('purge: apna question SAFE', apna && apna.id === 'q_mera_apna');
+  T('purge: cloud tombstone queued', obQ && obQ.length === 1, obQ);
+
+  // --- fail-safe: bundledIds unknown → question push/apply skip ---
+  await G('(async () => { Cloud._test.resetOutbox(); Cloud._test.setBundledIds(null); return true; })()');
+  await G(`(async () => {
+    await Cloud._test.onChange('questions', 'q_unknown_1');   // dirty mark
+    await new Promise(r => setTimeout(r, 150));
+    return true;
+  })()`);
+  const bp = await G('Cloud._test.buildPushRecords()');
+  T('fail-safe: null bundledIds → question push SKIP (retry next sync)',
+    bp.recs.every(x => x.kind !== 'question') && Array.from(bp.consumed).every(k => !k.startsWith('question')), bp.recs);
+  const apFail = await G(`(async () => Cloud._test.applyRecords([{ kind: 'question', rid: 'q_unknown_1', data: { id: 'q_unknown_1' }, updatedAt: 3 }]))()`);
+  const qGot = await G('(async () => DB.get("questions", "q_unknown_1"))()');
+  T('fail-safe: null bundledIds → question apply SKIP', apFail === 0 && !qGot);
 
   // ═══ 🔗 SHARE — test ka shareable link (worker endpoints) ═══
   console.log('━━━ SHARE · link se same test + group comparison');

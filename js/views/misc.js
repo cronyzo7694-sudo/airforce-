@@ -111,6 +111,10 @@ Views.attempts = async function (state) {
     await DB.delete('attempts', id);
     const idx2 = await Store.getMeta('attemptIndex', []);
     await Store.setMeta('attemptIndex', idx2.filter(a => a.id !== id));
+    // vaccination: doosri device apne index me entry rakhti ho toh merge par
+    // revive na ho — deletedAttempts (append-only) har jagah sync hota hai
+    const del = (await Store.getMeta('deletedAttempts', [])) || [];
+    if (del.indexOf(id) === -1) await Store.setMeta('deletedAttempts', del.concat(id));
     AVUtil.toast('Attempt deleted.');
     Views.attempts(state);
   }));

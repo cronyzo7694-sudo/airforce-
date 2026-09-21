@@ -359,6 +359,44 @@ async function main() {
   T('dashboard 2.0: coverage bar (PYQs deke)', !!doc.querySelector('.dt-covbar'));
   // cleanup — fake entries hatao (baaki flows disturb na ho)
   await G('(async () => { const idx = await Store.getMeta("attemptIndex", []); await Store.setMeta("attemptIndex", idx.filter(a => a.id !== "fakeseries1" && a.id !== "fakeseries2")); })()');
+
+  /* ---------- 9b. CLOUD SYNC RECOVERY (v1.4.39) ----------
+     do-device replace-race: pehle wholesale replace se history kho jati thi.
+     Ab meta MERGE hota hai — remote index local se union, dead entries OUT,
+     recovered entry history page tak dikhni chahiye. */
+  console.log('\n━━━ E2E · cloud sync recovery (meta merge)');
+  const cloudLoaded = await G(`(async () => {
+    if (!window.Cloud) {
+      const src = ${JSON.stringify(require('fs').readFileSync(path.join(ROOT, 'js/cloud.js'), 'utf8'))};
+      window.eval(src + '\\n;window.Cloud = Cloud;');
+    }
+    return !!window.Cloud;
+  })()`);
+  T('cloud: module load (no firebase needed for apply)', cloudLoaded === true);
+  const merged = await G(`(async () => {
+    Cloud._test.setBundledIds([]);
+    await Store.setMeta('attemptIndex', [{ id: 'e2e_loc', testId: 't_loc', testName: 'Local Mock', testType: 'mock', date: ${Date.now()} - 86400000, score: 40, maxScore: 100, correct: 40, wrong: 20, unattempted: 40, accuracy: 66, timeTaken: 1000, total: 100, attemptNo: 1, subjectStats: {}, subjectNames: {} }]);
+    const applied = await Cloud._test.applyRecords([
+      { kind: 'meta', rid: 'attemptIndex', data: { key: 'attemptIndex', value: [
+        { id: 'e2e_loc', testId: 't_loc', testName: 'Local Mock (stale copy)', testType: 'mock', date: ${Date.now()} - 86400000 - 5000, score: 38, maxScore: 100, correct: 38, wrong: 22, unattempted: 40, accuracy: 63, timeTaken: 900, total: 100, attemptNo: 1, subjectStats: {}, subjectNames: {} },
+        { id: 'e2e_rec', testId: 't_rec', testName: 'Recovered Mock 20 Sept', testType: 'mock', date: Date.now(), score: 62, maxScore: 100, correct: 62, wrong: 18, unattempted: 20, accuracy: 77, timeTaken: 3000, total: 100, attemptNo: 1, subjectStats: {}, subjectNames: {} },
+        { id: 'e2e_dead', testId: 't_dead', testName: 'Deleted Wala', testType: 'mock', date: Date.now(), score: 10, maxScore: 100, correct: 10, wrong: 30, unattempted: 60, accuracy: 25, timeTaken: 500, total: 100, attemptNo: 1, subjectStats: {}, subjectNames: {} }
+      ] }, updatedAt: 1 },
+      { kind: 'meta', rid: 'deletedAttempts', data: { key: 'deletedAttempts', value: ['e2e_dead'] }, updatedAt: 1 }
+    ]);
+    return { applied: applied, idx: await Store.getMeta('attemptIndex', []) };
+  })()`);
+  T('cloud merge: applied + union 2 entries (local-newer jeeta, dead OUT)',
+    merged && merged.idx.length === 2 &&
+    merged.idx.find(e => e.id === 'e2e_loc').score === 40 &&    // local newer → stale copy nahi jeeti
+    merged.idx.some(e => e.id === 'e2e_rec') &&
+    !merged.idx.some(e => e.id === 'e2e_dead'), merged.idx && merged.idx.map(e => e.id));
+  window.location.hash = '#/attempts';
+  await sleep(900);
+  T('cloud recovery: history page me RECOVERED attempt dikhta hai', doc.body.textContent.includes('Recovered Mock 20 Sept'));
+  // cleanup
+  await G('(async () => { const idx = await Store.getMeta("attemptIndex", []); await Store.setMeta("attemptIndex", idx.filter(a => a.id !== "e2e_loc" && a.id !== "e2e_rec")); await Store.setMeta("deletedAttempts", (await Store.getMeta("deletedAttempts", [])).filter(x => x !== "e2e_dead")); })()');
+
   // completed test par /attempt route → latest result (pehle [testId,1] index kabhi match nahi hota tha)
   window.location.hash = '#/test/' + attempt.testId + '/attempt';
   await waitFor(() => window.location.hash.includes('/result'), 10000);

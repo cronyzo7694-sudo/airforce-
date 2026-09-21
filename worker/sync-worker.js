@@ -72,6 +72,11 @@ function rateOk(key, max, winMs) {
   var r = RATE[key];
   if (!r || now - r.start > winMs) { RATE[key] = { start: now, n: 1 }; return true; }
   r.n++;
+  // isolate memory guard: entries badhte hi purani windows evict (leak nahi)
+  if (Object.keys(RATE).length > 500) {
+    var ks = Object.keys(RATE);
+    for (var i = 0; i < ks.length - 250; i++) delete RATE[ks[i]];
+  }
   return r.n <= max;
 }
 
@@ -494,11 +499,15 @@ async function handleRequest(req, env) {
   if (path === '/v1/push' && req.method === 'POST') {
     var recs = Array.isArray(body.records) ? body.records.slice(0, 300) : [];
     var clean = [];
+    // SERVER timestamp (v1.4.39): client clocks skew ho sakte hain — galat
+    // device-time purane data ko jeeta de raha tha (LWW galat jeet).
+    // Ab hamesha server-now hi updated_at banega — consistent ordering.
+    var NOW = Date.now();
     for (var i = 0; i < recs.length; i++) {
       var r = recs[i];
       if (r && KINDS.indexOf(r.kind) !== -1 && typeof r.rid === 'string' && r.rid.length <= 200 &&
           typeof r.updatedAt === 'number' && (r.deleted || (r.data && typeof r.data === 'object'))) {
-        clean.push({ kind: r.kind, rid: r.rid, data: r.data || null, updatedAt: r.updatedAt, deleted: !!r.deleted });
+        clean.push({ kind: r.kind, rid: r.rid, data: r.data || null, updatedAt: NOW, deleted: !!r.deleted });
       }
     }
     try {
