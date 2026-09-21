@@ -10,12 +10,13 @@
   <link rel="icon" href="icons/icon-192.png" type="image/png">
   <link rel="stylesheet" href="css/app.css">
   <script>
-    /* v1.4.42 STUDY MODES — saved mode turant apply (koi flash nahi) */
+    /* v1.4.42/43 STUDY MODES — saved mode turant apply (koi flash nahi) */
     (function () {
       try {
         var m = localStorage.getItem('studyMode') || 'normal';
         var h = parseInt(localStorage.getItem('studyHue') || '0', 10) || 0;
         var r = document.documentElement;
+        if (m === 'auto') m = (new Date().getHours() >= 19 || new Date().getHours() < 6) ? 'night' : 'normal';
         if (m && m !== 'normal') r.classList.add('sm-' + m);
         else if (h > 0) r.classList.add('sm-normal');
         if (h > 0) r.style.setProperty('--hue', h + 'deg');
@@ -24,6 +25,7 @@
   </script>
 </head>
 <body>
+  <div id="app-nav" aria-live="polite"></div>
   <div id="app">
     <div class="seed-box">
       <img class="seed-logo" src="icons/icon-192.png" alt="Kineora Exam logo">
@@ -32,6 +34,7 @@
       <p class="muted">Preparing the local question bank.</p>
     </div>
   </div>
+  <div id="app-bottom" aria-live="polite"></div>
 
   <!-- site chrome: community stats footer + floating chat (hidden during exams) -->
   <footer id="site-footer" class="site-footer">
@@ -63,14 +66,19 @@
       </button>
       <div class="menu-sec">🎨 Study Mode — aankhon ka aaram</div>
       <div class="mode-grid">
-        <button class="mode-btn" data-mode="normal"><span>☀️</span>Normal</button>
-        <button class="mode-btn" data-mode="bw"><span>⚫⚪</span>Black &amp; White</button>
-        <button class="mode-btn" data-mode="night"><span>🌙</span>Night</button>
-        <button class="mode-btn" data-mode="paper"><span>📄</span>Paper</button>
-        <button class="mode-btn" data-mode="dark"><span>🕶️</span>Dark</button>
+        <button class="mode-btn" data-mode="normal"><span class="mb-ico">☀️</span><span class="mb-lbl">Normal</span><span class="mb-strip"></span></button>
+        <button class="mode-btn" data-mode="bw"><span class="mb-ico">⚫⚪</span><span class="mb-lbl">B &amp; W</span><span class="mb-strip"></span></button>
+        <button class="mode-btn" data-mode="night"><span class="mb-ico">🌙</span><span class="mb-lbl">Night</span><span class="mb-strip"></span></button>
+        <button class="mode-btn" data-mode="paper"><span class="mb-ico">📄</span><span class="mb-lbl">Paper</span><span class="mb-strip"></span></button>
+        <button class="mode-btn" data-mode="dark"><span class="mb-ico">🕶️</span><span class="mb-lbl">Dark</span><span class="mb-strip"></span></button>
+        <button class="mode-btn" data-mode="auto"><span class="mb-ico">🕑</span><span class="mb-lbl">Auto</span><span class="mb-strip"></span></button>
       </div>
+      <div class="muted small menu-hint" id="auto-note" style="display:none">Auto: shaam 7 baje se subah 6 baje tak khud <b>Night</b> mode — baaki time Normal.</div>
       <div class="menu-sec">🌈 Colour Adjuster <small id="hue-val" class="muted">0°</small></div>
-      <input type="range" id="hue-slider" min="0" max="360" step="5" value="0" aria-label="Website colour adjuster">
+      <div class="hue-row">
+        <input type="range" id="hue-slider" min="0" max="360" step="5" value="0" aria-label="Website colour adjuster">
+        <button id="hue-reset" title="Colour reset">↺</button>
+      </div>
       <div class="muted small menu-hint">Slider ghumao — poori website ka rang badlega. Mode ke saath bhi chalega.</div>
     </div>
   </div>

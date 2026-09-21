@@ -51,17 +51,20 @@ const SiteChrome = (() => {
     return openChat;
   }
 
-  /* ---------------- STUDY MODES (v1.4.42) ----------------
+  /* ---------------- STUDY MODES (v1.4.42/43) ----------------
      aankhon ka aaram — poore website par, test/question text
-     har mode me readable (filters luminance-contrast preserve
-     karte hain; fixed elements par indirect filter hai isliye
-     nav/modals kabhi nahi tootte). */
+     har mode me readable. AUTO mode: shaam 7 – subah 6 khud Night. */
+  const MODE_LABELS = { normal: '☀️ Normal', bw: '⚫⚪ Black & White', night: '🌙 Night', paper: '📄 Paper', dark: '🕶️ Dark', auto: '🕑 Auto' };
+  function autoFor(hour) { return (hour >= 19 || hour < 6) ? 'night' : 'normal'; }
+  let _autoTimer = null;
+
   function initMenu() {
     const fab = document.getElementById('chat-fab');
     const panel = document.getElementById('menu-panel');
     if (!fab || !panel) return;
     const slider = document.getElementById('hue-slider');
     const hueVal = document.getElementById('hue-val');
+    const autoNote = document.getElementById('auto-note');
     const btns = Array.from(panel.querySelectorAll('.mode-btn'));
 
     const closeMenu = () => {
@@ -83,16 +86,23 @@ const SiteChrome = (() => {
       closeMenu();                                   // bahar click → band
     });
 
-    const apply = (mode, hue) => {
+    const apply = (mode, hue, silent) => {
       const root = document.documentElement;
+      const eff = mode === 'auto' ? autoFor(new Date().getHours()) : mode;   // auto → abhi ka sahi mode
       ['sm-normal', 'sm-bw', 'sm-night', 'sm-paper', 'sm-dark'].forEach(c => root.classList.remove(c));
-      if (mode && mode !== 'normal') root.classList.add('sm-' + mode);
+      if (eff && eff !== 'normal') root.classList.add('sm-' + eff);
       else if (hue > 0) root.classList.add('sm-normal');   // sirf hue slider active
       root.style.setProperty('--hue', (hue || 0) + 'deg');
       try { localStorage.setItem('studyMode', mode || 'normal'); localStorage.setItem('studyHue', String(hue || 0)); } catch (e) {}
       btns.forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+      if (autoNote) autoNote.style.display = mode === 'auto' ? '' : 'none';
       if (slider) slider.value = String(hue || 0);
       if (hueVal) hueVal.textContent = (hue || 0) + '°';
+      if (!silent) {
+        const lbl = MODE_LABELS[mode] || mode;
+        const effNote = mode === 'auto' ? (eff === 'night' ? ' (abhi Night chal raha hai)' : ' (abhi Normal)') : '';
+        try { AVUtil.toast(lbl + ' ON' + effNote + ' — aankhon ko aaram 😌', 'success'); } catch (e) {}
+      }
     };
 
     btns.forEach(b => b.addEventListener('click', () => {
@@ -103,13 +113,36 @@ const SiteChrome = (() => {
     if (slider) slider.addEventListener('input', () => {
       let mode = 'normal';
       try { mode = localStorage.getItem('studyMode') || 'normal'; } catch (e) {}
-      apply(mode, parseInt(slider.value, 10) || 0);
+      apply(mode, parseInt(slider.value, 10) || 0, true);   // slider drag me har frame toast nahi
+    });
+    const hreset = document.getElementById('hue-reset');
+    if (hreset) hreset.addEventListener('click', () => {
+      let mode = 'normal';
+      try { mode = localStorage.getItem('studyMode') || 'normal'; } catch (e) {}
+      apply(mode, 0);
     });
 
-    // restore
+    // AUTO: raat/din switch khud — har 10 min re-check (7 baje / 6 baje crossing)
+    if (_autoTimer) clearInterval(_autoTimer);
+    _autoTimer = setInterval(() => {
+      let mode = 'normal';
+      try { mode = localStorage.getItem('studyMode') || 'normal'; } catch (e) {}
+      if (mode !== 'auto') return;
+      const eff = autoFor(new Date().getHours());
+      const root = document.documentElement;
+      const cur = ['sm-normal', 'sm-bw', 'sm-night', 'sm-paper', 'sm-dark'].find(c => root.classList.contains(c)) || '';
+      const want = eff === 'night' ? 'sm-night' : '';
+      if (cur !== want) {
+        let h = 0; try { h = parseInt(localStorage.getItem('studyHue') || '0', 10) || 0; } catch (e) {}
+        apply('auto', h, true);
+        try { AVUtil.toast(eff === 'night' ? '🌙 Raat ho gayi — Night mode khud ON ho gaya' : '☀️ Subah ho gayi — Normal mode wapas', 'info'); } catch (e) {}
+      }
+    }, 10 * 60 * 1000);
+
+    // restore (saved mode/hue)
     let m = 'normal', h = 0;
     try { m = localStorage.getItem('studyMode') || 'normal'; h = parseInt(localStorage.getItem('studyHue') || '0', 10) || 0; } catch (e) {}
-    apply(m, h);
+    apply(m, h, true);
     return closeMenu;
   }
 

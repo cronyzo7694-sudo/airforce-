@@ -1399,7 +1399,19 @@ html.sm-night  { --smf: brightness(.8) sepia(.22) saturate(.9) hue-rotate(var(--
 html.sm-paper  { --smf: sepia(.3) contrast(.94) brightness(1.02) hue-rotate(var(--hue, 0deg)); }
 html.sm-dark   { --smf: invert(1) hue-rotate(180deg) brightness(.92) contrast(.96); }
 html.sm-normal { --smf: hue-rotate(var(--hue, 0deg)); }
-html[class*="sm-"] body > * { filter: var(--smf, none); }
+/* v1.4.43 FIXED-SAFE: filter SIRF #app (content) + chrome elements par
+   INDIVIDUALLY — fixed bottomnav/topnav/fab/modals ka positioning kabhi
+   nahi tootta (filter unke PARENT par nahi lagta). */
+html[class*="sm-"] #app { filter: var(--smf, none); }
+html[class*="sm-"] body > #app-nav,
+html[class*="sm-"] body > #app-bottom,
+html[class*="sm-"] body > #site-footer,
+html[class*="sm-"] #chat-fab,
+html[class*="sm-"] #menu-panel,
+html[class*="sm-"] #chat-panel,
+html[class*="sm-"] body > .av-modal-overlay,
+html[class*="sm-"] body > #av-toast-host,
+html[class*="sm-"] body > .share-modal { filter: var(--smf, none); }
 /* dark mode: photos/charts double-invert = original */
 html.sm-dark img, html.sm-dark video, html.sm-dark canvas, html.sm-dark iframe,
 html.sm-dark .chat-frame, html.sm-dark .no-invert { filter: invert(1) hue-rotate(180deg); }
@@ -1447,3 +1459,85 @@ body.exam-on #chat-panel { display: none !important; }
   .mode-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media print { #menu-panel { display: none !important; } }
+
+/* ═══════════ v1.4.43 — STUDY MODES me JAAN (transitions + polish) ═══════════ */
+/* 1) mode switch SMOOTH — filter cross-fade (jhatka nahi, soft fade) */
+#app, #app-nav, #app-bottom, #site-footer, #chat-fab, #menu-panel, #chat-panel, .av-modal-overlay, #av-toast-host, .share-modal { transition: filter .45s ease; }
+
+/* 2) mode tuning — har mode apna asli character */
+html.sm-bw     { --smf: grayscale(1) contrast(1.1) hue-rotate(var(--hue, 0deg)); }
+html.sm-night  { --smf: brightness(.82) sepia(.25) saturate(.8) contrast(1.02) hue-rotate(var(--hue, 0deg)); }
+html.sm-paper  { --smf: sepia(.32) contrast(.93) brightness(1.03) saturate(.9) hue-rotate(var(--hue, 0deg)); }
+html.sm-dark   { --smf: invert(1) hue-rotate(180deg) brightness(.9) contrast(.94) saturate(.85); }
+
+/* 3) menu panel — pop-in animation (bottom-right se zoom) */
+#menu-panel { transform-origin: bottom right; }
+#menu-panel.open { animation: menu-pop .3s cubic-bezier(.2, 1.1, .4, 1); }
+@keyframes menu-pop {
+  from { opacity: 0; transform: translateY(10px) scale(.94); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* 4) mode buttons — hover lift + press + active glow + LIVE preview strip */
+.mode-grid { grid-template-columns: repeat(3, 1fr); gap: 9px; }
+.mode-btn { position: relative; gap: 3px; padding: 11px 4px 9px; transition: transform .14s ease, border-color .2s ease, box-shadow .2s ease, background .2s ease; }
+.mode-btn:hover { transform: translateY(-2px); border-color: var(--navy-2); box-shadow: 0 4px 12px rgba(20, 45, 90, .14); }
+.mode-btn:active { transform: scale(.94); }
+.mode-btn.active { border-color: var(--navy); background: #eef3fb; box-shadow: 0 0 0 2.5px rgba(30, 58, 110, .18), 0 4px 14px rgba(30, 58, 110, .12); }
+.mode-btn.active::before {
+  content: '✓'; position: absolute; top: 4px; right: 6px; font-size: 10px;
+  color: var(--navy); font-weight: 900;
+}
+.mode-btn .mb-ico { font-size: 20px; line-height: 1; }
+.mode-btn .mb-lbl { font-size: 11.3px; font-weight: 700; color: var(--navy); }
+.mode-btn .mb-strip { width: 84%; height: 5px; border-radius: 3px; margin-top: 3px; box-shadow: inset 0 0 0 1px rgba(0,0,0,.06); }
+.mode-btn[data-mode="normal"] .mb-strip { background: linear-gradient(90deg, #1a3c6e, #4a90d9, #eef3fb); }
+.mode-btn[data-mode="bw"]     .mb-strip { background: linear-gradient(90deg, #0d0d0d, #8a8a8a, #f4f4f4); }
+.mode-btn[data-mode="night"]  .mb-strip { background: linear-gradient(90deg, #241d33, #6b5a3e, #d9b977); }
+.mode-btn[data-mode="paper"]  .mb-strip { background: linear-gradient(90deg, #efe3c8, #dcc79b, #f7f0dd); }
+.mode-btn[data-mode="dark"]   .mb-strip { background: linear-gradient(90deg, #0d1117, #3a4657, #dfe7f0); }
+.mode-btn[data-mode="auto"]   .mb-strip { background: linear-gradient(90deg, #f5d76e 50%, #241d33 50%); }
+
+/* 5) colour slider — RAINBOW track + bada thumb (touch friendly) */
+#hue-slider {
+  -webkit-appearance: none; appearance: none; width: 100%; height: 12px; border-radius: 8px;
+  outline: none; cursor: pointer; border: 1px solid rgba(0,0,0,.12);
+  background: linear-gradient(90deg, hsl(0,72%,55%), hsl(60,72%,50%), hsl(120,60%,45%), hsl(180,65%,48%), hsl(240,65%,60%), hsl(300,65%,55%), hsl(360,72%,55%));
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.18);
+}
+#hue-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%;
+  background: #fff; border: 3.5px solid var(--navy); cursor: grab;
+  box-shadow: 0 2px 10px rgba(10, 25, 50, .35), inset 0 0 4px rgba(0,0,0,.1);
+  transition: transform .12s ease;
+}
+#hue-slider::-webkit-slider-thumb:hover { transform: scale(1.12); }
+#hue-slider::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.2); }
+#hue-slider::-moz-range-thumb {
+  width: 22px; height: 22px; border-radius: 50%; background: #fff;
+  border: 3.5px solid var(--navy); cursor: grab; box-shadow: 0 2px 10px rgba(10, 25, 50, .35);
+}
+.hue-row { display: flex; align-items: center; gap: 10px; }
+.hue-row #hue-slider { flex: 1; }
+#hue-reset {
+  border: 1px solid var(--line); background: #fff; border-radius: 8px;
+  font-size: 14px; padding: 6px 9px; cursor: pointer; color: var(--navy); font-weight: 700;
+  transition: transform .12s ease, background .2s;
+}
+#hue-reset:hover { background: #eef3fb; transform: rotate(-30deg); }
+#hue-reset:active { transform: scale(.9); }
+
+/* 6) menu row bhi zinda */
+.menu-row { transition: transform .14s ease, border-color .2s ease, box-shadow .2s ease; }
+.menu-row:hover { transform: translateY(-1px); border-color: var(--navy-2); box-shadow: 0 4px 12px rgba(20, 45, 90, .12); }
+.menu-row:active { transform: scale(.98); }
+.mr-go { transition: transform .15s ease; }
+.menu-row:hover .mr-go { transform: translateX(3px); }
+
+/* 7) FAB — press feedback + panel kholte hue glow */
+#chat-fab { transition: transform .16s cubic-bezier(.3, 1.4, .5, 1), box-shadow .2s ease; }
+#chat-fab:active { transform: scale(.88) rotate(90deg); }
+#chat-fab[aria-expanded="true"] { box-shadow: 0 6px 22px rgba(10, 25, 50, .5); }
+
+/* 8) dark mode scrollbar bhi sahi dikhe */
+html.sm-dark ::-webkit-scrollbar-thumb { background: #8a93a5; }

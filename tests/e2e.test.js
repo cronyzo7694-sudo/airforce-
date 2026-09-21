@@ -538,9 +538,18 @@ async function main() {
   fabEl.dispatchEvent(new window.Event('click', { bubbles: true }));
   await sleep(300);
   T('menu panel khula', doc.getElementById('menu-panel').classList.contains('open'));
-  T('menu: chat row + 5 modes + colour slider', !!doc.getElementById('menu-chat') && doc.querySelectorAll('#menu-panel .mode-btn').length === 5 && !!doc.getElementById('hue-slider'));
+  T('menu: chat row + 6 modes (AUTO so included) + colour slider + reset', !!doc.getElementById('menu-chat') && doc.querySelectorAll('#menu-panel .mode-btn').length === 6 && !!doc.getElementById('hue-slider') && !!doc.getElementById('hue-reset'));
+  // v1.4.43: nav FIXED positioning — mode ON hone par bhi kabhi nahi tootta
+  const bnav = doc.querySelector('.bottomnav');
+  const tnav = doc.querySelector('.topnav');
+  T('nav structure: bottomnav body-level (#app-bottom) — filter-safe', bnav && bnav.parentElement.id === 'app-bottom');
+  T('nav structure: topnav body-level (#app-nav)', tnav && tnav.parentElement.id === 'app-nav');
   doc.querySelector('#menu-panel .mode-btn[data-mode="bw"]').dispatchEvent(new window.Event('click', { bubbles: true }));
   await sleep(200);
+  const bpos = bnav ? (await G('getComputedStyle(document.querySelector(".bottomnav")).position')) : '';
+  T('mode ON + bottomnav position ab bhi FIXED (scroll me bhi nahi tootta)', bpos === 'fixed', bpos);
+  const appFilter = await G('getComputedStyle(document.getElementById("app")).filter');
+  T('filter #app par applied (content filtered, nav alag)', appFilter && appFilter !== 'none', appFilter);
   T('Black & White: html class + localStorage persist', doc.documentElement.classList.contains('sm-bw') && window.localStorage.getItem('studyMode') === 'bw');
   T('B&W mode me content intact (text invisible nahi)', doc.getElementById('app').textContent.length > 100);
   doc.querySelector('#menu-panel .mode-btn[data-mode="night"]').dispatchEvent(new window.Event('click', { bubbles: true }));
@@ -557,6 +566,21 @@ async function main() {
   sl.dispatchEvent(new window.Event('input', { bubbles: true }));
   await sleep(150);
   T('colour slider: --hue applied + persist', doc.documentElement.style.getPropertyValue('--hue').includes('120') && parseInt(window.localStorage.getItem('studyHue') || '0', 10) === 120);
+  // v1.4.43 AUTO mode
+  doc.querySelector('#menu-panel .mode-btn[data-mode="auto"]').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(200);
+  const autoHour = new Date().getHours();
+  const autoEffNight = autoHour >= 19 || autoHour < 6;
+  const autoHue = parseInt(window.localStorage.getItem('studyHue') || '0', 10) || 0;
+  T('AUTO: persist=auto + effective class hour ke hisab se (raat→night/din→normal/hue-tint)', window.localStorage.getItem('studyMode') === 'auto' && (autoEffNight ? doc.documentElement.classList.contains('sm-night') : (autoHue > 0 ? doc.documentElement.classList.contains('sm-normal') : !doc.documentElement.className.includes('sm-'))), 'hour=' + autoHour);
+  T('AUTO: note visible + button active', doc.getElementById('auto-note') && doc.getElementById('auto-note').style.display !== 'none' && !!doc.querySelector('#menu-panel .mode-btn[data-mode="auto"].active'));
+  doc.querySelector('#menu-panel .mode-btn[data-mode="dark"]').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(150);
+  T('AUTO se dark pe wapas: class', doc.documentElement.classList.contains('sm-dark'));
+  // hue-reset button
+  doc.getElementById('hue-reset').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(150);
+  T('hue-reset ↺: hue 0 ho gaya (mode dark hi raha)', parseInt(window.localStorage.getItem('studyHue') || '1', 10) === 0 && doc.documentElement.classList.contains('sm-dark'));
   // exam screen bhi mode ke saath theek
   const smT = await G('Generator.subjectTest("english")');
   window.location.hash = '#/test/' + smT.test.id + '/instructions';

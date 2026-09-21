@@ -248,8 +248,14 @@ const App = {
   page(cls, inner, route) {
     if (route && Router.path && Router.path !== route) return false;
     document.body.classList.remove('cbt-on');   // normal pages always show site chrome
-    document.getElementById('app').innerHTML = this.navHTML(cls ? cls.split(' ')[0] : '') +
-      `<main class="${cls || ''}">${inner}</main>` + this.bottomNavHTML();
+    /* v1.4.43: nav #app se BAHAR body-level chrome me render hota hai —
+       study-mode filters (#app par) fixed bottomnav/topnav ko kabhi nahi todenge */
+    const app = document.getElementById('app');
+    if (app) app.innerHTML = `<main class="${cls || ''}">${inner}</main>`;
+    const nv = document.getElementById('app-nav');
+    if (nv) nv.innerHTML = this.navHTML(cls ? cls.split(' ')[0] : '');
+    const bt = document.getElementById('app-bottom');
+    if (bt) bt.innerHTML = this.bottomNavHTML();
     window.scrollTo(0, 0);
     return true;
   },
