@@ -34,12 +34,15 @@ Views.tests = async function (state) {
   });
 
   const hasUnfinished = t => (unfinishedByTest[t.id] || []).length > 0;
+  // naam-match: series rebuild par test id badal sakta hai, naam nahi —
+  // purane attempts orphan na ho ("0/74 hamesha 0" bug ka hissa)
+  const nameDone = new Set(idx.filter(a => !a.abandoned).map(a => a.testName));
 
   // filters
   const curExam = (App.configCache && App.configCache.exam) || 'airforce';
   const FNAMES = { all: 'All', series: 'Test Series', full: 'Full Mock', subject: 'Subject', chapter: 'Chapter', topic: 'Topic', custom: 'Custom', completed: 'Completed', incomplete: 'In Progress' };
   const mine = tests.filter(t => (t.exam || 'airforce') === curExam);
-  const isDone = t => (attByTest[t.id] || []).some(a => !a.abandoned);
+  const isDone = t => (attByTest[t.id] || []).some(a => !a.abandoned) || nameDone.has(t.name);
   const counts = {
     all: mine.length, series: mine.filter(t => t.series).length,
     full: mine.filter(t => t.type === 'full').length,
@@ -158,6 +161,7 @@ Views.tests = async function (state) {
 
   function testCard(t) {
     const atts = (attByTest[t.id] || []).filter(a => !a.abandoned);
+    const doneByName = atts.length === 0 && nameDone.has(t.name);
     const best = atts.length ? atts.reduce((m, a) => a.score > m.score ? a : m, atts[0]) : null;
     const last = atts.length ? atts[atts.length - 1] : null;
     const unfinished = hasUnfinished(t);
@@ -173,7 +177,7 @@ Views.tests = async function (state) {
     const barCls = pct >= 75 ? 'hi' : pct >= 50 ? 'mid' : 'lo';
     const status = unfinished
       ? '<span class="t2-status live"><i></i>IN PROGRESS</span>'
-      : atts.length ? `<span class="t2-status done">${T2IC.check}DONE</span>`
+      : (atts.length || doneByName) ? `<span class="t2-status done">${T2IC.check}DONE</span>`
         : '<span class="t2-status new">NEW</span>';
     return `<div class="test-card t2 ${cls} ${atts.length ? 'attempted' : ''} ${unfinished ? 'inprogress' : ''}" data-id="${t.id}">
       <div class="t2-top">

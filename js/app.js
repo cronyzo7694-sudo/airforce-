@@ -128,6 +128,23 @@ const App = {
     Router.start();
   },
 
+  /* series progress — testId match YA naam match (series rebuild par test id
+     badal sakta hai, naam nahi: "Full Mock Test 3" stable rehta hai) */
+  seriesProgress(seriesTests, attemptIndex) {
+    const doneIds = new Set(), doneNames = new Set();
+    (attemptIndex || []).forEach(a => {
+      if (a.abandoned) return;
+      if (a.testId) doneIds.add(a.testId);
+      if (a.testName) doneNames.add(a.testName);
+    });
+    const doneSet = new Set();
+    (seriesTests || []).forEach(t => { if (doneIds.has(t.id) || doneNames.has(t.name)) doneSet.add(t.id); });
+    const pend = (seriesTests || []).filter(t => !doneSet.has(t.id));
+    const nextMock = pend.filter(t => t.type === 'full').sort((a, b) => (a.seriesNo || 0) - (b.seriesNo || 0) || a.createdAt - b.createdAt)[0];
+    const next = nextMock || pend.sort((a, b) => a.createdAt - b.createdAt)[0] || null;
+    return { done: doneSet.size, total: (seriesTests || []).length, doneSet, next, nextIsMock: !!nextMock && nextMock === next };
+  },
+
   async findUnfinishedAttempt() {
     // 'completed' boolean index hamesha khaali rehta hai (db.js note dekho) —
     // isliye seedha getAll + filter. Attempts hundreds me hote hain, ye fast hai.

@@ -343,6 +343,22 @@ async function main() {
   await sleep(600);
 
   await G('(async () => { await DB.delete("attempts", "' + ures.id + '"); App.pendingResume = null; })()');
+
+  /* ── SERIES COUNTER ("0/74 hamesha 0" fix): testId match + naam-match ── */
+  console.log('\n━━━ E2E · series counter + dashboard 2.0');
+  const stest = await G('(async () => { const t = (await DB.getAll("tests")).find(x => x.series && x.type === "full"); return { id: t.id, name: t.name }; })()');
+  await G(`(async () => { const idx = await Store.getMeta("attemptIndex", []); idx.push({ id: "fakeseries1", testId: ${JSON.stringify(stest.id)}, testName: ${JSON.stringify(stest.name)}, testType: "full", date: Date.now(), score: 60, maxScore: 100, correct: 60, wrong: 16, unattempted: 24, accuracy: 78.9, timeTaken: 3000, total: 100, attemptNo: 1, subjectStats: {}, subjectNames: {} }); idx.push({ id: "fakeseries2", testId: "t_orphan_rebuilt", testName: ${JSON.stringify(stest.name)}, testType: "full", date: Date.now() - 5000, score: 55, maxScore: 100, correct: 55, wrong: 10, unattempted: 35, accuracy: 84.6, timeTaken: 3000, total: 100, attemptNo: 1, subjectStats: {}, subjectNames: {} }); await Store.setMeta("attemptIndex", idx); })()`);
+  await G('Views.dashboard()');
+  await sleep(600);
+  const seriesTxt = (doc.body.textContent.match(/(\d+)\/(\d+) series done/) || [])[0] || 'NOT FOUND';
+  T('series counter: 1/35 dikhta hai (naam-match orphan bhi count)', seriesTxt.startsWith('1/'), seriesTxt);
+  T('dashboard 2.0: aaj-ka-haal strip dikhti hai', !!doc.querySelector('.dash-today'), 'strip missing');
+  T('dashboard 2.0: streak dikhta hai', /day streak/.test(doc.body.textContent));
+  T('dashboard 2.0: cutoff readiness chip (last mock vs category)', !!doc.querySelector('.dt-cut'));
+  T('dashboard 2.0: continue-series CTA (agla series test)', !!doc.querySelector('.dh-continue'));
+  T('dashboard 2.0: coverage bar (PYQs deke)', !!doc.querySelector('.dt-covbar'));
+  // cleanup — fake entries hatao (baaki flows disturb na ho)
+  await G('(async () => { const idx = await Store.getMeta("attemptIndex", []); await Store.setMeta("attemptIndex", idx.filter(a => a.id !== "fakeseries1" && a.id !== "fakeseries2")); })()');
   // completed test par /attempt route → latest result (pehle [testId,1] index kabhi match nahi hota tha)
   window.location.hash = '#/test/' + attempt.testId + '/attempt';
   await waitFor(() => window.location.hash.includes('/result'), 10000);

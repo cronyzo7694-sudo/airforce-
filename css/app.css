@@ -1359,3 +1359,24 @@ body.exam-on { overflow: hidden; }
   .gc-mx { font-size:10px; }
   .gc-mx td { min-width:20px; padding:3px 4px; }
 }
+
+/* ═══════════ DASHBOARD 2.0 — aaj ka haal + streak + cutoff + coverage ═══════════ */
+.dash-today { display:flex; flex-wrap:wrap; gap:12px; margin:14px 0 4px; }
+.dt-item { flex:1 1 200px; min-width:190px; display:flex; flex-direction:column; gap:3px; background:#fff; border:1px solid var(--line); border-radius:12px; padding:12px 14px; }
+.dt-ico { font-size:18px; line-height:1; }
+.dt-item b { font-size:17px; color:var(--navy); }
+.dt-covbar { display:block; height:7px; border-radius:4px; background:var(--chrome-2); overflow:hidden; margin-top:4px; }
+.dt-covbar i { display:block; height:100%; background:linear-gradient(90deg, var(--blue), var(--purple)); border-radius:4px; }
+.dt-cut.safe { border-color:var(--green); background:var(--green-bg); }
+.dt-cut.borderline { border-color:#d9a521; background:#fdf6e3; }
+.dt-cut.below { border-color:var(--red); background:var(--red-bg); }
+.dh-continue { border:1.5px dashed var(--purple); color:var(--purple); background:var(--blue-soft); }
+.dh-continue:hover { background:#ece7fa; }
+.stat-sub { font-size:10.5px; max-width:130px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:1px; }
+.tst-good { color:var(--green); font-weight:700; }
+.tst-low { color:var(--red); font-weight:700; }
+#dash-weak-drill { white-space:nowrap; }
+@media (max-width:640px) {
+  .dash-today { gap:8px; }
+  .dt-item { min-width:calc(50% - 8px); padding:10px 12px; }
+}
