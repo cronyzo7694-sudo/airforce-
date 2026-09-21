@@ -180,6 +180,11 @@ const DB = (() => {
 
     async cursor(store, index, fn) {
       // iterate without loading everything; fn(obj) — return false to stop
+      // ⚠️ LANDMINE note: 'completed' jaisa BOOLEAN field index key nahi ban sakta
+      // (IndexedDB valid keys: number/string/Date/binary/array) — boolean indexed
+      // field wale records index me KABHI nahi aate. attempts ko isliye getAll+filter
+      // se padho, 'completed' index se nahi.
+      if (typeof fn !== 'function') throw new TypeError('DB.cursor(store, index, fn) — teesra argument function hona chahiye');
       const db = await open();
       return new Promise((resolve, reject) => {
         const t = db.transaction(store);

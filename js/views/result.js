@@ -341,14 +341,14 @@ Views.analysis = async function (attemptId, state) {
           </button>
           <div class="qa-body">
           <div class="qa-text">${AVUtil.qtext(q.questionText)}</div>
-          ${q.questionTextHi ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}
+          ${AVUtil.hasDevanagari(q.questionTextHi) ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}
           ${q.image ? `<img class="qa-img" src="${AVUtil.esc(q.image)}" alt="figure" loading="lazy">` : ''}
           <div class="qa-answers">
             <div class="qa-ans ${f.pq.result === 'correct' ? 'ok' : ''}"><b>Your Answer (${f.pq.sel || '—'}):</b> ${yourAns}</div>
             ${f.pq.result !== 'correct' ? `<div class="qa-ans ok"><b>Correct Answer (${f.pq.key || '—'}):</b> ${keyAns}</div>` : ''}
           </div>
           ${q.explanation ? `<div class="qa-exp"><b>Explanation:</b> ${AVUtil.qtext(q.explanation)}</div>` : ''}
-          ${q.explanationHi ? `<div class="qa-exp qa-hi"><b>व्याख्या:</b> ${AVUtil.qtext(q.explanationHi)}</div>` : ''}
+          ${AVUtil.hasDevanagari(q.explanationHi) ? `<div class="qa-exp qa-hi"><b>व्याख्या:</b> ${AVUtil.qtext(q.explanationHi)}</div>` : ''}
           ${!q.explanation && q.source ? `<div class="qa-exp muted"><b>Source:</b> ${AVUtil.esc(q.source)}</div>` : ''}
           <div class="qa-note" data-qid="${f.qid}">
             <div class="qa-note-head">📝 My Notebook</div>

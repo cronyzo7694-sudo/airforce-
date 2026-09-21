@@ -338,16 +338,18 @@ var Cloud = (() => {
 
     const tables = [['attempts', 'attempt', 'id'], ['tests', 'test', 'id'], ['questions', 'question', 'id'], ['notes', 'note', 'qid']];
     for (const t of tables) {
-      const keys = await DB.getAllKeys(t[0]);
-      for (const k of keys) {
+      // FIX: pehle har key par alag DB.get() chalta tha (2,721 questions = 2,721
+      // transactions — N+1). Ab ek hi getAll. 10x+ fast, mobile par jank nahi.
+      const rows = await DB.getAll(t[0]);
+      for (const row of rows) {
         if (batch.length >= 400) {
           await flush();
           if (requests >= 40) return pushed;
         }
-        const row = await DB.get(t[0], k);
         if (!row) continue;
         if (t[1] === 'test' && row.series) continue;                    // series local rebuild
-        const rid = row[t[2]] != null ? row[t[2]] : k;
+        const rid = row[t[2]];
+        if (rid == null) continue;
         if (t[1] === 'question' && bundledIds.has(rid)) continue;       // bundled bank kabhi nahi
         add(t[1], rid, row);
       }

@@ -17,14 +17,14 @@ const ExamScreen = {
     // an in-progress attempt for THIS test? → resume. Else → instructions.
     // (scoped byIndex — kabhi bhi doosre test ka adhura attempt nahi uthega)
     let attempt = null;
-    {
-      const mine = await DB.byIndex('attempts', 'testId', testId);
-      mine.forEach(a => { if (!a.completed) attempt = a; });
-    }
+    const mine = await DB.byIndex('attempts', 'testId', testId);
+    mine.forEach(a => { if (!a.completed) attempt = a; });
     if (!attempt) {
       // completed? go to latest result
-      const done = await DB.byIndex('attempts', 'testId_completed', [testId, 1]);
-      if (done && done.length) return location.hash = '#/attempt/' + done[done.length - 1].id + '/result';
+      // (pehle 'testId_completed' [testId,1] index use hota tha — boolean key
+      // kabhi match nahi karta tha, isliye ye redirect kabhi fire nahi hota tha)
+      const done = mine.filter(a => a.completed === true && !a.abandoned).sort((x, y) => (y.startedAt || 0) - (x.startedAt || 0));
+      if (done.length) return location.hash = '#/attempt/' + done[0].id + '/result';
       AVUtil.toast('Please read the instructions and press "I am ready to begin".');
       return location.hash = '#/test/' + testId + '/instructions';
     }
@@ -37,6 +37,8 @@ const ExamScreen = {
 
     this.attempt = attempt;
     this.test = test;
+    // instant explanation: sirf practice mode me (exam me reveal = cheating)
+    this.showExplain = !!(test.instantExplanation && test.mode === 'practice');
     this.qLang = 'en';          // EN default; हिन्दी unlocks per-question when available
     App.activeAttempt = attempt;
     App.pendingResume = null;
@@ -130,7 +132,7 @@ const ExamScreen = {
     const optionsHtml = optOrder.map(({ letter, orig }) => {
       const o = q.options.find(x => x.id === orig) || { text: '' };
       const selected = r.sel === orig;
-      const oText = (this.qLang === 'hi' && o.textHi) ? o.textHi : o.text; // हिन्दी view me option bhi हिन्दी
+      const oText = (this.qLang === 'hi') ? AVUtil.hi(o.textHi, o.text) : o.text; // हिन्दी view me option bhi हिन्दी (Devanagari gate)
       return `<label class="opt ${selected ? 'selected' : ''}" data-opt="${orig}">
         <input type="radio" name="opt" value="${orig}" ${selected ? 'checked' : ''} aria-label="Option ${letter}">
         <span class="opt-radio" aria-hidden="true"></span>
@@ -150,17 +152,17 @@ const ExamScreen = {
           <label class="small muted" for="q-lang">${t('viewIn')}:</label>
           <select id="q-lang" aria-label="View question in">
             <option value="en" ${this.qLang !== 'hi' ? 'selected' : ''}>English</option>
-            ${q.questionTextHi
+            ${AVUtil.hasDevanagari(q.questionTextHi)
               ? `<option value="hi" ${this.qLang === 'hi' ? 'selected' : ''}>हिन्दी</option>`
-              : `<option value="hi" disabled title="No Hindi translation available for this question">हिन्दी</option>`}
+              : `<option value="hi" disabled title="हिन्दी उपलब्ध नहीं (English section — English only)">हिन्दी</option>`}
           </select>
         </div>
       </div>
-      <div class="q-text" id="q-text">${AVUtil.qtext(this.qLang === 'hi' && q.questionTextHi ? q.questionTextHi : q.questionText)}</div>
+      <div class="q-text" id="q-text">${AVUtil.qtext(this.qLang === 'hi' ? AVUtil.hi(q.questionTextHi, q.questionText) : q.questionText)}</div>
       ${q.image ? `<div class="q-img-wrap"><img src="${q.image}" alt="Question figure" class="q-img" id="q-img" tabindex="0"></div>` : ''}
       ${q.figureBased ? `<div class="q-note muted small">⚠ This question had figure-based options in the source paper.</div>` : ''}
       <div class="opts" role="radiogroup" aria-label="Answer options">${optionsHtml}</div>
-      ${(this.showExplain && r.sel && (q.explanation || q.explanationHi)) ? `<div class="instant-exp"><b>Explanation:</b> ${AVUtil.qtext(this.qLang === 'hi' && q.explanationHi ? q.explanationHi : q.explanation)}</div>` : ''}
+      ${(this.showExplain && r.sel && (q.explanation || q.explanationHi)) ? `<div class="instant-exp"><b>Explanation:</b> ${AVUtil.qtext(this.qLang === 'hi' ? AVUtil.hi(q.explanationHi, q.explanation) : q.explanation)}</div>` : ''}
       ${this.attempt.mode === 'practice' ? `<div class="qa-note x-note" data-qid="${q.id}">
         <div class="qa-note-head">📝 My Notebook</div>
         <textarea class="note-ta" rows="2" placeholder="Apna solution / trick yahan likho…">${AVUtil.esc(this.noteMap[q.id] || '')}</textarea>
@@ -191,7 +193,7 @@ const ExamScreen = {
             <span class="timer-lbl">${t('timeLeft')}</span>
             <span class="timer-val" id="x-timer-val">${AVUtil.fmtTime(remaining)}</span>
           </div>
-          <button class="xbtn xbtn-ghost icon-only" id="x-pause" title="Pause — timer ruk jaayega" aria-label="Pause">⏸</button>
+          ${test.allowPause ? `<button class="xbtn xbtn-ghost icon-only" id="x-pause" title="Pause — timer ruk jaayega" aria-label="Pause">⏸</button>` : ''}
           <button class="xbtn xbtn-ghost" id="x-instructions" title="${t('instructions')}"><span aria-hidden="true">📄</span><span class="ilbl">${t('instructions')}</span></button>
           <button class="xbtn xbtn-submit" id="x-submit" title="Submit anytime — koi restriction nahi. Confirmation milegi.">${test.timerMode === 'section' ? t('submitSection').toUpperCase() : t('submitTest').toUpperCase()}</button>
         </div>
@@ -324,17 +326,29 @@ const ExamScreen = {
     // bottom buttons
     AVUtil.$('#x-save').addEventListener('click', () => this.saveNext());
     AVUtil.$('#x-mark').addEventListener('click', () => this.markNext());
-    // notebook save (practice mode)
+    // notebook (practice mode) — live noteMap sync + debounced auto-save
+    // FIX: pehle bina Save dabaye likha note har re-render par SILENTLY ud jata tha
     const noteBtn = AVUtil.$('#x-note-save');
-    if (noteBtn) noteBtn.addEventListener('click', async () => {
-      const wrap = noteBtn.closest('.qa-note');
-      const qid = wrap.dataset.qid;
-      const text = wrap.querySelector('.note-ta').value.trim();
-      this.noteMap[qid] = text;
-      await DB.put('notes', { qid, text, updatedAt: Date.now() });
-      wrap.querySelector('.note-saved').textContent = 'Saved ✓';
-      AVUtil.toast('Note saved', 'success');
-    });
+    if (noteBtn) {
+      const noteSave = async (silent) => {
+        const wrap = noteBtn.closest('.qa-note');
+        const qid = wrap.dataset.qid;
+        const text = wrap.querySelector('.note-ta').value.trim();
+        this.noteMap[qid] = text;
+        await DB.put('notes', { qid, text, updatedAt: Date.now() });
+        wrap.querySelector('.note-saved').textContent = 'Saved ✓';
+        if (!silent) AVUtil.toast('Note saved', 'success');
+      };
+      noteBtn.addEventListener('click', () => noteSave(false));
+      const ta = noteBtn.closest('.qa-note')?.querySelector('.note-ta');
+      if (ta) ta.addEventListener('input', () => {
+        // noteMap turant update (re-render survivability) + 1.2s baad DB auto-save
+        const qid = noteBtn.closest('.qa-note').dataset.qid;
+        this.noteMap[qid] = ta.value;
+        clearTimeout(this._noteT);
+        this._noteT = setTimeout(() => noteSave(true), 1200);
+      });
+    }
     AVUtil.$('#x-clear').addEventListener('click', async () => {
       Engine.clearResponse(a, qid);
       await this.persist();
@@ -606,8 +620,9 @@ const ExamScreen = {
     }
   },
 
-  /* ---------- pause (all modes — timer freezes, no data lost) ---------- */
+  /* ---------- pause (allowed modes only — timer freezes, no data lost) ---------- */
   async togglePause() {
+    if (!this.test || !this.test.allowPause) return AVUtil.toast('Pause allowed nahi hai — ye exam mode test hai.', 'warn');
     const a = this.attempt;
     if (a.pauseStarted) {
       Engine.resume(a, Date.now());

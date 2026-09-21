@@ -18,6 +18,17 @@ const AVUtil = {
     return AVUtil.esc(s).replace(/\n/g, '<br>');
   },
 
+  /* Hindi gate: field me ACTUALLY Devanagari hai? (English copy fake "Hindi" pakdo)
+     English subject ke questions me questionTextHi = questionText (English clone)
+     tha — toggle karne par bhi English hi dikhta tha. Ab har Hindi render isi
+     choke-point se guzrega. */
+  hasDevanagari(s) {
+    return !!(s && /[\u0900-\u097F]/.test(String(s)));
+  },
+  hi(hiText, fallback) {
+    return AVUtil.hasDevanagari(hiText) ? hiText : (fallback || '');
+  },
+
   fmtTime(sec) {
     sec = Math.max(0, Math.round(sec));
     const h = Math.floor(sec / 3600), m = Math.floor((sec % 3600) / 60), s = sec % 60;

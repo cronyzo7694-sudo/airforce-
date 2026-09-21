@@ -116,7 +116,7 @@ Views.questionBank = async function (state) {
         ${slice.map((q, i) => `<tr class="qb-row" data-id="${q.id}">
           <td class="muted">${(state.page - 1) * PER + i + 1}</td>
           <td class="qb-q">
-            <div class="qb-qtext">${q.questionTextHi ? '<span class="hi-badge" title="Hindi translation available">🌐 HI</span> ' : ''}${AVUtil.esc(q.questionText).slice(0, 130)}${q.questionText.length > 130 ? '…' : ''}</div>
+            <div class="qb-qtext">${AVUtil.hasDevanagari(q.questionTextHi) ? '<span class="hi-badge" title="Hindi translation available">🌐 HI</span> ' : ''}${AVUtil.esc(q.questionText).slice(0, 130)}${q.questionText.length > 130 ? '…' : ''}</div>
             <div class="muted small">${AVUtil.esc(q.source || '')}${q.year ? ' · ' + q.year : ''}${q.figureBased ? ' · <b>figure-based</b>' : ''}${seen[q.id] ? ` · seen ${seen[q.id]}×` : ''}${wrong[q.id] ? ` · <span class="bad-txt">wrong ${wrong[q.id]}×</span>` : ''}</div>
           </td>
           <td>${AVUtil.esc((cfg.subjects.find(s => s.id === q.subject)?.name) || q.subject)}</td>
@@ -221,14 +221,14 @@ Views.questionBank = async function (state) {
           <div class="av-modal-body">
             <div class="muted small" style="margin-bottom:6px">${AVUtil.esc(q.source || '')}${q.year ? ' · ' + q.year : ''} · ${AVUtil.esc(q.chapter)} › ${AVUtil.esc(q.topic)} · ${AVUtil.esc(q.difficulty || 'medium')}${q.figureBased ? ' · figure-based' : ''}</div>
             <div class="qa-text">${AVUtil.qtext(q.questionText)}</div>
-            ${q.questionTextHi ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}
+            ${AVUtil.hasDevanagari(q.questionTextHi) ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}
             ${q.image ? `<img class="qa-img" src="${AVUtil.esc(q.image)}" alt="figure">` : ''}
             <table class="qa-opt-tbl">${(q.options || []).map(o => `
-              <tr class="${q.correctAnswer === o.id ? 'ok' : ''}"><td style="width:30px"><b>${o.id}.</b></td><td>${AVUtil.qtext(o.text)}${o.textHi ? ` <span class="muted small">· ${AVUtil.esc(o.textHi)}</span>` : ''}</td>
+              <tr class="${q.correctAnswer === o.id ? 'ok' : ''}"><td style="width:30px"><b>${o.id}.</b></td><td>${AVUtil.qtext(o.text)}${AVUtil.hasDevanagari(o.textHi) ? ` <span class="muted small">· ${AVUtil.esc(o.textHi)}</span>` : ''}</td>
               <td style="width:70px">${q.correctAnswer === o.id ? '<span class="badge good">KEY</span>' : ''}</td></tr>`).join('')}
             </table>
             ${q.explanation ? `<div class="qa-exp"><b>Explanation:</b> ${AVUtil.qtext(q.explanation)}</div>` : '<p class="muted">No explanation available.</p>'}
-            ${q.explanationHi ? `<div class="qa-exp qa-hi"><b>व्याख्या:</b> ${AVUtil.qtext(q.explanationHi)}</div>` : ''}
+            ${AVUtil.hasDevanagari(q.explanationHi) ? `<div class="qa-exp qa-hi"><b>व्याख्या:</b> ${AVUtil.qtext(q.explanationHi)}</div>` : ''}
           </div>
           <div class="av-modal-actions"><button class="btn btn-plain" data-close>Close</button></div>
         </div>

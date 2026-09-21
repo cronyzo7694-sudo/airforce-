@@ -81,6 +81,14 @@ async function main() {
   window.console.error = (...a) => { (errorsByRoute.current = errorsByRoute.current || []).push(a.map(x => String(x && x.message || x)).join(' ')); };
 
   const G = expr => window.eval(expr);
+  // real CBT candidate-login stage (sessionStorage gate) — dono exam starts ke liye
+  const passLogin = async () => {
+    await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 15000);
+    if (doc.getElementById('login-btn')) {
+      G('document.getElementById("login-btn").dispatchEvent(new Event("click", {bubbles:true}))');
+      await waitFor(() => doc.getElementById('ins-agree'), 10000);
+    }
+  };
   const liveCssSrc = fs.readFileSync(path.join(ROOT, 'css/app.css'), 'utf-8');
   const liveClassesSeen = new Set();
 
@@ -92,10 +100,10 @@ async function main() {
   // create one completed attempt so result/analysis pages have data
   const fm = await G('Generator.fullMock()');
   window.location.hash = '#/test/' + fm.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('ins-agree'), 15000);
+  await passLogin();
   await sleep(200);
   await G('document.getElementById("ins-agree").checked = true; document.getElementById("ins-agree").dispatchEvent(new Event("change", {bubbles:true}))');
-  await G('document.getElementById("ins-begin").click()');
+  await G('document.getElementById("ins-begin").dispatchEvent(new Event("click", {bubbles:true}))');
   await waitFor(() => doc.querySelector('.exam-screen'), 20000);
   await sleep(400);
   const attemptId = await G('ExamScreen.attempt.id');
@@ -123,6 +131,7 @@ async function main() {
     ['#/attempt/' + attemptId + '/analysis', () => doc.querySelector('[data-tab]')],
   ];
 
+  const appJsSrc = fs.readFileSync(path.join(ROOT, 'js/app.js'), 'utf-8');
   const domGarbage = () => {
     const txt = doc.getElementById('app').textContent;
     const hits = [];
@@ -156,7 +165,7 @@ async function main() {
     for (const a of doc.querySelectorAll('#app a[href^="#/"]')) {
       const h = a.getAttribute('href');
       const seg = h.slice(2).split('?')[0].split('/')[0];
-      const known = ['dashboard', 'tests', 'test', 'questions', 'import', 'attempts', 'attempt', 'settings'];
+      const known = [...appJsSrc.matchAll(/Router\.add\('\/([a-z]+)/g)].map(m => m[1]);
       if (!known.includes(seg)) F('err', 'route ' + label, `link to unknown route "${h}"`);
     }
     // broken <img> without src
@@ -170,10 +179,10 @@ async function main() {
   errorsByRoute.current = null;
   const st = await G('Generator.subjectTest("physics")');
   window.location.hash = '#/test/' + st.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('ins-agree'), 15000);
+  await passLogin();
   await sleep(200);
   await G('document.getElementById("ins-agree").checked = true; document.getElementById("ins-agree").dispatchEvent(new Event("change", {bubbles:true}))');
-  await G('document.getElementById("ins-begin").click()');
+  await G('document.getElementById("ins-begin").dispatchEvent(new Event("click", {bubbles:true}))');
   await waitFor(() => doc.querySelector('.exam-screen'), 20000);
   await sleep(500);
   // click around: options, prev/next/mark/clear, drawer, language dropdown, keyboard

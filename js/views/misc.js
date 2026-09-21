@@ -9,8 +9,9 @@ Views.attempts = async function (state) {
   idx.sort((a, b) => b.date - a.date);
 
   // incomplete attempts (in-progress)
+  // boolean ('completed') index khaali rehta hai — getAll + filter (db.js note)
   const unfinished = [];
-  await DB.cursor('attempts', 'completed', false, a => unfinished.push(a));
+  (await DB.getAll('attempts')).forEach(a => { if (a.completed !== true && !a.abandoned) unfinished.push(a); });
 
   let list = idx;
   if (state.filter !== 'all') list = list.filter(a => a.testType === state.filter);
@@ -196,6 +197,7 @@ Views.settings = async function () {
         <details class="adv-cfg">
           <summary>Advanced — full configuration JSON</summary>
           <textarea id="st-json" rows="14" spellcheck="false">${AVUtil.esc(JSON.stringify(cfg, (k, v) => typeof v === 'function' ? undefined : v, 2))}</textarea>
+          <input type="hidden" id="st-json-base" value="${AVUtil.esc(JSON.stringify(cfg, (k, v) => typeof v === 'function' ? undefined : v, 2))}">
           <p class="muted small">Careful: this overrides everything. The getters (totalQuestions/maxMarks) are derived automatically.</p>
         </details>
         <button class="btn btn-primary" id="st-save-cfg">Save Configuration</button>
@@ -299,10 +301,16 @@ Views.settings = async function () {
         const s = cfg.subjects.find(x => x.id === inp.dataset.sid);
         if (s) s.duration = (+inp.value || 20) * 60;
       });
-      // advanced JSON (if edited, wins)
+      // advanced JSON — sirf tab apply jab user ne box ACTUALLY edit kiya ho.
+      // FIX: pehle `if (jtext)` hamesha true tha (box pehle se bhara rehta hai)
+      // → har save par purana JSON form fields ko overwrite kar deta tha.
       const jtext = AVUtil.$('#st-json').value.trim();
-      if (jtext) {
-        const parsed = JSON.parse(jtext);
+      const jbase = (AVUtil.$('#st-json-base') || {}).value || '';
+      if (jtext && jtext !== jbase) {
+        let parsed;
+        try { parsed = JSON.parse(jtext); } catch (e) { throw new Error('Advanced JSON valid nahi hai: ' + e.message); }
+        if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error('Advanced JSON ek object hona chahiye');
+        if (!Array.isArray(parsed.subjects) || !parsed.subjects.length) throw new Error('Advanced JSON me subjects array chahiye');
         Object.assign(cfg, parsed);
       }
       cfg.duration = cfg.subjects.reduce((a, s) => a + s.duration, 0);

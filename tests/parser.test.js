@@ -19,6 +19,11 @@ function eq(a, b, msg) { if (a !== b) throw new Error(`${msg || 'eq'}: expected 
 function assert(c, m) { if (!c) throw new Error(m || 'assert'); }
 
 const UP = '../uploads/';
+/* uploads/ = user ke real Master files — repo me commit nahi hote (privacy).
+   Fresh clone par ye tests SKIP ho jate hain, fail nahi. */
+const UP_OK = (() => { try { fs.readFileSync(UP + 'Master_Physics_All_Papers (1).txt'); return true; } catch (e) { return false; } })();
+if (!UP_OK) console.log('  ↷ NOTE: uploads/ master files missing — bank-parity tests skip honge');
+const skipNoUp = fn => { if (!UP_OK) { console.log('  ↷ SKIP (uploads/ missing)'); return; } fn(); };
 const FILES = [
   ['Master_Physics_All_Papers (1).txt', 'physics'],
   ['Master_Math_All_Papers.txt', 'mathematics'],
@@ -30,6 +35,7 @@ const FILES = [
 console.log('\n━━━ master TXT parser vs Python reference output (after importer dedupe)');
 for (const [fname, subject] of FILES) {
   T(`${fname} → matches data/bank-${subject}.json`, () => {
+    if (!UP_OK) { console.log('    ↷ skip (uploads/ missing)'); return; }
     const text = fs.readFileSync(UP + fname, 'utf-8');
     const res = Parsers.parseMasterTxt(text, subject);
     // apply the same dedupe the importer uses
@@ -81,12 +87,14 @@ for (const [fname, subject] of FILES) {
 
 console.log('\n━━━ sample parse checks');
 T('physics format-A question parses options + key', () => {
+  if (!UP_OK) { console.log('    ↷ skip (uploads/ missing)'); return; }
   const res = Parsers.parseMasterTxt(fs.readFileSync(UP + FILES[0][0], 'utf-8'), 'physics');
   const q = res.questions.find(x => x.questionText.includes('electrostatic force between two charges'));
   eq(q.options[2].text, '4 N', 'option C');
   eq(q.correctAnswer, 'C', 'key');
 });
 T('RAGA figure-based flagged and excluded later', () => {
+  if (!UP_OK) { console.log('    ↷ skip (uploads/ missing)'); return; }
   const res = Parsers.parseMasterTxt(fs.readFileSync(UP + 'Master_RAGA_All_Papers.txt', 'utf-8'), 'raga');
   const fig = res.questions.filter(q => q.figureBased);
   assert(fig.length > 60, 'figure count: ' + fig.length);
@@ -94,6 +102,7 @@ T('RAGA figure-based flagged and excluded later', () => {
   assert(fig.every(q => q.correctAnswer), 'figure questions keep their key');
 });
 T('English reconstructed questions look sane', () => {
+  if (!UP_OK) { console.log('    ↷ skip (uploads/ missing)'); return; }
   const res = Parsers.parseMasterTxt(fs.readFileSync(UP + FILES[2][0], 'utf-8'), 'english');
   const rec = res.questions.filter(q => (q.tags || []).includes('auto-reconstructed'));
   const ref = JSON.parse(fs.readFileSync('data/bank-english.json', 'utf-8')).filter(q => (q.tags || []).includes('auto-reconstructed'));

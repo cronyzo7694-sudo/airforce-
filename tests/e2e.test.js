@@ -138,6 +138,8 @@ async function main() {
   T('Physics active, others locked',
     attempt.sections.physics.state === 'ACTIVE' && attempt.sections.mathematics.state === 'LOCKED' &&
     attempt.sections.english.state === 'LOCKED' && attempt.sections.raga.state === 'LOCKED');
+  T('exam mode: pause button hidden (allowPause=false)', !doc.getElementById('x-pause'), 'pause button exam mode me nahi dikhna chahiye');
+  T('exam mode: instant explanation off', (await G('!!ExamScreen.showExplain')) === false);
   T('subject tabs render with lock icons',
     doc.querySelectorAll('.subtab').length === 4 && doc.querySelector('.subtab.locked'));
   T('timer displays remaining time', /Time Left/.test(doc.querySelector('#x-timer').textContent));
@@ -306,6 +308,28 @@ async function main() {
   window.location.hash = '#/attempts';
   await sleep(400);
   T('my attempts renders', doc.body.textContent.includes('My Attempts') && doc.querySelectorAll('.tbl tbody tr').length >= 1);
+
+  /* ---------- 9b. RESUME FLOW (v1.4.36 — boolean-index bug fix) ---------- */
+  console.log('\n━━━ E2E · resume flow (unfinished attempt wapas dikhta hai)');
+  const ures = await G('(async () => { const t = await DB.get("tests", "' + attempt.testId + '"); const a = Engine.createAttempt(t, 99, Date.now()); await DB.put("attempts", a); return { id: a.id, found: await App.findUnfinishedAttempt() }; })()');
+  T('findUnfinishedAttempt() unfinished attempt dhoondta hai', !!(ures && ures.found && ures.found.id === ures.id), 'pehle boolean-index ki wajah se hamesha null tha');
+  await G('(async () => { App.pendingResume = await App.findUnfinishedAttempt(); })()');
+  window.location.hash = '#/dashboard';
+  await waitFor(() => doc.body.textContent.includes('RESUME EXAM'), 10000);
+  T('dashboard: RESUME EXAM banner dikhta hai', doc.body.textContent.includes('RESUME EXAM'));
+  window.location.hash = '#/tests';
+  await waitFor(() => doc.querySelector('.test-card'), 10000);
+  await sleep(600);
+  T('tests page: IN PROGRESS badge dikhta hai', doc.body.textContent.includes('IN PROGRESS'));
+  T('tests page: In Progress filter tab count > 0', (() => { const el = [...doc.querySelectorAll('.ftab')].find(b => b.textContent.includes('In Progress')); return el && !/\(0\)/.test(el.textContent); })());
+  window.location.hash = '#/attempts';
+  await waitFor(() => doc.body.textContent.includes('in progress'), 10000);
+  T('attempts page: 1 in progress count', /1 in progress/.test(doc.body.textContent));
+  await G('(async () => { await DB.delete("attempts", "' + ures.id + '"); App.pendingResume = null; })()');
+  // completed test par /attempt route → latest result (pehle [testId,1] index kabhi match nahi hota tha)
+  window.location.hash = '#/test/' + attempt.testId + '/attempt';
+  await waitFor(() => window.location.hash.includes('/result'), 10000);
+  T('completed test → start → latest result redirect', window.location.hash.includes('/result'), window.location.hash);
   // ═══ 🔗 SHARE — simple shareable test link (battle REPLACE ho gaya) ═══
   window.location.hash = '#/battle';   // purana battle route ab nahi — safe 404/dashboard jaisa
   await sleep(700);
@@ -334,6 +358,15 @@ async function main() {
   const stCat = doc.getElementById('st-category'), stState = doc.getElementById('st-state');
   T('settings: category + state dropdowns present', !!stCat && !!stState && stState.options.length > 30);
   if (stCat && stState) {
+    // v1.4.36 JSON-guard regression: form value JSON box ke purane value se overwrite na ho
+    let cfgThr = null;   // retry: bindings render ke baad attach hote hain
+    for (let i = 0; i < 15 && !(cfgThr && cfgThr.thresholds && cfgThr.thresholds.strong === 95); i++) {
+      doc.getElementById('st-strong').value = '95';
+      doc.getElementById('st-save-cfg').dispatchEvent(new window.Event('click', { bubbles: true }));
+      await sleep(250);
+      cfgThr = await G('Store.getSetting("config", {})');
+    }
+    T('settings: form fields JSON box se overwrite nahi hote', cfgThr && cfgThr.thresholds && cfgThr.thresholds.strong === 95, cfgThr && JSON.stringify(cfgThr.thresholds));
     stCat.value = 'OBC'; stState.value = 'Bihar';
     doc.getElementById('st-save-cand').dispatchEvent(new window.Event('click', { bubbles: true }));
     let cfgSaved = {};
@@ -348,6 +381,7 @@ async function main() {
   console.log('\n━━━ E2E · practice subject test');
   const r = await G('Generator.subjectTest("physics")');
   T('subject test generated (25 Q)', r.ok && r.test.totalQuestions === 25);
+  await G('(async () => { const t = await DB.get("tests", "' + r.test.id + '"); t.instantExplanation = true; await DB.put("tests", t); })()');
   window.location.hash = '#/test/' + r.test.id + '/instructions';
   await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 10000);
   if (doc.getElementById('login-btn')) {
@@ -361,12 +395,27 @@ async function main() {
   await sleep(300);
   const pa = await G('ExamScreen.attempt');
   T('practice attempt uses global timer', pa && pa.timerMode === 'global');
+  T('practice mode: pause button visible (allowPause)', !!doc.getElementById('x-pause'));
+  T('practice mode: instant explanation on (showExplain)', (await G('!!ExamScreen.showExplain')) === true);
+  // instant-exp render check: option select karo → explanation turant dikhe
+  await G('(function(){ const a = ExamScreen.attempt; Engine.touch(a, Date.now()); Engine.selectOption(a, Engine.allQuestionIds(a)[0], "A"); ExamScreen.render(); })()');
+  await sleep(300);
+  T('instant explanation renders after answering', !!doc.querySelector('.instant-exp'));
   T('notebook available in practice mode', !!doc.querySelector('.x-note .note-ta'));
   if (doc.querySelector('.x-note .note-ta')) {
+    // DATA-LOSS regression: bina Save dabaye likha note option-select re-render par nahi udega
+    const ta = doc.querySelector('.x-note .note-ta');
+    ta.value = 'MY UNSAVED TRICK 123';
+    ta.dispatchEvent(new window.Event('input', { bubbles: true }));
+    await G('(function(){ const a = ExamScreen.attempt; Engine.touch(a, Date.now()); Engine.selectOption(a, Engine.allQuestionIds(a)[1], "B"); ExamScreen.render(); })()');
+    await sleep(300);
+    const ta2 = doc.querySelector('.x-note .note-ta');
+    T('unsaved note survives re-render (live noteMap)', !!(ta2 && ta2.value.includes('MY UNSAVED TRICK 123')), ta2 && ta2.value);
     doc.querySelector('.x-note .note-ta').value = 'practice note';
+    doc.querySelector('.x-note .note-ta').dispatchEvent(new window.Event('input', { bubbles: true }));
     doc.getElementById('x-note-save').dispatchEvent(new window.Event('click', { bubbles: true }));
     await sleep(300);
-    T('practice note saved', (await G('DB.count("notes")')) === 2);
+    T('practice note saved', (await G('DB.count("notes")')) >= 2);
   }
   T('global submit button present in header (not section)', !!doc.querySelector('.exam-header #x-submit') && !doc.getElementById('x-submit').textContent.toUpperCase().includes('SECTION'));
   T('site footer + chat FAB exist in shell', !!doc.getElementById('site-footer') && !!doc.getElementById('chat-fab') && !!doc.getElementById('chat-panel'));

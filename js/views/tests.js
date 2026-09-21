@@ -27,9 +27,10 @@ Views.tests = async function (state) {
   idx.forEach(a => {
     (attByTest[a.testId] = attByTest[a.testId] || []).push(a);
   });
+  // boolean ('completed') index khaali rehta hai — getAll + filter (db.js note)
   const unfinishedByTest = {};
-  await DB.cursor('attempts', 'completed', false, a => {
-    (unfinishedByTest[a.testId] = unfinishedByTest[a.testId] || []).push(a);
+  (await DB.getAll('attempts')).forEach(a => {
+    if (a.completed !== true && !a.abandoned) (unfinishedByTest[a.testId] = unfinishedByTest[a.testId] || []).push(a);
   });
 
   const hasUnfinished = t => (unfinishedByTest[t.id] || []).length > 0;
@@ -440,7 +441,7 @@ Views.builder = async function () {
       strategy: AVUtil.$('#b-strategy').value,
       shuffleQuestions: AVUtil.$('#b-shuffle-q').checked,
       instantExplanation: AVUtil.$('#b-instant').checked,
-      allowPause: true // pause is available in every test now
+      allowPause: true // practice me pause ON; exam mode me generator override karke OFF karta hai (mock integrity)
     });
     if (!r.ok) {
       btn.disabled = false; btn.textContent = 'GENERATE TEST →';

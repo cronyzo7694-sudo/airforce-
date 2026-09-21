@@ -1,0 +1,13 @@
+{
+  "name": "agniveer-cbt",
+  "version": "1.4.36.0",
+  "private": true,
+  "description": "Kineora Exam \u2014 Agniveer Vayu CBT practice app (local-first PWA)",
+  "scripts": {
+    "test": "node tests/engine.test.js && node tests/parser.test.js && node tests/cloud.test.js && NODE_PATH=$(pwd)/node_modules node tests/e2e.test.js && NODE_PATH=$(pwd)/node_modules node tests/e2e-flows.test.js"
+  },
+  "dependencies": {
+    "fake-indexeddb": "^6.2.5",
+    "jsdom": "^29.1.1"
+  }
+}

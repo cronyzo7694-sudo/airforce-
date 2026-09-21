@@ -224,15 +224,18 @@ async function main() {
   console.log('\n━━━ FLOWS · settings');
   window.location.hash = '#/settings';
   await waitFor(() => doc.getElementById('st-save-cfg'), 15000);
-  doc.getElementById('st-name').value = 'Manash Test';
-  doc.getElementById('st-save-cand').dispatchEvent(new window.Event('click', { bubbles: true }));
-  await sleep(500);
-  const cfg1 = await G('(async () => Store.getSetting("config", null))()');
+  let cfg1 = null;   // retry: bindings render ke baad attach hote hain — click gaya to dobara
+  for (let i = 0; i < 15 && !(cfg1 && cfg1.candidateName === 'Manash Test'); i++) {
+    doc.getElementById('st-name').value = 'Manash Test';
+    doc.getElementById('st-save-cand').dispatchEvent(new window.Event('click', { bubbles: true }));
+    await sleep(250);
+    cfg1 = await G('(async () => Store.getSetting("config", null))()');
+  }
   T('settings save persists candidate name', cfg1 && cfg1.candidateName === 'Manash Test', JSON.stringify(cfg1 && cfg1.candidateName));
   // invalid JSON rejected by the config save
   doc.getElementById('st-json').value = '{ broken json';
   doc.getElementById('st-save-cfg').dispatchEvent(new window.Event('click', { bubbles: true }));
-  await sleep(500);
+  await sleep(600);
   const cfg2 = await G('(async () => Store.getSetting("config", null))()');
   T('invalid JSON editor input rejected safely', cfg2 && cfg2.candidateName === 'Manash Test', JSON.stringify(cfg2 && cfg2.candidateName));
   // candidate name flows to exam screen

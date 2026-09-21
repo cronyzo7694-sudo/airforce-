@@ -129,9 +129,10 @@ const App = {
   },
 
   async findUnfinishedAttempt() {
-    let found = null;
-    await DB.cursor('attempts', 'completed', false, a => { found = a; return false; });
-    return found;
+    // 'completed' boolean index hamesha khaali rehta hai (db.js note dekho) —
+    // isliye seedha getAll + filter. Attempts hundreds me hote hain, ye fast hai.
+    const all = await DB.getAll('attempts');
+    return all.find(a => a.completed !== true && !a.abandoned) || null;
   },
 
   /* ---------------- navigation guard ---------------- */

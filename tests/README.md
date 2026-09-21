@@ -1,20 +1,27 @@
 # Agniveer CBT — QA / Test Suite
 
-Three independent suites, all currently **green (123 checks)**:
+Five suites, all currently **green (231 checks)** — `npm install` + static server ke saath:
 
 | Suite | What it covers | Run |
 |---|---|---|
-| `engine.test.js` (41) | Exam state machine: attempt creation, section locking, timers (global + per-section), responses, evaluation, negative marking, submission pipeline, generator — incl. **smart strategy** (retire after 2× correct, wrong-question revision, fallback) and **test-series planner** (non-overlapping ready-made tests) | `node tests/engine.test.js` |
-| `parser.test.js` (12) | JS parser ↔ Python reference parity for all 4 master TXT files (after importer dedupe), format-A/B/D blocks, figure-based questions, garble recovery, generic TXT/JSON/CSV, backup-JSON restore payload (incl. notes), dupe hash logic | `node tests/parser.test.js` |
-| `e2e.test.js` (70) | Boots the real `index.html` in **jsdom** with **fake-indexeddb**, seeds the bank + **builds the 35-test series**, then drives the UI: dashboard → quick-start (smart strategy) → instructions → CBT exam (answering / marking / palette / section submit / refresh recovery) → result → analysis tabs → **notebook save + persistence** → test library (series filter) → bank, attempts, settings, import → practice test with global timer + practice notebook | `NODE_PATH=<dir-with-jsdom+fake-indexeddb> node tests/e2e.test.js` (needs a static server on port 8931: `python3 -m http.server 8931` from the app root) |
+| `engine.test.js` (54) | Exam state machine: attempt creation, section locking, timers (global + per-section), responses, evaluation, negative marking, submission pipeline, generator — incl. **smart strategy** (retire after 2× correct, wrong-question revision, fallback) and **test-series planner** (non-overlapping ready-made tests) | `node tests/engine.test.js` |
+| `cloud.test.js` (46) | Worker API in Node (Google-token auth incl. real-JWKS forged-signature reject, CORS, push/pull/status, media guard, 🔗 share create/get/attempt/attempts — no-auth paths + 5s flood guard) | `node tests/cloud.test.js` |
+| `e2e-flows.test.js` (31) | Multi-step user journeys in jsdom (import → bank, builder → custom test, backup → restore, etc.) | `NODE_PATH=./node_modules node tests/e2e-flows.test.js` |
+| `ui-audit.js` (0 err) | Har route walk + console-error hunt + DOM leak (undefined/NaN) + CSS class coverage + i18n key check | `NODE_PATH=./node_modules node tests/ui-audit.js` |
+| `parser.test.js` (15) | JS parser ↔ Python reference parity for all 4 master TXT files (after importer dedupe), format-A/B/D blocks, figure-based questions, garble recovery, generic TXT/JSON/CSV, backup-JSON restore payload (incl. notes), dupe hash logic | `node tests/parser.test.js` |
+| `e2e.test.js` (86) | Boots the real `index.html` in **jsdom** with **fake-indexeddb**, seeds the bank + **builds the 35-test series**, then drives the UI: dashboard → quick-start (smart strategy) → instructions → CBT exam (answering / marking / palette / section submit / refresh recovery) → result → analysis tabs → **notebook save + persistence** → test library (series filter) → bank, attempts, settings, import → practice test with global timer + practice notebook | `NODE_PATH=<dir-with-jsdom+fake-indexeddb> node tests/e2e.test.js` (needs a static server on port 8931: `python3 -m http.server 8931` from the app root) |
 
 ## Setup for the E2E suite
 
 ```bash
-npm install jsdom fake-indexeddb   # anywhere, e.g. /tmp
-python3 -m http.server 8931 &      # serve the app root
-NODE_PATH=./node_modules node tests/e2e.test.js
+npm install                # package.json ab repo me hai (jsdom + fake-indexeddb)
+python3 -m http.server 8931 &      # serve the app root (e2e/ui-audit ke liye)
+npm test                          # engine + parser + cloud + e2e + flows
 ```
+
+> `parser.test.js` ka master-parity section `../uploads/Master_*.txt` (user ke real
+> data files) padhta hai jo repo me commit nahi hote — fresh clone par wo specific
+> checks **skip** ho jate hain (fail nahi).
 
 ## Regenerating the question bank
 
@@ -22,7 +29,7 @@ NODE_PATH=./node_modules node tests/e2e.test.js
 python3 tools/parse_master.py     # reads ../uploads/*.txt → data/bank-*.json
 ```
 
-Current bank: **3,082 questions (2,804 keyed)** — physics 715/623, mathematics 738/616, english 894/830, RAGA 735 (657 keyed usable + 78 figure-based kept out of the generator pool).
+Current bank: **2,721 questions** — physics 628, mathematics 703, english 749, RAGA 641 (sab keyed; figure-based questions pool me kabhi nahi aate). Counts `data/bank-meta.json` me auto-generated hain.
 
 ## Ready-made test series
 
