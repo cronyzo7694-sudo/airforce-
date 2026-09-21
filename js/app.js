@@ -96,6 +96,9 @@ const App = {
     let _cloudPullT = null;
     window.addEventListener('cloud-pulled', () => {
       try {
+        // v1.4.41: banner/unfinished count bhi turant fresh (dusre device ka
+        // END/park yahan pahunchta hai → resume list sahi ho jaati hai)
+        if (App.refreshPendingCount) App.refreshPendingCount().catch(() => {});
         if (document.hidden || !Router.path) return;
         if (document.body.classList.contains('exam-on') || App.activeAttempt) return;   // live exam safe
         const p = Router.path;

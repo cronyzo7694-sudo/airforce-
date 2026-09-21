@@ -358,6 +358,30 @@ async function call(port, p, body, opts = {}) {
   const qGot = await G('(async () => DB.get("questions", "q_unknown_1"))()');
   T('fail-safe: null bundledIds → question apply SKIP', apFail === 0 && !qGot);
 
+  /* ═══ v1.4.41 — END propagation + sync-join (same account = same data) ═══ */
+  console.log('━━━ CLOUD v1.4.41 · END propagation + sync-join');
+  // device-B scenario: local in-progress attempt, remote (dusre device se) END hua
+  await G('(async () => { await DB.put("attempts", { id: "att-cross", testId: "t-cross", testName: "Cross Test", completed: false, responses: {} }); return true; })()');
+  await G('(async () => Cloud._test.applyRecords([ { kind: "attempt", rid: "att-cross", data: { id: "att-cross", testId: "t-cross", testName: "Cross Test", completed: true, abandoned: true, endTime: 123, responses: {} }, updatedAt: 9, deleted: false } ]))()');
+  const crossRow = await G('(async () => DB.get("attempts", "att-cross"))()');
+  T('END propagation: remote abandoned → local bhi abandoned (resume list se OUT)', crossRow && crossRow.abandoned === true && crossRow.completed === true, crossRow);
+  // dono in-progress → LOCAL jeeta (is device ke naye answers safe)
+  await G('(async () => { await DB.put("attempts", { id: "att-live2", testId: "t2", completed: false, responses: { q1: { sel: 2 } } }); return true; })()');
+  await G('(async () => Cloud._test.applyRecords([ { kind: "attempt", rid: "att-live2", data: { id: "att-live2", testId: "t2", completed: false, responses: {} }, updatedAt: 10, deleted: false } ]))()');
+  const live2 = await G('(async () => DB.get("attempts", "att-live2"))()');
+  T('dono in-progress → LOCAL answers jeete (remote stale overwrite nahi)', live2 && live2.responses && live2.responses.q1 && live2.responses.q1.sel === 2, live2 && live2.responses);
+  // live exam protection: active attempt row cloud pull se overwrite nahi
+  await G('(async () => { window.App = window.App || {}; window.App.activeAttempt = { id: "att-live3", completed: false }; await DB.put("attempts", { id: "att-live3", testId: "t3", completed: false, responses: { q9: { sel: 1 } } }); return true; })()');
+  await G('(async () => Cloud._test.applyRecords([ { kind: "attempt", rid: "att-live3", data: { id: "att-live3", testId: "t3", completed: true, abandoned: true, responses: {} }, updatedAt: 11, deleted: false } ]))()');
+  const live3 = await G('(async () => DB.get("attempts", "att-live3"))()');
+  T('live-exam protection: chalu exam ka row pull se overwrite NAHI', live3 && live3.completed !== true && live3.responses.q9.sel === 1, live3 && live3.completed);
+  await G('(async () => { window.App.activeAttempt = null; return true; })()');
+  // syncNow join: concurrent manual calls — "skip" nahi, dono real result
+  const s1p = G('Cloud.syncNow("manual")');
+  const s2p = G('Cloud.syncNow("manual")');
+  const s1 = await s1p; const s2 = await s2p;
+  T('sync-join: concurrent Sync Now — koi "skipped" nahi', (s1 && s2 && (s1.ok || s2.ok) && s1.skipped !== true && s2.skipped !== true), { s1: s1 && s1.ok, s2: s2 && s2.ok });
+
   // ═══ 🔗 SHARE — test ka shareable link (worker endpoints) ═══
   console.log('━━━ SHARE · link se same test + group comparison');
   const sData = {

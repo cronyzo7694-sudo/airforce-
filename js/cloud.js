@@ -27,7 +27,7 @@ var Cloud = (() => {
   const BANK_FILES = ['data/bank-physics.json', 'data/bank-mathematics.json', 'data/bank-english.json', 'data/bank-raga.json'];
   const META_SYNCABLE = ['qstats', 'topicStats', 'attemptIndex', 'deletedAttempts'];
   const SETTING_SYNCABLE = ['config'];
-  const SYNC_EVERY_MS = 90 * 1000;
+  const SYNC_EVERY_MS = 45 * 1000;   // v1.4.41: 90→45s (do-device live feel; visible/focus par instant)
   const PUSH_DEBOUNCE_MS = 3000;
 
   let fb = null;                 // {auth, mod}
@@ -521,7 +521,13 @@ var Cloud = (() => {
             n++;
           } else {
             const local = await DB.get('attempts', r.rid);
-            if (local && local.completed !== true) continue;      // local in-progress jeeta
+            // live exam protection: isi attempt ko user ABHI de raha hai —
+            // cloud pull uska row overwrite na kare (persist khud jeetega)
+            try { if (typeof App !== 'undefined' && App.activeAttempt && App.activeAttempt.id === r.rid && App.activeAttempt.completed !== true) continue; } catch (e) {}
+            // dono in-progress → LOCAL jeeta (is device ke naye answers sahi hain).
+            // Par remote COMPLETED/ABANDONED hai (dusre device ne END/submit kiya)
+            // → REMOTE jeetega — warna END kabhi doosre device par pahunchta hi nahi.
+            if (local && local.completed !== true && r.data && r.data.completed !== true) continue;
             await DB.put('attempts', r.data); n++;
           }
         } else if (r.kind === 'test') {
@@ -611,12 +617,23 @@ var Cloud = (() => {
   }
 
   /* ---------------- public sync ---------------- */
+  let runningP = null;
   async function syncNow(reason) {
-    if (running) return { ok: false, skipped: true };
+    // v1.4.41: pehle "skipped" return hota tha jab sync pehle se chal raha
+    // hota — user ko samajh nahi aata tha. Ab chalu sync ka WAIT karte hain,
+    // phir apna kaam (manual push etc.) — result hamesha real.
+    if (running && runningP) { try { await runningP; } catch (e) { /* purane ka error ignore */ } }
+    if (running) return { ok: false, error: 'sync busy — 1 second me dobara try karo' };
     if (!user) return { ok: false, error: 'sign in required' };
+    running = true;
+    runningP = _runSync(reason);
+    try { return await runningP; }
+    finally { running = false; runningP = null; }
+  }
+
+  async function _runSync(reason) {
     const manual = reason === 'manual' || reason === 'restore';
     const wantPush = manual || status.auto;   // auto OFF → sirf manual push (PULL hamesha)
-    running = true;
     try {
       await loadBundledIds();
       await repairHistory();               // missing history wapas + junk clean
@@ -649,7 +666,7 @@ var Cloud = (() => {
       status.lastError = e.message;
       await saveStatus();
       return { ok: false, error: e.message };
-    } finally { running = false; }
+    }
   }
 
   async function restore() {
