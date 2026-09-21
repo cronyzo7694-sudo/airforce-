@@ -8,10 +8,9 @@ Views.attempts = async function (state) {
   let idx = await Store.getMeta('attemptIndex', []);
   idx.sort((a, b) => b.date - a.date);
 
-  // incomplete attempts (in-progress)
-  // boolean ('completed') index khaali rehta hai — getAll + filter (db.js note)
-  const unfinished = [];
-  (await DB.getAll('attempts')).forEach(a => { if (a.completed !== true && !a.abandoned) unfinished.push(a); });
+  // incomplete attempts (in-progress) — v1.4.40: App.unfinishedAttempts()
+  // (latest-first sort single source; pehle yahan getAll ka raw order chal raha tha)
+  const unfinished = await App.unfinishedAttempts();
 
   let list = idx;
   if (state.filter !== 'all') list = list.filter(a => a.testType === state.filter);
@@ -32,12 +31,18 @@ Views.attempts = async function (state) {
   const th = cfg.thresholds || { average: 60 };
 
   const painted = App.page('page page-attempts', `
-    ${unfinished.length ? `<div class="resume-banner" role="alert">
-      <div><b>${unfinished.length} unfinished attempt${unfinished.length > 1 ? 's' : ''}.</b>
-      <span>${AVUtil.esc(unfinished[0].testName)}</span></div>
-      <div class="resume-actions">
-        <button class="btn btn-primary" onclick="App.resumePending()">RESUME EXAM</button>
-      </div></div>` : ''}
+    ${unfinished.length ? `<div class="unfinished-list" role="alert">
+      <div class="ul-head"><b>${unfinished.length} unfinished attempt${unfinished.length > 1 ? 's' : ''}</b>
+      <span class="muted small">koi bhi kabhi bhi resume karo — ya end karke hata do</span></div>
+      ${unfinished.map((u, i) => `<div class="ul-row">
+        <div class="ul-info"><b>${AVUtil.esc(u.testName || 'Test')}</b>
+        <span class="muted small">started ${AVUtil.fmtDate(u.startTime || u.startedAt)}${u.responses ? ' · ' + Object.values(u.responses).filter(r => r && r.sel !== null && r.sel !== undefined).length + ' answered' : ''}</span></div>
+        <div class="resume-actions">
+          <button class="btn btn-primary" data-resume="${AVUtil.esc(u.id)}">${i === 0 ? 'RESUME EXAM' : 'RESUME'}</button>
+          <button class="btn btn-plain" data-end="${AVUtil.esc(u.id)}">END</button>
+        </div>
+      </div>`).join('')}
+    </div>` : ''}
     <div class="page-head">
       <div><h1>My Attempts</h1><p class="muted">${done.length} completed · ${unfinished.length} in progress</p></div>
       <div class="head-actions">
@@ -97,6 +102,16 @@ Views.attempts = async function (state) {
   }
   if (!painted) return; // user navigated away while this render was building
 
+  AVUtil.$$('#app .unfinished-list [data-resume]').forEach(b => b.addEventListener('click', async () => {
+    const a = unfinished.find(x => x.id === b.dataset.resume);
+    if (!a) return;
+    const test = await DB.get('tests', a.testId);
+    if (!test) { AVUtil.toast('The test for this attempt no longer exists.', 'error'); return; }
+    location.hash = '#/test/' + a.testId + '/attempt';
+  }));
+  AVUtil.$$('#app .unfinished-list [data-end]').forEach(b => b.addEventListener('click', async () => {
+    await App.endAttemptById(b.dataset.end);
+  }));
   AVUtil.$('#at-search').addEventListener('input', AVUtil.debounce(e => { state.search = e.target.value; state.page = 1; Views.attempts(state); }, 250));
   AVUtil.$('#at-filter').addEventListener('change', e => { state.filter = e.target.value; state.page = 1; Views.attempts(state); });
   AVUtil.$$('#app .pager [data-pg]').forEach(b => b.addEventListener('click', () => { state.page = +b.dataset.pg; Views.attempts(state); }));

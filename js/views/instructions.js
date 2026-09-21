@@ -192,23 +192,18 @@ Views.instructions = async function (testId) {
     const btn = AVUtil.$('#ins-begin');
     btn.disabled = true; btn.textContent = 'STARTING…';
 
-    // block if an unfinished attempt exists for another test
-    const unfinished = await App.findUnfinishedAttempt();
-    if (unfinished && unfinished.testId !== test.id) {
-      btn.disabled = false; btn.textContent = App.t('readyToBegin').toUpperCase();
-      const ok = await AVUtil.confirmModal({
-        title: 'Another exam is in progress',
-        body: `An unfinished attempt of "${unfinished.testName}" exists. You can only have one active attempt. Resume it or end it from the dashboard first.`,
-        yesLabel: 'Go to Dashboard', noLabel: 'Stay'
-      });
-      if (ok) Router.go('/dashboard');
-      return;
-    }
-
-    // existing unfinished attempt of same test → resume instead of new
-    if (unfinished && unfinished.testId === test.id) {
+    // v1.4.40 — "any test, anytime": doosre test ka unfinished attempt KABHI
+    // naya test start nahi rokta. Purane attempts park hoke My Attempts ke
+    // resume list me safe rehte hain. (Pehle yahan modal se block hota tha.)
+    // Same test ka khud ka unfinished ho → wahi resume (duplicate nahi banta).
+    const mine = (await DB.byIndex('attempts', 'testId', test.id)).filter(a => a && !a.completed && !a.abandoned);
+    if (mine.length) {
       location.hash = '#/test/' + test.id + '/attempt';
       return;
+    }
+    const others = await App.unfinishedAttempts();
+    if (others.length) {
+      AVUtil.toast('Purana unfinished attempt park hua — My Attempts me se kabhi bhi resume kar sakte ho.', 'info');
     }
 
     // retake policy

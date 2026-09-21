@@ -17,19 +17,27 @@ const ExamScreen = {
     // an in-progress attempt for THIS test? → resume. Else → instructions.
     // (scoped byIndex — kabhi bhi doosre test ka adhura attempt nahi uthega)
     let attempt = null;
-    const mine = await DB.byIndex('attempts', 'testId', testId);
-    mine.forEach(a => { if (!a.completed) attempt = a; });
+    const mineAll = await DB.byIndex('attempts', 'testId', testId);
+    // latest unfinished chuno (v1.4.40 park-flow: same test ke multiple
+    // unfinished ho sakte hain — jo SABSE NAYA start hua wahi khulega)
+    const mine = mineAll
+      .filter(a => a && !a.completed && !a.abandoned)
+      .sort((x, y) => (y.startTime || y.startedAt || 0) - (x.startTime || x.startedAt || 0));
+    attempt = mine[0] || null;
     if (!attempt) {
       // completed? go to latest result
       // (pehle 'testId_completed' [testId,1] index use hota tha — boolean key
       // kabhi match nahi karta tha, isliye ye redirect kabhi fire nahi hota tha)
-      const done = mine.filter(a => a.completed === true && !a.abandoned).sort((x, y) => (y.startedAt || 0) - (x.startedAt || 0));
+      const done = mineAll.filter(a => a.completed === true && !a.abandoned).sort((x, y) => (y.endTime || y.startTime || 0) - (x.endTime || x.startTime || 0));
       if (done.length) return location.hash = '#/attempt/' + done[0].id + '/result';
       AVUtil.toast('Please read the instructions and press "I am ready to begin".');
       return location.hash = '#/test/' + testId + '/instructions';
     }
     if (App.activeAttempt && App.activeAttempt.id !== attempt.id && !App.activeAttempt.completed) {
-      return AVUtil.toast('Another exam attempt is active in this tab.', 'error');
+      // v1.4.40: koi block nahi — purana attempt park (wo DB me saved hai),
+      // My Attempts → Resume se kabhi bhi wapas. Naya test abhi shuru.
+      try { if (typeof ExamScreen !== 'undefined' && ExamScreen.stopTick) ExamScreen.stopTick(); } catch (e) {}
+      AVUtil.toast('Purana attempt park hua — My Attempts me se resume kar sakte ho.', 'info');
     }
 
     const test = await DB.get('tests', attempt.testId);

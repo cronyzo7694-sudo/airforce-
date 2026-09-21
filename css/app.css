@@ -1380,3 +1380,11 @@ body.exam-on { overflow: hidden; }
   .dash-today { gap:8px; }
   .dt-item { min-width:calc(50% - 8px); padding:10px 12px; }
 }
+
+/* ══════════ v1.4.40 — UNFINISHED ATTEMPTS (multi-resume list) ══════════ */
+.unfinished-list { background: linear-gradient(135deg, rgba(255,159,28,.12), rgba(255,159,28,.04)); border: 1px solid rgba(255,159,28,.35); border-radius: 14px; padding: 14px 16px; margin: 0 0 18px; display: flex; flex-direction: column; gap: 10px; }
+.unfinished-list .ul-head { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.unfinished-list .ul-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--card, #fff); border: 1px solid var(--line, rgba(0,0,0,.08)); border-radius: 10px; padding: 10px 14px; flex-wrap: wrap; }
+.unfinished-list .ul-info { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.unfinished-list .ul-info b { font-size: 14px; }
+.unfinished-list .resume-actions { display: flex; gap: 8px; flex-shrink: 0; }

@@ -331,7 +331,8 @@ async function main() {
   T('attempts page: 1 in progress count', /1 in progress/.test(doc.body.textContent));
 
   // AWAY-RESUME: 35 min band reha attempt — jahan chhoda wahin se + same time bacha
-  const aw = await G('(async () => { const t = await DB.get("tests", "' + attempt.testId + '"); const a = Engine.createAttempt(t, 98, Date.now() - 40 * 60 * 1000); a.heartbeatAt = Date.now() - 35 * 60 * 1000; const remBefore = Engine.remainingMs(a, t, a.heartbeatAt); await DB.put("attempts", a); return { id: a.id, remBefore: Math.round(remBefore / 1000) }; })()');
+  // (v1.4.40: pehle ka dummy unfinished hataya — ab "latest unfinished" = ye wala hi khulega)
+  const aw = await G('(async () => { const t = await DB.get("tests", "' + attempt.testId + '"); await DB.delete("attempts", "' + ures.id + '"); const a = Engine.createAttempt(t, 98, Date.now() - 40 * 60 * 1000); a.heartbeatAt = Date.now() - 35 * 60 * 1000; const remBefore = Engine.remainingMs(a, t, a.heartbeatAt); await DB.put("attempts", a); return { id: a.id, remBefore: Math.round(remBefore / 1000) }; })()');
   window.location.hash = '#/test/' + attempt.testId + '/attempt';
   await waitFor(() => doc.querySelector('.exam-screen'), 10000);
   T('away-resume: exam khula — "time expired" auto-submit NAHI', !!doc.querySelector('.exam-screen') && !doc.body.textContent.includes('TEST COMPLETED'));

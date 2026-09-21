@@ -418,7 +418,7 @@ var Cloud = (() => {
       const delAdds = [];
       for (const a of rows) {
         if (!a || !a.id) continue;
-        if (del.has(a.id)) continue;
+        if (del.has(a.id) || a.abandoned) continue;   // abandoned = user ne khud end kiya — index/junk dono se out, DB me safe
         const answered = a.result && ((a.result.correct || 0) + (a.result.wrong || 0)) > 0;
         if (a.completed === true && !answered) {
           // 0-answer completed attempt = koi value nahi — delete + vaccinate

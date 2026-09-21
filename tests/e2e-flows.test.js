@@ -316,6 +316,106 @@ async function main() {
     T('attempt deleted after confirm', after2 === before2 - 1, before2 + '→' + after2);
   } else { console.log('  ! delete button not found — check attempts UI'); }
 
+  /* ============ v1.4.40 ANY TEST ANYTIME (park + multi-resume) ============ */
+  console.log('\n━━━ FLOWS · v1.4.40 any-test-anytime (park + multi-resume)');
+  async function parkViaHash() {
+    window.location.hash = '#/attempts';
+    await waitFor(() => !!doc.querySelector('.av-modal-overlay [data-act="yes"]'), 8000);
+    doc.querySelector('.av-modal-overlay [data-act="yes"]').dispatchEvent(new window.Event('click', { bubbles: true }));
+    await waitFor(() => window.location.hash === '#/attempts', 8000);
+    await sleep(400);
+  }
+  // test A (physics) start + 1 answer
+  const tA = await G('Generator.subjectTest("physics")');
+  window.location.hash = '#/test/' + tA.test.id + '/instructions';
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 15000);
+  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-agree'), 8000); }
+  doc.getElementById('ins-agree').checked = true;
+  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.querySelector('.exam-screen'), 15000);
+  await waitFor(() => doc.querySelectorAll('.opt').length >= 2, 8000);
+  doc.querySelectorAll('.opt')[0].dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(400);
+  const aId = await G('ExamScreen.attempt.id');
+  await parkViaHash();
+  const aRow = await G(`(async () => DB.get("attempts", ${JSON.stringify(aId)}))()`);
+  T('park A: leaving exam — confirm ke saath, attempt DB me safe (unfinished)', aRow && aRow.completed !== true, aRow && aRow.completed);
+  T('park A: 1 answer preserve (resume-able)', aRow && Object.values(aRow.responses || {}).some(r => r && r.sel !== null && r.sel !== undefined));
+
+  // NO BLOCK: test B (mathematics) seedha start — purana parked
+  const tB = await G('Generator.subjectTest("mathematics")');
+  window.location.hash = '#/test/' + tB.test.id + '/instructions';
+  await waitFor(() => doc.getElementById('ins-agree') || doc.getElementById('login-btn'), 15000);
+  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-agree'), 8000); }
+  doc.getElementById('ins-agree').checked = true;
+  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  const cntB = await G('DB.count("attempts")');
+  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  const bExam = await waitFor(() => doc.querySelector('.exam-screen'), 15000);
+  T('NO BLOCK: doosre test ka unfinished hone par bhi naya test seedha START', !!bExam);
+  await parkViaHash();
+  const cntAfter = await G('DB.count("attempts")');
+
+  // SAME-TEST re-begin → resume, duplicate nahi
+  window.location.hash = '#/test/' + tB.test.id + '/instructions';
+  await waitFor(() => doc.getElementById('ins-agree') || doc.getElementById('login-btn'), 15000);
+  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-agree'), 8000); }
+  doc.getElementById('ins-agree').checked = true;
+  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.querySelector('.exam-screen'), 15000);
+  T('same-test re-begin → RESUME (naya duplicate attempt nahi)', (await G('DB.count("attempts")')) === cntAfter, cntAfter + '→' + (await G('DB.count("attempts")')));
+  await parkViaHash();
+
+  // dashboard banner multi-aware
+  window.location.hash = '#/dashboard';
+  await waitFor(() => doc.querySelector('.resume-banner') || doc.querySelector('.dash-greet'), 12000);
+  await sleep(500);
+  T('banner: unfinished attempt dikha (multi-aware)', !!doc.querySelector('.resume-banner') && doc.body.textContent.includes('+ 1 aur'), doc.querySelector('.resume-banner') ? 'banner-hai-text-missing' : 'nahi');
+
+  // attempts page: unfinished list me DONO rows
+  window.location.hash = '#/attempts';
+  await sleep(900);
+  const urows = doc.querySelectorAll('.unfinished-list .ul-row').length;
+  T('attempts page: 2 unfinished rows (multi-resume list)', urows === 2, 'got ' + urows);
+
+  // END (latest B) — confirm → 1 row bache
+  const endBtn = doc.querySelector('.unfinished-list [data-end]');
+  if (endBtn) {
+    const endId = endBtn.dataset.end;
+    endBtn.dispatchEvent(new window.Event('click', { bubbles: true }));
+    await waitFor(() => !!doc.querySelector('.av-modal-overlay [data-act="yes"]'), 8000);
+    doc.querySelector('.av-modal-overlay [data-act="yes"]').dispatchEvent(new window.Event('click', { bubbles: true }));
+    await sleep(900);
+    const eRow = await G(`(async () => { const x = await DB.get("attempts", ${JSON.stringify(endId)}); return x && x.abandoned; })()`);
+    T('END: attempt abandoned (resume list se out, data safe)', eRow === true);
+    T('END: 1 unfinished row bachi', doc.querySelectorAll('.unfinished-list .ul-row').length === 1, doc.querySelectorAll('.unfinished-list .ul-row').length);
+  }
+
+  // RESUME remaining (A) — wapas khula + answered bacha
+  const resBtn = doc.querySelector('.unfinished-list [data-resume]');
+  if (resBtn) {
+    resBtn.dispatchEvent(new window.Event('click', { bubbles: true }));
+    await waitFor(() => doc.querySelector('.exam-screen'), 15000);
+    const backId = await G('ExamScreen.attempt.id');
+    const sel = await G('(function(){ const a = ExamScreen.attempt; return Object.values(a.responses || {}).some(r => r && r.sel !== null && r.sel !== undefined); })()');
+    T('RESUME: parked attempt wahin se wapas (same id + answered preserved)', backId === aId && sel === true, backId + ' vs ' + aId);
+  }
+
+  // stale cleanup: 35 din purana unfinished → auto-abandoned
+  const stale = await G(`(async () => {
+    const all = await DB.getAll("attempts");
+    const victim = all.find(a => a && a.completed !== true && !a.abandoned);
+    if (!victim) return { n: 0 };
+    victim.startedAt = Date.now() - 35 * 86400000;
+    await DB.put("attempts", victim);
+    const n = await App.staleAttemptCleanup();
+    const v2 = await DB.get("attempts", victim.id);
+    return { n: n, ab: v2 && v2.abandoned };
+  })()`);
+  T('stale: 35+ din purana unfinished → auto-abandoned (list se out, data safe)', stale && stale.n >= 1 && stale.ab === true, stale);
+
   /* ============ summary ============ */
   console.log(`\n════════════════════════════════════════`);
   console.log(`  FLOWS RESULT: ${passed} passed, ${failed} failed`);

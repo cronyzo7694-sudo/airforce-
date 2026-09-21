@@ -105,9 +105,11 @@ const App = {
       } catch (e) { /* non-fatal */ }
     });
 
-    // find an unfinished attempt (browser closed during exam)
-    const unfinished = await this.findUnfinishedAttempt();
-    this.pendingResume = unfinished;
+    // find unfinished attempts (browser closed during exam) + stale cleanup
+    try { await this.staleAttemptCleanup(); } catch (e) { /* non-fatal */ }
+    const unfinished = await this.unfinishedAttempts();
+    this.pendingResume = unfinished[0] || null;
+    this.pendingResumeCount = unfinished.length;
 
     // site chrome: community visitor stats + floating chat (once per page load)
     try { if (typeof SiteChrome !== 'undefined') SiteChrome.init(); } catch (e) { /* never block the app */ }
@@ -146,10 +148,33 @@ const App = {
   },
 
   async findUnfinishedAttempt() {
+    return (await this.unfinishedAttempts())[0] || null;
+  },
+  async unfinishedAttempts() {
     // 'completed' boolean index hamesha khaali rehta hai (db.js note dekho) —
     // isliye seedha getAll + filter. Attempts hundreds me hote hain, ye fast hai.
+    // v1.4.40: SAB unfinished attempts (latest first) — koi bhi test kabhi bhi
+    // de sake, purane attempts parked rehte hain, har ek resume-able hai.
     const all = await DB.getAll('attempts');
-    return all.find(a => a.completed !== true && !a.abandoned) || null;
+    return all
+      .filter(a => a.completed !== true && !a.abandoned)
+      .sort((x, y) => (y.startedAt || y.startTime || 0) - (x.startedAt || x.startTime || 0));
+  },
+  async staleAttemptCleanup() {
+    // 30+ din purane unfinished attempts → abandoned (data DB me safe rehta hai,
+    // bas resume list se hat jaate hain — hamesha ke liye garbage jama nahi hota)
+    try {
+      const all = await DB.getAll('attempts');
+      const CUT = Date.now() - 30 * 86400000;
+      let n = 0;
+      for (const a of all) {
+        if (a && a.completed !== true && !a.abandoned && (a.startedAt || a.startTime || 0) < CUT) {
+          a.completed = true; a.abandoned = true; a.endTime = a.endTime || Date.now();
+          await DB.put('attempts', a); n++;
+        }
+      }
+      return n;
+    } catch (e) { return 0; }
   },
 
   /* ---------------- navigation guard ---------------- */
@@ -165,8 +190,15 @@ const App = {
       await ExamScreen.persist(); // preserve the attempt
       ExamScreen.teardown();
       this.activeAttempt = null;
+      this.refreshPendingCount().catch(() => {});   // v1.4.40: banner count turant sahi
     }
     return true;
+  },
+
+  async refreshPendingCount() {
+    const u = await this.unfinishedAttempts();
+    this.pendingResume = u[0] || null;
+    this.pendingResumeCount = u.length;
   },
 
   /* ---------------- top nav ---------------- */
@@ -244,14 +276,16 @@ const App = {
     </nav>`;
   },
 
-  /* ---------------- resume banner ---------------- */
+  /* ---------------- resume banner (multi-attempt aware) ---------------- */
   resumeBannerHTML() {
     if (!this.pendingResume) return '';
     const a = this.pendingResume;
+    const more = Math.max(0, (this.pendingResumeCount || 1) - 1);
     return `<div class="resume-banner" role="alert">
       <div>
         <b>An unfinished examination attempt was found.</b>
         <span>${AVUtil.esc(a.testName)} — started ${AVUtil.fmtDate(a.startTime)}</span>
+        ${more ? `<span class="muted small"> + ${more} aur unfinished — My Attempts me sab milenge</span>` : ''}
       </div>
       <div class="resume-actions">
         <button class="btn btn-primary" onclick="App.resumePending()">RESUME EXAM</button>
@@ -272,22 +306,29 @@ const App = {
   async endPending() {
     const a = this.pendingResume;
     if (!a) return;
+    return this.endAttemptById(a.id);
+  },
+
+  async endAttemptById(id) {
+    const a = await DB.get('attempts', id);
+    if (!a) return;
     const ok = await AVUtil.confirmModal({
       title: 'End this attempt?',
-      body: 'The attempt will be marked incomplete and removed from resume. It will not be scored.',
+      body: `"${AVUtil.esc(a.testName || 'This test')}" ka attempt incomplete mark hoga aur resume list se hat jayega. Iska score nahi banega.`,
       yesLabel: 'End Attempt', yesClass: 'btn-danger'
     });
     if (!ok) return;
     a.completed = true; a.abandoned = true;
     a.endTime = Date.now();
     await DB.put('attempts', a);
-    this.pendingResume = null;
+    await this.refresh();
     AVUtil.toast('Attempt ended.');
-    Router.resolve();
   },
 
   async refresh() {
-    this.pendingResume = await this.findUnfinishedAttempt();
+    const u = await this.unfinishedAttempts();
+    this.pendingResume = u[0] || null;
+    this.pendingResumeCount = u.length;
     Router.resolve();
   },
 
