@@ -7,6 +7,7 @@ Views.instructions = async function (testId) {
   const test = await DB.get('tests', testId);
   if (!test) { AVUtil.toast('Test not found', 'error'); return Router.go('/tests'); }
   const cfg = await App.config();
+  App.clearNav();   /* v1.4.44: cbt full-screen — site-nav hatao */
   const lang = App.lang;
 
   // retake question-set policy
@@ -18,14 +19,18 @@ Views.instructions = async function (testId) {
     // pre-generate a fresh question set for this attempt (same blueprint)
     const qstats = await Store.getMeta('qstats', { seen: {}, wrong: {}, topicAcc: {} });
     freshSets = {};
-    for (const sec of test.sections) {
+    for (const sec of (test.sections || [])) {   /* v1.4.44: legacy-safe */
       const pool = await Generator.poolFor({ subjectId: sec.subjectId, chapters: sec.chapters, topics: sec.topics, difficulty: sec.difficulty }, qstats);
       const picked = Generator.pick(pool, sec.questionIds.length, test.strategy || cfg.selectionStrategy, qstats);
       if (picked) freshSets[sec.subjectId] = picked.map(q => q.id);
     }
   }
 
-  const secs = test.sections;
+  const secs = test.sections || [];
+  if (!secs.length) {   /* v1.4.44: bina sections ka purana/corrupt test — crash nahi */
+    AVUtil.toast('Ye test purane format ka hai — dobara bana lo.', 'error');
+    return Router.go('/tests');
+  }
   const total = test.totalQuestions;
   const mk = test.marking;
 

@@ -84,12 +84,17 @@ button { font-family: inherit; }
   width: 18px; height: 3px; border-radius: 999px; background: var(--navy-2);
 }
 body.exam-on .bottomnav, body.cbt-on .bottomnav { display: none !important; }
+/* v1.4.44: cbt/exam screens par topnav/placeholder bhi poora gayab */
+body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 
 /* ---------------- top navigation ---------------- */
+/* v1.4.44: STICKY WRAPPER par — #app-nav poore body me stick karta hai
+   (chhote wrapper me sticky bekaar ho jata tha → topnav scroll ho jata tha) */
+#app-nav { position: sticky; top: 0; z-index: 60; }
 .topnav {
   display: flex; align-items: center; gap: 18px;
   background: #fff; border-bottom: 1px solid var(--line-soft);
-  padding: 0 22px; height: 56px; position: sticky; top: 0; z-index: 60;
+  padding: 0 22px; height: 56px;
   box-shadow: 0 1px 3px rgba(20, 40, 80, .06);
 }
 .brand { display: flex; align-items: center; gap: 9px; color: var(--navy); font-weight: 600; font-size: 16.5px; text-decoration: none; }
@@ -1399,12 +1404,14 @@ html.sm-night  { --smf: brightness(.8) sepia(.22) saturate(.9) hue-rotate(var(--
 html.sm-paper  { --smf: sepia(.3) contrast(.94) brightness(1.02) hue-rotate(var(--hue, 0deg)); }
 html.sm-dark   { --smf: invert(1) hue-rotate(180deg) brightness(.92) contrast(.96); }
 html.sm-normal { --smf: hue-rotate(var(--hue, 0deg)); }
-/* v1.4.43 FIXED-SAFE: filter SIRF #app (content) + chrome elements par
-   INDIVIDUALLY — fixed bottomnav/topnav/fab/modals ka positioning kabhi
-   nahi tootta (filter unke PARENT par nahi lagta). */
+/* v1.4.44 BULLETPROOF: filter SIRF #app (content) + har chrome element
+   APNE AAP par (kisi ka PARENT filtered NAHI). Filter kisibe ke ancestor
+   me nahi hai → fixed bottomnav / sticky topnav ka containing block kabhi
+   nahi tootta — kisi bhi mode me nav scroll NAHI hoga.
+   (#app-nav/#app-bottom sirf DOM wrappers hain — unpar filter NAHI.) */
 html[class*="sm-"] #app { filter: var(--smf, none); }
-html[class*="sm-"] body > #app-nav,
-html[class*="sm-"] body > #app-bottom,
+html[class*="sm-"] .topnav,
+html[class*="sm-"] .bottomnav,
 html[class*="sm-"] body > #site-footer,
 html[class*="sm-"] #chat-fab,
 html[class*="sm-"] #menu-panel,
@@ -1462,7 +1469,7 @@ body.exam-on #chat-panel { display: none !important; }
 
 /* ═══════════ v1.4.43 — STUDY MODES me JAAN (transitions + polish) ═══════════ */
 /* 1) mode switch SMOOTH — filter cross-fade (jhatka nahi, soft fade) */
-#app, #app-nav, #app-bottom, #site-footer, #chat-fab, #menu-panel, #chat-panel, .av-modal-overlay, #av-toast-host, .share-modal { transition: filter .45s ease; }
+#app, .topnav, .bottomnav, #site-footer, #chat-fab, #menu-panel, #chat-panel, .av-modal-overlay, #av-toast-host, .share-modal { transition: filter .45s ease; }
 
 /* 2) mode tuning — har mode apna asli character */
 html.sm-bw     { --smf: grayscale(1) contrast(1.1) hue-rotate(var(--hue, 0deg)); }

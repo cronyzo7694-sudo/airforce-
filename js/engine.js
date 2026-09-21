@@ -420,7 +420,17 @@ const Engine = (() => {
   }
 
   function allQuestionIds(attempt) {
-    return attempt.sectionOrder.flatMap(sid => attempt.sections[sid].questionIds);
+    /* v1.4.44: legacy/purane attempt-safe — sectionOrder/sections kuch bhi
+       missing ya alag shape me ho to CRASH nahi (yahi "Something went wrong"
+       ka root cause tha purane/cloud-synced attempts par). */
+    const at = attempt || {};
+    const secs = at.sections;
+    if (Array.isArray(secs)) return secs.flatMap(s => Array.isArray(s && s.questionIds) ? s.questionIds : []);
+    if (!secs || typeof secs !== 'object') return [];
+    const order = Array.isArray(at.sectionOrder) && at.sectionOrder.length ? at.sectionOrder : Object.keys(secs);
+    const out = [];
+    order.forEach(sid => { const s = secs[sid]; if (s && Array.isArray(s.questionIds)) out.push(...s.questionIds); });
+    return out;
   }
 
   /* ---------------- evaluation ---------------- */

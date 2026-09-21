@@ -245,6 +245,13 @@ const App = {
      re-renders (e.g. the bank save handler rebuilding the question list) can
      finish after the user has already navigated elsewhere; painting then would
      wipe the page they are on. Stale renders are skipped. */
+  /* v1.4.44: cbt/exam screens site-nav khud clear karte hain —
+     #app-nav/#app-bottom me purana nav kabhi nahi chipkega */
+  clearNav() {
+    const nv = document.getElementById('app-nav'); if (nv) nv.innerHTML = '';
+    const bt = document.getElementById('app-bottom'); if (bt) bt.innerHTML = '';
+  },
+
   page(cls, inner, route) {
     if (route && Router.path && Router.path !== route) return false;
     document.body.classList.remove('cbt-on');   // normal pages always show site chrome

@@ -3,7 +3,7 @@
  * Cache-first for the immutable app shell + bundled bank data.
  * ============================================================ */
 
-const SW_VERSION = 'kineora-exam-v1.4.43';
+const SW_VERSION = 'kineora-exam-v1.4.44';
 
 const APP_SHELL = [
   './',
@@ -61,6 +61,24 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  /* v1.4.44: HTML/navigations NETWORK-FIRST — naya version pehli reload par
+     hi milta hai (cache-first me purana version chalta rehta tha "kai baar").
+     Baaki assets cache-first (offline-fast). */
+  const isNav = e.request.mode === 'navigate' ||
+    (e.request.destination === 'document') ||
+    (e.request.headers.get('accept') || '').includes('text/html');
+  if (isNav) {
+    e.respondWith(
+      fetch(e.request).then(resp => {
+        if (resp && resp.ok) {
+          const copy = resp.clone();
+          caches.open(SW_VERSION).then(c => { c.put(e.request, copy); c.put('./', copy.clone()); });
+        }
+        return resp;
+      }).catch(() => caches.match(e.request).then(c => c || caches.match('./')))
+    );
+    return;
+  }
   // cache-first, network fallback (then cache the result for next time)
   e.respondWith(
     caches.match(e.request).then(cached => {

@@ -38,7 +38,7 @@ Views.result = async function (attemptId) {
         <div class="rh-check" aria-hidden="true">✓</div>
         <div>
           <h1>TEST COMPLETED</h1>
-          <p class="muted">${AVUtil.esc(a.testName)} · Attempt #${a.attemptNo} · ${AVUtil.fmtDate(a.endTime)}</p>
+          <p class="muted">${AVUtil.esc(a.testName)} · Attempt #${a.attemptNo || '—'} · ${AVUtil.fmtDate(a.endTime)}</p>
         </div>
       </div>
       <div class="rh-score">
@@ -163,10 +163,16 @@ Views.analysis = async function (attemptId, state) {
 
   let gn = 0;
   const flat = [];
-  a.sectionOrder.forEach(sid => {
-    const sec = a.sections[sid];
+  /* v1.4.44: purane/orphan attempts (test delete/rebuild ho chuka) bhi
+     crash ke bina analysis dikhaate hain — jo data hai wahi dikhao */
+  const aOrder = Array.isArray(a.sectionOrder) && a.sectionOrder.length
+    ? a.sectionOrder
+    : (a.sections && !Array.isArray(a.sections) ? Object.keys(a.sections) : []);
+  aOrder.forEach(sid => {
+    const sec = (a.sections || {})[sid];
+    if (!sec) return;
     const sname = test?.sections.find(s => s.subjectId === sid)?.name || sid;
-    sec.questionIds.forEach((qid, i) => {
+    (sec.questionIds || []).forEach((qid, i) => {
       gn++;
       const pq = res.perQuestion[qid] || { sel: null, key: null, result: 'skip', state: 'NOT_VISITED', timeSpent: 0 };
       flat.push({ gn, sid, sname, qid, q: qmap[qid], pq });
@@ -259,7 +265,7 @@ Views.analysis = async function (attemptId, state) {
       <div class="th-main">
         <div class="th-kicker">Detailed Analysis</div>
         <div class="th-title">${AVUtil.esc(a.testName)}</div>
-        <div class="th-meta">Attempt #${a.attemptNo} · ${AVUtil.fmtDate(a.endTime || a.date)} · ${AVUtil.fmtDur(res.timeTaken)}</div>
+        <div class="th-meta">Attempt #${a.attemptNo || '—'} · ${AVUtil.fmtDate(a.endTime || a.date)} · ${AVUtil.fmtDur(res.timeTaken)}</div>
         <div class="th-tools">
           <a class="th-more" href="#/attempt/${a.id}/result">📊 Result page</a>
           <a class="th-new" href="#/test/${a.testId}/instructions">↻ Reattempt</a>
@@ -464,13 +470,13 @@ Views.analysis = async function (attemptId, state) {
         <a class="btn btn-primary" href="#/test/${a.testId}/instructions">↻ Reattempt this test</a>
       </section>`;
     }
-    const points = sibAttempts.map(x => ({ x: '#' + x.attemptNo, y: x.maxScore ? Math.round(x.score / x.maxScore * 1000) / 10 : 0 }));
+    const points = sibAttempts.map(x => ({ x: '#' + (x.attemptNo || '—'), y: x.maxScore ? Math.round(x.score / x.maxScore * 1000) / 10 : 0 }));
     const rows = sibAttempts.map((x, i) => {
       const pct = x.maxScore ? Math.round(x.score / x.maxScore * 1000) / 10 : 0;
       const prevPct = i > 0 && sibAttempts[i - 1].maxScore ? Math.round(sibAttempts[i - 1].score / sibAttempts[i - 1].maxScore * 1000) / 10 : null;
       const delta = prevPct != null ? Math.round((pct - prevPct) * 10) / 10 : null;
       return `<tr class="${x.id === a.id ? 'prog-cur' : ''}">
-        <td><b>#${x.attemptNo}</b></td>
+        <td><b>#${x.attemptNo || '—'}</b></td>
         <td class="muted small">${AVUtil.fmtDate(x.date)}</td>
         <td><b>${x.score}</b><span class="muted">/${x.maxScore}</span></td>
         <td><b>${pct}%</b></td>

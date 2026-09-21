@@ -45,6 +45,12 @@ const ExamScreen = {
 
     this.attempt = attempt;
     this.test = test;
+    /* v1.4.44: purane-format attempt (sectionOrder/sections missing ya khaali) —
+       yahi "Something went wrong" phodta tha resume par. Crash nahi → seedha tests. */
+    if (!attempt.sections || !Array.isArray(attempt.sectionOrder) || !Engine.allQuestionIds(attempt).length) {
+      AVUtil.toast('Ye purana attempt ab load nahi hota — naya test shuru karo.', 'error');
+      return Router.go('/tests');
+    }
     // instant explanation: sirf practice mode me (exam me reveal = cheating)
     this.showExplain = !!(test.instantExplanation && test.mode === 'practice');
     this.qLang = 'en';          // EN default; हिन्दी unlocks per-question when available
@@ -223,6 +229,7 @@ const ExamScreen = {
         <button class="xbtn xbtn-ghost pal-instructions" id="pal-instructions">📄 ${t('instructions')}</button>
       </aside>`;
 
+    App.clearNav();   /* v1.4.44: site-nav hatao — cbt full-screen */
     document.getElementById('app').innerHTML = `
       <div class="cbt exam-screen" data-view="${a.view}">
         ${header}
@@ -718,6 +725,7 @@ const ExamScreen = {
 
   renderComplete() {
     const a = this.attempt, res = a.result;
+    App.clearNav();   /* v1.4.44: site-nav hatao — cbt full-screen */
     document.getElementById('app').innerHTML = `
       <div class="cbt exam-complete-screen">
         <div class="ec-box">

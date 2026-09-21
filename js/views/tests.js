@@ -169,8 +169,8 @@ Views.tests = async function (state) {
     const T2TYPE = { full: 'Full Mock', subject: 'Subject Test', chapter: 'Chapter Test', topic: 'Topic Test', custom: 'Custom' };
     const typeName = (t.series ? 'SERIES #' + t.seriesNo : (T2TYPE[t.type] || 'Test').toUpperCase());
     const cls = t.series ? 't2-full t2-series' : 't2-' + (t.type || 'custom');
-    const secs = t.sections.map(s => ({
-      subjectId: s.subjectId, name: cfg.subjects.find(x => x.id === s.subjectId)?.name || s.name, n: s.questionIds.length
+    const secs = (t.sections || []).map(s => ({   /* v1.4.44: legacy test-safe */
+      subjectId: s.subjectId, name: cfg.subjects.find(x => x.id === s.subjectId)?.name || s.name, n: (s.questionIds || []).length
     }));
     const shownSecs = secs.length > 3 ? secs.slice(0, 3) : secs;
     const pct = best ? Math.round(best.score / (best.maxScore || 100) * 100) : 0;
@@ -262,14 +262,14 @@ Views.testOverview = async function (id) {
   if (!t) { AVUtil.toast('Test not found', 'error'); return Router.go('/tests'); }
   const cfg = await App.config();
   const idx = (await Store.getMeta('attemptIndex', [])).filter(a => a.testId === id);
-  const questions = await DB.getMany('questions', t.sections.flatMap(s => s.questionIds));
+  const questions = await DB.getMany('questions', (t.sections || []).flatMap(s => (s && s.questionIds) || []));   /* v1.4.44: legacy-safe */
 
   App.page('page page-overview', `
     <div class="crumbs"><a href="#/tests">Test Library</a> / ${AVUtil.esc(t.name)}</div>
     <div class="page-head">
       <div>
         <h1>${AVUtil.esc(t.name)}</h1>
-        <p class="muted">${t.totalQuestions} questions · ${Math.round(t.duration / 60)} min · ${t.timerMode === 'section' ? 'section-wise timing' : 'global timer'} · marking ${t.marking.correct}/${t.marking.wrong}/${t.marking.unattempted}</p>
+        <p class="muted">${t.totalQuestions} questions · ${t.duration ? Math.round(t.duration / 60) : '—'} min · ${t.timerMode === 'section' ? 'section-wise timing' : 'global timer'} · marking ${(t.marking || {}).correct ?? 1}/${(t.marking || {}).wrong ?? '-0.25'}/${(t.marking || {}).unattempted ?? 0}</p>
       </div>
       <div class="head-actions">
         <button class="btn btn-primary" id="ov-start">${idx.length ? 'REATTEMPT' : 'START TEST'}</button>
@@ -287,8 +287,8 @@ Views.testOverview = async function (id) {
           ${t.sections.map((s, i) => `<tr>
             <td>${i + 1}</td>
             <td>${AVUtil.esc(cfg.subjects.find(x => x.id === s.subjectId)?.name || s.name)}</td>
-            <td>${s.questionIds.length}</td>
-            <td>${Math.round(s.duration / 60)} min</td>
+            <td>${(s.questionIds || []).length}</td>
+            <td>${s.duration ? Math.round(s.duration / 60) : '—'} min</td>
             <td class="muted small">${s.chapters ? 'Chapters: ' + s.chapters.join(', ') : (s.topics ? 'Topics: ' + s.topics.join(', ') : 'Full syllabus')}</td>
           </tr>`).join('')}
           </tbody></table>

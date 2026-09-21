@@ -550,6 +550,16 @@ async function main() {
   T('mode ON + bottomnav position ab bhi FIXED (scroll me bhi nahi tootta)', bpos === 'fixed', bpos);
   const appFilter = await G('getComputedStyle(document.getElementById("app")).filter');
   T('filter #app par applied (content filtered, nav alag)', appFilter && appFilter !== 'none', appFilter);
+  // v1.4.44 BULLETPROOF: nav ke kisi ANCESTOR par filter nahi (containing-block)
+  const ancBad = await G(`(function(){var out=[];['.bottomnav','.topnav'].forEach(function(sel){var el=document.querySelector(sel);if(!el)return;el=el.parentElement;while(el&&el!==document.documentElement){var f=getComputedStyle(el).filter;if(f&&f!=='none')out.push(sel+' anc:'+(el.id||el.tagName));el=el.parentElement;}});return out.join(',')})()`);
+  T('v1.4.44: nav ke kisi ANCESTOR par filter NAHI (isliye scroll kabhi nahi hota)', ancBad === '', ancBad);
+  const bnSelf = await G('getComputedStyle(document.querySelector(".bottomnav")).filter');
+  const tnSelf = await G('getComputedStyle(document.querySelector(".topnav")).filter');
+  T('v1.4.44: bottomnav + topnav KHUD filtered (mode nav par bhi dikhta hai)', bnSelf && bnSelf !== 'none' && tnSelf && tnSelf !== 'none', bnSelf + ' / ' + tnSelf);
+  const wrapF = await G('getComputedStyle(document.getElementById("app-nav")).filter + "/" + getComputedStyle(document.getElementById("app-bottom")).filter');
+  T('v1.4.44: wrappers #app-nav/#app-bottom par filter NAHI (sirf DOM wrapper)', wrapF === 'none/none', wrapF);
+  const wrapP = await G('getComputedStyle(document.getElementById("app-nav")).position');
+  T('v1.4.44: #app-nav STICKY wrapper (topnav scroll par top me tika)', wrapP === 'sticky', wrapP);
   T('Black & White: html class + localStorage persist', doc.documentElement.classList.contains('sm-bw') && window.localStorage.getItem('studyMode') === 'bw');
   T('B&W mode me content intact (text invisible nahi)', doc.getElementById('app').textContent.length > 100);
   doc.querySelector('#menu-panel .mode-btn[data-mode="night"]').dispatchEvent(new window.Event('click', { bubbles: true }));
@@ -591,6 +601,7 @@ async function main() {
   doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   const smExam = await waitFor(() => doc.querySelector('.exam-screen'), 15000);
   T('mode ON + exam screen: question text VISIBLE', smExam && doc.querySelector('.exam-screen').textContent.length > 50 && doc.documentElement.classList.contains('sm-dark'));
+  T('v1.4.44: cbt screen par site-nav POORA CLEAR (stale topnav kabhi nahi)', doc.getElementById('app-nav').innerHTML.trim() === '' && doc.getElementById('app-bottom').innerHTML.trim() === '');
   T('exam me menu FAB dikhta hai (mode switch exam me bhi)', (await G('getComputedStyle(document.getElementById("chat-fab")).display')) !== 'none');
   doc.getElementById('chat-fab').dispatchEvent(new window.Event('click', { bubbles: true }));
   await sleep(150);
@@ -609,6 +620,29 @@ async function main() {
   sl.dispatchEvent(new window.Event('input', { bubbles: true }));
   await sleep(200);
   T('Normal reset: saari mode classes gayi (hue bhi 0)', !doc.documentElement.className.includes('sm-') && parseInt(window.localStorage.getItem('studyHue') || '0', 10) === 0);
+
+  /* ---------- 16. v1.4.44: LEGACY / ORPHAN DATA CRASH-PROOF ---------- */
+  console.log('\n━━━ E2E · v1.4.44 legacy/orphan data (Something went wrong GAYA)');
+  // orphan attempt (test delete/rebuild ho chuka) → analysis + result crash nahi
+  await G('DB.put("attempts", { id: "E2E_ORPH", testId: "GONE_TEST", testName: "Gone Test Orphan", completed: true, abandoned: false, date: Date.now(), score: 5, maxScore: 25, accuracy: 20, sections: { physics: { questionIds: [] } }, answers: {}, result: { score: 5, maxScore: 25, correct: 2, wrong: 4, skipped: 19, sections: [] } })');
+  window.location.hash = '#/attempt/E2E_ORPH/analysis';
+  await sleep(700);
+  T('orphan attempt → analysis RENDER (crash nahi)', !doc.querySelector('.error-box') && (doc.getElementById('app').textContent || '').includes('Analysis'));
+  window.location.hash = '#/attempt/E2E_ORPH/result';
+  await sleep(700);
+  T('orphan attempt → result RENDER (Attempt #— fallback)', !doc.querySelector('.error-box') && (doc.getElementById('app').textContent || '').includes('Attempt #—'));
+  // bina-sections purana test → instructions graceful redirect
+  await G('DB.put("tests", { id: "E2E_NOSEC", name: "Legacy No Sections", type: "subject", mode: "practice", createdAt: Date.now(), totalQuestions: 0, duration: 300 })');
+  window.location.hash = '#/test/E2E_NOSEC/instructions';
+  await sleep(700);
+  T('bina-sections test → graceful /tests redirect (error-box nahi)', !doc.querySelector('.error-box') && window.location.hash.startsWith('#/tests'));
+  // purane-format attempt → resume guard (toast + /tests, crash nahi)
+  await G('DB.put("attempts", { id: "E2E_LEGATT", testId: "' + smT.test.id + '", testName: "' + smT.test.name + '", completed: false, abandoned: false, date: Date.now(), currentSectionId: "physics", currentQIdx: 0, answers: {}, sections: { physics: { questionIds: [] } } })');
+  window.location.hash = '#/test/' + smT.test.id + '/attempt';
+  await sleep(900);
+  T('purane-format attempt → RESUME guard (crash nahi, /tests redirect)', !doc.querySelector('.error-box') && window.location.hash.startsWith('#/tests'));
+  window.location.hash = '#/dashboard';
+  await sleep(500);
 
   /* ---------- summary ---------- */
   console.log(`\n════════════════════════════════════════`);
