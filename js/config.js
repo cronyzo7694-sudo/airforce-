@@ -4,7 +4,7 @@
  * to change exam behaviour WITHOUT rewriting the application.
  * ============================================================ */
 
-const EXAM_CONFIG = {
+const AIRFORCE_CONFIG = {
   name: 'Air Force Agniveervayu',
   mode: 'BS',                      // Both Subjects
   candidateName: 'Practice Candidate',
@@ -58,6 +58,64 @@ const EXAM_CONFIG = {
   get totalQuestions() { return this.subjects.reduce((a, s) => a + s.questions, 0); },
   get maxMarks() { return this.subjects.reduce((a, s) => a + s.questions, 0) * this.marking.correct; }
 };
+
+/* ═══════════════════════════════════════════════════════════════════
+   v1.4.46 — MULTI-EXAM: SSC CHSL (Tier-I) — ACTIVE
+   Pattern: 4 sections × 25 Q = 100 Q · 60 min GLOBAL timer · +2 / −0.5
+   Data: data/ssc-chsl/bank-{mathematics,english,reasoning,gs}.json
+   ═══════════════════════════════════════════════════════════════════ */
+const SSC_CHSL_CONFIG = {
+  name: 'SSC CHSL (Tier-I)',
+  mode: 'CHSL',
+  candidateName: 'Practice Candidate',
+
+  duration: 60 * 60,               // 60 minutes GLOBAL (sections free-move)
+
+  marking: { correct: 2, wrong: -0.5, unattempted: 0 },
+
+  timerMode: 'global',             // ek hi countdown — sections lock NAHI hote
+  sectionLock: false,
+  sectionSubmitRequired: false,
+  allowPreviousSection: true,
+  allowFutureSection: true,
+  autoSubmitOnTimerExpiry: true,
+  allowPause: false,
+
+  shuffleQuestions: false,
+  shuffleOptions: false,
+  shuffleSubjectOrder: false,
+  instantExplanation: false,
+
+  defaultLanguage: 'en',
+  selectionStrategy: 'realpaper',
+  retakeMode: 'fresh',
+
+  thresholds: { strong: 80, average: 60 },
+  timerWarning: 300,
+  timerCritical: 120,
+
+  subjects: [
+    { id: 'reasoning',   name: 'General Intelligence & Reasoning', questions: 25, duration: 15 * 60 },
+    { id: 'gs',          name: 'General Awareness',                questions: 25, duration: 15 * 60 },
+    { id: 'mathematics', name: 'Quantitative Aptitude',            questions: 25, duration: 15 * 60 },
+    { id: 'english',     name: 'English Language',                 questions: 25, duration: 15 * 60 }
+  ],
+
+  get totalQuestions() { return this.subjects.reduce((a, s) => a + s.questions, 0); },
+  get maxMarks() { return this.subjects.reduce((a, s) => a + s.questions, 0) * this.marking.correct; }
+};
+
+/* exam id → config. Naya exam? Yaha add karo + seed.js EXAM_BUNDLES + app.js dropdown */
+const EXAM_CONFIGS = {
+  airforce: AIRFORCE_CONFIG,
+  'ssc-chsl': SSC_CHSL_CONFIG
+};
+const EXAM_LABELS = {
+  airforce: 'Agniveer Vayu ✈️',
+  'ssc-chsl': 'SSC CHSL 🧾'
+};
+/* backward-compat: purana code EXAM_CONFIG directly padhta hai (engine tests, exam view) */
+const EXAM_CONFIG = AIRFORCE_CONFIG;
 
 /* Practice-mode preset used for subject/chapter/topic/custom tests
  * (section timing/locking still follows the test's own config). */
@@ -136,5 +194,5 @@ const I18N = {
 };
 
 if (typeof module !== 'undefined' && module.exports) {
-  module.exports = { EXAM_CONFIG, I18N, PRACTICE_PRESET, EXAM_PRESET };
+  module.exports = { EXAM_CONFIG, EXAM_CONFIGS, EXAM_LABELS, I18N, PRACTICE_PRESET, EXAM_PRESET };
 }

@@ -34,7 +34,7 @@ const FILES = [
 
 console.log('\n━━━ master TXT parser vs Python reference output (after importer dedupe)');
 for (const [fname, subject] of FILES) {
-  T(`${fname} → matches data/bank-${subject}.json`, () => {
+  T(`${fname} → matches data/airforce/bank-${subject}.json`, () => {
     if (!UP_OK) { console.log('    ↷ skip (uploads/ missing)'); return; }
     const text = fs.readFileSync(UP + fname, 'utf-8');
     const res = Parsers.parseMasterTxt(text, subject);
@@ -53,7 +53,7 @@ for (const [fname, subject] of FILES) {
       seen.set(dh, q);
       final.push(q);
     }
-    const ref = JSON.parse(fs.readFileSync(`data/bank-${subject}.json`, 'utf-8'));
+    const ref = JSON.parse(fs.readFileSync(`data/airforce/bank-${subject}.json`, 'utf-8'));
     // data files may be a SUPERSET of the master TXT (bilingual records merged in)
     // — v1.4.15: user ka updated English master bank se BADHA hai (zyada real sawal);
     //   user ne extra add karne se mana kiya hai → bank = real-paper subset, 800+ floor
@@ -105,7 +105,7 @@ T('English reconstructed questions look sane', () => {
   if (!UP_OK) { console.log('    ↷ skip (uploads/ missing)'); return; }
   const res = Parsers.parseMasterTxt(fs.readFileSync(UP + FILES[2][0], 'utf-8'), 'english');
   const rec = res.questions.filter(q => (q.tags || []).includes('auto-reconstructed'));
-  const ref = JSON.parse(fs.readFileSync('data/bank-english.json', 'utf-8')).filter(q => (q.tags || []).includes('auto-reconstructed'));
+  const ref = JSON.parse(fs.readFileSync('data/airforce/bank-english.json', 'utf-8')).filter(q => (q.tags || []).includes('auto-reconstructed'));
   assert(rec.length >= ref.length, 'reconstructed pre-dedupe (' + rec.length + ') >= post-dedupe (' + ref.length + ')');
   const iaf = rec.find(q => q.questionText.includes('key role of the Indian Air Force'));
   eq(iaf.options[1].text, 'to keep the Indian aerospace resistant to attacks', 'IAF option B');
@@ -232,8 +232,8 @@ T('bilingual JSON: Hindi fields kept + subjects mapped', () => {
   eq(res.questions[2].explanationHi, 'केवल हिन्दी व्याख्या', 'Hindi-only explanation kept');
 });
 T('subject files carry bilingual (EN+HI) records — no separate hindi file', () => {
-  assert(!fs.existsSync('data/bank-hindi-1.json'), 'no separate hindi bundle file');
-  const raga = JSON.parse(fs.readFileSync('data/bank-raga.json', 'utf-8'));
+  assert(!fs.existsSync('data/airforce/bank-hindi-1.json'), 'no separate hindi bundle file');
+  const raga = JSON.parse(fs.readFileSync('data/airforce/bank-raga.json', 'utf-8'));
   // RAGA: 100% bilingual + 100% dual explanations + real chapters (user-curated master)
   assert(raga.length >= 600, 'raga bank has 600+ records (got ' + raga.length + ')'); // v1.4.15: figure-based hata (80)
   assert(raga.every(q => q.questionTextHi), 'EVERY raga question is bilingual');
@@ -241,7 +241,7 @@ T('subject files carry bilingual (EN+HI) records — no separate hindi file', ()
   assert(raga.every(q => q.subject === 'raga'), 'no stray subjects (reasoning/GK aliases all raga)');
   assert(raga.every(q => q.chapter && q.chapter !== 'General'), 'every raga record has a real chapter');
   assert(raga.every(q => q.options && q.options.length === 4), 'every raga record has 4 options');
-  const math = JSON.parse(fs.readFileSync('data/bank-mathematics.json', 'utf-8'));
+  const math = JSON.parse(fs.readFileSync('data/airforce/bank-mathematics.json', 'utf-8'));
   const bi = arr => arr.filter(q => q.questionTextHi && q.explanationHi);
   assert(bi(raga).length >= 60, 'raga file has 60+ bilingual records (got ' + bi(raga).length + ')');
   assert(bi(math).length >= 30, 'math file has 30+ bilingual records (got ' + bi(math).length + ')');

@@ -30,9 +30,10 @@ const Bank = (() => {
     const toPut = [];
     for (let qi = 0; qi < questions.length; qi++) {
       const q = questions[qi];
-      // subject aliases — RAGA paper ke sub-topics kabhi alag naam se aate hain
-      // (reasoning / general-awareness / GK converters) — ek hi subject hai: raga
-      if (SUBJECT_ALIAS[q.subject]) q.subject = SUBJECT_ALIAS[q.subject];
+      // v1.4.46 EXAM ISOLATION: subject aliases SIRF airforce scope me —
+      // SSC CHSL ka 'reasoning'/'gs' airforce RAGA me kabhi merge NAHI hoga
+      const scope = exam || q.exam || 'airforce';
+      if (scope === 'airforce' && SUBJECT_ALIAS[q.subject]) q.subject = SUBJECT_ALIAS[q.subject];
       if (!q.subject || !q.questionText || !Array.isArray(q.options) || q.options.length < 4) {
         report.invalid++;
         if (report.errors.length < 60) report.errors.push({ reason: 'invalid question record', text: String(q.questionText || '').slice(0, 100) });
@@ -42,8 +43,10 @@ const Bank = (() => {
       if (q.image) report.withImages++;
       if (!q.explanation) report.withoutExplanation++;
 
-      const id = contentId(q);
-      const dh = dupeId(q);
+      // v1.4.46: non-airforce exams ka id/dupeHash exam-prefix ke saath —
+      // do exams ka same-text question bhi alag record hai, kabhi overlap nahi
+      const id = (scope === 'airforce') ? contentId(q) : 'q_' + scope + '_' + AVUtil.hash([q.subject, q.questionText, q.options.map(o => o.text).join(' | '), q.correctAnswer || '?'].join('␟'));
+      const dh = (scope === 'airforce') ? dupeId(q) : scope + ':' + dupeId(q);
       const dupe = byDupe.get(dh);
       if (dupe) {
         const needsKey = (!dupe.correctAnswer && q.correctAnswer) ||
@@ -99,30 +102,40 @@ const Bank = (() => {
   }
 
   /* --------- first-run seed of bundled PYQ bank --------- */
-  async function seedIfNeeded(force) {
+  /* v1.4.46 MULTI-EXAM: har exam ka apna data folder + apna seed flag.
+     data/airforce/bank-*.json · data/ssc-chsl/bank-*.json — kabhi mix nahi. */
+  const EXAM_BUNDLES = {
+    airforce: { dir: 'data/airforce/', subjects: ['physics', 'mathematics', 'english', 'raga'] },
+    'ssc-chsl': { dir: 'data/ssc-chsl/', subjects: ['mathematics', 'english', 'reasoning', 'gs'] }
+  };
+
+  async function seedIfNeeded(force, exam) {
+    const bundle = EXAM_BUNDLES[exam] || EXAM_BUNDLES.airforce;
     if (!force) {
-      const seeded = await Store.getMeta('seeded', false);
+      const seeded = (await Store.getMeta('seeded_' + exam, false)) ||
+        (exam === 'airforce' && await Store.getMeta('seeded', false));   // legacy flag
       if (seeded) return { skipped: true };
     }
-    const subjects = ['physics', 'mathematics', 'english', 'raga'];
+    const subjects = bundle.subjects;
     let total = 0, imported = 0;
-    const report = { imported: 0, duplicates: 0, bySubject: {} };
+    const report = { imported: 0, duplicates: 0, bySubject: {}, exam };
     for (const s of subjects) {
       let arr;
       try {
-        const r = await fetch(`data/bank-${s}.json`);
+        const r = await fetch(`${bundle.dir}bank-${s}.json`);
         if (!r.ok) continue;
         arr = await r.json();
       } catch (e) { continue; }
       total += arr.length;
-      const rep = await importBatch(arr);
+      const rep = await importBatch(arr, null, exam);
       imported += rep.imported;
       report.imported += rep.imported;
       report.duplicates += rep.duplicates;
       report.bySubject[s] = rep.imported;
     }
-    await Store.setMeta('seeded', true);
-    await Store.setMeta('seededAt', Date.now());
+    await Store.setMeta('seeded_' + exam, true);
+    if (exam === 'airforce') await Store.setMeta('seeded', true);        // legacy compat
+    await Store.setMeta('seededAt_' + exam, Date.now());
     report.totalParsed = total;
 
     // first ever seed → build the ready-made test series (15 full mocks + 5 per subject)
@@ -160,7 +173,11 @@ const Bank = (() => {
      manual step anywhere. */
   /* ONE file per subject — each question record carries BOTH languages
      (questionText + questionTextHi); the in-exam language dropdown switches display. */
-  const BUNDLE_FILES = ['data/bank-physics.json', 'data/bank-mathematics.json', 'data/bank-english.json', 'data/bank-raga.json'];
+  /* v1.4.46: per-exam bundle files (EXAM_BUNDLES se) */
+  const bundleFiles = exam => {
+    const b = EXAM_BUNDLES[exam] || EXAM_BUNDLES.airforce;
+    return b.subjects.map(s => `${b.dir}bank-${s}.json`);
+  };
 
   /* ---- retired-question pruning ----
      Purane bundle versions se aaye sawal (ab bank me nahi) + 18 Sep 2026 wale
@@ -173,7 +190,7 @@ const Bank = (() => {
     try {
       const done = await Store.getMeta('retiredV', 0);
       if (done >= RETIRED_V) return 0;
-      const r = await fetch('data/retired-raga.json');
+      const r = await fetch('data/airforce/retired-raga.json');
       if (!r.ok) return 0;
       const ret = await r.json();
       const hs = new Set([].concat(ret.raga || [], ret.foreign || [], ret.physics || [], ret.mathematics || [], ret.v4 || [], ret.v5 || [], ret.v6 || [], ret.v7 || []));
@@ -201,10 +218,11 @@ const Bank = (() => {
     } catch (e) { return 0; }
   }
 
-  async function syncBundled() {
+  async function syncBundled(exam) {
+    exam = exam || ((typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce');
     let fp = '';
     const payloads = [];
-    for (const f of BUNDLE_FILES) {
+    for (const f of bundleFiles(exam)) {
       try {
         const r = await fetch(f);
         if (!r.ok) continue;
@@ -214,14 +232,16 @@ const Bank = (() => {
       } catch (e) { /* offline / partial — skip silently */ }
     }
     if (!payloads.length) return { synced: false, imported: 0 };
-    const prev = await Store.getMeta('bundleFP', null);
+    const prev = (await Store.getMeta('bundleFP_' + exam, null)) ||
+      (exam === 'airforce' ? await Store.getMeta('bundleFP', null) : null);   // legacy
     if (prev === fp) return { synced: false, imported: 0 };
     let imported = 0;
     for (const arr of payloads) {
-      try { const rep = await importBatch(arr, null, 'airforce'); imported += rep.imported; }
+      try { const rep = await importBatch(arr, null, exam); imported += rep.imported; }
       catch (e) { /* one bad file never blocks the rest */ }
     }
-    await Store.setMeta('bundleFP', fp);
+    await Store.setMeta('bundleFP_' + exam, fp);
+    if (exam === 'airforce') await Store.setMeta('bundleFP', fp);
     // import ke BAAD prune — naya bank pehle purani records ko upgrade karta
     // hai, phir retired list wale (jo naye bank me nahi) saaf ho jaate hain
     const pr = await pruneRetired();

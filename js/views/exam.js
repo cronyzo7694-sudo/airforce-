@@ -704,6 +704,7 @@ const ExamScreen = {
     const idx = await Store.getMeta('attemptIndex', []);
     idx.push({
       id: a.id, testId: a.testId, testName: a.testName, testType: a.testType,
+      exam: a.exam || 'airforce',   /* v1.4.46: exam-scoped dashboard/stats */
       attemptNo: a.attemptNo, date: a.endTime || Date.now(),
       score: a.result.score, maxScore: a.result.maxScore,
       correct: a.result.correct, wrong: a.result.wrong, unattempted: a.result.unattempted,

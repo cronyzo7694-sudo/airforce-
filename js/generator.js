@@ -359,8 +359,8 @@ const Generator = (() => {
          timerMode, sectionLock, sectionSubmitRequired, allowPause,
                          shuffleQuestions, shuffleOptions, instantExplanation,
          strategy, marking } */
-    const cfg = await Store.getSetting('config', null);
-    const C = cfg || EXAM_CONFIG;
+    /* v1.4.46: exam-aware config (App.config rebuild per current exam) */
+    const C = (typeof App !== 'undefined' && App.config) ? (App.configCache || await App.config()) : ((await Store.getSetting('config', null)) || EXAM_CONFIG);
     const qstats = await Store.getMeta('qstats', { seen: {}, wrong: {}, correct: {}, skipped: {}, topicAcc: {} });
     const strategy = opts.strategy || C.selectionStrategy || 'realpaper';
 
@@ -423,7 +423,11 @@ const Generator = (() => {
         return { subjectId: sec.subjectId, name: subCfg.name || sec.subjectId, questionIds: sec.questionIds,
                  duration: subCfg.duration || C.duration, chapters: null, topics: null, difficulty: 'all' };
       });
-      const t = assembleTest({ name: `Full Mock Test ${fullCount + i + 1}`, type: 'full', mode: 'exam' }, sections, C, now - k++);
+      /* v1.4.46: exam-aware series naam — SSC ka mock airforce ke "Full Mock
+         Test N" se naam-match isolation kabhi nahi todega */
+      const seriesExam = (C && C.exam) || (typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce';
+      const mockLabel = seriesExam === 'ssc-chsl' ? `SSC CHSL Mock Test ${fullCount + i + 1}` : `Full Mock Test ${fullCount + i + 1}`;
+      const t = assembleTest({ name: mockLabel, type: 'full', mode: 'exam' }, sections, C, now - k++);
       t.series = true; t.seriesNo = fullCount + i + 1;
       await DB.put('tests', t); made.push(t);
     }
@@ -444,7 +448,8 @@ const Generator = (() => {
 
   /* ---------- blueprint presets ---------- */
   async function fullMock(strategyOverride) {
-    const C = await Store.getSetting('config', null) || EXAM_CONFIG;
+    /* v1.4.46: App.config() exam-aware base deta hai (Store ka flat legacy nahi) */
+    const C = (typeof App !== 'undefined' && App.config) ? (App.configCache || await App.config()) : (await Store.getSetting('config', null) || EXAM_CONFIG);
     return generate({
       name: `Full Mock Test · ${new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short' })} ${new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}`,
       type: 'full',
@@ -455,7 +460,7 @@ const Generator = (() => {
   }
 
   async function subjectTest(subjectId) {
-    const C = await Store.getSetting('config', null) || EXAM_CONFIG;
+    const C = (typeof App !== 'undefined' && App.config) ? (App.configCache || await App.config()) : (await Store.getSetting('config', null) || EXAM_CONFIG);
     const s = C.subjects.find(x => x.id === subjectId);
     if (!s) return { ok: false, error: 'Unknown subject' };
     return generate({

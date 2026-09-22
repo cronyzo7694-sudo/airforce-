@@ -1,0 +1,482 @@
+[
+ {
+  "id": "q_sscchsl_mathematics_001",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Number System",
+  "topic": "Simplification",
+  "difficulty": "easy",
+  "questionText": "If 45% of a number is 90, what is 60% of that number?",
+  "questionTextHi": "यदि किसी संख्या का 45% , 90 है, तो उस संख्या का 60% क्या होगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "120"
+   },
+   {
+    "id": "B",
+    "text": "110"
+   },
+   {
+    "id": "C",
+    "text": "100"
+   },
+   {
+    "id": "D",
+    "text": "130"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Number = 90 × 100/45 = 200. 60% of 200 = 120.",
+  "explanationHi": "संख्या = 90 × 100/45 = 200। 200 का 60% = 120।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Number System"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_002",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Ratio & Proportion",
+  "topic": "Sharing",
+  "difficulty": "easy",
+  "questionText": "Rs 1,200 is divided among A, B and C in the ratio 2 : 3 : 5. What is B's share?",
+  "questionTextHi": "Rs 1,200 को A, B और C में 2 : 3 : 5 के अनुपात में बाँटा गया। B का हिस्सा कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Rs 240"
+   },
+   {
+    "id": "B",
+    "text": "Rs 360"
+   },
+   {
+    "id": "C",
+    "text": "Rs 400"
+   },
+   {
+    "id": "D",
+    "text": "Rs 600"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Total parts = 2+3+5 = 10. One part = 1200/10 = Rs 120. B = 3 × 120 = Rs 360.",
+  "explanationHi": "कुल भाग = 2+3+5 = 10। एक भाग = 1200/10 = Rs 120। B = 3 × 120 = Rs 360।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Ratio & Proportion"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_003",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Average",
+  "topic": "Basics",
+  "difficulty": "easy",
+  "questionText": "The average of 5 consecutive even numbers is 24. What is the largest number?",
+  "questionTextHi": "5 क्रमागत सम संख्याओं का औसत 24 है। सबसे बड़ी संख्या कौन-सी है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "26"
+   },
+   {
+    "id": "B",
+    "text": "28"
+   },
+   {
+    "id": "C",
+    "text": "30"
+   },
+   {
+    "id": "D",
+    "text": "24"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Average 24 = middle number. Numbers: 20, 22, 24, 26, 28. Largest = 28.",
+  "explanationHi": "औसत 24 = मध्य संख्या। संख्याएँ: 20, 22, 24, 26, 28। सबसे बड़ी = 28।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Average"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_004",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Profit & Loss",
+  "topic": "Successive Discount",
+  "difficulty": "medium",
+  "questionText": "A shopkeeper marks an article 40% above cost and gives a 25% discount. His profit % is:",
+  "questionTextHi": "एक दुकानदार वस्तु पर क्रय मूल्य से 40% अधिक अंकित करता है और 25% छूट देता है। उसका लाभ % है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "15%"
+   },
+   {
+    "id": "B",
+    "text": "10%"
+   },
+   {
+    "id": "C",
+    "text": "5%"
+   },
+   {
+    "id": "D",
+    "text": "12%"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "CP 100 → MP 140 → SP = 140 × 0.75 = 105. Profit = 5%.",
+  "explanationHi": "CP 100 → MP 140 → SP = 140 × 0.75 = 105। लाभ = 5%。",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Profit & Loss"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_005",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Simple Interest",
+  "topic": "Basics",
+  "difficulty": "easy",
+  "questionText": "Find the simple interest on Rs 8,000 at 12% p.a. for 9 months.",
+  "questionTextHi": "Rs 8,000 पर 12% वार्षिक दर से 9 माह का साधारण ब्याज ज्ञात करें।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Rs 720"
+   },
+   {
+    "id": "B",
+    "text": "Rs 640"
+   },
+   {
+    "id": "C",
+    "text": "Rs 840"
+   },
+   {
+    "id": "D",
+    "text": "Rs 960"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "SI = PRT/100 = 8000 × 12 × (9/12)/100 = Rs 720.",
+  "explanationHi": "SI = PRT/100 = 8000 × 12 × (9/12)/100 = Rs 720।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Simple Interest"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_006",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Time & Work",
+  "topic": "Efficiency",
+  "difficulty": "medium",
+  "questionText": "A can do a work in 12 days and B in 18 days. Working together, they finish in:",
+  "questionTextHi": "A किसी कार्य को 12 दिन में और B, 18 दिन में करता है। दोनों मिलकर कार्य कितने दिन में पूरा करेंगे?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "7.2 days"
+   },
+   {
+    "id": "B",
+    "text": "6.5 days"
+   },
+   {
+    "id": "C",
+    "text": "8 days"
+   },
+   {
+    "id": "D",
+    "text": "7.5 days"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "LCM 36 units. A = 3/day, B = 2/day → together 5/day → 36/5 = 7.2 days.",
+  "explanationHi": "LCM 36 इकाई। A = 3/दिन, B = 2/दिन → साथ 5/दिन → 36/5 = 7.2 दिन।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Time & Work"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_007",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Speed Time Distance",
+  "topic": "Relative Speed",
+  "difficulty": "medium",
+  "questionText": "A train 240 m long crosses a pole in 12 seconds. Its speed is:",
+  "questionTextHi": "240 मीटर लंबी रेलगाड़ी एक खंभे को 12 सेकंड में पार करती है। उसकी गति है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "72 km/h"
+   },
+   {
+    "id": "B",
+    "text": "64 km/h"
+   },
+   {
+    "id": "C",
+    "text": "80 km/h"
+   },
+   {
+    "id": "D",
+    "text": "60 km/h"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Speed = 240/12 = 20 m/s = 20 × 18/5 = 72 km/h.",
+  "explanationHi": "गति = 240/12 = 20 मी/से = 20 × 18/5 = 72 किमी/घंटा।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Speed Time Distance"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_008",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Algebra",
+  "topic": "Identities",
+  "difficulty": "medium",
+  "questionText": "If x + 1/x = 5, then x² + 1/x² = ?",
+  "questionTextHi": "यदि x + 1/x = 5, तो x² + 1/x² = ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "23"
+   },
+   {
+    "id": "B",
+    "text": "25"
+   },
+   {
+    "id": "C",
+    "text": "27"
+   },
+   {
+    "id": "D",
+    "text": "21"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "(x+1/x)² = x² + 1/x² + 2 → 25 = x² + 1/x² + 2 → x² + 1/x² = 23.",
+  "explanationHi": "(x+1/x)² = x² + 1/x² + 2 → 25 = x² + 1/x² + 2 → x² + 1/x² = 23।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Algebra"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_009",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Geometry",
+  "topic": "Triangles",
+  "difficulty": "medium",
+  "questionText": "The angles of a triangle are in ratio 3 : 4 : 5. The smallest angle is:",
+  "questionTextHi": "एक त्रिभुज के कोण 3 : 4 : 5 के अनुपात में हैं। सबसे छोटा कोण है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "45°"
+   },
+   {
+    "id": "B",
+    "text": "36°"
+   },
+   {
+    "id": "C",
+    "text": "54°"
+   },
+   {
+    "id": "D",
+    "text": "60°"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "12 parts = 180° → 1 part = 15°. Smallest = 3 × 15 = 45°.",
+  "explanationHi": "12 भाग = 180° → 1 भाग = 15°। सबसे छोटा = 3 × 15 = 45°।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Geometry"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_010",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Mensuration",
+  "topic": "2D",
+  "difficulty": "easy",
+  "questionText": "The perimeter of a square field is equal to the perimeter of a rectangular field of length 40 m and breadth 30 m. The area of the square field is:",
+  "questionTextHi": "एक वर्गाकार मैदान का परिमाप 40 मीटर लंबे और 30 मीटर चौड़े आयताकार मैदान के परिमाप के बराबर है। वर्गाकार मैदान का क्षेत्रफल है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "1225 m²"
+   },
+   {
+    "id": "B",
+    "text": "1156 m²"
+   },
+   {
+    "id": "C",
+    "text": "1024 m²"
+   },
+   {
+    "id": "D",
+    "text": "900 m²"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Rect perimeter = 2(40+30) = 140 → square side = 35 → area = 1225 m².",
+  "explanationHi": "आयत का परिमाप = 2(40+30) = 140 → वर्ग की भुजा = 35 → क्षेत्रफल = 1225 मी²।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Mensuration"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_011",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Population",
+  "difficulty": "medium",
+  "questionText": "A town's population increases by 10% in the first year and decreases by 10% in the second. Net change over two years is:",
+  "questionTextHi": "किसी कस्बे की जनसंख्या पहले वर्ष में 10% बढ़ती है और दूसरे वर्ष में 10% घटती है। दो वर्षों में शुद्ध परिवर्तन है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "1% decrease"
+   },
+   {
+    "id": "B",
+    "text": "No change"
+   },
+   {
+    "id": "C",
+    "text": "1% increase"
+   },
+   {
+    "id": "D",
+    "text": "2% decrease"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "100 → 110 → 99. Net = −1%, i.e. 1% decrease.",
+  "explanationHi": "100 → 110 → 99। शुद्ध = −1%, अर्थात 1% कमी।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Percentage"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_012",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Number System",
+  "topic": "HCF & LCM",
+  "difficulty": "easy",
+  "questionText": "The HCF and LCM of two numbers are 6 and 180. If one number is 30, the other is:",
+  "questionTextHi": "दो संख्याओं का म.स. 6 और ल.स. 180 है। यदि एक संख्या 30 है, तो दूसरी संख्या है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "36"
+   },
+   {
+    "id": "B",
+    "text": "24"
+   },
+   {
+    "id": "C",
+    "text": "18"
+   },
+   {
+    "id": "D",
+    "text": "42"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Product = HCF × LCM = 1080. Other = 1080/30 = 36.",
+  "explanationHi": "गुणनफल = म.स. × ल.स. = 1080। दूसरी = 1080/30 = 36।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Number System"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ }
+]

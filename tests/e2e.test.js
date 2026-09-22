@@ -644,6 +644,46 @@ async function main() {
   window.location.hash = '#/dashboard';
   await sleep(500);
 
+  /* ---------- 17. MULTI-EXAM: SSC CHSL (v1.4.46) — data isolation ---------- */
+  console.log('\n━━━ E2E · multi-exam: SSC CHSL + isolation');
+  const examSel = doc.getElementById('exam-select');
+  T('dropdown me SSC CHSL ENABLED option', !!examSel && Array.from(examSel.options).some(o => o.value === 'ssc-chsl' && !o.disabled));
+  const afQ = await G('DB.count("questions")');
+  const afTests = await G('DB.count("tests")');
+  examSel.value = 'ssc-chsl';
+  examSel.dispatchEvent(new window.Event('change', { bubbles: true }));
+  let sw = false; for (let i = 0; i < 60; i++) { await sleep(250); try { sw = await G('App.configCache && App.configCache.exam'); } catch (e) {} if (sw === 'ssc-chsl') break; }
+  T('switch → SSC CHSL active (configCache.exam)', sw === 'ssc-chsl', String(sw));
+  T('SSC config: subjects reasoning/gs/maths/english', (await G('App.configCache.subjects.map(s=>s.id).join(",")')) === 'reasoning,gs,mathematics,english');
+  T('SSC marking: +2 / −0.5 (Tier-I pattern)', (await G('App.configCache.marking.correct')) === 2 && (await G('App.configCache.marking.wrong')) === -0.5);
+  let sscSeeded = false; for (let i = 0; i < 80; i++) { await sleep(250); try { sscSeeded = await G('Store.getMeta("seeded_ssc-chsl", false)'); } catch (e) {} if (sscSeeded) break; }
+  T('SSC bank seeded (data/ssc-chsl/ se)', sscSeeded === true);
+  const sscQ = await G('DB.count("questions")');
+  T('SSC questions ADD hue — airforce data untouched', sscQ > afQ, afQ + ' → ' + sscQ);
+  const sscReason = await G('(async()=>{const all=await DB.getAll("questions");return all.filter(q=>q.exam==="ssc-chsl"&&q.subject==="reasoning").length})()');
+  const afReason = await G('(async()=>{const all=await DB.getAll("questions");return all.filter(q=>(q.exam||"airforce")==="airforce"&&q.subject==="reasoning").length})()');
+  T('ISOLATION: SSC reasoning SSC me (airforce RAGA me merge NAHI)', sscReason > 0 && afReason === 0, 'ssc=' + sscReason + ' af=' + afReason);
+  const sscGen = await G('Generator.generate({ name: "SSC REASON TEST", type: "subject", mode: "practice", sections: [{ subjectId: "reasoning", count: 10 }] })');
+  T('SSC subject test generate', !!(sscGen && sscGen.ok), sscGen && sscGen.error || '');
+  const mixed = (sscGen && sscGen.ok) ? await G('(async()=>{const qs=await DB.getMany("questions",' + JSON.stringify(sscGen.test.sections[0].questionIds) + ');return qs.filter(q=>q.exam!=="ssc-chsl").length})()') : 99;
+  T('SSC test me SIRF ssc-chsl questions (cross-mix=0)', mixed === 0, String(mixed));
+  // wapas airforce — library isolation (FRESH element: SSC switch ke dashboard
+  // re-render ne naya #exam-select banaya tha, purana DOM me nahi hai)
+  const selAf = doc.getElementById('exam-select');
+  selAf.value = 'airforce';
+  selAf.dispatchEvent(new window.Event('change', { bubbles: true }));
+  let sw2 = false; for (let i = 0; i < 60; i++) { await sleep(250); try { sw2 = await G('App.configCache && App.configCache.exam'); } catch (e) {} if (sw2 === 'airforce') break; }
+  T('wapas airforce switch', sw2 === 'airforce');
+  window.location.hash = '#/tests';
+  await sleep(1000);
+  const sscVisible = await G('Array.from(document.querySelectorAll("#app .t2-name")).map(e=>e.textContent).filter(n=>n.indexOf("SSC")>-1).length');
+  T('airforce library me SSC test NAHI dikh raha', sscVisible === 0, String(sscVisible));
+  T('airforce config wapas: physics/maths/english/raga', (await G('App.configCache.subjects.map(s=>s.id).join(",")')) === 'physics,mathematics,english,raga');
+  const afQ2 = await G('(async()=>{const all=await DB.getAll("questions");return all.filter(q=>(q.exam||"airforce")==="airforce").length})()');
+  T('airforce questions EXACT same (contamination zero)', afQ2 === afQ, afQ + ' vs ' + afQ2);
+  window.location.hash = '#/dashboard';
+  await sleep(500);
+
   /* ---------- summary ---------- */
   console.log(`\n════════════════════════════════════════`);
   console.log(`  E2E RESULT: ${passed} passed, ${failed} failed`);

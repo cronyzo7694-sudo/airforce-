@@ -15,11 +15,24 @@
  * ============================================================ */
 
 const Cutoffs = (() => {
-  /* latest verified exam cycle */
+  /* latest verified exam cycle (airforce) */
   const CYCLE = 'Agniveervayu Intake 01/2026 (exam March 2025)';
 
-  /* category-wise expected cutoff — % of max marks (normalised).
-     2025-cycle consensus: UR 70-80 · OBC/EWS 65-75 · SC/ST 60-70 */
+  /* v1.4.46 — per-exam cutoff data. % of max marks (normalised).
+     · airforce 2025-cycle consensus: UR 70-80 · OBC/EWS 65-75 · SC/ST 60-70
+     · SSC CHSL Tier-I 2024 final cutoffs (200 marks): UR 158.4 (≈79%),
+       OBC 152.3 (≈76%), EWS 152.5 (≈76%), SC 138.5 (≈69%), ST 129.9 (≈65%)
+       — range me thoda buffer: */
+  const EXAM_CUTOFFS = {
+    airforce: {
+      cycle: CYCLE,
+      ranges: { GEN: [70, 80], EWS: [65, 75], OBC: [65, 75], SC: [60, 70], ST: [60, 70] }
+    },
+    'ssc-chsl': {
+      cycle: 'SSC CHSL Tier-I 2024 (final official cutoffs ka consensus)',
+      ranges: { GEN: [76, 81], EWS: [73, 78], OBC: [73, 78], SC: [66, 71], ST: [62, 67] }
+    }
+  };
   const RANGES = {
     GEN: [70, 80],
     EWS: [65, 75],
@@ -75,8 +88,11 @@ const Cutoffs = (() => {
      score/maxScore ko category range se compare karta hai.
      Returns {lo, hi, status, marginPct, label}
        status: 'safe' (≥ hi) | 'borderline' (lo..hi) | 'below' (< lo) */
-  function evaluate(score, maxScore, category) {
-    const r = RANGES[category] || RANGES.GEN;
+  function evaluate(score, maxScore, category, exam) {
+    /* v1.4.46: exam-specific cutoffs — SSC CHSL ka cutoff airforce se alag */
+    const XR = (exam && EXAM_CUTOFFS[exam]) ? EXAM_CUTOFFS[exam].ranges : null;
+    const SRC = XR || RANGES;
+    const r = SRC[category] || SRC.GEN;
     const pct = maxScore > 0 ? (score / maxScore) * 100 : 0;
     const lo = r[0], hi = r[1];
     let status, label;
@@ -93,7 +109,7 @@ const Cutoffs = (() => {
     };
   }
 
-  return { CYCLE, RANGES, CATEGORY_LABELS, PAPERS, STATES, PFT, MEDICAL, MARKING, evaluate };
+  return { CYCLE, RANGES, EXAM_CUTOFFS, CATEGORY_LABELS, PAPERS, STATES, PFT, MEDICAL, MARKING, evaluate };
 })();
 
 if (typeof module !== 'undefined' && module.exports) module.exports = Cutoffs;

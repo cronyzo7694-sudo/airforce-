@@ -1,0 +1,482 @@
+[
+ {
+  "id": "q_sscchsl_english_001",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Spot the Error",
+  "topic": "Subject-Verb",
+  "difficulty": "easy",
+  "questionText": "Choose the part of the sentence that contains an error: (A) Neither of the two boys / (B) were present / (C) in the class / (D) today.",
+  "questionTextHi": "वाक्य का वह भाग चुनें जिसमें त्रुटि है: (A) Neither of the two boys / (B) were present / (C) in the class / (D) today.",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "A"
+   },
+   {
+    "id": "B",
+    "text": "B"
+   },
+   {
+    "id": "C",
+    "text": "C"
+   },
+   {
+    "id": "D",
+    "text": "D"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "'Neither' takes a singular verb — 'was present' is correct.",
+  "explanationHi": "'Neither' के साथ singular क्रिया आती है — 'was present' सही है।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Spot the Error"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_002",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: ABUNDANT",
+  "questionTextHi": "इस शब्द के समानार्थी शब्द चुनें: ABUNDANT",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Scarce"
+   },
+   {
+    "id": "B",
+    "text": "Plentiful"
+   },
+   {
+    "id": "C",
+    "text": "Rare"
+   },
+   {
+    "id": "D",
+    "text": "Meagre"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Abundant = existing in large quantities = plentiful.",
+  "explanationHi": "Abundant = बहुत अधिक मात्रा में = plentiful।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Synonyms"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_003",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Antonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most opposite in meaning to: VICTORY",
+  "questionTextHi": "इस शब्द के विलोम अर्थ वाला शब्द चुनें: VICTORY",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Triumph"
+   },
+   {
+    "id": "B",
+    "text": "Defeat"
+   },
+   {
+    "id": "C",
+    "text": "Success"
+   },
+   {
+    "id": "D",
+    "text": "Conquest"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Victory ka antonym = defeat (पराजय)।",
+  "explanationHi": "Victory का विलोम = defeat।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Antonyms"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_004",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Idioms & Phrases",
+  "topic": "Meaning",
+  "difficulty": "medium",
+  "questionText": "The idiom 'to burn the midnight oil' means:",
+  "questionTextHi": "'to burn the midnight oil' मुहावरे का अर्थ है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "To waste time"
+   },
+   {
+    "id": "B",
+    "text": "To work late into the night"
+   },
+   {
+    "id": "C",
+    "text": "To start a quarrel"
+   },
+   {
+    "id": "D",
+    "text": "To celebrate"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "To burn the midnight oil = to study/work late at night.",
+  "explanationHi": "To burn the midnight oil = रात देर तक पढ़ना/काम करना।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Idioms & Phrases"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_005",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "One Word Substitution",
+  "topic": "Words",
+  "difficulty": "medium",
+  "questionText": "One word for 'a person who loves mankind':",
+  "questionTextHi": "'मानवता से प्रेम करने वाला व्यक्ति' के लिए एक शब्द:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Misanthrope"
+   },
+   {
+    "id": "B",
+    "text": "Philanthropist"
+   },
+   {
+    "id": "C",
+    "text": "Egoist"
+   },
+   {
+    "id": "D",
+    "text": "Anarchist"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Philanthropist = one who loves and helps mankind.",
+  "explanationHi": "Philanthropist = मानवता से प्रेम करने और सहायता करने वाला।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "One Word Substitution"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_006",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Fill in the Blanks",
+  "topic": "Prepositions",
+  "difficulty": "easy",
+  "questionText": "He has been living in Delhi ____ 2015.",
+  "questionTextHi": "वह 2015 से दिल्ली में रह रहा है ____ 2015।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "for"
+   },
+   {
+    "id": "B",
+    "text": "since"
+   },
+   {
+    "id": "C",
+    "text": "from"
+   },
+   {
+    "id": "D",
+    "text": "by"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "'Since' is used with a point of time (2015); 'for' with a period.",
+  "explanationHi": "समय-बिंदु (2015) के साथ 'since' आता है; अवधि के साथ 'for'।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Fill in the Blanks"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_007",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Active/Passive Voice",
+  "topic": "Transformation",
+  "difficulty": "medium",
+  "questionText": "Choose the correct passive form: 'They are building a new bridge.'",
+  "questionTextHi": "सही passive रूप चुनें: 'They are building a new bridge.'",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "A new bridge is being built."
+   },
+   {
+    "id": "B",
+    "text": "A new bridge is built."
+   },
+   {
+    "id": "C",
+    "text": "A new bridge has been built."
+   },
+   {
+    "id": "D",
+    "text": "A new bridge was being built."
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Present continuous passive: is/are + being + V3.",
+  "explanationHi": "Present continuous passive: is/are + being + V3।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Active/Passive Voice"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_008",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Direct/Indirect Speech",
+  "topic": "Transformation",
+  "difficulty": "medium",
+  "questionText": "He said, 'I am tired.' → He said that ____",
+  "questionTextHi": "He said, 'I am tired.' → He said that ____",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "he is tired"
+   },
+   {
+    "id": "B",
+    "text": "he was tired"
+   },
+   {
+    "id": "C",
+    "text": "I am tired"
+   },
+   {
+    "id": "D",
+    "text": "he will be tired"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Reporting verb in past → present tense changes to past: 'he was tired'.",
+  "explanationHi": "Reporting verb past में → present, past में बदलता है: 'he was tired'।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Direct/Indirect Speech"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_009",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Spelling",
+  "topic": "Correct Spelling",
+  "difficulty": "easy",
+  "questionText": "Choose the correctly spelt word:",
+  "questionTextHi": "सही वर्तनी वाला शब्द चुनें:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Occassion"
+   },
+   {
+    "id": "B",
+    "text": "Occasion"
+   },
+   {
+    "id": "C",
+    "text": "Ocassion"
+   },
+   {
+    "id": "D",
+    "text": "Occassionn"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Correct spelling: Occasion (double c, single s).",
+  "explanationHi": "सही वर्तनी: Occasion।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Spelling"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_010",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Cloze Test",
+  "topic": "Context",
+  "difficulty": "medium",
+  "questionText": "Choose the best word: 'Honesty is the best ____.'",
+  "questionTextHi": "सर्वोत्तम शब्द चुनें: 'Honesty is the best ____.'",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "policy"
+   },
+   {
+    "id": "B",
+    "text": "politics"
+   },
+   {
+    "id": "C",
+    "text": "principle"
+   },
+   {
+    "id": "D",
+    "text": "habit"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "The fixed proverb: 'Honesty is the best policy.'",
+  "explanationHi": "प्रसिद्ध कहावत: 'Honesty is the best policy.'",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Cloze Test"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_011",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Error Spotting",
+  "topic": "Tenses",
+  "difficulty": "medium",
+  "questionText": "Choose the part with an error: (A) He has been / (B) working here / (C) since five years / (D) without any complaint.",
+  "questionTextHi": "त्रुटि वाला भाग चुनें: (A) He has been / (B) working here / (C) since five years / (D) without any complaint.",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "A"
+   },
+   {
+    "id": "B",
+    "text": "B"
+   },
+   {
+    "id": "C",
+    "text": "C"
+   },
+   {
+    "id": "D",
+    "text": "D"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Period of time takes 'for' — 'for five years'.",
+  "explanationHi": "समय-अवधि के साथ 'for' आता है — 'for five years'।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Error Spotting"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_012",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Vocabulary",
+  "topic": "Usage",
+  "difficulty": "medium",
+  "questionText": "Choose the word that best fills: 'The scientist made a ____ discovery that changed medicine.'",
+  "questionTextHi": "उपयुक्त शब्द चुनें: 'The scientist made a ____ discovery that changed medicine.'",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "trivial"
+   },
+   {
+    "id": "B",
+    "text": "groundbreaking"
+   },
+   {
+    "id": "C",
+    "text": "ordinary"
+   },
+   {
+    "id": "D",
+    "text": "doubtful"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Groundbreaking = innovative, path-breaking — fits a discovery that changed medicine.",
+  "explanationHi": "Groundbreaking = क्रांतिकारी — चिकित्सा बदलने वाली खोज के लिए उपयुक्त।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Vocabulary"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ }
+]

@@ -5,7 +5,9 @@
 Views.attempts = async function (state) {
   state = state || { page: 1, filter: 'all', search: '' };
   const cfg = await App.config();
-  let idx = await Store.getMeta('attemptIndex', []);
+  /* v1.4.46 EXAM ISOLATION: My Attempts list sirf current exam ke */
+  const atExam = (App.configCache && App.configCache.exam) || 'airforce';
+  let idx = (await Store.getMeta('attemptIndex', [])).filter(a => (a.exam || 'airforce') === atExam);
   idx.sort((a, b) => b.date - a.date);
 
   // incomplete attempts (in-progress) — v1.4.40: App.unfinishedAttempts()
@@ -263,7 +265,7 @@ Views.settings = async function () {
     cfg.candidateState = AVUtil.$('#st-state').value;
     App.lang = cfg.defaultLanguage;
     localStorage.setItem('av_lang', App.lang);
-    await Store.setSetting('config', cfg);
+    await App.persistConfig(cfg);   /* v1.4.46: exam-aware save */
     App.configCache = cfg;
     updateNavUser();
     AVUtil.toast('Saved.');
@@ -291,7 +293,7 @@ Views.settings = async function () {
     try {
       const url = await Cloud.uploadImage(f);
       cfg.profileImage = url;
-      await Store.setSetting('config', cfg);
+      await App.persistConfig(cfg);   /* v1.4.46: exam-aware save */
       App.configCache = cfg;
       updateNavUser();
       AVUtil.toast('✓ Profile photo set ho gayi');
@@ -302,7 +304,7 @@ Views.settings = async function () {
   });
   AVUtil.$('#st-pf-remove').addEventListener('click', async () => {
     cfg.profileImage = null;
-    await Store.setSetting('config', cfg);
+    await App.persistConfig(cfg);   /* v1.4.46: exam-aware save */
     App.configCache = cfg;
     updateNavUser();
     AVUtil.toast('Photo hata di — naam ka initial dikhega');
@@ -333,7 +335,7 @@ Views.settings = async function () {
         Object.assign(cfg, parsed);
       }
       cfg.duration = cfg.subjects.reduce((a, s) => a + s.duration, 0);
-      await Store.setSetting('config', cfg);
+      await App.persistConfig(cfg);   /* v1.4.46: exam-aware save */
       App.configCache = cfg;
       AVUtil.toast('Configuration saved.');
     } catch (e) {

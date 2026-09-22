@@ -3,7 +3,7 @@
  * Cache-first for the immutable app shell + bundled bank data.
  * ============================================================ */
 
-const SW_VERSION = 'kineora-exam-v1.4.45';
+const SW_VERSION = 'kineora-exam-v1.4.46';
 
 const APP_SHELL = [
   './',
@@ -32,11 +32,15 @@ const APP_SHELL = [
   './js/views/import.js',
   './js/views/misc.js',
   './js/share.js',
-  './data/bank-physics.json',
-  './data/bank-mathematics.json',
-  './data/bank-english.json',
-  './data/bank-raga.json',
-  './data/retired-raga.json',
+  './data/airforce/bank-physics.json',
+  './data/airforce/bank-mathematics.json',
+  './data/airforce/bank-english.json',
+  './data/airforce/bank-raga.json',
+  './data/airforce/retired-raga.json',
+  './data/ssc-chsl/bank-mathematics.json',
+  './data/ssc-chsl/bank-english.json',
+  './data/ssc-chsl/bank-reasoning.json',
+  './data/ssc-chsl/bank-gs.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-96.png'

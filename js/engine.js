@@ -48,6 +48,7 @@ const Engine = (() => {
       testId: test.id,
       testName: test.name,
       testType: test.type,
+      exam: test.exam || 'airforce',   /* v1.4.46: exam isolation — dashboard/analysis alag */
       attemptNo: attemptNo || 1,
       mode: test.mode,
       timerMode: test.timerMode,

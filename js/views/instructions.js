@@ -40,7 +40,7 @@ Views.instructions = async function (testId) {
     if (!roll) {
       roll = 'AV' + String(Date.now()).slice(-6) + String(Math.floor(Math.random() * 90) + 10);
       cfg.rollNumber = roll;
-      await Store.setSetting('config', cfg);
+      await App.persistConfig(cfg);   /* v1.4.46: exam-aware save */
       App.configCache = cfg;
     }
     const photo = cfg.profileImage

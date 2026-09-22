@@ -36,7 +36,87 @@ const App = {
     } else {
       this.configCache = EXAM_CONFIG;
     }
+    /* v1.4.46 MULTI-EXAM: config hamesha current EXAM ke base par rebuild hota
+       hai — ek exam ka data (subjects/marking/duration) doosre me kabhi nahi
+       ghusta. Airforce = legacy flat (user ke tunes preserve), doosre exams =
+       base + sirf unke apne overrides. */
+    try {
+      const savedCfg = this.configCache || {};
+      const exam = (savedCfg.exam && typeof EXAM_CONFIGS !== 'undefined' && EXAM_CONFIGS[savedCfg.exam]) ? savedCfg.exam : 'airforce';
+      const base = JSON.parse(JSON.stringify(EXAM_CONFIGS[exam]));
+      const PREFS = ['candidateName', 'profileImage', 'defaultLanguage', 'retakeMode', 'selectionStrategy',
+        'thresholds', 'timerWarning', 'timerCritical', 'shuffleQuestions', 'shuffleOptions',
+        'shuffleSubjectOrder', 'instantExplanation', '_retakeMigrated2', '_strategyMigrated3'];
+      PREFS.forEach(k => { if (savedCfg[k] !== undefined) base[k] = savedCfg[k]; });
+      if (exam === 'airforce') {
+        // legacy flat: airforce ke user-tuned exam-specific bhi saved me hain — upar apply
+        ['name', 'mode', 'duration', 'marking', 'timerMode', 'sectionLock', 'sectionSubmitRequired',
+         'allowPreviousSection', 'allowFutureSection', 'autoSubmitOnTimerExpiry', 'allowPause', 'subjects']
+          .forEach(k => { if (savedCfg[k] !== undefined) base[k] = savedCfg[k]; });
+      }
+      const ov = (savedCfg.overrides || {})[exam];
+      if (ov) Object.assign(base, ov);
+      base.exam = exam;
+      // live getters (plain clone me snapshot values hoti — stale ho jati)
+      Object.defineProperty(base, 'totalQuestions', { configurable: true, get() { return this.subjects.reduce((a, x) => a + x.questions, 0); } });
+      Object.defineProperty(base, 'maxMarks', { configurable: true, get() { return this.subjects.reduce((a, x) => a + x.questions, 0) * this.marking.correct; } });
+      this.configCache = base;
+    } catch (e) { /* keep legacy configCache */ }
     return this.configCache;
+  },
+
+  /* v1.4.46: config save — exam-specific keys galat exam ke flat data me
+     kabhi nahi likhe jaate (airforce flat safe, doosre exams overrides me) */
+  async persistConfig(cfg) {
+    const EXK = ['name', 'mode', 'duration', 'marking', 'timerMode', 'sectionLock', 'sectionSubmitRequired',
+      'allowPreviousSection', 'allowFutureSection', 'autoSubmitOnTimerExpiry', 'allowPause', 'subjects'];
+    const exam = (cfg && cfg.exam) || 'airforce';
+    const out = Object.assign({}, cfg, { exam });
+    delete out.totalQuestions; delete out.maxMarks;
+    if (exam !== 'airforce' && typeof EXAM_CONFIGS !== 'undefined') {
+      const ov = Object.assign({}, ((cfg.overrides || {})[exam]) || {});
+      EXK.forEach(k => { if (cfg[k] !== undefined) ov[k] = cfg[k]; });
+      out.overrides = Object.assign({}, cfg.overrides || {}, { [exam]: ov });
+      // flat me airforce ke DEFAULT exam-specific values (contamination-proof)
+      const af = EXAM_CONFIGS.airforce;
+      EXK.forEach(k => { if (af[k] !== undefined) out[k] = JSON.parse(JSON.stringify(af[k])); });
+    }
+    await Store.setSetting('config', out);
+  },
+
+  /* v1.4.46: exam switch — bank seed + dashboard re-render + pakka isolation */
+  async switchExam(v) {
+    if (typeof EXAM_CONFIGS === 'undefined' || !EXAM_CONFIGS[v]) return;
+    try {
+      const saved = (await Store.getSetting('config', null)) || {};
+      saved.exam = v;
+      await Store.setSetting('config', saved);
+    } catch (e) {}
+    this.configCache = null;
+    try { await this.config(); } catch (e) { this.configCache = EXAM_CONFIG; }
+    try {
+      const exam = (this.configCache && this.configCache.exam) || 'airforce';
+      const seeded = (await Store.getMeta('seeded_' + exam, false)) ||
+        (exam === 'airforce' ? await Store.getMeta('seeded', false) : false);
+      if (!seeded) {
+        document.getElementById('app').innerHTML =
+          `<div class="page"><div class="seed-box"><img class="seed-logo" src="icons/icon-192.png" alt="Kineora Exam logo"><div class="seed-spin"></div>
+           <h3>Preparing ${AVUtil.esc((EXAM_LABELS[exam] || exam))} question bank…</h3>
+           <p>Purane saal ke papers load ho rahe hain. Ye ek hi baar hoga.</p></div></div>`;
+        await Bank.seedIfNeeded(false, exam);
+      } else {
+        const r = await Bank.syncBundled(exam);
+        if (r && r.synced && r.imported > 0 && typeof Generator !== 'undefined') {
+          try {
+            const sr = await Generator.buildSeries({ fullMocks: 5, perSubject: 2 });
+            if (sr && sr.made) AVUtil.toast(sr.made + ' naye tests ban gaye 🎉', 'success');
+          } catch (e) {}
+        }
+      }
+    } catch (e) { console.error('exam-switch seed', e); }
+    if ((location.hash || '').indexOf('#/dashboard') !== 0) location.hash = '#/dashboard';
+    else window.dispatchEvent(new Event('hashchange'));
+    AVUtil.toast((EXAM_LABELS[v] || v) + ' active — data & analysis bilkul alag ✅', 'success');
   },
 
   /* ---------------- boot ---------------- */
@@ -53,20 +133,22 @@ const App = {
 
     // first-run: seed bundled PYQ question bank
     try {
-      const needSeed = !(await Store.getMeta('seeded', false));
+      const bootExam = (this.configCache && this.configCache.exam) || 'airforce';
+      const needSeed = !(await Store.getMeta('seeded_' + bootExam, false)) &&
+        !(bootExam === 'airforce' && await Store.getMeta('seeded', false));
       if (needSeed) {
         document.getElementById('app').innerHTML =
           `<div class="page"><div class="seed-box"><img class="seed-logo" src="icons/icon-192.png" alt="Kineora Exam logo"><div class="seed-spin"></div>
            <h3>Preparing your question bank…</h3>
            <p>Loading previous-year questions into local storage. This happens only once.</p></div></div>`;
-        await Bank.seedIfNeeded();
+        await Bank.seedIfNeeded(false, bootExam);
       }
     } catch (e) { console.error('seed failed', e); }
 
     // bundled bank auto-sync: data files changed (new questions) → import the
     // delta + auto-build new tests from it. User never builds tests by hand.
     try {
-      const r = await Bank.syncBundled();
+      const r = await Bank.syncBundled((this.configCache && this.configCache.exam) || 'airforce');
       if (r && r.synced && r.imported > 0 && typeof Generator !== 'undefined') {
         const made = await Generator.autoBuild();
         let msg = r.imported + ' new question' + (r.imported === 1 ? '' : 's') + ' synced from the question bank' +
@@ -121,10 +203,7 @@ const App = {
     document.addEventListener('change', e => {
       if (e.target && e.target.id === 'exam-select') {
         const v = e.target.value;
-        this.configCache = this.configCache || Object.assign({}, EXAM_CONFIG);
-        this.configCache.exam = v;
-        Store.setSetting('config', this.configCache).catch(() => {});
-        AVUtil.toast('Exam selected: ' + (v === 'airforce' ? 'Agniveer Vayu (Air Force)' : v));
+        this.switchExam(v);
       }
     });
 
@@ -137,8 +216,10 @@ const App = {
      badal sakta hai, naam nahi: "Full Mock Test 3" stable rehta hai) */
   seriesProgress(seriesTests, attemptIndex) {
     const doneIds = new Set(), doneNames = new Set();
+    const curExam = (this.configCache && this.configCache.exam) || 'airforce';
     (attemptIndex || []).forEach(a => {
       if (a.abandoned) return;
+      if ((a.exam || 'airforce') !== curExam) return;   // v1.4.46: exam isolation
       if (a.testId) doneIds.add(a.testId);
       if (a.testName) doneNames.add(a.testName);
     });
@@ -228,7 +309,8 @@ const App = {
         <label class="exam-sel" title="Exam select karo — naye exams aa rahe hain">
           <span aria-hidden="true">🎖️</span>
           <select id="exam-select" aria-label="Select exam">
-            <option value="airforce" ${(this.configCache && this.configCache.exam) !== 'navy' && (this.configCache && this.configCache.exam) !== 'army' ? 'selected' : ''}>Agniveer Vayu ✈️</option>
+            <option value="airforce" ${(this.configCache && this.configCache.exam) !== 'ssc-chsl' ? 'selected' : ''}>Agniveer Vayu ✈️</option>
+            <option value="ssc-chsl" ${(this.configCache && this.configCache.exam) === 'ssc-chsl' ? 'selected' : ''}>SSC CHSL 🧾</option>
             <option value="navy" disabled>Indian Navy — coming soon</option>
             <option value="army" disabled>Indian Army — coming soon</option>
           </select>

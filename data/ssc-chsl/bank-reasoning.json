@@ -1,0 +1,482 @@
+[
+ {
+  "id": "q_sscchsl_reasoning_001",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Analogy",
+  "topic": "Word Analogy",
+  "difficulty": "easy",
+  "questionText": "Doctor : Hospital :: Teacher : ?",
+  "questionTextHi": "Doctor : Hospital :: Teacher : ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Student"
+   },
+   {
+    "id": "B",
+    "text": "School"
+   },
+   {
+    "id": "C",
+    "text": "Book"
+   },
+   {
+    "id": "D",
+    "text": "Principal"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Doctor works in a hospital; a teacher works in a school.",
+  "explanationHi": "डॉक्टर अस्पताल में काम करता है; अध्यापक स्कूल में।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Analogy"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_002",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 2, 6, 12, 20, 30, ?",
+  "questionTextHi": "अगला पद ज्ञात करें: 2, 6, 12, 20, 30, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "40"
+   },
+   {
+    "id": "B",
+    "text": "42"
+   },
+   {
+    "id": "C",
+    "text": "38"
+   },
+   {
+    "id": "D",
+    "text": "44"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Differences: 4, 6, 8, 10, 12 → 30 + 12 = 42.",
+  "explanationHi": "अंतर: 4, 6, 8, 10, 12 → 30 + 12 = 42।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Series"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_003",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Coding-Decoding",
+  "topic": "Letter Coding",
+  "difficulty": "easy",
+  "questionText": "If CAT is coded as 3120, how is DOG coded?",
+  "questionTextHi": "यदि CAT को 3120 लिखा जाता है, तो DOG कैसे लिखा जाएगा?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "4157"
+   },
+   {
+    "id": "B",
+    "text": "4155"
+   },
+   {
+    "id": "C",
+    "text": "4147"
+   },
+   {
+    "id": "D",
+    "text": "4127"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Letter positions: C=3, A=1, T=20 → D=4, O=15, G=7 = 4157.",
+  "explanationHi": "अक्षर स्थान: C=3, A=1, T=20 → D=4, O=15, G=7 = 4157।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Coding-Decoding"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_004",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Blood Relations",
+  "topic": "Family Tree",
+  "difficulty": "medium",
+  "questionText": "Pointing to a photograph, Ravi said, 'She is the daughter of my grandfather's only son.' How is the girl related to Ravi?",
+  "questionTextHi": "तस्वीर की ओर इशारा करते हुए रवि ने कहा, 'वह मेरे दादा के इकलौते बेटे की बेटी है।' वह लड़की रवि से कैसे संबंधित है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Sister"
+   },
+   {
+    "id": "B",
+    "text": "Cousin"
+   },
+   {
+    "id": "C",
+    "text": "Niece"
+   },
+   {
+    "id": "D",
+    "text": "Aunt"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Grandfather's only son = Ravi's father; his daughter = Ravi's sister.",
+  "explanationHi": "दादा का इकलौता बेटा = रवि के पिता; उनकी बेटी = रवि की बहन।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Blood Relations"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_005",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Direction Sense",
+  "topic": "Movements",
+  "difficulty": "medium",
+  "questionText": "A man walks 5 km north, turns right and walks 3 km, then turns right and walks 5 km. How far is he from the start?",
+  "questionTextHi": "एक व्यक्ति 5 किमी उत्तर चलता है, दाएँ मुड़कर 3 किमी चलता है, फिर दाएँ मुड़कर 5 किमी चलता है। वह प्रारंभिक बिंदु से कितनी दूर है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "3 km"
+   },
+   {
+    "id": "B",
+    "text": "5 km"
+   },
+   {
+    "id": "C",
+    "text": "8 km"
+   },
+   {
+    "id": "D",
+    "text": "13 km"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "He walks 5 N, 3 E, 5 S → net displacement = 3 km east.",
+  "explanationHi": "5 उ, 3 पू, 5 द → शुद्ध विस्थापन = 3 किमी पूर्व।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Direction Sense"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_006",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Odd One Out",
+  "topic": "Classification",
+  "difficulty": "easy",
+  "questionText": "Choose the odd one out:",
+  "questionTextHi": "असंगत को चुनें:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Rose"
+   },
+   {
+    "id": "B",
+    "text": "Lotus"
+   },
+   {
+    "id": "C",
+    "text": "Marigold"
+   },
+   {
+    "id": "D",
+    "text": "Mango"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Rose, lotus, marigold are flowers; mango is a fruit.",
+  "explanationHi": "गुलाब, कमल, गेंदा फूल हैं; आम फल है।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Odd One Out"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_007",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Syllogism",
+  "topic": "Statements & Conclusions",
+  "difficulty": "medium",
+  "questionText": "Statements: All pens are books. Some books are copies. Conclusion I: Some pens are copies. Conclusion II: Some copies are books.",
+  "questionTextHi": "कथन: सभी कलम किताबें हैं। कुछ किताबें कॉपियाँ हैं। निष्कर्ष I: कुछ कलम कॉपियाँ हैं। निष्कर्ष II: कुछ कॉपियाँ किताबें हैं।",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Only I follows"
+   },
+   {
+    "id": "B",
+    "text": "Only II follows"
+   },
+   {
+    "id": "C",
+    "text": "Both follow"
+   },
+   {
+    "id": "D",
+    "text": "Neither follows"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "I is not certain (pens may not overlap copies). II is the converse of 'some books are copies' — valid.",
+  "explanationHi": "I निश्चित नहीं। II 'कुछ किताबें कॉपियाँ हैं' का विलोम है — मान्य।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Syllogism"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_008",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Letter Series",
+  "difficulty": "medium",
+  "questionText": "Find the missing term: AZ, BY, CX, ?",
+  "questionTextHi": "लुप्त पद ज्ञात करें: AZ, BY, CX, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "DW"
+   },
+   {
+    "id": "B",
+    "text": "DV"
+   },
+   {
+    "id": "C",
+    "text": "EW"
+   },
+   {
+    "id": "D",
+    "text": "DX"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "First letters A, B, C, D; second letters Z, Y, X, W → DW.",
+  "explanationHi": "पहले अक्षर A, B, C, D; दूसरे Z, Y, X, W → DW।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Series"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_009",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Calendar",
+  "topic": "Day Calculation",
+  "difficulty": "hard",
+  "questionText": "If 1 January 2024 was a Monday, what day was 26 January 2024?",
+  "questionTextHi": "यदि 1 जनवरी 2024 को सोमवार था, तो 26 जनवरी 2024 को कौन-सा दिन था?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Friday"
+   },
+   {
+    "id": "B",
+    "text": "Saturday"
+   },
+   {
+    "id": "C",
+    "text": "Thursday"
+   },
+   {
+    "id": "D",
+    "text": "Sunday"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "26 Jan = day 26. (26−1) mod 7 = 25 mod 7 = 4 → Monday + 4 = Friday.",
+  "explanationHi": "26 जन = दिन 26। (26−1) mod 7 = 4 → सोमवार + 4 = शुक्रवार।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Calendar"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_010",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Number Analogy",
+  "topic": "Operations",
+  "difficulty": "medium",
+  "questionText": "If 8 × 4 = 44 and 6 × 3 = 27, then 9 × 5 = ?",
+  "questionTextHi": "यदि 8 × 4 = 44 और 6 × 3 = 27, तो 9 × 5 = ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "59"
+   },
+   {
+    "id": "B",
+    "text": "60"
+   },
+   {
+    "id": "C",
+    "text": "54"
+   },
+   {
+    "id": "D",
+    "text": "56"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Pattern: a × b + (a + b).",
+  "explanationHi": "प्रतिरूप: a × b + (a + b)।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Number Analogy"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_011",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Statement-Conclusion",
+  "topic": "Logic",
+  "difficulty": "medium",
+  "questionText": "Statement: 'All employees must wear ID cards inside the office.' Which conclusion follows?",
+  "questionTextHi": "कथन: 'सभी कर्मचारियों को कार्यालय के अंदर ID कार्ड पहनना अनिवार्य है।' कौन-सा निष्कर्ष निकलता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Visitors must also wear ID cards"
+   },
+   {
+    "id": "B",
+    "text": "An employee without an ID card violates office rules"
+   },
+   {
+    "id": "C",
+    "text": "ID cards are costly"
+   },
+   {
+    "id": "D",
+    "text": "Only managers wear ID cards"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The rule applies to employees inside the office — absence of the card violates the rule.",
+  "explanationHi": "नियम कर्मचारियों पर लागू है — कार्ड न होना नियम का उल्लंघन है।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Statement-Conclusion"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_012",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Puzzle",
+  "topic": "Seating Arrangement",
+  "difficulty": "medium",
+  "questionText": "Five people P, Q, R, S, T sit in a row. S is at the extreme left. P is to the immediate right of Q. T is not adjacent to S. Who sits at the extreme right?",
+  "questionTextHi": "पाँच व्यक्ति P, Q, R, S, T एक पंक्ति में बैठे हैं। S सबसे बाएँ है। P, Q के ठीक दाएँ है। T, S के निकट नहीं है। सबसे दाएँ कौन बैठा है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "T"
+   },
+   {
+    "id": "B",
+    "text": "P"
+   },
+   {
+    "id": "C",
+    "text": "Q"
+   },
+   {
+    "id": "D",
+    "text": "R"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "S(1), R(2), Q(3), P(4), T(5).",
+  "explanationHi": "S(1), R(2), Q(3), P(4), T(5) — T सबसे दाएँ है।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Puzzle"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ }
+]

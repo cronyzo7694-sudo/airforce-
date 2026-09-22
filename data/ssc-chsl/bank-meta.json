@@ -1,0 +1,73 @@
+{
+ "_note": "SSC CHSL Tier-I demo bank — user ki 20k files aane par replace/merge hongi",
+ "mathematics": {
+  "total": 12,
+  "keyed": 12,
+  "withExplanation": 12,
+  "chapters": {
+   "Number System": 2,
+   "Ratio & Proportion": 1,
+   "Average": 1,
+   "Profit & Loss": 1,
+   "Simple Interest": 1,
+   "Time & Work": 1,
+   "Speed Time Distance": 1,
+   "Algebra": 1,
+   "Geometry": 1,
+   "Mensuration": 1,
+   "Percentage": 1
+  }
+ },
+ "english": {
+  "total": 12,
+  "keyed": 12,
+  "withExplanation": 12,
+  "chapters": {
+   "Spot the Error": 1,
+   "Synonyms": 1,
+   "Antonyms": 1,
+   "Idioms & Phrases": 1,
+   "One Word Substitution": 1,
+   "Fill in the Blanks": 1,
+   "Active/Passive Voice": 1,
+   "Direct/Indirect Speech": 1,
+   "Spelling": 1,
+   "Cloze Test": 1,
+   "Error Spotting": 1,
+   "Vocabulary": 1
+  }
+ },
+ "reasoning": {
+  "total": 12,
+  "keyed": 12,
+  "withExplanation": 12,
+  "chapters": {
+   "Analogy": 1,
+   "Series": 2,
+   "Coding-Decoding": 1,
+   "Blood Relations": 1,
+   "Direction Sense": 1,
+   "Odd One Out": 1,
+   "Syllogism": 1,
+   "Calendar": 1,
+   "Number Analogy": 1,
+   "Statement-Conclusion": 1,
+   "Puzzle": 1
+  }
+ },
+ "gs": {
+  "total": 12,
+  "keyed": 12,
+  "withExplanation": 12,
+  "chapters": {
+   "Indian Polity": 2,
+   "History": 2,
+   "Geography": 2,
+   "Economics": 1,
+   "Science": 2,
+   "Static GK": 1,
+   "Current Affairs": 1,
+   "Sports": 1
+  }
+ }
+}

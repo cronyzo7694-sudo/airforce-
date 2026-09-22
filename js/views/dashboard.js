@@ -6,14 +6,17 @@
 Views.dashboard = async function () {
   const cfg = await App.config();
   App.candidateName = cfg.candidateName || 'Practice Candidate';
-  const idx = await Store.getMeta('attemptIndex', []);
+  const idxAll = await Store.getMeta('attemptIndex', []);
+  /* v1.4.46 EXAM ISOLATION: dashboard sirf current exam ke attempts dikhata hai */
+  const curExam = (App.configCache && App.configCache.exam) || 'airforce';
+  const idx = idxAll.filter(a => (a.exam || 'airforce') === curExam);
   const done = idx.filter(a => !a.abandoned);
   const topicStats = await Store.getMeta('topicStats', {});
   const qstats = await Store.getMeta('qstats', { seen: {} });
   const seenCount = Object.keys(qstats.seen || {}).length;
   const bankStats = await Bank.bankStats();
   const totalQ = Object.values(bankStats).reduce((a, s) => a + s.total, 0);
-  const allTests = await DB.getAll('tests');
+  const allTests = (await DB.getAll('tests')).filter(t => (t.exam || 'airforce') === curExam);
   const seriesTests = allTests.filter(t => t.series);
 
   /* ── series progress: testId YA naam match (rebuild-proof) ── */
@@ -57,7 +60,7 @@ Views.dashboard = async function () {
   /* ── cutoff readiness (last full mock vs category cutoff) ── */
   const lastMock = [...done].reverse().find(a => ((a.testType === 'full') || /mock/i.test(a.testName || '')) && a.maxScore >= 50);
   let cut = null;
-  try { if (lastMock) cut = Cutoffs.evaluate(lastMock.score, lastMock.maxScore, cfg.candidateCategory || 'GEN'); } catch (e) { /* cutoffs optional */ }
+  try { if (lastMock) cut = Cutoffs.evaluate(lastMock.score, lastMock.maxScore, cfg.candidateCategory || 'GEN', curExam); } catch (e) { /* cutoffs optional */ }
 
   // score trend (last 15) — date labels
   const trend = done.slice(-15).map(a => ({ x: new Date(a.date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short' }), y: a.maxScore ? Math.round((a.score / a.maxScore) * 1000) / 10 : 0 }));

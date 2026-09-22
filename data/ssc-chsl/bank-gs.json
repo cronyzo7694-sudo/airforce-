@@ -1,0 +1,482 @@
+[
+ {
+  "id": "q_sscchsl_gs_001",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Constitution",
+  "difficulty": "easy",
+  "questionText": "The Constitution of India came into effect on:",
+  "questionTextHi": "भारत का संविधान लागू हुआ:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "15 August 1947"
+   },
+   {
+    "id": "B",
+    "text": "26 January 1950"
+   },
+   {
+    "id": "C",
+    "text": "26 November 1949"
+   },
+   {
+    "id": "D",
+    "text": "2 October 1950"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Adopted 26 Nov 1949, in force from 26 January 1950 — Republic Day.",
+  "explanationHi": "26 नवंबर 1949 को अंगीकृत, 26 जनवरी 1950 से प्रभावी — गणतंत्र दिवस।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Indian Polity"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_002",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Fundamental Rights",
+  "difficulty": "easy",
+  "questionText": "Which Article of the Constitution deals with the Right to Education?",
+  "questionTextHi": "संविधान का कौन-सा अनुच्छेद शिक्षा का अधिकार से संबंधित है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Article 21A"
+   },
+   {
+    "id": "B",
+    "text": "Article 19"
+   },
+   {
+    "id": "C",
+    "text": "Article 32"
+   },
+   {
+    "id": "D",
+    "text": "Article 44"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "86th Amendment (2002) inserted Article 21A — free education for 6–14 years.",
+  "explanationHi": "86वाँ संशोधन (2002) ने अनुच्छेद 21A जोड़ा — 6–14 वर्ष के बच्चों की निःशुल्क शिक्षा।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Indian Polity"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_003",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "History",
+  "topic": "Freedom Struggle",
+  "difficulty": "medium",
+  "questionText": "The Non-Cooperation Movement was launched in:",
+  "questionTextHi": "असहयोग आंदोलन कब शुरू हुआ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "1919"
+   },
+   {
+    "id": "B",
+    "text": "1920"
+   },
+   {
+    "id": "C",
+    "text": "1922"
+   },
+   {
+    "id": "D",
+    "text": "1930"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Launched by Gandhiji in 1920 after the Jallianwala Bagh massacre and Rowlatt Act.",
+  "explanationHi": "जलियाँवाला बाग हत्याकांड और रॉलेट एक्ट के बाद गांधीजी ने 1920 में शुरू किया।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "History"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_004",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Geography",
+  "topic": "Rivers",
+  "difficulty": "easy",
+  "questionText": "Which is the longest river in India?",
+  "questionTextHi": "भारत की सबसे लंबी नदी कौन-सी है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Brahmaputra"
+   },
+   {
+    "id": "B",
+    "text": "Ganga"
+   },
+   {
+    "id": "C",
+    "text": "Godavari"
+   },
+   {
+    "id": "D",
+    "text": "Yamuna"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The Ganga (~2,525 km) is the longest river flowing within India.",
+  "explanationHi": "गंगा (लगभग 2,525 किमी) भारत में बहने वाली सबसे लंबी नदी है।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Geography"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_005",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Economics",
+  "topic": "Basic Concepts",
+  "difficulty": "medium",
+  "questionText": "GDP stands for:",
+  "questionTextHi": "GDP का पूर्ण रूप है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Gross Domestic Product"
+   },
+   {
+    "id": "B",
+    "text": "General Domestic Price"
+   },
+   {
+    "id": "C",
+    "text": "Gross Direct Payment"
+   },
+   {
+    "id": "D",
+    "text": "Global Development Plan"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "GDP = Gross Domestic Product — final goods & services value produced within a country in a year.",
+  "explanationHi": "GDP = सकल घरेलू उत्पाद — एक वर्ष में देश के भीतर उत्पादित वस्तुओं व सेवाओं का मूल्य।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Economics"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_006",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Science",
+  "topic": "Physics",
+  "difficulty": "easy",
+  "questionText": "The SI unit of electric current is:",
+  "questionTextHi": "विद्युत धारा की SI इकाई है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Volt"
+   },
+   {
+    "id": "B",
+    "text": "Ampere"
+   },
+   {
+    "id": "C",
+    "text": "Ohm"
+   },
+   {
+    "id": "D",
+    "text": "Watt"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Ampere (A) is the SI unit of current.",
+  "explanationHi": "ऐम्पियर (A) धारा की SI इकाई है।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Science"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_007",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Science",
+  "topic": "Biology",
+  "difficulty": "easy",
+  "questionText": "Which vitamin is produced in the human body by sunlight?",
+  "questionTextHi": "सूर्य के प्रकाश से मानव शरीर में कौन-सा विटामिन बनता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Vitamin A"
+   },
+   {
+    "id": "B",
+    "text": "Vitamin B12"
+   },
+   {
+    "id": "C",
+    "text": "Vitamin C"
+   },
+   {
+    "id": "D",
+    "text": "Vitamin D"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Sunlight (UV-B) helps the skin synthesize Vitamin D.",
+  "explanationHi": "सूर्य के UV-B किरणों से त्वचा में विटामिन D बनता है।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Science"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_008",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Static GK",
+  "topic": "Books & Authors",
+  "difficulty": "medium",
+  "questionText": "'Wings of Fire' is the autobiography of:",
+  "questionTextHi": "'विंग्स ऑफ फायर' किसकी आत्मकथा है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Mahatma Gandhi"
+   },
+   {
+    "id": "B",
+    "text": "A.P.J. Abdul Kalam"
+   },
+   {
+    "id": "C",
+    "text": "Nelson Mandela"
+   },
+   {
+    "id": "D",
+    "text": "Atal Bihari Vajpayee"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "'Wings of Fire' (1999) — autobiography of Dr A.P.J. Abdul Kalam.",
+  "explanationHi": "'विंग्स ऑफ फायर' (1999) — डॉ. ए.पी.जे. अब्दुल कलाम की आत्मकथा।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Static GK"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_009",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Current Affairs",
+  "topic": "Awards",
+  "difficulty": "medium",
+  "questionText": "The 'Bharat Ratna' is the highest civilian award of India. It was instituted in:",
+  "questionTextHi": "'भारत रत्न' भारत का सर्वोच्च नागरिक सम्मान है। यह कब स्थापित हुआ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "1947"
+   },
+   {
+    "id": "B",
+    "text": "1950"
+   },
+   {
+    "id": "C",
+    "text": "1954"
+   },
+   {
+    "id": "D",
+    "text": "1962"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Bharat Ratna was instituted on 2 January 1954.",
+  "explanationHi": "भारत रत्न की स्थापना 2 जनवरी 1954 को हुई।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Current Affairs"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_010",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Sports",
+  "topic": "National Games",
+  "difficulty": "easy",
+  "questionText": "How many players are there in a cricket team on the field?",
+  "questionTextHi": "क्रिकेट टीम में मैदान पर कितने खिलाड़ी होते हैं?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "10"
+   },
+   {
+    "id": "B",
+    "text": "11"
+   },
+   {
+    "id": "C",
+    "text": "12"
+   },
+   {
+    "id": "D",
+    "text": "9"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "A cricket team fields 11 players.",
+  "explanationHi": "क्रिकेट टीम में 11 खिलाड़ी मैदान पर होते हैं।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Sports"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_011",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Geography",
+  "topic": "States",
+  "difficulty": "easy",
+  "questionText": "Which Indian state is known as the 'Land of Five Rivers'?",
+  "questionTextHi": "भारत का कौन-सा राज्य 'पाँच नदियों की भूमि' कहलाता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Haryana"
+   },
+   {
+    "id": "B",
+    "text": "Punjab"
+   },
+   {
+    "id": "C",
+    "text": "Rajasthan"
+   },
+   {
+    "id": "D",
+    "text": "Uttar Pradesh"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Punjab = 'Panch + Aab' (five waters/rivers).",
+  "explanationHi": "पंजाब = 'पंच + आब' (पाँच नदियाँ)।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "Geography"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_012",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "History",
+  "topic": "Ancient India",
+  "difficulty": "medium",
+  "questionText": "The Ajanta Caves are located in the state of:",
+  "questionTextHi": "अजंता गुफाएँ किस राज्य में स्थित हैं?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Madhya Pradesh"
+   },
+   {
+    "id": "B",
+    "text": "Maharashtra"
+   },
+   {
+    "id": "C",
+    "text": "Karnataka"
+   },
+   {
+    "id": "D",
+    "text": "Odisha"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Ajanta Caves (Buddhist rock-cut) are in Maharashtra, a UNESCO World Heritage Site.",
+  "explanationHi": "अजंता गुफाएँ (बौद्ध शिला-कृत) महाराष्ट्र में हैं — UNESCO विश्व धरोहर।",
+  "source": "SSC CHSL Tier-I PYQ-style demo · Kineora",
+  "year": "2023",
+  "tags": [
+   "ssc-chsl",
+   "History"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ }
+]

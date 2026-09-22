@@ -19,7 +19,10 @@ const T2IC = {
 Views.tests = async function (state) {
   state = state || { filter: 'all', search: '', sort: 'recent', page: 1 };
   const cfg = await App.config();
-  const idx = await Store.getMeta('attemptIndex', []);
+  /* v1.4.46 EXAM ISOLATION: poori library current exam ke data par —
+     attempts, naam-match, test list sab exam-scoped */
+  const curExam = (App.configCache && App.configCache.exam) || 'airforce';
+  const idx = (await Store.getMeta('attemptIndex', [])).filter(a => (a.exam || 'airforce') === curExam);
   let tests = await DB.getAll('tests');
   tests.sort((a, b) => b.createdAt - a.createdAt);
 
@@ -36,10 +39,11 @@ Views.tests = async function (state) {
   const hasUnfinished = t => (unfinishedByTest[t.id] || []).length > 0;
   // naam-match: series rebuild par test id badal sakta hai, naam nahi —
   // purane attempts orphan na ho ("0/74 hamesha 0" bug ka hissa)
-  const nameDone = new Set(idx.filter(a => !a.abandoned).map(a => a.testName));
+  /* v1.4.46: naam-match exam-scoped — SSC ke "SSC CHSL Mock Test N" vs
+     airforce ke "Full Mock Test N" kabhi cross-match nahi */
+  const nameDone = new Set(idx.filter(a => !a.abandoned && (a.exam || 'airforce') === curExam).map(a => a.testName));
 
   // filters
-  const curExam = (App.configCache && App.configCache.exam) || 'airforce';
   const FNAMES = { all: 'All', series: 'Test Series', full: 'Full Mock', subject: 'Subject', chapter: 'Chapter', topic: 'Topic', custom: 'Custom', completed: 'Completed', incomplete: 'In Progress' };
   const mine = tests.filter(t => (t.exam || 'airforce') === curExam);
   const isDone = t => (attByTest[t.id] || []).some(a => !a.abandoned) || nameDone.has(t.name);

@@ -24,7 +24,13 @@ var Cloud = (() => {
   };
   const FB_VER = '10.12.2';
   const DEFAULT_ENDPOINT = 'https://sync-kineora.cronyzo7694.workers.dev';
-  const BANK_FILES = ['data/bank-physics.json', 'data/bank-mathematics.json', 'data/bank-english.json', 'data/bank-raga.json'];
+  /* v1.4.46: dono exams ke bundled banks (bundled-ids sync isolation ke liye) */
+  const BANK_FILES = [
+    'data/airforce/bank-physics.json', 'data/airforce/bank-mathematics.json',
+    'data/airforce/bank-english.json', 'data/airforce/bank-raga.json',
+    'data/ssc-chsl/bank-mathematics.json', 'data/ssc-chsl/bank-english.json',
+    'data/ssc-chsl/bank-reasoning.json', 'data/ssc-chsl/bank-gs.json'
+  ];
   const META_SYNCABLE = ['qstats', 'topicStats', 'attemptIndex', 'deletedAttempts'];
   const SETTING_SYNCABLE = ['config'];
   const SYNC_EVERY_MS = 45 * 1000;   // v1.4.41: 90→45s (do-device live feel; visible/focus par instant)
