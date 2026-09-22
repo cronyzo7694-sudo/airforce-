@@ -4,6 +4,9 @@
  * presentation + persistence only.
  * ============================================================ */
 
+/* v1.4.53: real-CBT version footer (exam software version) */
+const EXAM_UI_VERSION = '17.07.00';
+
 const ExamScreen = {
   attempt: null,
   test: null,
@@ -119,8 +122,10 @@ const ExamScreen = {
       const st = (a.responses[pqid] || { state: 'NOT_VISITED' }).state;
       const cls = { ANSWERED: 'answered', VISITED_NOT_ANSWERED: 'notanswered', NOT_VISITED: 'notvisited', MARKED_FOR_REVIEW: 'marked', ANSWERED_AND_MARKED_FOR_REVIEW: 'ansmarked' }[st] || 'notvisited';
       const gn = Engine.globalNumber(a, sid, i);
-      return `<button class="qbtn ${cls} ${i === a.currentQIdx ? 'current' : ''}" data-i="${i}"
-        aria-label="Question ${gn} — ${cls}" title="Question ${gn}">${gn}</button>`;
+      /* v1.4.53: .qw wrapper = real CBT strong selection ring (clip-path shapes
+         ke bahar outline nahi dik sakta, isliye ring wrapper pe hai) */
+      return `<span class="qw ${i === a.currentQIdx ? 'cur' : ''}"><button class="qbtn ${cls} ${i === a.currentQIdx ? 'current' : ''}" data-i="${i}"
+        aria-label="Question ${gn} — ${cls}" title="Question ${gn}">${gn}</button></span>`;
     }).join('');
 
     const legend = `
@@ -162,7 +167,7 @@ const ExamScreen = {
       <div class="q-head">
         <div class="q-no">
           ${t('questionNo')} ${gnum}<span class="q-of"> / ${sec.questionIds.length}</span>
-          <span class="q-marks" title="${AVUtil.esc(secName)} · marking scheme — correct +${test.marking.correct} / wrong ${test.marking.wrong} / unattempted 0">Marks +${test.marking.correct} · ${test.marking.wrong}</span>
+          <span class="q-marks" title="${AVUtil.esc(secName)} · marking scheme — correct +${test.marking.correct} / wrong ${test.marking.wrong} / unattempted 0">Marks +${test.marking.correct} -${Math.abs(test.marking.wrong)}</span>
         </div>
         <div class="q-viewin">
           <button class="q-report" id="x-report" title="🚩 Report / Block — ye question hamesha ke liye hat jayega aur turant naya aa jayega" aria-label="Report and block this question">🚩<span class="q-report-lbl">Report</span></button>
@@ -187,37 +192,67 @@ const ExamScreen = {
       </div>` : ''}`;
 
     const saveLabel = isLast && test.timerMode === 'section' && test.sectionLock ? 'Save &amp; Next → Section End' : t('saveNext');
+    /* v1.4.53: REAL CBT button order — LEFT: Mark for Review & Next, Clear
+       Response; RIGHT: Previous, Save & Next (spec U) */
     const bottomBar = `
       <div class="exam-bottom">
+        <button class="xbtn xbtn-mark" id="x-mark"><span class="lbl-full">${t('markReviewNext')}</span><span class="lbl-short">${t('markShort')}</span></button>
+        <button class="xbtn xbtn-clear" id="x-clear"><span class="lbl-full">${t('clearResponse')}</span><span class="lbl-short">${t('clearShort')}</span></button>
+        <span class="eb-spring" aria-hidden="true"></span>
         <button class="xbtn xbtn-prev" id="x-prev" ${a.currentQIdx === 0 && !this.freePrev() ? 'disabled' : ''}>
           <span class="lbl-full">◀ ${t('previous')}</span><span class="lbl-short">◀ ${t('prevShort')}</span></button>
-        <button class="xbtn xbtn-clear" id="x-clear"><span class="lbl-full">${t('clearResponse')}</span><span class="lbl-short">${t('clearShort')}</span></button>
-        <button class="xbtn xbtn-mark" id="x-mark"><span class="lbl-full">${t('markReviewNext')}</span><span class="lbl-short">${t('markShort')}</span></button>
-        <span class="eb-spring" aria-hidden="true"></span>
         <button class="xbtn xbtn-save" id="x-save">${saveLabel}</button>
       </div>`;
 
+    /* v1.4.53 REAL CBT: dark charcoal header (icon + title | ⓘ Instructions
+       + pause + submit) — timer ab Sections row me hai (spec C/E) */
     const header = `
       <header class="exam-header">
         <button class="palette-toggle" id="drawer-btn" aria-label="${t('questionPalette')}"><span aria-hidden="true">☰</span></button>
-        <img class="eh-logo" src="icons/icon-96.png" alt="Kineora Exam logo">
+        <img class="eh-logo" src="icons/icon-96.png" alt="">
         <div class="eh-name">
-          <div class="eh-exam">${AVUtil.esc((App.configCache?.name || 'Air Force Agniveervayu').toUpperCase())} <span class="eh-online">ONLINE EXAMINATION</span></div>
-          <div class="eh-test small muted">${AVUtil.esc(test.name)}</div>
+          <div class="eh-exam">${AVUtil.esc((App.configCache?.name || 'Air Force Agniveervayu').toUpperCase())} <span class="eh-online">— ONLINE EXAMINATION</span></div>
+          <div class="eh-test small">${AVUtil.esc(test.name)}</div>
         </div>
         <div class="eh-right">
-          <div class="timer ${warnCls}" id="x-timer" role="timer" aria-live="off">
-            <span class="timer-lbl">${t('timeLeft')}</span>
-            <span class="timer-val" id="x-timer-val">${AVUtil.fmtTime(remaining)}</span>
-          </div>
           <button class="xbtn xbtn-ghost icon-only" id="x-pause" title="Pause — timer ruk jaayega" aria-label="Pause">⏸</button>
-          <button class="xbtn xbtn-ghost" id="x-instructions" title="${t('instructions')}"><span aria-hidden="true">📄</span><span class="ilbl">${t('instructions')}</span></button>
+          <button class="xbtn xbtn-ghost" id="x-instructions" title="${t('instructions')}"><span class="info-ic" aria-hidden="true">i</span><span class="ilbl">${t('instructions')}</span></button>
           <button class="xbtn xbtn-submit" id="x-submit" title="Submit anytime — koi restriction nahi. Confirmation milegi.">${test.timerMode === 'section' ? t('submitSection').toUpperCase() : t('submitTest').toUpperCase()}</button>
         </div>
       </header>`;
 
+    /* v1.4.53: language tabs row (English | हिन्दी) — real CBT row D */
+    const langRow = `
+      <div class="cbt-navrow cbt-langrow">
+        <span class="nav-arrow" aria-hidden="true"></span>
+        <button type="button" class="cbt-tab langtab ${this.qLang !== 'hi' ? 'active' : ''}" data-lang="en" title="View questions in English">English<span class="tab-info" aria-hidden="true">i</span></button>
+        <button type="button" class="cbt-tab langtab ${this.qLang === 'hi' ? 'active' : ''}" data-lang="hi" title="प्रश्न हिन्दी में देखें">हिन्दी<span class="tab-info" aria-hidden="true">i</span></button>
+        <span class="nav-arrow right" aria-hidden="true"></span>
+      </div>`;
+
+    /* v1.4.53: Sections + Time Left row — plain text, no card (spec E) */
+    const sectionsRow = `
+      <div class="cbt-secrow">
+        <span class="secrow-lbl">Sections</span>
+        <div class="timer ${warnCls}" id="x-timer" role="timer" aria-live="off">
+          <span class="timer-lbl">${t('timeLeft')} :</span>
+          <span class="timer-val" id="x-timer-val">${AVUtil.fmtTime(remaining)}</span>
+        </div>
+      </div>`;
+
+    /* v1.4.53: subject row — grey arrows + rectangular tabs (spec F) */
     const sectionBar = `
-      <div class="subtabs" role="tablist" aria-label="Subjects">${sectionTabs}</div>`;
+      <div class="cbt-navrow cbt-subrow">
+        <span class="nav-arrow" aria-hidden="true"></span>
+        <div class="subtabs" role="tablist" aria-label="Subjects">${sectionTabs}</div>
+        <span class="nav-arrow right" aria-hidden="true"></span>
+      </div>`;
+
+    /* v1.4.53: marking info strip — right aligned, dynamic (spec G) */
+    /* marking.wrong negative stored hai (-0.5) — real CBT me positive display hota hai */
+    const mkWrong = Math.abs(test.marking.wrong);
+    const markingStrip = `
+      <div class="cbt-markrow"><span>Marks for correct answer : <b class="mk-pos">${test.marking.correct}</b></span><span class="mk-sep" aria-hidden="true">|</span><span>Negative Marks : <b class="mk-neg">${mkWrong}</b></span></div>`;
 
     const rightPanel = `
       <aside class="palette-panel" id="palette-panel">
@@ -233,9 +268,13 @@ const ExamScreen = {
     document.getElementById('app').innerHTML = `
       <div class="cbt exam-screen" data-view="${a.view}">
         ${header}
+        ${langRow}
+        ${sectionsRow}
         ${sectionBar}
+        ${markingStrip}
         <div class="exam-main">
           <div class="exam-question-area">
+            <div class="cbt-bluebar" aria-hidden="true"></div>
             ${a.view === 'question' ? `
               <div class="q-scroll" id="q-scroll">${questionBody}</div>
               ${bottomBar}`
@@ -243,6 +282,7 @@ const ExamScreen = {
           </div>
           ${rightPanel}
         </div>
+        <div class="exam-verfoot">Version : ${EXAM_UI_VERSION}</div>
       </div>
       <div class="drawer-veil" id="drawer-veil" hidden></div>`;
 
@@ -295,6 +335,13 @@ const ExamScreen = {
         await this.persist();
         this.render();
       }
+    }));
+    // v1.4.53: language tabs (English | हिन्दी) — qLang switch + re-render
+    AVUtil.$$('.langtab').forEach(b => b.addEventListener('click', async () => {
+      if (b.classList.contains('active')) return;
+      this.qLang = b.dataset.lang;
+      try { localStorage.setItem('qLang', this.qLang); } catch (e) {}
+      this.render();
     }));
     // palette
     AVUtil.$$('.qbtn[data-i]').forEach(b => b.addEventListener('click', async () => {

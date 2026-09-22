@@ -295,12 +295,11 @@ Views.instructions = async function (testId) {
           </div>
           <div class="otr-bottom">
             <div class="otr-langrow">
-              <label class="otr-langlab">Choose your default language :
-                <select id="otr-lang">
-                  <option value="en" ${lang === 'en' ? 'selected' : ''}>English</option>
-                  <option value="hi" ${lang === 'hi' ? 'selected' : ''}>Hindi</option>
-                </select>
-              </label>
+              <label class="otr-langlab" for="otr-lang">Choose your default language :</label>
+              <select id="otr-lang" aria-label="Choose your default language">
+                <option value="en" ${lang === 'en' ? 'selected' : ''}>English</option>
+                <option value="hi" ${lang === 'hi' ? 'selected' : ''}>Hindi</option>
+              </select>
               <span class="otr-rednote">Please note all questions will appear in your default language. This language can be changed for a particular question later on.</span>
             </div>
             <label class="otr-decl">
