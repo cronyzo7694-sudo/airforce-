@@ -686,7 +686,10 @@ async function main() {
   T('switch → SSC CHSL active (configCache.exam)', sw === 'ssc-chsl', String(sw));
   T('SSC config: subjects reasoning/gs/maths/english', (await G('App.configCache.subjects.map(s=>s.id).join(",")')) === 'reasoning,gs,mathematics,english');
   T('SSC marking: +2 / −0.5 (Tier-I pattern)', (await G('App.configCache.marking.correct')) === 2 && (await G('App.configCache.marking.wrong')) === -0.5);
-  let sscSeeded = false; for (let i = 0; i < 80; i++) { await sleep(250); try { sscSeeded = await G('Store.getMeta("seeded_ssc-chsl", false)'); } catch (e) {} if (sscSeeded) break; }
+  /* v1.4.54: seed flag + SERIES flag dono wait — series build async chalta hai
+     seed-complete ke baad bhi; isse pehle custom test generate karne par
+     planner usko existing maan ke mock skip kar deta tha (race flake) */
+  let sscSeeded = false; for (let i = 0; i < 240; i++) { await sleep(500); try { sscSeeded = await G('Store.getMeta("seeded_ssc-chsl", false)'); } catch (e) {} if (sscSeeded === true) { try { if (await G('Store.getMeta("seriesBuilt_ssc-chsl", null)') || await G('(async()=>{const ts=await DB.getAll("tests");return ts.some(t=>t.exam==="ssc-chsl"&&t.series&&t.type==="full")})()')) break; } catch (e) { break; } } }
   T('SSC bank seeded (data/ssc-chsl/ se)', sscSeeded === true);
   const sscQ = await G('DB.count("questions")');
   T('SSC questions ADD hue — airforce data untouched', sscQ > afQ, afQ + ' → ' + sscQ);
@@ -722,14 +725,24 @@ async function main() {
   selSsc2.dispatchEvent(new window.Event('change', { bubbles: true }));
   let sw3 = false; for (let i = 0; i < 60; i++) { await sleep(250); try { sw3 = await G('App.configCache && App.configCache.exam'); } catch (e) {} if (sw3 === 'ssc-chsl') break; }
   T('SSC switch (full-flow ke liye)', sw3 === 'ssc-chsl');
+  /* v1.4.54: switch ka seed/series POORA complete hone do — 2827-Q bank slow
+     hai, pending switch late hash-redirect se attempt flow todta tha */
+  let swDone = false; for (let i = 0; i < 240; i++) { await sleep(500); try { swDone = await G('App._switching === null || App._switching === undefined'); } catch (e) {} if (swDone) break; }
+  T('SSC switch seed+series complete (koi pending race nahi)', swDone === true);
 
-  // SSC series (32/subject → 1 full mock banega) — exam-scoped tests
-  const sscTests = await G('(async()=>{const all=await DB.getAll("tests");return all.filter(t=>t.exam==="ssc-chsl")})()');
+  // SSC series — exam-scoped tests. v1.4.54: real GS bank (2827 Q) ke saath
+  // buildSeries jsdom me slow hota hai — full mock banne tak poll karo.
+  let sscTests = [];
+  for (let i = 0; i < 150; i++) {   /* 75s max — 2827-Q bank pe fake-idb slow */
+    sscTests = await G('(async()=>{const all=await DB.getAll("tests");return all.filter(t=>t.exam==="ssc-chsl")})()');
+    if (sscTests.some(t => t.series && t.sections.length === 4)) break;
+    await sleep(500);
+  }
   T('SSC tests exam-scoped bane (>=2: series mock + REASON TEST)', sscTests.length >= 2, 'got ' + sscTests.length);
   const sscMock = sscTests.find(t => t.series && t.sections.length === 4) || sscTests.find(t => t.sections.length === 4);
   T('SSC full mock series me mila', !!sscMock, sscTests.map(t => t.name).join(' | '));
   T('SSC mock exam-aware naam ("SSC CHSL")', !!sscMock && /SSC CHSL/.test(sscMock.name), sscMock && sscMock.name);
-  T('SSC mock 100 Q (25×4)', !!sscMock && sscMock.sections.reduce((n, s) => n + s.questionIds.length, 0) === 100);
+  T('SSC mock 100 Q (25×4)', !!sscMock && sscMock.sections.reduce((n, s) => n + s.questionIds.length, 0) === 100, sscMock && sscMock.name + ' [' + sscMock.sections.map(x => x.questionIds.length).join(',') + '] dur=' + Math.round((sscMock.duration || 0) / 60) + 'min' + ' | all4sec=' + sscTests.filter(t => t.series && t.sections.length === 4).map(t => t.name + '[' + t.sections.map(x => x.questionIds.length).join(',') + ']').join(' ; '));
   T('SSC mock duration 60 min (v1.4.51 fix — 85 nahi)', !!sscMock && Math.round(sscMock.duration / 60) === 60, sscMock && Math.round(sscMock.duration / 60) + ' min');
 
   // instructions page
@@ -822,12 +835,13 @@ async function main() {
   const chipTxt = Array.from(doc.querySelectorAll('.qb-subj-chips .t2-chip')).map(e => e.textContent).join(' | ');
   T('SSC bank chips: SIRF SSC subjects (physics/raga NAHI)', !/physics|raga/i.test(chipTxt), chipTxt);
   T('SSC bank chips me reasoning+gs+maths+english sab', /Reasoning/.test(chipTxt) && /Awareness/.test(chipTxt) && /Aptitude/.test(chipTxt) && /English/.test(chipTxt));
-  T('SSC bank total = 128 (32×4)', /128/.test(doc.querySelector('.t2-more-chip').textContent), doc.querySelector('.t2-more-chip').textContent);
+  /* v1.4.54: real GS bank (2827) + 3 demo subjects (96) — total ab bada hai */
+  T('SSC bank total real GS bank se aaya (≥2,923)', /[12],[0-9]{3}/.test(doc.querySelector('.t2-more-chip').textContent) || /[0-9]{4}/.test(doc.querySelector('.t2-more-chip').textContent), doc.querySelector('.t2-more-chip').textContent);
   await sleep(300);
   const subjCells = Array.from(doc.querySelectorAll('.qb-tbl tbody tr')).map(r => r.querySelectorAll('td')[2] && r.querySelectorAll('td')[2].textContent.trim());
   T('page-1 rows sab SSC subjects', subjCells.length > 0 && subjCells.every(t => ['General Intelligence & Reasoning', 'General Awareness', 'Quantitative Aptitude', 'English Language'].includes(t)), subjCells.slice(0, 5).join(','));
   const qCountTxt = (doc.querySelector('.qb-count') || {}).textContent || '';
-  T('SSC bank count 128 question(s)', /128 question/.test(qCountTxt), qCountTxt.trim());
+  T('SSC bank count 4-digit real bank (v1.4.54)', /[12],[0-9]{3} question|[0-9]{4} question/.test(qCountTxt), qCountTxt.trim());
   // airforce PYQ list me nahi — ek airforce-source question search karo
   const searchBox = doc.getElementById('qb-search');
   searchBox.value = 'Prepp';

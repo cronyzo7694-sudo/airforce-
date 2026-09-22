@@ -1,6 +1,7 @@
 /* v1.4.47 — demo-temp PURGE unit test (fake-indexeddb, no full app boot)
-   Scenario: SSC temp bank seeded (128 Q) + user ki q_ssc_* Q + airforce Q
-   → purgeDemoTemp('ssc-chsl') → sirf temp Q delete, baaki sab safe. */
+   v1.4.54: REAL GS bank (2827 Q, demo-temp tag NAHI) + 3 demo subjects
+   (32×3 = 96, demo-temp tag) → purge sirf 96 delete karega, GS safe.
+   User ki q_ssc_* Q + airforce Q → kabhi safe. */
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
@@ -40,14 +41,14 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   // ── 1) SSC temp bank seed (32×4 = 128) ──
   console.log('━━━ seed SSC temp bank');
   const rep = await Seed.seedIfNeeded(false, 'ssc-chsl');
-  t('seed: imported 128', rep.imported === 128, 'got ' + rep.imported);
-  t('seed: 32 per subject', Object.values(rep.bySubject).every(n => n === 32), JSON.stringify(rep.bySubject));
+  t('seed: imported 2923 (2827 GS real + 96 demo)', rep.imported === 2923, 'got ' + rep.imported);
+  t('seed: gs 2827 + 3 subjects × 32', rep.bySubject.gs === 2827 && [ 'mathematics', 'reasoning', 'english' ].every(k => rep.bySubject[k] === 32), JSON.stringify(rep.bySubject));
   const meta = await Store.getMeta('seeded_ssc-chsl', false);
   t('seed: seeded flag exam-scoped', meta === true);
 
   // sab Q me demo-temp tag + exam
   const sscQ = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
-  t('seed: sab 128 me demo-temp tag', sscQ.every(q => (q.tags || []).includes('demo-temp')));
+  t('seed: demo-temp tag SIRF 96 demo Q me (GS real me nahi)', sscQ.filter(q => (q.tags || []).includes('demo-temp')).length === 96 && sscQ.filter(q => q.subject === 'gs').every(q => !(q.tags || []).includes('demo-temp')), 'demo-temp=' + sscQ.filter(q => (q.tags || []).includes('demo-temp')).length);
 
   // ── 2) user ki REAL final Q + airforce Q daalo (SAFE hone chahiye) ──
   await DB.bulkPut('questions', [
@@ -58,13 +59,13 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   // ── 3) PURGE ──
   console.log('━━━ purgeDemoTemp(ssc-chsl)');
   const pr = await Seed.purgeDemoTemp('ssc-chsl');
-  t('purge: exactly 128 deleted', pr.questions === 128, 'got ' + pr.questions);
+  t('purge: exactly 96 demo deleted (GS 2827 SAFE)', pr.questions === 96, 'got ' + pr.questions);
 
   // ── 4) survivors ──
   const all = await DB.getAll('questions');
   const sscLeft = all.filter(q => q.exam === 'ssc-chsl');
   const afLeft = all.filter(q => q.exam === 'airforce');
-  t('user q_ssc_* SAFE', sscLeft.length === 1 && sscLeft[0].id === 'q_ssc_mathematics_90001', 'left=' + sscLeft.map(q => q.id).join(','));
+  t('user q_ssc_* SAFE + GS real 2827 SAFE', sscLeft.length === 2828 && sscLeft.some(q => q.id === 'q_ssc_mathematics_90001') && sscLeft.filter(q => q.subject === 'gs').length === 2827, 'left=' + sscLeft.length);
   t('airforce Q SAFE', afLeft.length === 1 && afLeft[0].id === 'q_af_90002', 'left=' + afLeft.map(q => q.id).join(','));
   t('koi q_sscchsl_ bacha? NAHI', !all.some(q => (q.id || '').startsWith('q_sscchsl_')));
   t('koi demo-temp tag bacha? NAHI', !all.some(q => (q.tags || []).includes('demo-temp')));
@@ -72,9 +73,9 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   // ── 5) re-seed (final files aane jaisa) → 128 wapas + survivors ──
   await Store.setMeta('seeded_ssc-chsl', false);
   const rep2 = await Seed.seedIfNeeded(false, 'ssc-chsl');
-  t('re-seed: 128 wapas', rep2.imported === 128, 'got ' + rep2.imported);
+  t('re-seed: sirf 96 demo wapas aaye (GS already present — dupe skip)', rep2.imported === 96, 'got ' + rep2.imported);
   const all2 = await DB.getAll('questions');
-  t('re-seed: total 130 (128+user+af)', all2.length === 130, 'got ' + all2.length);
+  t('re-seed: total 2925 (2923+user+af)', all2.length === 2925, 'got ' + all2.length);
   t('re-seed: user Q ab bhi safe', all2.some(q => q.id === 'q_ssc_mathematics_90001'));
 
   // ════════════════════════════════════════════════════════════
@@ -96,15 +97,15 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     }
     return origFetch(url);
   };
-  // pehle transition ke pehle state: temp 128 seeded + user 1 + af 1 = 130
+  // pehle transition ke pehle state: 2923 seeded + user 1 + af 1 = 2925
   const sync1 = await Seed.syncBundled('ssc-chsl');
   t('transition: synced', sync1.synced === true);
-  t('transition: purged 128 temp', sync1.purged && sync1.purged.questions === 128, JSON.stringify(sync1.purged));
+  t('transition: purged 96 temp (GS 2827 already-safe re-import)', sync1.purged && sync1.purged.questions === 96, JSON.stringify(sync1.purged));
   const all3 = await DB.getAll('questions');
   const ssc3 = all3.filter(q => q.exam === 'ssc-chsl');
-  t('transition: final 128 + user 1 = 129 ssc Q', ssc3.length === 129, 'got ' + ssc3.length);
-  t('transition: final bank Q imported (source FINAL BANK)', ssc3.filter(q => q.source === 'FINAL BANK').length === 128, 'got ' + ssc3.filter(q => q.source === 'FINAL BANK').length);
-  t('transition: app-ids q_ssc-chsl_<hash> scheme', ssc3.filter(q => q.id.startsWith('q_ssc-chsl_') && q.source === 'FINAL BANK').length === 128);
+  t('transition: final 2923 + user 1 = 2924 ssc Q', ssc3.length === 2924, 'got ' + ssc3.length);
+  t('transition: final content present — GS 2827 + demo 96 sab (dupes merge)', ssc3.filter(q => q.source === 'FINAL BANK').length === 96 && ssc3.length === 2924, 'imported=' + ssc3.filter(q => q.source === 'FINAL BANK').length);
+  t('transition: app-ids q_ssc-chsl_<hash> scheme (2923 = GS+demo, user id alag)', ssc3.filter(q => q.id.startsWith('q_ssc-chsl_')).length === 2923);
   t('transition: koi demo-temp tag nahi', !all3.some(q => (q.tags || []).includes('demo-temp')));
   t('transition: user q_ssc_mathematics_90001 safe', all3.some(q => q.id === 'q_ssc_mathematics_90001'));
   t('transition: airforce safe', all3.filter(q => q.exam === 'airforce').length === 1);
@@ -115,7 +116,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const sync2 = await Seed.syncBundled('ssc-chsl');
   t('re-sync: no-op (fp same)', sync2.synced === false || (sync2.purged && sync2.purged.questions === 0), JSON.stringify(sync2));
   const all4 = await DB.getAll('questions');
-  t('re-sync: count stable', all4.filter(q => q.exam === 'ssc-chsl').length === 129);
+  t('re-sync: count stable', all4.filter(q => q.exam === 'ssc-chsl').length === 2924);
   global.fetch = origFetch;
 
   console.log(`\n${passed.length}/${passed.length + failed.length} pass`);

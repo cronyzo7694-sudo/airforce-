@@ -84,6 +84,22 @@ const App = {
     await Store.setSetting('config', out);
   },
 
+  /* v1.4.54 one-time: SSC bank v1 me 1 broken stub question tha (text ~1 char)
+     — jaise hi import hua ho, saaf kar do. Real questions kabhi nahi chhootenge. */
+  async fixSscBrokenStubs() {
+    try {
+      if (await Store.getMeta('sscStubFixed', 0)) return;
+      let n = 0;
+      await DB.cursor('questions', null, q => {
+        if (q.exam === 'ssc-chsl' && String(q.questionText || '').trim().length < 5) {
+          DB.delete('questions', q.id).catch(() => {}); n++;
+        }
+      });
+      await Store.setMeta('sscStubFixed', 1);
+      if (n) console.log('SSC broken stub questions removed:', n);
+    } catch (e) { /* best-effort */ }
+  },
+
   /* v1.4.51 one-time migration: purane SSC series mocks 85 min (51s/q bug)
      ke saath bane the — ab official 60 min. Attempt history untouched. */
   async fixSscMockDurations() {
@@ -106,6 +122,11 @@ const App = {
   /* v1.4.46: exam switch — bank seed + dashboard re-render + pakka isolation */
   async switchExam(v) {
     if (typeof EXAM_CONFIGS === 'undefined' || !EXAM_CONFIGS[v]) return;
+    /* v1.4.54: same exam ka switch already chal raha hai (slow seed ke beech
+       dobara switch) to duplicate seed+buildSeries race hota tha — coalesce */
+    if (this._switching === v) return;
+    this._switching = v;
+    try {
     const startHash = location.hash || '';   /* v1.4.50 race-guard */
     try {
       const saved = (await Store.getSetting('config', null)) || {};
@@ -138,12 +159,17 @@ const App = {
        agar user/test beech me kahin aur navigate kar chuka hai (startHash se
        alag) to usay dashboard pe MAT kheencho. Sirf tab jao jab wahi ho jahan
        switch shuru hua tha, ya dashboard-target wala default case ho. */
+    /* v1.4.54: nowHash ko bhi respect karo — user slow seed ke dauran kisi
+       OPEN route (attempt/exam/test) pe chala gaya hai to use dashboard pe
+       MAT kheencho (v1.4.50 guard startHash-dashboard case me force karta tha). */
     const nowHash = location.hash || '';
-    if (nowHash === startHash || startHash.indexOf('#/dashboard') === 0) {
+    const stillDefault = nowHash === '' || nowHash === '#' || nowHash === '#/' || nowHash.indexOf('#/dashboard') === 0;
+    if (nowHash === startHash || (startHash.indexOf('#/dashboard') === 0 && stillDefault)) {
       if (nowHash.indexOf('#/dashboard') !== 0) location.hash = '#/dashboard';
       else window.dispatchEvent(new Event('hashchange'));
     }
     AVUtil.toast((EXAM_LABELS[v] || v) + ' active — data & analysis bilkul alag ✅', 'success');
+    } finally { this._switching = null; }
   },
 
   /* ---------------- boot ---------------- */
@@ -189,12 +215,19 @@ const App = {
 
     // v1.4.51: purane SSC mocks ka 85-min timer bug fix (one-time)
     try { await this.fixSscMockDurations(); } catch (e) { /* best-effort */ }
+    // v1.4.54: SSC bank v1 ka broken stub question cleanup (one-time)
+    try { await this.fixSscBrokenStubs(); } catch (e) { /* best-effort */ }
 
     // upgrade path: existing installs get the ready-made test series too
     try {
-      if (!(await Store.getMeta('seriesBuilt', null))) {
+      /* v1.4.54: exam-aware flag — boot+seed dono paths same per-exam flag
+         dekhte hain (SSC/airforce series alag, duplicate build kabhi nahi) */
+      const bExam = (this.configCache && this.configCache.exam) || 'airforce';
+      const bFlag = bExam === 'airforce' ? 'seriesBuilt' : ('seriesBuilt_' + bExam);
+      if (!(await Store.getMeta(bFlag, null))) {
         const r = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 });
-        if (r.made) await Store.setMeta('seriesBuilt', { at: Date.now(), made: r.made });
+        await Store.setMeta(bFlag, { at: Date.now(), made: r.made });
+        if (bExam === 'airforce') await Store.setMeta('seriesBuilt', { at: Date.now(), made: r.made });
       }
     } catch (e) { /* series is a bonus — never block boot */ }
 

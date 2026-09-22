@@ -139,11 +139,19 @@ const Bank = (() => {
     report.totalParsed = total;
 
     // first ever seed → build the ready-made test series (15 full mocks + 5 per subject)
-    if (!force && typeof Generator !== 'undefined') {
+    /* v1.4.54: PER-EXAM flag — duplicate seed call (slow-seed ke beech dobara
+       switch) dobara buildSeries chala ke adhoora/double series nahi banayega. */
+    const sFlag = exam === 'airforce' ? 'seriesBuilt' : ('seriesBuilt_' + exam);
+    if (!force && typeof Generator !== 'undefined' && !(await Store.getMeta(sFlag, null))) {
       try {
         const series = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 });
         report.series = series;
-        if (series.made) await Store.setMeta('seriesBuilt', { at: Date.now(), made: series.made });
+        /* v1.4.54: flag sirf made>0 pe — 0 bana series (questions kam the)
+           next boot/seed pe retry karegi, naye questions aate hi mock banega */
+        if (series && series.made) {
+          await Store.setMeta(sFlag, { at: Date.now(), made: series.made });
+          if (exam === 'airforce') await Store.setMeta('seriesBuilt', { at: Date.now(), made: series.made });
+        }
       } catch (e) { /* series is a bonus — never block seeding on it */ }
     }
     return report;
