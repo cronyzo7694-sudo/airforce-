@@ -343,7 +343,7 @@ AVUtil.$('#ov-delete').addEventListener('click', async () => {
 /* ================= CUSTOM TEST BUILDER ================= */
 Views.builder = async function () {
   const cfg = await App.config();
-  const bank = await Bank.bankStats();
+  const bank = await Bank.bankStats(cfg.exam);   /* v1.4.48: exam-scoped */
 
   App.page('page page-builder', `
     <div class="crumbs"><a href="#/tests">Test Library</a> / New Test</div>

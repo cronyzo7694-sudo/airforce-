@@ -150,12 +150,12 @@ const Bank = (() => {
   }
 
   /* --------- bank stats (chapters/topics per subject) --------- */
-  async function bankStats() {
+  async function bankStats(exam) {
+    /* v1.4.48: exam-scoped — SSC active ho to sirf SSC ka bank dikhta hai
+       (hardcoded airforce subjects bhi hata — dynamic, koi bhi exam). */
     const stats = {};
-    for (const s of ['physics', 'mathematics', 'english', 'raga']) {
-      stats[s] = { total: 0, usable: 0, chapters: {}, topics: {} };
-    }
     await DB.cursor('questions', 'subject', q => {
+      if (exam && (q.exam || 'airforce') !== exam) return;
       const st = stats[q.subject] || (stats[q.subject] = { total: 0, usable: 0, chapters: {}, topics: {} });
       st.total++;
       if (q.correctAnswer && !q.figureBased) st.usable++;
@@ -315,14 +315,22 @@ const Bank = (() => {
 /* --------- update cumulative stats after every submit --------- */
 const StatsUpdator = {
   async record(attempt, questionMap) {
+    /* v1.4.48 EXAM-SCOPED: topicStats/topicAcc keys ab 'exam␟subject␟topic'
+       hain (purane 2-segment keys = legacy airforce — readers parse se handle).
+       qstats me examSeen counter bhi — dashboard coverage cross-exam mix nahi
+       hota. qid-keyed seen/wrong/correct/skipped waise hi hain (qid globally
+       unique + rows exam-filtered hoti hain). */
+    const exam = (attempt && attempt.exam) || 'airforce';
     const qstats = await Store.getMeta('qstats', { seen: {}, wrong: {}, correct: {}, skipped: {}, topicAcc: {} });
     const tstats = await Store.getMeta('topicStats', {});
     const seen = qstats.seen || {}, wrong = qstats.wrong || {}, correct = qstats.correct || {};
     const skipped = qstats.skipped || {}; // seen but left unattempted → must repeat
     const tAcc = {};
     const result = attempt.result;
+    let seenThis = 0;
     if (result) {
       for (const qid in result.perQuestion) {
+        seenThis++;
         const pq = result.perQuestion[qid];
         seen[qid] = (seen[qid] || 0) + 1;
         if (pq.result === 'wrong') wrong[qid] = (wrong[qid] || 0) + 1;
@@ -330,13 +338,15 @@ const StatsUpdator = {
         if (pq.result === 'skip') skipped[qid] = (skipped[qid] || 0) + 1;
         const q = questionMap[qid];
         if (q) {
-          const key = q.subject + '␟' + q.topic;
+          const key = (q.exam || exam) + '␟' + q.subject + '␟' + q.topic;
           tAcc[key] = tAcc[key] || { c: 0, w: 0 };
           if (pq.result === 'correct') tAcc[key].c++;
           else if (pq.result === 'wrong') tAcc[key].w++;
         }
       }
     }
+    qstats.examSeen = qstats.examSeen || {};
+    qstats.examSeen[exam] = (qstats.examSeen[exam] || 0) + seenThis;
     // rolling topic accuracy (exponential moving blend with stored totals)
     const stored = qstats.topicAcc || {};
     for (const k in tAcc) {

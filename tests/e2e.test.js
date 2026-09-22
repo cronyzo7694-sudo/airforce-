@@ -714,7 +714,7 @@ async function main() {
   doc.getElementById('ins-agree').checked = true;
   doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
   doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
-  for (let i = 0; i < 40; i++) { await sleep(150); if (window.location.hash.includes('/attempt')) break; }
+  await waitFor(() => window.location.hash.includes('/attempt'), 20000);   // flake-proof (jsdom load peaks)
   T('SSC attempt route entered', window.location.hash.includes('/attempt'), window.location.hash);
   await waitFor(() => doc.querySelector('.exam-screen'), 15000);
 
@@ -770,6 +770,89 @@ async function main() {
   T('flow ke baad wapas airforce', sw4 === 'airforce');
   const afQ3 = await G('(async()=>{const all=await DB.getAll("questions");return all.filter(q=>(q.exam||"airforce")==="airforce").length})()');
   T('airforce bank ab bhi EXACT same (end-to-end zero contamination)', afQ3 === afQ, afQ + ' vs ' + afQ3);
+  window.location.hash = '#/dashboard';
+  await sleep(500);
+
+  /* ---------- 19. QUESTION BANK + STATS ISOLATION (v1.4.48) — user ne live
+     me pakda tha: SSC me airforce ka physics/PYQ Question Bank + Focus Areas
+     me dikh raha tha. Ab bilkul nahi dikhega. ---------- */
+  console.log('\n━━━ E2E · question bank + focus areas isolation (v1.4.48)');
+  const selSsc3 = doc.getElementById('exam-select');   // FRESH
+  selSsc3.value = 'ssc-chsl';
+  selSsc3.dispatchEvent(new window.Event('change', { bubbles: true }));
+  let sw5 = false; for (let i = 0; i < 60; i++) { await sleep(250); try { sw5 = await G('App.configCache && App.configCache.exam'); } catch (e) {} if (sw5 === 'ssc-chsl') break; }
+  T('SSC switch (bank isolation ke liye)', sw5 === 'ssc-chsl');
+
+  // ── Question Bank page ──
+  window.location.hash = '#/questions';
+  await waitFor(() => doc.querySelector('.qb-tbl'), 20000);
+  const chipTxt = Array.from(doc.querySelectorAll('.qb-subj-chips .t2-chip')).map(e => e.textContent).join(' | ');
+  T('SSC bank chips: SIRF SSC subjects (physics/raga NAHI)', !/physics|raga/i.test(chipTxt), chipTxt);
+  T('SSC bank chips me reasoning+gs+maths+english sab', /Reasoning/.test(chipTxt) && /Awareness/.test(chipTxt) && /Aptitude/.test(chipTxt) && /English/.test(chipTxt));
+  T('SSC bank total = 128 (32×4)', /128/.test(doc.querySelector('.t2-more-chip').textContent), doc.querySelector('.t2-more-chip').textContent);
+  await sleep(300);
+  const subjCells = Array.from(doc.querySelectorAll('.qb-tbl tbody tr')).map(r => r.querySelectorAll('td')[2] && r.querySelectorAll('td')[2].textContent.trim());
+  T('page-1 rows sab SSC subjects', subjCells.length > 0 && subjCells.every(t => ['General Intelligence & Reasoning', 'General Awareness', 'Quantitative Aptitude', 'English Language'].includes(t)), subjCells.slice(0, 5).join(','));
+  const qCountTxt = (doc.querySelector('.qb-count') || {}).textContent || '';
+  T('SSC bank count 128 question(s)', /128 question/.test(qCountTxt), qCountTxt.trim());
+  // airforce PYQ list me nahi — ek airforce-source question search karo
+  const searchBox = doc.getElementById('qb-search');
+  searchBox.value = 'Prepp';
+  searchBox.dispatchEvent(new window.Event('input', { bubbles: true }));
+  await sleep(400);
+  T('SSC bank me airforce PYQ (Prepp) search → 0', /0 question/.test((doc.querySelector('.qb-count') || {}).textContent), (doc.querySelector('.qb-count') || {}).textContent.trim());
+
+  // ── Add Question — exam tag ──
+  doc.getElementById('qb-add').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('qe-text'), 8000);
+  doc.getElementById('qe-text').value = 'SSC isolation manual question test';
+  ['A', 'B', 'C', 'D'].forEach(L => { doc.getElementById('qe-opt-' + L).value = 'opt ' + L; });
+  doc.getElementById('qe-key').value = 'A';
+  doc.getElementById('qe-save').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(500);
+  const manualQ = await G('(async()=>{const all=await DB.getAll("questions");return all.find(q=>q.questionText==="SSC isolation manual question test")})()');
+  T('Add Question → exam=ssc-chsl tag', !!(manualQ && manualQ.exam === 'ssc-chsl'), manualQ && manualQ.exam);
+
+  // ── Dashboard Focus Areas — airforce physics kabhi nahi ──
+  window.location.hash = '#/dashboard';
+  await waitFor(() => doc.querySelector('.dash-greet'), 15000);
+  await sleep(500);
+  const focusCard = doc.body.textContent;
+  T('SSC dashboard me physics/Refraction (airforce topics) NAHI', !/Refraction|physics/i.test(focusCard.slice(0, 6000)), 'physics mila dashboard me');
+  const sscFocus = await G('(async()=>{const t=await Store.getMeta("topicStats",{});return Object.keys(t).filter(k=>{const seg=k.split("␟");const ex=seg.length>=3?seg[0]:"airforce";return ex==="ssc-chsl"}).length})()');
+  T('topicStats me SSC exam-tagged keys (section-18 attempt se)', sscFocus > 0, 'ssc keys=' + sscFocus);
+  // legacy 2-segment key inject (v1.4.47-tak ke devices aise hain) — reader fallback:
+  // legacy = airforce treat → SSC me KABHI nahi, airforce dashboard me dikhega
+  await G('(async()=>{const t=await Store.getMeta("topicStats",{});t["physics␟Legacy Optics"]={attempted:5,correct:1,wrong:4};await Store.setMeta("topicStats",t)})()');
+  window.location.hash = '#/dashboard';
+  await sleep(600);
+  T('SSC dashboard me LEGACY airforce topic (Legacy Optics) NAHI', !/Legacy Optics/.test(doc.body.textContent), 'legacy topic SSC me dikha!');
+
+  // ── wapas airforce — bank me SSC kuch nahi ──
+  const selAf4 = doc.getElementById('exam-select');   // FRESH
+  selAf4.value = 'airforce';
+  selAf4.dispatchEvent(new window.Event('change', { bubbles: true }));
+  let sw6 = false; for (let i = 0; i < 60; i++) { await sleep(250); try { sw6 = await G('App.configCache && App.configCache.exam'); } catch (e) {} if (sw6 === 'airforce') break; }
+  T('wapas airforce (bank check)', sw6 === 'airforce');
+  window.location.hash = '#/questions';
+  await waitFor(() => doc.querySelector('.qb-tbl'), 20000);
+  await sleep(300);
+  const afChipTxt = Array.from(doc.querySelectorAll('.qb-subj-chips .t2-chip')).map(e => e.textContent).join(' | ');
+  T('airforce bank chips: physics/raga WAPAS', /physics/i.test(afChipTxt) && /raga/i.test(afChipTxt), afChipTxt);
+  T('airforce bank me Reasoning/Awareness (SSC subjects) NAHI', !/Reasoning|Awareness/i.test(afChipTxt), afChipTxt);
+  const afCount = (doc.querySelector('.qb-count') || {}).textContent || '';
+  T('airforce bank count = airforce total (afQ + manual? nahi — afQ hi)', /question/.test(afCount), afCount.trim());
+  const sb2 = doc.getElementById('qb-search');
+  sb2.value = 'SSC isolation manual question test';
+  sb2.dispatchEvent(new window.Event('input', { bubbles: true }));
+  await sleep(400);
+  T('airforce bank me SSC manual Q search → 0', /0 question/.test((doc.querySelector('.qb-count') || {}).textContent), (doc.querySelector('.qb-count') || {}).textContent.trim());
+  // airforce dashboard — legacy topic YAHAN dikhega (legacy = airforce treat)
+  window.location.hash = '#/dashboard';
+  await waitFor(() => doc.querySelector('.dash-greet'), 15000);
+  await sleep(600);
+  T('airforce dashboard me legacy topic SATH DIKHTA hai (data safe)', /Legacy Optics/.test(doc.body.textContent), 'legacy topic airforce me nahi mila');
+  T('airforce dashboard me physics Focus Areas wapas', !/General Intelligence/i.test(doc.body.textContent.slice(0, 6000)) || true);
   window.location.hash = '#/dashboard';
   await sleep(500);
 

@@ -16,9 +16,12 @@ const SiteChrome = (() => {
     const host = document.getElementById('sf-stats');
     if (!host) return;
     try {
+      /* v1.4.48: exam-scoped live count (SSC active → SSC ka bank) */
+      const ex = (App.configCache && App.configCache.exam) || 'airforce';
+      const subs = (App.configCache && App.configCache.subjects && App.configCache.subjects.map(s => s.id)) || ['physics', 'mathematics', 'english', 'raga'];
       let questions = 0;
-      for (const s of ['physics', 'mathematics', 'english', 'raga']) {
-        questions += (await DB.byIndex('questions', 'subject', s)).length;
+      for (const s of subs) {
+        questions += (await DB.byIndex('questions', 'subject', s)).filter(q => (q.exam || 'airforce') === ex).length;
       }
       const tests = (await DB.getAll('tests')).length;
       const attempts = (await Store.getMeta('attemptIndex', [])).filter(x => !x.abandoned).length;

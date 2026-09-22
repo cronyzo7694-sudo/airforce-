@@ -29,10 +29,38 @@ const Parsers = (() => {
   const isSolHi = s => /^\u0938\u092e\u093e\u0927\u093e\u0928\s*[\u2014\-]\s*\u0939\u093f\u0928\u094d\u0926\u0940/.test(s);
   const isHiAns = s => /^\u0938\u0939\u0940 \u0909\u0924\u094d\u0924\u0930\s*[:\uFF1A]/.test(s);
 
-  function mkQuestion(o) {
+  
+/* v1.4.48 EXAM-AWARE subject aliases — airforce me RAGA combined section ke
+   aliases (reasoning/gk/ga→raga) SIRF airforce import par lagte hain.
+   SSC CHSL me reasoning/gs apne canonical subjects par map hote hain —
+   warna user ki final SSC JSON files ka sab data 'raga' me chala jata! */
+function subjectMapFor(exam) {
+  const ex = exam || (typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce';
+  /* keys NORMALIZED: lowercase + spaces/hyphens/& hataye (lookup bhi same norm) */
+  if (ex === 'ssc-chsl') return {
+    mathematics: 'mathematics', maths: 'mathematics', math: 'mathematics',
+    english: 'english',
+    reasoning: 'reasoning', verbalreasoning: 'reasoning', nonverbalreasoning: 'reasoning',
+    gs: 'gs', generalawareness: 'gs', generalknowledge: 'gs',
+    gk: 'gs', ga: 'gs', currentaffairs: 'gs',
+    reasoningandgeneralawareness: 'gs'
+  };
+  return {
+    physics: 'physics', mathematics: 'mathematics', maths: 'mathematics', math: 'mathematics',
+    english: 'english', raga: 'raga', reasoning: 'raga', verbalreasoning: 'raga',
+    nonverbalreasoning: 'raga', generalawareness: 'raga',
+    generalknowledge: 'raga', gk: 'raga', ga: 'raga', currentaffairs: 'raga',
+    reasoningandgeneralawareness: 'raga'
+  };
+}
+function normSubjectKey(raw) {
+  return String(raw || '').toLowerCase().trim().replace(/&/g, 'and').replace(/[\s\-/]+/g, '');
+}
+
+function mkQuestion(o) {
     const subjectRaw = normKey(o, ['subject', 'subjectid', 'section']);
-    const SUBJECT_MAP = { physics: 'physics', mathematics: 'mathematics', maths: 'mathematics', math: 'mathematics', english: 'english', raga: 'raga', reasoning: 'raga', verbalreasoning: 'raga', nonverbalreasoning: 'raga', generalawareness: 'raga', 'general-awareness': 'raga', generalknowledge: 'raga', gk: 'raga', ga: 'raga', currentaffairs: 'raga', reasoningandgeneralawareness: 'raga', 'general-awareness': 'raga', 'reasoning&generalawareness': 'raga' };
-    const subject = SUBJECT_MAP[String(subjectRaw || '').toLowerCase().trim()] || null;
+    const SUBJECT_MAP = subjectMapFor();
+    const subject = SUBJECT_MAP[normSubjectKey(subjectRaw)] || null;
     const qt = normKey(o, ['question', 'questiontext', 'q', 'stem']);
     // options may come as: bank format [{id:'A',text:'…'},…], plain string array,
     // object {A:…,B:…}, or flat optionA/optionB/… keys

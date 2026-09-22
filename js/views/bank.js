@@ -10,19 +10,24 @@ Views.questionBank = async function (state) {
   const cfg = await App.config();
   const PER = 25;
 
-  const bank = state.bankCache || await Bank.bankStats();
+  /* v1.4.48 EXAM ISOLATION: bank page sirf current exam ka data dikhata hai
+     (SSC me airforce ka physics/PYQ kabhi nahi) + subjects config se dynamic. */
+  const EX = cfg.exam || 'airforce';
+  const SUBJ_IDS = cfg.subjects.map(s => s.id);
+  const bank = state.bankCache || await Bank.bankStats(EX);
   state.bankCache = bank;
-  const bankTotal = ['physics', 'mathematics', 'english', 'raga'].reduce((a, s) => a + ((bank[s] || {}).total || 0), 0);
+  const bankTotal = Object.values(bank).reduce((a, s) => a + (s.total || 0), 0);
 
   // gather candidate rows (filter via indexes where possible)
   let rows = [];
   if (state.subject !== 'all') rows = await DB.byIndex('questions', 'subject', state.subject);
   else {
-    // all subjects — but only the 4 known ones
-    for (const s of ['physics', 'mathematics', 'english', 'raga']) {
+    // all subjects — current exam ke subjects only
+    for (const s of SUBJ_IDS) {
       rows = rows.concat(await DB.byIndex('questions', 'subject', s));
     }
   }
+  rows = rows.filter(r => (r.exam || 'airforce') === EX);
 
   const qstats = await Store.getMeta('qstats', { seen: {}, wrong: {} });
   const seen = qstats.seen || {}, wrong = qstats.wrong || {};
@@ -61,7 +66,7 @@ Views.questionBank = async function (state) {
       <div>
         <h1>Question Bank</h1>
         <div class="qb-subj-chips">
-          ${['physics','mathematics','english','raga'].map(s => `<span class="t2-chip"><i class="subject-dot sd-${s}"></i>${cfg.subjects.find(x => x.id === s)?.name || s} <b>${(bank[s] || {}).total || 0}</b><span class="muted">·${(bank[s] || {}).usable || 0} usable</span></span>`).join('')}
+          ${SUBJ_IDS.map(s => `<span class="t2-chip"><i class="subject-dot sd-${s}"></i>${cfg.subjects.find(x => x.id === s)?.name || s} <b>${(bank[s] || {}).total || 0}</b><span class="muted">·${(bank[s] || {}).usable || 0} usable</span></span>`).join('')}
           <span class="t2-chip t2-more-chip"><b>${bankTotal.toLocaleString('en-IN')}</b> total</span>
         </div>
       </div>
@@ -247,7 +252,7 @@ Views.questionBank = async function (state) {
           <div class="av-modal-title">${isNew ? 'Add Question' : 'Edit Question'}</div>
           <div class="av-modal-body">
             <div class="qe-grid">
-              <label>Subject<select id="qe-subject">${['physics','mathematics','english','raga'].map(s => `<option value="${s}" ${q.subject === s ? 'selected' : ''}>${(cfg.subjects.find(x => x.id === s)?.name) || s}</option>`).join('')}</select></label>
+              <label>Subject<select id="qe-subject">${cfg.subjects.map(s => `<option value="${s.id}" ${q.subject === s.id ? 'selected' : ''}>${s.name}</option>`).join('')}</select></label>
               <label>Chapter<input id="qe-chapter" value="${AVUtil.esc(q.chapter)}"></label>
               <label>Topic<input id="qe-topic" value="${AVUtil.esc(q.topic)}"></label>
               <label>Difficulty<select id="qe-diff">${['easy','medium','hard'].map(d => `<option ${q.difficulty === d ? 'selected' : ''}>${d}</option>`).join('')}</select></label>
@@ -292,7 +297,8 @@ Views.questionBank = async function (state) {
         year: parseInt(AVUtil.$('#qe-year').value) || q.year || null,
         source: q.source || 'Manual entry',
         dupeHash: Bank.dupeId({ subject, questionText, options }),
-        figureBased: false
+        figureBased: false,
+        exam: q.exam || EX   /* v1.4.48: manual add current exam me hi jaata hai */
       };
       const noteText = rec._noteText; delete rec._noteText; delete q._noteText;
       await DB.put('questions', rec);

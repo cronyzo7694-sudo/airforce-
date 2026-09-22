@@ -4,8 +4,9 @@
  * ============================================================ */
 
 Views.importPage = async function () {
-  const bank = await Bank.bankStats();
-  const total = ['physics','mathematics','english','raga'].reduce((a, s) => a + (bank[s]?.total || 0), 0);
+  const cfg = await App.config();   /* v1.4.48: exam-scoped bank stats */
+  const bank = await Bank.bankStats(cfg.exam);
+  const total = Object.values(bank).reduce((a, s) => a + (s.total || 0), 0);
 
   App.page('page page-import', `
     <div class="page-head">

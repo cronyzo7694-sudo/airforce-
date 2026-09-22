@@ -254,8 +254,8 @@ Views.settings = async function () {
   DB.estimateUsage().then(u => {
     AVUtil.$('#st-usage').textContent = `${(u.usage / 1048576).toFixed(1)} MB used of ~${(u.quota / 1048576 / 1024).toFixed(1)} GB available`;
   });
-  const counts = {};
-  for (const s of ['physics', 'mathematics', 'english', 'raga']) counts[s] = await DB.byIndex('questions', 'subject', s).then(r => r.length);
+  const counts = {};   /* v1.4.48: exam-scoped counts (SSC me SSC ka hi bank) */
+  for (const s of cfg.subjects.map(x => x.id)) counts[s] = await DB.byIndex('questions', 'subject', s).then(r => r.filter(q => (q.exam || 'airforce') === (cfg.exam || 'airforce')).length);
   AVUtil.$('#st-qcount').textContent = Object.entries(counts).map(([s, n]) => `${s}: ${n}`).join(' · ') + ` · total ${Object.values(counts).reduce((a, b) => a + b, 0)}`;
 
   AVUtil.$('#st-save-cand').addEventListener('click', async () => {

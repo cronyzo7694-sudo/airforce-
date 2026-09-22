@@ -247,8 +247,12 @@ const Generator = (() => {
       }
       case 'weak-topic': {
         // weight toward topics the candidate performs poorly in
+        /* v1.4.48: topicAcc keys ab 'exam␟subject␟topic' (legacy = subject␟topic);
+           purana w[a.topic] lookup kabhi match hi nahi karta tha — ab sahi key se. */
         const w = qstats.topicAcc || {};
-        ranked = AVUtil.shuffle(p.slice()).sort((a, b) => (w[a.topic] ?? 50) - (w[b.topic] ?? 50));
+        const curEx = (typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce';
+        const accOf = q => w[curEx + '␟' + q.subject + '␟' + q.topic] ?? w[q.subject + '␟' + q.topic] ?? 50;
+        ranked = AVUtil.shuffle(p.slice()).sort((a, b) => accOf(a) - accOf(b));
         break;
       }
       case 'wrong-weighted': {

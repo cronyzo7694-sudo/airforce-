@@ -13,8 +13,12 @@ Views.dashboard = async function () {
   const done = idx.filter(a => !a.abandoned);
   const topicStats = await Store.getMeta('topicStats', {});
   const qstats = await Store.getMeta('qstats', { seen: {} });
-  const seenCount = Object.keys(qstats.seen || {}).length;
-  const bankStats = await Bank.bankStats();
+  /* v1.4.48: coverage exam-scoped — examSeen counter (naye attempts) warna
+     legacy fallback (purana data = sirf airforce tha) */
+  const seenCount = (qstats.examSeen && qstats.examSeen[curExam] !== undefined)
+    ? qstats.examSeen[curExam]
+    : (curExam === 'airforce' ? Object.keys(qstats.seen || {}).length : 0);
+  const bankStats = await Bank.bankStats(curExam);
   const totalQ = Object.values(bankStats).reduce((a, s) => a + s.total, 0);
   const allTests = (await DB.getAll('tests')).filter(t => (t.exam || 'airforce') === curExam);
   const seriesTests = allTests.filter(t => t.series);
@@ -76,7 +80,11 @@ Views.dashboard = async function () {
   const th = cfg.thresholds || { strong: 80, average: 60 };
   const topicRows = [];
   for (const key in topicStats) {
-    const [sid, topic] = key.split('␟');
+    /* v1.4.48: keys ab 'exam␟subject␟topic' — legacy 2-segment = airforce.
+       SSC me airforce ka physics Focus Areas me KABHI nahi aayega. */
+    const seg = key.split('␟');
+    const [ex, sid, topic] = seg.length >= 3 ? seg : ['airforce', seg[0], seg[1]];
+    if (ex !== curExam) continue;
     const s = topicStats[key];
     if (s.attempted < 3) continue;
     topicRows.push({ sid, topic, acc: Math.round((s.correct / s.attempted) * 1000) / 10, attempted: s.attempted });
