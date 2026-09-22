@@ -634,12 +634,10 @@ async function main() {
   const smExam = await waitFor(() => doc.querySelector('.exam-screen'), 15000);
   T('mode ON + exam screen: question text VISIBLE', smExam && doc.querySelector('.exam-screen').textContent.length > 50 && doc.documentElement.classList.contains('sm-dark'));
   T('v1.4.44: cbt screen par site-nav POORA CLEAR (stale topnav kabhi nahi)', doc.getElementById('app-nav').innerHTML.trim() === '' && doc.getElementById('app-bottom').innerHTML.trim() === '');
-  T('exam me menu FAB dikhta hai (mode switch exam me bhi)', (await G('getComputedStyle(document.getElementById("chat-fab")).display')) !== 'none');
-  doc.getElementById('chat-fab').dispatchEvent(new window.Event('click', { bubbles: true }));
-  await sleep(150);
-  doc.querySelector('#app').dispatchEvent(new window.Event('click', { bubbles: true }));
-  await sleep(200);
-  T('menu: bahar click par band', !doc.getElementById('menu-panel').classList.contains('open'));
+  /* v1.4.52: exam/CBT screen pe FAB bhi gayab — poora CBT focus (options pe
+     overlap fix). Exam ke BAAD dashboard pe FAB wapas milta hai (niche test). */
+  T('v1.4.52: exam me menu FAB GAYAB (full CBT focus)', (await G('getComputedStyle(document.getElementById("chat-fab")).display')) === 'none');
+  T('menu panel exam me nahi khula', !doc.getElementById('menu-panel').classList.contains('open'));
   await G('Engine.submitExam(ExamScreen.attempt, ExamScreen.test, "user", Date.now())');
   await G('ExamScreen.finalize("user", true)');
   window.location.hash = '#/dashboard';

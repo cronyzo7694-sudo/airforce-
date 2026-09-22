@@ -84,6 +84,8 @@ button { font-family: inherit; }
   width: 18px; height: 3px; border-radius: 999px; background: var(--navy-2);
 }
 body.exam-on .bottomnav, body.cbt-on .bottomnav { display: none !important; }
+/* v1.4.52: FAB bhi CBT/exam me gayab — options/footer pe chipakta tha */
+body.exam-on #chat-fab, body.cbt-on #chat-fab { display: none !important; }
 /* v1.4.44: cbt/exam screens par topnav/placeholder bhi poora gayab */
 body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 
@@ -121,6 +123,7 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 
 /* ---------------- generic page ---------------- */
 .page { padding: 22px; max-width: 1220px; margin: 0 auto; min-height: calc(100vh - 56px); }
+.page { min-height: calc(100dvh - 56px); }  /* v1.4.52: mobile address-bar pe sahi fit */
 .page-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
 .page-head h1 { margin: 0 0 4px; font-size: 23px; color: var(--navy); }
 .page-head p { margin: 0; }
@@ -573,6 +576,7 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 
 /* exam complete */
 .exam-complete-screen { display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #e9edf3; padding: 20px; }
+.exam-complete-screen { min-height: 100dvh; }  /* v1.4.52 */
 .ec-box { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 36px 40px; text-align: center; max-width: 560px; width: 100%; box-shadow: 0 6px 30px rgba(20, 40, 80, .1); }
 .ec-check {
   width: 64px; height: 64px; margin: 0 auto 14px; border-radius: 50%;
@@ -730,7 +734,7 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
   .xbtn-ghost .ilbl { display: none; }
   .bottomnav { display: grid; }
   .navlinks { display: none; }
-  body { padding-bottom: calc(64px + env(safe-area-inset-bottom, 0px)); }
+  body { padding-bottom: calc(78px + env(safe-area-inset-bottom, 0px)); }  /* v1.4.52: nav + 14px clean gap */
   body.exam-on, body.cbt-on { padding-bottom: 0; }
   .topnav { height: 54px; }
   .xbtn-ghost.icon-only { width: 40px; padding: 8px 0; }
@@ -751,6 +755,7 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
   .palette-panel {
     position: fixed; top: 0; right: 0; bottom: 0; width: min(320px, 84vw); z-index: 95;
     border-radius: 0; max-height: 100vh; transform: translateX(105%); transition: transform .22s ease;
+  max-height: 100dvh;  /* v1.4.52 */
     box-shadow: -6px 0 24px rgba(10, 25, 50, .2); padding-top: 14px;
   }
   .palette-panel.open { transform: none; }
@@ -933,9 +938,12 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
   background: linear-gradient(135deg, var(--navy), var(--navy-2)); color: #fff;
   font-size: 23px; line-height: 1; box-shadow: 0 6px 18px rgba(10, 25, 50, .35);
   display: flex; align-items: center; justify-content: center;
-  transition: transform .12s ease;
+  transition: transform .18s ease, opacity .18s ease;  /* v1.4.52: fade bhi */
 }
 #chat-fab:hover { transform: scale(1.07); }
+/* v1.4.52: footer viewport me ho to FAB hat jaata hai — footer ke links
+   (Follow/DM/Community Chat) ke upar chipak ke unhe cover karta tha mobile pe */
+#chat-fab.fab-hidden { opacity: 0; pointer-events: none; transform: scale(.55); }
 #chat-panel {
   position: fixed; right: 16px; bottom: 80px; z-index: 97;
   width: min(390px, calc(100vw - 28px)); height: min(560px, 72vh);
@@ -1326,6 +1334,7 @@ body.exam-on { overflow: hidden; }
    photo, yellow text) → plain white area with a small old-style Login form
    → blue-grey version footer. Flat colors, thin borders, no gradients. */
 .cbt-login { min-height: 100vh; display: flex; flex-direction: column; background: #fff; font-family: Arial, Helvetica, sans-serif; }
+.cbt-login { min-height: 100dvh; }  /* v1.4.52 */
 .cl-band { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 9px 18px; background: #1d3f7a; color: #fff; min-height: 50px; box-sizing: border-box; }
 .cl-band-left { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 14.5px; letter-spacing: .3px; }
 .cl-band-logo { width: 28px; height: 28px; border-radius: 3px; background: #fff; padding: 2px; }

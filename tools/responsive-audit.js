@@ -1,94 +1,185 @@
-/* ═══ DEEP AUDIT — tap targets, clipping, overlaps, 320px phone ═══ */
+/* v1.4.52 — RESPONSIVE AUDIT: har route × har viewport.
+   Checks per page: horizontal overflow + culprits, footer vs fixed bottomnav
+   overlap (mobile), short-page footer mid-air, JS page errors.
+   Usage: node tools/responsive-audit.js [local|live] */
 const puppeteer = require('puppeteer');
-const BASE = process.env.BASE || 'http://127.0.0.1:8900';
+const BASE = process.argv[2] === 'live' ? 'https://cronyzo7694-sudo.github.io/airforce-/' : 'http://127.0.0.1:8931/';
+const SHOT = process.argv[2] === 'live' ? '/home/user/respLIVE-' : '/home/user/resp-';
+
+const DEVICES = [
+  { name: 'm390', w: 390, h: 844, mob: true },    // iPhone 12/13/14
+  { name: 'm360', w: 360, h: 800, mob: true },    // chhota Android
+  { name: 't768', w: 768, h: 1024, mob: false },  // tablet portrait
+  { name: 'd1365', w: 1365, h: 768, mob: false }  // desktop baseline
+];
+
+let pass = 0, fail = 0, warn = 0;
+const P = (ok, name, extra) => { if (ok) { pass++; console.log('    ✓ ' + name); } else { fail++; console.log('    ✗ ' + name + '  → ' + JSON.stringify(extra)); } };
+const W = (name, extra) => { warn++; console.log('    ⚠ ' + name + (extra ? '  → ' + JSON.stringify(extra) : '')); };
 
 (async () => {
   const browser = await puppeteer.launch({ args: ['--no-sandbox', '--disable-setuid-sandbox', '--hide-scrollbars'] });
   const page = await browser.newPage();
-  await page.setViewport({ width: 375, height: 812, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
-  await page.goto(BASE + '/#/dashboard', { waitUntil: 'networkidle0', timeout: 40000 }).catch(() => {});
-  for (let i = 0; i < 40; i++) {
-    const q = await page.evaluate(() => (typeof DB !== 'undefined' && DB.count) ? DB.count('questions') : 0).catch(() => 0);
-    if (q >= 2500) break; await new Promise(r => setTimeout(r, 1000));
-  }
+  const sleep = ms => new Promise(r => setTimeout(r, ms));
+  let pageErrors = 0;
+  page.on('pageerror', e => { pageErrors++; });
+
+  /* ---------- setup: SSC exam + seed (desktop pe ek baar) ---------- */
+  await page.setViewport({ width: 1365, height: 768 });
+  await page.goto(BASE + '#/dashboard', { waitUntil: 'networkidle2', timeout: 60000 });
+  await sleep(3000);
+  await page.evaluate(() => {
+    const sel = document.getElementById('exam-select');
+    sel.value = 'ssc-chsl';
+    sel.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  await page.waitForFunction(() => typeof App !== 'undefined' && App.configCache && App.configCache.exam === 'ssc-chsl', { timeout: 45000 });
+  await page.waitForFunction(() => Store.getMeta('seeded_ssc-chsl', false).then(v => v === true), { timeout: 45000, polling: 500 });
+  await sleep(2000);
   const testId = await page.evaluate(async () => {
-    const r = await Generator.generate({ name: 'AUD2', type: 'subject', mode: 'practice', sections: [{ subjectId: 'physics', count: 10 }] });
-    return r.test.id;
+    const all = await DB.getAll('tests');
+    const t = all.find(x => x.exam === 'ssc-chsl' && x.series && x.type === 'full') || all.find(x => x.exam === 'ssc-chsl');
+    return t.id;
+  });
+  console.log('━━━ RESPONSIVE AUDIT (' + (process.argv[2] === 'live' ? 'LIVE' : 'local') + ') — SSC test ' + testId + ' ━━━');
+
+  /* helper: ek route visit + audit */
+  async function auditRoute(dev, label, hash, opts) {
+    opts = opts || {};
+    await page.setViewport({ width: dev.w, height: dev.h });
+    await sleep(250);
+    if (opts.beforeNav) await opts.beforeNav();
+    await page.evaluate(h => { location.hash = h; }, hash);
+    await sleep(1700);
+    if (opts.post) await opts.post();
+    await sleep(300);
+
+    const r = await page.evaluate(async () => {
+      const vw = innerWidth, vh = innerHeight;
+      /* ---- culprits: viewport se bahar elements (outermost only) ---- */
+      const off = [];
+      document.querySelectorAll('body *').forEach(el => {
+        const st = getComputedStyle(el);
+        if (st.display === 'none' || st.visibility === 'hidden' || st.position === 'fixed') return;
+        const b = el.getBoundingClientRect();
+        if (b.width < 2 || b.height < 2) return;
+        if (b.right > vw + 2 || b.left < -2) off.push(el);
+      });
+      const offSet = new Set(off);
+      const culprits = [];
+      for (const el of off) {
+        let p = el.parentElement, nested = false;
+        while (p && p !== document.body) { if (offSet.has(p)) { nested = true; break; } p = p.parentElement; }
+        if (nested) continue;
+        const b = el.getBoundingClientRect();
+        culprits.push({
+          el: el.tagName.toLowerCase() + (el.id ? '#' + el.id : '') + (typeof el.className === 'string' && el.className ? '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.') : ''),
+          left: Math.round(b.left), right: Math.round(b.right), w: Math.round(b.width)
+        });
+      }
+      culprits.sort((a, b) => (b.right - b.left) - (a.right - a.left));
+      /* ---- footer / bottomnav geometry (max scroll pe) ---- */
+      window.scrollTo(0, 1e9);
+      /* IntersectionObserver (FAB hide) async fire hota hai — settle ka wait */
+      await new Promise(r => setTimeout(r, 450));
+      const f = document.getElementById('site-footer');
+      const nav = document.querySelector('.bottomnav');
+      const fv = !!(f && getComputedStyle(f).display !== 'none');
+      const nv = !!(nav && getComputedStyle(nav).display !== 'none' && nav.getBoundingClientRect().height > 2);
+      const fr = f ? f.getBoundingClientRect() : null;
+      const nr = nav ? nav.getBoundingClientRect() : null;
+      const appHas = !!(document.getElementById('app') && document.getElementById('app').innerHTML.trim());
+      /* v1.4.52: FAB footer pe chipakta tha — hidden hona chahiye jab footer dikh raha ho */
+      const fabEl = document.getElementById('chat-fab');
+      let fabOk = true, fabInfo = null;
+      if (fabEl && getComputedStyle(fabEl).display !== 'none') {
+        const fst = getComputedStyle(fabEl);
+        const fVis = fv && fr.top < vh;   /* footer viewport me hai */
+        if (fVis) fabOk = fabEl.classList.contains('fab-hidden') && (fst.opacity === '0' || parseFloat(fst.opacity) < 0.1) && fst.pointerEvents === 'none';
+        fabInfo = { hidden: fabEl.classList.contains('fab-hidden'), opacity: fst.opacity, pe: fst.pointerEvents };
+      }
+      const gapNav = (fv && nv) ? Math.round(nr.top - fr.bottom) : null;
+      return {
+        vw, vh, appHas,
+        hOver: Math.max(0, document.documentElement.scrollWidth - vw),
+        culprits: culprits.slice(0, 5),
+        docH: document.documentElement.scrollHeight,
+        fv, nv,
+        fBottom: fr ? Math.round(fr.bottom) : null, fTop: fr ? Math.round(fr.top) : null,
+        nTop: nv ? Math.round(nr.top) : null,
+        footerBehindNav: fv && nv ? fr.bottom > nr.top + 1 : false,
+        footerMidAir: fv && document.documentElement.scrollHeight <= vh + 2
+          ? ((nv ? nr.top : vh) - fr.bottom) : null,
+        fabOk, fabInfo, gapNav
+      };
+    });
+
+    const tag = '[' + dev.name + ' ' + dev.w + '×' + dev.h + '] ' + label;
+    if (!r.appHas) { P(false, tag + ' page rendered', 'empty #app'); return; }
+    P(r.hOver <= 1, tag + ' no horizontal overflow', r.culprits.length ? r.culprits : r.hOver + 'px');
+    if (r.hOver > 1) W(tag + ' overflow culprits', r.culprits);
+    if (r.fv && r.nv) {
+      P(!r.footerBehindNav, tag + ' footer NOT hidden behind bottomnav', 'fBottom ' + r.fBottom + ' vs navTop ' + r.nTop);
+      if (r.footerMidAir != null && r.footerMidAir > 8) W(tag + ' footer mid-air gap above nav (short page)', r.footerMidAir + 'px');
+      /* v1.4.52: footer-nav clean separation (chipakna fix) */
+      P(r.gapNav == null || r.gapNav >= 8, tag + ' footer-bottomnav clean gap (chipka nahi)', (r.gapNav != null ? r.gapNav + 'px' : 'n/a'));
+    } else if (r.fv && !r.nv && r.footerMidAir != null) {
+      P(r.footerMidAir <= 8, tag + ' short page: footer viewport-bottom pe hai', r.footerMidAir + 'px gap');
+    }
+    /* v1.4.52: FAB footer/content ke upar chipka nahi (footer dikh rahe to hidden) */
+    if (r.fabOk !== undefined) P(r.fabOk, tag + ' FAB footer dikhte waqt hidden (links pe chipakta nahi)', r.fabInfo);
+  }
+
+  /* ---------- route list ---------- */
+  const R = [];
+  R.push({ label: 'dashboard', hash: '#/dashboard' });
+  R.push({ label: 'tests', hash: '#/tests' });
+  R.push({ label: 'builder', hash: '#/tests/new' });
+  R.push({ label: 'test-overview', hash: '#/test/' + testId });
+  R.push({ label: 'question-bank', hash: '#/questions' });
+  R.push({ label: 'attempts', hash: '#/attempts' });
+  R.push({ label: 'settings', hash: '#/settings' });
+  R.push({ label: 'import', hash: '#/import' });
+  R.push({ label: 'cbt-login', hash: '#/test/' + testId + '/instructions', pre: () => page.evaluate(id => { sessionStorage.removeItem('examLogin_' + id); sessionStorage.removeItem('insOther_' + id); }, testId) });
+  R.push({ label: 'instructions-1', hash: '#/test/' + testId + '/instructions', pre: () => page.evaluate(id => { sessionStorage.setItem('examLogin_' + id, '1'); sessionStorage.removeItem('insOther_' + id); }, testId) });
+  R.push({ label: 'instructions-OTR', hash: '#/test/' + testId + '/instructions', pre: () => page.evaluate(id => { sessionStorage.setItem('examLogin_' + id, '1'); sessionStorage.setItem('insOther_' + id, '1'); }, testId) });
+
+  /* attempt bana ke result/analysis hash nikaal */
+  const attId = await page.evaluate(async id => {
+    const t = await DB.get('tests', id);
+    const a = Engine.createAttempt(t, 99, Date.now());
+    try { Engine.selectOption(a, (a.sections[a.order ? a.order[0] : Object.keys(a.sections)[0]]).questionIds[0], 1); } catch (e) {}
+    Engine.submitExam(a, t, 'user', Date.now());
+    try { await DB.put('attempts', a); } catch (e) {}
+    return a.id;
+  }, testId);
+  R.push({ label: 'result', hash: '#/attempt/' + attId + '/result' });
+  R.push({ label: 'analysis', hash: '#/attempt/' + attId + '/analysis' });
+
+  /* exam screen (UI flow se — OTR ready) */
+  R.push({
+    label: 'exam-attempt', hash: '#/test/' + testId + '/instructions',
+    pre: () => page.evaluate(id => { sessionStorage.setItem('examLogin_' + id, '1'); sessionStorage.setItem('insOther_' + id, '1'); }, testId),
+    post: async () => {
+      await page.evaluate(() => { const c = document.getElementById('otr-agree'); if (c) { c.checked = true; c.dispatchEvent(new Event('change', { bubbles: true })); } });
+      await page.evaluate(() => { const b = document.getElementById('otr-begin'); if (b && !b.disabled) b.click(); });
+      await sleep(2500);
+    }
   });
 
-  const routes = ['/dashboard', '/tests', '/tests/new', '/questions', '/attempts', '/import', '/settings',
-    '/test/' + testId + '/instructions', '/test/' + testId];
-  const issues = [];
-  const log = (...a) => console.log(...a);
-
-  for (const vp of [{ w: 375, n: '375' }, { w: 320, n: '320' }]) {
-    await page.setViewport({ width: vp.w, height: 812, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
-    log(`\n═══ ${vp.n}px ═══`);
-    for (const r of routes) {
-      await page.goto(BASE + '/#' + r, { waitUntil: 'networkidle0', timeout: 30000 }).catch(() => {});
-      await new Promise(s => setTimeout(s, r === '/questions' ? 2500 : 1100));
-      const found = await page.evaluate(() => {
-        const out = [];
-        const iw = window.innerWidth;
-        if (document.documentElement.scrollWidth > iw + 1) out.push('H-OVERFLOW doc ' + document.documentElement.scrollWidth);
-        // out-of-view visible elements (scrollable containers ke andar wale skip)
-        document.querySelectorAll('#app *, #app-nav *, .topnav *').forEach(el => {
-          let p = el.parentElement, inScroller = false;
-          while (p && p !== document.body) {
-            const ps = getComputedStyle(p);
-            if ((ps.overflowX === 'auto' || ps.overflowX === 'scroll')) { inScroller = true; break; }
-            p = p.parentElement;
-          }
-          if (inScroller) return;
-          const st = getComputedStyle(el);
-          if (st.display === 'none' || st.visibility === 'hidden' || st.position === 'fixed') return;
-          if (st.transform && st.transform !== 'none') return; // drawers
-          const rc = el.getBoundingClientRect();
-          if (rc.width > 4 && (rc.right > iw + 3 || rc.left < -3)) out.push(`OOV ${el.tagName.toLowerCase()}.${String(el.className).split(' ')[0]} [${Math.round(rc.left)}..${Math.round(rc.right)}]`);
-        });
-        // tiny tap targets (interactive)
-        document.querySelectorAll('#app button, #app a, #app input, #app select, .bottomnav a').forEach(el => {
-          const st = getComputedStyle(el);
-          if (st.display === 'none' || st.visibility === 'hidden') return;
-          const rc = el.getBoundingClientRect();
-          if (rc.width > 0 && rc.height > 0 && rc.height < 30 && !el.closest('.bn-tab')) out.push(`TINY-TAP ${el.tagName.toLowerCase()}.${String(el.className).split(' ')[0]} h=${Math.round(rc.height)}`);
-        });
-        // text clipping (block elements jahan text kata hua)
-        document.querySelectorAll('#app h1, #app h2, #app h3, .t2-name, .stat-val, .dash-greet *').forEach(el => {
-          if (el.scrollWidth > el.clientWidth + 3 && getComputedStyle(el).textOverflow !== 'ellipsis' && getComputedStyle(el).overflowX !== 'auto') {
-            out.push(`CLIP ${el.tagName.toLowerCase()}.${String(el.className).split(' ')[0]} ${el.scrollWidth}>${el.clientWidth}`);
-          }
-        });
-        return out;
-      });
-      found.forEach(f => { issues.push(`[${vp.n}${r}] ${f}`); log(`  ⚠ [${vp.n} ${r}] ${f}`); });
+  /* ---------- RUN matrix ---------- */
+  for (const dev of DEVICES) {
+    console.log('─── device ' + dev.name + ' (' + dev.w + '×' + dev.h + ') ───');
+    for (const route of R) {
+      pageErrors = 0;
+      await auditRoute(dev, route.label, route.hash, { beforeNav: route.pre, post: route.post });
+      if (pageErrors > 0) W('[' + dev.name + '] ' + route.label + ' JS errors', pageErrors);
+      /* mobile screenshots (sirf 390) — user ke liye */
+      if (dev.mob && dev.w === 390) await page.screenshot({ path: SHOT + route.label + '-390.png' });
     }
   }
 
-  // exam + result + analysis 375px
-  await page.setViewport({ width: 375, height: 812, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
-  await page.goto(BASE + '/#/test/' + testId + '/instructions', { waitUntil: 'networkidle0' }).catch(() => {});
-  await new Promise(s => setTimeout(s, 1500));
-  await page.evaluate(() => { const b = document.querySelector('.cl-card button, .cl-card .btn'); if (b) b.click(); });
-  await new Promise(s => setTimeout(s, 1200));
-  await page.evaluate(() => { const c = document.getElementById('ins-agree'); if (c) { c.checked = true; c.dispatchEvent(new Event('change', { bubbles: true })); } const b = document.getElementById('ins-begin'); if (b) b.click(); });
-  await new Promise(s => setTimeout(s, 2500));
-  let found = await page.evaluate(() => {
-    const out = []; const iw = window.innerWidth;
-    document.querySelectorAll('.exam-header *, .exam-bottom *').forEach(el => {
-      const st = getComputedStyle(el);
-      if (st.display === 'none' || st.visibility === 'hidden') return;
-      const rc = el.getBoundingClientRect();
-      if (rc.width > 4 && (rc.right > iw + 3 || rc.left < -3)) out.push(`EXAM-OOV ${el.tagName.toLowerCase()}.${String(el.className).split(' ')[0]} [${Math.round(rc.left)}..${Math.round(rc.right)}]`);
-    });
-    // bottom bar buttons overlap check
-    const btns = Array.from(document.querySelectorAll('.exam-bottom .xbtn')).filter(b => getComputedStyle(b).display !== 'none');
-    btns.forEach((b, i) => { if (btns[i + 1]) { const r1 = b.getBoundingClientRect(), r2 = btns[i + 1].getBoundingClientRect(); if (r2.left < r1.right - 2) out.push('EXAM-BTN OVERLAP'); } });
-    return out;
-  });
-  found.forEach(f => { issues.push('[exam] ' + f); log('  ⚠ [exam]', f); });
-
-  console.log('\n════ TOTAL DEEP ISSUES:', issues.length, '════');
+  console.log('━━━ RESPONSIVE AUDIT RESULT: ' + pass + ' passed, ' + fail + ' failed, ' + warn + ' warnings ━━');
   await browser.close();
-  process.exit(0);
-})().catch(e => { console.error('CRASH', e); process.exit(1); });
+  process.exit(fail ? 1 : 0);
+})().catch(e => { console.error('AUDIT CRASH', e); process.exit(2); });

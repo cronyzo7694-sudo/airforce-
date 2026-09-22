@@ -149,11 +149,27 @@ const SiteChrome = (() => {
     return closeMenu;
   }
 
+  /* v1.4.52: footer viewport me aa jaye to FAB fade-out ho jaata hai —
+     mobile pe FAB footer ke links (Follow · DM / Community Chat) ke upar
+     chipak ke unhe cover karta tha. Footer nikle → FAB wapas. */
+  function initFabAwayFromFooter() {
+    try {
+      const fab = document.getElementById('chat-fab');
+      const footer = document.getElementById('site-footer');
+      if (!fab || !footer || !('IntersectionObserver' in window)) return;
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(en => fab.classList.toggle('fab-hidden', en.isIntersecting));
+      }, { threshold: 0.01 });
+      io.observe(footer);
+    } catch (e) { /* bonus feature — kabhi block nahi */ }
+  }
+
   let _closeMenu = null;
   function init() {
     loadLocalStats();
     _closeMenu = initMenu();
     initChat();
+    initFabAwayFromFooter();
   }
 
   return { init, closeMenu: () => { if (_closeMenu) _closeMenu(); } };
