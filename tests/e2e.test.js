@@ -684,6 +684,95 @@ async function main() {
   window.location.hash = '#/dashboard';
   await sleep(500);
 
+  /* ---------- 18. SSC CHSL FULL EXAM FLOW (v1.4.47) — series → instructions
+     → begin → answer → submit → result, +2/−0.5 scoring EXACT verify ---------- */
+  console.log('\n━━━ E2E · SSC full exam flow (+2/−0.5 scoring)');
+  const selSsc2 = doc.getElementById('exam-select');   // FRESH (airforce dashboard ke baad)
+  selSsc2.value = 'ssc-chsl';
+  selSsc2.dispatchEvent(new window.Event('change', { bubbles: true }));
+  let sw3 = false; for (let i = 0; i < 60; i++) { await sleep(250); try { sw3 = await G('App.configCache && App.configCache.exam'); } catch (e) {} if (sw3 === 'ssc-chsl') break; }
+  T('SSC switch (full-flow ke liye)', sw3 === 'ssc-chsl');
+
+  // SSC series (32/subject → 1 full mock banega) — exam-scoped tests
+  const sscTests = await G('(async()=>{const all=await DB.getAll("tests");return all.filter(t=>t.exam==="ssc-chsl")})()');
+  T('SSC tests exam-scoped bane (>=2: series mock + REASON TEST)', sscTests.length >= 2, 'got ' + sscTests.length);
+  const sscMock = sscTests.find(t => t.series && t.sections.length === 4) || sscTests.find(t => t.sections.length === 4);
+  T('SSC full mock series me mila', !!sscMock, sscTests.map(t => t.name).join(' | '));
+  T('SSC mock exam-aware naam ("SSC CHSL")', !!sscMock && /SSC CHSL/.test(sscMock.name), sscMock && sscMock.name);
+  T('SSC mock 100 Q (25×4)', !!sscMock && sscMock.sections.reduce((n, s) => n + s.questionIds.length, 0) === 100);
+
+  // instructions page
+  window.location.hash = '#/test/' + sscMock.id + '/instructions';
+  await waitFor(() => doc.querySelector('.cbt-instructions') || doc.getElementById('login-btn'), 15000);
+  if (doc.getElementById('login-btn')) {   // candidate-login stage (same CBT flow)
+    doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
+    await waitFor(() => doc.querySelector('.cbt-instructions'), 8000);
+  }
+  T('SSC instructions page render', !!doc.querySelector('.cbt-instructions') && doc.body.textContent.includes('INSTRUCTIONS TO CANDIDATES'));
+  T('SSC marking scheme −0.5 visible', doc.body.textContent.includes('0.5'));
+  T('begin disabled until declaration', doc.getElementById('ins-begin').disabled === true);
+  doc.getElementById('ins-agree').checked = true;
+  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  for (let i = 0; i < 40; i++) { await sleep(150); if (window.location.hash.includes('/attempt')) break; }
+  T('SSC attempt route entered', window.location.hash.includes('/attempt'), window.location.hash);
+  await waitFor(() => doc.querySelector('.exam-screen'), 15000);
+
+  // exam screen — SSC layout
+  const sscAtt = await G('ExamScreen.attempt');
+  T('SSC attempt 4 sections (reasoning/gs/maths/english)', sscAtt && ['reasoning','gs','mathematics','english'].every(s => sscAtt.sections[s]) && Object.keys(sscAtt.sections).length === 4);
+  T('SSC attempt 100 questions', (await G('Engine.allQuestionIds(ExamScreen.attempt).length')) === 100);
+  T('SSC Tier-I: sab sections unlocked (free navigation)', ['reasoning','gs','mathematics','english'].every(x => sscAtt.sections[x].state === 'ACTIVE'), Object.keys(sscAtt.sections).map(k => k + ':' + sscAtt.sections[k].state).join(' '));
+  T('current section reasoning (SSC order)', sscAtt.currentSectionId === 'reasoning');
+  T('SSC palette 25 Q (reasoning)', doc.querySelectorAll('.palette-grid .qbtn').length === 25);
+  T('SSC section submit button available', !!doc.querySelector('.exam-header #x-submit'));
+  const sscTimerTxt = (doc.getElementById('x-timer') || {}).textContent || '';
+  T('SSC timer ticking (global 60 min)', /Time Left/.test(sscTimerTxt), sscTimerTxt.slice(0, 40));
+
+  // scoring: 10 SAHI + 5 GALAT (deterministic) → +20 −2.5 = 17.5
+  await G('(async()=>{ const att = ExamScreen.attempt; const ids = att.sections.reasoning.questionIds.slice(0, 15);' +
+    ' const qs = await DB.getMany("questions", ids);' +
+    ' for (let i = 0; i < qs.length; i++) { const wrongOpt = qs[i].correctAnswer === "A" ? "B" : "A";' +
+    '   Engine.selectOption(att, qs[i].id, i < 10 ? qs[i].correctAnswer : wrongOpt); }' +
+    ' await ExamScreen.persist(); })()');
+  const respCount = await G('Object.values(ExamScreen.attempt.responses).filter(r => r.state === "ANSWERED").length');
+  T('15 ANSWERED (10 correct + 5 wrong)', respCount === 15, 'got ' + respCount);
+
+  // submit all 4 sections + finalize
+  const sscTestRef = await G('DB.get("tests", "' + sscMock.id + '")');
+  window.TESTREF2 = sscTestRef;
+  const sscAttId = sscAtt.id;
+  for (const sid of ['reasoning', 'gs', 'mathematics', 'english']) {
+    await G('Engine.submitSection(ExamScreen.attempt, TESTREF2, "' + sid + '", "user", Date.now())');
+    await G('ExamScreen.persist()');
+  }
+  await G('ExamScreen.finalize("user", true)');
+  await sleep(600);
+  const sscFin = await G('DB.get("attempts", "' + sscAttId + '")');
+  T('SSC attempt completed + evaluated', !!(sscFin && sscFin.completed && sscFin.result));
+  T('SSC score EXACT: 10×2 − 5×0.5 = 17.5', sscFin && sscFin.result.score === 17.5, 'got ' + (sscFin && sscFin.result.score));
+  T('SSC maxScore 200 (100 Q × 2)', sscFin && sscFin.result.maxScore === 200, 'got ' + (sscFin && sscFin.result.maxScore));
+  T('SSC attempt exam-tagged', (sscFin && sscFin.exam) === 'ssc-chsl');
+
+  // result page + SSC cutoff card
+  window.location.hash = '#/attempt/' + sscAttId + '/result';
+  await sleep(500);
+  T('SSC result page renders', doc.body.textContent.includes('TEST COMPLETED'));
+  T('SSC cutoff card renders', !!doc.getElementById('cutoff-card'), 'cutoff-card missing');
+  const sscIdx = await G('(async()=>{const idx=await Store.getMeta("attemptIndex",[]);return (Array.isArray(idx)?idx:[]).filter(a => a.exam === "ssc-chsl").length})()');
+  T('attempt index SSC entry (exam-scoped)', sscIdx === 1, 'got ' + sscIdx);
+
+  // wapas airforce — SSC data kabhi dikhega nahi
+  const selAf3 = doc.getElementById('exam-select');   // FRESH
+  selAf3.value = 'airforce';
+  selAf3.dispatchEvent(new window.Event('change', { bubbles: true }));
+  let sw4 = false; for (let i = 0; i < 60; i++) { await sleep(250); try { sw4 = await G('App.configCache && App.configCache.exam'); } catch (e) {} if (sw4 === 'airforce') break; }
+  T('flow ke baad wapas airforce', sw4 === 'airforce');
+  const afQ3 = await G('(async()=>{const all=await DB.getAll("questions");return all.filter(q=>(q.exam||"airforce")==="airforce").length})()');
+  T('airforce bank ab bhi EXACT same (end-to-end zero contamination)', afQ3 === afQ, afQ + ' vs ' + afQ3);
+  window.location.hash = '#/dashboard';
+  await sleep(500);
+
   /* ---------- summary ---------- */
   console.log(`\n════════════════════════════════════════`);
   console.log(`  E2E RESULT: ${passed} passed, ${failed} failed`);

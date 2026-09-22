@@ -34,7 +34,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Spot the Error"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -74,7 +74,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Synonyms"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -114,7 +114,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Antonyms"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -154,7 +154,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Idioms & Phrases"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -194,7 +194,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "One Word Substitution"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -234,7 +234,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Fill in the Blanks"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -274,7 +274,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Active/Passive Voice"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -314,7 +314,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Direct/Indirect Speech"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -354,7 +354,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Spelling"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -394,7 +394,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Cloze Test"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -434,7 +434,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Error Spotting"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -474,7 +474,807 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Vocabulary"
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_013",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: ABUNDANT",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: ABUNDANT",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Scarce"
+   },
+   {
+    "id": "B",
+    "text": "Meagre"
+   },
+   {
+    "id": "C",
+    "text": "Plentiful"
+   },
+   {
+    "id": "D",
+    "text": "Rare"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Abundant means the same as Plentiful.",
+  "explanationHi": "Abundant = Plentiful",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_014",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: BRAVE",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: BRAVE",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Weak"
+   },
+   {
+    "id": "B",
+    "text": "Timid"
+   },
+   {
+    "id": "C",
+    "text": "Valiant"
+   },
+   {
+    "id": "D",
+    "text": "Cowardly"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Brave means the same as Valiant.",
+  "explanationHi": "Brave = Valiant",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_015",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: CANDID",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: CANDID",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Secretive"
+   },
+   {
+    "id": "B",
+    "text": "Deceitful"
+   },
+   {
+    "id": "C",
+    "text": "Frank"
+   },
+   {
+    "id": "D",
+    "text": "Shy"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Candid means the same as Frank.",
+  "explanationHi": "Candid = Frank",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_016",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: DILIGENT",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: DILIGENT",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Hardworking"
+   },
+   {
+    "id": "B",
+    "text": "Idle"
+   },
+   {
+    "id": "C",
+    "text": "Careless"
+   },
+   {
+    "id": "D",
+    "text": "Lazy"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Diligent means the same as Hardworking.",
+  "explanationHi": "Diligent = Hardworking",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_017",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: ELOQUENT",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: ELOQUENT",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Inarticulate"
+   },
+   {
+    "id": "B",
+    "text": "Dull"
+   },
+   {
+    "id": "C",
+    "text": "Silent"
+   },
+   {
+    "id": "D",
+    "text": "Fluent"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Eloquent means the same as Fluent.",
+  "explanationHi": "Eloquent = Fluent",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_018",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: FRUGAL",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: FRUGAL",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Thrifty"
+   },
+   {
+    "id": "B",
+    "text": "Lavish"
+   },
+   {
+    "id": "C",
+    "text": "Wasteful"
+   },
+   {
+    "id": "D",
+    "text": "Extravagant"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Frugal means the same as Thrifty.",
+  "explanationHi": "Frugal = Thrifty",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_019",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: GENUINE",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: GENUINE",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "False"
+   },
+   {
+    "id": "B",
+    "text": "Counterfeit"
+   },
+   {
+    "id": "C",
+    "text": "Fake"
+   },
+   {
+    "id": "D",
+    "text": "Authentic"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Genuine means the same as Authentic.",
+  "explanationHi": "Genuine = Authentic",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_020",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: HOSTILE",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: HOSTILE",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Unfriendly"
+   },
+   {
+    "id": "B",
+    "text": "Kind"
+   },
+   {
+    "id": "C",
+    "text": "Warm"
+   },
+   {
+    "id": "D",
+    "text": "Friendly"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Hostile means the same as Unfriendly.",
+  "explanationHi": "Hostile = Unfriendly",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_021",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: IMMACULATE",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: IMMACULATE",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Dirty"
+   },
+   {
+    "id": "B",
+    "text": "Messy"
+   },
+   {
+    "id": "C",
+    "text": "Spotless"
+   },
+   {
+    "id": "D",
+    "text": "Stained"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Immaculate means the same as Spotless.",
+  "explanationHi": "Immaculate = Spotless",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_022",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: KEEN",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: KEEN",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Apathetic"
+   },
+   {
+    "id": "B",
+    "text": "Dull"
+   },
+   {
+    "id": "C",
+    "text": "Eager"
+   },
+   {
+    "id": "D",
+    "text": "Indifferent"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Keen means the same as Eager.",
+  "explanationHi": "Keen = Eager",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_023",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: LUCID",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: LUCID",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Confusing"
+   },
+   {
+    "id": "B",
+    "text": "Clear"
+   },
+   {
+    "id": "C",
+    "text": "Vague"
+   },
+   {
+    "id": "D",
+    "text": "Obscure"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Lucid means the same as Clear.",
+  "explanationHi": "Lucid = Clear",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_024",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: METICULOUS",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: METICULOUS",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Careful"
+   },
+   {
+    "id": "B",
+    "text": "Sloppy"
+   },
+   {
+    "id": "C",
+    "text": "Careless"
+   },
+   {
+    "id": "D",
+    "text": "Hasty"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Meticulous means the same as Careful.",
+  "explanationHi": "Meticulous = Careful",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_025",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: NAIVE",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: NAIVE",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Shrewd"
+   },
+   {
+    "id": "B",
+    "text": "Wise"
+   },
+   {
+    "id": "C",
+    "text": "Innocent"
+   },
+   {
+    "id": "D",
+    "text": "Cunning"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Naive means the same as Innocent.",
+  "explanationHi": "Naive = Innocent",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_026",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: OBSOLETE",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: OBSOLETE",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "New"
+   },
+   {
+    "id": "B",
+    "text": "Modern"
+   },
+   {
+    "id": "C",
+    "text": "Outdated"
+   },
+   {
+    "id": "D",
+    "text": "Current"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Obsolete means the same as Outdated.",
+  "explanationHi": "Obsolete = Outdated",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_027",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: PLACID",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: PLACID",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Turbulent"
+   },
+   {
+    "id": "B",
+    "text": "Agitated"
+   },
+   {
+    "id": "C",
+    "text": "Stormy"
+   },
+   {
+    "id": "D",
+    "text": "Calm"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Placid means the same as Calm.",
+  "explanationHi": "Placid = Calm",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_028",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: QUAINT",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: QUAINT",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Plain"
+   },
+   {
+    "id": "B",
+    "text": "Charming"
+   },
+   {
+    "id": "C",
+    "text": "Ugly"
+   },
+   {
+    "id": "D",
+    "text": "Modern"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Quaint means the same as Charming.",
+  "explanationHi": "Quaint = Charming",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_029",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: ROBUST",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: ROBUST",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Weak"
+   },
+   {
+    "id": "B",
+    "text": "Delicate"
+   },
+   {
+    "id": "C",
+    "text": "Strong"
+   },
+   {
+    "id": "D",
+    "text": "Fragile"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Robust means the same as Strong.",
+  "explanationHi": "Robust = Strong",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_030",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: SCENIC",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: SCENIC",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Picturesque"
+   },
+   {
+    "id": "B",
+    "text": "Dull"
+   },
+   {
+    "id": "C",
+    "text": "Ugly"
+   },
+   {
+    "id": "D",
+    "text": "Plain"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Scenic means the same as Picturesque.",
+  "explanationHi": "Scenic = Picturesque",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_031",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: TENACIOUS",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: TENACIOUS",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Yielding"
+   },
+   {
+    "id": "B",
+    "text": "Weak"
+   },
+   {
+    "id": "C",
+    "text": "Persistent"
+   },
+   {
+    "id": "D",
+    "text": "Fickle"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Tenacious means the same as Persistent.",
+  "explanationHi": "Tenacious = Persistent",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_english_032",
+  "subject": "english",
+  "subjectName": "English Language",
+  "chapter": "Synonyms",
+  "topic": "Vocabulary",
+  "difficulty": "easy",
+  "questionText": "Choose the word most similar in meaning to: UTMOST",
+  "questionTextHi": "इस शब्द का समानार्थक चुनें: UTMOST",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Greatest"
+   },
+   {
+    "id": "B",
+    "text": "Least"
+   },
+   {
+    "id": "C",
+    "text": "Minimal"
+   },
+   {
+    "id": "D",
+    "text": "Lowest"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Utmost means the same as Greatest.",
+  "explanationHi": "Utmost = Greatest",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"

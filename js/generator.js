@@ -400,17 +400,37 @@ const Generator = (() => {
      coaching-style test series, ready in the library. */
   async function buildSeries(opts) {
     const o = Object.assign({ fullMocks: 5, perSubject: 2 }, opts || {});
-    const C = await Store.getSetting('config', null) || EXAM_CONFIG;
-
+    /* v1.4.47: series SIRF current exam ke REBUILT config se. Raw saved
+       'config' partial hota hai — non-airforce exams me subjects overrides
+       me rehte hain (flat me nahi) → C.subjects undefined crash; aur purane
+       exam ka saved config mix ho sakta tha (SSC switch pe airforce subjects
+       → pools khali → full mock KABHI nahi banta tha). */
+    const seriesExam = (typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce';
+    let C;
+    if (typeof App !== 'undefined' && App.configCache && App.configCache.subjects) {
+      C = App.configCache;                                  // browser: rebuilt current-exam config
+    } else if (typeof EXAM_CONFIGS !== 'undefined' && EXAM_CONFIGS[seriesExam]) {
+      C = EXAM_CONFIGS[seriesExam];
+    } else if (typeof Store !== 'undefined') {
+      C = (await Store.getSetting('config', null)) || EXAM_CONFIG;   // legacy/Node
+    } else {
+      C = EXAM_CONFIG;
+    }
+    if (!C || !C.subjects) C = (typeof EXAM_CONFIGS !== 'undefined' && EXAM_CONFIGS[seriesExam]) || EXAM_CONFIG;
+    if (C.exam !== seriesExam && typeof EXAM_CONFIGS !== 'undefined' && EXAM_CONFIGS[seriesExam]) {
+      C = EXAM_CONFIGS[seriesExam];                          // safety: exam mismatch kabhi mix nahi
+    }
     const pools = {};
     for (const s of C.subjects) pools[s.id] = await poolFor({ subjectId: s.id });
     const existing = await DB.getAll('tests');
     const plan = planSeries(pools, existing, { fullMocks: o.fullMocks, perSubject: o.perSubject });
 
-    // continue numbering from existing series tests
+    // continue numbering from existing series tests — v1.4.47: EXAM-SCOPED
+    // (SSC ka "Mathematics Test 1" airforce ke 5 tests ke baad "Test 6" nahi)
     let fullCount = 0; const subCount = {};
     existing.forEach(t => {
       if (!t.series) return;
+      if ((t.exam || 'airforce') !== seriesExam) return;
       if (t.type === 'full') fullCount++;
       else if (t.type === 'subject' && t.sections[0]) subCount[t.sections[0].subjectId] = (subCount[t.sections[0].subjectId] || 0) + 1;
     });
@@ -425,7 +445,6 @@ const Generator = (() => {
       });
       /* v1.4.46: exam-aware series naam — SSC ka mock airforce ke "Full Mock
          Test N" se naam-match isolation kabhi nahi todega */
-      const seriesExam = (C && C.exam) || (typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce';
       const mockLabel = seriesExam === 'ssc-chsl' ? `SSC CHSL Mock Test ${fullCount + i + 1}` : `Full Mock Test ${fullCount + i + 1}`;
       const t = assembleTest({ name: mockLabel, type: 'full', mode: 'exam' }, sections, C, now - k++);
       t.series = true; t.seriesNo = fullCount + i + 1;

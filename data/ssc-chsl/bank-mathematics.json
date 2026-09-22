@@ -34,7 +34,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Number System"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -74,7 +74,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Ratio & Proportion"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -114,7 +114,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Average"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -154,7 +154,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Profit & Loss"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -194,7 +194,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Simple Interest"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -234,7 +234,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Time & Work"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -274,7 +274,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Speed Time Distance"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -314,7 +314,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Algebra"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -354,7 +354,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Geometry"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -394,7 +394,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Mensuration"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -434,7 +434,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Percentage"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -474,7 +474,807 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Number System"
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_013",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "30% of 250 is:",
+  "questionTextHi": "250 का 30% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "126"
+   },
+   {
+    "id": "B",
+    "text": "75"
+   },
+   {
+    "id": "C",
+    "text": "67"
+   },
+   {
+    "id": "D",
+    "text": "99"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "30% of 250 = 30/100 × 250 = 75",
+  "explanationHi": "250 का 30% = 30/100 × 250 = 75",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_014",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "10% of 890 is:",
+  "questionTextHi": "890 का 10% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "137"
+   },
+   {
+    "id": "B",
+    "text": "89"
+   },
+   {
+    "id": "C",
+    "text": "60"
+   },
+   {
+    "id": "D",
+    "text": "111"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "10% of 890 = 10/100 × 890 = 89",
+  "explanationHi": "890 का 10% = 10/100 × 890 = 89",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_015",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "15% of 800 is:",
+  "questionTextHi": "800 का 15% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "144"
+   },
+   {
+    "id": "B",
+    "text": "172"
+   },
+   {
+    "id": "C",
+    "text": "120"
+   },
+   {
+    "id": "D",
+    "text": "109"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "15% of 800 = 15/100 × 800 = 120",
+  "explanationHi": "800 का 15% = 15/100 × 800 = 120",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_016",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "25% of 440 is:",
+  "questionTextHi": "440 का 25% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "99"
+   },
+   {
+    "id": "B",
+    "text": "110"
+   },
+   {
+    "id": "C",
+    "text": "157"
+   },
+   {
+    "id": "D",
+    "text": "127"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "25% of 440 = 25/100 × 440 = 110",
+  "explanationHi": "440 का 25% = 25/100 × 440 = 110",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_017",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "10% of 640 is:",
+  "questionTextHi": "640 का 10% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "41"
+   },
+   {
+    "id": "B",
+    "text": "105"
+   },
+   {
+    "id": "C",
+    "text": "64"
+   },
+   {
+    "id": "D",
+    "text": "81"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "10% of 640 = 10/100 × 640 = 64",
+  "explanationHi": "640 का 10% = 10/100 × 640 = 64",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_018",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "25% of 930 is:",
+  "questionTextHi": "930 का 25% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "271"
+   },
+   {
+    "id": "B",
+    "text": "232"
+   },
+   {
+    "id": "C",
+    "text": "240"
+   },
+   {
+    "id": "D",
+    "text": "219"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "25% of 930 = 25/100 × 930 = 232",
+  "explanationHi": "930 का 25% = 25/100 × 930 = 232",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_019",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "5% of 920 is:",
+  "questionTextHi": "920 का 5% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "34"
+   },
+   {
+    "id": "B",
+    "text": "87"
+   },
+   {
+    "id": "C",
+    "text": "46"
+   },
+   {
+    "id": "D",
+    "text": "58"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "5% of 920 = 5/100 × 920 = 46",
+  "explanationHi": "920 का 5% = 5/100 × 920 = 46",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_020",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "10% of 820 is:",
+  "questionTextHi": "820 का 10% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "128"
+   },
+   {
+    "id": "B",
+    "text": "105"
+   },
+   {
+    "id": "C",
+    "text": "82"
+   },
+   {
+    "id": "D",
+    "text": "63"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "10% of 820 = 10/100 × 820 = 82",
+  "explanationHi": "820 का 10% = 10/100 × 820 = 82",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_021",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "45% of 550 is:",
+  "questionTextHi": "550 का 45% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "247"
+   },
+   {
+    "id": "B",
+    "text": "307"
+   },
+   {
+    "id": "C",
+    "text": "236"
+   },
+   {
+    "id": "D",
+    "text": "263"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "45% of 550 = 45/100 × 550 = 247",
+  "explanationHi": "550 का 45% = 45/100 × 550 = 247",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_022",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "5% of 290 is:",
+  "questionTextHi": "290 का 5% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "-10"
+   },
+   {
+    "id": "B",
+    "text": "68"
+   },
+   {
+    "id": "C",
+    "text": "14"
+   },
+   {
+    "id": "D",
+    "text": "40"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "5% of 290 = 5/100 × 290 = 14",
+  "explanationHi": "290 का 5% = 5/100 × 290 = 14",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_023",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "15% of 790 is:",
+  "questionTextHi": "790 का 15% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "165"
+   },
+   {
+    "id": "B",
+    "text": "118"
+   },
+   {
+    "id": "C",
+    "text": "104"
+   },
+   {
+    "id": "D",
+    "text": "134"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "15% of 790 = 15/100 × 790 = 118",
+  "explanationHi": "790 का 15% = 15/100 × 790 = 118",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_024",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "5% of 910 is:",
+  "questionTextHi": "910 का 5% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "96"
+   },
+   {
+    "id": "B",
+    "text": "19"
+   },
+   {
+    "id": "C",
+    "text": "45"
+   },
+   {
+    "id": "D",
+    "text": "68"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "5% of 910 = 5/100 × 910 = 45",
+  "explanationHi": "910 का 5% = 5/100 × 910 = 45",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_025",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "10% of 980 is:",
+  "questionTextHi": "980 का 10% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "98"
+   },
+   {
+    "id": "B",
+    "text": "86"
+   },
+   {
+    "id": "C",
+    "text": "141"
+   },
+   {
+    "id": "D",
+    "text": "123"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "10% of 980 = 10/100 × 980 = 98",
+  "explanationHi": "980 का 10% = 10/100 × 980 = 98",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_026",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "5% of 670 is:",
+  "questionTextHi": "670 का 5% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "89"
+   },
+   {
+    "id": "B",
+    "text": "33"
+   },
+   {
+    "id": "C",
+    "text": "62"
+   },
+   {
+    "id": "D",
+    "text": "8"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "5% of 670 = 5/100 × 670 = 33",
+  "explanationHi": "670 का 5% = 5/100 × 670 = 33",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_027",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "5% of 450 is:",
+  "questionTextHi": "450 का 5% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "59"
+   },
+   {
+    "id": "B",
+    "text": "22"
+   },
+   {
+    "id": "C",
+    "text": "0"
+   },
+   {
+    "id": "D",
+    "text": "34"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "5% of 450 = 5/100 × 450 = 22",
+  "explanationHi": "450 का 5% = 5/100 × 450 = 22",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_028",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "35% of 950 is:",
+  "questionTextHi": "950 का 35% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "371"
+   },
+   {
+    "id": "B",
+    "text": "312"
+   },
+   {
+    "id": "C",
+    "text": "354"
+   },
+   {
+    "id": "D",
+    "text": "332"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "35% of 950 = 35/100 × 950 = 332",
+  "explanationHi": "950 का 35% = 35/100 × 950 = 332",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_029",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "5% of 950 is:",
+  "questionTextHi": "950 का 5% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "47"
+   },
+   {
+    "id": "B",
+    "text": "67"
+   },
+   {
+    "id": "C",
+    "text": "22"
+   },
+   {
+    "id": "D",
+    "text": "96"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "5% of 950 = 5/100 × 950 = 47",
+  "explanationHi": "950 का 5% = 5/100 × 950 = 47",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_030",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "35% of 420 is:",
+  "questionTextHi": "420 का 35% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "122"
+   },
+   {
+    "id": "B",
+    "text": "168"
+   },
+   {
+    "id": "C",
+    "text": "191"
+   },
+   {
+    "id": "D",
+    "text": "147"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "35% of 420 = 35/100 × 420 = 147",
+  "explanationHi": "420 का 35% = 35/100 × 420 = 147",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_031",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "40% of 160 is:",
+  "questionTextHi": "160 का 40% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "49"
+   },
+   {
+    "id": "B",
+    "text": "100"
+   },
+   {
+    "id": "C",
+    "text": "64"
+   },
+   {
+    "id": "D",
+    "text": "73"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "40% of 160 = 40/100 × 160 = 64",
+  "explanationHi": "160 का 40% = 40/100 × 160 = 64",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_mathematics_032",
+  "subject": "mathematics",
+  "subjectName": "Quantitative Aptitude",
+  "chapter": "Percentage",
+  "topic": "Direct",
+  "difficulty": "easy",
+  "questionText": "20% of 600 is:",
+  "questionTextHi": "600 का 20% कितना है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "171"
+   },
+   {
+    "id": "B",
+    "text": "94"
+   },
+   {
+    "id": "C",
+    "text": "134"
+   },
+   {
+    "id": "D",
+    "text": "120"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "20% of 600 = 20/100 × 600 = 120",
+  "explanationHi": "600 का 20% = 20/100 × 600 = 120",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"

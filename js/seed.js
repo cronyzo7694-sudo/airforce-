@@ -218,6 +218,38 @@ const Bank = (() => {
     } catch (e) { return 0; }
   }
 
+  /* ---- v1.4.47 demo-temp purge ----
+     Final bank files (bank-meta.json me _bundleKind: "final") aane par pehle
+     temporary demo questions delete hote hain — tags me 'demo-temp' ya id
+     q_sscchsl_* (v1.4.46 ke 48 demo Q included). Sirf IS exam ke questions:
+     airforce bank ya user ki real q_ssc_* files KABHI nahi chhoti hain.
+     Unattempted series tests bhi saaf (final bank se naya series banega);
+     custom tests + attempted history hamesha safe. */
+  async function purgeDemoTemp(exam) {
+    try {
+      const doomed = [];
+      await DB.cursor('questions', null, q => {
+        if (q.exam !== exam) return;
+        if ((q.tags || []).includes('demo-temp') || (q.id || '').startsWith('q_sscchsl_')) doomed.push(q.id);
+      });
+      for (const id of doomed) { try { await DB.delete('questions', id); } catch (e) {} }
+      const gone = new Set(doomed);
+      let testsDropped = 0;
+      try {
+        const tests = await DB.getAll('tests');
+        for (const t of tests) {
+          if (!t.series || !Array.isArray(t.sections)) continue;
+          const qids = t.sections.flatMap(x => x.questionIds || []);
+          if (!qids.some(id => gone.has(id))) continue;
+          const atts = await DB.byIndex('attempts', 'testId', t.id);
+          if (atts && atts.length) continue;   // history preserved
+          await DB.delete('tests', t.id); testsDropped++;
+        }
+      } catch (e) { /* test cleanup is best-effort */ }
+      return { questions: doomed.length, tests: testsDropped };
+    } catch (e) { return { questions: 0, tests: 0 }; }
+  }
+
   async function syncBundled(exam) {
     exam = exam || ((typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce');
     let fp = '';
@@ -232,9 +264,31 @@ const Bank = (() => {
       } catch (e) { /* offline / partial — skip silently */ }
     }
     if (!payloads.length) return { synced: false, imported: 0 };
+    /* v1.4.47: bank-meta.json ka _bundleKind dekho — temp-demo → final
+       transition par PEHLE demo-temp purge (taaki final 20k import ke saath
+       purane temp Q double na ho jayein). Meta read har load pe hota hai
+       (chhota file), transition sirf ek baar chalta hai. */
+    let purged = null;
+    try {
+      const dir = (EXAM_BUNDLES[exam] || EXAM_BUNDLES.airforce).dir;
+      const mr = await fetch(dir + 'bank-meta.json');
+      if (mr.ok) {
+        const meta = await mr.json();
+        const kind = meta._bundleKind || null;
+        const prevKind = await Store.getMeta('bundleKind_' + exam, null);
+        if (kind && kind !== prevKind) {
+          if (kind === 'final') {
+            purged = await purgeDemoTemp(exam);   // temp Q/tests pehle saaf
+            await Store.setMeta('bundleKind_' + exam, 'final');
+          } else {
+            await Store.setMeta('bundleKind_' + exam, kind);
+          }
+        }
+      }
+    } catch (e) { /* meta optional hai — purge skip, import normal */ }
     const prev = (await Store.getMeta('bundleFP_' + exam, null)) ||
       (exam === 'airforce' ? await Store.getMeta('bundleFP', null) : null);   // legacy
-    if (prev === fp) return { synced: false, imported: 0 };
+    if (prev === fp) return { synced: false, imported: 0, purged: purged || null };
     let imported = 0;
     for (const arr of payloads) {
       try { const rep = await importBatch(arr, null, exam); imported += rep.imported; }
@@ -252,10 +306,10 @@ const Bank = (() => {
     if (imported > 0 || (pr && pr.tests > 0)) {
       try { built = (await Generator.autoBuild()) || 0; } catch (e) { /* library top-up optional */ }
     }
-    return { synced: true, imported, pruned: pr ? pr.questions : 0, testsDropped: pr ? pr.tests : 0, built };
+    return { synced: true, imported, pruned: pr ? pr.questions : 0, testsDropped: pr ? pr.tests : 0, purged: purged || null, built };
   }
 
-  return { importBatch, seedIfNeeded, syncBundled, pruneRetired, bankStats, contentId, dupeId };
+  return { importBatch, seedIfNeeded, syncBundled, purgeDemoTemp, pruneRetired, bankStats, contentId, dupeId };
 })();
 
 /* --------- update cumulative stats after every submit --------- */

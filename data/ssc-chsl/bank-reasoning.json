@@ -34,7 +34,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Analogy"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -74,7 +74,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Series"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -114,7 +114,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Coding-Decoding"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -154,7 +154,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Blood Relations"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -194,7 +194,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Direction Sense"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -234,7 +234,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Odd One Out"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -274,7 +274,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Syllogism"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -314,7 +314,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Series"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -354,7 +354,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Calendar"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -394,7 +394,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Number Analogy"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -434,7 +434,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Statement-Conclusion"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -474,7 +474,807 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Puzzle"
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_013",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 11, 13, 15, 17, 19, ?",
+  "questionTextHi": "अगला पद: 11, 13, 15, 17, 19, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "21"
+   },
+   {
+    "id": "B",
+    "text": "19"
+   },
+   {
+    "id": "C",
+    "text": "22"
+   },
+   {
+    "id": "D",
+    "text": "23"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Common difference = 2 → next = 19 + 2 = 21",
+  "explanationHi": "समान अंतर = 2 → अगला = 21",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_014",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 12, 19, 26, 33, 40, ?",
+  "questionTextHi": "अगला पद: 12, 19, 26, 33, 40, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "45"
+   },
+   {
+    "id": "B",
+    "text": "47"
+   },
+   {
+    "id": "C",
+    "text": "54"
+   },
+   {
+    "id": "D",
+    "text": "48"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Common difference = 7 → next = 40 + 7 = 47",
+  "explanationHi": "समान अंतर = 7 → अगला = 47",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_015",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 5, 10, 15, 20, 25, ?",
+  "questionTextHi": "अगला पद: 5, 10, 15, 20, 25, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "35"
+   },
+   {
+    "id": "B",
+    "text": "31"
+   },
+   {
+    "id": "C",
+    "text": "28"
+   },
+   {
+    "id": "D",
+    "text": "30"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Common difference = 5 → next = 25 + 5 = 30",
+  "explanationHi": "समान अंतर = 5 → अगला = 30",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_016",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 4, 12, 20, 28, 36, ?",
+  "questionTextHi": "अगला पद: 4, 12, 20, 28, 36, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "42"
+   },
+   {
+    "id": "B",
+    "text": "44"
+   },
+   {
+    "id": "C",
+    "text": "52"
+   },
+   {
+    "id": "D",
+    "text": "45"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Common difference = 8 → next = 36 + 8 = 44",
+  "explanationHi": "समान अंतर = 8 → अगला = 44",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_017",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 6, 11, 16, 21, 26, ?",
+  "questionTextHi": "अगला पद: 6, 11, 16, 21, 26, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "32"
+   },
+   {
+    "id": "B",
+    "text": "29"
+   },
+   {
+    "id": "C",
+    "text": "36"
+   },
+   {
+    "id": "D",
+    "text": "31"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Common difference = 5 → next = 26 + 5 = 31",
+  "explanationHi": "समान अंतर = 5 → अगला = 31",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_018",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 8, 10, 12, 14, 16, ?",
+  "questionTextHi": "अगला पद: 8, 10, 12, 14, 16, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "18"
+   },
+   {
+    "id": "B",
+    "text": "16"
+   },
+   {
+    "id": "C",
+    "text": "19"
+   },
+   {
+    "id": "D",
+    "text": "20"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Common difference = 2 → next = 16 + 2 = 18",
+  "explanationHi": "समान अंतर = 2 → अगला = 18",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_019",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 12, 19, 26, 33, 40, ?",
+  "questionTextHi": "अगला पद: 12, 19, 26, 33, 40, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "48"
+   },
+   {
+    "id": "B",
+    "text": "54"
+   },
+   {
+    "id": "C",
+    "text": "47"
+   },
+   {
+    "id": "D",
+    "text": "45"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Common difference = 7 → next = 40 + 7 = 47",
+  "explanationHi": "समान अंतर = 7 → अगला = 47",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_020",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 14, 17, 20, 23, 26, ?",
+  "questionTextHi": "अगला पद: 14, 17, 20, 23, 26, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "27"
+   },
+   {
+    "id": "B",
+    "text": "30"
+   },
+   {
+    "id": "C",
+    "text": "29"
+   },
+   {
+    "id": "D",
+    "text": "32"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Common difference = 3 → next = 26 + 3 = 29",
+  "explanationHi": "समान अंतर = 3 → अगला = 29",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_021",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 7, 15, 23, 31, 39, ?",
+  "questionTextHi": "अगला पद: 7, 15, 23, 31, 39, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "47"
+   },
+   {
+    "id": "B",
+    "text": "55"
+   },
+   {
+    "id": "C",
+    "text": "45"
+   },
+   {
+    "id": "D",
+    "text": "48"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Common difference = 8 → next = 39 + 8 = 47",
+  "explanationHi": "समान अंतर = 8 → अगला = 47",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_022",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 10, 14, 18, 22, 26, ?",
+  "questionTextHi": "अगला पद: 10, 14, 18, 22, 26, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "30"
+   },
+   {
+    "id": "B",
+    "text": "31"
+   },
+   {
+    "id": "C",
+    "text": "34"
+   },
+   {
+    "id": "D",
+    "text": "28"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Common difference = 4 → next = 26 + 4 = 30",
+  "explanationHi": "समान अंतर = 4 → अगला = 30",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_023",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 3, 11, 19, 27, 35, ?",
+  "questionTextHi": "अगला पद: 3, 11, 19, 27, 35, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "41"
+   },
+   {
+    "id": "B",
+    "text": "43"
+   },
+   {
+    "id": "C",
+    "text": "44"
+   },
+   {
+    "id": "D",
+    "text": "51"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Common difference = 8 → next = 35 + 8 = 43",
+  "explanationHi": "समान अंतर = 8 → अगला = 43",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_024",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 13, 15, 17, 19, 21, ?",
+  "questionTextHi": "अगला पद: 13, 15, 17, 19, 21, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "23"
+   },
+   {
+    "id": "B",
+    "text": "24"
+   },
+   {
+    "id": "C",
+    "text": "21"
+   },
+   {
+    "id": "D",
+    "text": "25"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Common difference = 2 → next = 21 + 2 = 23",
+  "explanationHi": "समान अंतर = 2 → अगला = 23",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_025",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 13, 22, 31, 40, 49, ?",
+  "questionTextHi": "अगला पद: 13, 22, 31, 40, 49, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "67"
+   },
+   {
+    "id": "B",
+    "text": "59"
+   },
+   {
+    "id": "C",
+    "text": "58"
+   },
+   {
+    "id": "D",
+    "text": "56"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Common difference = 9 → next = 49 + 9 = 58",
+  "explanationHi": "समान अंतर = 9 → अगला = 58",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_026",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 2, 7, 12, 17, 22, ?",
+  "questionTextHi": "अगला पद: 2, 7, 12, 17, 22, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "27"
+   },
+   {
+    "id": "B",
+    "text": "32"
+   },
+   {
+    "id": "C",
+    "text": "28"
+   },
+   {
+    "id": "D",
+    "text": "25"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Common difference = 5 → next = 22 + 5 = 27",
+  "explanationHi": "समान अंतर = 5 → अगला = 27",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_027",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 9, 14, 19, 24, 29, ?",
+  "questionTextHi": "अगला पद: 9, 14, 19, 24, 29, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "39"
+   },
+   {
+    "id": "B",
+    "text": "35"
+   },
+   {
+    "id": "C",
+    "text": "34"
+   },
+   {
+    "id": "D",
+    "text": "32"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "Common difference = 5 → next = 29 + 5 = 34",
+  "explanationHi": "समान अंतर = 5 → अगला = 34",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_028",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 7, 13, 19, 25, 31, ?",
+  "questionTextHi": "अगला पद: 7, 13, 19, 25, 31, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "37"
+   },
+   {
+    "id": "B",
+    "text": "43"
+   },
+   {
+    "id": "C",
+    "text": "38"
+   },
+   {
+    "id": "D",
+    "text": "35"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Common difference = 6 → next = 31 + 6 = 37",
+  "explanationHi": "समान अंतर = 6 → अगला = 37",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_029",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 15, 20, 25, 30, 35, ?",
+  "questionTextHi": "अगला पद: 15, 20, 25, 30, 35, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "38"
+   },
+   {
+    "id": "B",
+    "text": "41"
+   },
+   {
+    "id": "C",
+    "text": "45"
+   },
+   {
+    "id": "D",
+    "text": "40"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "Common difference = 5 → next = 35 + 5 = 40",
+  "explanationHi": "समान अंतर = 5 → अगला = 40",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_030",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 12, 21, 30, 39, 48, ?",
+  "questionTextHi": "अगला पद: 12, 21, 30, 39, 48, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "57"
+   },
+   {
+    "id": "B",
+    "text": "66"
+   },
+   {
+    "id": "C",
+    "text": "55"
+   },
+   {
+    "id": "D",
+    "text": "58"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Common difference = 9 → next = 48 + 9 = 57",
+  "explanationHi": "समान अंतर = 9 → अगला = 57",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_031",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 8, 12, 16, 20, 24, ?",
+  "questionTextHi": "अगला पद: 8, 12, 16, 20, 24, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "28"
+   },
+   {
+    "id": "B",
+    "text": "29"
+   },
+   {
+    "id": "C",
+    "text": "32"
+   },
+   {
+    "id": "D",
+    "text": "26"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "Common difference = 4 → next = 24 + 4 = 28",
+  "explanationHi": "समान अंतर = 4 → अगला = 28",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_reasoning_032",
+  "subject": "reasoning",
+  "subjectName": "General Intelligence & Reasoning",
+  "chapter": "Series",
+  "topic": "Number Series",
+  "difficulty": "easy",
+  "questionText": "Find the next term: 11, 19, 27, 35, 43, ?",
+  "questionTextHi": "अगला पद: 11, 19, 27, 35, 43, ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "59"
+   },
+   {
+    "id": "B",
+    "text": "51"
+   },
+   {
+    "id": "C",
+    "text": "49"
+   },
+   {
+    "id": "D",
+    "text": "52"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "Common difference = 8 → next = 43 + 8 = 51",
+  "explanationHi": "समान अंतर = 8 → अगला = 51",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"

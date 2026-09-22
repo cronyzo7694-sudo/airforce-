@@ -34,7 +34,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Indian Polity"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -74,7 +74,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Indian Polity"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -114,7 +114,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "History"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -154,7 +154,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Geography"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -194,7 +194,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Economics"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -234,7 +234,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Science"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -274,7 +274,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Science"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -314,7 +314,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Static GK"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -354,7 +354,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Current Affairs"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -394,7 +394,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Sports"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -434,7 +434,7 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "Geography"
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
@@ -474,7 +474,807 @@
   "year": "2023",
   "tags": [
    "ssc-chsl",
-   "History"
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_013",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The Constitution of India came into effect on:",
+  "questionTextHi": "भारतीय संविधान लागू हुआ:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "2 October 1950"
+   },
+   {
+    "id": "B",
+    "text": "26 January 1950"
+   },
+   {
+    "id": "C",
+    "text": "26 November 1949"
+   },
+   {
+    "id": "D",
+    "text": "15 August 1947"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The correct fact: 26 January 1950.",
+  "explanationHi": "सही तथ्य: 26 January 1950।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_014",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "Who is known as the Father of the Indian Constitution?",
+  "questionTextHi": "भारतीय संविधान के जनक कौन हैं?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Jawaharlal Nehru"
+   },
+   {
+    "id": "B",
+    "text": "Mahatma Gandhi"
+   },
+   {
+    "id": "C",
+    "text": "Sardar Patel"
+   },
+   {
+    "id": "D",
+    "text": "Dr B. R. Ambedkar"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "The correct fact: Dr B. R. Ambedkar.",
+  "explanationHi": "सही तथ्य: Dr B. R. Ambedkar।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_015",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The Right to Education is given under which Article?",
+  "questionTextHi": "शिक्षा का अधिकार किस अनुच्छेद में है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Article 21A"
+   },
+   {
+    "id": "B",
+    "text": "Article 19"
+   },
+   {
+    "id": "C",
+    "text": "Article 44"
+   },
+   {
+    "id": "D",
+    "text": "Article 32"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "The correct fact: Article 21A.",
+  "explanationHi": "सही तथ्य: Article 21A।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_016",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The Bharat Ratna was instituted in:",
+  "questionTextHi": "भारत रत्न की स्थापना कब हुई?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "1950"
+   },
+   {
+    "id": "B",
+    "text": "1954"
+   },
+   {
+    "id": "C",
+    "text": "1947"
+   },
+   {
+    "id": "D",
+    "text": "1962"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The correct fact: 1954.",
+  "explanationHi": "सही तथ्य: 1954।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_017",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "How many fundamental duties are there in the Indian Constitution?",
+  "questionTextHi": "भारतीय संविधान में मूल कर्तव्य कितने हैं?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "11"
+   },
+   {
+    "id": "B",
+    "text": "10"
+   },
+   {
+    "id": "C",
+    "text": "9"
+   },
+   {
+    "id": "D",
+    "text": "12"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "The correct fact: 11.",
+  "explanationHi": "सही तथ्य: 11।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_018",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The President of India is elected by:",
+  "questionTextHi": "भारत के राष्ट्रपति का चुनाव करते हैं:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Supreme Court"
+   },
+   {
+    "id": "B",
+    "text": "An electoral college"
+   },
+   {
+    "id": "C",
+    "text": "Lok Sabha alone"
+   },
+   {
+    "id": "D",
+    "text": "Direct public vote"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The correct fact: An electoral college.",
+  "explanationHi": "सही तथ्य: An electoral college।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_019",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "Money Bills can be introduced only in:",
+  "questionTextHi": "धन विधेयक केवल कहाँ प्रस्तुत किया जा सकता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Either House"
+   },
+   {
+    "id": "B",
+    "text": "Joint sitting"
+   },
+   {
+    "id": "C",
+    "text": "Rajya Sabha"
+   },
+   {
+    "id": "D",
+    "text": "Lok Sabha"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "The correct fact: Lok Sabha.",
+  "explanationHi": "सही तथ्य: Lok Sabha।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_020",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The term of a Lok Sabha is normally:",
+  "questionTextHi": "लोकसभा की अवधि सामान्यतः होती है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "4 years"
+   },
+   {
+    "id": "B",
+    "text": "7 years"
+   },
+   {
+    "id": "C",
+    "text": "6 years"
+   },
+   {
+    "id": "D",
+    "text": "5 years"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "The correct fact: 5 years.",
+  "explanationHi": "सही तथ्य: 5 years।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_021",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "Who appoints the Chief Justice of India?",
+  "questionTextHi": "भारत के मुख्य न्यायाधीश की नियुक्ति कौन करता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Parliament"
+   },
+   {
+    "id": "B",
+    "text": "The President"
+   },
+   {
+    "id": "C",
+    "text": "Supreme Court collegium alone"
+   },
+   {
+    "id": "D",
+    "text": "The Prime Minister"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The correct fact: The President.",
+  "explanationHi": "सही तथ्य: The President।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_022",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The Panchayati Raj system was constitutionalised by which amendment?",
+  "questionTextHi": "पंचायती राज को किस संशोधन से संवैधानिक दर्जा मिला?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "74th Amendment"
+   },
+   {
+    "id": "B",
+    "text": "61st Amendment"
+   },
+   {
+    "id": "C",
+    "text": "73rd Amendment"
+   },
+   {
+    "id": "D",
+    "text": "42nd Amendment"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "The correct fact: 73rd Amendment.",
+  "explanationHi": "सही तथ्य: 73rd Amendment।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_023",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "Fundamental Rights are borrowed from the Constitution of:",
+  "questionTextHi": "मूल अधिकार किस देश के संविधान से लिए गए हैं?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Canada"
+   },
+   {
+    "id": "B",
+    "text": "Ireland"
+   },
+   {
+    "id": "C",
+    "text": "UK"
+   },
+   {
+    "id": "D",
+    "text": "USA"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "The correct fact: USA.",
+  "explanationHi": "सही तथ्य: USA।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_024",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The Speaker of the Lok Sabha is elected by:",
+  "questionTextHi": "लोकसभा अध्यक्ष का चुनाव करती है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Members of Lok Sabha"
+   },
+   {
+    "id": "B",
+    "text": "The President"
+   },
+   {
+    "id": "C",
+    "text": "Both Houses"
+   },
+   {
+    "id": "D",
+    "text": "The Prime Minister"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "The correct fact: Members of Lok Sabha.",
+  "explanationHi": "सही तथ्य: Members of Lok Sabha।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_025",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "Which writ is called the protector of Fundamental Rights?",
+  "questionTextHi": "किस रिट को मूल अधिकारों का रक्षक कहा जाता है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Quo Warranto"
+   },
+   {
+    "id": "B",
+    "text": "Certiorari"
+   },
+   {
+    "id": "C",
+    "text": "Mandamus"
+   },
+   {
+    "id": "D",
+    "text": "Habeas Corpus"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "The correct fact: Habeas Corpus.",
+  "explanationHi": "सही तथ्य: Habeas Corpus।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_026",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The idea of the Concurrent List is borrowed from:",
+  "questionTextHi": "समवर्ती सूची का विचार कहाँ से लिया गया है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Australia"
+   },
+   {
+    "id": "B",
+    "text": "UK"
+   },
+   {
+    "id": "C",
+    "text": "USA"
+   },
+   {
+    "id": "D",
+    "text": "Ireland"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "The correct fact: Australia.",
+  "explanationHi": "सही तथ्य: Australia।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_027",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The Election Commission of India is established under Article:",
+  "questionTextHi": "भारत का निर्वाचन आयोग किस अनुच्छेद के तहत स्थापित है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Article 315"
+   },
+   {
+    "id": "B",
+    "text": "Article 324"
+   },
+   {
+    "id": "C",
+    "text": "Article 356"
+   },
+   {
+    "id": "D",
+    "text": "Article 338"
+   }
+  ],
+  "correctAnswer": "B",
+  "explanation": "The correct fact: Article 324.",
+  "explanationHi": "सही तथ्य: Article 324।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_028",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "Who is the supreme commander of the Indian armed forces?",
+  "questionTextHi": "भारतीय सेनाओं का सर्वोच्च सेनापति कौन है?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "The Prime Minister"
+   },
+   {
+    "id": "B",
+    "text": "Defence Minister"
+   },
+   {
+    "id": "C",
+    "text": "The President"
+   },
+   {
+    "id": "D",
+    "text": "Chief of Defence Staff"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "The correct fact: The President.",
+  "explanationHi": "सही तथ्य: The President।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_029",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The first Amendment to the Indian Constitution was made in:",
+  "questionTextHi": "भारतीय संविधान में पहला संशोधन कब हुआ?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "1949"
+   },
+   {
+    "id": "B",
+    "text": "1950"
+   },
+   {
+    "id": "C",
+    "text": "1952"
+   },
+   {
+    "id": "D",
+    "text": "1951"
+   }
+  ],
+  "correctAnswer": "D",
+  "explanation": "The correct fact: 1951.",
+  "explanationHi": "सही तथ्य: 1951।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_030",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "How many members can the President nominate to the Rajya Sabha?",
+  "questionTextHi": "राष्ट्रपति राज्यसभा में कितने सदस्य मनोनीत कर सकते हैं?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "12"
+   },
+   {
+    "id": "B",
+    "text": "14"
+   },
+   {
+    "id": "C",
+    "text": "2"
+   },
+   {
+    "id": "D",
+    "text": "10"
+   }
+  ],
+  "correctAnswer": "A",
+  "explanation": "The correct fact: 12.",
+  "explanationHi": "सही तथ्य: 12।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_031",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "The Directive Principles of State Policy are in which Part of the Constitution?",
+  "questionTextHi": "राज्य के नीति निदेशक तत्व संविधान के किस भाग में हैं?",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "Part III"
+   },
+   {
+    "id": "B",
+    "text": "Part V"
+   },
+   {
+    "id": "C",
+    "text": "Part IV"
+   },
+   {
+    "id": "D",
+    "text": "Part IVA"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "The correct fact: Part IV.",
+  "explanationHi": "सही तथ्य: Part IV।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
+  ],
+  "figureBased": false,
+  "paper": "Tier-I"
+ },
+ {
+  "id": "q_sscchsl_gs_032",
+  "subject": "gs",
+  "subjectName": "General Awareness",
+  "chapter": "Indian Polity",
+  "topic": "Static",
+  "difficulty": "easy",
+  "questionText": "A person can become President of India at the age of at least:",
+  "questionTextHi": "भारत का राष्ट्रपति बनने की न्यूनतम आयु है:",
+  "image": null,
+  "options": [
+   {
+    "id": "A",
+    "text": "40 years"
+   },
+   {
+    "id": "B",
+    "text": "25 years"
+   },
+   {
+    "id": "C",
+    "text": "35 years"
+   },
+   {
+    "id": "D",
+    "text": "30 years"
+   }
+  ],
+  "correctAnswer": "C",
+  "explanation": "The correct fact: 35 years.",
+  "explanationHi": "सही तथ्य: 35 years।",
+  "source": "SSC CHSL Tier-I practice set (temporary)",
+  "year": "2024",
+  "tags": [
+   "ssc-chsl",
+   "demo-temp"
   ],
   "figureBased": false,
   "paper": "Tier-I"
