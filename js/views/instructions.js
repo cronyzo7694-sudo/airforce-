@@ -133,6 +133,10 @@ Views.instructions = async function (testId) {
     `Do not click any unnecessary button on the computer and do not close or refresh the browser — in case of any interruption, your attempt is preserved and can be resumed from the same point.`
   ];
 
+  /* v1.4.51: stage flag — Next ke baad SECOND screen (Other Important
+     Instructions) dikhna hai; Previous pe wapas ye pehla screen. */
+  if (sessionStorage.getItem('insOther_' + test.id) === '1') { renderOther(); return; }
+
   /* v1.4.50: REAL CBT instructions layout — fixed regions + internal scroll:
      blue strip → cyan "Instructions" bar → [scrollable instructions 79% |
      fixed candidate panel 20%] → fixed bottom nav (Next >). Language control
@@ -194,7 +198,7 @@ Views.instructions = async function (testId) {
             </div>
           </div>
           <div class="ins2-bottomnav">
-            <button class="ins2-next" id="ins-begin">Next&nbsp;&nbsp;&gt;</button>
+            <button class="ins2-next" id="ins-next">Next&nbsp;&nbsp;&gt;</button>
           </div>
         </div>
         <div class="ins2-right">
@@ -212,8 +216,130 @@ Views.instructions = async function (testId) {
     localStorage.setItem('av_lang', e.target.value);
     Views.instructions(testId); // re-render in chosen language
   });
-  AVUtil.$('#ins-begin').addEventListener('click', async () => {
-    const btn = AVUtil.$('#ins-begin');
+  /* v1.4.51: NEXT ab doosra CBT screen (Other Important Instructions) kholta
+     hai — exam wahin se "I am ready to begin" ke baad shuru hota hai. */
+  AVUtil.$('#ins-next').addEventListener('click', () => {
+    sessionStorage.setItem('insOther_' + test.id, '1');
+    Views.instructions(testId);          // SPA re-render — no reload, state safe
+  });
+  return;
+
+  /* ══════════ STAGE 2B — OTHER IMPORTANT INSTRUCTIONS (real CBT 2nd screen) ══════════ */
+  function renderOther() {
+  const examTitle = (cfg.exam === 'ssc-chsl')
+    ? 'SSC CHSL (Tier-I) — ONLINE EXAMINATION'
+    : AVUtil.esc(cfg.name || 'AIR FORCE AGNIVEERVAYU') + ' — ONLINE EXAMINATION';
+  const candPhoto = cfg.profileImage
+    ? `<img src="${AVUtil.esc(cfg.profileImage)}" alt="Candidate photo">`
+    : `<span class="ins2-ph-initial">${AVUtil.esc((cfg.candidateName || 'P').trim()[0] || 'P').toUpperCase()}</span>`;
+
+  // exam paper table — sab values test config se (STAR hardcode NAHI)
+  const secTime = sd => (test.timerMode === 'section' ? String(Math.round(sd / 60)) : '—');
+  const tblRows = secs.map(sec => {
+    const n = sec.questionIds.length;
+    return `<tr><td>1-${n}</td><td>${AVUtil.esc(sec.name)}</td><td>${n}</td><td>${n * mk.correct}</td><td>${secTime(sec.duration)}</td></tr>`;
+  }).join('') + `<tr class="otr-tbl-total"><td>Total</td><td></td><td>${total}</td><td>${test.maxScore}</td><td>${Math.round(test.duration / 60)} Minutes</td></tr>`;
+
+  const durMin = Math.round(test.duration / 60);
+  const rulesOther = [
+    `The question paper contains <b>${secs.length} subjects</b>. Each subject is of duration specified above.`,
+    test.sectionLock
+      ? `Each subject will appear in sequence as per the order above only after the lapse of time allocated for previous subject.`
+      : `All the subjects will be available as per the order given above and you may switch between the subjects anytime during the examination.`,
+    test.sectionLock
+      ? `After the time has lapsed, each subject would get submitted automatically.`
+      : `The countdown timer at the top right corner of the screen will display the remaining time available for the examination.`,
+    test.sectionLock
+      ? `You can't go back and attempt the subject which has already been submitted.`
+      : `You can review and change your answers anytime before the final submission of the examination.`,
+    `You will be given <b>${durMin} minutes</b> to attempt <b>${total} questions</b>.`,
+    `Marking scheme for this examination is as follows:-
+      <div class="otr-marking">
+        (a) <b>${mk.correct}</b> mark${Math.abs(mk.correct) === 1 ? '' : 's'} for every correct answer.<br>
+        (b) Nil (0) marks for unattempted question.<br>
+        (c) <b>${Math.abs(mk.wrong)}</b> mark${Math.abs(mk.wrong) === 1 ? '' : 's'} will be deducted for each incorrect answer.
+      </div>`,
+    `Candidate can select the default language for the entire examination at the end of Instructions only. This language will remain default for the entire examination.`,
+    `One question will be displayed on the screen at a time. To move to the next question, click on the desired section/question in the bar given above.`,
+    `Each question will have <b>4 options</b> out of which only <b>one</b> option will be correct. The candidate has to select the correct option.`,
+    `In case of any discrepancy between the English and Hindi versions of a question, the English version will be treated as the final version.`,
+    `At any time during examination, you can also view the question paper instructions by clicking the instructions button available on the screen.`
+  ];
+
+  document.getElementById('app').innerHTML = `
+    <div class="cbt cbt-ins-app cbt-otr-app">
+      <div class="cl-band ins2-band">
+        <div class="cl-band-left"><img src="icons/icon-96.png" alt="" class="cl-band-logo"><span>${examTitle}</span></div>
+        <div class="cl-band-right">PHASE I : ONLINE TEST</div>
+      </div>
+      <div class="ins2-titlebar otr-titlebar">Other Important Instructions</div>
+      <div class="ins2-main">
+        <div class="ins2-left otr-left">
+          <div class="otr-scroll">
+            <div class="otr-doc">
+              <div class="otr-viewin">View in :
+                <select id="otr-viewlang" aria-label="View in">
+                  <option value="en" ${lang === 'en' ? 'selected' : ''}>English</option>
+                  <option value="hi" ${lang === 'hi' ? 'selected' : ''}>हिन्दी</option>
+                </select>
+              </div>
+              <div class="ins2-h1">OTHER IMPORTANT INSTRUCTIONS (BOTH SUBJECTS)</div>
+              <table class="otr-tbl">
+                <thead><tr><th>Question Number</th><th>Subject Name</th><th>No. of Questions</th><th>Marks</th><th>Time Allotted</th></tr></thead>
+                <tbody>${tblRows}</tbody>
+              </table>
+              <ol class="ins2-rules otr-rules">
+                ${rulesOther.map(r => `<li>${r}</li>`).join('')}
+              </ol>
+            </div>
+          </div>
+          <div class="otr-bottom">
+            <div class="otr-langrow">
+              <label class="otr-langlab">Choose your default language :
+                <select id="otr-lang">
+                  <option value="en" ${lang === 'en' ? 'selected' : ''}>English</option>
+                  <option value="hi" ${lang === 'hi' ? 'selected' : ''}>Hindi</option>
+                </select>
+              </label>
+              <span class="otr-rednote">Please note all questions will appear in your default language. This language can be changed for a particular question later on.</span>
+            </div>
+            <label class="otr-decl">
+              <input type="checkbox" id="otr-agree">
+              <span>I have read and understood the instructions. All computer hardware allotted to me are in proper working condition. I declare that I am not in possession of / not wearing / not carrying any prohibited gadget like mobile phone, bluetooth device etc. or any prohibited material with me into the Examination Hall. I agree that in case of not adhering to the instructions, I shall be liable to be debarred from this examination and/or to disciplinary action, which may include a ban from all future examinations.</span>
+            </label>
+            <div class="otr-actions">
+              <button class="otr-btn otr-prev" id="otr-prev">&lt; Previous</button>
+              <button class="otr-btn otr-ready" id="otr-begin" disabled>I am ready to begin</button>
+            </div>
+          </div>
+        </div>
+        <div class="ins2-right">
+          <div class="ins2-cand-strip">Candidate Photograph</div>
+          <div class="ins2-photo">${candPhoto}</div>
+          <div class="ins2-name">${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}</div>
+        </div>
+      </div>
+    </div>`;
+  window.scrollTo(0, 0);
+  document.body.classList.add('cbt-on');
+
+  AVUtil.$('#otr-viewlang').addEventListener('change', e => {
+    App.lang = e.target.value;
+    localStorage.setItem('av_lang', e.target.value);   // re-render nahi — scroll/checkbox preserve
+  });
+  AVUtil.$('#otr-lang').addEventListener('change', e => {
+    App.lang = e.target.value;
+    localStorage.setItem('av_lang', e.target.value);   // default language — no re-render (decl preserve)
+  });
+  AVUtil.$('#otr-prev').addEventListener('click', () => {
+    sessionStorage.removeItem('insOther_' + test.id);
+    Views.instructions(testId);          // wapas pehla Instructions screen
+  });
+  AVUtil.$('#otr-agree').addEventListener('change', e => { AVUtil.$('#otr-begin').disabled = !e.target.checked; });
+  AVUtil.$('#otr-begin').addEventListener('click', async () => {
+    if (!AVUtil.$('#otr-agree').checked) return;   // validation bypass nahi
+    sessionStorage.removeItem('insOther_' + test.id);
+    const btn = AVUtil.$('#otr-begin');
     btn.disabled = true; btn.textContent = 'STARTING…';
 
     // v1.4.40 — "any test, anytime": doosre test ka unfinished attempt KABHI
@@ -255,4 +381,5 @@ Views.instructions = async function (testId) {
     App.pendingResume = attempt;
     location.hash = '#/test/' + test.id + '/attempt';
   });
+  }
 };

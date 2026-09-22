@@ -83,10 +83,10 @@ async function main() {
   const G = expr => window.eval(expr);
   // real CBT candidate-login stage (sessionStorage gate) — dono exam starts ke liye
   const passLogin = async () => {
-    await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 15000);
+    await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-next'), 15000);
     if (doc.getElementById('login-btn')) {
       G('document.getElementById("login-btn").dispatchEvent(new Event("click", {bubbles:true}))');
-      await waitFor(() => doc.getElementById('ins-begin'), 10000);
+      await waitFor(() => doc.getElementById('ins-next'), 10000);
     }
   };
   const liveCssSrc = fs.readFileSync(path.join(ROOT, 'css/app.css'), 'utf-8');
@@ -102,7 +102,10 @@ async function main() {
   window.location.hash = '#/test/' + fm.test.id + '/instructions';
   await passLogin();
   await sleep(200);
-  await G('document.getElementById("ins-begin").dispatchEvent(new Event("click", {bubbles:true}))');
+  await G('document.getElementById("ins-next").dispatchEvent(new Event("click", {bubbles:true}))');
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  await G('document.getElementById("otr-agree").checked = true; document.getElementById("otr-agree").dispatchEvent(new Event("change", {bubbles:true}))');
+  await G('document.getElementById("otr-begin").dispatchEvent(new Event("click", {bubbles:true}))');
   await waitFor(() => doc.querySelector('.exam-screen'), 20000);
   await sleep(400);
   const attemptId = await G('ExamScreen.attempt.id');
@@ -180,7 +183,10 @@ async function main() {
   window.location.hash = '#/test/' + st.test.id + '/instructions';
   await passLogin();
   await sleep(200);
-  await G('document.getElementById("ins-begin").dispatchEvent(new Event("click", {bubbles:true}))');
+  await G('document.getElementById("ins-next").dispatchEvent(new Event("click", {bubbles:true}))');
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  await G('document.getElementById("otr-agree").checked = true; document.getElementById("otr-agree").dispatchEvent(new Event("change", {bubbles:true}))');
+  await G('document.getElementById("otr-begin").dispatchEvent(new Event("click", {bubbles:true}))');
   await waitFor(() => doc.querySelector('.exam-screen'), 20000);
   await sleep(500);
   // click around: options, prev/next/mark/clear, drawer, language dropdown, keyboard

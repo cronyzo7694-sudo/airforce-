@@ -86,16 +86,20 @@ async function main() {
   const p = await G('Generator.generate({ name: "Pause test", type: "subject", mode: "practice", allowPause: true, sections: [{ subjectId: "physics", count: 5 }] })');
   window.location.hash = '#/test/' + p.test.id + '/instructions';
   await sleep(500); // let double-render settle (jsdom fires hashchange twice)
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 15000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-next'), 15000);
   if (doc.getElementById('login-btn')) {   // real C-DAC candidate-login stage
     doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
-    await waitFor(() => doc.getElementById('ins-begin'), 8000);
+    await waitFor(() => doc.getElementById('ins-next'), 8000);
   }
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 15000);
-    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-begin'), 8000); }
-  await waitFor(() => doc.getElementById('ins-begin'), 15000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-next'), 15000);
+    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-next'), 8000); }
+  await waitFor(() => doc.getElementById('ins-next'), 15000);
   await sleep(300);
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   await waitFor(() => doc.querySelector('.exam-screen'), 20000); await sleep(400);
   const pauseBtn = doc.getElementById('x-pause');
   T('pause button visible (allowed)', !!pauseBtn);
@@ -141,11 +145,15 @@ async function main() {
   const f = await G('Generator.fullMock()');
   window.location.hash = '#/test/' + f.test.id + '/instructions';
   await sleep(500);
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 15000);
-    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-begin'), 8000); }
-  const insUp = await waitFor(() => doc.getElementById('ins-begin'), 15000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-next'), 15000);
+    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-next'), 8000); }
+  const insUp = await waitFor(() => doc.getElementById('ins-next'), 15000);
   await sleep(300);
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   await waitFor(() => doc.querySelector('.exam-screen'), 20000); await sleep(400);
   // expire the physics section
   await G('ExamScreen.attempt.sections.physics.startedAt = Date.now() - 21*60*1000; ExamScreen.attempt.sections.physics.endsAt = Date.now() + 1200; ExamScreen.persist()');
@@ -174,11 +182,15 @@ async function main() {
   const t1qids = t1Attempt.sections.physics.questionIds;
   window.location.hash = '#/test/' + f.test.id + '/instructions';
   await sleep(500);
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 15000);
-    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-begin'), 8000); }
-  await waitFor(() => doc.getElementById('ins-begin'), 15000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-next'), 15000);
+    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-next'), 8000); }
+  await waitFor(() => doc.getElementById('ins-next'), 15000);
   await sleep(300);
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   await waitFor(() => doc.querySelector('.exam-screen'), 20000); await sleep(400);
   const t2qids = await G('ExamScreen.attempt.sections.physics.questionIds');
   const overlap = t1qids.filter(q => t2qids.includes(q)).length;
@@ -242,11 +254,15 @@ async function main() {
   const s3 = await G('Generator.subjectTest("english")');
   window.location.hash = '#/test/' + s3.test.id + '/instructions';
   await sleep(500);
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 15000);
-    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-begin'), 8000); }
-  const engIns = await waitFor(() => doc.getElementById('ins-begin'), 15000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-next'), 15000);
+    if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-next'), 8000); }
+  const engIns = await waitFor(() => doc.getElementById('ins-next'), 15000);
   await sleep(300);
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   const examUp = await waitFor(() => doc.querySelector('.exam-screen'), 20000);
   await sleep(600);
   const candShown = examUp && await G('document.querySelector(".cand-name") ? document.querySelector(".cand-name").textContent : "no el"');
@@ -294,9 +310,9 @@ async function main() {
   if (reat) {
     window.location.hash = reat.getAttribute('href').slice(1);
     await sleep(500);
-    await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 15000);
-      if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-begin'), 8000); }
-    const reatIns = await waitFor(() => doc.getElementById('ins-begin'), 15000);
+    await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-next'), 15000);
+      if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-next'), 8000); }
+    const reatIns = await waitFor(() => doc.getElementById('ins-next'), 15000);
     T('reattempt → instructions', reatIns);
     await G('Router.go("/attempts")'); await sleep(500);
   }
@@ -324,9 +340,13 @@ async function main() {
   // test A (physics) start + 1 answer
   const tA = await G('Generator.subjectTest("physics")');
   window.location.hash = '#/test/' + tA.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 15000);
-  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-begin'), 8000); }
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-next'), 15000);
+  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-next'), 8000); }
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   await waitFor(() => doc.querySelector('.exam-screen'), 15000);
   await waitFor(() => doc.querySelectorAll('.opt').length >= 2, 8000);
   doc.querySelectorAll('.opt')[0].dispatchEvent(new window.Event('click', { bubbles: true }));
@@ -340,10 +360,14 @@ async function main() {
   // NO BLOCK: test B (mathematics) seedha start — purana parked
   const tB = await G('Generator.subjectTest("mathematics")');
   window.location.hash = '#/test/' + tB.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('ins-begin') || doc.getElementById('login-btn'), 15000);
-  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-begin'), 8000); }
+  await waitFor(() => doc.getElementById('ins-next') || doc.getElementById('login-btn'), 15000);
+  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-next'), 8000); }
   const cntB = await G('DB.count("attempts")');
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   const bExam = await waitFor(() => doc.querySelector('.exam-screen'), 15000);
   T('NO BLOCK: doosre test ka unfinished hone par bhi naya test seedha START', !!bExam);
   await parkViaHash();
@@ -351,9 +375,13 @@ async function main() {
 
   // SAME-TEST re-begin → resume, duplicate nahi
   window.location.hash = '#/test/' + tB.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('ins-begin') || doc.getElementById('login-btn'), 15000);
-  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-begin'), 8000); }
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('ins-next') || doc.getElementById('login-btn'), 15000);
+  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-next'), 8000); }
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   await waitFor(() => doc.querySelector('.exam-screen'), 15000);
   T('same-test re-begin → RESUME (naya duplicate attempt nahi)', (await G('DB.count("attempts")')) === cntAfter, cntAfter + '→' + (await G('DB.count("attempts")')));
   await parkViaHash();

@@ -126,10 +126,27 @@ async function main() {
   /* v1.4.50: REAL CBT instructions — fixed regions, internal scroll, no declaration */
   T('CBT ins: cyan title bar + View in language control top', !!doc.querySelector('.ins2-titlebar') && !!doc.getElementById('ins-lang') && /View in/.test(doc.body.textContent));
   T('CBT ins: fixed candidate panel photo+name (no details table)', !!doc.querySelector('.ins2-photo') && !!doc.querySelector('.ins2-name') && !doc.querySelector('.ins-tbl'));
-  T('CBT ins: Next button in fixed bottom nav', !!doc.querySelector('.ins2-bottomnav #ins-begin') && /Next/.test(doc.getElementById('ins-begin').textContent));
+  T('CBT ins: Next button in fixed bottom nav', !!doc.querySelector('.ins2-bottomnav #ins-next') && /Next/.test(doc.getElementById('ins-next').textContent));
   T('CBT ins: legend 5 palette statuses (traditional boxes)', doc.querySelectorAll('.ins2-leg-row').length === 5);
   T('CBT ins: koi declaration checkbox NAHI', !doc.getElementById('ins-agree'));
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  /* v1.4.51: SECOND CBT screen — Other Important Instructions */
+  T('CBT 2nd screen: OTHER IMPORTANT INSTRUCTIONS khula', /Other Important Instructions/.test(doc.body.textContent) && !!doc.querySelector('.otr-titlebar'));
+  T('CBT 2nd: exam paper table (4 subjects + Total row)', doc.querySelectorAll('.otr-tbl tbody tr').length === 5, 'rows=' + doc.querySelectorAll('.otr-tbl tbody tr').length);
+  T('CBT 2nd: fixed bottom declaration panel (language+checkbox+buttons)', !!doc.querySelector('.otr-bottom') && !!doc.getElementById('otr-lang') && !!doc.getElementById('otr-prev') && !!doc.getElementById('otr-begin'));
+  T('CBT 2nd: ready DISABLED till declaration checked', doc.getElementById('otr-begin').disabled === true);
+  // Previous → wapas PEHLA instructions screen (TEST F)
+  doc.getElementById('otr-prev').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('ins-next'), 10000);
+  T('CBT 2nd: Previous → wapas pehla Instructions', /INSTRUCTIONS TO CANDIDATES/.test(doc.body.textContent) && !doc.getElementById('otr-begin'));
+  // phir Next → OTR → declaration → begin (TEST B + G)
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  T('CBT 2nd: declaration ke baad ready ENABLED', doc.getElementById('otr-begin').disabled === false);
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   for (let i = 0; i < 40; i++) { await sleep(150); if (window.location.hash.includes('/attempt')) break; }
   T('attempt route entered', window.location.hash.includes('/attempt'), window.location.hash);
 
@@ -416,12 +433,16 @@ async function main() {
   console.log('\n━━━ E2E · 0-answer paper → fresh test (koi analysis nahi)');
   const zr = await G('Generator.subjectTest("mathematics")');
   window.location.hash = '#/test/' + zr.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 10000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-next'), 10000);
   if (doc.getElementById('login-btn')) {
     doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
-    await waitFor(() => doc.getElementById('ins-begin'), 8000);
+    await waitFor(() => doc.getElementById('ins-next'), 8000);
   }
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   await waitFor(() => doc.querySelector('.exam-screen'), 20000);
   const attBefore = await G('DB.count("attempts")');
   const idxBefore = (await G('Store.getMeta("attemptIndex", [])')).length;
@@ -488,12 +509,16 @@ async function main() {
   T('subject test generated (25 Q)', r.ok && r.test.totalQuestions === 25);
   await G('(async () => { const t = await DB.get("tests", "' + r.test.id + '"); t.instantExplanation = true; await DB.put("tests", t); })()');
   window.location.hash = '#/test/' + r.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 10000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-next'), 10000);
   if (doc.getElementById('login-btn')) {
     doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
-    await waitFor(() => doc.getElementById('ins-begin'), 8000);
+    await waitFor(() => doc.getElementById('ins-next'), 8000);
   }
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   for (let i = 0; i < 40; i++) { await sleep(150); if (doc.querySelector('.exam-screen')) break; }
   await sleep(300);
   const pa = await G('ExamScreen.attempt');
@@ -599,9 +624,13 @@ async function main() {
   // exam screen bhi mode ke saath theek
   const smT = await G('Generator.subjectTest("english")');
   window.location.hash = '#/test/' + smT.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('ins-begin') || doc.getElementById('login-btn'), 12000);
-  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-begin'), 8000); }
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('ins-next') || doc.getElementById('login-btn'), 12000);
+  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-next'), 8000); }
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   const smExam = await waitFor(() => doc.querySelector('.exam-screen'), 15000);
   T('mode ON + exam screen: question text VISIBLE', smExam && doc.querySelector('.exam-screen').textContent.length > 50 && doc.documentElement.classList.contains('sm-dark'));
   T('v1.4.44: cbt screen par site-nav POORA CLEAR (stale topnav kabhi nahi)', doc.getElementById('app-nav').innerHTML.trim() === '' && doc.getElementById('app-bottom').innerHTML.trim() === '');
@@ -703,6 +732,7 @@ async function main() {
   T('SSC full mock series me mila', !!sscMock, sscTests.map(t => t.name).join(' | '));
   T('SSC mock exam-aware naam ("SSC CHSL")', !!sscMock && /SSC CHSL/.test(sscMock.name), sscMock && sscMock.name);
   T('SSC mock 100 Q (25×4)', !!sscMock && sscMock.sections.reduce((n, s) => n + s.questionIds.length, 0) === 100);
+  T('SSC mock duration 60 min (v1.4.51 fix — 85 nahi)', !!sscMock && Math.round(sscMock.duration / 60) === 60, sscMock && Math.round(sscMock.duration / 60) + ' min');
 
   // instructions page
   window.location.hash = '#/test/' + sscMock.id + '/instructions';
@@ -713,8 +743,12 @@ async function main() {
   }
   T('SSC instructions page render', !!doc.querySelector('.cbt-ins-app') && doc.body.textContent.includes('INSTRUCTIONS TO CANDIDATES'));
   T('SSC marking scheme −0.5 visible', doc.body.textContent.includes('0.5'));
-  T('SSC CBT ins: Next direct enabled (no declaration)', !doc.getElementById('ins-begin').disabled && !doc.getElementById('ins-agree'));
-  doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
+  T('SSC CBT ins: Next enabled (dusra screen khulega)', !doc.getElementById('ins-next').disabled && !doc.getElementById('ins-agree'));
+  doc.getElementById('ins-next').dispatchEvent(new window.Event('click', { bubbles: true }));
+  await waitFor(() => doc.getElementById('otr-begin'), 10000);
+  doc.getElementById('otr-agree').checked = true;
+  doc.getElementById('otr-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  doc.getElementById('otr-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   await waitFor(() => window.location.hash.includes('/attempt'), 20000);   // flake-proof (jsdom load peaks)
   T('SSC attempt route entered', window.location.hash.includes('/attempt'), window.location.hash);
   await waitFor(() => doc.querySelector('.exam-screen'), 15000);

@@ -84,6 +84,25 @@ const App = {
     await Store.setSetting('config', out);
   },
 
+  /* v1.4.51 one-time migration: purane SSC series mocks 85 min (51s/q bug)
+     ke saath bane the — ab official 60 min. Attempt history untouched. */
+  async fixSscMockDurations() {
+    try {
+      if (await Store.getMeta('sscDurFixed', 0)) return;
+      const tests = await DB.getAll('tests');
+      let n = 0;
+      for (const t of tests) {
+        if (t && t.exam === 'ssc-chsl' && t.duration === 100 * 51) {
+          t.duration = 60 * 60;
+          await DB.put('tests', t);
+          n++;
+        }
+      }
+      await Store.setMeta('sscDurFixed', 1);
+      if (n) AVUtil.toast(n + ' SSC mock timer 85 → 60 min fix ho gaya ✓', 'success');
+    } catch (e) { /* best-effort */ }
+  },
+
   /* v1.4.46: exam switch — bank seed + dashboard re-render + pakka isolation */
   async switchExam(v) {
     if (typeof EXAM_CONFIGS === 'undefined' || !EXAM_CONFIGS[v]) return;
@@ -167,6 +186,9 @@ const App = {
         AVUtil.toast(r.pruned + ' outdated question' + (r.pruned === 1 ? '' : 's') + ' removed — bank updated.', 'info');
       }
     } catch (e) { /* sync is a bonus — never block boot */ }
+
+    // v1.4.51: purane SSC mocks ka 85-min timer bug fix (one-time)
+    try { await this.fixSscMockDurations(); } catch (e) { /* best-effort */ }
 
     // upgrade path: existing installs get the ready-made test series too
     try {

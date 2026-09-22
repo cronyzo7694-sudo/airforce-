@@ -368,6 +368,35 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 .ins2-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .ins2-ph-initial { font-size: 46px; font-weight: 700; color: #777; }
 .ins2-name { margin-top: 10px; font-weight: bold; font-size: 14px; color: #222; text-align: center; padding: 0 10px; }
+
+/* ══════════ OTHER IMPORTANT INSTRUCTIONS — 2nd CBT screen (v1.4.51) ══════════
+   Same fixed-viewport frame + bottom me FIXED language/declaration/action panel
+   (~180px). Sirf .otr-scroll internal scroll karta hai. */
+.otr-titlebar { font-size: 20px; }
+.otr-scroll { flex: 1; overflow-y: auto; min-height: 0; }   /* EK scroll area */
+.otr-doc { padding: 14px 24px 22px; max-width: 920px; }
+.otr-viewin { display: flex; justify-content: flex-end; align-items: center; gap: 6px; font-size: 13px; color: #333; margin-bottom: 8px; }
+.otr-viewin select { border: 1px solid #8a9298; border-radius: 2px; padding: 4px 6px; font-size: 13px; background: #fff; font-family: inherit; color: #222; }
+.otr-tbl { border-collapse: collapse; width: 100%; background: #fff; margin: 8px 0 16px; }
+.otr-tbl th, .otr-tbl td { border: 1px solid #000; padding: 5px 8px; font-size: 13.2px; text-align: center; color: #111; }
+.otr-tbl th { font-weight: bold; background: #fff; }
+.otr-tbl-total td { font-weight: bold; }
+.otr-rules li { margin-bottom: 13px; }
+.otr-marking { margin-top: 6px; padding-left: 18px; line-height: 1.6; }
+.otr-bottom { flex: none; background: #fff; border-top: 1px solid #8a9298; padding: 10px 16px 12px; min-height: 180px; box-sizing: border-box; display: grid; gap: 9px; align-content: start; }
+.otr-langrow { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.otr-langlab { font-size: 13.5px; color: #222; display: flex; align-items: center; gap: 7px; font-weight: 600; white-space: nowrap; }
+.otr-langlab select { border: 1px solid #8a9298; border-radius: 2px; padding: 4px 8px; font-size: 13.5px; background: #fff; font-family: inherit; color: #222; }
+.otr-rednote { font-size: 11.5px; color: #c00000; line-height: 1.4; }
+.otr-decl { display: flex; gap: 9px; align-items: flex-start; font-size: 12.3px; line-height: 1.5; color: #333; cursor: pointer; }
+.otr-decl input { width: 15px; height: 15px; margin-top: 2px; flex: none; cursor: pointer; }
+.otr-actions { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.otr-btn { font-family: inherit; font-size: 13.5px; padding: 8px 20px; border-radius: 2px; cursor: pointer; }
+.otr-prev { background: #f4f6f7; border: 1px solid #7c868d; color: #1d2429; }
+.otr-prev:hover { background: #e8ecee; }
+.otr-ready { background: #4a6fa5; border: 1px solid #3d5c8a; color: #fff; font-weight: 600; }
+.otr-ready:hover:not(:disabled) { background: #436394; }
+.otr-ready:disabled { opacity: .5; cursor: not-allowed; }
 .avatar {
   width: 48px; height: 48px; border-radius: 8px; background: var(--chrome);
   border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; overflow: hidden; flex: none;
@@ -801,6 +830,15 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
   .ins2-name { font-size: 11.5px; }
   .ins2-bottomnav { height: 42px; padding: 0 10px; }
   .ins2-leg-row .qbtn { width: 22px; height: 20px; font-size: 11px; }
+  .otr-titlebar { font-size: 15px; }
+  .otr-doc { padding: 10px 12px 16px; }
+  .otr-tbl th, .otr-tbl td { font-size: 11px; padding: 3px 4px; }
+  .otr-rules { font-size: 12.4px; }
+  .otr-bottom { min-height: 0; padding: 8px 10px 10px; gap: 7px; }
+  .otr-langlab, .otr-langlab select { font-size: 16px; }  /* iOS zoom-proof */
+  .otr-decl { font-size: 11.3px; }
+  .otr-btn { font-size: 12.5px; padding: 7px 14px; }
+  .otr-rednote { font-size: 10.3px; }
   .btn-begin { padding: 11px 18px; font-size: 13.5px; }
   .qa-toggle { grid-template-columns: auto auto 1fr auto auto; }
   .qa-meta { display: none; }

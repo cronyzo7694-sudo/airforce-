@@ -327,7 +327,10 @@ const Generator = (() => {
       ? opts.duration
       : (timerMode === 'section'
           ? builtSections.reduce((a, s) => a + s.duration, 0)
-          : Math.round(total * 51)); // ~51s/question default practice duration
+          /* v1.4.51 fix: global-timer EXAM (SSC CHSL 60 min) pe official
+             C.duration use hota hai — 51s/question wala default sirf
+             practice/custom tests ke liye (SSC mock pe 85 min lag raha tha!) */
+          : (opts.mode === 'exam' && C && C.duration ? C.duration : Math.round(total * 51)));
     const test = {
       id: 't_' + AVUtil.uid('x'),
       name: opts.name,
