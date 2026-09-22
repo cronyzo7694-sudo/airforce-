@@ -46,29 +46,59 @@ Views.instructions = async function (testId) {
     const photo = cfg.profileImage
       ? `<img src="${AVUtil.esc(cfg.profileImage)}" alt="Candidate photo">`
       : `<span class="cl-ph-initial">${AVUtil.esc((cfg.candidateName || 'P').trim()[0] || 'P').toUpperCase()}</span>`;
+    /* v1.4.49: REAL CBT examination portal look — blue header / grey candidate
+       info bar (System Name · Candidate Name · photo) / chhota Login form /
+       Version footer. Flow/auth/data bilkul same. */
+    const examTitle = (cfg.exam === 'ssc-chsl')
+      ? 'SSC CHSL (Tier-I) — ONLINE EXAMINATION'
+      : AVUtil.esc(cfg.name || 'AIR FORCE AGNIVEERVAYU') + ' — ONLINE EXAMINATION';
+    const icoUser = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#555" stroke-width="2"><circle cx="12" cy="8" r="3.6"/><path d="M4.5 20c1.4-3.6 4.2-5.2 7.5-5.2s6.1 1.6 7.5 5.2"/></svg>';
+    const icoLock = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#555" stroke-width="2"><rect x="5" y="10.5" width="14" height="9.5" rx="1.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>';
+    const icoKb = '<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#555" stroke-width="1.8"><rect x="3" y="6.5" width="18" height="11" rx="1.5"/><path d="M6.5 10h.01M10 10h.01M13.5 10h.01M17 10h.01M7.5 14h9"/></svg>';
     document.getElementById('app').innerHTML = `
       <div class="cbt cbt-login">
         <div class="cl-band">
-          <div class="cl-band-left"><img src="icons/icon-96.png" alt="" class="cl-band-logo"><span>${AVUtil.esc(cfg.name || 'AIR FORCE AGNIVEERVAYU')} — ONLINE EXAMINATION</span></div>
+          <div class="cl-band-left"><img src="icons/icon-96.png" alt="" class="cl-band-logo"><span>${examTitle}</span></div>
           <div class="cl-band-right">PHASE I : ONLINE TEST</div>
         </div>
-        <div class="cl-wrap">
-          <div class="cl-card">
-            <div class="cl-head">CANDIDATE LOGIN</div>
-            <div class="cl-photo">${photo}</div>
-            <div class="cl-cand-name">${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}</div>
-            <div class="cl-cand-sub">Roll No : <b>${AVUtil.esc(roll)}</b> · ${AVUtil.esc(test.name)}</div>
-            <div class="cl-fields">
-              <label>User ID<input type="text" value="${AVUtil.esc(roll)}" readonly aria-readonly="true"></label>
-              <label>Password<input type="password" value="agniveer@${AVUtil.esc(roll.slice(-4))}" readonly aria-readonly="true"></label>
+
+        <div class="cg-bar">
+          <div class="cg-bar-row">
+            <div class="cg-left">
+              <div class="cg-lbl">System Name :</div>
+              <div class="cg-yellow">C001</div>
             </div>
-            <p class="cl-note">Real exam me User ID / Password <b>invigilator</b> deta hai — practice test ke liye auto-filled hai.</p>
-            <button class="btn-begin" id="login-btn">SIGN IN</button>
-            <div class="cl-warn">⚠ Do not carry mobile phones, bluetooth devices, calculators or any other prohibited items into the examination hall.</div>
-            <a class="bt-backlink" href="#/dashboard">← Back to Dashboard</a>
+            <div class="cg-mid">
+              <div class="cg-lbl">Candidate Name :</div>
+              <div class="cg-yellow cg-name">${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}</div>
+              <div class="cg-sub">Subject : <span class="cg-yellow-sm">Mock Exam</span></div>
+            </div>
+            <div class="cg-photo">${photo}</div>
           </div>
+          <div class="cg-disc">Kindly contact the invigilator if there are any discrepancies in the Name and Photograph displayed on the screen or if the photograph is not yours</div>
         </div>
-        <div class="cl-foot">This is a computer based test (CBT). The clock is set at the server — the countdown timer at the top right of the screen will display the remaining time.</div>
+
+        <div class="cl-wrap">
+          <div class="cl-card clg-box">
+            <div class="clg-title">Login</div>
+            <div class="clg-form">
+              <div class="clg-row">
+                <span class="clg-ico">${icoUser}</span>
+                <input type="text" class="clg-inp" value="${AVUtil.esc(roll)}" readonly aria-readonly="true" aria-label="User ID">
+                <span class="clg-ico clg-kb">${icoKb}</span>
+              </div>
+              <div class="clg-row">
+                <span class="clg-ico">${icoLock}</span>
+                <input type="password" class="clg-inp" value="agniveer@${AVUtil.esc(roll.slice(-4))}" readonly aria-readonly="true" aria-label="Password">
+                <span class="clg-ico clg-kb">${icoKb}</span>
+              </div>
+              <button class="btn-begin clg-signin" id="login-btn">Sign In</button>
+            </div>
+          </div>
+          <a class="bt-backlink clg-back" href="#/dashboard">← Back to Dashboard</a>
+        </div>
+
+        <div class="cl-foot">Version 17.05.21</div>
       </div>`;
     window.scrollTo(0, 0);
     document.body.classList.add('cbt-on');

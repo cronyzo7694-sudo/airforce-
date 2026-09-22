@@ -105,6 +105,15 @@ async function main() {
   await waitFor(() => doc.getElementById('login-btn') || doc.querySelector('.cbt-instructions'), 15000);
   if (doc.getElementById('login-btn')) {   // real C-DAC candidate-login stage
     T('candidate login screen (User ID + photo)', doc.querySelector('.cl-card') && doc.getElementById('login-btn'));
+    /* v1.4.49: REAL CBT portal structure — blue header / grey info bar / login form / version footer */
+    T('CBT header: exam title + PHASE I badge', /ONLINE EXAMINATION/.test(doc.querySelector('.cl-band-left').textContent) && /PHASE I/.test(doc.querySelector('.cl-band-right').textContent));
+    T('CBT grey bar: System Name C001 (yellow)', doc.querySelector('.cg-yellow') && doc.querySelector('.cg-yellow').textContent.trim() === 'C001');
+    T('CBT grey bar: candidate name + Subject Mock Exam (yellow)', /Candidate Name/.test(doc.body.textContent) && /Mock Exam/.test(doc.body.textContent));
+    T('CBT grey bar: photo white box (right side)', !!doc.querySelector('.cg-photo'));
+    T('CBT grey bar: invigilator disclaimer', /Kindly contact the invigilator/.test(doc.body.textContent));
+    T('CBT login form: Login title + 2 rows (icon/input/keyboard)', doc.querySelector('.clg-title') && doc.querySelectorAll('.clg-row').length === 2 && doc.querySelectorAll('.clg-row .clg-ico').length === 4);
+    T('CBT Sign In: blue rectangular (green/pill NAHI)', !!doc.querySelector('#login-btn.clg-signin'));
+    T('CBT footer: Version', /Version 17\.05\.21/.test(doc.querySelector('.cl-foot').textContent));
     doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
     await waitFor(() => doc.querySelector('.cbt-instructions'), 8000);
   }
