@@ -92,7 +92,7 @@ Views.instructions = async function (testId) {
                 <input type="password" class="clg-inp" value="agniveer@${AVUtil.esc(roll.slice(-4))}" readonly aria-readonly="true" aria-label="Password">
                 <span class="clg-ico clg-kb">${icoKb}</span>
               </div>
-              <button class="btn-begin clg-signin" id="login-btn">Sign In</button>
+              <button class="clg-signin" id="login-btn">Sign In</button>
             </div>
           </div>
           <a class="bt-backlink clg-back" href="#/dashboard">← Back to Dashboard</a>
@@ -133,86 +133,76 @@ Views.instructions = async function (testId) {
     `Do not click any unnecessary button on the computer and do not close or refresh the browser — in case of any interruption, your attempt is preserved and can be resumed from the same point.`
   ];
 
-  const practiceExtras = `
-      <details class="ins-extras">
-        <summary>🧰 Practice-mode extras (real exam me NAHI milte)</summary>
-        <ul>
-          <li><b>Auto-save:</b> selections are saved instantly — a refresh never loses your work.</li>
-          <li><b>Pause (⏸):</b> exam timer ko rok sakte ho, wahi se resume hota hai.</li>
-          <li><b>Keyboard:</b> arrow keys navigation, 1–4 se option select.</li>
-          <li><b>Report (🚩):</b> galat/questionable question turant block + fresh replacement.</li>
-          <li><b>My Notebook (practice tests):</b> har question pe apna note likho.</li>
-        </ul>
-      </details>`;
-
+  /* v1.4.50: REAL CBT instructions layout — fixed regions + internal scroll:
+     blue strip → cyan "Instructions" bar → [scrollable instructions 79% |
+     fixed candidate panel 20%] → fixed bottom nav (Next >). Language control
+     top-right. Declaration/ready-to-begin/modern panel SAB HATE — flow same. */
+  const examTitle = (cfg.exam === 'ssc-chsl')
+    ? 'SSC CHSL (Tier-I) — ONLINE EXAMINATION'
+    : AVUtil.esc(cfg.name || 'AIR FORCE AGNIVEERVAYU') + ' — ONLINE EXAMINATION';
+  const candPhoto = cfg.profileImage
+    ? `<img src="${AVUtil.esc(cfg.profileImage)}" alt="Candidate photo">`
+    : `<span class="ins2-ph-initial">${AVUtil.esc((cfg.candidateName || 'P').trim()[0] || 'P').toUpperCase()}</span>`;
   document.getElementById('app').innerHTML = `
-    <div class="cbt cbt-instructions">
-      <header class="ins-header">
-        <div class="ins-exam"><a class="bt-backlink ins-back-top" href="#/test/${AVUtil.esc(test.id)}">← Back</a> ${AVUtil.esc(cfg.name)} — ${AVUtil.esc(test.mode === 'exam' ? 'Computer Based Test' : 'Practice Test')}</div>
-        <div class="ins-test">${AVUtil.esc(test.name)}</div>
-      </header>
-      <div class="ins-body">
-        <div class="ins-left">
-          <h2 class="ins-title">INSTRUCTIONS TO CANDIDATES</h2>
-          <ol class="ins-rules">
-            ${rules.map(r => `<li>${r}</li>`).join('')}
-          </ol>
-          <div class="ins-gen">
-            <b>General Instructions:</b>
-            <ul>
-              <li>The total number of questions in this test is <b>${total}</b>.</li>
-              <li>Every question has four options and exactly <b>one</b> correct answer.</li>
-              <li>Unattempted questions receive <b>0 marks</b>.</li>
-              <li>${test.sectionLock ? 'Section order: <b>' + secs.map(s => AVUtil.esc(s.name)).join(' → ') + '</b>.' : 'Free navigation between sections is allowed.'}</li>
-              <li>Do not refresh or close the browser during the examination — your attempt is preserved and can be resumed.</li>
-              <li>The question paper is the property of the examination conducting authority — copying / recording any part of it is prohibited.</li>
-            </ul>
-          </div>
-          ${practiceExtras}
-        </div>
-        <aside class="ins-right">
-          <div class="ins-panel">
-            <div class="ins-cand">
-              <div class="nav-avatar nav-avatar-lg ins-cand-photo" aria-hidden="true">
-                ${cfg.profileImage ? `<img src="${AVUtil.esc(cfg.profileImage)}" alt="Candidate photo">` : AVUtil.esc((cfg.candidateName || 'P').trim()[0] || 'P').toUpperCase()}
-              </div>
-              <div>
-                <div class="ins-cand-name">${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}</div>
-                <div class="muted small">Roll No: <b>${AVUtil.esc(cfg.rollNumber || '—')}</b> · ${AVUtil.esc(test.name)}</div>
-                <div class="muted small">Attempt #${attemptNo}</div>
-              </div>
-            </div>
-            <table class="ins-tbl">
-              <tr><td>Candidate Name</td><td><b>${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}</b></td></tr>
-              <tr><td>Roll Number</td><td><b>${AVUtil.esc(cfg.rollNumber || '—')}</b></td></tr>
-              <tr><td>Examination</td><td><b>${AVUtil.esc(cfg.name)}</b></td></tr>
-              <tr><td>Total Questions</td><td><b>${total}</b> (${secs.map(s => `${AVUtil.esc(s.name)}: ${s.questionIds.length}`).join(', ')})</td></tr>
-              <tr><td>Total Duration</td><td><b>${Math.round(test.duration / 60)} minutes</b></td></tr>
-              ${test.timerMode === 'section' ? `<tr><td>Section Timing</td><td>${secs.map(s => `${AVUtil.esc(s.name)}: <b>${Math.round(s.duration / 60)} min</b>`).join('<br>')}</td></tr>` : ''}
-              <tr><td>Marks per question</td><td><b>+${mk.correct}</b> · wrong <b>${mk.wrong}</b> · skipped <b>0</b></td></tr>
-              <tr><td>Maximum marks</td><td><b>${test.maxScore}</b></td></tr>
-            </table>
-            <div class="ins-back"><a href="#/test/${AVUtil.esc(test.id)}">← Back to test details</a></div>
-          </div>
-        </aside>
+    <div class="cbt cbt-ins-app">
+      <div class="cl-band ins2-band">
+        <div class="cl-band-left"><img src="icons/icon-96.png" alt="" class="cl-band-logo"><span>${examTitle}</span></div>
+        <div class="cl-band-right">PHASE I : ONLINE TEST</div>
       </div>
-      <footer class="ins-footer">
-        <label class="ins-lang">
-          <span class="small muted">${App.t('chooseLanguage')}</span>
-          <select id="ins-lang">
-            <option value="en" ${lang === 'en' ? 'selected' : ''}>English</option>
-            <option value="hi" ${lang === 'hi' ? 'selected' : ''}>हिन्दी</option>
-          </select>
-        </label>
-        <div class="ins-declare-box">
-          <b>Declaration:</b> I have read and understood all the instructions given above. I declare that I am not in possession of / not wearing / not carrying any prohibited gadget like mobile phone, bluetooth device, camera, calculator etc. or any prohibited material with me into the examination hall.
+      <div class="ins2-titlebar">Instructions</div>
+      <div class="ins2-main">
+        <div class="ins2-left">
+          <div class="ins2-toolbar">
+            <span class="ins2-viewin">View in :</span>
+            <select id="ins-lang" aria-label="View in">
+              <option value="en" ${lang === 'en' ? 'selected' : ''}>English</option>
+              <option value="hi" ${lang === 'hi' ? 'selected' : ''}>हिन्दी</option>
+            </select>
+          </div>
+          <div class="ins2-scroll">
+            <div class="ins2-doc">
+              <div class="ins2-h1">INSTRUCTIONS TO CANDIDATES (BOTH SUBJECTS)</div>
+              <div class="ins2-h1 ins2-h1b">CANDIDATES MUST READ THE FOLLOWING</div>
+              <div class="ins2-h1 ins2-h1b">INSTRUCTIONS BEFORE ATTEMPTING THE QUESTION PAPER</div>
+
+              <div class="ins2-gh">General Instructions:</div>
+              <ol class="ins2-rules">
+                <li>The total duration of the examination is <b>${Math.round(test.duration / 60)} minutes</b>. The clock is set at the server — the countdown timer at the top right corner of the screen will display the remaining time available. ${test.timerMode === 'section'
+                  ? `Section-wise timing: ${secs.map(s => `${s.name} ${Math.round(s.duration / 60)} min`).join(' · ')}. When a section's time expires, it is submitted automatically and the next section starts with its full time — leftover time is <b>not</b> carried forward.`
+                  : `When the timer reaches zero, the examination will end by itself.`}</li>
+                <li>The <b>Question Palette</b> displayed on the right side of the screen will show the status of each question using one of the following symbols:
+                  <div class="ins2-legend">
+                    <div class="ins2-leg-row"><button class="qbtn notvisited" tabindex="-1">1</button> You have not visited the question yet.</div>
+                    <div class="ins2-leg-row"><button class="qbtn notanswered" tabindex="-1">2</button> You have not answered the question.</div>
+                    <div class="ins2-leg-row"><button class="qbtn answered" tabindex="-1">3</button> You have answered the question.</div>
+                    <div class="ins2-leg-row"><button class="qbtn marked" tabindex="-1">4</button> You have <b>NOT</b> answered the question, but have marked the question for review.</div>
+                    <div class="ins2-leg-row"><button class="qbtn ansmarked" tabindex="-1">5</button> The question(s) "Answered and Marked for Review" <b>will be considered for evaluation</b>.</div>
+                  </div></li>
+                <li>To answer a question, click the option button of your choice. To <b>save</b> your answer, you <b>MUST</b> click on the <b>SAVE &amp; NEXT</b> button.</li>
+                <li>To change your chosen answer, click the button of another option. To deselect your chosen answer, click on <b>CLEAR RESPONSE</b>.</li>
+                <li>To mark a question for review, click on <b>MARK FOR REVIEW &amp; NEXT</b>. If an answer is selected for a question that is Marked for Review, that answer <b>will be considered in the evaluation</b>.</li>
+                <li>${test.sectionLock
+                  ? `Sections in this paper are <b>locked in order</b>: ${secs.map(s => AVUtil.esc(s.name)).join(' → ')}. You cannot move to the next section until you submit the current section. A submitted section cannot be re-opened.`
+                  : `You may shuffle between sections and questions anytime during the examination by clicking the subject names on the top bar.`}</li>
+                <li>The total number of questions in this test is <b>${total}</b>. Every question has four options and exactly <b>one</b> correct answer.</li>
+                <li>Marking pattern — <b>+${mk.correct}</b> mark for each correct answer, <b>${mk.wrong}</b> mark deducted for each wrong answer, <b>0</b> for unattempted questions. Maximum marks: <b>${test.maxScore}</b>.</li>
+                <li>Questions will be displayed in the language chosen (bilingual — English &amp; हिन्दी, except English subject). Where content is available in only one language, it will be displayed in that language.</li>
+                <li>You may submit the paper anytime by clicking the <b>SUBMIT</b> button — a confirmation is always shown first. ${test.sectionLock ? 'The examination ends when the last section is submitted.' : 'You may return to the paper from the confirmation dialog.'}</li>
+                <li>Do not click any unnecessary button on the computer and do not close or refresh the browser — in case of any interruption, your attempt is preserved and can be resumed from the same point.</li>
+                <li>The question paper is the property of the examination conducting authority — copying / recording any part of it is prohibited.</li>
+              </ol>
+            </div>
+          </div>
+          <div class="ins2-bottomnav">
+            <button class="ins2-next" id="ins-begin">Next&nbsp;&nbsp;&gt;</button>
+          </div>
         </div>
-        <label class="ins-declare">
-          <input type="checkbox" id="ins-agree">
-          <span>${App.t('readInstructions')}</span>
-        </label>
-        <button class="btn-begin" id="ins-begin" disabled>${App.t('readyToBegin').toUpperCase()}</button>
-      </footer>
+        <div class="ins2-right">
+          <div class="ins2-cand-strip">Candidate Photograph</div>
+          <div class="ins2-photo">${candPhoto}</div>
+          <div class="ins2-name">${AVUtil.esc(cfg.candidateName || 'Practice Candidate')}</div>
+        </div>
+      </div>
     </div>`;
   window.scrollTo(0, 0);
   document.body.classList.add('cbt-on');   // full-screen exam context — hide site chrome
@@ -222,7 +212,6 @@ Views.instructions = async function (testId) {
     localStorage.setItem('av_lang', e.target.value);
     Views.instructions(testId); // re-render in chosen language
   });
-  AVUtil.$('#ins-agree').addEventListener('change', e => { AVUtil.$('#ins-begin').disabled = !e.target.checked; });
   AVUtil.$('#ins-begin').addEventListener('click', async () => {
     const btn = AVUtil.$('#ins-begin');
     btn.disabled = true; btn.textContent = 'STARTING…';

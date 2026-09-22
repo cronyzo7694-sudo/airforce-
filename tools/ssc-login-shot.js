@@ -7,7 +7,7 @@ const puppeteer = require('puppeteer');
   await page.setViewport({ width: 1280, height: 800 });
   const sleep = ms => new Promise(r => setTimeout(r, ms));
 
-  await page.goto('http://127.0.0.1:8931/index.html#/dashboard', { waitUntil: 'networkidle2', timeout: 60000 });
+  await page.goto('https://cronyzo7694-sudo.github.io/airforce-/#/dashboard', { waitUntil: 'networkidle2', timeout: 60000 });
   await sleep(3000);
   // SSC switch
   await page.evaluate(() => {
@@ -27,12 +27,12 @@ const puppeteer = require('puppeteer');
   await page.evaluate(id => { sessionStorage.removeItem('examLogin_' + id); location.hash = '#/test/' + id + '/instructions'; }, testId);
   await page.waitForSelector('#login-btn', { timeout: 30000 });
   await sleep(800);
-  await page.screenshot({ path: '/home/user/ssc-cbt-login-desktop.png' });
+  await page.screenshot({ path: '/home/user/ssc-cbt-login-LIVE-desktop.png' });
 
   // mobile bhi
   await page.setViewport({ width: 390, height: 780 });
   await sleep(700);
-  await page.screenshot({ path: '/home/user/ssc-cbt-login-mobile.png' });
+  await page.screenshot({ path: '/home/user/ssc-cbt-login-LIVE-mobile.png' });
 
   await browser.close();
   console.log('screenshots done: ssc-cbt-login-desktop.png + ssc-cbt-login-mobile.png (testId ' + testId + ')');

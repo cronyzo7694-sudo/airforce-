@@ -87,6 +87,7 @@ const App = {
   /* v1.4.46: exam switch — bank seed + dashboard re-render + pakka isolation */
   async switchExam(v) {
     if (typeof EXAM_CONFIGS === 'undefined' || !EXAM_CONFIGS[v]) return;
+    const startHash = location.hash || '';   /* v1.4.50 race-guard */
     try {
       const saved = (await Store.getSetting('config', null)) || {};
       saved.exam = v;
@@ -114,8 +115,15 @@ const App = {
         }
       }
     } catch (e) { console.error('exam-switch seed', e); }
-    if ((location.hash || '').indexOf('#/dashboard') !== 0) location.hash = '#/dashboard';
-    else window.dispatchEvent(new Event('hashchange'));
+    /* v1.4.50 race-guard: seed/sync slow hone par ye LATE chal jata tha —
+       agar user/test beech me kahin aur navigate kar chuka hai (startHash se
+       alag) to usay dashboard pe MAT kheencho. Sirf tab jao jab wahi ho jahan
+       switch shuru hua tha, ya dashboard-target wala default case ho. */
+    const nowHash = location.hash || '';
+    if (nowHash === startHash || startHash.indexOf('#/dashboard') === 0) {
+      if (nowHash.indexOf('#/dashboard') !== 0) location.hash = '#/dashboard';
+      else window.dispatchEvent(new Event('hashchange'));
+    }
     AVUtil.toast((EXAM_LABELS[v] || v) + ' active — data & analysis bilkul alag ✅', 'success');
   },
 

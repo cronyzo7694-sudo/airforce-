@@ -102,7 +102,7 @@ async function main() {
   }
   testId = (window.location.hash.match(/#\/test\/([^/]+)\/instructions/) || [])[1];
   T('full mock generated → instructions page', !!testId, window.location.hash);
-  await waitFor(() => doc.getElementById('login-btn') || doc.querySelector('.cbt-instructions'), 15000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.querySelector('.cbt-ins-app'), 15000);
   if (doc.getElementById('login-btn')) {   // real C-DAC candidate-login stage
     T('candidate login screen (User ID + photo)', doc.querySelector('.cl-card') && doc.getElementById('login-btn'));
     /* v1.4.49: REAL CBT portal structure — blue header / grey info bar / login form / version footer */
@@ -115,20 +115,20 @@ async function main() {
     T('CBT Sign In: blue rectangular (green/pill NAHI)', !!doc.querySelector('#login-btn.clg-signin'));
     T('CBT footer: Version', /Version 17\.05\.21/.test(doc.querySelector('.cl-foot').textContent));
     doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
-    await waitFor(() => doc.querySelector('.cbt-instructions'), 8000);
+    await waitFor(() => doc.querySelector('.cbt-ins-app'), 8000);
   }
   const genTest = await G('DB.get("tests", "' + testId + '")');
   T('quick-start test uses realpaper strategy', genTest.strategy === 'realpaper');
   T('series tests untouched by quick-start (36 total)', (await G('DB.count("tests")')) === 36);
   T('instructions page renders (Digialm style)',
-    doc.querySelector('.cbt-instructions') && doc.body.textContent.includes('INSTRUCTIONS TO CANDIDATES'));
+    doc.querySelector('.cbt-ins-app') && doc.body.textContent.includes('INSTRUCTIONS TO CANDIDATES'));
   T('marking scheme shown on instructions', doc.body.textContent.includes('0.25'));
-  T('begin button disabled until declaration', doc.getElementById('ins-begin').disabled === true);
-
-  // choose language + declare + begin
-  doc.getElementById('ins-agree').checked = true;
-  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
-  T('begin enabled after declaration', doc.getElementById('ins-begin').disabled === false);
+  /* v1.4.50: REAL CBT instructions — fixed regions, internal scroll, no declaration */
+  T('CBT ins: cyan title bar + View in language control top', !!doc.querySelector('.ins2-titlebar') && !!doc.getElementById('ins-lang') && /View in/.test(doc.body.textContent));
+  T('CBT ins: fixed candidate panel photo+name (no details table)', !!doc.querySelector('.ins2-photo') && !!doc.querySelector('.ins2-name') && !doc.querySelector('.ins-tbl'));
+  T('CBT ins: Next button in fixed bottom nav', !!doc.querySelector('.ins2-bottomnav #ins-begin') && /Next/.test(doc.getElementById('ins-begin').textContent));
+  T('CBT ins: legend 5 palette statuses (traditional boxes)', doc.querySelectorAll('.ins2-leg-row').length === 5);
+  T('CBT ins: koi declaration checkbox NAHI', !doc.getElementById('ins-agree'));
   doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   for (let i = 0; i < 40; i++) { await sleep(150); if (window.location.hash.includes('/attempt')) break; }
   T('attempt route entered', window.location.hash.includes('/attempt'), window.location.hash);
@@ -416,13 +416,11 @@ async function main() {
   console.log('\n━━━ E2E · 0-answer paper → fresh test (koi analysis nahi)');
   const zr = await G('Generator.subjectTest("mathematics")');
   window.location.hash = '#/test/' + zr.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 10000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 10000);
   if (doc.getElementById('login-btn')) {
     doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
-    await waitFor(() => doc.getElementById('ins-agree'), 8000);
+    await waitFor(() => doc.getElementById('ins-begin'), 8000);
   }
-  doc.getElementById('ins-agree').checked = true;
-  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
   doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   await waitFor(() => doc.querySelector('.exam-screen'), 20000);
   const attBefore = await G('DB.count("attempts")');
@@ -490,13 +488,11 @@ async function main() {
   T('subject test generated (25 Q)', r.ok && r.test.totalQuestions === 25);
   await G('(async () => { const t = await DB.get("tests", "' + r.test.id + '"); t.instantExplanation = true; await DB.put("tests", t); })()');
   window.location.hash = '#/test/' + r.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-agree'), 10000);
+  await waitFor(() => doc.getElementById('login-btn') || doc.getElementById('ins-begin'), 10000);
   if (doc.getElementById('login-btn')) {
     doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
-    await waitFor(() => doc.getElementById('ins-agree'), 8000);
+    await waitFor(() => doc.getElementById('ins-begin'), 8000);
   }
-  doc.getElementById('ins-agree').checked = true;
-  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
   doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   for (let i = 0; i < 40; i++) { await sleep(150); if (doc.querySelector('.exam-screen')) break; }
   await sleep(300);
@@ -603,10 +599,8 @@ async function main() {
   // exam screen bhi mode ke saath theek
   const smT = await G('Generator.subjectTest("english")');
   window.location.hash = '#/test/' + smT.test.id + '/instructions';
-  await waitFor(() => doc.getElementById('ins-agree') || doc.getElementById('login-btn'), 12000);
-  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-agree'), 8000); }
-  doc.getElementById('ins-agree').checked = true;
-  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  await waitFor(() => doc.getElementById('ins-begin') || doc.getElementById('login-btn'), 12000);
+  if (doc.getElementById('login-btn')) { doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true })); await waitFor(() => doc.getElementById('ins-begin'), 8000); }
   doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   const smExam = await waitFor(() => doc.querySelector('.exam-screen'), 15000);
   T('mode ON + exam screen: question text VISIBLE', smExam && doc.querySelector('.exam-screen').textContent.length > 50 && doc.documentElement.classList.contains('sm-dark'));
@@ -712,16 +706,14 @@ async function main() {
 
   // instructions page
   window.location.hash = '#/test/' + sscMock.id + '/instructions';
-  await waitFor(() => doc.querySelector('.cbt-instructions') || doc.getElementById('login-btn'), 15000);
+  await waitFor(() => doc.querySelector('.cbt-ins-app') || doc.getElementById('login-btn'), 15000);
   if (doc.getElementById('login-btn')) {   // candidate-login stage (same CBT flow)
     doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
-    await waitFor(() => doc.querySelector('.cbt-instructions'), 8000);
+    await waitFor(() => doc.querySelector('.cbt-ins-app'), 8000);
   }
-  T('SSC instructions page render', !!doc.querySelector('.cbt-instructions') && doc.body.textContent.includes('INSTRUCTIONS TO CANDIDATES'));
+  T('SSC instructions page render', !!doc.querySelector('.cbt-ins-app') && doc.body.textContent.includes('INSTRUCTIONS TO CANDIDATES'));
   T('SSC marking scheme −0.5 visible', doc.body.textContent.includes('0.5'));
-  T('begin disabled until declaration', doc.getElementById('ins-begin').disabled === true);
-  doc.getElementById('ins-agree').checked = true;
-  doc.getElementById('ins-agree').dispatchEvent(new window.Event('change', { bubbles: true }));
+  T('SSC CBT ins: Next direct enabled (no declaration)', !doc.getElementById('ins-begin').disabled && !doc.getElementById('ins-agree'));
   doc.getElementById('ins-begin').dispatchEvent(new window.Event('click', { bubbles: true }));
   await waitFor(() => window.location.hash.includes('/attempt'), 20000);   // flake-proof (jsdom load peaks)
   T('SSC attempt route entered', window.location.hash.includes('/attempt'), window.location.hash);

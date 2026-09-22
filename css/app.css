@@ -335,52 +335,45 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 /* ============================================================
  * INSTRUCTIONS PAGE (Digialm style — fixed footer, question-first)
  * ============================================================ */
-.cbt-instructions { background: #fff; min-height: 100vh; padding-bottom: 86px; }
-.ins-header {
-  background: linear-gradient(180deg, #ffffff, #eef2f8);
-  border-bottom: 2px solid var(--navy-2);
-  padding: 10px 20px 9px;
+/* ══════════ INSTRUCTIONS — REAL CBT layout (v1.4.50) ══════════
+   Fixed application viewport: blue strip → cyan "Instructions" bar →
+   [scrollable instructions ~79% | fixed candidate panel ~20%] → fixed
+   bottom nav (Next >). SIRF left content scroll karta hai — body kabhi nahi. */
+.cbt-ins-app {
+  position: fixed; inset: 0; z-index: 60;
+  display: flex; flex-direction: column; overflow: hidden;
+  background: #fff; font-family: Arial, Helvetica, sans-serif;
 }
-.ins-exam { font-size: 18px; font-weight: 700; color: var(--navy); letter-spacing: .3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ins-test { font-size: 13px; color: var(--muted); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.ins-body { display: grid; grid-template-columns: minmax(0, 1fr) 330px; gap: 20px; padding: 18px 20px 8px; max-width: 1280px; margin: 0 auto; }
-.ins-title { font-size: 15px; color: var(--navy); border-bottom: 2px solid var(--chrome); padding-bottom: 7px; letter-spacing: .4px; }
-.ins-rules { padding-left: 20px; font-size: 13.6px; line-height: 1.6; color: #2c3a50; }
-.ins-rules li { margin-bottom: 9px; }
-.ins-gen { border: 1px solid var(--line-soft); background: var(--chrome-2); border-radius: 9px; padding: 12px 14px; font-size: 13px; }
-.ins-gen ul { padding-left: 18px; margin: 7px 0 0; }
-.ins-gen li { margin-bottom: 4px; }
-.pal-demo { display: inline-flex; align-items: center; gap: 7px; margin: 3px 10px 3px 0; font-size: 12.8px; }
-.pal-demo .qbtn { width: 24px; height: 22px; font-size: 11.5px; cursor: default; }
-.ins-panel { border: 1px solid var(--line); border-radius: 10px; padding: 15px; position: sticky; top: 12px; background: #fff; box-shadow: 0 2px 10px rgba(20,40,80,.07); }
-.ins-cand { display: flex; gap: 11px; align-items: center; border-bottom: 1px solid var(--line-soft); padding-bottom: 11px; margin-bottom: 11px; }
+.ins2-band { flex: none; }
+.ins2-titlebar { flex: none; background: #bfe3ec; height: 40px; box-sizing: border-box; display: flex; align-items: center; padding: 0 16px; font-weight: bold; font-size: 15px; color: #2f3b45; }
+.ins2-main { flex: 1; display: flex; overflow: hidden; min-height: 0; }
+.ins2-left { flex: 1 1 79%; min-width: 0; display: flex; flex-direction: column; }
+.ins2-toolbar { flex: none; display: flex; justify-content: flex-end; align-items: center; gap: 7px; padding: 7px 14px; border-bottom: 1px solid #c9cfd4; background: #fff; font-size: 13px; color: #333; }
+.ins2-toolbar select { border: 1px solid #8a9298; border-radius: 2px; padding: 4px 6px; font-size: 13px; background: #fff; font-family: inherit; color: #222; }
+.ins2-scroll { flex: 1; overflow-y: auto; min-height: 0; }   /* EK hi intended scroll area */
+.ins2-doc { padding: 16px 26px 26px; max-width: 900px; }
+.ins2-h1 { text-align: center; font-weight: bold; text-decoration: underline; font-size: 14.5px; margin: 0 0 5px; color: #111; line-height: 1.35; }
+.ins2-gh { font-weight: bold; text-decoration: underline; font-size: 14px; margin: 14px 0 8px; color: #111; }
+.ins2-rules { padding-left: 26px; font-size: 13.5px; line-height: 1.55; color: #222; margin: 0; }
+.ins2-rules li { margin-bottom: 10px; }
+.ins2-legend { margin: 8px 0 4px; display: grid; gap: 6px; }
+.ins2-leg-row { display: flex; align-items: center; gap: 10px; font-size: 13.2px; }
+.ins2-leg-row .qbtn { width: 26px; height: 24px; font-size: 12px; cursor: default; flex: none; }
+.ins2-bottomnav { flex: none; height: 46px; background: #fff; border-top: 1px solid #8a9298; display: flex; align-items: center; justify-content: flex-end; padding: 0 16px; }
+.ins2-next { background: #f4f6f7; border: 1px solid #7c868d; color: #1d2429; font-size: 13.5px; padding: 6px 20px; border-radius: 2px; cursor: pointer; font-family: inherit; font-weight: 600; }
+.ins2-next:hover { background: #e8ecee; }
+.ins2-right { flex: 0 0 21%; min-width: 150px; border-left: 2px solid #3c4449; background: #eef0f1; display: flex; flex-direction: column; align-items: center; }
+.ins2-cand-strip { width: 100%; background: #d7dbde; border-bottom: 1px solid #aeb4b9; text-align: center; padding: 8px 6px; font-weight: bold; font-size: 12.5px; color: #333; box-sizing: border-box; }
+.ins2-photo { width: 118px; height: 140px; background: #fff; border: 1px solid #7c868d; margin-top: 18px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.ins2-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ins2-ph-initial { font-size: 46px; font-weight: 700; color: #777; }
+.ins2-name { margin-top: 10px; font-weight: bold; font-size: 14px; color: #222; text-align: center; padding: 0 10px; }
 .avatar {
   width: 48px; height: 48px; border-radius: 8px; background: var(--chrome);
   border: 1px solid var(--line); display: flex; align-items: center; justify-content: center; overflow: hidden; flex: none;
 }
-.ins-cand-name { font-weight: 700; font-size: 14.5px; color: var(--navy); }
-.ins-tbl { width: 100%; border-collapse: collapse; font-size: 12.8px; }
-.ins-tbl td { padding: 6px 5px; border-bottom: 1px solid var(--line-soft); vertical-align: top; }
-.ins-tbl td:first-child { color: var(--muted); width: 44%; }
-.ins-back { text-align: center; margin-top: 10px; font-size: 12.5px; }
-/* fixed Digialm footer — begin button is ALWAYS reachable, mobile or desktop */
-.ins-footer {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
-  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
-  background: #fff; border-top: 2px solid var(--navy-2); box-shadow: 0 -4px 16px rgba(20, 40, 80, .1);
-  padding: 10px 16px calc(10px + env(safe-area-inset-bottom, 0px));
-}
-.ins-lang { display: flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: #44536b; }
-.ins-lang select { border: 1px solid var(--line); border-radius: 7px; padding: 8px 9px; font-size: 13.5px; background: #fff; color: var(--ink); }
-.ins-declare { display: flex; gap: 8px; align-items: center; font-size: 12.4px; line-height: 1.4; color: #44536b; flex: 1; min-width: 150px; cursor: pointer; }
-.ins-declare input { width: 17px; height: 17px; flex: none; cursor: pointer; }
-.btn-begin {
-  background: linear-gradient(180deg, #34a154, #268a44); color: #fff; border: 1px solid #1f7a39;
-  border-radius: 8px; padding: 12px 30px; font-size: 15px; font-weight: 700; letter-spacing: .5px; cursor: pointer;
-  box-shadow: 0 2px 0 #1c6b33; flex: none;
-}
-.btn-begin:hover:not(:disabled) { filter: brightness(1.05); }
-.btn-begin:disabled { opacity: .5; cursor: not-allowed; }
+.pal-demo { display: inline-flex; align-items: center; gap: 7px; margin: 3px 10px 3px 0; font-size: 12.8px; }
+.pal-demo .qbtn { width: 24px; height: 22px; font-size: 11.5px; cursor: default; }
 
 /* ============================================================
  * EXAM SCREEN — Digialm CBT
@@ -702,8 +695,7 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 }
 @media (max-width: 900px) {
   .two-col { grid-template-columns: 1fr; }
-  .ins-body { grid-template-columns: 1fr; padding: 14px 12px 6px; }
-  .ins-panel { position: static; }
+
   .eh-test { display: none; }
   .eh-exam { font-size: 13.5px; }
   .xbtn-ghost .ilbl { display: none; }
@@ -725,7 +717,7 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
   .q-scroll { padding: 13px 14px 6px; }
   .q-text { font-size: 14.8px; }
   .opt { grid-template-columns: 20px 24px 1fr; padding: 12px 10px; font-size: 14.2px; }
-  .q-viewin select, .ins-lang select { font-size: 16px; } /* iOS zoom-proof */
+  .q-viewin select, .ins2-toolbar select { font-size: 16px; } /* iOS zoom-proof */
   /* palette = slide-in drawer with a real close button */
   .palette-panel {
     position: fixed; top: 0; right: 0; bottom: 0; width: min(320px, 84vw); z-index: 95;
@@ -797,8 +789,18 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
   .qbtn { min-height: 32px; font-size: 12px; }
   .timer-val { font-size: 13.5px; }
   .opt { min-height: 48px; }
-  .ins-footer { gap: 8px; padding: 8px 10px calc(8px + env(safe-area-inset-bottom, 0px)); }
-  .ins-declare { font-size: 11.3px; }
+  .ins2-titlebar { height: auto; padding: 8px 10px; font-size: 13.5px; }
+  .ins2-toolbar { padding: 6px 10px; }
+  .ins2-doc { padding: 12px 14px 18px; }
+  .ins2-h1 { font-size: 12.6px; }
+  .ins2-rules { font-size: 12.6px; padding-left: 20px; }
+  .ins2-right { flex: 0 0 122px; min-width: 122px; }
+  .ins2-cand-strip { font-size: 10.5px; padding: 6px 3px; }
+  .ins2-photo { width: 84px; height: 100px; margin-top: 10px; }
+  .ins2-ph-initial { font-size: 32px; }
+  .ins2-name { font-size: 11.5px; }
+  .ins2-bottomnav { height: 42px; padding: 0 10px; }
+  .ins2-leg-row .qbtn { width: 22px; height: 20px; font-size: 11px; }
   .btn-begin { padding: 11px 18px; font-size: 13.5px; }
   .qa-toggle { grid-template-columns: auto auto 1fr auto auto; }
   .qa-meta { display: none; }
