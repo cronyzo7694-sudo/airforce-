@@ -66,6 +66,13 @@ async function main() {
   }
   T('app boots to dashboard', seeded, 'dashboard did not render');
   if (!seeded) { console.error(errors.join('\n')); process.exit(1); }
+  /* v1.4.55 test-spies (test-only, app untouched):
+     (a) __dashDone — dashboard render-complete timestamp (route-queue drain signal)
+     (b) bankStats cache — 12k-Q SSC bank par Bank.bankStats ka IDB cursor
+         jsdom/fake-IDB me ~30-70s leta hai (real browser me native IDB <0.5s).
+         Same-result memo cache lagakar e2e deterministic + fast hota hai;
+         bankStats compute logic ke apne tests alag se hain (engine/parser). */
+  await G('(function(){ if (window.__dashDone === undefined) { window.__dashDone = 0; const od = Views.dashboard.bind(Views); Views.dashboard = async function(){ const r = await od(...arguments); window.__dashDone = Date.now(); return r; }; } if (window.__bsCache === undefined) { window.__bsCache = {}; const ob = Bank.bankStats.bind(Bank); Bank.bankStats = async function(ex){ const k = ex || "airforce"; if (window.__bsCache[k]) return window.__bsCache[k]; const r = await ob(ex); window.__bsCache[k] = r; return r; }; } })()');
 
   // wait for seed to finish writing meta
   let qCount = 0;
@@ -680,6 +687,7 @@ async function main() {
   T('dropdown me SSC CHSL ENABLED option', !!examSel && Array.from(examSel.options).some(o => o.value === 'ssc-chsl' && !o.disabled));
   const afQ = await G('DB.count("questions")');
   const afTests = await G('DB.count("tests")');
+  await G('window.__switchT = Date.now()');   /* v1.4.55: spy-window open */
   examSel.value = 'ssc-chsl';
   examSel.dispatchEvent(new window.Event('change', { bubbles: true }));
   let sw = false; for (let i = 0; i < 60; i++) { await sleep(250); try { sw = await G('App.configCache && App.configCache.exam'); } catch (e) {} if (sw === 'ssc-chsl') break; }
@@ -691,6 +699,9 @@ async function main() {
      planner usko existing maan ke mock skip kar deta tha (race flake) */
   let sscSeeded = false; for (let i = 0; i < 240; i++) { await sleep(500); try { sscSeeded = await G('Store.getMeta("seeded_ssc-chsl", false)'); } catch (e) {} if (sscSeeded === true) { try { if (await G('Store.getMeta("seriesBuilt_ssc-chsl", null)') || await G('(async()=>{const ts=await DB.getAll("tests");return ts.some(t=>t.exam==="ssc-chsl"&&t.series&&t.type==="full")})()')) break; } catch (e) { break; } } }
   T('SSC bank seeded (data/ssc-chsl/ se)', sscSeeded === true);
+  /* v1.4.55: SSC bankStats pre-warm — pehli (slow) compute yahin ho jaye,
+     phir dashboard/tests/bank views memo-cache se instant render dete hain */
+  await G('Bank.bankStats("ssc-chsl")');
   const sscQ = await G('DB.count("questions")');
   T('SSC questions ADD hue — airforce data untouched', sscQ > afQ, afQ + ' → ' + sscQ);
   const sscReason = await G('(async()=>{const all=await DB.getAll("questions");return all.filter(q=>q.exam==="ssc-chsl"&&q.subject==="reasoning").length})()');
@@ -745,12 +756,26 @@ async function main() {
   T('SSC mock 100 Q (25×4)', !!sscMock && sscMock.sections.reduce((n, s) => n + s.questionIds.length, 0) === 100, sscMock && sscMock.name + ' [' + sscMock.sections.map(x => x.questionIds.length).join(',') + '] dur=' + Math.round((sscMock.duration || 0) / 60) + 'min' + ' | all4sec=' + sscTests.filter(t => t.series && t.sections.length === 4).map(t => t.name + '[' + t.sections.map(x => x.questionIds.length).join(',') + ']').join(' ; '));
   T('SSC mock duration 60 min (v1.4.51 fix — 85 nahi)', !!sscMock && Math.round(sscMock.duration / 60) === 60, sscMock && Math.round(sscMock.duration / 60) + ' min');
 
+  /* v1.4.55: setExam ke baad dashboard re-render (Bank.bankStats — 15k Q IDB
+     cursor) jsdom/fake-IDB me route-queue ko ~30s block karta tha — turant
+     instructions hash set karne par wo resolve kabhi run nahi hota tha (2 e2e
+     fails). Settle signal: __dashDone > __switchT (dashboard RENDER complete).
+     Real browser me native IDB — <0.5s, user ko farak nahi. */
+  /* v1.4.55: setExam ke baad dashboard re-render route-queue ko block karta
+     tha (bankStats 15k-Q cursor jsdom me ~30-70s) — turant instructions hash
+     set karne par resolve kabhi run nahi hota tha (2 e2e fails). Settle:
+     exam-switch complete + SSC dashboard render-complete, phir deterministic
+     resolve. Real browser me native IDB — <0.5s, user ko farak nahi. */
+  let dashSettled = false;
+  for (let i = 0; i < 170; i++) { await sleep(500); try { const sw2 = await G('String(App._switching)'); const dd = await G('window.__dashDone'); const st = await G('window.__switchT'); if (sw2 === 'null' && dd > st) { dashSettled = true; break; } } catch (e) {} }
+  T('SSC switch ke baad dashboard settle (bankStats 15k Q — route queue drain)', dashSettled);
   // instructions page
   window.location.hash = '#/test/' + sscMock.id + '/instructions';
-  await waitFor(() => doc.querySelector('.cbt-ins-app') || doc.getElementById('login-btn'), 15000);
+  await G('Router.resolve()');   /* v1.4.55: jsdom hashchange event miss-proof — deterministic queue push */
+  await waitFor(() => doc.querySelector('.cbt-ins-app') || doc.getElementById('login-btn'), 30000);
   if (doc.getElementById('login-btn')) {   // candidate-login stage (same CBT flow)
     doc.getElementById('login-btn').dispatchEvent(new window.Event('click', { bubbles: true }));
-    await waitFor(() => doc.querySelector('.cbt-ins-app'), 8000);
+    await waitFor(() => doc.getElementById('ins-next'), 15000);   /* v1.4.55: instructions stage (login-frame nahi) */
   }
   T('SSC instructions page render', !!doc.querySelector('.cbt-ins-app') && doc.body.textContent.includes('INSTRUCTIONS TO CANDIDATES'));
   T('SSC marking scheme −0.5 visible', doc.body.textContent.includes('0.5'));
@@ -768,12 +793,12 @@ async function main() {
   const sscAtt = await G('ExamScreen.attempt');
   T('SSC attempt 4 sections (reasoning/gs/maths/english)', sscAtt && ['reasoning','gs','mathematics','english'].every(s => sscAtt.sections[s]) && Object.keys(sscAtt.sections).length === 4);
   T('SSC attempt 100 questions', (await G('Engine.allQuestionIds(ExamScreen.attempt).length')) === 100);
-  T('SSC Tier-I: sab sections unlocked (free navigation)', ['reasoning','gs','mathematics','english'].every(x => sscAtt.sections[x].state === 'ACTIVE'), Object.keys(sscAtt.sections).map(k => k + ':' + sscAtt.sections[k].state).join(' '));
+  T('SSC Tier-I 2026: SECTIONAL — pehla section ACTIVE, baaki LOCKED (15-min/section)', sscAtt.sections['reasoning'].state === 'ACTIVE' && ['gs','mathematics','english'].every(x => sscAtt.sections[x].state === 'LOCKED'), Object.keys(sscAtt.sections).map(k => k + ':' + sscAtt.sections[k].state).join(' '));
   T('current section reasoning (SSC order)', sscAtt.currentSectionId === 'reasoning');
   T('SSC palette 25 Q (reasoning)', doc.querySelectorAll('.palette-grid .qbtn').length === 25);
   T('SSC section submit button available', !!doc.querySelector('.exam-header #x-submit'));
   const sscTimerTxt = (doc.getElementById('x-timer') || {}).textContent || '';
-  T('SSC timer ticking (global 60 min)', /Time Left/.test(sscTimerTxt), sscTimerTxt.slice(0, 40));
+  T('SSC timer ticking (sectional 15-min/section, 2026 pattern)', /Time Left/.test(sscTimerTxt), sscTimerTxt.slice(0, 40));
 
   // scoring: 10 SAHI + 5 GALAT (deterministic) → +20 −2.5 = 17.5
   await G('(async()=>{ const att = ExamScreen.attempt; const ids = att.sections.reasoning.questionIds.slice(0, 15);' +
@@ -802,7 +827,8 @@ async function main() {
 
   // result page + SSC cutoff card
   window.location.hash = '#/attempt/' + sscAttId + '/result';
-  await sleep(500);
+  await G('Router.resolve()');   /* v1.4.55: deterministic (jsdom hashchange miss-proof) */
+  await waitFor(() => doc.body.textContent.includes('TEST COMPLETED'), 15000);
   T('SSC result page renders', doc.body.textContent.includes('TEST COMPLETED'));
   T('SSC cutoff card renders', !!doc.getElementById('cutoff-card'), 'cutoff-card missing');
   const sscIdx = await G('(async()=>{const idx=await Store.getMeta("attemptIndex",[]);return (Array.isArray(idx)?idx:[]).filter(a => a.exam === "ssc-chsl").length})()');
@@ -846,7 +872,8 @@ async function main() {
   const searchBox = doc.getElementById('qb-search');
   searchBox.value = 'Prepp';
   searchBox.dispatchEvent(new window.Event('input', { bubbles: true }));
-  await sleep(400);
+  /* v1.4.55: 250ms debounce + 12k-Q filter jsdom me slow — deterministic poll */
+  await waitFor(() => /0 question/.test((doc.querySelector('.qb-count') || {}).textContent || ''), 15000);
   T('SSC bank me airforce PYQ (Prepp) search → 0', /0 question/.test((doc.querySelector('.qb-count') || {}).textContent), (doc.querySelector('.qb-count') || {}).textContent.trim());
 
   // ── Add Question — exam tag ──
@@ -892,7 +919,7 @@ async function main() {
   const sb2 = doc.getElementById('qb-search');
   sb2.value = 'SSC isolation manual question test';
   sb2.dispatchEvent(new window.Event('input', { bubbles: true }));
-  await sleep(400);
+  await waitFor(() => /0 question/.test((doc.querySelector('.qb-count') || {}).textContent || ''), 15000);
   T('airforce bank me SSC manual Q search → 0', /0 question/.test((doc.querySelector('.qb-count') || {}).textContent), (doc.querySelector('.qb-count') || {}).textContent.trim());
   // airforce dashboard — legacy topic YAHAN dikhega (legacy = airforce treat)
   window.location.hash = '#/dashboard';

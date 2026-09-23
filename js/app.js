@@ -84,6 +84,21 @@ const App = {
     await Store.setSetting('config', out);
   },
 
+  /* v1.4.55: REAL 4-subject bank (12k+) aane par SSC series REBUILD — v1
+     series (1 mock + kuch subject tests) ko naya blueprint-mix series
+     (15 mocks, chapter-diverse) mila. Numbering continue rehti hai,
+     attempted history kabhi nahi chhooti. */
+  async rebuildSscSeriesBankV2() {
+    try {
+      const f = await Store.getMeta('seriesBuilt_ssc-chsl', null);
+      if (!f || f.bankV === 2) return;
+      await Store.setMeta('seriesBuilt_ssc-chsl', null);   // boot/seed path rebuild karega
+      const r = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 });
+      await Store.setMeta('seriesBuilt_ssc-chsl', { at: Date.now(), made: (r && r.made) || 0, bankV: 2 });
+      if (r && r.made) AVUtil.toast(r.made + ' naye blueprint-mix SSC tests ban gaye 🎉', 'success');
+    } catch (e) { /* best-effort */ }
+  },
+
   /* v1.4.54 one-time: SSC bank v1 me 1 broken stub question tha (text ~1 char)
      — jaise hi import hua ho, saaf kar do. Real questions kabhi nahi chhootenge. */
   async fixSscBrokenStubs() {
@@ -217,6 +232,8 @@ const App = {
     try { await this.fixSscMockDurations(); } catch (e) { /* best-effort */ }
     // v1.4.54: SSC bank v1 ka broken stub question cleanup (one-time)
     try { await this.fixSscBrokenStubs(); } catch (e) { /* best-effort */ }
+    // v1.4.55: real 4-subject bank ke saath SSC series rebuild (one-time)
+    try { await this.rebuildSscSeriesBankV2(); } catch (e) { /* best-effort */ }
 
     // upgrade path: existing installs get the ready-made test series too
     try {
@@ -226,7 +243,7 @@ const App = {
       const bFlag = bExam === 'airforce' ? 'seriesBuilt' : ('seriesBuilt_' + bExam);
       if (!(await Store.getMeta(bFlag, null))) {
         const r = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 });
-        await Store.setMeta(bFlag, { at: Date.now(), made: r.made });
+        await Store.setMeta(bFlag, { at: Date.now(), made: r.made, bankV: 2 });
         if (bExam === 'airforce') await Store.setMeta('seriesBuilt', { at: Date.now(), made: r.made });
       }
     } catch (e) { /* series is a bonus — never block boot */ }

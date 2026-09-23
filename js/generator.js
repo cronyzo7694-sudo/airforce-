@@ -301,16 +301,29 @@ const Generator = (() => {
     }
 
     const perQ = o.questionsPerTest;
+    /* v1.4.55: real-exam chapter mix — series tests bhi blueprint-weighted
+       selection se bante hain (pick 'realpaper'), random splice se NAHI.
+       Pehle ek hi chapter ke 25 questions aa sakte the — real exam me har
+       chapter se balanced mix hota hai (bank ka chapter-ratio hi blueprint). */
+    const takeDiverse = sid => {
+      const picked = pick(avail[sid], perQ, 'realpaper', null);
+      if (picked && picked.length) {
+        const ids = new Set(picked.map(q => q.id));
+        avail[sid] = avail[sid].filter(q => !ids.has(q.id));
+        return picked.map(q => q.id);
+      }
+      return avail[sid].splice(0, perQ).map(q => q.id);   // fallback
+    };
     const fullMocks = [];
     const mockMax = Math.min(o.fullMocks, ...subjectIds.map(sid => Math.floor(avail[sid].length / perQ)));
     for (let m = 0; m < mockMax; m++) {
-      fullMocks.push(subjectIds.map(sid => ({ subjectId: sid, questionIds: avail[sid].splice(0, perQ).map(q => q.id) })));
+      fullMocks.push(subjectIds.map(sid => ({ subjectId: sid, questionIds: takeDiverse(sid) })));
     }
     const subjectTests = {};
     for (const sid of subjectIds) {
       subjectTests[sid] = [];
       const maxT = Math.min(o.perSubject, Math.floor(avail[sid].length / perQ));
-      for (let t = 0; t < maxT; t++) subjectTests[sid].push(avail[sid].splice(0, perQ).map(q => q.id));
+      for (let t = 0; t < maxT; t++) subjectTests[sid].push(takeDiverse(sid));
     }
     const remaining = {};
     for (const sid of subjectIds) remaining[sid] = avail[sid].length;

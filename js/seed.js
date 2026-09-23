@@ -149,7 +149,7 @@ const Bank = (() => {
         /* v1.4.54: flag sirf made>0 pe — 0 bana series (questions kam the)
            next boot/seed pe retry karegi, naye questions aate hi mock banega */
         if (series && series.made) {
-          await Store.setMeta(sFlag, { at: Date.now(), made: series.made });
+          await Store.setMeta(sFlag, { at: Date.now(), made: series.made, bankV: 2 });
           if (exam === 'airforce') await Store.setMeta('seriesBuilt', { at: Date.now(), made: series.made });
         }
       } catch (e) { /* series is a bonus — never block seeding on it */ }

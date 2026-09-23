@@ -69,15 +69,19 @@ const SSC_CHSL_CONFIG = {
   mode: 'CHSL',
   candidateName: 'Practice Candidate',
 
-  duration: 60 * 60,               // 60 minutes GLOBAL (sections free-move)
+  duration: 60 * 60,               // 60 min total (sectional mode me = 4×15 sum)
 
   marking: { correct: 2, wrong: -0.5, unattempted: 0 },
 
-  timerMode: 'global',             // ek hi countdown — sections lock NAHI hote
-  sectionLock: false,
-  sectionSubmitRequired: false,
-  allowPreviousSection: true,
-  allowFutureSection: true,
+  /* v1.4.55: SSC CHSL 2026 pattern — 15-min SECTIONAL timer per subject
+     (research: oliveboard/ssc 2026 — "fixed 15-minute timer for each of the
+     four Tier 1 subjects"). Airforce jaisa hi section flow:
+     section-wise timer + lock, auto-submit on expiry. */
+  timerMode: 'section',
+  sectionLock: true,
+  sectionSubmitRequired: true,
+  allowPreviousSection: false,
+  allowFutureSection: false,
   autoSubmitOnTimerExpiry: true,
   allowPause: false,
 

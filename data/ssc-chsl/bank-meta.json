@@ -1,10 +1,10 @@
 {
- "_bundleKind": "temp-demo",
- "_note": "TEMP demo bank — final 20k files aane par _bundleKind: \"final\" karne se demo-temp auto-purge hoga",
+ "_bundleKind": "final",
+ "_note": "v1.4.55 FINAL bank — 4 real subjects (12,212 Q: math 2824, reasoning 1872, english 3705, gs 3811). Purane temp-demo installs (v1.4.46-4.54) par temp-demo→final transition auto-purge chalta hai (demo-temp tags + q_sscchsl_* sirf).",
  "mathematics": {
-  "total": 32,
-  "keyed": 32,
-  "withExplanation": 32,
+  "total": 2824,
+  "keyed": 2824,
+  "withExplanation": 2824,
   "chapters": {
    "Number System": 2,
    "Ratio & Proportion": 1,
@@ -20,9 +20,9 @@
   }
  },
  "reasoning": {
-  "total": 32,
-  "keyed": 32,
-  "withExplanation": 32,
+  "total": 1872,
+  "keyed": 1872,
+  "withExplanation": 1872,
   "chapters": {
    "Analogy": 1,
    "Series": 22,
@@ -38,9 +38,9 @@
   }
  },
  "english": {
-  "total": 32,
-  "keyed": 32,
-  "withExplanation": 32,
+  "total": 3705,
+  "keyed": 3705,
+  "withExplanation": 3705,
   "chapters": {
    "Spot the Error": 1,
    "Synonyms": 21,
@@ -57,9 +57,9 @@
   }
  },
  "gs": {
-  "total": 2827,
-  "keyed": 2827,
-  "withExplanation": 2827,
+  "total": 3811,
+  "keyed": 3811,
+  "withExplanation": 3811,
   "chapters": {
    "Indian Polity": 22,
    "History": 2,
