@@ -22,6 +22,7 @@ function startWorker() {
         const headers = { 'content-type': nreq.headers['content-type'] || 'text/plain' };
         if (nreq.headers['authorization']) headers['authorization'] = nreq.headers['authorization'];
         if (nreq.headers['origin']) headers['origin'] = nreq.headers['origin'];
+        if (nreq.headers['if-none-match']) headers['if-none-match'] = nreq.headers['if-none-match'];
         const creq = new Request('http://x' + nreq.url, {
           method: nreq.method, headers,
           body: ['GET', 'HEAD'].indexOf(nreq.method) === -1 ? Buffer.concat(chunks) : undefined
@@ -433,6 +434,28 @@ async function call(port, p, body, opts = {}) {
   ].join('.');
   try { await W.verifyFirebaseToken(wrongAud, { FIREBASE_PROJECT: 'kineora-exam' }); } catch (e) { audErr = e.message; }
   T('REAL JWKS: unknown kid reject', /kid unknown/.test(audErr || ''), audErr);
+
+  /* ══════════ v1.4.58 PUBLIC BANK SERVE (Neon bank_blobs; memory mode) ══════════ */
+  console.log('━━━ CLOUD · public /bank (bank_blobs serve, no-auth)');
+  const bankA = { id: 'q_t_1', questionText: 'Test Q1', options: [{ text: 'A' }, { text: 'B' }, { text: 'C' }, { text: 'D' }], correctAnswer: 'A', subject: 'gs', chapter: 'X' };
+  const bankB = { id: 'q_t_2', questionText: 'Test Q2', options: [{ text: 'A' }, { text: 'B' }, { text: 'C' }, { text: 'D' }], correctAnswer: 'B', subject: 'gs', chapter: 'X' };
+  W._MEM.banks.set('ssc-chsl/gs', { version: 'vtest123', qCount: 2, updatedAt: 1700000000000, payload: [bankA, bankB] });
+  W._MEM.banks.set('ssc-chsl/meta', { version: 'vmeta', qCount: 0, updatedAt: 1700000000000, payload: { _bundleKind: 'final' } });
+
+  const bk404 = await call(port, '/bank?exam=ssc-chsl&subject=nope');
+  T('bank: unknown subject → 404 (public)', bk404.status === 404 && bk404.j.ok === false, bk404.j);
+  const bk400 = await call(port, '/bank');
+  T('bank: missing params → 400', bk400.status === 400, bk400.j);
+  const bk1 = await call(port, '/bank?exam=ssc-chsl&subject=gs');
+  T('bank: serve payload (no token needed)', bk1.status === 200 && bk1.j.ok === true && bk1.j.version === 'vtest123' && bk1.j.qCount === 2 && bk1.j.payload.length === 2 && bk1.j.payload[1].id === 'q_t_2', { v: bk1.j.version, n: bk1.j.payload && bk1.j.payload.length });
+  T('bank: ETag + cache-control headers', bk1.h.get('etag') === '"vtest123"' && /max-age=300/.test(bk1.h.get('cache-control') || ''), bk1.h.get('etag'));
+  T('bank: CORS header present', bk1.h.get('access-control-allow-origin') === 'https://cronyzo7694-sudo.github.io');
+  const bk304 = await call(port, '/bank?exam=ssc-chsl&subject=gs', null, { headers: { 'if-none-match': '"vtest123"' } });
+  T('bank: If-None-Match → 304 (delta sync cheap)', bk304.status === 304, bk304.status);
+  const bkV = await call(port, '/bank-versions?exam=ssc-chsl');
+  T('bank-versions: tiny version map (meta excluded)', bkV.status === 200 && bkV.j.ok === true && bkV.j.subjects.gs.version === 'vtest123' && bkV.j.subjects.gs.qCount === 2 && !bkV.j.subjects.meta, bkV.j.subjects);
+  const bkVE = await call(port, '/bank-versions?exam=airforce');
+  T('bank-versions: exam with no DB banks → empty map (client static fallback)', bkVE.j.ok === true && Object.keys(bkVE.j.subjects).length === 0, bkVE.j.subjects);
 
   srv.close();
   console.log(`\nCLOUD RESULT: ${passed} passed, ${failed} failed`);

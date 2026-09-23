@@ -109,6 +109,25 @@ const Bank = (() => {
     'ssc-chsl': { dir: 'data/ssc-chsl/', subjects: ['mathematics', 'english', 'reasoning', 'gs'] }
   };
 
+  /* v1.4.58 CLOUD BANKS — Neon (bank_blobs) via sync-kineora worker.
+     js/cloud.js DEFAULT_ENDPOINT se sync — do consts, ek hi deployment.
+     Delivery: worker /bank (CF edge cache + ETag) → fallback static bundle. */
+  const CLOUD_BANK = 'https://sync-kineora.cronyzo7694.workers.dev';
+
+  /* JSON fetch with timeout — fail pe null (caller static fallback karta hai) */
+  async function fetchCloudJSON(u, timeoutMs) {
+    try {
+      const ctl = (typeof AbortController !== 'undefined') ? new AbortController() : null;
+      const t = ctl ? setTimeout(() => ctl.abort(), timeoutMs || 10000) : null;
+      let r;
+      try {
+        r = await fetch(u, ctl ? { signal: ctl.signal } : undefined);
+      } finally { if (t) clearTimeout(t); }
+      if (!r || !r.ok) return null;
+      return await r.json();
+    } catch (e) { return null; }
+  }
+
   async function seedIfNeeded(force, exam) {
     const bundle = EXAM_BUNDLES[exam] || EXAM_BUNDLES.airforce;
     if (!force) {
@@ -120,12 +139,18 @@ const Bank = (() => {
     let total = 0, imported = 0;
     const report = { imported: 0, duplicates: 0, bySubject: {}, exam };
     for (const s of subjects) {
-      let arr;
-      try {
-        const r = await fetch(`${bundle.dir}bank-${s}.json`);
-        if (!r.ok) continue;
-        arr = await r.json();
-      } catch (e) { continue; }
+      let arr = null;
+      /* v1.4.58: pehle Neon cloud bank (worker /bank — CF edge, ETag) —
+         fail/undeployed ho to static bundle file (purana behaviour). */
+      const cl = await fetchCloudJSON(`${CLOUD_BANK}/bank?exam=${encodeURIComponent(exam)}&subject=${encodeURIComponent(s)}`, 30000);
+      if (cl && cl.ok && Array.isArray(cl.payload)) arr = cl.payload;
+      if (!arr) {
+        try {
+          const r = await fetch(`${bundle.dir}bank-${s}.json`);
+          if (!r.ok) continue;
+          arr = await r.json();
+        } catch (e) { continue; }
+      }
       total += arr.length;
       const rep = await importBatch(arr, null, exam);
       imported += rep.imported;
@@ -260,18 +285,61 @@ const Bank = (() => {
 
   async function syncBundled(exam) {
     exam = exam || ((typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce');
-    let fp = '';
+    const bundle = EXAM_BUNDLES[exam] || EXAM_BUNDLES.airforce;
+    const subjects = bundle.subjects;
+    const prevRaw = (await Store.getMeta('bundleFP_' + exam, null)) ||
+      (exam === 'airforce' ? await Store.getMeta('bundleFP', null) : null);   // legacy
+    const prevMap = (prevRaw && typeof prevRaw === 'object' && !Array.isArray(prevRaw)) ? prevRaw : null;
+
+    /* v1.4.58 CLOUD-FIRST DELTA SYNC — pehle chhota /bank-versions check
+       (bytes me), sirf CHANGED subjects download. Purane flow me har boot
+       par saari bank files (17.7MB) fetch hoti thi fingerprint ke liye —
+       yahi site-slow problem thi. Worker down → purana static path. */
+    const vers = await fetchCloudJSON(`${CLOUD_BANK}/bank-versions?exam=${encodeURIComponent(exam)}`, 8000);
+    const cloudSubjects = (vers && vers.ok && vers.subjects) ? subjects.filter(s => vers.subjects[s]) : [];
+    const fp = {};
     const payloads = [];
-    for (const f of bundleFiles(exam)) {
-      try {
-        const r = await fetch(f);
-        if (!r.ok) continue;
-        const text = await r.text();
-        fp += f + ':' + text.length + ':' + (text.match(/"dupeHash"/g) || []).length + ';';
-        payloads.push(JSON.parse(text));
-      } catch (e) { /* offline / partial — skip silently */ }
+
+    if (cloudSubjects.length) {
+      let changed = false;
+      for (const s of cloudSubjects) fp[s] = vers.subjects[s].version;
+      for (const s of cloudSubjects) {
+        if (!prevMap || prevMap[s] !== fp[s]) { changed = true; break; }
+      }
+      /* DB-me-nahi subjects (abhi math) → static file fingerprint */
+      for (const s of subjects) {
+        if (fp[s]) continue;
+        try {
+          const r = await fetch(`${bundle.dir}bank-${s}.json`);
+          if (!r.ok) continue;
+          const text = await r.text();
+          fp[s] = 'static:' + text.length + ':' + (text.match(/"dupeHash"/g) || []).length;
+          if (!prevMap || prevMap[s] !== fp[s]) { changed = true; payloads.push(JSON.parse(text)); }
+        } catch (e) { /* offline — skip */ }
+      }
+      if (!changed && prevMap) return { synced: false, imported: 0 };   // fast-path: zero big downloads
+      /* changed cloud subjects → full payload fetch */
+      for (const s of cloudSubjects) {
+        if (prevMap && prevMap[s] === fp[s]) continue;
+        const cl = await fetchCloudJSON(`${CLOUD_BANK}/bank?exam=${encodeURIComponent(exam)}&subject=${encodeURIComponent(s)}`, 30000);
+        if (cl && cl.ok && Array.isArray(cl.payload)) payloads.push(cl.payload);
+        else delete fp[s];   /* fetch fail — version store nahi (next boot retry) */
+      }
+    } else {
+      /* worker down / exam ka data DB me nahi → PURANA static fingerprint
+         path (slow par reliable — offline grace) */
+      for (const f of bundleFiles(exam)) {
+        try {
+          const r = await fetch(f);
+          if (!r.ok) continue;
+          const text = await r.text();
+          const s = f.replace(/^.*bank-/, '').replace(/\.json$/, '');
+          fp[s] = f + ':' + text.length + ':' + (text.match(/"dupeHash"/g) || []).length;
+          payloads.push(JSON.parse(text));
+        } catch (e) { /* offline / partial — skip silently */ }
+      }
     }
-    if (!payloads.length) return { synced: false, imported: 0 };
+    if (!payloads.length && !Object.keys(fp).length) return { synced: false, imported: 0 };
     /* v1.4.47: bank-meta.json ka _bundleKind dekho — temp-demo → final
        transition par PEHLE demo-temp purge (taaki final 20k import ke saath
        purane temp Q double na ho jayein). Meta read har load pe hota hai
@@ -296,7 +364,10 @@ const Bank = (() => {
     } catch (e) { /* meta optional hai — purge skip, import normal */ }
     const prev = (await Store.getMeta('bundleFP_' + exam, null)) ||
       (exam === 'airforce' ? await Store.getMeta('bundleFP', null) : null);   // legacy
-    if (prev === fp) return { synced: false, imported: 0, purged: purged || null };
+    if (prev && typeof prev === 'object' && !Array.isArray(prev) &&
+        JSON.stringify(prev) === JSON.stringify(fp)) {
+      return { synced: false, imported: 0, purged: purged || null };
+    }
     let imported = 0;
     for (const arr of payloads) {
       try { const rep = await importBatch(arr, null, exam); imported += rep.imported; }

@@ -3,7 +3,7 @@
  * Cache-first for the immutable app shell + bundled bank data.
  * ============================================================ */
 
-const SW_VERSION = 'kineora-exam-v1.4.57';
+const SW_VERSION = 'kineora-exam-v1.4.58';
 
 const APP_SHELL = [
   './',
@@ -37,10 +37,6 @@ const APP_SHELL = [
   './data/airforce/bank-english.json',
   './data/airforce/bank-raga.json',
   './data/airforce/retired-raga.json',
-  './data/ssc-chsl/bank-mathematics.json',
-  './data/ssc-chsl/bank-english.json',
-  './data/ssc-chsl/bank-reasoning.json',
-  './data/ssc-chsl/bank-gs.json',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/icon-96.png'
@@ -80,6 +76,22 @@ self.addEventListener('fetch', e => {
         }
         return resp;
       }).catch(() => caches.match(e.request).then(c => c || caches.match('./')))
+    );
+    return;
+  }
+  /* v1.4.58: SSC-CHSL banks ab Neon (worker /bank) se aate hain — install
+     precache me NAHI (17.7MB lighter install). Cross-origin worker requests
+     (bank data) NETWORK-FIRST — version hamesha fresh; offline pe SW cache. */
+  const rUrl = new URL(e.request.url);
+  if (rUrl.origin !== self.location.origin) {
+    e.respondWith(
+      fetch(e.request).then(resp => {
+        if (resp && resp.ok) {
+          const copy = resp.clone();
+          caches.open(SW_VERSION).then(c => { c.put(e.request, copy); });
+        }
+        return resp;
+      }).catch(() => caches.match(e.request))
     );
     return;
   }

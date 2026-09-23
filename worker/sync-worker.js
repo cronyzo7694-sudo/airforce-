@@ -10,6 +10,8 @@
  *
  * Endpoints:
  *   GET  /health           → {ok, ts, storage}
+ *   GET  /bank             → ?exam= *   GET  /health           → {ok, ts, storage}subject= (PUBLIC — Neon bank_blobs serve, ETag+304)
+ *   GET  /bank-versions    → ?exam= (PUBLIC — tiny version map, delta sync ke liye)
  *   POST /v1/push          Bearer → {records:[{kind,rid,data,updatedAt,deleted}]}
  *   POST /v1/pull          Bearer → {since}
  *   POST /v1/status        Bearer → {counts, devices}
@@ -182,7 +184,8 @@ function neonSQL(env, query, params) {
 }
 
 /* ---------------- in-memory storage (tests / local) ---------------- */
-var MEM = { recs: new Map(), devices: new Map() };
+/* banks: 'exam/subject' → {version, qCount, updatedAt, payload} — /bank tests */
+var MEM = { recs: new Map(), devices: new Map(), banks: new Map() };
 function memKey(uid, kind, rid) { return uid + '␟' + kind + '␟' + rid; }
 
 function storage(env) {
@@ -226,6 +229,27 @@ function storage(env) {
             return neonSQL(env, 'SELECT device, last_seen as "lastSeen" FROM sync_devices WHERE uid = $1', [uid])
               .then(function (devs) { return { counts: rows, devices: devs }; });
           });
+      },
+      /* ---- PUBLIC BANK SERVE (v1.4.58) — bank_blobs se ---- */
+      bankGet: function (exam, subject) {
+        return neonSQL(env,
+          'SELECT version, q_count as "qCount", updated_at as "updatedAt", payload FROM bank_blobs WHERE exam = $1 AND subject = $2',
+          [exam, subject]).then(function (rows) {
+          if (!rows.length) return null;
+          var r = rows[0];
+          r.updatedAt = Number(r.updatedAt);   // bigint string → number
+          r.qCount = Number(r.qCount);
+          return r;
+        });
+      },
+      bankVersions: function (exam) {
+        return neonSQL(env,
+          'SELECT subject, version, q_count as "qCount", updated_at as "updatedAt" FROM bank_blobs WHERE exam = $1 AND subject <> \'meta\'',
+          [exam]).then(function (rows) {
+          var out = {};
+          rows.forEach(function (r) { out[r.subject] = { version: r.version, qCount: Number(r.qCount), updatedAt: Number(r.updatedAt) }; });
+          return out;
+        });
       }
     };
   }
@@ -259,6 +283,19 @@ function storage(env) {
       var devs = [];
       MEM.devices.forEach(function (v, key) { if (key.split('␟')[0] === uid) devs.push(v); });
       return Promise.resolve({ counts: Object.keys(counts).map(function (k) { return { kind: k, n: counts[k] }; }), devices: devs });
+    },
+    /* ---- PUBLIC BANK SERVE (v1.4.58) — memory mode ---- */
+    bankGet: function (exam, subject) {
+      return Promise.resolve(MEM.banks.get(exam + '/' + subject) || null);
+    },
+    bankVersions: function (exam) {
+      var out = {};
+      MEM.banks.forEach(function (v, key) {
+        if (key.split('/')[0] === exam && key.split('/')[1] !== 'meta') {
+          out[key.split('/')[1]] = { version: v.version, qCount: v.qCount, updatedAt: v.updatedAt };
+        }
+      });
+      return Promise.resolve(out);
     }
   };
 }
@@ -455,10 +492,50 @@ async function handleRequest(req, env) {
     return json(req, 200, {
       ok: true, service: 'kineora-cloud-sync', ts: Date.now(),
       storage: storage(env).name, media: !!(env.CLOUDINARY_KEY && env.CLOUDINARY_SECRET && env.CLOUDINARY_CLOUD),
-      endpoints: ['/health', '/v1/push', '/v1/pull', '/v1/status', '/v1/media'],
+      endpoints: ['/health', '/bank', '/bank-versions', '/v1/push', '/v1/pull', '/v1/status', '/v1/media'],
       note: 'ye backend API hai (site nahi) — app khud ise use karti hai'
     });
   }
+  /* ══════════ PUBLIC BANK SERVE (v1.4.58 — Neon bank_blobs se) ══════════
+     Banks public content hain (pehle static JSON files thi) — NO auth.
+     ETag = content-hash version → If-None-Match pe 304.
+     Cache-Control + CF edge cache → users ko fast delivery,
+     Neon sirf cold cache pe hit hota hai. */
+  if (path === '/bank' || path === '/bank-versions') {
+    var ipBk = req.headers.get('cf-connecting-ip') || 'local';
+    if (!rateOk('bank|' + ipBk, 240, 3600000)) {
+      return json(req, 429, { ok: false, error: 'rate limit — thodi der baad' });
+    }
+    var stBk = storage(env);
+    var examBk = url.searchParams.get('exam');
+    if (path === '/bank-versions') {
+      if (!examBk) return json(req, 400, { ok: false, error: 'exam required' });
+      return stBk.bankVersions(examBk).then(function (vs) {
+        return json(req, 200, { ok: true, exam: examBk, subjects: vs });
+      });
+    }
+    var subjBk = url.searchParams.get('subject');
+    if (!examBk || !subjBk) return json(req, 400, { ok: false, error: 'exam + subject required' });
+    return stBk.bankGet(examBk, subjBk).then(function (row) {
+      if (!row) return json(req, 404, { ok: false, error: 'bank not found' });
+      var hdrs = Object.assign({
+        'content-type': 'application/json',
+        'etag': '"' + row.version + '"',
+        'cache-control': 'public, max-age=300, stale-while-revalidate=86400'
+      }, corsHeaders(req));
+      var inm = req.headers.get('if-none-match') || '';
+      if (inm.indexOf(row.version) !== -1) {
+        return new Response(null, { status: 304, headers: hdrs });
+      }
+      var body = JSON.stringify({
+        ok: true, exam: examBk, subject: subjBk,
+        version: row.version, qCount: row.qCount, updatedAt: row.updatedAt,
+        payload: row.payload
+      });
+      return new Response(body, { status: 200, headers: hdrs });
+    });
+  }
+
   if (path.indexOf('/v1/') !== 0) {
     return json(req, 404, { ok: false, error: 'not found' });
   }
@@ -568,6 +645,7 @@ if (typeof module !== 'undefined' && module.exports) {
         var headers = { 'content-type': nreq.headers['content-type'] || 'text/plain' };
         if (nreq.headers['authorization']) headers['authorization'] = nreq.headers['authorization'];
         if (nreq.headers['origin']) headers['origin'] = nreq.headers['origin'];
+        if (nreq.headers['if-none-match']) headers['if-none-match'] = nreq.headers['if-none-match'];
         var creq = new Request('http://x' + nreq.url, {
           method: nreq.method, headers: headers,
           body: ['GET', 'HEAD'].indexOf(nreq.method) === -1 ? body : undefined
