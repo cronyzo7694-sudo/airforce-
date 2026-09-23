@@ -1,10 +1,10 @@
 /* v1.4.55 — demo-temp PURGE unit test (fake-indexeddb, no full app boot)
-   v1.4.57: 4 REAL banks (11,956 Q — math 2800, reasoning 1872, english 3705,
+   v1.4.57: 4 REAL banks (11,170 Q — math 2800, reasoning 1422, english 3369,
    gs 3579; bank-meta _bundleKind ab "final"). Fresh data me demo-temp tag hai
    hi nahi — purge logic yahan LIVE MIGRATION simulate karke test hota hai:
    v1.4.46-4.54 installs ke stale Q (demo-temp tags + q_sscchsl_* legacy ids)
    inject karo → temp-demo→final transition auto-purge → SIRF stale delete,
-   11,956 real + user ki q_ssc_* + airforce Q KABHI nahi chute. */
+   11,170 real + user ki q_ssc_* + airforce Q KABHI nahi chute. */
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
@@ -44,9 +44,9 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   /* ── 1) v1.4.55 seed: 4 real banks, demo-temp ZERO ── */
   console.log('━━━ seed v1.4.55 final bank');
   const rep = await Seed.seedIfNeeded(false, 'ssc-chsl');
-  t('seed: imported 11,956 (4 real banks)', rep.imported === 11956, 'got ' + rep.imported);
-  t('seed: bySubject exact (math 2800 / reasoning 1872 / english 3705 / gs 3579)',
-    rep.bySubject.mathematics === 2800 && rep.bySubject.reasoning === 1872 && rep.bySubject.english === 3705 && rep.bySubject.gs === 3579,
+  t('seed: imported 11,170 (4 real banks)', rep.imported === 11170, 'got ' + rep.imported);
+  t('seed: bySubject exact (math 2800 / reasoning 1422 / english 3369 / gs 3579)',
+    rep.bySubject.mathematics === 2800 && rep.bySubject.reasoning === 1422 && rep.bySubject.english === 3369 && rep.bySubject.gs === 3579,
     JSON.stringify(rep.bySubject));
   const meta = await Store.getMeta('seeded_ssc-chsl', false);
   t('seed: seeded flag exam-scoped', meta === true);
@@ -98,9 +98,9 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const all3 = await DB.getAll('questions');
   const ssc3 = all3.filter(q => q.exam === 'ssc-chsl');
   const af3 = all3.filter(q => q.exam === 'airforce');
-  t('survivors: 11,956 real + user 1 = 11,957 ssc Q', ssc3.length === 11957, 'got ' + ssc3.length);
-  t('survivors: real bank UNTOUCHED (gs 3579, math 2800, reasoning 1872, english 3705)',
-    ['gs', 'mathematics', 'reasoning', 'english'].every(s => ssc3.filter(q => q.subject === s && q.id !== 'q_ssc_mathematics_90001').length === { gs: 3579, mathematics: 2800, reasoning: 1872, english: 3705 }[s]),
+  t('survivors: 11,170 real + user 1 = 11,171 ssc Q', ssc3.length === 11171, 'got ' + ssc3.length);
+  t('survivors: real bank UNTOUCHED (gs 3579, math 2800, reasoning 1422, english 3369)',
+    ['gs', 'mathematics', 'reasoning', 'english'].every(s => ssc3.filter(q => q.subject === s && q.id !== 'q_ssc_mathematics_90001').length === { gs: 3579, mathematics: 2800, reasoning: 1422, english: 3369 }[s]),
     JSON.stringify({ gs: ssc3.filter(q => q.subject === 'gs').length, mathematics: ssc3.filter(q => q.subject === 'mathematics').length, reasoning: ssc3.filter(q => q.subject === 'reasoning').length, english: ssc3.filter(q => q.subject === 'english').length }));
   t('survivors: user q_ssc_mathematics_90001 SAFE', all3.some(q => q.id === 'q_ssc_mathematics_90001'));
   t('survivors: airforce Q SAFE', af3.length === 1 && af3[0].id === 'q_af_90002', 'left=' + af3.map(q => q.id).join(','));
@@ -111,7 +111,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const sync2 = await Seed.syncBundled('ssc-chsl');
   t('re-sync: no-op (fp same)', sync2.synced === false || (sync2.purged && sync2.purged.questions === 0), JSON.stringify(sync2).slice(0, 120));
   const all4 = await DB.getAll('questions');
-  t('re-sync: count stable 11,957 ssc', all4.filter(q => q.exam === 'ssc-chsl').length === 11957);
+  t('re-sync: count stable 11,171 ssc', all4.filter(q => q.exam === 'ssc-chsl').length === 11171);
 
   /* ── 6) direct purgeDemoTemp idempotent — dobara 0 delete ── */
   const pr2 = await Seed.purgeDemoTemp('ssc-chsl');
