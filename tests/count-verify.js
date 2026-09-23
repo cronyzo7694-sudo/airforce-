@@ -44,7 +44,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
   await sleep(50);
   const rep = await Seed.seedIfNeeded(false, 'ssc-chsl');
-  t('seed: 12,000 real Q (gs 3,623)', rep.imported === 12000 && rep.bySubject.gs === 3623, JSON.stringify(rep.bySubject));
+  t('seed: 11,956 real Q (gs 3,579)', rep.imported === 11956 && rep.bySubject.gs === 3579, JSON.stringify(rep.bySubject));
   for (const s of ['mathematics', 'reasoning', 'english', 'gs'])
     for (const q of await DB.byIndex('questions', 'subject', s)) chapterOf[q.id] = q.chapter;
 

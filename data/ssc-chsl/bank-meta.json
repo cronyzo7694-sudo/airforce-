@@ -1,6 +1,6 @@
 {
  "_bundleKind": "final",
- "_note": "v1.4.56 FINAL bank — 4 real subjects (12,000 Q: math 2800, reasoning 1872, english 3705, gs 3623). Purane temp-demo installs (v1.4.46-4.54) par temp-demo→final transition auto-purge chalta hai (demo-temp tags + q_sscchsl_* sirf).",
+ "_note": "v1.4.57 FINAL bank — 4 real subjects (11956 Q: math 2800, reasoning 1872, english 3705, gs 3579). Purane temp-demo installs (v1.4.46-4.54) par temp-demo→final transition auto-purge chalta hai (demo-temp tags + q_sscchsl_* sirf).",
  "mathematics": {
   "total": 2800,
   "keyed": 2824,
@@ -57,25 +57,25 @@
   }
  },
  "gs": {
-  "total": 3623,
-  "keyed": 3623,
-  "withExplanation": 3623,
+  "total": 3579,
+  "keyed": 3579,
+  "withExplanation": 3579,
   "chapters": {
-   "Static GK": 1490,
-   "Polity": 220,
-   "Art & Culture": 436,
+   "Static GK": 1482,
+   "Polity": 218,
+   "Art & Culture": 435,
    "Geography": 169,
    "Chemistry": 147,
    "Economy": 96,
-   "Computer": 77,
+   "Computer": 75,
    "History": 96,
-   "Biology": 124,
-   "Physics": 131,
-   "Sports": 172,
+   "Biology": 123,
+   "Physics": 130,
+   "Sports": 168,
    "Space & Defence": 33,
    "General Science": 2,
    "Awards": 9,
-   "Current Affairs": 421
+   "Current Affairs": 396
   }
  }
 }
