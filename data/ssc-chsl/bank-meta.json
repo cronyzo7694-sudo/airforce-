@@ -1,18 +1,17 @@
 {
  "_bundleKind": "final",
- "_note": "v1.4.57 FINAL bank — 4 real subjects (11170 Q: math 2800, reasoning 1422, english 3369, gs 3579). Purane temp-demo installs (v1.4.46-4.54) par temp-demo→final transition auto-purge chalta hai (demo-temp tags + q_sscchsl_* sirf).",
+ "_note": "v1.4.57 FINAL bank — 4 real subjects (10296 Q: math 1926, reasoning 1422, english 3369, gs 3579). Purane temp-demo installs (v1.4.46-4.54) par temp-demo→final transition auto-purge chalta hai (demo-temp tags + q_sscchsl_* sirf).",
  "mathematics": {
-  "total": 2800,
-  "keyed": 2800,
-  "withExplanation": 2800,
+  "total": 1926,
+  "keyed": 1926,
+  "withExplanation": 1926,
   "chapters": {
-   "Mensuration": 213,
-   "Data Interpretation": 166,
-   "Geometry": 294,
-   "Number System": 81,
-   "Trigonometry": 216,
-   "Arithmetic": 1693,
-   "Algebra": 137
+   "Geometry": 258,
+   "Number System": 69,
+   "Trigonometry": 151,
+   "Arithmetic": 1167,
+   "Mensuration": 188,
+   "Algebra": 93
   }
  },
  "reasoning": {
