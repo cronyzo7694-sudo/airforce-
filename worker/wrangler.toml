@@ -1,13 +1,22 @@
 name = "sync-kineora"
-main = "sync-worker.js"
+main = "cf-dist.js"
 compatibility_date = "2024-09-01"
 compatibility_flags = ["nodejs_compat"]
+
+# Build: sync-worker.js se Node tail strip hota hai (tools/build-worker.js)
+[build]
+command = "node ../tools/build-worker.js"
 
 # Deploy:
 #   npx wrangler deploy
 # Secrets (dashboard → Workers → sync-kineora → Settings → Variables, ya CLI):
-#   npx wrangler secret put NEON_CS
+#   npx wrangler secret put NEON_CS            # DIRECT url (HTTP /sql host — pooler nahi)
 #   npx wrangler secret put CLOUDINARY_CLOUD
 #   npx wrangler secret put CLOUDINARY_KEY
 #   npx wrangler secret put CLOUDINARY_SECRET
 # URL: https://sync-kineora.<subdomain>.workers.dev
+
+account_id = "bb95a06ca14f3272b34d67edd350606f"
+
+[vars]
+FIREBASE_PROJECT = "kineora-exam"
