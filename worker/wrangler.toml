@@ -10,7 +10,8 @@ command = "node ../tools/build-worker.js"
 # Deploy:
 #   npx wrangler deploy
 # Secrets (dashboard → Workers → sync-kineora → Settings → Variables, ya CLI):
-#   npx wrangler secret put NEON_CS            # DIRECT url (HTTP /sql host — pooler nahi)
+#   npx wrangler secret put NEON_CS            # USER-DATA DB ka DIRECT url (noisy-hill)
+#   npx wrangler secret put NEON_BANKS_CS      # QUESTIONS DB ka DIRECT url (rapid-silence — bank_blobs)
 #   npx wrangler secret put CLOUDINARY_CLOUD
 #   npx wrangler secret put CLOUDINARY_KEY
 #   npx wrangler secret put CLOUDINARY_SECRET

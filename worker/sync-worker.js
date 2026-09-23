@@ -32,13 +32,14 @@ var AUTH_VERIFIER = null;   // tests ke liye injectable (prod me kabhi nahi)
 function getEnv() {
   var e = {};
   try { if (typeof NEON_CS !== 'undefined') e.NEON_CS = NEON_CS; } catch (x) {}
+  try { if (typeof NEON_BANKS_CS !== 'undefined') e.NEON_BANKS_CS = NEON_BANKS_CS; } catch (x) {}
   try { if (typeof FIREBASE_PROJECT !== 'undefined') e.FIREBASE_PROJECT = FIREBASE_PROJECT; } catch (x) {}
   try { if (typeof CLOUDINARY_CLOUD !== 'undefined') e.CLOUDINARY_CLOUD = CLOUDINARY_CLOUD; } catch (x) {}
   try { if (typeof CLOUDINARY_KEY !== 'undefined') e.CLOUDINARY_KEY = CLOUDINARY_KEY; } catch (x) {}
   try { if (typeof CLOUDINARY_SECRET !== 'undefined') e.CLOUDINARY_SECRET = CLOUDINARY_SECRET; } catch (x) {}
   if (NODE_ENV_OBJ) Object.assign(e, NODE_ENV_OBJ);
   if (typeof process !== 'undefined' && process.env) {
-    ['NEON_CS', 'FIREBASE_PROJECT', 'CLOUDINARY_CLOUD', 'CLOUDINARY_KEY', 'CLOUDINARY_SECRET'].forEach(function (k) {
+    ['NEON_CS', 'NEON_BANKS_CS', 'FIREBASE_PROJECT', 'CLOUDINARY_CLOUD', 'CLOUDINARY_KEY', 'CLOUDINARY_SECRET'].forEach(function (k) {
       if (!e[k] && process.env[k]) e[k] = process.env[k];
     });
   }
@@ -169,11 +170,16 @@ async function authenticate(req, env) {
 var KINDS = ['attempt', 'test', 'question', 'note', 'setting', 'meta'];
 
 /* ---------------- Neon storage (fetch /sql) ---------------- */
-function neonSQL(env, query, params) {
-  var host = new URL(env.NEON_CS).host;
+/* v1.4.59b DUAL-DB (user ka plan):
+     NEON_CS        → USER DATA DB (sync_records/share_*) — noisy-hill
+     NEON_BANKS_CS  → QUESTIONS DB (bank_blobs)            — rapid-silence
+   Dono me se koi ek set ho toh sab usi pe chalta hai (single-DB compat). */
+function neonSQL(env, query, params, cs) {
+  var conn = cs || env.NEON_CS;
+  var host = new URL(conn).host;
   return fetch('https://' + host + '/sql', {
     method: 'POST',
-    headers: { 'neon-connection-string': env.NEON_CS },
+    headers: { 'neon-connection-string': conn },
     body: JSON.stringify({ query: query, params: params || [] })
   }).then(function (r) {
     return r.json().catch(function () { return {}; }).then(function (j) {
@@ -188,8 +194,15 @@ function neonSQL(env, query, params) {
 var MEM = { recs: new Map(), devices: new Map(), banks: new Map() };
 function memKey(uid, kind, rid) { return uid + '␟' + kind + '␟' + rid; }
 
+/* ---------------- in-memory storage (tests / local) ---------------- */
+/* banks: 'exam/subject' → {version, qCount, updatedAt, payload} — /bank tests */
+var MEM = { recs: new Map(), devices: new Map(), banks: new Map() };
+function memKey(uid, kind, rid) { return uid + '␟' + kind + '␟' + rid; }
+
 function storage(env) {
-  if (env.NEON_CS) {
+  if (env.NEON_CS || env.NEON_BANKS_CS) {
+    var userCS = env.NEON_CS || env.NEON_BANKS_CS;    /* user-data DB */
+    var bankCS = env.NEON_BANKS_CS || env.NEON_CS;    /* questions DB */
     return {
       name: 'neon',
       push: function (uid, device, recs) {
@@ -203,19 +216,19 @@ function storage(env) {
           'SELECT $1, r.kind, r.rid, r.data, r."updatedAt"::bigint, r.deleted::bool ' +
           'FROM jsonb_to_recordset($2::jsonb) AS r(kind text, rid text, data jsonb, "updatedAt" bigint, deleted bool) ' +
           'ON CONFLICT (uid, kind, rid) DO UPDATE SET data = EXCLUDED.data, updated_at = EXCLUDED.updated_at, deleted = EXCLUDED.deleted ' +
-          'WHERE sync_records.updated_at < EXCLUDED.updated_at', [uid, JSON.stringify(payload)])
+          'WHERE sync_records.updated_at < EXCLUDED.updated_at', [uid, JSON.stringify(payload)], userCS)
           .then(function () {
             return neonSQL(env,
               'INSERT INTO sync_devices (uid, device, last_seen, platform) VALUES ($1,$2,$3,$4) ' +
               'ON CONFLICT (uid, device) DO UPDATE SET last_seen = $3, platform = $4',
-              [uid, device, Date.now(), 'web']);
+              [uid, device, Date.now(), 'web'], userCS);
           });
       },
       pull: function (uid, since, limit) {
         return neonSQL(env,
           'SELECT kind, rid, data, updated_at as "updatedAt", deleted FROM sync_records ' +
           'WHERE uid = $1 AND updated_at > $2 ORDER BY updated_at ASC LIMIT $3',
-          [uid, since, limit]).then(function (rows) {
+          [uid, since, limit], userCS).then(function (rows) {
             rows.forEach(function (x) {
               x.data = typeof x.data === 'string' ? JSON.parse(x.data) : x.data;
               x.updatedAt = Number(x.updatedAt);   // bigint string → number
@@ -224,9 +237,9 @@ function storage(env) {
           });
       },
       status: function (uid) {
-        return neonSQL(env, 'SELECT kind, count(*)::int as n, max(updated_at) as last FROM sync_records WHERE uid = $1 GROUP BY kind', [uid])
+        return neonSQL(env, 'SELECT kind, count(*)::int as n, max(updated_at) as last FROM sync_records WHERE uid = $1 GROUP BY kind', [uid], userCS)
           .then(function (rows) {
-            return neonSQL(env, 'SELECT device, last_seen as "lastSeen" FROM sync_devices WHERE uid = $1', [uid])
+            return neonSQL(env, 'SELECT device, last_seen as "lastSeen" FROM sync_devices WHERE uid = $1', [uid], userCS)
               .then(function (devs) { return { counts: rows, devices: devs }; });
           });
       },
@@ -234,7 +247,7 @@ function storage(env) {
       bankGet: function (exam, subject) {
         return neonSQL(env,
           'SELECT version, q_count as "qCount", updated_at as "updatedAt", payload FROM bank_blobs WHERE exam = $1 AND subject = $2',
-          [exam, subject]).then(function (rows) {
+          [exam, subject], bankCS).then(function (rows) {
           if (!rows.length) return null;
           var r = rows[0];
           r.updatedAt = Number(r.updatedAt);   // bigint string → number
@@ -245,7 +258,7 @@ function storage(env) {
       bankVersions: function (exam) {
         return neonSQL(env,
           'SELECT subject, version, q_count as "qCount", updated_at as "updatedAt" FROM bank_blobs WHERE exam = $1 AND subject <> \'meta\'',
-          [exam]).then(function (rows) {
+          [exam], bankCS).then(function (rows) {
           var out = {};
           rows.forEach(function (r) { out[r.subject] = { version: r.version, qCount: Number(r.qCount), updatedAt: Number(r.updatedAt) }; });
           return out;
@@ -361,13 +374,14 @@ function shareCode() {
 }
 
 function shareNeon(env) {
+  var userCS = env.NEON_CS || env.NEON_BANKS_CS;   /* share_* = user-data DB */
   return {
     create: function (s) {
       return neonSQL(env, 'INSERT INTO share_tests (code, owner_uid, owner_name, name, data, created_at) VALUES ($1,$2,$3,$4,$5,$6)',
-        [s.code, s.owner_uid, s.owner_name, s.name, JSON.stringify(s.data), s.created_at]);
+        [s.code, s.owner_uid, s.owner_name, s.name, JSON.stringify(s.data), s.created_at], userCS);
     },
     get: function (code) {
-      return neonSQL(env, 'SELECT code, owner_name, name, data, created_at FROM share_tests WHERE code = $1', [code]).then(function (rows) {
+      return neonSQL(env, 'SELECT code, owner_name, name, data, created_at FROM share_tests WHERE code = $1', [code], userCS).then(function (rows) {
         if (!rows.length) return null;
         var r = rows[0];
         if (typeof r.data === 'string') r.data = JSON.parse(r.data);
@@ -376,16 +390,16 @@ function shareNeon(env) {
     },
     putAttempt: function (a) {
       return neonSQL(env, 'INSERT INTO share_attempts (code, uid, name, score, correct, wrong, unattempted, accuracy, answers, at) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10)',
-        [a.code, a.uid, a.name, a.score, a.correct, a.wrong, a.unattempted, a.accuracy, JSON.stringify(a.answers), a.at]);
+        [a.code, a.uid, a.name, a.score, a.correct, a.wrong, a.unattempted, a.accuracy, JSON.stringify(a.answers), a.at], userCS);
     },
     attempts: function (code) {
-      return neonSQL(env, 'SELECT name, score, correct, wrong, unattempted, accuracy, answers, at FROM share_attempts WHERE code = $1 ORDER BY score DESC, correct DESC, at ASC', [code]).then(function (rows) {
+      return neonSQL(env, 'SELECT name, score, correct, wrong, unattempted, accuracy, answers, at FROM share_attempts WHERE code = $1 ORDER BY score DESC, correct DESC, at ASC', [code], userCS).then(function (rows) {
         rows.forEach(function (r) { if (typeof r.answers === 'string') r.answers = JSON.parse(r.answers); });
         return rows;
       });
     },
     lastAttemptAt: function (code, name) {
-      return neonSQL(env, 'SELECT MAX(at) AS m FROM share_attempts WHERE code = $1 AND name = $2', [code, name]).then(function (rows) {
+      return neonSQL(env, 'SELECT MAX(at) AS m FROM share_attempts WHERE code = $1 AND name = $2', [code, name], userCS).then(function (rows) {
         return rows.length ? Number(rows[0].m || 0) : 0;
       });
     }
