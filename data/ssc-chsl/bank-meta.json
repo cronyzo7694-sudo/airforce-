@@ -1,1 +1,10 @@
-{"_bundleKind": "v2c", "_note": "v1.4.64 REAL PYQ BANK \u2014 archive (10,275 genuine SSC CHSL 2017-24 PYQs) ke sequential 100-Q batches. Batch 1: har subject ke pehle 100 Q (July 2024 shifts, paper/shift source preserved). Paper-shift info test screen pe dikhti hai. Next batches: extract.js --start=100, 200, 300...", "total": 400, "mathematics": {"total": 100, "keyed": 100, "withExplanation": 100, "chapters": {"Geometry": 19, "Number System": 7, "Trigonometry": 5, "Arithmetic": 54, "Mensuration": 12, "Algebra": 3}}, "english": {"total": 100, "keyed": 100, "withExplanation": 100, "chapters": {"Error Spotting": 14, "Miscellaneous English": 36, "Spelling": 9, "Antonyms": 12, "Synonyms": 8, "Idioms & Phrases": 9, "Fill in the Blanks": 8, "Sentence Improvement": 1, "Direct/Indirect Speech": 1, "Reading Comprehension": 2}}, "reasoning": {"total": 100, "keyed": 100, "withExplanation": 100, "chapters": {"Mathematical Operations": 24, "Statement-Based": 13, "Coding-Decoding": 10, "Miscellaneous Reasoning": 23, "Number/Letter Series": 8, "Classification": 4, "Word Formation": 4, "Blood Relations": 2, "Ages": 5, "Analogy": 7}}, "gs": {"total": 100, "keyed": 100, "withExplanation": 100, "chapters": {"Static GK": 39, "Polity": 13, "Art & Culture": 19, "Geography": 6, "Chemistry": 5, "Economy": 2, "Computer": 3, "History": 1, "Biology": 1, "Physics": 2, "Sports": 8, "Space & Defence": 1}}}
+{
+  "_bundleKind": "v2b",
+  "_reset": true,
+  "_note": "v1.4.70 SSC PERMANENT RESET — SSC CHSL ke saare purane questions (400-Q v2 bank + 10,275-Q archive) hata diye gaye; cloud bank_blobs + sync DB se bhi purge. _bundleKind v2b + _reset:true → har device par purgeBankReplace ek baar chalega (bank questions + unattempted series tests clean; 'manual' tagged user questions cloud tombstones se delete honge). Naye questions user apne take se add karenge — data/ssc-chsl/bank-*.json me daalo ya tools/upload-banks.js se Neon bhejo.",
+  "total": 0,
+  "mathematics": { "total": 0, "keyed": 0, "withExplanation": 0, "chapters": {} },
+  "english": { "total": 0, "keyed": 0, "withExplanation": 0, "chapters": {} },
+  "reasoning": { "total": 0, "keyed": 0, "withExplanation": 0, "chapters": {} },
+  "gs": { "total": 0, "keyed": 0, "withExplanation": 0, "chapters": {} }
+}

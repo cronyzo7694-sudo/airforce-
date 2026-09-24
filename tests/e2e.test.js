@@ -737,16 +737,47 @@ async function main() {
   T('switch → SSC CHSL active (configCache.exam)', sw === 'ssc-chsl', String(sw));
   T('SSC config: subjects reasoning/gs/maths/english', (await G('App.configCache.subjects.map(s=>s.id).join(",")')) === 'reasoning,gs,mathematics,english');
   T('SSC marking: +2 / −0.5 (Tier-I pattern)', (await G('App.configCache.marking.correct')) === 2 && (await G('App.configCache.marking.wrong')) === -0.5);
-  /* v1.4.54: seed flag + SERIES flag dono wait — series build async chalta hai
-     seed-complete ke baad bhi; isse pehle custom test generate karne par
-     planner usko existing maan ke mock skip kar deta tha (race flake) */
-  let sscSeeded = false; for (let i = 0; i < 240; i++) { await sleep(500); try { sscSeeded = await G('Store.getMeta("seeded_ssc-chsl", false)'); } catch (e) {} if (sscSeeded === true) { try { if (await G('Store.getMeta("seriesBuilt_ssc-chsl", null)') || await G('(async()=>{const ts=await DB.getAll("tests");return ts.some(t=>t.exam==="ssc-chsl"&&t.series&&t.type==="full")})()')) break; } catch (e) { break; } } }
-  T('SSC bank seeded (data/ssc-chsl/ se)', sscSeeded === true);
+  /* v1.4.70 SSC PERMANENT RESET — bundled bank ab 0-Q (purane 400 + 10,275
+     archive permanently delete). Pehle seed flag wait + switch settle, phir
+     syncBundled ek baar = bank-meta._reset → bankReset purge hook (wahi
+     real devices ko bhi milta hai), phir SHELL coverage ke liye yahin 400
+     synthetic Q + ready-made series inject — jab tak user naye real
+     questions add nahi karte. */
+  let sscSeeded = false; for (let i = 0; i < 240; i++) { await sleep(500); try { sscSeeded = await G('Store.getMeta(\"seeded_ssc-chsl\", false)'); } catch (e) {} if (sscSeeded === true) break; }
+  T('SSC bank seeded (data/ssc-chsl/ se — 0-Q reset bank)', sscSeeded === true);
+  let swSettled0 = false; for (let i = 0; i < 120; i++) { try { swSettled0 = await G('App._switching === null || App._switching === undefined'); } catch (e) {} if (swSettled0) break; await sleep(250); }
+  T('SSC switch (seed path) settle', swSettled0 === true);
+  await G('Bank.syncBundled(\"ssc-chsl\")');   /* reset purge hook chalane ke liye */
+  let rstDone = false; for (let i = 0; i < 40; i++) { try { rstDone = await G('Store.getMeta(\"bankReset_ssc-chsl\", false)'); } catch (e) {} if (rstDone) break; await sleep(250); }
+  T('SSC reset purge hook ran (bankReset flag — bank-meta._reset)', rstDone === true, String(rstDone));
+  const sscEmptyNow = await G('(async()=>{const all=await DB.getAll(\"questions\");return !all.some(q=>q.exam===\"ssc-chsl\")})()');
+  T('SSC bank EMPTY after reset (purane SSC questions 0)', sscEmptyNow === true);
+  /* synthetic shell bank (4 × 100) + ready-made series — real bank aane tak */
+  await G(`(async()=>{
+    const subs=[['reasoning','General Intelligence & Reasoning'],['gs','General Awareness'],['mathematics','Quantitative Aptitude'],['english','English Language']];
+    const qs=[];
+    for (const [sid,sname] of subs) for (let i=0;i<100;i++){
+      qs.push({ id:'q_sscsyn_'+sid+'_'+i, subject:sid, subjectName:sname,
+        chapter:'SynChapter '+(i%7), topic:'SynTopic '+(i%5), difficulty:'easy',
+        questionText:'SYNTHETIC '+sid+' Q'+i+' \u2014 what is the value of '+(i)+'+1?',
+        questionTextHi:null, image:null,
+        options:[{id:'A',text:String(i),textHi:String(i)},{id:'B',text:String(i+1),textHi:String(i+1)},{id:'C',text:String(i+2),textHi:String(i+2)},{id:'D',text:String(i+3),textHi:String(i+3)}],
+        correctAnswer:'B', explanation:'synthetic (e2e reset harness)', explanationHi:null,
+        source:'e2e-synthetic', year:2026, tags:['e2e-synthetic'],
+        dupeHash:'syn_'+sid+'_'+i, figureBased:false, paper:null, exam:'ssc-chsl' });
+    }
+    await DB.bulkPut('questions', qs);
+    const r = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 });
+    if (!r || !r.made) throw new Error('synthetic buildSeries made 0: ' + JSON.stringify(r));
+  })()`);
+  T('synthetic shell bank ready (400 Q + series)', true);
   /* v1.4.55: SSC bankStats pre-warm — pehli (slow) compute yahin ho jaye,
-     phir dashboard/tests/bank views memo-cache se instant render dete hain */
-  await G('Bank.bankStats("ssc-chsl")');
+     phir dashboard/tests/bank views memo-cache se instant render dete hain.
+     v1.4.70: synthetic injection SE PEHLE (empty switch time) cache me gaya
+     stale {} stats — bust karke fresh 400-Q stats warm karo. */
+  await G('if (window.__bsCache) delete window.__bsCache["ssc-chsl"]; Bank.bankStats("ssc-chsl")');
   const sscQ = await G('DB.count("questions")');
-  T('SSC questions ADD hue — airforce data untouched', sscQ > afQ, afQ + ' → ' + sscQ);
+  T('SSC questions ADD hue (synthetic shell) — airforce data untouched', sscQ > afQ, afQ + ' → ' + sscQ);
   const sscReason = await G('(async()=>{const all=await DB.getAll("questions");return all.filter(q=>q.exam==="ssc-chsl"&&q.subject==="reasoning").length})()');
   const afReason = await G('(async()=>{const all=await DB.getAll("questions");return all.filter(q=>(q.exam||"airforce")==="airforce"&&q.subject==="reasoning").length})()');
   T('ISOLATION: SSC reasoning SSC me (airforce RAGA me merge NAHI)', sscReason > 0 && afReason === 0, 'ssc=' + sscReason + ' af=' + afReason);

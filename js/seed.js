@@ -450,6 +450,14 @@ const Bank = (() => {
             await Store.setMeta('bundleKind_' + exam, kind);
           }
         }
+        /* v1.4.70 SSC PERMANENT RESET — meta._reset:true → EK BAAR pura bank
+           purge (kind-transition ka backup: devices jinpe kind pehle se same
+           hai unpe bhi chale). Flag sirf purge ke baad set hota hai. */
+        if (meta._reset && !(await Store.getMeta('bankReset_' + exam, false))) {
+          if (!purged) purged = await purgeBankReplace(exam);
+          await Store.setMeta('bankReset_' + exam, true);
+          if (purged && purged.questions) console.log('SSC reset purge:', purged.questions, 'Q,', purged.tests, 'tests');
+        }
       }
     } catch (e) { /* meta optional hai — purge skip, import normal */ }
     const prev = (await Store.getMeta('bundleFP_' + exam, null)) ||

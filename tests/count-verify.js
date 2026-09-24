@@ -1,4 +1,8 @@
-/* v1.4.56 — 15 full-mock + 20 subject-test count/diversity verify (purge-harness pattern) */
+/* v1.4.70 — SSC PERMANENT RESET verify: bank 0-Q state ka contract.
+   (Purana avsar: 400 v2 real Q → 15 mocks + 20 subject tests — vo bank
+   permanently delete ho chuka hai; ab yahan verify hota hai ki shell
+   EMPTY bank par bhi app gracefully kaam karta hai aur marking config
+   sahi rehti hai.) */
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
@@ -34,56 +38,49 @@ global.App = { configCache: SSC, config: async () => SSC };
 const Seed = require('../js/seed.js');
 const Generator = require('../js/generator.js');
 
-/* id → chapter map (diversity check) — seed REGENERATES ids, so map from DB */
-let chapterOf = {};
-
 let passed = 0, failed = 0;
 const t = (n, ok, x) => { ok ? (passed++, console.log('  ✓', n)) : (failed++, console.error('  ✗', n, x || '')); };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 (async () => {
   await sleep(50);
-  const rep = await Seed.seedIfNeeded(false, 'ssc-chsl');
-  t('seed: 400 v2 real Q (gs 100)', rep.imported === 400 && rep.bySubject.gs === 100, JSON.stringify(rep.bySubject));
-  for (const s of ['mathematics', 'reasoning', 'english', 'gs'])
-    for (const q of await DB.byIndex('questions', 'subject', s)) chapterOf[q.id] = q.chapter;
 
-  /* 15 full mocks: 4×25Q, SSC order, 15-min sections, chapter diversity ≥3 */
-  let mockOK = 0, mockErr = 0;
-  for (let i = 0; i < 15; i++) {
-    try {
-      const r = await Generator.fullMock();
-      const tst = r.test;
-      const counts = tst.sections.map(s => s.questionIds.length);
-      const order = tst.sections.map(s => s.subjectId).join(',');
-      const chap = tst.sections.map(s => new Set(s.questionIds.map(id => chapterOf[id])).size);
-      const durs = tst.sections.map(s => s.duration);
-      const ok = counts.length === 4 && counts.every(c => c === 25) && chap.every(c => c >= 3)
-        && durs.every(d => d === 900) && tst.timerMode === 'section' && tst.sectionLock === true
-        && tst.duration === 3600 && order === 'reasoning,gs,mathematics,english';
-      if (ok) mockOK++; else console.log(`   mock${i}: counts=${counts} order=${order} chap=${chap} durs=${durs} tm=${tst.timerMode} lock=${tst.sectionLock} dur=${tst.duration}`);
-    } catch (e) { mockErr++; console.log(`   mock${i} ERROR ${e.message}`); }
-  }
-  t('15 full mocks: 4×25Q, SSC order, 15-min/section lock, diversity ≥3', mockOK === 15 && mockErr === 0, `${mockOK}/15 err=${mockErr}`);
+  /* bank files khaali hain — seed 0 import kare, flag set ho */
+  const raw = {};
+  for (const s of ['mathematics', 'english', 'reasoning', 'gs'])
+    raw[s] = JSON.parse(fs.readFileSync(path.join(ROOT, `data/ssc-chsl/bank-${s}.json`), 'utf8'));
+  t('bank files khaali ([] ) — SSC reset', Object.values(raw).every(a => Array.isArray(a) && a.length === 0),
+    JSON.stringify(Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, v.length]))));
 
-  /* 20 subject tests: 25Q + diversity ≥3 */
-  const subs = ['mathematics', 'reasoning', 'english', 'gs'];
-  let subOK = 0, subErr = 0;
-  for (let i = 0; i < 20; i++) {
-    const sid = subs[i % 4];
-    try {
-      const r = await Generator.subjectTest(sid);
-      const qs = r.test.sections[0].questionIds;
-      const chap = new Set(qs.map(id => chapterOf[id])).size;
-      if (qs.length === 25 && chap >= 3) subOK++;
-      else console.log(`   sub${i} ${sid}: n=${qs.length} chap=${chap}`);
-    } catch (e) { subErr++; console.log(`   sub${i} ${sid} ERROR ${e.message}`); }
-  }
-  t('20 subject tests: 25Q + chapter diversity ≥3', subOK === 20 && subErr === 0, `${subOK}/20 err=${subErr}`);
+  const rep = await Seed.seedIfNeeded(true, 'ssc-chsl');
+  t('seed: 0 imported (empty reset bank)', rep.imported === 0, 'got ' + rep.imported);
+  t('seed: bySubject sab 0', ['mathematics', 'english', 'reasoning', 'gs'].every(s => rep.bySubject[s] === 0),
+    JSON.stringify(rep.bySubject));
+  const meta = await Store.getMeta('seeded_ssc-chsl', false);
+  t('seed: seeded flag exam-scoped set', meta === true);
+  const sscQ = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
+  t('seed: DB me SSC questions 0', sscQ.length === 0, 'got ' + sscQ.length);
 
-  /* marking */
-  const r = await Generator.fullMock();
-  t('marking 2 / -0.5, maxScore 200', r.test.marking.correct === 2 && r.test.marking.wrong === -0.5 && r.test.maxScore === 200, JSON.stringify(r.test.marking));
+  /* generate: empty bank par crash NAHI — graceful {ok:false,error} */
+  let fm;
+  try { fm = await Generator.fullMock(); } catch (e) { fm = { ok: false, error: 'THREW: ' + e.message }; }
+  t('fullMock: graceful not-ok (no throw)', fm && fm.ok === false && !!fm.error, JSON.stringify(fm && fm.error));
+  let st;
+  try { st = await Generator.subjectTest('reasoning'); } catch (e) { st = { ok: false, error: 'THREW: ' + e.message }; }
+  t('subjectTest: graceful not-ok (no throw)', st && st.ok === false && !!st.error, JSON.stringify(st && st.error));
+  let bs;
+  try { bs = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 }); } catch (e) { bs = { ok: false, error: 'THREW: ' + e.message }; }
+  t('buildSeries: made 0 (no crash)', bs && (bs.made || 0) === 0, JSON.stringify(bs));
+
+  /* heal: empty bank par bhi graceful — missing detect, made 0, tries guard */
+  const h = await Seed.healSeries('ssc-chsl');
+  t('healSeries: graceful (healed 0, no crash)', h && (h.healed || 0) === 0, JSON.stringify(h));
+
+  /* marking config — shell hamesha sahi (naye questions aane par turant ready) */
+  t('SSC marking config: +2 / −0.5 / maxMarks 200', SSC.marking.correct === 2 && SSC.marking.wrong === -0.5 && SSC.maxMarks === 200,
+    JSON.stringify({ m: SSC.marking, max: SSC.maxMarks }));
+  t('SSC subjects: reasoning,gs,mathematics,english × 25Q × 15-min', SSC.subjects.map(s => s.id).join(',') === 'reasoning,gs,mathematics,english'
+    && SSC.subjects.every(s => s.questions === 25 && s.duration === 900), JSON.stringify(SSC.subjects));
 
   console.log(`\n${passed}/${passed + failed} pass${failed ? ' — FIX NEEDED' : ' ✓ ALL GREEN'}`);
   process.exit(failed ? 1 : 0);
