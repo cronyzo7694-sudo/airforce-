@@ -228,7 +228,7 @@ Views.questionBank = async function (state) {
             <div class="qa-srcline">${AVUtil.pyqTag(q)}</div>
             <div class="qa-text">${AVUtil.qtext(q.questionText)}</div>
             ${AVUtil.hasDevanagari(q.questionTextHi) ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}
-            ${q.image ? `<img class="qa-img" src="${AVUtil.esc(q.image)}" alt="figure">` : ''}
+            ${q.image ? `<img class="qa-img" src="${AVUtil.esc(AVUtil.imgSrc(q.image))}" alt="figure">` : ''}
             <table class="qa-opt-tbl">${(q.options || []).map(o => `
               <tr class="${q.correctAnswer === o.id ? 'ok' : ''}"><td style="width:30px"><b>${o.id}.</b></td><td>${AVUtil.qtext(o.text)}${AVUtil.hasDevanagari(o.textHi) ? ` <span class="muted small">· ${AVUtil.esc(o.textHi)}</span>` : ''}</td>
               <td style="width:70px">${q.correctAnswer === o.id ? '<span class="badge good">KEY</span>' : ''}</td></tr>`).join('')}

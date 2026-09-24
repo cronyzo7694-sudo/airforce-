@@ -49,22 +49,25 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const raw = {};
   for (const s of ['mathematics', 'english', 'reasoning', 'gs'])
     raw[s] = JSON.parse(fs.readFileSync(path.join(ROOT, `data/ssc-chsl/bank-${s}.json`), 'utf8'));
-  t('bank files: english 25 + gs 25, baaki []', raw.english.length === 25 && raw.gs.length === 25 && raw.mathematics.length === 0 && raw.reasoning.length === 0,
+  t('bank files: english 25 + gs 25 + math 25, reasoning []', raw.english.length === 25 && raw.gs.length === 25 && raw.mathematics.length === 25 && raw.reasoning.length === 0,
     JSON.stringify(Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, v.length]))));
   const pyq = f => f.every(q => q.correctAnswer && q.explanation && /2024/.test(String(q.year || '')) && /Shift/.test(q.source || ''));
   t('english PYQ: sab keyed + explained + paper-tagged', pyq(raw.english), 'checks fail');
   t('gs PYQ: sab keyed + explained + paper-tagged', pyq(raw.gs), 'checks fail');
   t('gs file AS-IS: subject=ga (import-time gs routing)', raw.gs.every(q => q.subject === 'ga'), 'subject drift');
+  t('math PYQ: sab keyed + explained + paper-tagged', pyq(raw.mathematics), 'checks fail');
+  t('math DI images: 4 figure Qs, sab Cloudinary URL', raw.mathematics.filter(q => q.figureBased).length === 4
+    && raw.mathematics.filter(q => q.figureBased).every(q => /^\[https:\/\/res\.cloudinary\.com\/[^)]+\)$/.test(q.image)), 'img wrap fail');
 
   const rep = await Seed.seedIfNeeded(true, 'ssc-chsl');
-  t('seed: 50 imported (english 25 + gs 25)', rep.imported === 50, 'got ' + rep.imported);
-  t('seed: bySubject english 25 + gs 25, baaki 0', rep.bySubject.english === 25 && rep.bySubject.gs === 25 && rep.bySubject.mathematics === 0 && rep.bySubject.reasoning === 0,
+  t('seed: 75 imported (english 25 + gs 25 + math 25)', rep.imported === 75, 'got ' + rep.imported);
+  t('seed: bySubject english/gs/math 25-25-25, reasoning 0', rep.bySubject.english === 25 && rep.bySubject.gs === 25 && rep.bySubject.mathematics === 25 && rep.bySubject.reasoning === 0,
     JSON.stringify(rep.bySubject));
   const meta = await Store.getMeta('seeded_ssc-chsl', false);
   t('seed: seeded flag exam-scoped set', meta === true);
   const sscQ = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
-  t('seed: DB me 50 SSC Q (25 english + 25 gs — ga alias routed)', sscQ.length === 50
-    && sscQ.filter(q => q.subject === 'english').length === 25 && sscQ.filter(q => q.subject === 'gs').length === 25, 'got ' + sscQ.length);
+  t('seed: DB me 75 SSC Q (25×3 — ga alias routed)', sscQ.length === 75
+    && sscQ.filter(q => q.subject === 'english').length === 25 && sscQ.filter(q => q.subject === 'gs').length === 25 && sscQ.filter(q => q.subject === 'mathematics').length === 25, 'got ' + sscQ.length);
 
   /* generate: empty bank par crash NAHI — graceful {ok:false,error} */
   let fm;
@@ -75,13 +78,17 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   t('subjectTest: graceful not-ok (no throw)', st && st.ok === false && !!st.error, JSON.stringify(st && st.error));
   let bs;
   try { bs = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 }); } catch (e) { bs = { ok: false, error: 'THREW: ' + e.message }; }
-  t('buildSeries: 2 subject tests (english+gs), 0 mocks (baaki khaali)', bs && bs.ok === true && bs.made === 2 && bs.full === 0 && bs.subject === 2, JSON.stringify(bs));
+  t('buildSeries: 3 subject tests (eng+gs+math), 0 mocks (reasoning khaali)', bs && bs.ok === true && bs.made === 3 && bs.full === 0 && bs.subject === 3, JSON.stringify(bs));
   let et;
   try { et = await Generator.subjectTest('english'); } catch (e) { et = { ok: false, error: 'THREW: ' + e.message }; }
   t('subjectTest(english): OK — 25 PYQ se test banta hai', et && et.ok === true && et.test && et.test.sections[0].questionIds.length === 25, et && et.error || 'ok');
   let gt;
   try { gt = await Generator.subjectTest('gs'); } catch (e) { gt = { ok: false, error: 'THREW: ' + e.message }; }
   t('subjectTest(gs): OK — ga-aliased 25 PYQ se test banta hai', gt && gt.ok === true && gt.test && gt.test.sections[0].questionIds.length === 25, gt && gt.error || 'ok');
+  let mt;
+  try { mt = await Generator.subjectTest('mathematics'); } catch (e) { mt = { ok: false, error: 'THREW: ' + e.message }; }
+  const mtQs = (mt && mt.ok) ? await DB.getMany('questions', mt.test.sections[0].questionIds) : [];
+  t('subjectTest(math): OK — 25 Qs (4 DI image Qs sahit)', mt && mt.ok === true && mtQs.length === 25 && mtQs.filter(q => q.image).length === 4, mt && mt.error || 'img count ' + mtQs.filter(q => q.image).length);
 
   /* heal: empty bank par bhi graceful — missing detect, made 0, tries guard */
   const h = await Seed.healSeries('ssc-chsl');

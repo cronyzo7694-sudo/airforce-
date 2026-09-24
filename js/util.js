@@ -21,6 +21,21 @@ const AVUtil = {
     return String(s == null ? '' : s).replace(/&amp;/g, '&');
   },
 
+  /* v1.4.74 IMAGE src normalizer: user files me image field kabhi-kabhi
+     markdown-wrapped hota hai ('[url](url)') — <img src> me seedha lagane par
+     broken/link jaisa dikhta hai. Ye helper plain URL nikaal ke deta hai:
+     [x](y) → y · 'url (caption)' → url · baaki as-is. DATA NAHI badalta —
+     sirf render-time pe src sahi banta hai. Data:/blob: block (XSS-safe). */
+  imgSrc(s) {
+    let v = String(s == null ? '' : s).trim();
+    if (!v) return '';
+    const md = v.match(/^\[([^\]]*)\]\(([^)\s]+)\)$/);
+    if (md) v = md[2].trim();
+    else { const par = v.match(/^(https?:\/\/\S+?)\s*\([^)]*\)$/); if (par) v = par[1].trim(); }
+    if (/^\s*(data:|blob:|javascript:)/i.test(v)) return '';
+    return v;
+  },
+
   // render question text preserving unicode math, line-ish breaks → keep single flow
   /* v1.4.64: REAL PYQ tag — source/paper se compact chip
      ("CHSL Tier-I (03 July 2024) Shift 4"). Sirf display; source na ho to ''. */

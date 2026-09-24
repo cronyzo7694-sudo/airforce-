@@ -349,7 +349,7 @@ Views.analysis = async function (attemptId, state) {
           <div class="qa-srcline">${AVUtil.pyqTag(q)}</div>
           <div class="qa-text">${AVUtil.qtext(q.questionText)}</div>
           ${AVUtil.hasDevanagari(q.questionTextHi) ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}
-          ${q.image ? `<img class="qa-img" src="${AVUtil.esc(q.image)}" alt="figure" loading="lazy">` : ''}
+          ${q.image ? `<img class="qa-img" src="${AVUtil.esc(AVUtil.imgSrc(q.image))}" alt="figure" loading="lazy">` : ''}
           <div class="qa-answers">
             <div class="qa-ans ${f.pq.result === 'correct' ? 'ok' : ''}"><b>Your Answer (${f.pq.sel || '—'}):</b> ${yourAns}</div>
             ${f.pq.result !== 'correct' ? `<div class="qa-ans ok"><b>Correct Answer (${f.pq.key || '—'}):</b> ${keyAns}</div>` : ''}

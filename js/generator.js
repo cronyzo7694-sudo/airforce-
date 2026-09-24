@@ -14,7 +14,7 @@ const Generator = (() => {
     const blocked = await blockedInfo();
     const rows = await DB.byIndex('questions', 'subject', spec.subjectId);
     return rows.filter(q =>
-      q.correctAnswer && !q.figureBased &&           // must be evaluable
+      q.correctAnswer && (!q.figureBased || q.image) &&  // must be evaluable (v1.4.74: figure-based + image dikhne wala = evaluable)
       (q.exam || 'airforce') === exam &&            // exam-scoped bank
       !blocked.ids.has(q.id) &&                     // reported by candidate →
       !(q.dupeHash && blocked.hashes.has(q.dupeHash)) && //   never again, even after re-import
@@ -46,7 +46,7 @@ const Generator = (() => {
   }
 
   function usableQ(q, exam) {
-    return !!(q && q.correctAnswer && !q.figureBased && (q.exam || 'airforce') === exam);
+    return !!(q && q.correctAnswer && (!q.figureBased || q.image) && (q.exam || 'airforce') === exam);   // v1.4.74: image-backed figure Qs usable
   }
 
   /* pick a same-subject replacement the candidate hasn't been shown yet

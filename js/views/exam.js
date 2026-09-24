@@ -188,7 +188,7 @@ const ExamScreen = {
       </div>
       <div class="q-srcline">${AVUtil.pyqTag(q)}</div>
       <div class="q-text" id="q-text">${AVUtil.qtext(this.qLang === 'hi' ? AVUtil.hi(q.questionTextHi, q.questionText) : q.questionText)}</div>
-      ${q.image ? `<div class="q-img-wrap"><img src="${q.image}" alt="Question figure" class="q-img" id="q-img" tabindex="0"></div>` : ''}
+      ${q.image ? `<div class="q-img-wrap"><img src="${AVUtil.imgSrc(q.image)}" alt="Question figure" class="q-img" id="q-img" tabindex="0"></div>` : ''}
       ${q.figureBased ? `<div class="q-note muted small">⚠ This question had figure-based options in the source paper.</div>` : ''}
       <div class="opts" role="radiogroup" aria-label="Answer options">${optionsHtml}</div>
       ${(this.showExplain && r.sel && (q.explanation || q.explanationHi)) ? `<div class="instant-exp"><b>Explanation:</b> ${AVUtil.qtext(this.qLang === 'hi' ? AVUtil.hi(q.explanationHi, q.explanation) : q.explanation)}</div>` : ''}

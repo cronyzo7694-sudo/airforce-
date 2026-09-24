@@ -748,8 +748,8 @@ async function main() {
   await G('Bank.syncBundled(\"ssc-chsl\")');
   let rstDone = true; for (let i = 0; i < 40; i++) { try { rstDone = await G('Store.getMeta(\"bankReset_ssc-chsl\", false)'); } catch (e) {} if (!rstDone) break; await sleep(250); }
   T('bankReset flag NOT set (v2b meta — koi purge nahi hoga)', !rstDone, String(rstDone));
-  const engNow = await G('(async()=>{const all=await DB.getAll(\"questions\");const e=all.filter(q=>q.exam===\"ssc-chsl\"&&q.subject===\"english\");const g=all.filter(q=>q.exam===\"ssc-chsl\"&&q.subject===\"gs\");return e.length===25&&g.length===25&&all.filter(q=>q.exam===\"ssc-chsl\").length===50})()');
-  T('SSC bank: english 25 + gs 25 real PYQ seeded (baaki 0)', engNow === true);
+  const engNow = await G('(async()=>{const all=await DB.getAll(\"questions\");const c=s=>all.filter(q=>q.exam===\"ssc-chsl\"&&q.subject===s).length;return c(\"english\")===25&&c(\"gs\")===25&&c(\"mathematics\")===25&&all.filter(q=>q.exam===\"ssc-chsl\").length===75})()');
+  T('SSC bank: english 25 + gs 25 + math 25 real PYQ seeded (reasoning 0)', engNow === true);
   /* synthetic shell bank (4 × 100) + ready-made series — real bank aane tak */
   await G(`(async()=>{
     const subs=[['reasoning','General Intelligence & Reasoning'],['gs','General Awareness'],['mathematics','Quantitative Aptitude'],['english','English Language']];

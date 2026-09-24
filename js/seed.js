@@ -195,7 +195,7 @@ const Bank = (() => {
       if (exam && (q.exam || 'airforce') !== exam) return;
       const st = stats[q.subject] || (stats[q.subject] = { total: 0, usable: 0, chapters: {}, topics: {} });
       st.total++;
-      if (q.correctAnswer && !q.figureBased) st.usable++;
+      if (q.correctAnswer && (!q.figureBased || q.image)) st.usable++;   // v1.4.74: image-backed figure Qs usable
       st.chapters[q.chapter] = (st.chapters[q.chapter] || 0) + 1;
       st.topics[q.topic] = (st.topics[q.topic] || 0) + 1;
     });
