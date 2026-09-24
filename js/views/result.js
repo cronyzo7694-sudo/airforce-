@@ -346,6 +346,7 @@ Views.analysis = async function (attemptId, state) {
             <span class="qa-snip">${AVUtil.qtext(q.questionText)}</span>
           </button>
           <div class="qa-body">
+          <div class="qa-srcline">${AVUtil.pyqTag(q)}</div>
           <div class="qa-text">${AVUtil.qtext(q.questionText)}</div>
           ${AVUtil.hasDevanagari(q.questionTextHi) ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}
           ${q.image ? `<img class="qa-img" src="${AVUtil.esc(q.image)}" alt="figure" loading="lazy">` : ''}

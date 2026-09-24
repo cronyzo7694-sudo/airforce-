@@ -14,6 +14,15 @@ const AVUtil = {
   },
 
   // render question text preserving unicode math, line-ish breaks → keep single flow
+  /* v1.4.64: REAL PYQ tag — source/paper se compact chip
+     ("CHSL Tier-I (03 July 2024) Shift 4"). Sirf display; source na ho to ''. */
+  pyqTag(q) {
+    const src = String((q && (q.source || q.paper)) || '').trim();
+    if (!src) return '';
+    const label = src.replace(/^SSC\s+CHSL\s+Tier-?\s*I\s+PYQ\s*·\s*/i, '').replace(/Shift\s*-\s*/i, 'Shift ');
+    return `<span class="q-src" title="${AVUtil.esc(src)}">📄 ${AVUtil.esc(label)}</span>`;
+  },
+
   qtext(s) {
     /* v1.4.61 SAFE RICH-TEXT: pehle POORA escape (XSS-safe), phir sirf
        whitelist tags (u b i em strong sub sup br) render ke liye wapas kholo.

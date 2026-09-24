@@ -225,6 +225,7 @@ Views.questionBank = async function (state) {
           <div class="av-modal-title">Question Preview</div>
           <div class="av-modal-body">
             <div class="muted small" style="margin-bottom:6px">${AVUtil.esc(q.source || '')}${q.year ? ' · ' + q.year : ''} · ${AVUtil.esc(q.chapter)} › ${AVUtil.esc(q.topic)} · ${AVUtil.esc(q.difficulty || 'medium')}${q.figureBased ? ' · figure-based' : ''}</div>
+            <div class="qa-srcline">${AVUtil.pyqTag(q)}</div>
             <div class="qa-text">${AVUtil.qtext(q.questionText)}</div>
             ${AVUtil.hasDevanagari(q.questionTextHi) ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}
             ${q.image ? `<img class="qa-img" src="${AVUtil.esc(q.image)}" alt="figure">` : ''}
