@@ -340,6 +340,27 @@ async function main() {
   T('Full Mock filter: sirf mock tests (subject tests hidden — v1.4.65 partition)',
     doc.querySelectorAll('.test-card').length >= 1 && doc.body.textContent.includes('Full Mock Test') &&
     !doc.body.textContent.includes('Aptitude Test') && !doc.body.textContent.includes('Language Test'));
+
+  /* v1.4.66 GADHA-PROOF filters — chip count = actual results */
+  const subjAll = Array.from(doc.querySelectorAll('.ftab[data-s]')).find(b => b.dataset.s === 'all');
+  subjAll.dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(300);
+  const qaChip = Array.from(doc.querySelectorAll('.ftab[data-s]')).find(b => b.dataset.s === 'mathematics');
+  const qaCnt = +qaChip.querySelector('.fcount').textContent;
+  qaChip.dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(300);
+  const ofM = /of <b>(\d+)<\/b>/.exec(doc.querySelector('.tlib-count') ? doc.querySelector('.tlib-count').innerHTML : '');
+  T('Subject chip count = actual result count (Quantitative Aptitude) — kabhi khali page nahi',
+    qaCnt > 0 && ofM && +ofM[1] === qaCnt && doc.querySelectorAll('.test-card').length === Math.min(qaCnt, 12),
+    `chip=${qaCnt} shown=${ofM ? ofM[1] : '?'}`);
+  const statusChips = Array.from(doc.querySelectorAll('.ftab[data-status]')).find(b => b.dataset.status === 'completed');
+  statusChips.dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(300);
+  T('Zero-count chips disabled (dim + unclickable)', !!doc.querySelector('.ftab[disabled]'), 'koi disabled chip nahi mila');
+  const rst = doc.querySelector('#flt-reset');
+  rst.dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(300);
+  T('Clear filters → poori library wapas', doc.querySelectorAll('.test-card').length === 12 && /of <b>\d+<\/b>/.test(doc.querySelector('.tlib-count').innerHTML));
   window.location.hash = '#/questions';
   await waitFor(() => doc.querySelectorAll('.qb-row').length > 0, 20000);
   T('question bank renders paginated', doc.querySelectorAll('.qb-row').length === 25);

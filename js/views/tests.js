@@ -44,13 +44,13 @@ Views.tests = async function (state) {
      airforce ke "Full Mock Test N" kabhi cross-match nahi */
   const nameDone = new Set(idx.filter(a => !a.abandoned && (a.exam || 'airforce') === curExam).map(a => a.testName));
 
-  // v1.4.65 FILTERS — 3 ORTHOGONAL dimensions, koi overlap nahi:
-  //   TYPE (partition: All = Full + Subject + Chapter + Topic + Custom)
-  //   × SUBJECT (chips: us subject ke sections wale tests — full mocks included)
-  //   × STATUS (Any / Completed / In Progress)
-  // "Test Series" chip HATA — series ek card-badge hai (overlap ka source tha:
-  // same test series + full mock dono me ginta tha → 18+6+13 > All).
-  const TYPE_F = { all: 'All', full: 'Full Mock', subject: 'Subject', chapter: 'Chapter', topic: 'Topic', custom: 'Custom' };
+  // v1.4.66 GADHA-PROOF FILTERS — 3 simple rows (SUBJECT / TEST TYPE / STATUS):
+  //   HAR chip wahi count dikhata hai jo uspe TAP karte hi milega — count
+  //   baaki dono rows ke selection ka INTERSECTION hota hai (live recount).
+  //   0-count chip DISABLED (dima hua, tap nahi hota) → khali result page
+  //   aana namumkin. Ek bhi test kabhi do bucket me nahi ginta (TYPE partition:
+  //   All = Full + Subject + Chapter + Topic + Custom).
+  const TYPE_F = { all: 'All Types', full: 'Full Mocks', subject: 'Subject Tests', chapter: 'Chapter', topic: 'Topic', custom: 'Custom' };
   const STATUS_F = { none: 'Any Status', completed: 'Completed', incomplete: 'In Progress' };
   /* legacy single-dim state.filter → naye dims me migrate */
   if (state.filter) {
@@ -58,36 +58,37 @@ Views.tests = async function (state) {
     else if (TYPE_F[state.filter]) state.type = state.filter;
     state.filter = undefined;
   }
-  if (state.type === undefined) state.type = 'all';
-  if (state.status === undefined) state.status = 'none';
+  if (state.type === undefined || state.type === null) state.type = 'all';
+  if (state.status === undefined || state.status === null) state.status = 'none';
+  if (!state.subject) state.subject = 'all';
   const mine = tests.filter(t => (t.exam || 'airforce') === curExam);
   const isDone = t => (attByTest[t.id] || []).some(a => !a.abandoned) || nameDone.has(t.name);
-  const counts = {
-    all: mine.length,
-    full: mine.filter(t => t.type === 'full').length,
-    subject: mine.filter(t => t.type === 'subject').length,
-    chapter: mine.filter(t => t.type === 'chapter').length,
-    topic: mine.filter(t => t.type === 'topic').length,
-    custom: mine.filter(t => t.type === 'custom').length,
-    completed: mine.filter(isDone).length,
-    incomplete: mine.filter(hasUnfinished).length
-  };
-  let list = mine.filter(t => {
-    if (state.type !== 'all' && t.type !== state.type) return false;
-    if (state.status === 'completed' && !isDone(t)) return false;
-    if (state.status === 'incomplete' && !hasUnfinished(t)) return false;
-    if (state.subject !== 'all' && !(t.sections || []).some(s => s.subjectId === state.subject)) return false;
+  const dimsMatch = (t, d) => {
+    if (d.type !== 'all' && t.type !== d.type) return false;
+    if (d.subject !== 'all' && !(t.sections || []).some(s => s.subjectId === d.subject)) return false;
+    if (d.status === 'completed' && !isDone(t)) return false;
+    if (d.status === 'incomplete' && !hasUnfinished(t)) return false;
     return true;
-  });
-  /* subject chip counts — poori library par (filter se pehle), mocks included */
-  const subjCounts = {};
-  for (const s of cfg.subjects) subjCounts[s.id] = 0;
-  mine.forEach(t => (t.sections || []).forEach(s => { if (subjCounts[s.subjectId] != null) subjCounts[s.subjectId]++; }));
-  /* active filter summary — "Showing…" line ke saath clarity */
+  };
+  const cur = { type: state.type, subject: state.subject, status: state.status };
+  const cnt = d => mine.filter(t => dimsMatch(t, d)).length;
+  const list = mine.filter(t => dimsMatch(t, cur));
+  const typeCounts = {}, subjCounts = {}, statusCounts = {};
+  for (const k of Object.keys(TYPE_F)) typeCounts[k] = cnt({ ...cur, type: k });
+  for (const s of cfg.subjects) subjCounts[s.id] = cnt({ ...cur, subject: s.id });
+  for (const k of Object.keys(STATUS_F)) statusCounts[k] = cnt({ ...cur, status: k });
+  const chip = (active, count, attrs, label, title) => {
+    const disabled = count === 0 && !active;
+    const tip = disabled ? 'Is combination me 0 tests — pehle doosri row se hatao'
+      : (title || `${count} test${count === 1 ? '' : 's'} dikhenge`);
+    return `<button role="tab" class="ftab ${active ? 'active' : ''}" ${attrs} ${disabled ? 'disabled' : ''} title="${AVUtil.esc(tip)}">${label}<span class="fcount">${count}</span></button>`;
+  };
+  /* active filter summary */
   const activeBits = [];
   if (state.type !== 'all') activeBits.push(TYPE_F[state.type]);
   if (state.subject !== 'all') activeBits.push((cfg.subjects.find(s => s.id === state.subject) || {}).name || state.subject);
   if (state.status !== 'none') activeBits.push(STATUS_F[state.status]);
+  const filtersActive = activeBits.length > 0 || !!state.search;
   if (state.search) {
     const q = state.search.toLowerCase();
     list = list.filter(t => t.name.toLowerCase().includes(q));
@@ -146,32 +147,39 @@ Views.tests = async function (state) {
       </div>
       <div class="th-side">
         <div class="th-stat"><b>${mine.length}</b><span>tests</span></div>
-        <div class="th-stat"><b>${counts.completed}</b><span>completed</span></div>
+        <div class="th-stat"><b>${mine.filter(isDone).length}</b><span>completed</span></div>
         <div class="th-stat"><b>${bestPct != null ? bestPct + '%' : '—'}</b><span>best score</span></div>
       </div>
     </section>
 
-    <div class="filter-tabs ftabs2" role="tablist" aria-label="Test type filter">
-      ${Object.entries(TYPE_F).map(([k, v]) => (counts[k] > 0 || state.type === k)
-        ? `<button role="tab" class="ftab ${state.type === k ? 'active' : ''}" data-t="${k}">${v}<span class="fcount">${counts[k]}</span></button>` : '').join('')}
+    <div class="frow"><span class="frow-label">📚 SUBJECT</span>
+      <div class="filter-tabs ftabs2" role="tablist" aria-label="Subject filter">
+        ${chip(state.subject === 'all', cnt(cur), 'data-s="all"', 'All Subjects', 'Saare subjects ke tests')}
+        ${cfg.subjects.map(s => chip(state.subject === s.id, subjCounts[s.id], `data-s="${s.id}"`, `<i class="subject-dot sd-${s.id}"></i>${AVUtil.esc(s.name)}`, `${AVUtil.esc(s.name)} ke saare tests — full mocks bhi shamil`)).join('')}
+      </div>
     </div>
 
-    <div class="filter-tabs ftabs2 sfilt" role="tablist" aria-label="Subject filter">
-      <button role="tab" class="ftab sftab ${state.subject === 'all' ? 'active' : ''}" data-s="all" title="Sabhi tests (saare subjects)">All Subjects<span class="fcount">${mine.length}</span></button>
-      ${cfg.subjects.map(s => `<button role="tab" class="ftab sftab ${state.subject === s.id ? 'active' : ''}" data-s="${s.id}" title="${AVUtil.esc(s.name)} section wale saare tests — full mocks bhi included"><i class="subject-dot sd-${s.id}"></i>${AVUtil.esc(s.name)}<span class="fcount">${subjCounts[s.id] || 0}</span></button>`).join('')}
+    <div class="frow"><span class="frow-label">📝 TEST TYPE</span>
+      <div class="filter-tabs ftabs2" role="tablist" aria-label="Test type filter">
+        ${Object.entries(TYPE_F).map(([k, v]) => chip(state.type === k, typeCounts[k], `data-t="${k}"`, v)).join('')}
+      </div>
     </div>
 
-    <div class="filter-tabs ftabs2 sfilt" role="tablist" aria-label="Status filter">
-      ${Object.entries(STATUS_F).map(([k, v]) => `<button role="tab" class="ftab sftab ${state.status === k ? 'active' : ''}" data-status="${k}">${v}<span class="fcount">${k === 'none' ? mine.length : counts[k]}</span></button>`).join('')}
+    <div class="frow"><span class="frow-label">⏱ STATUS</span>
+      <div class="filter-tabs ftabs2" role="tablist" aria-label="Status filter">
+        ${Object.entries(STATUS_F).map(([k, v]) => chip(state.status === k, statusCounts[k], `data-status="${k}"`, v)).join('')}
+      </div>
     </div>
 
     ${slice.length ? `
-    <div class="tlib-count">Showing <b>${startN}–${endN}</b> of <b>${list.length}</b> test${list.length === 1 ? '' : 's'}${activeBits.length ? ` · Filter: <b>${activeBits.map(AVUtil.esc).join(' + ')}</b>` : ''}${state.search ? ` matching “${AVUtil.esc(state.search)}”` : ''}</div>
+    <div class="tlib-count">Showing <b>${startN}–${endN}</b> of <b>${list.length}</b> test${list.length === 1 ? '' : 's'}${activeBits.length ? ` · Filter: <b>${activeBits.map(AVUtil.esc).join(' + ')}</b>` : ''}${state.search ? ` matching “${AVUtil.esc(state.search)}”` : ''}${filtersActive ? ` <button class="flt-reset" id="flt-reset">✕ Clear</button>` : ''}</div>
     <div class="tlib-grid">${slice.map(t => testCard(t)).join('')}</div>` : `
     <div class="tlib-empty">
       ${T2IC.sad}
       ${state.search ? `<h3>No tests match “${AVUtil.esc(state.search)}”</h3><p>Try a shorter word — or clear the search to see all ${mine.length} tests.</p>
         <button class="btn btn-plain" id="ts-clear2">Clear search</button>`
+      : filtersActive ? `<h3>Is filter me koi test nahi</h3><p>Filters hatao — saare ${mine.length} tests wapas dikhenge.</p>
+        <button class="btn btn-plain" id="flt-reset2">✕ Clear filters</button>`
       : `<h3>No tests here yet</h3><p>Build one yourself — pick subjects, chapters and timing.</p>
         <button class="btn btn-primary" id="ts-new2">Build a custom test</button>`}
     </div>`}
@@ -252,10 +260,14 @@ Views.tests = async function (state) {
   }
 
   // events
-  /* v1.4.65: teeno filter rows ke handlers (orthogonal dims) */
+  /* v1.4.66: teeno filter rows ke handlers (live-count chips) */
   AVUtil.$$('#app .ftab[data-t]').forEach(b => b.addEventListener('click', () => { state.type = b.dataset.t; state.page = 1; Views.tests(state); }));
-  AVUtil.$$('#app .sftab[data-s]').forEach(b => b.addEventListener('click', () => { state.subject = b.dataset.s; state.page = 1; Views.tests(state); }));
+  AVUtil.$$('#app .ftab[data-s]').forEach(b => b.addEventListener('click', () => { state.subject = b.dataset.s; state.page = 1; Views.tests(state); }));
   AVUtil.$$('#app .ftab[data-status]').forEach(b => b.addEventListener('click', () => { state.status = b.dataset.status; state.page = 1; Views.tests(state); }));
+  const resetBtn = AVUtil.$('#flt-reset');
+  if (resetBtn) resetBtn.addEventListener('click', () => { state.type = 'all'; state.subject = 'all'; state.status = 'none'; state.page = 1; Views.tests(state); });
+  const resetBtn2 = AVUtil.$('#flt-reset2');
+  if (resetBtn2) resetBtn2.addEventListener('click', () => { state.type = 'all'; state.subject = 'all'; state.status = 'none'; state.search = ''; state.page = 1; Views.tests(state); });
   const searchEl = AVUtil.$('#test-search');
   searchEl.addEventListener('input', AVUtil.debounce(e => { state.search = e.target.value; state.page = 1; state._refocus = true; Views.tests(state); }, 250));
   if (state._refocus) { // keep typing across re-renders
