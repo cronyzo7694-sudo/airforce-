@@ -416,8 +416,15 @@ const Bank = (() => {
         if ((q.exam || 'airforce') !== exam) return;
         if (subjBankQ[q.subject] != null) subjBankQ[q.subject]++;
       });
-      const missing = subjects.filter(sid => !have[sid] && subjBankQ[sid] > 0);
-      if (!missing.length) { await Store.setMeta('seriesHealTries_' + exam, 0); return { healed: 0, complete: true, emptySubjects: subjects.filter(sid => !have[sid]) }; }
+      /* v1.4.76: jin subjects ke bank me config-count (25) se KAM usable Qs hain
+         wo test ke liye 'missing' nahi — insufficient (user ne itne hi diye).
+         Har boot pe futile rebuild-try na ho; jab bank complete hoga, test apne
+         aap banega (import>0 → autoBuild). */
+      const needQ = {};
+      subjects.forEach(sid => { const cs = (C.subjects || []).find(s => s.id === sid); needQ[sid] = (cs && cs.questions) || 25; });
+      const missing = subjects.filter(sid => !have[sid] && subjBankQ[sid] > 0 && subjBankQ[sid] >= needQ[sid]);
+      const insufficient = subjects.filter(sid => !have[sid] && subjBankQ[sid] > 0 && subjBankQ[sid] < needQ[sid]);
+      if (!missing.length) { await Store.setMeta('seriesHealTries_' + exam, 0); return { healed: 0, complete: true, emptySubjects: subjects.filter(sid => !have[sid]), insufficient }; }
       const tries = (await Store.getMeta('seriesHealTries_' + exam, 0)) || 0;
       if (tries >= 2) return { healed: 0, blocked: true };
       await Store.setMeta('seriesHealTries_' + exam, tries + 1);

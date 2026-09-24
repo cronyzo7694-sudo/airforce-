@@ -49,8 +49,9 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   const raw = {};
   for (const s of ['mathematics', 'english', 'reasoning', 'gs'])
     raw[s] = JSON.parse(fs.readFileSync(path.join(ROOT, `data/ssc-chsl/bank-${s}.json`), 'utf8'));
-  t('bank files: english 25 + gs 25 + math 25, reasoning []', raw.english.length === 25 && raw.gs.length === 25 && raw.mathematics.length === 25 && raw.reasoning.length === 0,
+  t('bank files: english 25 + gs 25 + math 25 + reasoning 18', raw.english.length === 25 && raw.gs.length === 25 && raw.mathematics.length === 25 && raw.reasoning.length === 18,
     JSON.stringify(Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, v.length]))));
+  t('reasoning: 18 Qs, figure-based EXCLUDED (user directive)', raw.reasoning.length === 18 && raw.reasoning.every(q => !q.figureBased), 'figure Q leak');
   const pyq = f => f.every(q => q.correctAnswer && q.explanation && /2024/.test(String(q.year || '')) && /Shift/.test(q.source || ''));
   t('english PYQ: sab keyed + explained + paper-tagged', pyq(raw.english), 'checks fail');
   t('gs PYQ: sab keyed + explained + paper-tagged', pyq(raw.gs), 'checks fail');
@@ -60,14 +61,15 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     && raw.mathematics.filter(q => q.figureBased).every(q => /^\[https:\/\/res\.cloudinary\.com\/[^)]+\)$/.test(q.image)), 'img wrap fail');
 
   const rep = await Seed.seedIfNeeded(true, 'ssc-chsl');
-  t('seed: 75 imported (english 25 + gs 25 + math 25)', rep.imported === 75, 'got ' + rep.imported);
-  t('seed: bySubject english/gs/math 25-25-25, reasoning 0', rep.bySubject.english === 25 && rep.bySubject.gs === 25 && rep.bySubject.mathematics === 25 && rep.bySubject.reasoning === 0,
+  t('seed: 93 imported (25+25+25+18)', rep.imported === 93, 'got ' + rep.imported);
+  t('seed: bySubject 25/25/25/reasoning-18', rep.bySubject.english === 25 && rep.bySubject.gs === 25 && rep.bySubject.mathematics === 25 && rep.bySubject.reasoning === 18,
     JSON.stringify(rep.bySubject));
   const meta = await Store.getMeta('seeded_ssc-chsl', false);
   t('seed: seeded flag exam-scoped set', meta === true);
   const sscQ = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
-  t('seed: DB me 75 SSC Q (25×3 — ga alias routed)', sscQ.length === 75
-    && sscQ.filter(q => q.subject === 'english').length === 25 && sscQ.filter(q => q.subject === 'gs').length === 25 && sscQ.filter(q => q.subject === 'mathematics').length === 25, 'got ' + sscQ.length);
+  t('seed: DB me 93 SSC Q (25×3 + reasoning 18 — ga alias routed)', sscQ.length === 93
+    && sscQ.filter(q => q.subject === 'english').length === 25 && sscQ.filter(q => q.subject === 'gs').length === 25
+    && sscQ.filter(q => q.subject === 'mathematics').length === 25 && sscQ.filter(q => q.subject === 'reasoning').length === 18, 'got ' + sscQ.length);
 
   /* generate: empty bank par crash NAHI — graceful {ok:false,error} */
   let fm;
@@ -78,7 +80,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   t('subjectTest: graceful not-ok (no throw)', st && st.ok === false && !!st.error, JSON.stringify(st && st.error));
   let bs;
   try { bs = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 }); } catch (e) { bs = { ok: false, error: 'THREW: ' + e.message }; }
-  t('buildSeries: 3 subject tests (eng+gs+math), 0 mocks (reasoning khaali)', bs && bs.ok === true && bs.made === 3 && bs.full === 0 && bs.subject === 3, JSON.stringify(bs));
+  t('buildSeries: 3 subject tests (eng+gs+math), 0 mocks (reasoning 18 < 25)', bs && bs.ok === true && bs.made === 3 && bs.full === 0 && bs.subject === 3, JSON.stringify(bs));
   let et;
   try { et = await Generator.subjectTest('english'); } catch (e) { et = { ok: false, error: 'THREW: ' + e.message }; }
   t('subjectTest(english): OK — 25 PYQ se test banta hai', et && et.ok === true && et.test && et.test.sections[0].questionIds.length === 25, et && et.error || 'ok');
@@ -92,7 +94,8 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   /* heal: empty bank par bhi graceful — missing detect, made 0, tries guard */
   const h = await Seed.healSeries('ssc-chsl');
-  t('healSeries: complete (english covered, khaali subjects skip — koi bekaar rebalance nahi)', h && (h.healed || 0) === 0 && h.complete === true, JSON.stringify(h));
+  t('healSeries: complete — reasoning insufficient-listed (18<25), futile rebuild NAHI', h && (h.healed || 0) === 0 && h.complete === true
+    && Array.isArray(h.insufficient) && h.insufficient.includes('reasoning'), JSON.stringify(h));
 
   /* marking config — shell hamesha sahi (naye questions aane par turant ready) */
   t('SSC marking config: +2 / −0.5 / maxMarks 200', SSC.marking.correct === 2 && SSC.marking.wrong === -0.5 && SSC.maxMarks === 200,

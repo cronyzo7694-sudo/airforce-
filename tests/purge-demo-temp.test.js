@@ -56,13 +56,13 @@ const mkQ = (id, exam, subject, subjectName, tags, i, extra) => Object.assign({
   await sleep(50);
 
   /* ── 1) seed: english 25 real PYQ bank ── */
-  console.log('━━━ seed PYQ bank (batch-1+2+3: english 25 + gs 25 + math 25)');
+  console.log('━━━ seed PYQ bank (25+25+25 + reasoning 18)');
   const rep = await Seed.seedIfNeeded(true, 'ssc-chsl');
-  t('seed: imported 75 (english 25 + gs 25 + math 25)', rep.imported === 75, 'got ' + rep.imported);
+  t('seed: imported 93 (25+25+25+18)', rep.imported === 93, 'got ' + rep.imported);
   const meta = await Store.getMeta('seeded_ssc-chsl', false);
   t('seed: seeded flag exam-scoped', meta === true);
   const sscQ0 = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
-  t('seed: 75 SSC Q in DB (25×3)', sscQ0.length === 75 && sscQ0.filter(q => q.subject === 'english').length === 25 && sscQ0.filter(q => q.subject === 'gs').length === 25 && sscQ0.filter(q => q.subject === 'mathematics').length === 25, 'got ' + sscQ0.length);
+  t('seed: 93 SSC Q in DB', sscQ0.length === 93 && sscQ0.filter(q => q.subject === 'english').length === 25 && sscQ0.filter(q => q.subject === 'gs').length === 25 && sscQ0.filter(q => q.subject === 'mathematics').length === 25 && sscQ0.filter(q => q.subject === 'reasoning').length === 18, 'got ' + sscQ0.length);
 
   /* ── 2) stale demo + user manual + airforce inject ── */
   console.log('━━━ inject: 5 stale demo Q + 1 user manual Q + 1 airforce Q');
@@ -74,7 +74,7 @@ const mkQ = (id, exam, subject, subjectName, tags, i, extra) => Object.assign({
   const afQ = mkQ('q_af_90002', 'airforce', 'physics', 'Physics', [], 1, { questionText: 'AIRFORCE question 1+1?' });
   await DB.bulkPut('questions', [...staleQs, userQ, afQ]);
   const all1 = await DB.getAll('questions');
-  t('inject: 75 + 5 stale + 1 user + 1 af = 82', all1.length === 82, 'got ' + all1.length);
+  t('inject: 93 + 5 stale + 1 user + 1 af = 100', all1.length === 100, 'got ' + all1.length);
 
   /* unattempted series test (stale Q refer) + attempted test */
   const staleId = staleQs[0].id;
@@ -87,7 +87,7 @@ const mkQ = (id, exam, subject, subjectName, tags, i, extra) => Object.assign({
   /* ── 3) purgeBankReplace — SSC reset purge ── */
   console.log('━━━ purgeBankReplace (reset)');
   const pr = await Seed.purgeBankReplace('ssc-chsl');
-  t('purge: non-manual 80 deleted (75 real bank + 5 stale — manual SAFE)', pr.questions === 80, 'got ' + pr.questions);
+  t('purge: non-manual 98 deleted (93 real bank + 5 stale — manual SAFE)', pr.questions === 98, 'got ' + pr.questions);
   t('purge: unattempted stale series test dropped', pr.tests >= 1, 'got ' + pr.tests);
   const all2 = await DB.getAll('questions');
   const ssc2 = all2.filter(q => q.exam === 'ssc-chsl');

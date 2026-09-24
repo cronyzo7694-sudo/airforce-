@@ -1,1 +1,848 @@
-[]
+[
+  {
+    "id": "q_ssc_reasoning_00001",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Number Series",
+    "topic": "Alternating Difference Series",
+    "difficulty": "easy",
+    "questionText": "Which number will replace the question mark (?) in the following series?\n67, 100, 146, 179, 225, 258, ?",
+    "questionTextHi": "निम्नलिखित में से कौन-सी संख्या दी गई श्रृंखला में प्रश्न चिह्न (?) के स्थान पर आएगी?\n67, 100, 146, 179, 225, 258, ?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "325",
+        "textHi": "325"
+      },
+      {
+        "id": "B",
+        "text": "292",
+        "textHi": "292"
+      },
+      {
+        "id": "C",
+        "text": "318",
+        "textHi": "318"
+      },
+      {
+        "id": "D",
+        "text": "304",
+        "textHi": "304"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Pattern of successive differences:\n100 - 67 = +33\n146 - 100 = +46\n179 - 146 = +33\n225 - 179 = +46\n258 - 225 = +33\nNext difference = +46:\n258 + 46 = 304.",
+    "explanationHi": "क्रमागत पदों का अंतर:\n100 - 67 = +33\n146 - 100 = +46\n179 - 146 = +33\n225 - 179 = +46\n258 - 225 = +33\nअगला अंतर +46 होना चाहिए:\n258 + 46 = 304।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "635f5d8cc8da101f",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00002",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Calendar",
+    "topic": "Day of the Week Calculation",
+    "difficulty": "easy",
+    "questionText": "If the 7th day of a month falls 3 days before Friday, then what day will fall on the 20th day of that month?",
+    "questionTextHi": "यदि किसी महीने का सातवाँ दिन, शुक्रवार से तीन दिन पहले पड़ता हो, तो महीने के 20वें दिन पर कौन-सा दिन होगा?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Tuesday",
+        "textHi": "मंगलवार"
+      },
+      {
+        "id": "B",
+        "text": "Thursday",
+        "textHi": "गुरुवार"
+      },
+      {
+        "id": "C",
+        "text": "Monday",
+        "textHi": "सोमवार"
+      },
+      {
+        "id": "D",
+        "text": "Wednesday",
+        "textHi": "बुधवार"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "3 days before Friday is Tuesday (Friday - 3 days = Tuesday).\nSo, the 7th day of the month is Tuesday.\nNumber of days between 7th and 20th day = 20 - 7 = 13 days.\n13 mod 7 = 6 odd days (or -1 day).\nTuesday + 6 days = Monday (or Tuesday - 1 day = Monday).\nHence, the 20th day is Monday.",
+    "explanationHi": "शुक्रवार से तीन दिन पहले मंगलवार होता है (शुक्रवार - 3 दिन = मंगलवार)।\nअतः महीने का 7वाँ दिन मंगलवार है।\n7वें दिन से 20वें दिन के बीच दिनों की संख्या = 20 - 7 = 13 दिन।\n13 को 7 से भाग देने पर शेषफल (विषम दिन) = 6 दिन।\nमंगलवार + 6 दिन = सोमवार।\nअतः महीने का 20वाँ दिन सोमवार होगा।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "f720581b763e0308",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00003",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Classification &amp; Odd One Out",
+    "topic": "Letter-Cluster Odd One Out",
+    "difficulty": "easy",
+    "questionText": "Three of the following four letter-clusters are alike in a certain way and thus form a group. Which letter-cluster does not belong to that group? (Note: The odd letter-cluster is not based on the number or positions of consonants/vowels).",
+    "questionTextHi": "निम्नलिखित चार अक्षर-समूहों में से तीन अक्षर-समूह एक निश्चित प्रकार से समान हैं और इस प्रकार एक समूह बनाते हैं। वह कौन-सा अक्षर-समूह है जो उस समूह से संबंधित नहीं है? (ध्यान दें: असंगत अक्षर-समूह, उस अक्षर-समूह में व्यंजनों/स्वरों की संख्या या उनके स्थान पर आधारित नहीं है।)",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "RVZ",
+        "textHi": "RVZ"
+      },
+      {
+        "id": "B",
+        "text": "BFJ",
+        "textHi": "BFJ"
+      },
+      {
+        "id": "C",
+        "text": "LPT",
+        "textHi": "LPT"
+      },
+      {
+        "id": "D",
+        "text": "GJN",
+        "textHi": "GJN"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Analyzing letter positional values:\nRVZ: R(18) + 4 = V(22); V(22) + 4 = Z(26) → (+4, +4)\nBFJ: B(2) + 4 = F(6); F(6) + 4 = J(10) → (+4, +4)\nLPT: L(12) + 4 = P(16); P(16) + 4 = T(20) → (+4, +4)\nGJN: G(7) + 3 = J(10); J(10) + 4 = N(14) → (+3, +4)\nAll clusters follow a +4, +4 gap pattern except GJN (+3, +4).",
+    "explanationHi": "अक्षरों के स्थानीय मान का अंतर:\nRVZ: R(18) + 4 = V(22); V(22) + 4 = Z(26) → (+4, +4)\nBFJ: B(2) + 4 = F(6); F(6) + 4 = J(10) → (+4, +4)\nLPT: L(12) + 4 = P(16); P(16) + 4 = T(20) → (+4, +4)\nGJN: G(7) + 3 = J(10); J(10) + 4 = N(14) → (+3, +4)\nGJN को छोड़कर अन्य सभी में +4, +4 का अंतर है, अतः GJN असंगत है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "01fabda1add51567",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00004",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Analogy",
+    "topic": "Semantic Word Pair Analogy",
+    "difficulty": "easy",
+    "questionText": "Select the word-pair that best represents a similar relationship to the one expressed in the given pair of words:\n(The words must be considered as meaningful words and must not be related based on the number of letters/consonants/vowels in the word.)\nProblem : Solution",
+    "questionTextHi": "उस शब्द-युग्म का चयन कीजिए जो नीचे दिए गए शब्दों के युग्म में व्यक्त किए गए समान संबंध का सबसे अच्छा निरूपण करता है।\n(शब्दों को अर्थपूर्ण हिंदी शब्दों के रूप में माना जाना चाहिए और उन्हें शब्द में अक्षरों की संख्या/व्यंजन/स्वरों की संख्या के आधार पर एक दूसरे से संबंधित नहीं किया जाना चाहिए।)\nसमस्या : समाधान",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Lost : Found",
+        "textHi": "खोया : पाया"
+      },
+      {
+        "id": "B",
+        "text": "Conversation : Speak",
+        "textHi": "बातचीत : बोलना"
+      },
+      {
+        "id": "C",
+        "text": "Success : Fame",
+        "textHi": "सफलता : प्रसिद्धि"
+      },
+      {
+        "id": "D",
+        "text": "Time : Money",
+        "textHi": "समय : पैसा"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "A 'Problem' is resolved by a 'Solution'. Similarly, that which is 'Lost' is recovered when 'Found'. They represent paired problem-resolution states.\nHence, 'Lost : Found' best represents this relationship.",
+    "explanationHi": "जिस प्रकार 'समस्या' का अंत या निराकरण 'समाधान' से होता है, उसी प्रकार 'खोया' हुआ वापस मिलने पर 'पाया' जाता है। ये दोनों पूरक व निराकरण के संबंध को दर्शाते हैं। अतः 'खोया : पाया' सही उत्तर है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "897dd0bbafbf46e1",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00006",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Analogy",
+    "topic": "Number Analogy (Constant Difference)",
+    "difficulty": "easy",
+    "questionText": "According to a certain logic, 99 is related to 77.3. Following the same logic, 84.4 is related to 62.7. Following the same logic, to which of the following is 72.6 related?",
+    "questionTextHi": "एक निश्चित तर्क के अनुसार 99 का संबंध 77.3 से है। उसी तर्क का अनुसरण करते हुए 84.4 का संबंध 62.7 से है। उसी तर्क का अनुसरण करते हुए 72.6 का संबंध निम्नलिखित में से किससे है?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "52.7",
+        "textHi": "52.7"
+      },
+      {
+        "id": "B",
+        "text": "50.9",
+        "textHi": "50.9"
+      },
+      {
+        "id": "C",
+        "text": "57.3",
+        "textHi": "57.3"
+      },
+      {
+        "id": "D",
+        "text": "54.2",
+        "textHi": "54.2"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Finding the constant relationship:\n99 - 77.3 = 21.7\n84.4 - 62.7 = 21.7\nEach number is decreased by 21.7.\nTherefore:\n72.6 - 21.7 = 50.9.",
+    "explanationHi": "संबंध की जाँच:\n99 - 77.3 = 21.7\n84.4 - 62.7 = 21.7\nप्रत्येक पद में से 21.7 घटाया जा रहा है।\nअतः अभीष्ट संख्या = 72.6 - 21.7 = 50.9।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "99b1f0cee4dcf030",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00007",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Letter Series",
+    "topic": "Letter-Cluster Progression",
+    "difficulty": "easy",
+    "questionText": "Which of the following letter-clusters can replace the question mark (?) in the given series to logically complete it?\nPQR, RTV, TWZ, VZD, ?",
+    "questionTextHi": "दी गई श्रृंखला को तार्किक रूप से पूरा करने के लिए निम्नलिखित में से कौन-सा अक्षर-समूह प्रश्न चिह्न (?) के स्थान पर आ सकता है?\nPQR, RTV, TWZ, VZD, ?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "OPS",
+        "textHi": "OPS"
+      },
+      {
+        "id": "B",
+        "text": "YCZ",
+        "textHi": "YCZ"
+      },
+      {
+        "id": "C",
+        "text": "XCH",
+        "textHi": "XCH"
+      },
+      {
+        "id": "D",
+        "text": "WXT",
+        "textHi": "WXT"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Tracking letter positions:\n1st letter: P(16) + 2 = R(18); R(18) + 2 = T(20); T(20) + 2 = V(22); V(22) + 2 = X(24) → X\n2nd letter: Q(17) + 3 = T(20); T(20) + 3 = W(23); W(23) + 3 = Z(26); Z(26) + 3 = C(3) → C\n3rd letter: R(18) + 4 = V(22); V(22) + 4 = Z(26); Z(26) + 4 = D(4); D(4) + 4 = H(8) → H\nHence, the required cluster is XCH.",
+    "explanationHi": "प्रत्येक अक्षर की स्थिति का विश्लेषण:\nपहला अक्षर: P(16) + 2 = R(18) + 2 = T(20) + 2 = V(22) + 2 = X(24) → X\nदूसरा अक्षर: Q(17) + 3 = T(20) + 3 = W(23) + 3 = Z(26) + 3 = C(3) → C\nतीसरा अक्षर: R(18) + 4 = V(22) + 4 = Z(26) + 4 = D(4) + 4 = H(8) → H\nअतः सही अक्षर-समूह XCH है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "b77f4bef0c02fd8a",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00008",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Blood Relations",
+    "topic": "Coded Blood Relations",
+    "difficulty": "medium",
+    "questionText": "In a certain code language, 'M &amp; N' means 'M is the wife of N', 'M @ N' means 'M is the brother of N', 'M $ N' means 'M is the father of N', 'M # N' means 'M is the sister of N'. Based on this, if 'D &amp; E $ F # G @ H', then how is D related to H?",
+    "questionTextHi": "एक निश्चित कूट भाषा में, 'M &amp; N' का अर्थ है 'M, N की पत्नी है', 'M @ N' का अर्थ है 'M, N का भाई है', 'M $ N' का अर्थ है 'M, N के पिता हैं', 'M # N' का अर्थ है 'M, N की बहन है'। इसके आधार पर, यदि 'D &amp; E $ F # G @ H' है, तो D, H से किस प्रकार संबंधित है?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Father's mother",
+        "textHi": "पिता की माता"
+      },
+      {
+        "id": "B",
+        "text": "Sister",
+        "textHi": "बहन"
+      },
+      {
+        "id": "C",
+        "text": "Mother",
+        "textHi": "माता"
+      },
+      {
+        "id": "D",
+        "text": "Father's sister",
+        "textHi": "पिता की बहन"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Decoding the expression:\n- D &amp; E: D is the wife of E (E is male, D is female).\n- E $ F: E is the father of F.\nSince D is the wife of E, D is the mother of F.\n- F # G: F is the sister of G.\n- G @ H: G is the brother of H.\nF, G, and H are siblings whose father is E and mother is D.\nTherefore, D is the Mother of H.",
+    "explanationHi": "समीकरण 'D &amp; E $ F # G @ H' का विश्लेषण:\n- D &amp; E → D, E की पत्नी है।\n- E $ F → E, F के पिता हैं (अर्थात D, F की माता है)।\n- F # G → F, G की बहन है।\n- G @ H → G, H का भाई है।\nअतः F, G, H आपस में भाई-बहन हैं और इनके माता-पिता D और E हैं।\nअतः D, H की 'माता' है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "4d17dd53e820eaf2",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00009",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Mathematical Operations",
+    "topic": "Substitution of Alphabetical Signs",
+    "difficulty": "easy",
+    "questionText": "If 'A' means '÷', 'B' means '×', 'C' means '+' and 'D' means '-', what will come in place of the question mark (?) in the following equation?\n44 B 5 C 68 D 144 A 4 = ?",
+    "questionTextHi": "यदि 'A' का अर्थ '÷', 'B' का अर्थ '×', 'C' का अर्थ '+' और 'D' का अर्थ '-' है, तो निम्नलिखित समीकरण में प्रश्न चिन्ह (?) के स्थान पर क्या आएगा?\n44 B 5 C 68 D 144 A 4 = ?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "250",
+        "textHi": "250"
+      },
+      {
+        "id": "B",
+        "text": "256",
+        "textHi": "256"
+      },
+      {
+        "id": "C",
+        "text": "254",
+        "textHi": "254"
+      },
+      {
+        "id": "D",
+        "text": "252",
+        "textHi": "252"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Replacing letters with operators:\n44 × 5 + 68 - 144 ÷ 4\nApplying BODMAS:\nDivision: 144 ÷ 4 = 36\nMultiplication: 44 × 5 = 220\nAddition &amp; Subtraction: 220 + 68 - 36 = 288 - 36 = 252.",
+    "explanationHi": "चिन्हों को बदलने पर:\n44 × 5 + 68 - 144 ÷ 4\nBODMAS के नियम से:\nभाग: 144 ÷ 4 = 36\nगुणा: 44 × 5 = 220\nजोड़ व घटाव: 220 + 68 - 36 = 288 - 36 = 252।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "7098a2f60820db9c",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00012",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Analogy",
+    "topic": "Number Set Analogy (Sum of Squares)",
+    "difficulty": "medium",
+    "questionText": "Select the set in which the numbers are related in the same way as are the numbers of the following sets:\n(5, 7, 74)\n(6, 4, 52)\n(Note: Operations should be performed on whole numbers without breaking down the numbers into constituent digits.)",
+    "questionTextHi": "उस समुच्चय का चयन कीजिए जिसमें संख्याएं ठीक उसी प्रकार संबंधित हैं जिस प्रकार दिए गए समुच्चयों की संख्याएं संबंधित हैं।\n(5, 7, 74)\n(6, 4, 52)\n(ध्यान दें: संख्याओं को उनके घटक अंकों में अलग-अलग किए बिना पूर्ण संख्याओं पर संक्रियाएं की जानी चाहिए।)",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "(9, 5, 405)",
+        "textHi": "(9, 5, 405)"
+      },
+      {
+        "id": "B",
+        "text": "(9, 5, 206)",
+        "textHi": "(9, 5, 206)"
+      },
+      {
+        "id": "C",
+        "text": "(11, 5, 146)",
+        "textHi": "(11, 5, 146)"
+      },
+      {
+        "id": "D",
+        "text": "(6, 2, 52)",
+        "textHi": "(6, 2, 52)"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Pattern: Sum of squares of the first two numbers equals the third number (a² + b² = c):\nSet 1: 5² + 7² = 25 + 49 = 74\nSet 2: 6² + 4² = 36 + 16 = 52\nTesting Option C: (11, 5, 146)\n11² + 5² = 121 + 25 = 146.\nHence, Option C satisfies the exact same logic.",
+    "explanationHi": "तर्क: पहली दो संख्याओं के वर्गों का योग तीसरी संख्या के बराबर है (a² + b² = c):\nसमुच्चय 1: 5² + 7² = 25 + 49 = 74\nसमुच्चय 2: 6² + 4² = 36 + 16 = 52\nविकल्प C की जाँच: (11, 5, 146)\n11² + 5² = 121 + 25 = 146।\nअतः विकल्प C सही उत्तर है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "5f9475e95f734822",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00013",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Mathematical Operations",
+    "topic": "Operator Substitution",
+    "difficulty": "easy",
+    "questionText": "If 'E' means '×', 'O' means '+', 'U' means '-' and 'V' means '÷', then what will come in place of the question mark (?) in the following equation?\n12 V 2 O 36 E 48 U 53 = ?",
+    "questionTextHi": "यदि 'E' का अर्थ '×', 'O' का अर्थ '+', 'U' का अर्थ '-' और 'V' का अर्थ '÷' है, तो निम्नलिखित समीकरण में प्रश्न चिन्ह (?) के स्थान पर क्या आएगा?\n12 V 2 O 36 E 48 U 53 = ?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "1650",
+        "textHi": "1650"
+      },
+      {
+        "id": "B",
+        "text": "3142",
+        "textHi": "3142"
+      },
+      {
+        "id": "C",
+        "text": "6234",
+        "textHi": "6234"
+      },
+      {
+        "id": "D",
+        "text": "1681",
+        "textHi": "1681"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Substitute symbols with operators:\n12 ÷ 2 + 36 × 48 - 53\nApplying BODMAS:\n12 ÷ 2 = 6\n36 × 48 = 1728\n6 + 1728 - 53 = 1734 - 53 = 1681.",
+    "explanationHi": "चिन्हों को बदलने पर:\n12 ÷ 2 + 36 × 48 - 53\nBODMAS के नियम से:\n12 ÷ 2 = 6\n36 × 48 = 1728\n6 + 1728 - 53 = 1734 - 53 = 1681।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "f0952f433a201554",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00014",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Letter Series",
+    "topic": "+5 Letter Shift Progression",
+    "difficulty": "easy",
+    "questionText": "Based on the English alphabetical order, what should come in place of the question mark '?' in the given series?\nYAU, DFZ, IKE, NPJ, ?",
+    "questionTextHi": "अंग्रेजी वर्णमाला क्रम के आधार पर दी गई श्रृंखला में प्रश्न चिह्न '?' के स्थान पर क्या आना चाहिए?\nYAU, DFZ, IKE, NPJ, ?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "SUO",
+        "textHi": "SUO"
+      },
+      {
+        "id": "B",
+        "text": "RUS",
+        "textHi": "RUS"
+      },
+      {
+        "id": "C",
+        "text": "SOU",
+        "textHi": "SOU"
+      },
+      {
+        "id": "D",
+        "text": "SRU",
+        "textHi": "SRU"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Positional values progression (+5 for each letter position):\n1st letter: Y(25) + 5 = D(4); D(4) + 5 = I(9); I(9) + 5 = N(14); N(14) + 5 = S(19) → S\n2nd letter: A(1) + 5 = F(6); F(6) + 5 = K(11); K(11) + 5 = P(16); P(16) + 5 = U(21) → U\n3rd letter: U(21) + 5 = Z(26); Z(26) + 5 = E(5); E(5) + 5 = J(10); J(10) + 5 = O(15) → O\nHence, the next term is SUO.",
+    "explanationHi": "प्रत्येक अक्षर में +5 की वृद्धि:\nपहला अक्षर: Y(25) + 5 = D(4) + 5 = I(9) + 5 = N(14) + 5 = S(19) → S\nदूसरा अक्षर: A(1) + 5 = F(6) + 5 = K(11) + 5 = P(16) + 5 = U(21) → U\nतीसरा अक्षर: U(21) + 5 = Z(26) + 5 = E(5) + 5 = J(10) + 5 = O(15) → O\nअतः अगला पद SUO है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "907509a70eb57e6b",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00015",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Analogy",
+    "topic": "Antonym Word Pair Analogy",
+    "difficulty": "easy",
+    "questionText": "Select the word-pair that best represents a similar relationship to the one expressed in the given pair of words:\n(The words must be considered as meaningful words and must not be related based on the number of letters/consonants/vowels in the word.)\nHonest : Corrupt",
+    "questionTextHi": "उस शब्द-युग्म का चयन कीजिए जो नीचे दिए गए शब्दों के युग्म में व्यक्त किए गए समान संबंध का सबसे अच्छा निरूपण करता है।\n(शब्दों को अर्थपूर्ण हिंदी शब्दों के रूप में माना जाना चाहिए और उन्हें शब्द में अक्षरों की संख्या/व्यंजन/स्वरों की संख्या के आधार पर एक दूसरे से संबंधित नहीं किया जाना चाहिए।)\nईमानदार : भ्रष्ट",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Praise : Respect",
+        "textHi": "प्रशंसा : सम्मान"
+      },
+      {
+        "id": "B",
+        "text": "Strong : Fragile",
+        "textHi": "मजबूत : नाजुक"
+      },
+      {
+        "id": "C",
+        "text": "Inadequate : Rare",
+        "textHi": "अपर्याप्त : दुर्लभ"
+      },
+      {
+        "id": "D",
+        "text": "Inspection : To see",
+        "textHi": "निरीक्षण : देखना"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "'Honest' and 'Corrupt' are antonyms.\nAmong the given options, 'Strong' and 'Fragile' are direct antonyms of each other.\nHence, 'Strong : Fragile' represents the exact same relationship.",
+    "explanationHi": "'ईमानदार' और 'भ्रष्ट' एक-दूसरे के विपरीतार्थक (विलोम) शब्द हैं।\nदिए गए विकल्पों में, 'मजबूत' और 'नाजुक' एक-दूसरे के विलोम शब्द हैं।\nअतः 'मजबूत : नाजुक' सही उत्तर है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "0b4422a549de436a",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00017",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Coding-Decoding",
+    "topic": "Common Word Coding",
+    "difficulty": "easy",
+    "questionText": "In a certain code language, 'love to god' is written as 'xr od yk' and 'god bless you' is written as 'tc ap od'. How will 'god' be written in that code language?",
+    "questionTextHi": "एक निश्चित कूट भाषा में, 'love to god' को 'xr od yk' लिखा जाता है और 'god bless you' को 'tc ap od' लिखा जाता है। उसी कूट भाषा में 'god' को कैसे लिखा जाएगा?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "tc",
+        "textHi": "tc"
+      },
+      {
+        "id": "B",
+        "text": "yk",
+        "textHi": "yk"
+      },
+      {
+        "id": "C",
+        "text": "ap",
+        "textHi": "ap"
+      },
+      {
+        "id": "D",
+        "text": "od",
+        "textHi": "od"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "Comparing the two sentences:\n'love to god' = 'xr od yk'\n'god bless you' = 'tc ap od'\nThe only word common to both sentences is 'god', and the only code common to both is 'od'.\nTherefore, 'god' is coded as 'od'.",
+    "explanationHi": "दोनों कथनों की तुलना करने पर:\n'love to god' = 'xr od yk'\n'god bless you' = 'tc ap od'\nदोनों कथनों में केवल 'god' शब्द उभयनिष्ठ है, और दोनों कोड में केवल 'od' कोड उभयनिष्ठ है।\nअतः 'god' का कूट 'od' होगा।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "4a19ae42a8ea3528",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00018",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Mathematical Operations",
+    "topic": "Sign Interchange Evaluation",
+    "difficulty": "easy",
+    "questionText": "If '+' and '-' are interchanged, and '×' and '÷' are interchanged, then what will come in place of (?) in the following equation?\n21 + 23 - 46 × 23 ÷ 21 = ?",
+    "questionTextHi": "यदि '+' और '-' को आपस में बदल दिया जाए तथा '×' और '÷' को आपस में बदल दिया जाए तो निम्नलिखित समीकरण में (?) के स्थान पर क्या आएगा?\n21 + 23 - 46 × 23 ÷ 21 = ?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "40",
+        "textHi": "40"
+      },
+      {
+        "id": "B",
+        "text": "90",
+        "textHi": "90"
+      },
+      {
+        "id": "C",
+        "text": "65",
+        "textHi": "65"
+      },
+      {
+        "id": "D",
+        "text": "78",
+        "textHi": "78"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Interchanging signs: '+' becomes '-', '-' becomes '+', '×' becomes '÷', '÷' becomes '×':\nNew equation: 21 - 23 + 46 ÷ 23 × 21\nApplying BODMAS:\nDivision: 46 ÷ 23 = 2\nMultiplication: 2 × 21 = 42\nAddition &amp; Subtraction: 21 - 23 + 42 = -2 + 42 = 40.",
+    "explanationHi": "चिन्हों को आपस में बदलने पर ('+' ↔ '-' तथा '×' ↔ '÷'):\nनया समीकरण: 21 - 23 + 46 ÷ 23 × 21\nBODMAS के नियम से:\nभाग: 46 ÷ 23 = 2\nगुणा: 2 × 21 = 42\nजोड़ व घटाव: 21 - 23 + 42 = -2 + 42 = 40।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "46e066aed20b41a2",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00019",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Analogy",
+    "topic": "Letter &amp; Number Mixed Analogy",
+    "difficulty": "easy",
+    "questionText": "HF 16 is related to KI 8 in a certain way. In the same way, RP 10 is related to US 5. Following the same logic, to which of the following is NL 6 related?",
+    "questionTextHi": "HF 16, KI 8 से एक निश्चित प्रकार से संबंधित है। उसी प्रकार, RP 10, US 5 से संबंधित है। समान तर्क का अनुसरण करते हुए NL 6 निम्नलिखित में से किससे संबंधित है?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "LJ 3",
+        "textHi": "LJ 3"
+      },
+      {
+        "id": "B",
+        "text": "QO 3",
+        "textHi": "QO 3"
+      },
+      {
+        "id": "C",
+        "text": "OQ 2",
+        "textHi": "OQ 2"
+      },
+      {
+        "id": "D",
+        "text": "QS 2",
+        "textHi": "QS 2"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "Pattern:\nLetters: 1st letter + 3, 2nd letter + 3\nNumber: divided by 2\n1st pair: H(8) + 3 = K(11); F(6) + 3 = I(9); 16 ÷ 2 = 8 → KI 8\n2nd pair: R(18) + 3 = U(21); P(16) + 3 = S(19); 10 ÷ 2 = 5 → US 5\nApplying to NL 6:\nN(14) + 3 = Q(17)\nL(12) + 3 = O(15)\n6 ÷ 2 = 3\nResult = QO 3.",
+    "explanationHi": "तर्क:\nअक्षर: दोनों अक्षरों में +3 जोड़ना\nसंख्या: संख्या को 2 से भाग देना\nपहला युग्म: H(8)+3 = K, F(6)+3 = I, 16 ÷ 2 = 8 → KI 8\nदूसरा युग्म: R(18)+3 = U, P(16)+3 = S, 10 ÷ 2 = 5 → US 5\nNL 6 के लिए:\nN(14) + 3 = Q\nL(12) + 3 = O\n6 ÷ 2 = 3\nअतः सही संबंध QO 3 है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "59e33a3d23903175",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00020",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Number Series",
+    "topic": "Arithmetic Progression (-100 Series)",
+    "difficulty": "easy",
+    "questionText": "What should come in place of the question mark (?) in the given series?\n3977, 3877, 3777, 3677, 3577, ?",
+    "questionTextHi": "दी गई श्रृंखला में प्रश्न चिह्न (?) के स्थान पर क्या आना चाहिए?\n3977, 3877, 3777, 3677, 3577, ?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "3377",
+        "textHi": "3377"
+      },
+      {
+        "id": "B",
+        "text": "3333",
+        "textHi": "3333"
+      },
+      {
+        "id": "C",
+        "text": "3477",
+        "textHi": "3477"
+      },
+      {
+        "id": "D",
+        "text": "3277",
+        "textHi": "3277"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Successive terms decrease by 100:\n3977 - 100 = 3877\n3877 - 100 = 3777\n3777 - 100 = 3677\n3677 - 100 = 3577\n3577 - 100 = 3477.",
+    "explanationHi": "श्रृंखला में प्रत्येक पद से 100 घटाया जा रहा है:\n3977 - 100 = 3877\n3877 - 100 = 3777\n3777 - 100 = 3677\n3677 - 100 = 3577\n3577 - 100 = 3477।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "c4261eb2ace2726b",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00024",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Syllogism",
+    "topic": "Three Statements Two Conclusions",
+    "difficulty": "medium",
+    "questionText": "Three statements are followed by two conclusions numbered I and II. You have to assume the statements to be true even if they seem to be at variance from commonly known facts. Decide which of the conclusions logically follow(s) from the statements.\nStatements:\nAll shirts are pants.\nSome dresses are pants.\nSome pants are ties.\nConclusions:\n(I) Some dresses are ties.\n(II) Some ties are shirts.",
+    "questionTextHi": "तीन कथनों के बाद I, II क्रमांकित निष्कर्ष दिए गए हैं। आपको इन कथनों को सत्य मानना होगा, चाहे वे सामान्यतः ज्ञात तथ्यों से अलग प्रतीत होते हों। आपको निश्चय करना है कि कौन-सा/कौन-से निष्कर्ष तार्किक रूप से दिए गए कथनों के अनुसार है/हैं।\nकथन:\nसभी शर्ट, पैंट हैं।\nकुछ ड्रेस, पैंट हैं।\nकुछ पैंट, टाई हैं।\nनिष्कर्ष:\n(I) कुछ ड्रेस, टाई हैं।\n(II) कुछ टाई, शर्ट हैं।",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Both conclusions (I) and (II) follow",
+        "textHi": "दोनों निष्कर्ष (I) और (II) कथनों के अनुसार हैं।"
+      },
+      {
+        "id": "B",
+        "text": "Only conclusion (I) follows",
+        "textHi": "केवल निष्कर्ष (I) कथनों के अनुसार है।"
+      },
+      {
+        "id": "C",
+        "text": "Neither conclusion (I) nor (II) follows",
+        "textHi": "न तो निष्कर्ष (I) और न ही (II) कथनों के अनुसार है।"
+      },
+      {
+        "id": "D",
+        "text": "Only conclusion (II) follows",
+        "textHi": "केवल निष्कर्ष (II) कथनों के अनुसार है।"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Venn diagram analysis:\n- Statement 1: All shirts are inside pants (Shirts ⊆ Pants).\n- Statement 2: Some dresses are pants (Dresses overlap Pants).\n- Statement 3: Some pants are ties (Pants overlap Ties).\nEvaluating conclusions:\n- Conclusion I: Some dresses are ties. There is no definite relationship given between dresses and ties; they may or may not overlap. Hence, it does not follow.\n- Conclusion II: Some ties are shirts. Ties overlap the outer region of pants and need not touch shirts. Hence, it does not follow.\nTherefore, neither conclusion (I) nor (II) follows.",
+    "explanationHi": "वेन आरेख विश्लेषण:\n- कथन 1: सभी शर्ट, पैंट के अंदर हैं (शर्ट ⊆ पैंट)।\n- कथन 2: कुछ ड्रेस, पैंट हैं (ड्रेस और पैंट का कुछ भाग साझा है)।\n- कथन 3: कुछ पैंट, टाई हैं (पैंट और टाई का कुछ भाग साझा है)।\nनिष्कर्षों का परीक्षण:\n- निष्कर्ष (I): कुछ ड्रेस, टाई हैं — ड्रेस और टाई के बीच कोई निश्चित संबंध नहीं दिया गया है। अतः यह अनुसरण नहीं करता।\n- निष्कर्ष (II): कुछ टाई, शर्ट हैं — टाई केवल पैंट से जुड़ी है, शर्ट से उसका स्पर्श होना अनिवार्य नहीं है। अतः यह भी अनुसरण नहीं करता।\nअतः न तो निष्कर्ष (I) और न ही (II) अनुसरण करता है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "967651933ab8f4b4",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00025",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Coding-Decoding",
+    "topic": "Sentence Word Coding",
+    "difficulty": "easy",
+    "questionText": "In a certain code language, 'no way out' is written as 'rp ab lm' and 'out of house' is written as 'mr rp bd'. How will 'out' be written in that code language?",
+    "questionTextHi": "एक निश्चित कूट भाषा में, 'no way out' को 'rp ab lm' लिखा जाता है और 'out of house' को 'mr rp bd' लिखा जाता है। उसी कूट भाषा में 'out' को कैसे लिखा जाएगा?",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "lm",
+        "textHi": "lm"
+      },
+      {
+        "id": "B",
+        "text": "ab",
+        "textHi": "ab"
+      },
+      {
+        "id": "C",
+        "text": "rp",
+        "textHi": "rp"
+      },
+      {
+        "id": "D",
+        "text": "mr",
+        "textHi": "mr"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "Comparing the coded phrases:\nSentence 1: 'no way out' → 'rp ab lm'\nSentence 2: 'out of house' → 'mr rp bd'\nThe common word in both sentences is 'out', and the common code is 'rp'.\nTherefore, 'out' is coded as 'rp'.",
+    "explanationHi": "दोनों वाक्यों की तुलना करने पर:\nवाक्य 1: 'no way out' → 'rp ab lm'\nवाक्य 2: 'out of house' → 'mr rp bd'\nदोनों में उभयनिष्ठ शब्द 'out' है तथा दोनों कोड में उभयनिष्ठ कोड 'rp' है।\nअतः 'out' का कोड 'rp' होगा।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "e00d79bc047d4b4a",
+    "figureBased": false,
+    "paper": "Tier-I"
+  }
+]
