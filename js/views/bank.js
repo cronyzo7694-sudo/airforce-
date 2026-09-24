@@ -230,7 +230,7 @@ Views.questionBank = async function (state) {
             ${AVUtil.hasDevanagari(q.questionTextHi) ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}
             ${q.image ? `<img class="qa-img" src="${AVUtil.esc(AVUtil.imgSrc(q.image))}" alt="figure">` : ''}
             <table class="qa-opt-tbl">${(q.options || []).map(o => `
-              <tr class="${q.correctAnswer === o.id ? 'ok' : ''}"><td style="width:30px"><b>${o.id}.</b></td><td>${AVUtil.qtext(o.text)}${AVUtil.hasDevanagari(o.textHi) ? ` <span class="muted small">· ${AVUtil.esc(o.textHi)}</span>` : ''}</td>
+              <tr class="${q.correctAnswer === o.id ? 'ok' : ''}"><td style="width:30px"><b>${o.id}.</b></td><td>${o.img && AVUtil.imgSrc(o.img) ? `<img class="qa-ans-img" src="${AVUtil.imgSrc(o.img)}" alt="option ${o.id} figure"> ` : ''}${AVUtil.qtext(o.text)}${AVUtil.hasDevanagari(o.textHi) ? ` <span class="muted small">· ${AVUtil.esc(o.textHi)}</span>` : ''}</td>
               <td style="width:70px">${q.correctAnswer === o.id ? '<span class="badge good">KEY</span>' : ''}</td></tr>`).join('')}
             </table>
             ${q.explanation ? `<div class="qa-exp"><b>Explanation:</b> ${AVUtil.qtext(q.explanation)}</div>` : '<p class="muted">No explanation available.</p>'}

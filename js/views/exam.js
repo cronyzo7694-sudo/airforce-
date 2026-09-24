@@ -161,11 +161,14 @@ const ExamScreen = {
       const o = q.options.find(x => x.id === orig) || { text: '' };
       const selected = r.sel === orig;
       const oText = (this.qLang === 'hi') ? AVUtil.hi(o.textHi, o.text) : o.text; // हिन्दी view me option bhi हिन्दी (Devanagari gate)
+      /* v1.4.77: figure-Qs ke options IMAGE ho sakte hain (opt.img) — imgSrc
+         normalize (markdown-wrapped bhi) karke render, warna text as before. */
+      const oImg = AVUtil.imgSrc(o.img);
       return `<label class="opt ${selected ? 'selected' : ''}" data-opt="${orig}">
         <input type="radio" name="opt" value="${orig}" ${selected ? 'checked' : ''} aria-label="Option ${letter}">
         <span class="opt-radio" aria-hidden="true"></span>
         <span class="opt-letter">${letter}</span>
-        <span class="opt-text">${AVUtil.qtext(oText)}</span>
+        ${oImg ? `<span class="opt-fig"><img class="opt-img" src="${oImg}" alt="Option ${letter} figure" loading="lazy"></span>` : `<span class="opt-text">${AVUtil.qtext(oText)}</span>`}
       </label>`;
     }).join('');
 

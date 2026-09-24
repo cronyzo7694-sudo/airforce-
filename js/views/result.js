@@ -330,8 +330,13 @@ Views.analysis = async function (attemptId, state) {
         const rcls = f.pq.result === 'correct' ? 'good' : (f.pq.result === 'wrong' ? 'bad' : '');
         const rlbl = f.pq.result === 'correct' ? 'CORRECT' : (f.pq.result === 'wrong' ? 'WRONG' : 'UNATTEMPTED');
         const marked = f.pq.state === 'MARKED_FOR_REVIEW' || f.pq.state === 'ANSWERED_AND_MARKED_FOR_REVIEW';
-        const yourAns = f.pq.sel ? (q.options.find(o => o.id === f.pq.sel)?.text || f.pq.sel) : '<i>Not answered</i>';
-        const keyAns = f.pq.key ? (q.options.find(o => o.id === f.pq.key)?.text || f.pq.key) : '<i>not available</i>';
+        const yOpt = f.pq.sel ? q.options.find(o => o.id === f.pq.sel) : null;
+        const kOpt = f.pq.key ? q.options.find(o => o.id === f.pq.key) : null;
+        /* v1.4.77: img-options — solution review me chhota thumb fallback */
+        const yImg = yOpt ? AVUtil.imgSrc(yOpt.img) : '';
+        const kImg = kOpt ? AVUtil.imgSrc(kOpt.img) : '';
+        const yourAns = yImg ? `<img class="qa-ans-img" src="${yImg}" alt="your answer figure">` : (f.pq.sel ? (yOpt?.text || f.pq.sel) : '<i>Not answered</i>');
+        const keyAns = kImg ? `<img class="qa-ans-img" src="${kImg}" alt="correct answer figure">` : (f.pq.key ? (kOpt?.text || f.pq.key) : '<i>not available</i>');
         const isOpen = (f.pq.result === 'wrong' && qSlice.findIndex(x => x.pq.result === 'wrong') === fi) ||
           (f.pq.result === 'skip' && !qSlice.some(x => x.pq.result === 'wrong') && qSlice.findIndex(x => x.pq.result === 'skip') === fi) ||
           (f.pq.result === 'correct' && !qSlice.some(x => x.pq.result !== 'correct') && fi === 0);

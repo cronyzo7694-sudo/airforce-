@@ -844,5 +844,354 @@
     "dupeHash": "e00d79bc047d4b4a",
     "figureBased": false,
     "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00026",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Paper Series",
+    "topic": "Rotating Printed Sheet → Series Completion",
+    "difficulty": "medium",
+    "questionText": "Select the figure from the options that will continue the given series when placed at the question-mark (?) position.",
+    "questionTextHi": "विकल्पों में दी गई उस आकृति को पहचानिए जिसे प्रश्न चिह्न (?) के स्थान पर रखने पर श्रृंखला तार्किक रूप से पूरी हो जाएगी।",
+    "image": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274294/ssc_chsl_2024_reasoning/q05_stem.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274294/ssc_chsl_2024_reasoning/q05_stem.webp)",
+    "options": [
+      {
+        "id": "A",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274926/ssc_chsl_2024_reasoning/q05_o0.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274926/ssc_chsl_2024_reasoning/q05_o0.webp)"
+      },
+      {
+        "id": "B",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274927/ssc_chsl_2024_reasoning/q05_o1.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274927/ssc_chsl_2024_reasoning/q05_o1.webp)"
+      },
+      {
+        "id": "C",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274927/ssc_chsl_2024_reasoning/q05_o2.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274927/ssc_chsl_2024_reasoning/q05_o2.webp)"
+      },
+      {
+        "id": "D",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274928/ssc_chsl_2024_reasoning/q05_o3.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274928/ssc_chsl_2024_reasoning/q05_o3.webp)"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "The printed sheet rotates 90° clockwise at each step — the corner symbols X, T, C, I, the small square and the number 3 all shift one corner clockwise per figure.\nTrack the small square: figure 1 → bottom-left, figure 2 → top-left, figure 3 → top-right, figure 4 → bottom-right. In figure 5 it must return to the bottom-left corner, i.e. figure 5 is identical to figure 1.\nThis matches option (B).",
+    "explanationHi": "छपी हुई चादर हर चरण में 90° घड़ी की दिशा में घूमती है — कोनों के चिह्न X, T, C, I, छोटा वर्ग तथा संख्या 3 सभी प्रत्येक चित्र में एक कोना घड़ी की दिशा में खिसकते हैं।\nछोटे वर्ग को ट्रैक कीजिए: चित्र 1 → निचला-बायाँ, चित्र 2 → ऊपरी-बायाँ, चित्र 3 → ऊपरी-दायाँ, चित्र 4 → निचला-दायाँ। चित्र 5 में यह फिर निचले-बाएँ कोने पर होगा, अर्थात् चित्र 5 = चित्र 1।\nयह विकल्प (B) से मेल खाता है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "2bdd5ac9872a262c",
+    "figureBased": true,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00027",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Mirror Images",
+    "topic": "Word-Combination Mirror Image (Mirror at MN)",
+    "difficulty": "easy",
+    "questionText": "Choose the correct mirror image of the given combination when the mirror is held at MN as shown.",
+    "questionTextHi": "दर्पण को नीचे दर्शाए अनुसार MN पर रखे जाने पर दिए गए संयोजन के सही दर्पण प्रतिबिंब का चयन कीजिए।",
+    "image": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274296/ssc_chsl_2024_reasoning/q10_stem.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274296/ssc_chsl_2024_reasoning/q10_stem.webp)",
+    "options": [
+      {
+        "id": "A",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274929/ssc_chsl_2024_reasoning/q10_o0.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274929/ssc_chsl_2024_reasoning/q10_o0.webp)"
+      },
+      {
+        "id": "B",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274930/ssc_chsl_2024_reasoning/q10_o1.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274930/ssc_chsl_2024_reasoning/q10_o1.webp)"
+      },
+      {
+        "id": "C",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274930/ssc_chsl_2024_reasoning/q10_o2.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274930/ssc_chsl_2024_reasoning/q10_o2.webp)"
+      },
+      {
+        "id": "D",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274931/ssc_chsl_2024_reasoning/q10_o3.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274931/ssc_chsl_2024_reasoning/q10_o3.webp)"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "The mirror MN is placed to the right of the combination 'Kd4(M3e', so the mirror image flips the combination horizontally (left ↔ right) with every character laterally inverted.\nThe rightmost element 'e' appears leftmost in the image and the leftmost 'K' appears rightmost, each character mirror-inverted.\nOnly option (A) shows this exact reversal.",
+    "explanationHi": "दर्पण MN संयोजन 'Kd4(M3e' के दाईं ओर रखा है, अतः प्रतिबिंब में संयोजन क्षैतिज रूप से (बाएँ ↔ दाएँ) पलट जाएगा और प्रत्येक अक्षर का पार्श्व प्रतिबिंब बनेगा।\nसबसे दायाँ अक्षर 'e' प्रतिबिंब में सबसे बाएँ आएगा और सबसे बायाँ 'K' सबसे दाएँ, हर अक्षर दर्पण-उल्टा।\nकेवल विकल्प (A) में यह सही उलट है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "6b9b5b416d0085ac",
+    "figureBased": true,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00028",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Cube and Dice",
+    "topic": "Open Sheet → Cube (Opposite Faces)",
+    "difficulty": "medium",
+    "questionText": "If the sheet shown below is folded to form a cube, which number will appear on the face opposite to '30'?",
+    "questionTextHi": "यदि नीचे दी गई शीट को मोड़कर एक घन बनाया जाए तो '30' के विपरीत फलक पर कौन-सी संख्या होगी?",
+    "image": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274296/ssc_chsl_2024_reasoning/q11_stem.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274296/ssc_chsl_2024_reasoning/q11_stem.webp)",
+    "options": [
+      {
+        "id": "A",
+        "text": "27",
+        "textHi": "27"
+      },
+      {
+        "id": "B",
+        "text": "26",
+        "textHi": "26"
+      },
+      {
+        "id": "C",
+        "text": "28",
+        "textHi": "28"
+      },
+      {
+        "id": "D",
+        "text": "29",
+        "textHi": "29"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "In the net, the vertical strip is 25 → 30 → 28 → 26, with 27 attached to the left of 30 and 29 to the right of 26.\nFolding into a cube, every 2nd face of the strip becomes opposite and the two side tabs pair together:\n25 ↔ 28, 30 ↔ 26, 27 ↔ 29.\nSo the face opposite 30 carries 26 — option (B).\n(Note: some released answer keys show 27, but 27 lies opposite 29; the correct opposite of 30 is 26.)",
+    "explanationHi": "शीट में ऊर्ध्वाधर पट्टी 25 → 30 → 28 → 26 है, 30 के बाएँ 27 तथा 26 के दाएँ 29 जुड़े हैं।\nघन मोड़ने पर पट्टी का हर दूसरा फलक आमने-सामने आता है और दोनों साइड-फलक आपस में जुड़ते हैं:\n25 ↔ 28, 30 ↔ 26, 27 ↔ 29।\nअतः '30' के विपरीत फलक पर 26 होगा — विकल्प (B)।\n(ध्यान दें: कुछ आंसर-कीज़ में 27 दिखाया गया है, परंतु 27 का सामने वाला फलक 29 है; 30 का सही विपरीत 26 है।)",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "b93c8d01059f8f42",
+    "figureBased": true,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00029",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Counting of Figures",
+    "topic": "Triangles in 3×2 Grid with Full Diagonal + Midline",
+    "difficulty": "medium",
+    "questionText": "How many triangles are there in the figure given below?",
+    "questionTextHi": "नीचे दी गई आकृति में कितने त्रिभुज हैं?",
+    "image": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274297/ssc_chsl_2024_reasoning/q16_stem.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274297/ssc_chsl_2024_reasoning/q16_stem.webp)",
+    "options": [
+      {
+        "id": "A",
+        "text": "5",
+        "textHi": "5"
+      },
+      {
+        "id": "B",
+        "text": "8",
+        "textHi": "8"
+      },
+      {
+        "id": "C",
+        "text": "7",
+        "textHi": "7"
+      },
+      {
+        "id": "D",
+        "text": "6",
+        "textHi": "6"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "The figure: a rectangle in a 3×2 grid (6 cells), one full diagonal (bottom-left → top-right) and one full horizontal midline.\nCount (inner lines crossing a bigger triangle do not disqualify it):\n• Small single-cell triangles on the diagonal: 2 (bottom row cell 1, top row cell 3)\n• Midline–diagonal–vertical pockets: 3\n• Two-cell span on the bottom strip: 1\n• Half-rectangle triangles of the full diagonal: 2\nTotal = 2 + 3 + 1 + 2 = 8 → option (B).",
+    "explanationHi": "आकृति: 3×2 जैसी बँटा आयत (6 कोशिकाएँ), एक पूर्ण विकर्ण (निचला-बायाँ → ऊपरी-दायाँ) तथा एक पूर्ण क्षैतिज मध्य-रेखा।\nगिनती (बड़े त्रिभुज के भीतर रेखाएँ हों तो वह निष्प्रभावित नहीं होता):\n• विकर्ण पर एक-कोशिकीय छोटे त्रिभुज: 2 (निचली पंक्ति कोशिका 1, ऊपरी पंक्ति कोशिका 3)\n• मध्य-रेखा × विकर्ण × ऊर्ध्वाधर रेखा से बने त्रिभुज: 3\n• निचली पट्टी में दो-कोशिका फैलाव वाला: 1\n• पूर्ण विकर्ण के अर्ध-आयत त्रिभुज: 2\nकुल = 2 + 3 + 1 + 2 = 8 → विकल्प (B)।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "8742ddb554602bf9",
+    "figureBased": true,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00030",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Paper Folding and Cutting",
+    "topic": "Fold-Up + Punch → Unfolded Pattern",
+    "difficulty": "medium",
+    "questionText": "A sheet of paper is folded as shown below and then punched. How will it appear when unfolded?",
+    "questionTextHi": "नीचे दर्शाए गए अनुसार एक कागज़ को मोड़कर काटा जाता है। खोलने पर यह कैसा दिखाई देगा?",
+    "image": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274298/ssc_chsl_2024_reasoning/q21_stem.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274298/ssc_chsl_2024_reasoning/q21_stem.webp)",
+    "options": [
+      {
+        "id": "A",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274932/ssc_chsl_2024_reasoning/q21_o0.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274932/ssc_chsl_2024_reasoning/q21_o0.webp)"
+      },
+      {
+        "id": "B",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274933/ssc_chsl_2024_reasoning/q21_o1.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274933/ssc_chsl_2024_reasoning/q21_o1.webp)"
+      },
+      {
+        "id": "C",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274933/ssc_chsl_2024_reasoning/q21_o2.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274933/ssc_chsl_2024_reasoning/q21_o2.webp)"
+      },
+      {
+        "id": "D",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274934/ssc_chsl_2024_reasoning/q21_o3.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274934/ssc_chsl_2024_reasoning/q21_o3.webp)"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "The top half of the square is folded up along the middle, then the punch is made: a '*' at the centre of the folded (double) layer and '+' at both corners of the fold line.\nOn unfolding, the two '+' marks fall on the four corners region symmetric about the crease and the '*' repeats symmetrically about the horizontal crease.\nThe resulting symmetric pattern matches option (A).",
+    "explanationHi": "वर्ग कागज़ के ऊपरी आधे भाग को मध्य रेखा पर मोड़ा जाता है, फिर काटा गया: मुड़ी (दोहरी) परत के मध्य में '*' तथा मोड़ रेखा के दोनों कोनों पर '+'।\nखोलने पर दोनों '+' चिह्न मोड़ रेखा के सममित कोनों पर तथा '*' क्षैतिज मोड़ के सममित स्थानों पर दोहराया जाता है।\nप्राप्त सममित प्रतिरूप विकल्प (A) से मेल खाता है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "5602528fc5b38858",
+    "figureBased": true,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00031",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Mirror Images",
+    "topic": "Figure Mirror Image (Mirror at MN, Right of Figure)",
+    "difficulty": "medium",
+    "questionText": "Select the correct mirror image of the given figure which will be formed when the mirror is placed at MN as shown.",
+    "questionTextHi": "दी गई आकृति के उस सही दर्पण प्रतिबिंब का चयन कीजिए, जो नीचे दर्शाए गए अनुसार दर्पण को MN पर रखने पर बनेगा।",
+    "image": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274299/ssc_chsl_2024_reasoning/q22_stem.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274299/ssc_chsl_2024_reasoning/q22_stem.webp)",
+    "options": [
+      {
+        "id": "A",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274935/ssc_chsl_2024_reasoning/q22_o0.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274935/ssc_chsl_2024_reasoning/q22_o0.webp)"
+      },
+      {
+        "id": "B",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274935/ssc_chsl_2024_reasoning/q22_o1.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274935/ssc_chsl_2024_reasoning/q22_o1.webp)"
+      },
+      {
+        "id": "C",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274936/ssc_chsl_2024_reasoning/q22_o2.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274936/ssc_chsl_2024_reasoning/q22_o2.webp)"
+      },
+      {
+        "id": "D",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274937/ssc_chsl_2024_reasoning/q22_o3.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274937/ssc_chsl_2024_reasoning/q22_o3.webp)"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "With the mirror MN to the right of the shaded triangle figure, the image flips left ↔ right.\nThe apex (top) shaded triangle stays at the top; the bottom-left shaded corner appears at the bottom-right in the image, while the inner unshaded grid mirrors about the vertical.\nOnly option (A) has the apex shading intact and the bottom shading flipped to the right side.",
+    "explanationHi": "दर्पण MN छायांकित त्रिभुज आकृति के दाईं ओर है, अतः प्रतिबिंब बाएँ ↔ दाएँ पलटता है।\nशिखर (ऊपर) वाला छायांकित त्रिभुज ऊपर ही रहता है; निचले-बाएँ छायांकित कोने का प्रतिबिंब निचले-दाएँ बन जाता है, जबकि भीतर का जाल ऊर्ध्वाधर अक्ष पर दर्पित होता है।\nकेवल विकल्प (A) में शिखर की छायांकित स्थिति बरकरार और निचली छाया दाईं ओर पलटी है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "83ed0f845ed19d67",
+    "figureBased": true,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_reasoning_00032",
+    "subject": "reasoning",
+    "subjectName": "General Intelligence",
+    "chapter": "Paper Folding and Cutting",
+    "topic": "Embedded Open Shape → Matching Box",
+    "difficulty": "medium",
+    "questionText": "Select the box which can be made from the given open shape (flaps are not allowed).",
+    "questionTextHi": "उस बॉक्स का चयन कीजिए जिसमें दी गई आकृति निहित है (फ्लैप की अनुमति नहीं है)।",
+    "image": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274300/ssc_chsl_2024_reasoning/q23_stem.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274300/ssc_chsl_2024_reasoning/q23_stem.webp)",
+    "options": [
+      {
+        "id": "A",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274938/ssc_chsl_2024_reasoning/q23_o0.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274938/ssc_chsl_2024_reasoning/q23_o0.webp)"
+      },
+      {
+        "id": "B",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274938/ssc_chsl_2024_reasoning/q23_o1.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274938/ssc_chsl_2024_reasoning/q23_o1.webp)"
+      },
+      {
+        "id": "C",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274939/ssc_chsl_2024_reasoning/q23_o2.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274939/ssc_chsl_2024_reasoning/q23_o2.webp)"
+      },
+      {
+        "id": "D",
+        "text": "",
+        "textHi": "",
+        "img": "[https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274939/ssc_chsl_2024_reasoning/q23_o3.webp](https://res.cloudinary.com/dvno8qwg8/image/upload/v1790274939/ssc_chsl_2024_reasoning/q23_o3.webp)"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Trace the open zig-zag shape: starting from the bottom-left short vertical, it steps right-up, then a long diagonal slant down-right, then a short step down — with every segment meeting at right angles except the single slant.\nOnly the open box in option (A) contains exactly this embedded outline — the same vertical-diagonal-step sequence with the correct corner joins.\nOptions (B), (C) and (D) change the number/direction of the corner steps or the slant position.",
+    "explanationHi": "खुली टेढ़ी-मेढ़ी आकृति को ट्रेस कीजिए: निचले-बाएँ छोटे ऊर्ध्वाधर से शुरू होकर दाएँ-ऊपर कदम, फिर लंबा विकर्ण ढलान नीचे-दाएँ, फिर छोटा कदम नीचे — हर कोना समकोण पर, केवल एक ढलान को छोड़कर।\nकेवल विकल्प (A) के खुले बॉक्स में यही रूपरेखा निहित है — वही ऊर्ध्वाधर-विकर्ण-कदम क्रम और सही कोने।\nविकल्प (B), (C), (D) में कोनों के कदमों की संख्या/दिशा या ढलान की स्थिति बदली गई है।",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq",
+      "reasoning"
+    ],
+    "dupeHash": "22ec941f82988428",
+    "figureBased": true,
+    "paper": "Tier-I"
   }
 ]

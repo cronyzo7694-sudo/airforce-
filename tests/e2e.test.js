@@ -748,8 +748,8 @@ async function main() {
   await G('Bank.syncBundled(\"ssc-chsl\")');
   let rstDone = true; for (let i = 0; i < 40; i++) { try { rstDone = await G('Store.getMeta(\"bankReset_ssc-chsl\", false)'); } catch (e) {} if (!rstDone) break; await sleep(250); }
   T('bankReset flag NOT set (v2b meta — koi purge nahi hoga)', !rstDone, String(rstDone));
-  const engNow = await G('(async()=>{const all=await DB.getAll(\"questions\");const c=s=>all.filter(q=>q.exam===\"ssc-chsl\"&&q.subject===s).length;return c(\"english\")===25&&c(\"gs\")===25&&c(\"mathematics\")===25&&c(\"reasoning\")===18&&all.filter(q=>q.exam===\"ssc-chsl\").length===93})()');
-  T('SSC bank: 25+25+25+18 real PYQ seeded (reasoning figure-Qs user-excluded)', engNow === true);
+  const engNow = await G('(async()=>{const all=await DB.getAll(\"questions\");const c=s=>all.filter(q=>q.exam===\"ssc-chsl\"&&q.subject===s).length;const r=all.filter(q=>q.exam===\"ssc-chsl\"&&q.subject===\"reasoning\");return c(\"english\")===25&&c(\"gs\")===25&&c(\"mathematics\")===25&&r.length===25&&r.filter(q=>q.figureBased&&q.image).length===7&&all.filter(q=>q.exam===\"ssc-chsl\").length===100})()');
+  T('SSC bank: 100 real PYQ seeded (reasoning 25 incl. 7 figure-Qs with Cloudinary images)', engNow === true);
   /* synthetic shell bank (4 × 100) + ready-made series — real bank aane tak */
   await G(`(async()=>{
     const subs=[['reasoning','General Intelligence & Reasoning'],['gs','General Awareness'],['mathematics','Quantitative Aptitude'],['english','English Language']];

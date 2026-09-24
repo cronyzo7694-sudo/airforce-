@@ -533,6 +533,10 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 .opt.selected .opt-radio { border-color: #1d4e89; background: radial-gradient(circle, #1d4e89 0 4px, #fff 4.5px); }
 .opt-letter { font-weight: 700; color: #1d4e89; margin-top: 1px; }
 .opt-text { color: #212e42; word-break: break-word; }
+/* v1.4.77: figure-Q image options (opt.img) + review thumbs */
+.opt-fig { display: flex; align-items: center; min-width: 0; }
+.opt-img { max-height: 84px; max-width: min(250px, 58vw); width: auto; object-fit: contain; background: #fff; border: 1px solid #dbe4f0; border-radius: 8px; padding: 4px; }
+.qa-ans-img { max-height: 54px; max-width: 150px; vertical-align: middle; background: #fff; border: 1px solid #dbe4f0; border-radius: 6px; padding: 2px; }
 .instant-exp { background: var(--blue-soft); border: 1px solid #c7d9f2; border-radius: 7px; padding: 10px 13px; font-size: 13.5px; margin-top: 12px; }
 
 /* bottom action bar — single row on every device (NTA order) */
@@ -792,6 +796,7 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
   .q-scroll { padding: 13px 14px 6px; }
   .q-text { font-size: 14.8px; }
   .opt { grid-template-columns: 20px 24px 1fr; padding: 12px 10px; font-size: 14.2px; }
+  .opt-img { max-height: 66px; max-width: 52vw; }
   .q-viewin select, .ins2-toolbar select { font-size: 16px; } /* iOS zoom-proof */
   /* palette = slide-in drawer with a real close button */
   .palette-panel {
