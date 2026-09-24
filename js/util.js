@@ -21,6 +21,7 @@ const AVUtil = {
        ab sahi dikhte hain; baaki koi bhi tag (<SELECT> type GK Qs) text
        me hi dikhta hai — safe + sahi dono. */
     return AVUtil.esc(s).replace(/\n/g, '<br>')
+      .replace(/&amp;nbsp;/g, '\u00A0')
       .replace(/&lt;(\/?)(u|b|i|em|strong|sub|sup|br)\s*\/?&gt;/gi, '<$1$2>');
   },
 

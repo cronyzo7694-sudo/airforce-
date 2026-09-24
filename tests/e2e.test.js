@@ -862,12 +862,12 @@ async function main() {
   T('SSC bank chips: SIRF SSC subjects (physics/raga NAHI)', !/physics|raga/i.test(chipTxt), chipTxt);
   T('SSC bank chips me reasoning+gs+maths+english sab', /Reasoning/.test(chipTxt) && /Awareness/.test(chipTxt) && /Aptitude/.test(chipTxt) && /English/.test(chipTxt));
   /* v1.4.54: real GS bank (2827) + 3 demo subjects (96) — total ab bada hai */
-  T('SSC bank total real GS bank se aaya (≥2,923)', /[0-9]{1,2},[0-9]{3}/.test(doc.querySelector('.t2-more-chip').textContent) || /[0-9]{4}/.test(doc.querySelector('.t2-more-chip').textContent), doc.querySelector('.t2-more-chip').textContent);
+  T('SSC bank total v2 bank se aaya (400)', /[0-9]{3}/.test(doc.querySelector('.t2-more-chip').textContent), doc.querySelector('.t2-more-chip').textContent);
   await sleep(300);
   const subjCells = Array.from(doc.querySelectorAll('.qb-tbl tbody tr')).map(r => r.querySelectorAll('td')[2] && r.querySelectorAll('td')[2].textContent.trim());
   T('page-1 rows sab SSC subjects', subjCells.length > 0 && subjCells.every(t => ['General Intelligence & Reasoning', 'General Awareness', 'Quantitative Aptitude', 'English Language'].includes(t)), subjCells.slice(0, 5).join(','));
   const qCountTxt = (doc.querySelector('.qb-count') || {}).textContent || '';
-  T('SSC bank count 4-digit real bank (v1.4.54)', /[0-9]{1,2},[0-9]{3} question|[0-9]{4} question/.test(qCountTxt), qCountTxt.trim());
+  T('SSC bank count v2 bank (400 question)', /[0-9]{3} question/.test(qCountTxt), qCountTxt.trim());
   // airforce PYQ list me nahi — ek airforce-source question search karo
   const searchBox = doc.getElementById('qb-search');
   searchBox.value = 'Prepp';

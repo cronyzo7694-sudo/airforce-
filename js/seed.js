@@ -258,6 +258,41 @@ const Bank = (() => {
      airforce bank ya user ki real q_ssc_* files KABHI nahi chhoti hain.
      Unattempted series tests bhi saaf (final bank se naya series banega);
      custom tests + attempted history hamesha safe. */
+  /* ---- v1.4.62 BANK-REPLACE PURGE (_bundleKind transition hook) ----
+     Jab cloud/static meta ka _bundleKind 'v2' hota hai (purane 'final' se
+     alag), is exam ke SARE bank questions devices se delete hote hain —
+     user ke khud ke 'manual' tag wale questions KABHI nahi — aur usi sync
+     me naya v2 bank import ho jata hai. Unattempted series tests bhi saaf
+     (attempted history safe); seriesRebuild flag se naya series banega.
+     Ye "sare questions hatao, naye quality bank do" replacement ka device
+     side hai — cloud DB clear ho chuka tha, ye local mirror fix karta hai. */
+  async function purgeBankReplace(exam) {
+    try {
+      const doomed = [];
+      await DB.cursor('questions', null, q => {
+        if (q.exam !== exam) return;
+        if ((q.tags || []).includes('manual')) return;   // user-added — never touch
+        doomed.push(q.id);
+      });
+      for (const id of doomed) { try { await DB.delete('questions', id); } catch (e) {} }
+      const gone = new Set(doomed);
+      let testsDropped = 0;
+      try {
+        const tests = await DB.getAll('tests');
+        for (const t of tests) {
+          if (!t.series || !Array.isArray(t.sections)) continue;
+          const qids = t.sections.flatMap(s => s.questionIds || []);
+          if (!qids.some(id => gone.has(id))) continue;
+          const atts = await DB.byIndex('attempts', 'testId', t.id);
+          if (atts && atts.length) continue;   // history preserved
+          await DB.delete('tests', t.id); testsDropped++;
+        }
+      } catch (e) { /* test cleanup is best-effort */ }
+      if (doomed.length) await Store.setMeta('seriesRebuild_' + exam, true);
+      return { questions: doomed.length, tests: testsDropped };
+    } catch (e) { return { questions: 0, tests: 0 }; }
+  }
+
   async function purgeDemoTemp(exam) {
     try {
       const doomed = [];
@@ -356,6 +391,11 @@ const Bank = (() => {
           if (kind === 'final') {
             purged = await purgeDemoTemp(exam);   // temp Q/tests pehle saaf
             await Store.setMeta('bundleKind_' + exam, 'final');
+          } else if (kind === 'v2') {
+            /* v1.4.62 BANK-REPLACE: pura purana bank devices se hata, naya
+               v2 bank (isi sync me import hota hai) akela rahe */
+            purged = await purgeBankReplace(exam);
+            await Store.setMeta('bundleKind_' + exam, 'v2');
           } else {
             await Store.setMeta('bundleKind_' + exam, kind);
           }
@@ -385,10 +425,21 @@ const Bank = (() => {
     if (imported > 0 || (pr && pr.tests > 0)) {
       try { built = (await Generator.autoBuild()) || 0; } catch (e) { /* library top-up optional */ }
     }
+    /* v1.4.62 bank-replace ke baad ready-made series naye bank se dobara —
+       purge ne unattempted purane series hatae the, fresh 15 mocks + 5×subject */
+    if (exam !== 'airforce' && await Store.getMeta('seriesRebuild_' + exam, false)) {
+      try {
+        const series = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 });
+        if (series && series.made) {
+          await Store.setMeta('seriesBuilt_' + exam, { at: Date.now(), made: series.made, bankV: 3 });
+        }
+      } catch (e) { /* bonus — retry next sync via flag */ }
+      await Store.setMeta('seriesRebuild_' + exam, false);
+    }
     return { synced: true, imported, pruned: pr ? pr.questions : 0, testsDropped: pr ? pr.tests : 0, purged: purged || null, built };
   }
 
-  return { importBatch, seedIfNeeded, syncBundled, purgeDemoTemp, pruneRetired, bankStats, contentId, dupeId };
+  return { importBatch, seedIfNeeded, syncBundled, purgeDemoTemp, purgeBankReplace, pruneRetired, bankStats, contentId, dupeId };
 })();
 
 /* --------- update cumulative stats after every submit --------- */

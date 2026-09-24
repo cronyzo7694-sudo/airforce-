@@ -1,10 +1,9 @@
-/* v1.4.55 — demo-temp PURGE unit test (fake-indexeddb, no full app boot)
-   v1.4.57: 4 REAL banks (10,275 Q — math 1926, reasoning 1422, english 3369,
-   gs 3579; bank-meta _bundleKind ab "final"). Fresh data me demo-temp tag hai
-   hi nahi — purge logic yahan LIVE MIGRATION simulate karke test hota hai:
-   v1.4.46-4.54 installs ke stale Q (demo-temp tags + q_sscchsl_* legacy ids)
-   inject karo → temp-demo→final transition auto-purge → SIRF stale delete,
-   10,275 real + user ki q_ssc_* + airforce Q KABHI nahi chute. */
+/* v1.4.62 — purgeBankReplace (BANK-REPLACE) unit test (fake-indexeddb)
+   v2 model: bank-meta _bundleKind "v2". Purana bank devices se GAYAB,
+   naya v2 bank (400 Q) akela rehta hai. Ye test LIVE v2 transition
+   simulate karta hai: seed v2 → stale demo Q + user manual Q + airforce Q
+   inject → purgeBankReplace → sirf v2 real + user manual + airforce bache.
+   Unattempted series tests bhi saaf, attempted history safe. */
 const fs = require('fs');
 const path = require('path');
 const { JSDOM } = require('jsdom');
@@ -27,7 +26,6 @@ global.fetch = (url) => {
   } catch (e) { return Promise.resolve({ ok: false, status: 404, json: () => { throw new Error('404'); }, text: async () => '' }); }
 };
 
-// browser-only files ko function-scope eval se load karo (DB + Store nikaalo)
 const loadDb = new Function(fs.readFileSync(path.join(ROOT, 'js/db.js'), 'utf8') + '\n;return { DB: DB, Store: Store };')();
 global.DB = loadDb.DB;
 global.Store = loadDb.Store;
@@ -41,84 +39,91 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
   await sleep(50);
 
-  /* ── 1) v1.4.55 seed: 4 real banks, demo-temp ZERO ── */
-  console.log('━━━ seed v1.4.55 final bank');
+  /* ── 1) v2 seed: 4 banks × 100 Q ── */
+  console.log('━━━ seed v2 bank (4 × 100)');
   const rep = await Seed.seedIfNeeded(false, 'ssc-chsl');
-  t('seed: imported 10,275 (4 real banks)', rep.imported === 10275, 'got ' + rep.imported);
-  t('seed: bySubject exact (math 1926 / reasoning 1422 / english 3369 / gs 3558)',
-    rep.bySubject.mathematics === 1926 && rep.bySubject.reasoning === 1422 && rep.bySubject.english === 3369 && rep.bySubject.gs === 3558,
+  t('seed: imported 400 (4 v2 banks)', rep.imported === 400, 'got ' + rep.imported);
+  t('seed: bySubject exact (math 100 / reasoning 100 / english 100 / gs 100)',
+    rep.bySubject.mathematics === 100 && rep.bySubject.reasoning === 100 && rep.bySubject.english === 100 && rep.bySubject.gs === 100,
     JSON.stringify(rep.bySubject));
   const meta = await Store.getMeta('seeded_ssc-chsl', false);
   t('seed: seeded flag exam-scoped', meta === true);
   const sscQ0 = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
-  t('seed: v1.4.55 real bank me demo-temp tag ZERO', sscQ0.filter(q => (q.tags || []).includes('demo-temp')).length === 0,
-    'demo-temp=' + sscQ0.filter(q => (q.tags || []).includes('demo-temp')).length);
-  t('seed: koi q_sscchsl_ legacy id NAHI', !sscQ0.some(q => (q.id || '').startsWith('q_sscchsl_')));
+  t('seed: sab 400 keyed + explained', sscQ0.every(q => q.correctAnswer && q.explanation));
+  t('seed: koi demo-temp tag NAHI', !sscQ0.some(q => (q.tags || []).includes('demo-temp')));
 
-  /* ── 2) LIVE MIGRATION simulation: v1.4.54 install ke stale Q inject ──
-     (96 demo-temp tagged + 8 q_sscchsl_ legacy) + user ki REAL Q + airforce Q ── */
-  const stale = [];
-  for (let i = 0; i < 96; i++) {
-    stale.push({ id: 'q_ssc-chsl_stale_' + i, exam: 'ssc-chsl', subject: 'gs', subjectName: 'GA', chapter: 'X', topic: 'X', difficulty: 'easy',
-      questionText: 'stale demo Q ' + i, questionTextHi: 'q', image: null,
-      options: [{ id: 'A', text: '1' }, { id: 'B', text: '2' }, { id: 'C', text: '3' }, { id: 'D', text: '4' }],
-      correctAnswer: 'A', explanation: 'e', explanationHi: 'e', source: 'user', year: '2024', tags: ['demo-temp'], figureBased: false, paper: 'Tier-I' });
+  /* ── 2) stale + user manual + airforce Q inject ── */
+  console.log('━━━ inject: stale demo Q + user manual Q + airforce Q');
+  const staleQs = [];
+  for (let i = 1; i <= 5; i++) {
+    staleQs.push({
+      id: 'q_sscchsl_stale_' + i, subject: 'gs', subjectName: 'General Awareness', chapter: 'General', topic: 'General',
+      difficulty: 'easy', questionText: 'STALE demo question number ' + i + '?', questionTextHi: null, image: null,
+      options: [{ id: 'A', text: 'a' + i, textHi: 'a' + i }, { id: 'B', text: 'b' + i, textHi: 'b' + i }, { id: 'C', text: 'c' + i, textHi: 'c' + i }, { id: 'D', text: 'd' + i, textHi: 'd' + i }],
+      correctAnswer: 'A', explanation: 'stale', explanationHi: null, source: 'demo', year: 2024,
+      tags: ['demo-temp'], dupeHash: 'stale_dh_' + i, figureBased: false, paper: null, exam: 'ssc-chsl'
+    });
   }
-  for (let i = 0; i < 8; i++) {
-    stale.push({ id: 'q_sscchsl_legacy_' + i, exam: 'ssc-chsl', subject: 'reasoning', subjectName: 'Reasoning', chapter: 'X', topic: 'X', difficulty: 'easy',
-      questionText: 'v1.4.46 legacy Q ' + i, questionTextHi: 'q', image: null,
-      options: [{ id: 'A', text: '1' }, { id: 'B', text: '2' }, { id: 'C', text: '3' }, { id: 'D', text: '4' }],
-      correctAnswer: 'A', explanation: 'e', explanationHi: 'e', source: 'user', year: '2024', tags: [], figureBased: false, paper: 'Tier-I' });
-  }
-  await DB.bulkPut('questions', stale.concat([
-    { id: 'q_ssc_mathematics_90001', exam: 'ssc-chsl', subject: 'mathematics', subjectName: 'QA', chapter: 'X', topic: 'X', difficulty: 'easy',
-      questionText: 'user real Q', questionTextHi: 'q', image: null,
-      options: [{ id: 'A', text: '1' }, { id: 'B', text: '2' }, { id: 'C', text: '3' }, { id: 'D', text: '4' }],
-      correctAnswer: 'A', explanation: 'e', explanationHi: 'e', source: 'user', year: '2024', tags: ['ssc-chsl'], figureBased: false, paper: 'Tier-I' },
-    { id: 'q_af_90002', exam: 'airforce', subject: 'physics', subjectName: 'Physics', chapter: 'X', topic: 'X', difficulty: 'easy',
-      questionText: 'airforce Q', questionTextHi: 'q', image: null,
-      options: [{ id: 'A', text: '1' }, { id: 'B', text: '2' }, { id: 'C', text: '3' }, { id: 'D', text: '4' }],
-      correctAnswer: 'A', explanation: 'e', explanationHi: 'e', source: 'user', year: '2024', tags: [], figureBased: false, paper: 'P1' }
-  ]));
+  const userQ = {
+    id: 'q_ssc_mathematics_90001', subject: 'mathematics', subjectName: 'Mathematics', chapter: 'Arithmetic', topic: 'Arithmetic',
+    difficulty: 'medium', questionText: 'USER ka khud ka question 2+2?', questionTextHi: null, image: null,
+    options: [{ id: 'A', text: '3', textHi: '3' }, { id: 'B', text: '4', textHi: '4' }, { id: 'C', text: '5', textHi: '5' }, { id: 'D', text: '6', textHi: '6' }],
+    correctAnswer: 'B', explanation: 'basic', explanationHi: null, source: 'Manual entry', year: 2026,
+    tags: ['manual'], dupeHash: 'user_dh_1', figureBased: false, paper: null, exam: 'ssc-chsl'
+  };
+  const afQ = {
+    id: 'q_af_90002', subject: 'physics', subjectName: 'Physics', chapter: 'General', topic: 'General',
+    difficulty: 'medium', questionText: 'AIRFORCE question 1+1?', questionTextHi: null, image: null,
+    options: [{ id: 'A', text: '1', textHi: '1' }, { id: 'B', text: '2', textHi: '2' }, { id: 'C', text: '3', textHi: '3' }, { id: 'D', text: '4', textHi: '4' }],
+    correctAnswer: 'B', explanation: 'basic', explanationHi: null, source: 'test', year: 2026,
+    tags: [], dupeHash: 'af_dh_1', figureBased: false, paper: null, exam: 'airforce'
+  };
+  await DB.bulkPut('questions', [...staleQs, userQ, afQ]);
+  const all1 = await DB.getAll('questions');
+  t('inject: 400 + 5 stale + 1 user + 1 af = 407', all1.length === 407, 'got ' + all1.length);
 
-  /* ── 3) temp-demo → final TRANSITION (v1.4.54→v1.4.55 live update jaisa):
-     v1.4.54 user ke paas bundleKind 'temp-demo' tha; naye bank-meta me
-     'final' hai → syncBundled PEHLE auto-purge kare, phir import (dupes skip) ── */
-  console.log('━━━ syncBundled temp-demo→final transition (auto-purge)');
-  await Store.setMeta('bundleKind_ssc-chsl', 'temp-demo');   // v1.4.54 install state
-  await Store.setMeta('bundleFP_ssc-chsl', null);             // fp bhi purana/none
-  const sync1 = await Seed.syncBundled('ssc-chsl');
-  t('transition: synced', sync1.synced === true || sync1.purged, JSON.stringify(sync1).slice(0, 120));
-  t('transition: auto-purged exactly 104 stale (96 demo-temp + 8 q_sscchsl_)',
-    sync1.purged && sync1.purged.questions === 104, JSON.stringify(sync1.purged));
-  const kindMeta = await Store.getMeta('bundleKind_ssc-chsl', null);
-  t('transition: bundleKind_ssc-chsl = final', kindMeta === 'final');
+  /* unattempted series test jo stale Q ko refer karta hai + attempted test */
+  const staleId = staleQs[0].id;
+  const seriesTestId = 'test_series_stale_' + Date.now();
+  await DB.put('tests', { id: seriesTestId, series: true, exam: 'ssc-chsl', sections: [{ subject: 'gs', questionIds: [staleId] }], createdAt: Date.now() });
+  const attTestId = 'test_att_' + Date.now();
+  await DB.put('tests', { id: attTestId, series: true, exam: 'ssc-chsl', sections: [{ subject: 'gs', questionIds: [staleId] }], createdAt: Date.now() });
+  await DB.put('attempts', { id: 'att_1', testId: attTestId, exam: 'ssc-chsl', submittedAt: Date.now(), result: { score: 1 } });
 
-  /* ── 4) survivors ── */
-  const all3 = await DB.getAll('questions');
-  const ssc3 = all3.filter(q => q.exam === 'ssc-chsl');
-  const af3 = all3.filter(q => q.exam === 'airforce');
-  t('survivors: 10,275 real + user 1 = 10,276 ssc Q', ssc3.length === 10276, 'got ' + ssc3.length);
-  t('survivors: real bank UNTOUCHED (gs 3558, math 1926, reasoning 1422, english 3369)',
-    ['gs', 'mathematics', 'reasoning', 'english'].every(s => ssc3.filter(q => q.subject === s && q.id !== 'q_ssc_mathematics_90001').length === { gs: 3558, mathematics: 1926, reasoning: 1422, english: 3369 }[s]),
-    JSON.stringify({ gs: ssc3.filter(q => q.subject === 'gs').length, mathematics: ssc3.filter(q => q.subject === 'mathematics').length, reasoning: ssc3.filter(q => q.subject === 'reasoning').length, english: ssc3.filter(q => q.subject === 'english').length }));
-  t('survivors: user q_ssc_mathematics_90001 SAFE', all3.some(q => q.id === 'q_ssc_mathematics_90001'));
-  t('survivors: airforce Q SAFE', af3.length === 1 && af3[0].id === 'q_af_90002', 'left=' + af3.map(q => q.id).join(','));
-  t('survivors: koi demo-temp tag bacha? NAHI', !all3.some(q => (q.tags || []).includes('demo-temp')));
-  t('survivors: koi q_sscchsl_/stale bacha? NAHI', !all3.some(q => (q.id || '').startsWith('q_sscchsl_') || (q.id || '').startsWith('q_ssc-chsl_stale_')));
+  /* ── 3) purgeBankReplace — v2 transition ── */
+  console.log('━━━ purgeBankReplace (v2)');
+  const pr = await Seed.purgeBankReplace('ssc-chsl');
+  t('purge: stale 5 + v2 400 = 405 deleted (manual user SAFE)', pr.questions === 405, 'got ' + pr.questions);
+  t('purge: unattempted stale series test dropped', pr.tests === 1, 'got ' + pr.tests);
+  const all2 = await DB.getAll('questions');
+  const ssc2 = all2.filter(q => q.exam === 'ssc-chsl');
+  /* v2 bank bhi delete hota hai (replace model) — syncBundled isi sync me
+     naya v2 bank turant re-import karta hai; yahan standalone purge hai */
+  t('purge: sirf user manual ssc bacha (1) — v2 re-import sync me hoga', ssc2.length === 1, 'got ' + ssc2.length);
+  t('purge: non-manual ssc ZERO bache', ssc2.every(q => (q.tags || []).includes('manual')));
+  t('purge: user q_ssc_mathematics_90001 SAFE (manual tag)', all2.some(q => q.id === 'q_ssc_mathematics_90001'));
+  t('purge: airforce Q SAFE', all2.some(q => q.id === 'q_af_90002'));
+  t('purge: koi demo-temp/stale bacha? NAHI', !all2.some(q => (q.tags || []).includes('demo-temp') || (q.id || '').startsWith('q_sscchsl_')));
+  t('purge: seriesRebuild flag set', (await Store.getMeta('seriesRebuild_ssc-chsl', false)) === true);
+  const attempts2 = await DB.getAll('attempts');
+  t('purge: attempted history SAFE', attempts2.some(a => a.id === 'att_1'));
+  const tests2 = await DB.getAll('tests');
+  t('purge: attempted test SAFE', tests2.some(x => x.id === attTestId));
+  t('purge: unattempted stale test GAYAB', !tests2.some(x => x.id === seriesTestId));
 
-  /* ── 5) re-sync (fp same ab) → no-op, count stable ── */
-  const sync2 = await Seed.syncBundled('ssc-chsl');
-  t('re-sync: no-op (fp same)', sync2.synced === false || (sync2.purged && sync2.purged.questions === 0), JSON.stringify(sync2).slice(0, 120));
-  const all4 = await DB.getAll('questions');
-  t('re-sync: count stable 11,171 ssc', all4.filter(q => q.exam === 'ssc-chsl').length === 10276);
-
-  /* ── 6) direct purgeDemoTemp idempotent — dobara 0 delete ── */
-  const pr2 = await Seed.purgeDemoTemp('ssc-chsl');
-  t('direct purge idempotent: 0 delete (sab pehle hi clean)', pr2.questions === 0, 'got ' + pr2.questions);
+  /* ── 4) sync jaisa flow: v2 re-import → dobara purge (400 non-manual) → wapas ── */
+  console.log('━━━ replace-cycle: re-import → purge → re-import');
+  let readd = 0;
+  for (const s of ['gs', 'mathematics', 'english', 'reasoning'])
+    readd += (await Seed.importBatch(JSON.parse(fs.readFileSync(path.join(ROOT, `data/ssc-chsl/bank-${s}.json`), 'utf8')), null, 'ssc-chsl')).imported;
+  t('re-import v2: 400 wapas', readd === 400, 'got ' + readd);
+  const pr2 = await Seed.purgeBankReplace('ssc-chsl');
+  t('re-purge: 400 deleted (user manual protected)', pr2.questions === 400, 'got ' + pr2.questions);
+  for (const s of ['gs', 'mathematics', 'english', 'reasoning'])
+    await Seed.importBatch(JSON.parse(fs.readFileSync(path.join(ROOT, `data/ssc-chsl/bank-${s}.json`), 'utf8')), null, 'ssc-chsl');
+  const finalQs = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
+  t('final: v2 400 + user 1 = 401', finalQs.length === 401, 'got ' + finalQs.length);
 
   console.log(`\n${passed.length}/${passed.length + failed.length} pass`);
-  if (failed.length) process.exit(1);
-  console.log('ALL PURGE TESTS GREEN ✓');
-  process.exit(0);
-})().catch(e => { console.error('CRASH:', e); process.exit(2); });
+  process.exit(failed.length ? 1 : 0);
+})().catch(e => { console.error('FATAL', e); process.exit(1); });

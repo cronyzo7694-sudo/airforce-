@@ -36,7 +36,9 @@ process.argv.slice(2).forEach(a => {
 const EXAM_DIRS = { airforce: 'airforce', 'ssc-chsl': 'ssc-chsl' };
 const exam = args.exam || 'ssc-chsl';
 if (!EXAM_DIRS[exam]) { console.error('unknown --exam:', exam); process.exit(1); }
-const dir = path.join(ROOT, 'data', EXAM_DIRS[exam]);
+/* --dir=<path> optional: v2 banks jaise alternate folder se upload
+   (default data/<exam>/ untouched rehta hai) */
+const dir = args.dir || args.d ? path.resolve(String(args.dir || args.d)) : path.join(ROOT, 'data', EXAM_DIRS[exam]);
 
 let subjects = args.subjects
   ? String(args.subjects).split(',').map(s => s.trim()).filter(Boolean)
