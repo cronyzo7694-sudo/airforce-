@@ -56,7 +56,13 @@ const ExamScreen = {
     }
     // instant explanation: sirf practice mode me (exam me reveal = cheating)
     this.showExplain = !!(test.instantExplanation && test.mode === 'practice');
-    this.qLang = 'en';          // EN default; हिन्दी unlocks per-question when available
+    /* v1.4.67 HINDI-FIRST + MEMORY: pichhli baar jo bhasha chuni thi wahi
+       (localStorage 'qLang'); pehli visit pe default हिन्दी — SSC CHSL ki
+       audience Hindi-medium hai. Pehle har naya test hardcoded English pe
+       reset ho jata tha (qLang='en') — wahi "hindi kahan gayi" wala bug.
+       English-only questions me hi() fallback English dikha deta hai. */
+    this.qLang = 'hi';
+    try { if (localStorage.getItem('qLang') === 'en') this.qLang = 'en'; } catch (e) {}
     App.activeAttempt = attempt;
     App.pendingResume = null;
 
@@ -382,6 +388,7 @@ const ExamScreen = {
     const langSel = AVUtil.$('#q-lang');
     if (langSel) langSel.addEventListener('change', async e => {
       this.qLang = e.target.value === 'hi' ? 'hi' : 'en';
+      try { localStorage.setItem('qLang', this.qLang); } catch (err) {}   // v1.4.67: dropdown se bhi yaad rahe
       await this.persist();
       this.render();
     });
