@@ -15,7 +15,13 @@ const AVUtil = {
 
   // render question text preserving unicode math, line-ish breaks → keep single flow
   qtext(s) {
-    return AVUtil.esc(s).replace(/\n/g, '<br>');
+    /* v1.4.61 SAFE RICH-TEXT: pehle POORA escape (XSS-safe), phir sirf
+       whitelist tags (u b i em strong sub sup br) render ke liye wapas kholo.
+       English fill-in-blanks ke <u> underline + math/science ke <sub>/<sup>
+       ab sahi dikhte hain; baaki koi bhi tag (<SELECT> type GK Qs) text
+       me hi dikhta hai — safe + sahi dono. */
+    return AVUtil.esc(s).replace(/\n/g, '<br>')
+      .replace(/&lt;(\/?)(u|b|i|em|strong|sub|sup|br)\s*\/?&gt;/gi, '<$1$2>');
   },
 
   /* Hindi gate: field me ACTUALLY Devanagari hai? (English copy fake "Hindi" pakdo)
