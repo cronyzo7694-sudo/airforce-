@@ -737,21 +737,19 @@ async function main() {
   T('switch → SSC CHSL active (configCache.exam)', sw === 'ssc-chsl', String(sw));
   T('SSC config: subjects reasoning/gs/maths/english', (await G('App.configCache.subjects.map(s=>s.id).join(",")')) === 'reasoning,gs,mathematics,english');
   T('SSC marking: +2 / −0.5 (Tier-I pattern)', (await G('App.configCache.marking.correct')) === 2 && (await G('App.configCache.marking.wrong')) === -0.5);
-  /* v1.4.70 SSC PERMANENT RESET — bundled bank ab 0-Q (purane 400 + 10,275
-     archive permanently delete). Pehle seed flag wait + switch settle, phir
-     syncBundled ek baar = bank-meta._reset → bankReset purge hook (wahi
-     real devices ko bhi milta hai), phir SHELL coverage ke liye yahin 400
-     synthetic Q + ready-made series inject — jab tak user naye real
-     questions add nahi karte. */
+  /* v1.4.72 — bank me user-supplied REAL PYQ (english 25, CHSL 02-Jul-2024
+     Shift-2). meta._reset NAHI hai (v2b) → syncBundled koi purge hook nahi
+     chalayega (bankReset flag absent). Real english bank seed hoga; baaki
+     subjects ke liye SHELL coverage yahin 400 synthetic Q + series inject. */
   let sscSeeded = false; for (let i = 0; i < 240; i++) { await sleep(500); try { sscSeeded = await G('Store.getMeta(\"seeded_ssc-chsl\", false)'); } catch (e) {} if (sscSeeded === true) break; }
-  T('SSC bank seeded (data/ssc-chsl/ se — 0-Q reset bank)', sscSeeded === true);
+  T('SSC bank seeded (data/ssc-chsl/ se — english PYQ bank)', sscSeeded === true);
   let swSettled0 = false; for (let i = 0; i < 120; i++) { try { swSettled0 = await G('App._switching === null || App._switching === undefined'); } catch (e) {} if (swSettled0) break; await sleep(250); }
   T('SSC switch (seed path) settle', swSettled0 === true);
-  await G('Bank.syncBundled(\"ssc-chsl\")');   /* reset purge hook chalane ke liye */
-  let rstDone = false; for (let i = 0; i < 40; i++) { try { rstDone = await G('Store.getMeta(\"bankReset_ssc-chsl\", false)'); } catch (e) {} if (rstDone) break; await sleep(250); }
-  T('SSC reset purge hook ran (bankReset flag — bank-meta._reset)', rstDone === true, String(rstDone));
-  const sscEmptyNow = await G('(async()=>{const all=await DB.getAll(\"questions\");return !all.some(q=>q.exam===\"ssc-chsl\")})()');
-  T('SSC bank EMPTY after reset (purane SSC questions 0)', sscEmptyNow === true);
+  await G('Bank.syncBundled(\"ssc-chsl\")');
+  let rstDone = true; for (let i = 0; i < 40; i++) { try { rstDone = await G('Store.getMeta(\"bankReset_ssc-chsl\", false)'); } catch (e) {} if (!rstDone) break; await sleep(250); }
+  T('bankReset flag NOT set (v2b meta — koi purge nahi hoga)', !rstDone, String(rstDone));
+  const engNow = await G('(async()=>{const all=await DB.getAll(\"questions\");const e=all.filter(q=>q.exam===\"ssc-chsl\"&&q.subject===\"english\");return e.length===25&&all.filter(q=>q.exam===\"ssc-chsl\").length===25})()');
+  T('SSC bank: sirf english 25 real PYQ seeded (baaki 0)', engNow === true);
   /* synthetic shell bank (4 × 100) + ready-made series — real bank aane tak */
   await G(`(async()=>{
     const subs=[['reasoning','General Intelligence & Reasoning'],['gs','General Awareness'],['mathematics','Quantitative Aptitude'],['english','English Language']];

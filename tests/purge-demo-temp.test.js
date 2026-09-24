@@ -55,14 +55,14 @@ const mkQ = (id, exam, subject, subjectName, tags, i, extra) => Object.assign({
 (async () => {
   await sleep(50);
 
-  /* ── 1) RESET seed: bank files khaali → 0 imported ── */
-  console.log('━━━ seed empty reset bank');
+  /* ── 1) seed: english 25 real PYQ bank ── */
+  console.log('━━━ seed english PYQ bank (batch-1: 25 Q)');
   const rep = await Seed.seedIfNeeded(true, 'ssc-chsl');
-  t('seed: imported 0 (SSC reset bank)', rep.imported === 0, 'got ' + rep.imported);
+  t('seed: imported 25 (english batch-1)', rep.imported === 25, 'got ' + rep.imported);
   const meta = await Store.getMeta('seeded_ssc-chsl', false);
   t('seed: seeded flag exam-scoped', meta === true);
   const sscQ0 = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
-  t('seed: SSC questions 0 in DB', sscQ0.length === 0, 'got ' + sscQ0.length);
+  t('seed: 25 SSC Q in DB (sab english)', sscQ0.length === 25 && sscQ0.every(q => q.subject === 'english'), 'got ' + sscQ0.length);
 
   /* ── 2) stale demo + user manual + airforce inject ── */
   console.log('━━━ inject: 5 stale demo Q + 1 user manual Q + 1 airforce Q');
@@ -74,7 +74,7 @@ const mkQ = (id, exam, subject, subjectName, tags, i, extra) => Object.assign({
   const afQ = mkQ('q_af_90002', 'airforce', 'physics', 'Physics', [], 1, { questionText: 'AIRFORCE question 1+1?' });
   await DB.bulkPut('questions', [...staleQs, userQ, afQ]);
   const all1 = await DB.getAll('questions');
-  t('inject: 0 + 5 stale + 1 user + 1 af = 7', all1.length === 7, 'got ' + all1.length);
+  t('inject: 25 + 5 stale + 1 user + 1 af = 32', all1.length === 32, 'got ' + all1.length);
 
   /* unattempted series test (stale Q refer) + attempted test */
   const staleId = staleQs[0].id;
@@ -87,7 +87,7 @@ const mkQ = (id, exam, subject, subjectName, tags, i, extra) => Object.assign({
   /* ── 3) purgeBankReplace — SSC reset purge ── */
   console.log('━━━ purgeBankReplace (reset)');
   const pr = await Seed.purgeBankReplace('ssc-chsl');
-  t('purge: stale 5 deleted (bank 0 + manual user SAFE)', pr.questions === 5, 'got ' + pr.questions);
+  t('purge: non-manual 30 deleted (25 real bank + 5 stale — manual SAFE)', pr.questions === 30, 'got ' + pr.questions);
   t('purge: unattempted stale series test dropped', pr.tests >= 1, 'got ' + pr.tests);
   const all2 = await DB.getAll('questions');
   const ssc2 = all2.filter(q => q.exam === 'ssc-chsl');

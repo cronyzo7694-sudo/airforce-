@@ -45,21 +45,23 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 (async () => {
   await sleep(50);
 
-  /* bank files khaali hain — seed 0 import kare, flag set ho */
+  /* v1.4.72: bank = user-supplied REAL PYQ (english 25), baaki khaali */
   const raw = {};
   for (const s of ['mathematics', 'english', 'reasoning', 'gs'])
     raw[s] = JSON.parse(fs.readFileSync(path.join(ROOT, `data/ssc-chsl/bank-${s}.json`), 'utf8'));
-  t('bank files khaali ([] ) — SSC reset', Object.values(raw).every(a => Array.isArray(a) && a.length === 0),
+  t('bank files: sirf english 25, baaki []', raw.english.length === 25 && raw.mathematics.length === 0 && raw.reasoning.length === 0 && raw.gs.length === 0,
     JSON.stringify(Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, v.length]))));
+  t('english PYQ: sab keyed + explained + paper-tagged', raw.english.every(q => q.correctAnswer && q.explanation && /2024/.test(String(q.year || '')) && /Shift/.test(q.source || '')),
+    'checks fail');
 
   const rep = await Seed.seedIfNeeded(true, 'ssc-chsl');
-  t('seed: 0 imported (empty reset bank)', rep.imported === 0, 'got ' + rep.imported);
-  t('seed: bySubject sab 0', ['mathematics', 'english', 'reasoning', 'gs'].every(s => rep.bySubject[s] === 0),
+  t('seed: 25 imported (english PYQ batch-1)', rep.imported === 25, 'got ' + rep.imported);
+  t('seed: bySubject english 25, baaki 0', ['mathematics', 'reasoning', 'gs'].every(s => rep.bySubject[s] === 0) && rep.bySubject.english === 25,
     JSON.stringify(rep.bySubject));
   const meta = await Store.getMeta('seeded_ssc-chsl', false);
   t('seed: seeded flag exam-scoped set', meta === true);
   const sscQ = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
-  t('seed: DB me SSC questions 0', sscQ.length === 0, 'got ' + sscQ.length);
+  t('seed: DB me 25 SSC Q (sab english)', sscQ.length === 25 && sscQ.every(q => q.subject === 'english'), 'got ' + sscQ.length);
 
   /* generate: empty bank par crash NAHI — graceful {ok:false,error} */
   let fm;
@@ -70,11 +72,14 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   t('subjectTest: graceful not-ok (no throw)', st && st.ok === false && !!st.error, JSON.stringify(st && st.error));
   let bs;
   try { bs = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 }); } catch (e) { bs = { ok: false, error: 'THREW: ' + e.message }; }
-  t('buildSeries: made 0 (no crash)', bs && (bs.made || 0) === 0, JSON.stringify(bs));
+  t('buildSeries: sirf 1 english subject test (0 mocks — baaki subjects khaali)', bs && bs.ok === true && bs.made === 1 && bs.full === 0 && bs.subject === 1, JSON.stringify(bs));
+  let et;
+  try { et = await Generator.subjectTest('english'); } catch (e) { et = { ok: false, error: 'THREW: ' + e.message }; }
+  t('subjectTest(english): OK — 25 PYQ se test banta hai', et && et.ok === true && et.test && et.test.sections[0].questionIds.length === 25, et && et.error || 'ok');
 
   /* heal: empty bank par bhi graceful — missing detect, made 0, tries guard */
   const h = await Seed.healSeries('ssc-chsl');
-  t('healSeries: graceful (healed 0, no crash)', h && (h.healed || 0) === 0, JSON.stringify(h));
+  t('healSeries: complete (english covered, khaali subjects skip — koi bekaar rebalance nahi)', h && (h.healed || 0) === 0 && h.complete === true, JSON.stringify(h));
 
   /* marking config — shell hamesha sahi (naye questions aane par turant ready) */
   t('SSC marking config: +2 / −0.5 / maxMarks 200', SSC.marking.correct === 2 && SSC.marking.wrong === -0.5 && SSC.maxMarks === 200,

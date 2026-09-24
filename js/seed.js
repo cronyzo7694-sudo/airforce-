@@ -402,8 +402,18 @@ const Bank = (() => {
         if ((t.exam || 'airforce') !== exam || !t.series || t.type !== 'subject' || !t.sections || !t.sections[0]) return;
         have[t.sections[0].subjectId] = (have[t.sections[0].subjectId] || 0) + 1;
       });
-      const missing = subjects.filter(sid => !have[sid]);
-      if (!missing.length) { await Store.setMeta('seriesHealTries_' + exam, 0); return { healed: 0, complete: true }; }
+      /* v1.4.72: subject-joint bank census — jin subjects ke bank me HI 0 Q hain
+         (user ne abhi files nahi di) vo "missing" nahi gine, warna har boot pe
+         bekaar rebalance hota. Bank me Q aate hi (import>0 → autoBuild) unka
+         test apne aap ban jata hai. */
+      const subjBankQ = {};
+      for (const sid of subjects) subjBankQ[sid] = 0;
+      await DB.cursor('questions', null, q => {
+        if ((q.exam || 'airforce') !== exam) return;
+        if (subjBankQ[q.subject] != null) subjBankQ[q.subject]++;
+      });
+      const missing = subjects.filter(sid => !have[sid] && subjBankQ[sid] > 0);
+      if (!missing.length) { await Store.setMeta('seriesHealTries_' + exam, 0); return { healed: 0, complete: true, emptySubjects: subjects.filter(sid => !have[sid]) }; }
       const tries = (await Store.getMeta('seriesHealTries_' + exam, 0)) || 0;
       if (tries >= 2) return { healed: 0, blocked: true };
       await Store.setMeta('seriesHealTries_' + exam, tries + 1);

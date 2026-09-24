@@ -1,10 +1,1 @@
-{
-  "_bundleKind": "v2b",
-  "_reset": true,
-  "_note": "v1.4.70 SSC PERMANENT RESET — SSC CHSL ke saare purane questions (400-Q v2 bank + 10,275-Q archive) hata diye gaye; cloud bank_blobs + sync DB se bhi purge. _bundleKind v2b + _reset:true → har device par purgeBankReplace ek baar chalega (bank questions + unattempted series tests clean; 'manual' tagged user questions cloud tombstones se delete honge). Naye questions user apne take se add karenge — data/ssc-chsl/bank-*.json me daalo ya tools/upload-banks.js se Neon bhejo.",
-  "total": 0,
-  "mathematics": { "total": 0, "keyed": 0, "withExplanation": 0, "chapters": {} },
-  "english": { "total": 0, "keyed": 0, "withExplanation": 0, "chapters": {} },
-  "reasoning": { "total": 0, "keyed": 0, "withExplanation": 0, "chapters": {} },
-  "gs": { "total": 0, "keyed": 0, "withExplanation": 0, "chapters": {} }
-}
+{"_bundleKind": "v2b", "_note": "v1.4.72 \u2014 user-supplied REAL PYQ batches (manual curation). Batch 1: English 25 Q (SSC CHSL Tier-I 02 July 2024 Shift-2). Baaki subjects khali \u2014 jab user files de, utne add honge. Koi auto-generate NAHI.", "total": 25, "mathematics": {"total": 0, "keyed": 0, "withExplanation": 0, "chapters": {}}, "english": {"total": 25, "keyed": 25, "withExplanation": 25, "chapters": {"Sentence Improvement": 5, "Error Spotting": 3, "Cloze Test": 5, "Fill in the Blanks": 2, "Idioms & Phrases": 2, "Spelling": 2, "Synonyms": 3, "Vocabulary": 1, "Antonyms": 2}}, "reasoning": {"total": 0, "keyed": 0, "withExplanation": 0, "chapters": {}}, "gs": {"total": 0, "keyed": 0, "withExplanation": 0, "chapters": {}}}

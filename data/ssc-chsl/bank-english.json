@@ -1,1 +1,1152 @@
-[]
+[
+  {
+    "id": "q_ssc_english_00001",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Sentence Improvement",
+    "topic": "Tenses & Verb Forms",
+    "difficulty": "easy",
+    "questionText": "Select the option that corrects the following sentence.\nHe has broken his leg yesterday.",
+    "questionTextHi": "Select the option that corrects the following sentence.\nHe has broken his leg yesterday.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "He broke his leg yesterday.",
+        "textHi": "He broke his leg yesterday."
+      },
+      {
+        "id": "B",
+        "text": "He has broke his leg yesterday.",
+        "textHi": "He has broke his leg yesterday."
+      },
+      {
+        "id": "C",
+        "text": "He had broke his leg yesterday.",
+        "textHi": "He had broke his leg yesterday."
+      },
+      {
+        "id": "D",
+        "text": "He have broken his leg yesterday.",
+        "textHi": "He have broken his leg yesterday."
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "The past time adverb 'yesterday' specifies a definite completed past action, which requires Simple Past Tense (V2) rather than Present Perfect. The V2 form of 'break' is 'broke'. Hence, 'He broke his leg yesterday' is grammatically correct.",
+    "explanationHi": "The past time adverb 'yesterday' specifies a definite completed past action, which requires Simple Past Tense (V2) rather than Present Perfect. The V2 form of 'break' is 'broke'. Hence, 'He broke his leg yesterday' is grammatically correct.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "77699119ef3e0176",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00002",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Error Spotting",
+    "topic": "Subject-Verb Agreement",
+    "difficulty": "easy",
+    "questionText": "The following sentence has been split into segments. Identify the segment that contains a grammatical error. If you don’t find any error, mark ‘No error’ as your answer.\nI goes to / attend dance classes at / the National Dance Academy.",
+    "questionTextHi": "The following sentence has been split into segments. Identify the segment that contains a grammatical error. If you don’t find any error, mark ‘No error’ as your answer.\nI goes to / attend dance classes at / the National Dance Academy.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "I goes to",
+        "textHi": "I goes to"
+      },
+      {
+        "id": "B",
+        "text": "attend dance classes at",
+        "textHi": "attend dance classes at"
+      },
+      {
+        "id": "C",
+        "text": "the National Dance Academy.",
+        "textHi": "the National Dance Academy."
+      },
+      {
+        "id": "D",
+        "text": "No error",
+        "textHi": "No error"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "The first-person singular pronoun 'I' takes the base form of the verb 'go', not the third-person singular form 'goes'. Therefore, 'I goes to' is grammatically incorrect and should be corrected to 'I go to'.",
+    "explanationHi": "The first-person singular pronoun 'I' takes the base form of the verb 'go', not the third-person singular form 'goes'. Therefore, 'I goes to' is grammatically incorrect and should be corrected to 'I go to'.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "e0bfa511394f41a8",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00003",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Error Spotting",
+    "topic": "Tenses & Auxiliary Verbs",
+    "difficulty": "easy",
+    "questionText": "The following sentence has been split into four segments. Identify the segment that contains a grammatical error.\nI noticed that they / did not went to / the museum but entered / a shopping complex.",
+    "questionTextHi": "The following sentence has been split into four segments. Identify the segment that contains a grammatical error.\nI noticed that they / did not went to / the museum but entered / a shopping complex.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "a shopping complex.",
+        "textHi": "a shopping complex."
+      },
+      {
+        "id": "B",
+        "text": "I noticed that they",
+        "textHi": "I noticed that they"
+      },
+      {
+        "id": "C",
+        "text": "the museum but entered",
+        "textHi": "the museum but entered"
+      },
+      {
+        "id": "D",
+        "text": "did not went to",
+        "textHi": "did not went to"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "The auxiliary verb 'did' is always followed by the base form of the verb (V1). Using the past tense form 'went' with 'did' is an error of double past. It should be 'did not go to'.",
+    "explanationHi": "The auxiliary verb 'did' is always followed by the base form of the verb (V1). Using the past tense form 'went' with 'did' is an error of double past. It should be 'did not go to'.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "cf051e7f0e34c9c7",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00004",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Error Spotting",
+    "topic": "Prepositions & Phrasal Verbs",
+    "difficulty": "medium",
+    "questionText": "The given sentence is divided into three segments. Select the option that has the segment with a grammatical error. If there is no error, select ‘No error’.\nThe meeting was called off / due to a medical emergency of / the manager of the company.",
+    "questionTextHi": "The given sentence is divided into three segments. Select the option that has the segment with a grammatical error. If there is no error, select ‘No error’.\nThe meeting was called off / due to a medical emergency of / the manager of the company.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "The meeting was called off",
+        "textHi": "The meeting was called off"
+      },
+      {
+        "id": "B",
+        "text": "the manager of the company.",
+        "textHi": "the manager of the company."
+      },
+      {
+        "id": "C",
+        "text": "No error",
+        "textHi": "No error"
+      },
+      {
+        "id": "D",
+        "text": "due to a medical emergency of",
+        "textHi": "due to a medical emergency of"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "The sentence 'The meeting was called off due to a medical emergency of the manager of the company' is grammatically sound, correctly using the passive voice 'was called off' (cancelled) and appropriate prepositions. Therefore, the answer is 'No error'.",
+    "explanationHi": "The sentence 'The meeting was called off due to a medical emergency of the manager of the company' is grammatically sound, correctly using the passive voice 'was called off' (cancelled) and appropriate prepositions. Therefore, the answer is 'No error'.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "79b3ee9f245c7b39",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00005",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Cloze Test",
+    "topic": "Reading Comprehension / Cloze Test",
+    "difficulty": "medium",
+    "questionText": "Comprehension:\nIn the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.\n\nIf we look at the global population, out of every six persons living in this world, one is an Indian and (1)______ a Chinese. The population of Pakistan is very (2)_____ and accounts for roughly about one-tenth of China or India. Though China is the largest nation and geographically (3)____ the largest area among the three nations, its density is the lowest. Scholars point out the one child (4)____ in China in the late 1970s as the major reason for low population growth. They also state that this measure led to a (5)_____ in the sex ratio, the proportion of females per 1000 males.\n\nSelect the most appropriate option to fill in blank number 1.",
+    "questionTextHi": "Comprehension:\nIn the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.\n\nIf we look at the global population, out of every six persons living in this world, one is an Indian and (1)______ a Chinese. The population of Pakistan is very (2)_____ and accounts for roughly about one-tenth of China or India. Though China is the largest nation and geographically (3)____ the largest area among the three nations, its density is the lowest. Scholars point out the one child (4)____ in China in the late 1970s as the major reason for low population growth. They also state that this measure led to a (5)_____ in the sex ratio, the proportion of females per 1000 males.\n\nSelect the most appropriate option to fill in blank number 1.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "second",
+        "textHi": "second"
+      },
+      {
+        "id": "B",
+        "text": "another",
+        "textHi": "another"
+      },
+      {
+        "id": "C",
+        "text": "either",
+        "textHi": "either"
+      },
+      {
+        "id": "D",
+        "text": "many",
+        "textHi": "many"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "When referring to an additional single person from a group after 'one is...', the pronoun 'another' ('one is an Indian and another a Chinese') is grammatically and idiomatically appropriate.",
+    "explanationHi": "When referring to an additional single person from a group after 'one is...', the pronoun 'another' ('one is an Indian and another a Chinese') is grammatically and idiomatically appropriate.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "76fc42f4da414eeb",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00006",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Cloze Test",
+    "topic": "Reading Comprehension / Cloze Test",
+    "difficulty": "easy",
+    "questionText": "Comprehension:\nIn the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.\n\nIf we look at the global population, out of every six persons living in this world, one is an Indian and (1)______ a Chinese. The population of Pakistan is very (2)_____ and accounts for roughly about one-tenth of China or India. Though China is the largest nation and geographically (3)____ the largest area among the three nations, its density is the lowest. Scholars point out the one child (4)____ in China in the late 1970s as the major reason for low population growth. They also state that this measure led to a (5)_____ in the sex ratio, the proportion of females per 1000 males.\n\nSelect the most appropriate option to fill in blank number 2.",
+    "questionTextHi": "Comprehension:\nIn the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.\n\nIf we look at the global population, out of every six persons living in this world, one is an Indian and (1)______ a Chinese. The population of Pakistan is very (2)_____ and accounts for roughly about one-tenth of China or India. Though China is the largest nation and geographically (3)____ the largest area among the three nations, its density is the lowest. Scholars point out the one child (4)____ in China in the late 1970s as the major reason for low population growth. They also state that this measure led to a (5)_____ in the sex ratio, the proportion of females per 1000 males.\n\nSelect the most appropriate option to fill in blank number 2.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "small",
+        "textHi": "small"
+      },
+      {
+        "id": "B",
+        "text": "obscure",
+        "textHi": "obscure"
+      },
+      {
+        "id": "C",
+        "text": "much",
+        "textHi": "much"
+      },
+      {
+        "id": "D",
+        "text": "a little",
+        "textHi": "a little"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "Population size is described as 'large' or 'small'. Since Pakistan's population accounts for roughly one-tenth of China or India, 'small' is the only contextually and grammatically correct adjective.",
+    "explanationHi": "Population size is described as 'large' or 'small'. Since Pakistan's population accounts for roughly one-tenth of China or India, 'small' is the only contextually and grammatically correct adjective.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "7e3b8bbf4087e594",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00007",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Cloze Test",
+    "topic": "Reading Comprehension / Cloze Test",
+    "difficulty": "medium",
+    "questionText": "Comprehension:\nIn the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.\n\nIf we look at the global population, out of every six persons living in this world, one is an Indian and (1)______ a Chinese. The population of Pakistan is very (2)_____ and accounts for roughly about one-tenth of China or India. Though China is the largest nation and geographically (3)____ the largest area among the three nations, its density is the lowest. Scholars point out the one child (4)____ in China in the late 1970s as the major reason for low population growth. They also state that this measure led to a (5)_____ in the sex ratio, the proportion of females per 1000 males.\n\nSelect the most appropriate option to fill in blank number 3.",
+    "questionTextHi": "Comprehension:\nIn the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.\n\nIf we look at the global population, out of every six persons living in this world, one is an Indian and (1)______ a Chinese. The population of Pakistan is very (2)_____ and accounts for roughly about one-tenth of China or India. Though China is the largest nation and geographically (3)____ the largest area among the three nations, its density is the lowest. Scholars point out the one child (4)____ in China in the late 1970s as the major reason for low population growth. They also state that this measure led to a (5)_____ in the sex ratio, the proportion of females per 1000 males.\n\nSelect the most appropriate option to fill in blank number 3.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "rents",
+        "textHi": "rents"
+      },
+      {
+        "id": "B",
+        "text": "lodges",
+        "textHi": "lodges"
+      },
+      {
+        "id": "C",
+        "text": "grasps",
+        "textHi": "grasps"
+      },
+      {
+        "id": "D",
+        "text": "occupies",
+        "textHi": "occupies"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "A geographic territory or land area is 'occupied' by a country or entity ('geographically occupies the largest area'). 'Rents', 'lodges', and 'grasps' do not fit geographical contexts.",
+    "explanationHi": "A geographic territory or land area is 'occupied' by a country or entity ('geographically occupies the largest area'). 'Rents', 'lodges', and 'grasps' do not fit geographical contexts.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "70be96a4a6bfe3e7",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00008",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Cloze Test",
+    "topic": "Reading Comprehension / Cloze Test",
+    "difficulty": "medium",
+    "questionText": "Comprehension:\nIn the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.\n\nIf we look at the global population, out of every six persons living in this world, one is an Indian and (1)______ a Chinese. The population of Pakistan is very (2)_____ and accounts for roughly about one-tenth of China or India. Though China is the largest nation and geographically (3)____ the largest area among the three nations, its density is the lowest. Scholars point out the one child (4)____ in China in the late 1970s as the major reason for low population growth. They also state that this measure led to a (5)_____ in the sex ratio, the proportion of females per 1000 males.\n\nSelect the most appropriate option to fill in blank number 4.",
+    "questionTextHi": "Comprehension:\nIn the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.\n\nIf we look at the global population, out of every six persons living in this world, one is an Indian and (1)______ a Chinese. The population of Pakistan is very (2)_____ and accounts for roughly about one-tenth of China or India. Though China is the largest nation and geographically (3)____ the largest area among the three nations, its density is the lowest. Scholars point out the one child (4)____ in China in the late 1970s as the major reason for low population growth. They also state that this measure led to a (5)_____ in the sex ratio, the proportion of females per 1000 males.\n\nSelect the most appropriate option to fill in blank number 4.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "average",
+        "textHi": "average"
+      },
+      {
+        "id": "B",
+        "text": "ordeal",
+        "textHi": "ordeal"
+      },
+      {
+        "id": "C",
+        "text": "statute",
+        "textHi": "statute"
+      },
+      {
+        "id": "D",
+        "text": "standard",
+        "textHi": "standard"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "A 'statute' refers to a written law, formal policy, or legislative rule passed by a government body. Here, the 'one child statute' (law/policy) introduced in China fits the legal and governmental context.",
+    "explanationHi": "A 'statute' refers to a written law, formal policy, or legislative rule passed by a government body. Here, the 'one child statute' (law/policy) introduced in China fits the legal and governmental context.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "e3067252277d130a",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00009",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Cloze Test",
+    "topic": "Reading Comprehension / Cloze Test",
+    "difficulty": "medium",
+    "questionText": "Comprehension:\nIn the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.\n\nIf we look at the global population, out of every six persons living in this world, one is an Indian and (1)______ a Chinese. The population of Pakistan is very (2)_____ and accounts for roughly about one-tenth of China or India. Though China is the largest nation and geographically (3)____ the largest area among the three nations, its density is the lowest. Scholars point out the one child (4)____ in China in the late 1970s as the major reason for low population growth. They also state that this measure led to a (5)_____ in the sex ratio, the proportion of females per 1000 males.\n\nSelect the most appropriate option to fill in blank number 5.",
+    "questionTextHi": "Comprehension:\nIn the following passage, some words have been deleted. Read the passage carefully and select the most appropriate option to fill in each blank.\n\nIf we look at the global population, out of every six persons living in this world, one is an Indian and (1)______ a Chinese. The population of Pakistan is very (2)_____ and accounts for roughly about one-tenth of China or India. Though China is the largest nation and geographically (3)____ the largest area among the three nations, its density is the lowest. Scholars point out the one child (4)____ in China in the late 1970s as the major reason for low population growth. They also state that this measure led to a (5)_____ in the sex ratio, the proportion of females per 1000 males.\n\nSelect the most appropriate option to fill in blank number 5.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "suspension",
+        "textHi": "suspension"
+      },
+      {
+        "id": "B",
+        "text": "decline",
+        "textHi": "decline"
+      },
+      {
+        "id": "C",
+        "text": "diminish",
+        "textHi": "diminish"
+      },
+      {
+        "id": "D",
+        "text": "failure",
+        "textHi": "failure"
+      }
+    ],
+    "correctAnswer": "B",
+    "explanation": "The noun 'decline' correctly fits after the indefinite article 'a' ('led to a decline in the sex ratio'). 'Diminish' is a verb and thus grammatically impossible following 'a'.",
+    "explanationHi": "The noun 'decline' correctly fits after the indefinite article 'a' ('led to a decline in the sex ratio'). 'Diminish' is a verb and thus grammatically impossible following 'a'.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "7fe84666d6d2fc83",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00010",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Fill in the Blanks",
+    "topic": "Idiomatic Expressions & Prepositions",
+    "difficulty": "easy",
+    "questionText": "Select the most appropriate option to fill in the blank.\nI was in the _________ of a meeting when somebody called me.",
+    "questionTextHi": "Select the most appropriate option to fill in the blank.\nI was in the _________ of a meeting when somebody called me.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "centre",
+        "textHi": "centre"
+      },
+      {
+        "id": "B",
+        "text": "corner",
+        "textHi": "corner"
+      },
+      {
+        "id": "C",
+        "text": "middle",
+        "textHi": "middle"
+      },
+      {
+        "id": "D",
+        "text": "round",
+        "textHi": "round"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "The standard English idiom is 'in the middle of (something)', meaning halfway through an ongoing activity or event ('in the middle of a meeting').",
+    "explanationHi": "The standard English idiom is 'in the middle of (something)', meaning halfway through an ongoing activity or event ('in the middle of a meeting').",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "276803e05a3980df",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00011",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Idioms & Phrases",
+    "topic": "Idioms & Phrases",
+    "difficulty": "easy",
+    "questionText": "Select the most appropriate meaning of the given idiom.\nLose heart",
+    "questionTextHi": "Select the most appropriate meaning of the given idiom.\nLose heart",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "To believe in your success",
+        "textHi": "To believe in your success"
+      },
+      {
+        "id": "B",
+        "text": "To get success by believing in yourself",
+        "textHi": "To get success by believing in yourself"
+      },
+      {
+        "id": "C",
+        "text": "To be suspicious of your success",
+        "textHi": "To be suspicious of your success"
+      },
+      {
+        "id": "D",
+        "text": "To stop believing that you can succeed",
+        "textHi": "To stop believing that you can succeed"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "'Lose heart' is a common English idiom meaning to become discouraged or disheartened, i.e., to stop believing that one can succeed.",
+    "explanationHi": "'Lose heart' is a common English idiom meaning to become discouraged or disheartened, i.e., to stop believing that one can succeed.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "81f1448dd4b6d4fe",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00012",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Spelling",
+    "topic": "Spelling Correction",
+    "difficulty": "easy",
+    "questionText": "Identify the incorrectly spelt word and select its correct spelling.\nWether we want to admit it or not, we all wish everyone would like us.",
+    "questionTextHi": "Identify the incorrectly spelt word and select its correct spelling.\nWether we want to admit it or not, we all wish everyone would like us.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "addmit",
+        "textHi": "addmit"
+      },
+      {
+        "id": "B",
+        "text": "admitt",
+        "textHi": "admitt"
+      },
+      {
+        "id": "C",
+        "text": "whither",
+        "textHi": "whither"
+      },
+      {
+        "id": "D",
+        "text": "whether",
+        "textHi": "whether"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "'Wether' is incorrect in this context; the conjunction used to introduce alternative possibilities is 'whether' (W-H-E-T-H-E-R).",
+    "explanationHi": "'Wether' is incorrect in this context; the conjunction used to introduce alternative possibilities is 'whether' (W-H-E-T-H-E-R).",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "8b5d38f2ce4df8bb",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00013",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Idioms & Phrases",
+    "topic": "Idioms & Phrases",
+    "difficulty": "easy",
+    "questionText": "Select the most appropriate meaning of the given idiom.\nSlip your mind",
+    "questionTextHi": "Select the most appropriate meaning of the given idiom.\nSlip your mind",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Forget about something",
+        "textHi": "Forget about something"
+      },
+      {
+        "id": "B",
+        "text": "Immediately think of something",
+        "textHi": "Immediately think of something"
+      },
+      {
+        "id": "C",
+        "text": "Can’t think of anything to say",
+        "textHi": "Can’t think of anything to say"
+      },
+      {
+        "id": "D",
+        "text": "Think about something for a short time",
+        "textHi": "Think about something for a short time"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "The idiom 'slip one's mind' means to be forgotten or overlooked unintentionally ('It completely slipped my mind').",
+    "explanationHi": "The idiom 'slip one's mind' means to be forgotten or overlooked unintentionally ('It completely slipped my mind').",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "28e7e23fe05f560e",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00014",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Sentence Improvement",
+    "topic": "Homophones & Determiners",
+    "difficulty": "easy",
+    "questionText": "Select the most appropriate option that can substitute the underlined segment in the given sentence.\n<u>Their was a large snake</u> found in the garden last evening.",
+    "questionTextHi": "Select the most appropriate option that can substitute the underlined segment in the given sentence.\n<u>Their was a large snake</u> found in the garden last evening.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "There was the larger snake",
+        "textHi": "There was the larger snake"
+      },
+      {
+        "id": "B",
+        "text": "Their was the larger snake",
+        "textHi": "Their was the larger snake"
+      },
+      {
+        "id": "C",
+        "text": "There was not a large snake",
+        "textHi": "There was not a large snake"
+      },
+      {
+        "id": "D",
+        "text": "There was a large snake",
+        "textHi": "There was a large snake"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "'Their' is a possessive pronoun, whereas the introductory dummy subject expressing existence at a location is 'There'. Thus, 'There was a large snake' is the correct substitution.",
+    "explanationHi": "'Their' is a possessive pronoun, whereas the introductory dummy subject expressing existence at a location is 'There'. Thus, 'There was a large snake' is the correct substitution.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "be50c55060ee6c76",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00015",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Synonyms",
+    "topic": "Synonyms & Vocabulary",
+    "difficulty": "easy",
+    "questionText": "Select the most appropriate synonym of the bracketed word in the following sentence to fill in the blank.\nThe city’s infrastructure was ill-equipped to handle the influx of ________(visitors) during the peak season.",
+    "questionTextHi": "Select the most appropriate synonym of the bracketed word in the following sentence to fill in the blank.\nThe city’s infrastructure was ill-equipped to handle the influx of ________(visitors) during the peak season.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "citizens",
+        "textHi": "citizens"
+      },
+      {
+        "id": "B",
+        "text": "residents",
+        "textHi": "residents"
+      },
+      {
+        "id": "C",
+        "text": "tourists",
+        "textHi": "tourists"
+      },
+      {
+        "id": "D",
+        "text": "natives",
+        "textHi": "natives"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "'Visitors' traveling to a city during peak season refers to 'tourists'. 'Citizens', 'residents', and 'natives' refer to local permanent inhabitants, which is the opposite context.",
+    "explanationHi": "'Visitors' traveling to a city during peak season refers to 'tourists'. 'Citizens', 'residents', and 'natives' refer to local permanent inhabitants, which is the opposite context.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "6dbb277983679ee3",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00016",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Spelling",
+    "topic": "Spelling Correction",
+    "difficulty": "medium",
+    "questionText": "Select the most appropriate spelling of the underlined word in the given sentence.\nThe prison is euphemistically called a ‘<u>rehabillitation</u> centre’.",
+    "questionTextHi": "Select the most appropriate spelling of the underlined word in the given sentence.\nThe prison is euphemistically called a ‘<u>rehabillitation</u> centre’.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "rehabilition",
+        "textHi": "rehabilition"
+      },
+      {
+        "id": "B",
+        "text": "rehbilitation",
+        "textHi": "rehbilitation"
+      },
+      {
+        "id": "C",
+        "text": "rehabilitation",
+        "textHi": "rehabilitation"
+      },
+      {
+        "id": "D",
+        "text": "rehabilation",
+        "textHi": "rehabilation"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "The correct spelling is 'rehabilitation' with a single 'l' (R-E-H-A-B-I-L-I-T-A-T-I-O-N).",
+    "explanationHi": "The correct spelling is 'rehabilitation' with a single 'l' (R-E-H-A-B-I-L-I-T-A-T-I-O-N).",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "b18b488f28ef40a6",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00017",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Sentence Improvement",
+    "topic": "Adjective Order",
+    "difficulty": "medium",
+    "questionText": "Select the most appropriate option that can substitute the underlined segment in the following sentence.\nRimjhim received <u>a children’s very illustrated colourful atlas</u> on her 10th birthday.",
+    "questionTextHi": "Select the most appropriate option that can substitute the underlined segment in the following sentence.\nRimjhim received <u>a children’s very illustrated colourful atlas</u> on her 10th birthday.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "a colourful very illustrated children’s atlas",
+        "textHi": "a colourful very illustrated children’s atlas"
+      },
+      {
+        "id": "B",
+        "text": "an very illustrated colourful children’s atlas",
+        "textHi": "an very illustrated colourful children’s atlas"
+      },
+      {
+        "id": "C",
+        "text": "a very illustrated colourful atlas children",
+        "textHi": "a very illustrated colourful atlas children"
+      },
+      {
+        "id": "D",
+        "text": "a very colourful illustrated children’s atlas",
+        "textHi": "a very colourful illustrated children’s atlas"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "The adverb 'very' modifies the adjective 'colourful'. According to standard English adjective order (Degree + Color + Participle/Style + Purpose/Classifier + Noun), 'a very colourful illustrated children’s atlas' is the natural, correct arrangement.",
+    "explanationHi": "The adverb 'very' modifies the adjective 'colourful'. According to standard English adjective order (Degree + Color + Participle/Style + Purpose/Classifier + Noun), 'a very colourful illustrated children’s atlas' is the natural, correct arrangement.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "07455e975871fe2a",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00018",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Sentence Improvement",
+    "topic": "Quantifiers & Comparative Structures",
+    "difficulty": "medium",
+    "questionText": "Select the most appropriate option that can substitute the underlined segment in the given sentence.\nPlease take <u>many</u> as you want.",
+    "questionTextHi": "Select the most appropriate option that can substitute the underlined segment in the given sentence.\nPlease take <u>many</u> as you want.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "too much",
+        "textHi": "too much"
+      },
+      {
+        "id": "B",
+        "text": "much of",
+        "textHi": "much of"
+      },
+      {
+        "id": "C",
+        "text": "as much",
+        "textHi": "as much"
+      },
+      {
+        "id": "D",
+        "text": "so much",
+        "textHi": "so much"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "The correlative structure 'as ... as' expresses equality or sufficiency. Before 'as you want', the correct quantifier is 'as much' ('Please take as much as you want').",
+    "explanationHi": "The correlative structure 'as ... as' expresses equality or sufficiency. Before 'as you want', the correct quantifier is 'as much' ('Please take as much as you want').",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "e0b96b79743ea17f",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00019",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Vocabulary",
+    "topic": "Homonyms & Confusing Words",
+    "difficulty": "easy",
+    "questionText": "Select the most appropriate homonym to fill in the blank.\n__________is a red-coloured root vegetable.",
+    "questionTextHi": "Select the most appropriate homonym to fill in the blank.\n__________is a red-coloured root vegetable.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Beat",
+        "textHi": "Beat"
+      },
+      {
+        "id": "B",
+        "text": "Bead",
+        "textHi": "Bead"
+      },
+      {
+        "id": "C",
+        "text": "Beet",
+        "textHi": "Beet"
+      },
+      {
+        "id": "D",
+        "text": "Bit",
+        "textHi": "Bit"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "'Beet' (or beetroot) is the dark red root vegetable. 'Beat' means to strike or defeat, 'bead' is a small decorative pierced object, and 'bit' is a small piece or past tense of bite.",
+    "explanationHi": "'Beet' (or beetroot) is the dark red root vegetable. 'Beat' means to strike or defeat, 'bead' is a small decorative pierced object, and 'bit' is a small piece or past tense of bite.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "7033cb4214fe9f0e",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00020",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Antonyms",
+    "topic": "Antonyms & Vocabulary",
+    "difficulty": "easy",
+    "questionText": "Select the most appropriate ANTONYM of the given word.\nLethargic",
+    "questionTextHi": "Select the most appropriate ANTONYM of the given word.\nLethargic",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Intelligent",
+        "textHi": "Intelligent"
+      },
+      {
+        "id": "B",
+        "text": "Exhausted",
+        "textHi": "Exhausted"
+      },
+      {
+        "id": "C",
+        "text": "Active",
+        "textHi": "Active"
+      },
+      {
+        "id": "D",
+        "text": "Cute",
+        "textHi": "Cute"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "'Lethargic' means sluggish, torpid, and lacking energy. Its direct antonym is 'Active' (energetic, lively).",
+    "explanationHi": "'Lethargic' means sluggish, torpid, and lacking energy. Its direct antonym is 'Active' (energetic, lively).",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "fc9a32c4eaebcf3d",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00021",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Sentence Improvement",
+    "topic": "Tenses & Pronoun Agreement",
+    "difficulty": "medium",
+    "questionText": "Select the most appropriate option that can substitute the underlined words in the following sentence.\nI hope you <u>have enjoying yourselves</u> at the party tonight!",
+    "questionTextHi": "Select the most appropriate option that can substitute the underlined words in the following sentence.\nI hope you <u>have enjoying yourselves</u> at the party tonight!",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "enjoy yourselves",
+        "textHi": "enjoy yourselves"
+      },
+      {
+        "id": "B",
+        "text": "are enjoying themselves",
+        "textHi": "are enjoying themselves"
+      },
+      {
+        "id": "C",
+        "text": "will be enjoy himself",
+        "textHi": "will be enjoy himself"
+      },
+      {
+        "id": "D",
+        "text": "enjoys yourselves",
+        "textHi": "enjoys yourselves"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "After 'I hope you...', a present subjunctive or simple present tense verb ('enjoy yourselves') correctly conveys a wish for future or ongoing enjoyment. 'have enjoying' is ungrammatical.",
+    "explanationHi": "After 'I hope you...', a present subjunctive or simple present tense verb ('enjoy yourselves') correctly conveys a wish for future or ongoing enjoyment. 'have enjoying' is ungrammatical.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "7f955d9b54c8618e",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00022",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Fill in the Blanks",
+    "topic": "Contextual Vocabulary",
+    "difficulty": "easy",
+    "questionText": "Select the most appropriate option to fill in the blank.\nBoth the criminals were cruel and ________.",
+    "questionTextHi": "Select the most appropriate option to fill in the blank.\nBoth the criminals were cruel and ________.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "brutal",
+        "textHi": "brutal"
+      },
+      {
+        "id": "B",
+        "text": "warm",
+        "textHi": "warm"
+      },
+      {
+        "id": "C",
+        "text": "sympathetic",
+        "textHi": "sympathetic"
+      },
+      {
+        "id": "D",
+        "text": "diligent",
+        "textHi": "diligent"
+      }
+    ],
+    "correctAnswer": "A",
+    "explanation": "The coordinating conjunction 'and' connects parallel descriptive words of similar tone. 'Cruel and brutal' forms a coherent pair characterizing criminals. 'Warm', 'sympathetic', and 'diligent' are positive traits that clash with 'cruel'.",
+    "explanationHi": "The coordinating conjunction 'and' connects parallel descriptive words of similar tone. 'Cruel and brutal' forms a coherent pair characterizing criminals. 'Warm', 'sympathetic', and 'diligent' are positive traits that clash with 'cruel'.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "b2f0c72c0d8fa0fb",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00023",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Synonyms",
+    "topic": "Synonyms & Vocabulary",
+    "difficulty": "medium",
+    "questionText": "Identify the most appropriate synonym of the following word.\nImplicate",
+    "questionTextHi": "Identify the most appropriate synonym of the following word.\nImplicate",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Complain",
+        "textHi": "Complain"
+      },
+      {
+        "id": "B",
+        "text": "Interrogate",
+        "textHi": "Interrogate"
+      },
+      {
+        "id": "C",
+        "text": "Confuse",
+        "textHi": "Confuse"
+      },
+      {
+        "id": "D",
+        "text": "Accuse",
+        "textHi": "Accuse"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "'Implicate' means to show or suggest that somebody is involved in a crime or wrongdoing, which aligns with 'Accuse' or 'incriminate'.",
+    "explanationHi": "'Implicate' means to show or suggest that somebody is involved in a crime or wrongdoing, which aligns with 'Accuse' or 'incriminate'.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "70be8bbef218bf41",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00024",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Synonyms",
+    "topic": "Synonyms & Vocabulary",
+    "difficulty": "medium",
+    "questionText": "Select the most appropriate synonym of the given word.\nPliable",
+    "questionTextHi": "Select the most appropriate synonym of the given word.\nPliable",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "Severe",
+        "textHi": "Severe"
+      },
+      {
+        "id": "B",
+        "text": "Probable",
+        "textHi": "Probable"
+      },
+      {
+        "id": "C",
+        "text": "Rigid",
+        "textHi": "Rigid"
+      },
+      {
+        "id": "D",
+        "text": "Malleable",
+        "textHi": "Malleable"
+      }
+    ],
+    "correctAnswer": "D",
+    "explanation": "'Pliable' describes a material or substance easily bent, shaped, or influenced; its primary synonym is 'Malleable' (or flexible). 'Rigid' is an antonym.",
+    "explanationHi": "'Pliable' describes a material or substance easily bent, shaped, or influenced; its primary synonym is 'Malleable' (or flexible). 'Rigid' is an antonym.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "d5a864756543b5f9",
+    "figureBased": false,
+    "paper": "Tier-I"
+  },
+  {
+    "id": "q_ssc_english_00025",
+    "subject": "english",
+    "subjectName": "English Language",
+    "chapter": "Antonyms",
+    "topic": "Antonyms & Contextual Meaning",
+    "difficulty": "easy",
+    "questionText": "Select the most appropriate ANTONYM of the word given in brackets to fill in the blank.\nThe firefighter summoned all her _________ (cowardice) and rushed into the burning building.",
+    "questionTextHi": "Select the most appropriate ANTONYM of the word given in brackets to fill in the blank.\nThe firefighter summoned all her _________ (cowardice) and rushed into the burning building.",
+    "image": null,
+    "options": [
+      {
+        "id": "A",
+        "text": "expertise",
+        "textHi": "expertise"
+      },
+      {
+        "id": "B",
+        "text": "skills",
+        "textHi": "skills"
+      },
+      {
+        "id": "C",
+        "text": "courage",
+        "textHi": "courage"
+      },
+      {
+        "id": "D",
+        "text": "erudition",
+        "textHi": "erudition"
+      }
+    ],
+    "correctAnswer": "C",
+    "explanation": "'Cowardice' means lack of bravery. Its direct antonym is 'courage' (bravery, valor), which logically fits rushing into a burning building.",
+    "explanationHi": "'Cowardice' means lack of bravery. Its direct antonym is 'courage' (bravery, valor), which logically fits rushing into a burning building.",
+    "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (02 July 2024) Shift- 2",
+    "year": "2024",
+    "tags": [
+      "ssc-chsl",
+      "tier-1",
+      "pyq"
+    ],
+    "dupeHash": "895f5904d9c02d12",
+    "figureBased": false,
+    "paper": "Tier-I"
+  }
+]
