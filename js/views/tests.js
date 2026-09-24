@@ -65,7 +65,11 @@ Views.tests = async function (state) {
   const isDone = t => (attByTest[t.id] || []).some(a => !a.abandoned) || nameDone.has(t.name);
   const dimsMatch = (t, d) => {
     if (d.type !== 'all' && t.type !== d.type) return false;
-    if (d.subject !== 'all' && !(t.sections || []).some(s => s.subjectId === d.subject)) return false;
+    /* v1.4.68 PURE-SUBJECT semantics: "Quantitative Aptitude" chip pe SIRF
+       isi subject ke tests (har section usi subject ka) — full mock/mixed
+       tests NAHI (wo sabhi subjects ke hote hain, unko Full Mocks chip se
+       dekho). Pehle "contains" logic tha → mocks bhi aa jate the (galat). */
+    if (d.subject !== 'all' && (!(t.sections || []).length || !t.sections.every(s => s.subjectId === d.subject))) return false;
     if (d.status === 'completed' && !isDone(t)) return false;
     if (d.status === 'incomplete' && !hasUnfinished(t)) return false;
     return true;
@@ -155,7 +159,7 @@ Views.tests = async function (state) {
     <div class="frow"><span class="frow-label">📚 SUBJECT</span>
       <div class="filter-tabs ftabs2" role="tablist" aria-label="Subject filter">
         ${chip(state.subject === 'all', cnt(cur), 'data-s="all"', 'All Subjects', 'Saare subjects ke tests')}
-        ${cfg.subjects.map(s => chip(state.subject === s.id, subjCounts[s.id], `data-s="${s.id}"`, `<i class="subject-dot sd-${s.id}"></i>${AVUtil.esc(s.name)}`, `${AVUtil.esc(s.name)} ke saare tests — full mocks bhi shamil`)).join('')}
+        ${cfg.subjects.map(s => chip(state.subject === s.id, subjCounts[s.id], `data-s="${s.id}"`, `<i class="subject-dot sd-${s.id}"></i>${AVUtil.esc(s.name)}`, `SIRF ${AVUtil.esc(s.name)} ke tests — full mocks/mixed tests nahi`)).join('')}
       </div>
     </div>
 

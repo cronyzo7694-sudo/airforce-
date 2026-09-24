@@ -345,19 +345,27 @@ async function main() {
   const subjAll = Array.from(doc.querySelectorAll('.ftab[data-s]')).find(b => b.dataset.s === 'all');
   subjAll.dispatchEvent(new window.Event('click', { bubbles: true }));
   await sleep(300);
-  const qaChip = Array.from(doc.querySelectorAll('.ftab[data-s]')).find(b => b.dataset.s === 'mathematics');
-  const qaCnt = +qaChip.querySelector('.fcount').textContent;
-  qaChip.dispatchEvent(new window.Event('click', { bubbles: true }));
+  /* v1.4.68 PURE-SUBJECT: chip count = result count + ZERO mocks.
+     (ye section airforce exam me hai — uska pure mathematics subject test pakka hai) */
+  const allT = Array.from(doc.querySelectorAll('.ftab[data-t]')).find(b => b.dataset.t === 'all');
+  allT.dispatchEvent(new window.Event('click', { bubbles: true }));
+  await sleep(300);
+  const phyChip = Array.from(doc.querySelectorAll('.ftab[data-s]')).find(b => b.dataset.s === 'physics');
+  const phyCnt = +phyChip.querySelector('.fcount').textContent;
+  phyChip.dispatchEvent(new window.Event('click', { bubbles: true }));
   await sleep(300);
   const ofM = /of <b>(\d+)<\/b>/.exec(doc.querySelector('.tlib-count') ? doc.querySelector('.tlib-count').innerHTML : '');
-  T('Subject chip count = actual result count (Quantitative Aptitude) — kabhi khali page nahi',
-    qaCnt > 0 && ofM && +ofM[1] === qaCnt && doc.querySelectorAll('.test-card').length === Math.min(qaCnt, 12),
-    `chip=${qaCnt} shown=${ofM ? ofM[1] : '?'}`);
+  T('PURE-SUBJECT chip count = actual result count (physics) — kabhi khali page nahi',
+    phyCnt > 0 && ofM && +ofM[1] === phyCnt && doc.querySelectorAll('.test-card').length === Math.min(phyCnt, 12),
+    `chip=${phyCnt} shown=${ofM ? ofM[1] : '?'}`);
+  T('PURE-SUBJECT semantics: physics chip me ZERO mocks (v1.4.68)',
+    !doc.body.textContent.includes('Full Mock Test') && !doc.body.textContent.includes('Mock Test '),
+    'mock cards bhi dikh rahe the');
   const statusChips = Array.from(doc.querySelectorAll('.ftab[data-status]')).find(b => b.dataset.status === 'completed');
   statusChips.dispatchEvent(new window.Event('click', { bubbles: true }));
   await sleep(300);
   T('Zero-count chips disabled (dim + unclickable)', !!doc.querySelector('.ftab[disabled]'), 'koi disabled chip nahi mila');
-  const rst = doc.querySelector('#flt-reset');
+  const rst = doc.querySelector('#flt-reset') || doc.querySelector('#flt-reset2');
   rst.dispatchEvent(new window.Event('click', { bubbles: true }));
   await sleep(300);
   T('Clear filters → poori library wapas', doc.querySelectorAll('.test-card').length === 12 && /of <b>\d+<\/b>/.test(doc.querySelector('.tlib-count').innerHTML));
