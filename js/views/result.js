@@ -340,7 +340,7 @@ Views.analysis = async function (attemptId, state) {
             <span class="qa-no">Q${f.gn}</span>
             ${marked ? '<span class="badge mk">Marked</span>' : ''}
             <span class="badge ${rcls}">${rlbl}</span>
-            <span class="qa-meta">${AVUtil.esc(f.sname)} · ${AVUtil.esc(q.chapter)} › ${AVUtil.esc(q.topic)}</span>
+            <span class="qa-meta">${AVUtil.esc(f.sname)} · ${AVUtil.esc(AVUtil.deEnt(q.chapter))} › ${AVUtil.esc(AVUtil.deEnt(q.topic))}</span>
             <span class="qa-time">${AVUtil.fmtDur(f.pq.timeSpent || 0)}</span>
             <span class="qa-chev" aria-hidden="true">▾</span>
             <span class="qa-snip">${AVUtil.qtext(q.questionText)}</span>
@@ -379,7 +379,7 @@ Views.analysis = async function (attemptId, state) {
         <div class="tbl-wrap"><table class="tbl"><thead><tr><th>Subject</th><th>Chapter</th><th>Topic</th><th>Attempted</th><th>Correct</th><th>Wrong</th><th>Skipped</th><th>Accuracy</th><th>Verdict</th></tr></thead>
         <tbody>${topicRows.map(t => `<tr>
           <td>${AVUtil.esc((cfg.subjects.find(s => s.id === t.subject)?.name) || t.subject)}</td>
-          <td>${AVUtil.esc(t.chapter)}</td><td>${AVUtil.esc(t.topic)}</td>
+          <td>${AVUtil.esc(AVUtil.deEnt(t.chapter))}</td><td>${AVUtil.esc(AVUtil.deEnt(t.topic))}</td>
           <td>${t.attempted}</td><td>${t.correct}</td><td>${t.wrong}</td><td>${t.skip}</td>
           <td><b>${t.acc}%</b></td>
           <td><span class="badge ${t.acc >= th.strong ? 'good' : (t.acc >= th.average ? '' : 'bad')}">${t.acc >= th.strong ? 'Strong' : (t.acc >= th.average ? 'Average' : 'Needs Practice')}</span></td>

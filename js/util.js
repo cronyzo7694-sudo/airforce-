@@ -13,6 +13,14 @@ const AVUtil = {
       .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
   },
 
+  /* v1.4.73 DISPLAY entity decode: user files me chapter/topic me 'A &amp; B'
+     format aata hai (HTML-source). Data AS-IS rehta hai; sirf VISIBLE text me
+     '&amp;' → '&' (esc se PEHLE decode, taaki render '&amp;' literal na dikhe).
+     Sirf &-entity decode hota hai — tags/attributes safety esc me hi hai. */
+  deEnt(s) {
+    return String(s == null ? '' : s).replace(/&amp;/g, '&');
+  },
+
   // render question text preserving unicode math, line-ish breaks → keep single flow
   /* v1.4.64: REAL PYQ tag — source/paper se compact chip
      ("CHSL Tier-I (03 July 2024) Shift 4"). Sirf display; source na ho to ''. */
@@ -31,6 +39,7 @@ const AVUtil = {
        me hi dikhta hai — safe + sahi dono. */
     return AVUtil.esc(s).replace(/\n/g, '<br>')
       .replace(/&amp;nbsp;/g, '\u00A0')
+      .replace(/&amp;amp;/g, '&amp;')
       .replace(/&lt;(\/?)(u|b|i|em|strong|sub|sup|br)\s*\/?&gt;/gi, '<$1$2>');
   },
 

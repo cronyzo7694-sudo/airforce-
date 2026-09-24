@@ -34,6 +34,10 @@ const Bank = (() => {
       // SSC CHSL ka 'reasoning'/'gs' airforce RAGA me kabhi merge NAHI hoga
       const scope = exam || q.exam || 'airforce';
       if (scope === 'airforce' && SUBJECT_ALIAS[q.subject]) q.subject = SUBJECT_ALIAS[q.subject];
+      /* v1.4.73: SSC user-files 'ga' likhti hain (General Awareness) — app config
+         ka GS id 'gs' hai. Import-time routing alias (file AS-IS rehti hai, IDB
+         record config-subject se jaata hai). Airforce alias se alag+peerhe nahi. */
+      if (scope === 'ssc-chsl' && q.subject === 'ga') q.subject = 'gs';
       if (!q.subject || !q.questionText || !Array.isArray(q.options) || q.options.length < 4) {
         report.invalid++;
         if (report.errors.length < 60) report.errors.push({ reason: 'invalid question record', text: String(q.questionText || '').slice(0, 100) });

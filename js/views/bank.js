@@ -85,7 +85,7 @@ Views.questionBank = async function (state) {
       </select>
       <select id="qb-chapter" ${state.subject === 'all' ? 'disabled' : ''}>
         <option value="all">All chapters</option>
-        ${chapters.map(c => `<option ${state.chapter === c ? 'selected' : ''}>${AVUtil.esc(c)}</option>`).join('')}
+        ${chapters.map(c => `<option value=\"${AVUtil.esc(c)}\" ${state.chapter === c ? 'selected' : ''}>${AVUtil.esc(AVUtil.deEnt(c))}</option>`).join('')}
       </select>
       <select id="qb-topic" ${topics.length ? '' : 'disabled'}>
         <option value="all">All topics</option>
@@ -125,7 +125,7 @@ Views.questionBank = async function (state) {
             <div class="muted small">${AVUtil.esc(q.source || '')}${q.year ? ' · ' + q.year : ''}${q.figureBased ? ' · <b>figure-based</b>' : ''}${seen[q.id] ? ` · seen ${seen[q.id]}×` : ''}${wrong[q.id] ? ` · <span class="bad-txt">wrong ${wrong[q.id]}×</span>` : ''}</div>
           </td>
           <td>${AVUtil.esc((cfg.subjects.find(s => s.id === q.subject)?.name) || q.subject)}</td>
-          <td class="small qb-col-chapter">${AVUtil.esc(q.chapter)}</td>
+          <td class="small qb-col-chapter">${AVUtil.esc(AVUtil.deEnt(q.chapter))}</td>
           <td class="small qb-col-diff">${AVUtil.esc(q.difficulty || 'medium')}</td>
           <td>${q.correctAnswer ? `<span class="badge good">${q.correctAnswer}</span>` : '<span class="badge">—</span>'}</td>
           <td class="qb-actions">
@@ -224,7 +224,7 @@ Views.questionBank = async function (state) {
         <div class="av-modal wide">
           <div class="av-modal-title">Question Preview</div>
           <div class="av-modal-body">
-            <div class="muted small" style="margin-bottom:6px">${AVUtil.esc(q.source || '')}${q.year ? ' · ' + q.year : ''} · ${AVUtil.esc(q.chapter)} › ${AVUtil.esc(q.topic)} · ${AVUtil.esc(q.difficulty || 'medium')}${q.figureBased ? ' · figure-based' : ''}</div>
+            <div class="muted small" style="margin-bottom:6px">${AVUtil.esc(q.source || '')}${q.year ? ' · ' + q.year : ''} · ${AVUtil.esc(AVUtil.deEnt(q.chapter))} › ${AVUtil.esc(AVUtil.deEnt(q.topic))} · ${AVUtil.esc(q.difficulty || 'medium')}${q.figureBased ? ' · figure-based' : ''}</div>
             <div class="qa-srcline">${AVUtil.pyqTag(q)}</div>
             <div class="qa-text">${AVUtil.qtext(q.questionText)}</div>
             ${AVUtil.hasDevanagari(q.questionTextHi) ? `<div class="qa-text qa-hi">🅷 ${AVUtil.qtext(q.questionTextHi)}</div>` : ''}

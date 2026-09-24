@@ -464,10 +464,10 @@ Views.builder = async function () {
               <option value="medium">Medium</option><option value="hard">Hard</option>
             </select>
             <select class="b-chapter"><option value="">All chapters</option>
-              ${Object.entries((bank[s.id] || {}).chapters || {}).map(([c, n]) => `<option value="${AVUtil.esc(c)}">${AVUtil.esc(c)} (${n})</option>`).join('')}
+              ${Object.entries((bank[s.id] || {}).chapters || {}).map(([c, n]) => `<option value="${AVUtil.esc(c)}">${AVUtil.esc(AVUtil.deEnt(c))} (${n})</option>`).join('')}
             </select>
             <select class="b-topic"><option value="">All topics</option>
-              ${Object.entries((bank[s.id] || {}).topics || {}).map(([c, n]) => `<option value="${AVUtil.esc(c)}">${AVUtil.esc(c)} (${n})</option>`).join('')}
+              ${Object.entries((bank[s.id] || {}).topics || {}).map(([c, n]) => `<option value="${AVUtil.esc(c)}">${AVUtil.esc(AVUtil.deEnt(c))} (${n})</option>`).join('')}
             </select>
           </div>
         </div>`).join('')}
