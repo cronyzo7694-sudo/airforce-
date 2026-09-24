@@ -318,6 +318,64 @@ const Bank = (() => {
     } catch (e) { return { questions: 0, tests: 0 }; }
   }
 
+  /* ---- v1.4.71 SSC FULL WIPE V2 (one-time, NUCLEAR) ----
+     v1.4.70 ka narrow purge (purgeBankReplace) sirf UNATTEMPTED SERIES tests
+     haata paaya tha — "(shared)" non-series tests aur abandoned-attempt wale
+     tests bach gaye (user ke device pe 5 tests + purana data dikha). Ye
+     comprehensive wipe EXAM KE HAR cheez mitata hai — koi exclusion nahi:
+       questions (manual samet) · tests (series/shared/custom/attempted sab)
+       attempts (abandoned samet) · notes · qstats/topicStats · attemptIndex
+       saare SSC meta flags (app = "kabhi seed nahi hua" clean slate) */
+  async function wipeExamDataOnce(exam) {
+    try {
+      const flag = 'fullWipeV2_' + exam;
+      if (await Store.getMeta(flag, false)) return { done: false };
+      const doomedQ = [];
+      await DB.cursor('questions', null, q => { if ((q.exam || '') === exam) doomedQ.push(q.id); });
+      for (const id of doomedQ) { try { await DB.delete('questions', id); } catch (e) {} }
+      const doomedT = [];
+      (await DB.getAll('tests')).forEach(t => { if ((t.exam || '') === exam) doomedT.push(t.id); });
+      for (const id of doomedT) { try { await DB.delete('tests', id); } catch (e) {} }
+      const doomedA = [];
+      (await DB.getAll('attempts')).forEach(a => { if ((a.exam || '') === exam || doomedT.includes(a.testId)) doomedA.push(a.id); });
+      for (const id of doomedA) { try { await DB.delete('attempts', id); } catch (e) {} }
+      try {
+        const idx = (await Store.getMeta('attemptIndex', [])).filter(a => (a.exam || 'airforce') !== exam);
+        await Store.setMeta('attemptIndex', idx);
+      } catch (e) {}
+      try {
+        const qset = new Set(doomedQ);
+        const doomedN = [];
+        await DB.cursor('notes', null, n => { if (n && n.qid && qset.has(n.qid)) doomedN.push(n.qid); });
+        for (const qid of doomedN) { try { await DB.delete('notes', qid); } catch (e) {} }
+      } catch (e) {}
+      try {
+        const qstats = await Store.getMeta('qstats', null);
+        if (qstats && typeof qstats === 'object') {
+          const qset = new Set(doomedQ);
+          const stripQ = m => { for (const k of Object.keys(m)) if (qset.has(k)) delete m[k]; };
+          stripQ(qstats.seen || {}); stripQ(qstats.wrong || {}); stripQ(qstats.correct || {}); stripQ(qstats.skipped || {});
+          if (qstats.topicAcc) for (const k of Object.keys(qstats.topicAcc)) if (k.indexOf(exam + '\u241F') === 0) delete qstats.topicAcc[k];
+          if (qstats.examSeen) for (const k of Object.keys(qstats.examSeen)) if (k === exam) delete qstats.examSeen[k];
+          await Store.setMeta('qstats', qstats);
+        }
+      } catch (e) {}
+      try {
+        const tstats = await Store.getMeta('topicStats', null);
+        if (tstats && typeof tstats === 'object') {
+          for (const k of Object.keys(tstats)) if (k.indexOf(exam + '\u241F') === 0) delete tstats[k];
+          await Store.setMeta('topicStats', tstats);
+        }
+      } catch (e) {}
+      for (const k of ['seeded_' + exam, 'seededAt_' + exam, 'bundleFP_' + exam, 'bundleKind_' + exam,
+                       'seriesBuilt_' + exam, 'seriesRebuild_' + exam, 'seriesHealTries_' + exam, 'bankReset_' + exam]) {
+        try { await Store.setMeta(k, null); } catch (e) {}
+      }
+      await Store.setMeta(flag, true);
+      return { done: true, questions: doomedQ.length, tests: doomedT.length, attempts: doomedA.length };
+    } catch (e) { return { done: false, error: String(e && e.message || e) }; }
+  }
+
   /* ---- v1.4.69 SERIES SELF-HEAL (har boot, sync ke early-return ke baad bhi) ----
      INVARIANT: har subject ka kam-se-kam 1 series SUBJECT test hona chahiye.
      v1.4.62-era devices par purane planner ne saare Qs mocks me khaye the
@@ -330,6 +388,10 @@ const Bank = (() => {
   async function healSeries(exam) {
     try {
       if (exam === 'airforce') return { healed: 0, skip: true };
+      /* v1.4.71: khaali bank (wipe ke baad) → heal kuch nahi karta */
+      let bankQ = 0;
+      await DB.cursor('questions', null, q => { if ((q.exam || 'airforce') === exam) bankQ++; });
+      if (!bankQ) return { healed: 0, skip: true, emptyBank: true };
       const C = (typeof App !== 'undefined' && App.configCache && App.configCache.exam === exam && App.configCache.subjects)
         ? App.configCache : ((typeof EXAM_CONFIGS !== 'undefined' && EXAM_CONFIGS[exam]) || null);
       if (!C || !C.subjects) return { healed: 0, skip: true };
@@ -497,7 +559,7 @@ const Bank = (() => {
     return { synced: true, imported, pruned: pr ? pr.questions : 0, testsDropped: pr ? pr.tests : 0, purged: purged || null, built };
   }
 
-  return { importBatch, seedIfNeeded, syncBundled, purgeDemoTemp, purgeBankReplace, pruneRetired, healSeries, bankStats, contentId, dupeId };
+  return { importBatch, seedIfNeeded, syncBundled, purgeDemoTemp, purgeBankReplace, pruneRetired, healSeries, wipeExamDataOnce, bankStats, contentId, dupeId };
 })();
 
 /* --------- update cumulative stats after every submit --------- */

@@ -161,6 +161,7 @@ const App = {
            <p>Purane saal ke papers load ho rahe hain. Ye ek hi baar hoga.</p></div></div>`;
         await Bank.seedIfNeeded(false, exam);
       } else {
+        try { await Bank.wipeExamDataOnce('ssc-chsl'); } catch (e) {}   // v1.4.71 full wipe (one-time)
         const r = await Bank.syncBundled(exam);
         if (r && r.synced && r.imported > 0 && typeof Generator !== 'undefined') {
           try {
@@ -217,6 +218,9 @@ const App = {
     // bundled bank auto-sync: data files changed (new questions) → import the
     // delta + auto-build new tests from it. User never builds tests by hand.
     try {
+      // v1.4.71 SSC FULL WIPE V2 — narrow purge ke bache-khuche (shared tests,
+      // abandoned attempts, notes, stats) bhi mita — koi exclusion nahi
+      try { const w = await Bank.wipeExamDataOnce('ssc-chsl'); if (w && w.done && (w.questions || w.tests)) console.log('SSC full wipe:', w.questions, 'Q,', w.tests, 'tests,', w.attempts, 'attempts deleted'); } catch (e) {}
       const r = await Bank.syncBundled((this.configCache && this.configCache.exam) || 'airforce');
       if (r && r.synced && r.imported > 0 && typeof Generator !== 'undefined') {
         const made = await Generator.autoBuild();
