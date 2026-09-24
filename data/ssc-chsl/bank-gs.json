@@ -38573,53 +38573,6 @@
   "paper": "Tier-I"
  },
  {
-  "id": "q_ssc_gs_00885",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "25 which of the following nutrients is available mainly in apples?",
-  "questionTextHi": "निम्नलिखित में से कौन-सा पोषक तत्व मुख्य रूप से सेब में पाया जाता है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Co",
-    "textHi": "Co"
-   },
-   {
-    "id": "B",
-    "text": "Na",
-    "textHi": "Na"
-   },
-   {
-    "id": "C",
-    "text": "K",
-    "textHi": "K"
-   },
-   {
-    "id": "D",
-    "text": "8",
-    "textHi": "B"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Correct option (C): K.\n\n[Source note: Question, options aur answer official SSC question paper (response sheet) se liye gaye hain (source scan me ye question image me tha). Option (A), (B), (C), (D) was lost in the source scan and has been restored here.]",
-  "explanationHi": "Correct option (C): K.\n\n[Source note: Question, options aur answer official SSC question paper (response sheet) se liye gaye hain (source scan me ye question image me tha). Option (A), (B), (C), (D) was lost in the source scan and has been restored here.]",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (11 August 2023 ) Shift - 4",
-  "year": "2023",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq",
-   "source-note"
-  ],
-  "dupeHash": "5ca04c32d3bbbecb",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
   "id": "q_ssc_gs_00886",
   "subject": "gs",
   "subjectName": "General Awareness",
@@ -55605,52 +55558,6 @@
   "paper": "Tier-I"
  },
  {
-  "id": "q_ssc_gs_01266",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Computer",
-  "topic": "Computer",
-  "difficulty": "medium",
-  "questionText": "Rishu wants to input data to the computer by pressing keys. Which input device should he use?",
-  "questionTextHi": "रिशु कुंजी दबाकर कंप्यूटर में डेटा इनपुट करना चाहता है। उसे किस इनपुट डिवाइस का उपयोग करना चाहिए?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Keyboard Scanner",
-    "textHi": "कीबोर्ड स्कैनर"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "Joystick",
-    "textHi": "जॉयस्टिक"
-   },
-   {
-    "id": "D",
-    "text": "Light Pen",
-    "textHi": "लाइट पेन"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Correct option (A): Keyboard Scanner.",
-  "explanationHi": "सही विकल्प (A): कीबोर्ड स्कैनर।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (14th March 2022) Shift-2",
-  "year": "2022",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "fe3ffbf50b7bfeb0",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
   "id": "q_ssc_gs_01267",
   "subject": "gs",
   "subjectName": "General Awareness",
@@ -70840,52 +70747,6 @@
   "paper": "Tier-I"
  },
  {
-  "id": "q_ssc_gs_01596",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "Which of the following is the birthplace of Tansen?",
-  "questionTextHi": "निम्नलिखित में से कौन तानसेन का जन्मस्थान है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Agra",
-    "textHi": "आगरा"
-   },
-   {
-    "id": "B",
-    "text": "Chanderi",
-    "textHi": "चंदेरी"
-   },
-   {
-    "id": "C",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "D",
-    "text": "Delhi Gwalior",
-    "textHi": "दिल्ली ग्वालियर"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Correct option (D): Delhi Gwalior.",
-  "explanationHi": "सही विकल्प (D): दिल्ली ग्वालियर।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (6th June 2021) Shift-2",
-  "year": "2021",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "2f1b956a99485b6d",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
   "id": "q_ssc_gs_01597",
   "subject": "gs",
   "subjectName": "General Awareness",
@@ -74612,52 +74473,6 @@
   "paper": "Tier-I"
  },
  {
-  "id": "q_ssc_gs_01678",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Art & Culture",
-  "topic": "Art & Culture",
-  "difficulty": "medium",
-  "questionText": "Modhera Dance Festival is an annual cultural phenomenon in the _________ district of the state of Gujarat.",
-  "questionTextHi": "मोढेरा नृत्य महोत्सव गुजरात राज्य के _________ जिले में एक वार्षिक सांस्कृतिक घटना है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Mehsana",
-    "textHi": "मेहसाणा"
-   },
-   {
-    "id": "B",
-    "text": "Anand Junagadh",
-    "textHi": "आनंद जूनागढ़"
-   },
-   {
-    "id": "C",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "D",
-    "text": "Amreli",
-    "textHi": "अमरेली"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Correct option (A): Mehsana.",
-  "explanationHi": "सही विकल्प (A): मेहसाणा।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (2nd June 2021) Shift-2",
-  "year": "2021",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "ba050a5949374730",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
   "id": "q_ssc_gs_01679",
   "subject": "gs",
   "subjectName": "General Awareness",
@@ -74884,52 +74699,6 @@
    "pyq"
   ],
   "dupeHash": "c4abee5973fa121f",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_01684",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Art & Culture",
-  "topic": "Art & Culture",
-  "difficulty": "medium",
-  "questionText": "‘What I Talk About When I Talk About Running’ is a book written by ____________.",
-  "questionTextHi": "'व्हाट आई टॉक अबाउट व्हेन आई टॉक अबाउट रनिंग' ____________ द्वारा लिखित एक पुस्तक है।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Suematsu Kenchō",
-    "textHi": "सुएमात्सु केंचो"
-   },
-   {
-    "id": "B",
-    "text": "Yukio Mishima Hiroaki Sato",
-    "textHi": "युकिओ मिशिमा हिरोकी सातो"
-   },
-   {
-    "id": "C",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "D",
-    "text": "Haruki Murakami",
-    "textHi": "हारुकी मुराकामी"
-   }
-  ],
-  "correctAnswer": "D",
-  "explanation": "Correct option (D): Haruki Murakami.",
-  "explanationHi": "सही विकल्प (D): हारुकी मुराकामी।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (1st June 2021) Shift-1",
-  "year": "2021",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "30b1477e7eb50407",
   "figureBased": false,
   "paper": "Tier-I"
  },
@@ -75252,52 +75021,6 @@
    "pyq"
   ],
   "dupeHash": "d527c0ec03ca57f3",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_01692",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Chemistry",
-  "topic": "Chemistry",
-  "difficulty": "medium",
-  "questionText": "When did Ernest Rutherford publish the results of the gold-foil experiment, which showed that scattering is caused by a rigid, dense core at the centre of the atom - the nucleus?",
-  "questionTextHi": "अर्नेस्ट रदरफोर्ड ने गोल्ड-फ़ॉइल प्रयोग के नतीजे कब प्रकाशित किए, जिससे पता चला कि बिखराव परमाणु के केंद्र - नाभिक में एक कठोर, घने कोर के कारण होता है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "1905",
-    "textHi": "1905"
-   },
-   {
-    "id": "B",
-    "text": "1911 1921",
-    "textHi": "1911 1921"
-   },
-   {
-    "id": "C",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "D",
-    "text": "1925",
-    "textHi": "1925"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Correct option (B): 1911 1921.",
-  "explanationHi": "सही विकल्प (B): 1911 1921.",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (1st June 2021) Shift-1",
-  "year": "2021",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "73e269082f3abdf6",
   "figureBased": false,
   "paper": "Tier-I"
  },
@@ -83302,52 +83025,6 @@
    "pyq"
   ],
   "dupeHash": "1126cdbecaa8c6c1",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_01867",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Physics",
-  "topic": "Physics",
-  "difficulty": "medium",
-  "questionText": "Identify the INCORRECT pair with respect to the substances and their specific heat capacity (Jkg −1 K −1 ) at room temperature and atmospheric pressure.",
-  "questionTextHi": "कमरे के तापमान और वायुमंडलीय दबाव पर पदार्थों और उनकी विशिष्ट ताप क्षमता (Jkg −1 K −1) के संबंध में गलत जोड़ी की पहचान करें।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Aluminium - 900.0",
-    "textHi": "एल्यूमिनियम - 900.0"
-   },
-   {
-    "id": "B",
-    "text": "Water - 1200 Carbon - 506.5",
-    "textHi": "जल - 1200 कार्बन - 506.5"
-   },
-   {
-    "id": "C",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "D",
-    "text": "Tungsten - 134.4",
-    "textHi": "टंगस्टन - 134.4"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Correct option (B): Water - 1200 Carbon - 506.5.",
-  "explanationHi": "सही विकल्प (B): पानी - 1200 कार्बन - 506.5।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (26th May 2021) Shift-2",
-  "year": "2021",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "8b567ce1d50937c1",
   "figureBased": false,
   "paper": "Tier-I"
  },
@@ -120954,52 +120631,6 @@
   "paper": "Tier-I"
  },
  {
-  "id": "q_ssc_gs_02685",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "The average of a numbers 75% of the numbers is each of the remaining decreased by 9, then the the numbers is :",
-  "questionTextHi": "किसी संख्या का औसत 75% है, शेष प्रत्येक में 9 की कमी है, तो संख्या है:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "37.125",
-    "textHi": "37.125"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "38.25",
-    "textHi": "38.25"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Correct option (C): 38.25.",
-  "explanationHi": "सही विकल्प (C): 38.25.",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (4th July 2019 - Shift 1)",
-  "year": "2019",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "c09d76ecefecb895",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
   "id": "q_ssc_gs_02686",
   "subject": "gs",
   "subjectName": "General Awareness",
@@ -121371,98 +121002,6 @@
   "paper": "Tier-I"
  },
  {
-  "id": "q_ssc_gs_02694",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "Which of the following are that produce cones and seeds are not encased within",
-  "questionTextHi": "निम्नलिखित में से कौन सा ऐसा है जो शंकु उत्पन्न करता है और बीज भीतर बंद नहीं होते हैं?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Gymnosperms",
-    "textHi": "जिम्नोस्पर्म"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "Bryphytes",
-    "textHi": "ब्राइफाइट्स"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Correct option (A): Gymnosperms.",
-  "explanationHi": "सही विकल्प (A): जिम्नोस्पर्म।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (4th July 2019 - Shift 1)",
-  "year": "2019",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "2edb466ccfa1a66e",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_02695",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "If a 10-digit number divisible by 88, then the is :",
-  "questionTextHi": "यदि एक 10 अंकीय संख्या 88 से विभाज्य है, तो है:",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "9",
-    "textHi": "9"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "15",
-    "textHi": "15"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Correct option (A): 9.",
-  "explanationHi": "सही विकल्प (A): 9.",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (4th July 2019 - Shift 2)",
-  "year": "2019",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "c8e05c3629b7d550",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
   "id": "q_ssc_gs_02697",
   "subject": "gs",
   "subjectName": "General Awareness",
@@ -121505,52 +121044,6 @@
    "pyq"
   ],
   "dupeHash": "1c02874837f4b42f",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_02698",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "Which is the largest body?",
-  "questionTextHi": "सबसे बड़ा पिंड कौन सा है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Femur",
-    "textHi": "फीमर"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "Malleus",
-    "textHi": "मैलियस"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Correct option (A): Femur.",
-  "explanationHi": "सही विकल्प (A): फीमर।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (4th July 2019 - Shift 2)",
-  "year": "2019",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "c6ff3a94204e49b0",
   "figureBased": false,
   "paper": "Tier-I"
  },
@@ -121783,52 +121276,6 @@
    "source-note"
   ],
   "dupeHash": "877db679ae4566d1",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_02704",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "With how many does Uttar Pradesh share",
-  "questionTextHi": "उत्तर प्रदेश कितनों के साथ साझा करता है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "7",
-    "textHi": "7"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "9",
-    "textHi": "9"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Correct option (C): 9.",
-  "explanationHi": "सही विकल्प (C): 9.",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (4th July 2019 - Shift 2)",
-  "year": "2019",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "005d8f2ffa81b5ef",
   "figureBased": false,
   "paper": "Tier-I"
  },
@@ -124181,52 +123628,6 @@
    "pyq"
   ],
   "dupeHash": "0a8feeaf37e793e1",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_02762",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Physics",
-  "topic": "Physics",
-  "difficulty": "medium",
-  "questionText": "what is the resistance (in Ω) electrical component if a current 0.1 A passes through it on of 5 V of potential difference it?",
-  "questionTextHi": "विद्युत घटक का प्रतिरोध (Ω में) क्या है यदि 0.1 A विद्युत धारा 5 V के संभावित अंतर पर इससे होकर गुजरती है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "0.5",
-    "textHi": "0.5"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "50",
-    "textHi": "50"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Correct option (C): 50.",
-  "explanationHi": "सही विकल्प (C): 50.",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (4th March 2018 - Shift 3)",
-  "year": "2018",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "70349ebe9e899de8",
   "figureBased": false,
   "paper": "Tier-I"
  },
@@ -127686,98 +127087,6 @@
   "paper": "Tier-I"
  },
  {
-  "id": "q_ssc_gs_02840",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "The line of Cancer through which of the India?",
-  "questionTextHi": "कर्क रेखा भारत के किस क्षेत्र से होकर गुजरती है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Odisha",
-    "textHi": "ओडिशा"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "Rajasthan",
-    "textHi": "राजस्थान"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Correct option (A): Odisha.",
-  "explanationHi": "सही विकल्प (A): ओडिशा।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (6th March 2018 - Shift 2)",
-  "year": "2018",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "be7ebc644aef39c2",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_02841",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "What was the real Buddha?",
-  "questionTextHi": "असली बुद्ध क्या थे?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Siddhartha",
-    "textHi": "सिद्धार्थ"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "Shree Dutt",
-    "textHi": "श्री दत्त"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Correct option (A): Siddhartha.",
-  "explanationHi": "सही विकल्प (A): सिद्धार्थ।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (6th March 2018 - Shift 2)",
-  "year": "2018",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "e3ef1715ce781e64",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
   "id": "q_ssc_gs_02842",
   "subject": "gs",
   "subjectName": "General Awareness",
@@ -128148,52 +127457,6 @@
   "paper": "Tier-I"
  },
  {
-  "id": "q_ssc_gs_02850",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "1 m/s equals ____________",
-  "questionTextHi": "1 मी/सेकंड ____________ के बराबर होता है",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "5/16",
-    "textHi": "5/16"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "18/5",
-    "textHi": "18/5"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Correct option (C): 18/5.",
-  "explanationHi": "सही विकल्प (C): 18/5।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (6th March 2018 - Shift 2)",
-  "year": "2018",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "77e1144dcfe2d6c1",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
   "id": "q_ssc_gs_02851",
   "subject": "gs",
   "subjectName": "General Awareness",
@@ -128282,98 +127545,6 @@
    "pyq"
   ],
   "dupeHash": "4f6216cec31c0102",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_02853",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "Which of the following Vedas to as the starting source of Rudra?",
-  "questionTextHi": "निम्नलिखित में से कौन सा वेद रुद्र का प्रारंभिक स्रोत है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Rigveda",
-    "textHi": "ऋग्वेद"
-   },
-   {
-    "id": "B",
-    "text": "Samaveda",
-    "textHi": "सामवेद"
-   },
-   {
-    "id": "C",
-    "text": "Yajurveda",
-    "textHi": "यजुर्वेद"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Correct option (A): Rigveda.",
-  "explanationHi": "सही विकल्प (A): ऋग्वेद।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (6th March 2018 - Shift 3)",
-  "year": "2018",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "0342006ab77b3346",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_02854",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "The eminent Saint Vallabhacharya associated with which of the branches?",
-  "questionTextHi": "प्रख्यात संत वल्लभाचार्य किस शाखा से जुड़े थे?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Gyanashrayi",
-    "textHi": "ज्ञानाश्रयी"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "Premashrayi",
-    "textHi": "प्रेमाश्रयी"
-   },
-   {
-    "id": "D",
-    "text": "Ramashrayi",
-    "textHi": "रामाश्रयी"
-   }
-  ],
-  "correctAnswer": "B",
-  "explanation": "Correct option (B): [option text image/figure me tha].",
-  "explanationHi": "सही विकल्प (B): [विकल्प टेक्स्ट इमेज/फिगर मी था]।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (6th March 2018 - Shift 3)",
-  "year": "2018",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "5c0b593e1975c3c0",
   "figureBased": false,
   "paper": "Tier-I"
  },
@@ -134419,52 +133590,6 @@
   "paper": "Tier-I"
  },
  {
-  "id": "q_ssc_gs_02989",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Physics",
-  "topic": "Physics",
-  "difficulty": "medium",
-  "questionText": "Due to an acceleration of velocity of a body increases m/s to 30 m/s in a Find the displacement body in that period.",
-  "questionTextHi": "एक त्वरण के कारण किसी वस्तु का वेग m/s से 30 m/s तक बढ़ जाता है, उस अवधि में वस्तु का विस्थापन ज्ञात कीजिए।",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "200",
-    "textHi": "200"
-   },
-   {
-    "id": "B",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   },
-   {
-    "id": "C",
-    "text": "100",
-    "textHi": "100"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "C",
-  "explanation": "Correct option (C): 100.",
-  "explanationHi": "सही विकल्प (C): 100.",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (10th March 2018 - Shift 3)",
-  "year": "2018",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "ea0458a8a3ccc5e3",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
   "id": "q_ssc_gs_02990",
   "subject": "gs",
   "subjectName": "General Awareness",
@@ -139297,52 +138422,6 @@
    "pyq"
   ],
   "dupeHash": "b40f5ce051495b72",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_03095",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Chemistry",
-  "topic": "Chemistry",
-  "difficulty": "medium",
-  "questionText": "Which of the following is a greenhouse or a gas which can deplete the layer?",
-  "questionTextHi": "निम्नलिखित में से कौन सी ग्रीनहाउस या गैस है जो परत को ख़राब कर सकती है?",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "N O",
-    "textHi": "एन ओ"
-   },
-   {
-    "id": "B",
-    "text": "AsH 2 3",
-    "textHi": "ऐश 2 3"
-   },
-   {
-    "id": "C",
-    "text": "N",
-    "textHi": "एन"
-   },
-   {
-    "id": "D",
-    "text": "C5H 2 12",
-    "textHi": "सी5एच 2 12"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Correct option (A): N O.",
-  "explanationHi": "सही विकल्प (A): एन ओ.",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (1st Feb 2017 - Shift 1)",
-  "year": "2017",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "28896a06951b11db",
   "figureBased": false,
   "paper": "Tier-I"
  },
@@ -145417,52 +144496,6 @@
    "pyq"
   ],
   "dupeHash": "0e8349b2e2f07871",
-  "figureBased": false,
-  "paper": "Tier-I"
- },
- {
-  "id": "q_ssc_gs_03231",
-  "subject": "gs",
-  "subjectName": "General Awareness",
-  "chapter": "Static GK",
-  "topic": "Static GK",
-  "difficulty": "medium",
-  "questionText": "A series of instructions written programmer according to a given set or conventions is called...........................",
-  "questionTextHi": "किसी दिए गए सेट या सम्मेलनों के अनुसार प्रोग्रामर द्वारा लिखे गए निर्देशों की एक श्रृंखला को .......................",
-  "image": null,
-  "options": [
-   {
-    "id": "A",
-    "text": "Syntax",
-    "textHi": "कहा जाता है सिंटैक्स"
-   },
-   {
-    "id": "B",
-    "text": "A",
-    "textHi": "ए"
-   },
-   {
-    "id": "C",
-    "text": "a set",
-    "textHi": "एक सेट"
-   },
-   {
-    "id": "D",
-    "text": "[option text image/figure me tha]",
-    "textHi": "[विकल्प पाठ छवि/चित्र मुझे था]"
-   }
-  ],
-  "correctAnswer": "A",
-  "explanation": "Correct option (A): Syntax.",
-  "explanationHi": "सही विकल्प (A): सिंटैक्स।",
-  "source": "SSC CHSL Tier-I PYQ · CHSL Tier-I (3rd Feb 2017 - Shift 2)",
-  "year": "2017",
-  "tags": [
-   "ssc-chsl",
-   "tier-1",
-   "pyq"
-  ],
-  "dupeHash": "63eeecfde95b2ed7",
   "figureBased": false,
   "paper": "Tier-I"
  },
