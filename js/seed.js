@@ -391,11 +391,12 @@ const Bank = (() => {
           if (kind === 'final') {
             purged = await purgeDemoTemp(exam);   // temp Q/tests pehle saaf
             await Store.setMeta('bundleKind_' + exam, 'final');
-          } else if (kind === 'v2') {
-            /* v1.4.62 BANK-REPLACE: pura purana bank devices se hata, naya
-               v2 bank (isi sync me import hota hai) akela rahe */
+          } else if (kind === 'v2' || kind === 'v2b') {
+            /* v1.4.62/63 BANK-REPLACE: pura purana bank devices se hata, naya
+               v2 bank (isi sync me import hota hai) akela rahe. v2b = v1.4.63
+               balanced-series re-transition (har subject ka test bane). */
             purged = await purgeBankReplace(exam);
-            await Store.setMeta('bundleKind_' + exam, 'v2');
+            await Store.setMeta('bundleKind_' + exam, kind);
           } else {
             await Store.setMeta('bundleKind_' + exam, kind);
           }

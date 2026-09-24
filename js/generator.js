@@ -314,8 +314,14 @@ const Generator = (() => {
       }
       return avail[sid].splice(0, perQ).map(q => q.id);   // fallback
     };
+    /* v1.4.63 BALANCED SERIES: chhote (growing) bank me full mocks saare
+       questions kha nahi jaate — har subject ke liye kam-se-kam 1 subject
+       test reserve hota hai: mockMax = min(fullMocks, minS − 1), jahan
+       minS = sabse chhote subject ke possible perQ-size tests. Bade bank
+       pe minS bada hota hai → mockMax = fullMocks (pehle jaisa behaviour). */
+    const minS = subjectIds.length ? Math.min(...subjectIds.map(sid => Math.floor(avail[sid].length / perQ))) : 0;
+    const mockMax = Math.min(o.fullMocks, Math.max(0, minS - 1));
     const fullMocks = [];
-    const mockMax = Math.min(o.fullMocks, ...subjectIds.map(sid => Math.floor(avail[sid].length / perQ)));
     for (let m = 0; m < mockMax; m++) {
       fullMocks.push(subjectIds.map(sid => ({ subjectId: sid, questionIds: takeDiverse(sid) })));
     }

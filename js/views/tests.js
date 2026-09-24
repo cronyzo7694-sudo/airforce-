@@ -17,7 +17,8 @@ const T2IC = {
 };
 
 Views.tests = async function (state) {
-  state = state || { filter: 'all', search: '', sort: 'recent', page: 1 };
+  state = state || { filter: 'all', search: '', sort: 'recent', page: 1, subject: 'all' };
+  if (!state.subject) state.subject = 'all';
   const cfg = await App.config();
   /* v1.4.46 EXAM ISOLATION: poori library current exam ke data par —
      attempts, naam-match, test list sab exam-scoped */
@@ -64,6 +65,14 @@ Views.tests = async function (state) {
     if (state.filter === 'series') return !!t.series;
     return t.type === state.filter;
   });
+  /* v1.4.63 SUBJECT FILTER: selected subject ke sections wale tests hi */
+  if (state.subject && state.subject !== 'all') {
+    list = list.filter(t => (t.sections || []).some(s => s.subjectId === state.subject));
+  }
+  /* subject chip counts (poori library par, filter se pehle) */
+  const subjCounts = {};
+  for (const s of cfg.subjects) subjCounts[s.id] = 0;
+  mine.forEach(t => (t.sections || []).forEach(s => { if (subjCounts[s.subjectId] != null) subjCounts[s.subjectId]++; }));
   if (state.search) {
     const q = state.search.toLowerCase();
     list = list.filter(t => t.name.toLowerCase().includes(q));
@@ -130,6 +139,11 @@ Views.tests = async function (state) {
     <div class="filter-tabs ftabs2" role="tablist">
       ${Object.entries(FNAMES).map(([k, v]) => (counts[k] > 0 || state.filter === k)
         ? `<button role="tab" class="ftab ${state.filter === k ? 'active' : ''}" data-f="${k}">${v}<span class="fcount">${counts[k]}</span></button>` : '').join('')}
+    </div>
+
+    <div class="filter-tabs sfilt" role="tablist" aria-label="Subject filter">
+      <button role="tab" class="ftab sftab ${state.subject === 'all' ? 'active' : ''}" data-s="all">All Subjects<span class="fcount">${mine.length}</span></button>
+      ${cfg.subjects.map(s => `<button role="tab" class="ftab sftab ${state.subject === s.id ? 'active' : ''}" data-s="${s.id}"><i class="subject-dot sd-${s.id}"></i>${AVUtil.esc(s.name)}<span class="fcount">${subjCounts[s.id] || 0}</span></button>`).join('')}
     </div>
 
     ${slice.length ? `
@@ -219,7 +233,9 @@ Views.tests = async function (state) {
   }
 
   // events
-  AVUtil.$$('#app .ftab').forEach(b => b.addEventListener('click', () => { state.filter = b.dataset.f; state.page = 1; Views.tests(state); }));
+  AVUtil.$$('#app .ftab').forEach(b => b.addEventListener('click', () => { if (!b.dataset.f) return; state.filter = b.dataset.f; state.page = 1; Views.tests(state); }));
+  /* v1.4.63 subject filter chips */
+  AVUtil.$$('#app .sftab').forEach(b => b.addEventListener('click', () => { state.subject = b.dataset.s; state.page = 1; Views.tests(state); }));
   const searchEl = AVUtil.$('#test-search');
   searchEl.addEventListener('input', AVUtil.debounce(e => { state.search = e.target.value; state.page = 1; state._refocus = true; Views.tests(state); }, 250));
   if (state._refocus) { // keep typing across re-renders

@@ -618,6 +618,20 @@ T('planSeries dedupes identical content across tests', () => {
   const all = plan.subjectTests.physics.flat();
   assert(all.filter(id => id === pools.physics[3].id || id === pools.physics[50].id).length <= 1, 'twin content appears at most once');
 });
+T('planSeries reserves ≥1 subject test per subject on small banks (v1.4.63)', () => {
+  /* 100 Q/subject + fullMocks 15: pehle mocks sab kha lete the → 0 subject
+     tests. Ab mockMax = min(15, minS−1) = 3 → har subject ka 1 test banta hai */
+  const pools = { physics: mkPool(100, 'pb'), mathematics: mkPool(100, 'mb') };
+  const plan = Generator.planSeries(pools, [], { fullMocks: 15, perSubject: 5 });
+  eq(plan.fullMocks.length, 3, 'minS=4 → 3 mocks (1 per-subject test reserved)');
+  eq(plan.subjectTests.physics.length, 1, '1 physics subject test bana');
+  eq(plan.subjectTests.mathematics.length, 1, '1 maths subject test bana');
+  const all = [];
+  plan.fullMocks.forEach(sections => sections.forEach(s => all.push(...s.questionIds)));
+  Object.values(plan.subjectTests).forEach(list => list.forEach(ids => all.push(...ids)));
+  eq(new Set(all).size, all.length, 'no overlap');
+  eq(all.length, 2 * 100, 'poora 200 Q utilised (3 mock + 1 subject test / subject)');
+});
 
 console.log(`\n════════════════════════════════════════`);
 console.log(`  RESULT: ${passed} passed, ${failed} failed`);

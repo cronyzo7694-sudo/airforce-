@@ -8,7 +8,7 @@ const DIR = path.join(__dirname, '..', '..', 'data', 'ssc-chsl');
 const subjects = ['mathematics', 'english', 'reasoning', 'gs'];
 const NAMES = { mathematics: 'Mathematics', english: 'English Language', reasoning: 'Reasoning', gs: 'General Awareness' };
 const meta = {
-  _bundleKind: 'v2',
+  _bundleKind: 'v2b',
   _note: 'v1.4.62 V2 BANK — daily-100 quality model. Purana 10,275 Q bank DB + devices se hata (archive-v1/ me safe). Har subject me 100% verified curated questions (real options, explanations, chapter diversity). Roz 100/subject add hote rahenge.',
   total: 0
 };
