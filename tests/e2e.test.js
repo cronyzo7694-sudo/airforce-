@@ -334,11 +334,12 @@ async function main() {
   await waitFor(() => doc.querySelectorAll('.test-card').length > 0, 10000);
   T('test library shows 12 cards/page with series', doc.querySelectorAll('.test-card').length === 12 &&
     doc.body.textContent.includes('Full Mock Test 1') && doc.querySelector('.pager'));
-  const seriesTab = Array.from(doc.querySelectorAll('.ftab')).find(b => b.dataset.f === 'series');
-  seriesTab.dispatchEvent(new window.Event('click', { bubbles: true }));
+  const fullTab = Array.from(doc.querySelectorAll('.ftab[data-t]')).find(b => b.dataset.t === 'full');
+  fullTab.dispatchEvent(new window.Event('click', { bubbles: true }));
   await sleep(300);
-  T('Test Series filter shows only series tests',
-    doc.querySelectorAll('.test-card').length === 12 && doc.body.textContent.includes('Full Mock Test'));
+  T('Full Mock filter: sirf mock tests (subject tests hidden — v1.4.65 partition)',
+    doc.querySelectorAll('.test-card').length >= 1 && doc.body.textContent.includes('Full Mock Test') &&
+    !doc.body.textContent.includes('Aptitude Test') && !doc.body.textContent.includes('Language Test'));
   window.location.hash = '#/questions';
   await waitFor(() => doc.querySelectorAll('.qb-row').length > 0, 20000);
   T('question bank renders paginated', doc.querySelectorAll('.qb-row').length === 25);

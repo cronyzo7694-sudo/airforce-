@@ -17,7 +17,7 @@ const T2IC = {
 };
 
 Views.tests = async function (state) {
-  state = state || { filter: 'all', search: '', sort: 'recent', page: 1, subject: 'all' };
+  state = state || { type: 'all', status: 'none', subject: 'all', search: '', sort: 'recent', page: 1 };
   if (!state.subject) state.subject = 'all';
   const cfg = await App.config();
   /* v1.4.46 EXAM ISOLATION: poori library current exam ke data par —
@@ -44,12 +44,26 @@ Views.tests = async function (state) {
      airforce ke "Full Mock Test N" kabhi cross-match nahi */
   const nameDone = new Set(idx.filter(a => !a.abandoned && (a.exam || 'airforce') === curExam).map(a => a.testName));
 
-  // filters
-  const FNAMES = { all: 'All', series: 'Test Series', full: 'Full Mock', subject: 'Subject', chapter: 'Chapter', topic: 'Topic', custom: 'Custom', completed: 'Completed', incomplete: 'In Progress' };
+  // v1.4.65 FILTERS — 3 ORTHOGONAL dimensions, koi overlap nahi:
+  //   TYPE (partition: All = Full + Subject + Chapter + Topic + Custom)
+  //   × SUBJECT (chips: us subject ke sections wale tests — full mocks included)
+  //   × STATUS (Any / Completed / In Progress)
+  // "Test Series" chip HATA — series ek card-badge hai (overlap ka source tha:
+  // same test series + full mock dono me ginta tha → 18+6+13 > All).
+  const TYPE_F = { all: 'All', full: 'Full Mock', subject: 'Subject', chapter: 'Chapter', topic: 'Topic', custom: 'Custom' };
+  const STATUS_F = { none: 'Any Status', completed: 'Completed', incomplete: 'In Progress' };
+  /* legacy single-dim state.filter → naye dims me migrate */
+  if (state.filter) {
+    if (state.filter === 'completed' || state.filter === 'incomplete') state.status = state.filter;
+    else if (TYPE_F[state.filter]) state.type = state.filter;
+    state.filter = undefined;
+  }
+  if (state.type === undefined) state.type = 'all';
+  if (state.status === undefined) state.status = 'none';
   const mine = tests.filter(t => (t.exam || 'airforce') === curExam);
   const isDone = t => (attByTest[t.id] || []).some(a => !a.abandoned) || nameDone.has(t.name);
   const counts = {
-    all: mine.length, series: mine.filter(t => t.series).length,
+    all: mine.length,
     full: mine.filter(t => t.type === 'full').length,
     subject: mine.filter(t => t.type === 'subject').length,
     chapter: mine.filter(t => t.type === 'chapter').length,
@@ -59,20 +73,21 @@ Views.tests = async function (state) {
     incomplete: mine.filter(hasUnfinished).length
   };
   let list = mine.filter(t => {
-    if (state.filter === 'all' || FNAMES[state.filter] === undefined) return true;
-    if (state.filter === 'completed') return isDone(t);
-    if (state.filter === 'incomplete') return hasUnfinished(t);
-    if (state.filter === 'series') return !!t.series;
-    return t.type === state.filter;
+    if (state.type !== 'all' && t.type !== state.type) return false;
+    if (state.status === 'completed' && !isDone(t)) return false;
+    if (state.status === 'incomplete' && !hasUnfinished(t)) return false;
+    if (state.subject !== 'all' && !(t.sections || []).some(s => s.subjectId === state.subject)) return false;
+    return true;
   });
-  /* v1.4.63 SUBJECT FILTER: selected subject ke sections wale tests hi */
-  if (state.subject && state.subject !== 'all') {
-    list = list.filter(t => (t.sections || []).some(s => s.subjectId === state.subject));
-  }
-  /* subject chip counts (poori library par, filter se pehle) */
+  /* subject chip counts — poori library par (filter se pehle), mocks included */
   const subjCounts = {};
   for (const s of cfg.subjects) subjCounts[s.id] = 0;
   mine.forEach(t => (t.sections || []).forEach(s => { if (subjCounts[s.subjectId] != null) subjCounts[s.subjectId]++; }));
+  /* active filter summary — "Showing…" line ke saath clarity */
+  const activeBits = [];
+  if (state.type !== 'all') activeBits.push(TYPE_F[state.type]);
+  if (state.subject !== 'all') activeBits.push((cfg.subjects.find(s => s.id === state.subject) || {}).name || state.subject);
+  if (state.status !== 'none') activeBits.push(STATUS_F[state.status]);
   if (state.search) {
     const q = state.search.toLowerCase();
     list = list.filter(t => t.name.toLowerCase().includes(q));
@@ -136,18 +151,22 @@ Views.tests = async function (state) {
       </div>
     </section>
 
-    <div class="filter-tabs ftabs2" role="tablist">
-      ${Object.entries(FNAMES).map(([k, v]) => (counts[k] > 0 || state.filter === k)
-        ? `<button role="tab" class="ftab ${state.filter === k ? 'active' : ''}" data-f="${k}">${v}<span class="fcount">${counts[k]}</span></button>` : '').join('')}
+    <div class="filter-tabs ftabs2" role="tablist" aria-label="Test type filter">
+      ${Object.entries(TYPE_F).map(([k, v]) => (counts[k] > 0 || state.type === k)
+        ? `<button role="tab" class="ftab ${state.type === k ? 'active' : ''}" data-t="${k}">${v}<span class="fcount">${counts[k]}</span></button>` : '').join('')}
     </div>
 
-    <div class="filter-tabs sfilt" role="tablist" aria-label="Subject filter">
-      <button role="tab" class="ftab sftab ${state.subject === 'all' ? 'active' : ''}" data-s="all">All Subjects<span class="fcount">${mine.length}</span></button>
-      ${cfg.subjects.map(s => `<button role="tab" class="ftab sftab ${state.subject === s.id ? 'active' : ''}" data-s="${s.id}"><i class="subject-dot sd-${s.id}"></i>${AVUtil.esc(s.name)}<span class="fcount">${subjCounts[s.id] || 0}</span></button>`).join('')}
+    <div class="filter-tabs ftabs2 sfilt" role="tablist" aria-label="Subject filter">
+      <button role="tab" class="ftab sftab ${state.subject === 'all' ? 'active' : ''}" data-s="all" title="Sabhi tests (saare subjects)">All Subjects<span class="fcount">${mine.length}</span></button>
+      ${cfg.subjects.map(s => `<button role="tab" class="ftab sftab ${state.subject === s.id ? 'active' : ''}" data-s="${s.id}" title="${AVUtil.esc(s.name)} section wale saare tests — full mocks bhi included"><i class="subject-dot sd-${s.id}"></i>${AVUtil.esc(s.name)}<span class="fcount">${subjCounts[s.id] || 0}</span></button>`).join('')}
+    </div>
+
+    <div class="filter-tabs ftabs2 sfilt" role="tablist" aria-label="Status filter">
+      ${Object.entries(STATUS_F).map(([k, v]) => `<button role="tab" class="ftab sftab ${state.status === k ? 'active' : ''}" data-status="${k}">${v}<span class="fcount">${k === 'none' ? mine.length : counts[k]}</span></button>`).join('')}
     </div>
 
     ${slice.length ? `
-    <div class="tlib-count">Showing <b>${startN}–${endN}</b> of <b>${list.length}</b> test${list.length === 1 ? '' : 's'}${state.search ? ` matching “${AVUtil.esc(state.search)}”` : ''}</div>
+    <div class="tlib-count">Showing <b>${startN}–${endN}</b> of <b>${list.length}</b> test${list.length === 1 ? '' : 's'}${activeBits.length ? ` · Filter: <b>${activeBits.map(AVUtil.esc).join(' + ')}</b>` : ''}${state.search ? ` matching “${AVUtil.esc(state.search)}”` : ''}</div>
     <div class="tlib-grid">${slice.map(t => testCard(t)).join('')}</div>` : `
     <div class="tlib-empty">
       ${T2IC.sad}
@@ -233,9 +252,10 @@ Views.tests = async function (state) {
   }
 
   // events
-  AVUtil.$$('#app .ftab').forEach(b => b.addEventListener('click', () => { if (!b.dataset.f) return; state.filter = b.dataset.f; state.page = 1; Views.tests(state); }));
-  /* v1.4.63 subject filter chips */
-  AVUtil.$$('#app .sftab').forEach(b => b.addEventListener('click', () => { state.subject = b.dataset.s; state.page = 1; Views.tests(state); }));
+  /* v1.4.65: teeno filter rows ke handlers (orthogonal dims) */
+  AVUtil.$$('#app .ftab[data-t]').forEach(b => b.addEventListener('click', () => { state.type = b.dataset.t; state.page = 1; Views.tests(state); }));
+  AVUtil.$$('#app .sftab[data-s]').forEach(b => b.addEventListener('click', () => { state.subject = b.dataset.s; state.page = 1; Views.tests(state); }));
+  AVUtil.$$('#app .ftab[data-status]').forEach(b => b.addEventListener('click', () => { state.status = b.dataset.status; state.page = 1; Views.tests(state); }));
   const searchEl = AVUtil.$('#test-search');
   searchEl.addEventListener('input', AVUtil.debounce(e => { state.search = e.target.value; state.page = 1; state._refocus = true; Views.tests(state); }, 250));
   if (state._refocus) { // keep typing across re-renders
