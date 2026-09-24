@@ -168,6 +168,7 @@ const App = {
             if (sr && sr.made) AVUtil.toast(sr.made + ' naye tests ban gaye 🎉', 'success');
           } catch (e) {}
         }
+        try { await Bank.healSeries(exam); } catch (e) {}   // v1.4.69 self-heal
       }
     } catch (e) { console.error('exam-switch seed', e); }
     /* v1.4.50 race-guard: seed/sync slow hone par ye LATE chal jata tha —
@@ -227,6 +228,14 @@ const App = {
         AVUtil.toast(r.pruned + ' outdated question' + (r.pruned === 1 ? '' : 's') + ' removed — bank updated.', 'info');
       }
     } catch (e) { /* sync is a bonus — never block boot */ }
+
+    // v1.4.69 SERIES SELF-HEAL — har boot: har subject ka kam-se-kam 1 subject
+    // test (missing ho to unused bank se banao, warna unattempted series
+    // rebalance). v1.4.62-era adhoori libraries apne aap theek ho jati hain.
+    try {
+      const h = await Bank.healSeries((this.configCache && this.configCache.exam) || 'airforce');
+      if (h && h.healed) AVUtil.toast((h.dropped ? 'Series rebalance: ' : '') + h.healed + ' tests auto-created 🎉', 'success');
+    } catch (e) { /* heal is a bonus — never block boot */ }
 
     // v1.4.51: purane SSC mocks ka 85-min timer bug fix (one-time)
     try { await this.fixSscMockDurations(); } catch (e) { /* best-effort */ }

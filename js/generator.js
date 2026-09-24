@@ -447,7 +447,10 @@ const Generator = (() => {
       C = EXAM_CONFIGS[seriesExam];                          // safety: exam mismatch kabhi mix nahi
     }
     const pools = {};
-    for (const s of C.subjects) pools[s.id] = await poolFor({ subjectId: s.id });
+    /* v1.4.69: opts.subjects — sirf inhi subjects ke pools banao (heal top-up
+       ke liye; baaki subjects ke existing tests chhue-bina rehte hain) */
+    const want = Array.isArray(o.subjects) && o.subjects.length ? o.subjects : null;
+    for (const s of C.subjects) if (!want || want.includes(s.id)) pools[s.id] = await poolFor({ subjectId: s.id });
     const existing = await DB.getAll('tests');
     const plan = planSeries(pools, existing, { fullMocks: o.fullMocks, perSubject: o.perSubject });
 

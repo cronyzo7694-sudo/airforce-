@@ -30,6 +30,13 @@ const loadDb = new Function(fs.readFileSync(path.join(ROOT, 'js/db.js'), 'utf8')
 global.DB = loadDb.DB;
 global.Store = loadDb.Store;
 global.AVUtil = require('../js/util.js');
+const cfgMod = require('../js/config.js');
+global.EXAM_CONFIG = cfgMod.EXAM_CONFIG;
+global.EXAM_CONFIGS = cfgMod.EXAM_CONFIGS;
+global.EXAM_LABELS = cfgMod.EXAM_LABELS;
+const SSC = { ...cfgMod.EXAM_CONFIGS['ssc-chsl'], exam: 'ssc-chsl' };
+global.App = { configCache: SSC, config: async () => SSC };
+global.Generator = require('../js/generator.js');
 const Seed = require('../js/seed.js');
 
 const passed = [], failed = [];
@@ -94,7 +101,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
   console.log('━━━ purgeBankReplace (v2)');
   const pr = await Seed.purgeBankReplace('ssc-chsl');
   t('purge: stale 5 + v2 400 = 405 deleted (manual user SAFE)', pr.questions === 405, 'got ' + pr.questions);
-  t('purge: unattempted stale series test dropped', pr.tests === 1, 'got ' + pr.tests);
+  t('purge: unattempted stale series test dropped (seed series samet)', pr.tests >= 1, 'got ' + pr.tests);
   const all2 = await DB.getAll('questions');
   const ssc2 = all2.filter(q => q.exam === 'ssc-chsl');
   /* v2 bank bhi delete hota hai (replace model) — syncBundled isi sync me
@@ -123,6 +130,26 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
     await Seed.importBatch(JSON.parse(fs.readFileSync(path.join(ROOT, `data/ssc-chsl/bank-${s}.json`), 'utf8')), null, 'ssc-chsl');
   const finalQs = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
   t('final: v2 400 + user 1 = 401', finalQs.length === 401, 'got ' + finalQs.length);
+
+  /* ── 5) v1.4.69 SERIES SELF-HEAL: subject tests missing → auto top-up ── */
+  console.log('━━━ healSeries: adhoori library (0 subject tests) auto-fix');
+  await DB.delete('questions', 'q_ssc_mathematics_90001');   // manual tag wala bina distractor ke
+  const pre = (await DB.getAll('questions')).filter(q => q.exam === 'ssc-chsl');
+  t('heal setup: 400 ssc Q', pre.length === 400, 'got ' + pre.length);
+  /* seed khud series bana chuka (2 fulls + 7 subject — en pool 99 figureBased).
+     Sab series SUBJECT tests delete karo (v1.4.62-era jaisa tootan) → heal */
+  let lib = (await DB.getAll('tests')).filter(t => t.exam === 'ssc-chsl');
+  const fullsBefore = lib.filter(t => t.series && t.type === 'full').length;
+  for (const t of lib.filter(t => t.series && t.type === 'subject')) await DB.delete('tests', t.id);
+  const h1 = await Seed.healSeries('ssc-chsl');
+  t('heal: missing detect + unused bank se top-up (path-a, made>0)', (h1.healed || 0) >= 4 && h1.healed >= (4 - 0), JSON.stringify(h1));
+  lib = (await DB.getAll('tests')).filter(t => t.exam === 'ssc-chsl' && t.series);
+  const perSub = {};
+  lib.filter(t => t.type === 'subject').forEach(t => { perSub[t.sections[0].subjectId] = (perSub[t.sections[0].subjectId] || 0) + 1; });
+  t('heal: chaaron subjects ke subject tests wapas', ['gs', 'mathematics', 'reasoning', 'english'].every(s => (perSub[s] || 0) >= 1), JSON.stringify(perSub));
+  t('heal: mocks chhue-bina (path-a me delete NAHI)', lib.filter(t => t.type === 'full').length === fullsBefore, 'got ' + lib.filter(t => t.type === 'full').length);
+  const h2 = await Seed.healSeries('ssc-chsl');
+  t('heal: complete library par no-op (idempotent)', h2.complete === true && h2.healed === 0, JSON.stringify(h2));
 
   console.log(`\n${passed.length}/${passed.length + failed.length} pass`);
   process.exit(failed.length ? 1 : 0);

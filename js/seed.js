@@ -318,6 +318,55 @@ const Bank = (() => {
     } catch (e) { return { questions: 0, tests: 0 }; }
   }
 
+  /* ---- v1.4.69 SERIES SELF-HEAL (har boot, sync ke early-return ke baad bhi) ----
+     INVARIANT: har subject ka kam-se-kam 1 series SUBJECT test hona chahiye.
+     v1.4.62-era devices par purane planner ne saare Qs mocks me khaye the
+     (5 mocks + 0 subject tests) aur kind-transition purane code me kha gayi
+     thi — ye heal un sabko apne aap theek karta hai:
+       (a) unused bank se missing subjects ka 1-1 test banao;
+       (b) na bane (bank exhausted) → UNATTEMPTED series tests hata ke poora
+           series REBALANCE (attempted history + custom tests KABHI nahi).
+     Loop-guard: max 2 tries per exam. Complete library par zero-cost skip. */
+  async function healSeries(exam) {
+    try {
+      if (exam === 'airforce') return { healed: 0, skip: true };
+      const C = (typeof App !== 'undefined' && App.configCache && App.configCache.exam === exam && App.configCache.subjects)
+        ? App.configCache : ((typeof EXAM_CONFIGS !== 'undefined' && EXAM_CONFIGS[exam]) || null);
+      if (!C || !C.subjects) return { healed: 0, skip: true };
+      const subjects = C.subjects.map(s => s.id);
+      const tests = await DB.getAll('tests');
+      const have = {};
+      tests.forEach(t => {
+        if ((t.exam || 'airforce') !== exam || !t.series || t.type !== 'subject' || !t.sections || !t.sections[0]) return;
+        have[t.sections[0].subjectId] = (have[t.sections[0].subjectId] || 0) + 1;
+      });
+      const missing = subjects.filter(sid => !have[sid]);
+      if (!missing.length) { await Store.setMeta('seriesHealTries_' + exam, 0); return { healed: 0, complete: true }; }
+      const tries = (await Store.getMeta('seriesHealTries_' + exam, 0)) || 0;
+      if (tries >= 2) return { healed: 0, blocked: true };
+      await Store.setMeta('seriesHealTries_' + exam, tries + 1);
+      let made = 0;
+      if (typeof Generator !== 'undefined') {
+        try { const r = await Generator.buildSeries({ fullMocks: 0, perSubject: 1, subjects: missing }); made = (r && r.made) || 0; } catch (e) {}
+      }
+      let dropped = 0;
+      if (made < missing.length) {
+        /* bank exhausted → unattempted series REBALANCE (attempted + custom safe) */
+        const all2 = await DB.getAll('tests');
+        for (const t of all2) {
+          if ((t.exam || 'airforce') !== exam || !t.series || !Array.isArray(t.sections)) continue;
+          const atts = await DB.byIndex('attempts', 'testId', t.id);
+          if (atts && atts.length) continue;   // attempted history — kabhi nahi chhoota
+          await DB.delete('tests', t.id); dropped++;
+        }
+        if (dropped && typeof Generator !== 'undefined') {
+          try { const r = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 }); made += (r && r.made) || 0; } catch (e) {}
+        }
+      }
+      return { healed: made, dropped, missing: missing.length };
+    } catch (e) { return { healed: 0, error: String(e && e.message || e) }; }
+  }
+
   async function syncBundled(exam) {
     exam = exam || ((typeof App !== 'undefined' && App.configCache && App.configCache.exam) || 'airforce');
     const bundle = EXAM_BUNDLES[exam] || EXAM_BUNDLES.airforce;
@@ -440,7 +489,7 @@ const Bank = (() => {
     return { synced: true, imported, pruned: pr ? pr.questions : 0, testsDropped: pr ? pr.tests : 0, purged: purged || null, built };
   }
 
-  return { importBatch, seedIfNeeded, syncBundled, purgeDemoTemp, purgeBankReplace, pruneRetired, bankStats, contentId, dupeId };
+  return { importBatch, seedIfNeeded, syncBundled, purgeDemoTemp, purgeBankReplace, pruneRetired, healSeries, bankStats, contentId, dupeId };
 })();
 
 /* --------- update cumulative stats after every submit --------- */

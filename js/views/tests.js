@@ -76,7 +76,7 @@ Views.tests = async function (state) {
   };
   const cur = { type: state.type, subject: state.subject, status: state.status };
   const cnt = d => mine.filter(t => dimsMatch(t, d)).length;
-  const list = mine.filter(t => dimsMatch(t, cur));
+  let list = mine.filter(t => dimsMatch(t, cur));
   const typeCounts = {}, subjCounts = {}, statusCounts = {};
   for (const k of Object.keys(TYPE_F)) typeCounts[k] = cnt({ ...cur, type: k });
   for (const s of cfg.subjects) subjCounts[s.id] = cnt({ ...cur, subject: s.id });
@@ -93,9 +93,33 @@ Views.tests = async function (state) {
   if (state.subject !== 'all') activeBits.push((cfg.subjects.find(s => s.id === state.subject) || {}).name || state.subject);
   if (state.status !== 'none') activeBits.push(STATUS_F[state.status]);
   const filtersActive = activeBits.length > 0 || !!state.search;
+  /* v1.4.69 INTELLIGENT SEARCH — sirf naam nahi, SUBJECT aliases bhi:
+     "math"/"maths"/"quant"/"ganit"/"गणित" -> mathematics ke PURE tests;
+     "gk"/"gs"/"सामान्य" -> GS; "reason"/"tark" -> reasoning; "language" -> english.
+     Pure semantics (chips jaisa) — alias subject ke PURE tests hi milte hain,
+     full mocks nahi (wo "Full Mocks" chip / naam-search se milte hain). */
+  const SUBJ_ALIAS = {
+    mathematics: ['math', 'maths', 'mathematics', 'quant', 'quantitative', 'aptitude', 'ganit', 'गणित'],
+    reasoning: ['reasoning', 'reason', 'intelligence', 'logical', 'logic', 'tark', 'तर्क'],
+    gs: ['gs', 'gk', 'general', 'awareness', 'samanya', 'सामान्य'],
+    english: ['english', 'language', 'angrezi', 'अंग्रेजी']
+  };
   if (state.search) {
-    const q = state.search.toLowerCase();
-    list = list.filter(t => t.name.toLowerCase().includes(q));
+    const q = state.search.toLowerCase().trim();
+    let aliased = null;
+    if (q) {
+      for (const [sid, aliases] of Object.entries(SUBJ_ALIAS)) {
+        if (aliases.some(a => q === a || (a.length >= 3 && (q.includes(a) || a.includes(q))))) { aliased = sid; break; }
+      }
+    }
+    list = list.filter(t => {
+      if (t.name.toLowerCase().includes(q)) return true;
+      if (aliased) {
+        const secs = t.sections || [];
+        return secs.length > 0 && secs.every(s => s.subjectId === aliased);
+      }
+      return false;
+    });
   }
   if (state.sort === 'series') {
     list.sort((a, b) => (b.series ? 1 : 0) - (a.series ? 1 : 0) ||

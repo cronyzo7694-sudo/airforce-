@@ -369,6 +369,19 @@ async function main() {
   rst.dispatchEvent(new window.Event('click', { bubbles: true }));
   await sleep(300);
   T('Clear filters → poori library wapas', doc.querySelectorAll('.test-card').length === 12 && /of <b>\d+<\/b>/.test(doc.querySelector('.tlib-count').innerHTML));
+
+  /* v1.4.69 INTELLIGENT SEARCH — "maths" alias → mathematics ke PURE tests */
+  const sInput = doc.querySelector('#test-search');
+  sInput.value = 'maths';
+  sInput.dispatchEvent(new window.Event('input', { bubbles: true }));
+  await sleep(700);
+  const mathCards = doc.querySelectorAll('.test-card').length;
+  T('Intelligent search: "maths" → pure mathematics tests hi (mocks nahi)',
+    mathCards >= 1 && !doc.body.textContent.includes('Full Mock Test'),
+    `cards=${mathCards}`);
+  sInput.value = '';
+  sInput.dispatchEvent(new window.Event('input', { bubbles: true }));
+  await sleep(700);
   window.location.hash = '#/questions';
   await waitFor(() => doc.querySelectorAll('.qb-row').length > 0, 20000);
   T('question bank renders paginated', doc.querySelectorAll('.qb-row').length === 25);
