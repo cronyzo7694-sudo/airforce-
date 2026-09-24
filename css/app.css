@@ -282,7 +282,7 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 .filter-tabs.small .ftab { padding: 5px 12px; font-size: 12.5px; }
 
 /* ---------------- test cards ---------------- */
-.test-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 14px; margin-bottom: 18px; }
+.test-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr)); gap: 14px; margin-bottom: 18px; }
 .test-card {
   background: #fff; border: 1px solid var(--line-soft); border-radius: 11px; padding: 16px;
   cursor: pointer; transition: border-color .15s, box-shadow .15s;
@@ -304,6 +304,10 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 
 /* ---------------- builder ---------------- */
 .b-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+/* v1.4.75 MOBILE FIX: builder ke select lambi option-text (topic/chapter names)
+   se 400px+ chaudhe ho jate the → mobile overflow. Container me clamp — native
+   dropdown puri list waise hi dikhata hai. */
+.b-row select { max-width: 100%; }
 .b-row label, .qe-grid label, .qe-lbl { font-size: 12.5px; font-weight: 600; color: #44536b; }
 .b-opts { display: flex; gap: 18px; flex-wrap: wrap; font-size: 13.5px; }
 .b-opts label { display: flex; gap: 6px; align-items: center; font-weight: 500; }
@@ -314,6 +318,10 @@ body.exam-on #app-nav, body.cbt-on #app-nav { display: none !important; }
 .b-sec-controls input, .b-sec-controls select {
   border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; font-size: 13px; background: #fff;
 }
+/* v1.4.75 MOBILE FIX: select ka min-width:auto = longest option text (405px!) →
+   flex item ke roop me container se bahar. min-width:0 + max-width clamp —
+   dropdown native picker me waise hi pura dikhta hai. */
+.b-sec-controls select { min-width: 0; max-width: 100%; }
 .b-sec-controls input[type="number"] { width: 76px; }
 .b-actions { margin-top: 18px; }
 .gen-error { background: var(--red-bg); border: 1px solid #efc3c8; color: var(--red); border-radius: 9px; padding: 12px 14px; margin-top: 12px; font-size: 13.5px; }
@@ -1141,7 +1149,7 @@ body.exam-on { overflow: hidden; }
 .tlib-count b { color: var(--ink); }
 
 /* cards */
-.tlib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 14px; margin-bottom: 18px; }
+.tlib-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(330px, 100%), 1fr)); gap: 14px; margin-bottom: 18px; }
 .test-card.t2 {
   position: relative; display: flex; flex-direction: column; gap: 9px;
   background: #fff; border: 1px solid var(--line-soft); border-radius: 13px;
@@ -1734,6 +1742,10 @@ html.sm-dark ::-webkit-scrollbar-thumb { background: #8a93a5; }
 
 /* v1.4.66 filter rows — labels + disabled chips + reset */
 .frow { display: flex; align-items: center; gap: 10px; margin-bottom: 7px; }
+/* v1.4.75 MOBILE FIX: .frow column+flex-start me scroll-strip apne max-content
+   (750px+) tak phail jata tha → poora page side-scroll. min-width:0 + max-width
+   clamp se strip container ke andar rahega aur ANDAR swipe hoga (overflow-x). */
+.frow > .filter-tabs { min-width: 0; max-width: 100%; }
 .frow-label {
   flex: none; font-size: 10.3px; font-weight: 800; letter-spacing: .06em;
   color: #7a8aa2; background: #f1f5fa; border: 1px solid #e2e9f3;
@@ -1747,4 +1759,7 @@ html.sm-dark ::-webkit-scrollbar-thumb { background: #8a93a5; }
   cursor: pointer; margin-left: 6px;
 }
 .flt-reset:hover { background: #fbe4e4; }
-@media (max-width: 640px) { .frow { flex-direction: column; align-items: flex-start; gap: 4px; } }
+@media (max-width: 640px) {
+  .frow { flex-direction: column; align-items: flex-start; gap: 4px; }
+  .frow > .filter-tabs { align-self: stretch; width: 100%; }
+}

@@ -27,14 +27,15 @@ const W = (name, extra) => { warn++; console.log('    ⚠ ' + name + (extra ? ' 
   /* ---------- setup: SSC exam + seed (desktop pe ek baar) ---------- */
   await page.setViewport({ width: 1365, height: 768 });
   await page.goto(BASE + '#/dashboard', { waitUntil: 'networkidle2', timeout: 60000 });
-  await sleep(3000);
+  await page.waitForSelector('#exam-select', { timeout: 180000 });   // airforce seed pehle complete hoga
+  await sleep(1500);
   await page.evaluate(() => {
     const sel = document.getElementById('exam-select');
     sel.value = 'ssc-chsl';
     sel.dispatchEvent(new Event('change', { bubbles: true }));
   });
-  await page.waitForFunction(() => typeof App !== 'undefined' && App.configCache && App.configCache.exam === 'ssc-chsl', { timeout: 45000 });
-  await page.waitForFunction(() => Store.getMeta('seeded_ssc-chsl', false).then(v => v === true), { timeout: 45000, polling: 500 });
+  await page.waitForFunction(() => typeof App !== 'undefined' && App.configCache && App.configCache.exam === 'ssc-chsl', { timeout: 120000 });
+  await page.waitForFunction(() => Store.getMeta('seeded_ssc-chsl', false).then(v => v === true), { timeout: 120000, polling: 1000 });
   await sleep(2000);
   const testId = await page.evaluate(async () => {
     const all = await DB.getAll('tests');
