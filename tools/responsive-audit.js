@@ -100,8 +100,13 @@ const W = (name, extra) => { warn++; console.log('    ⚠ ' + name + (extra ? ' 
         fabInfo = { hidden: fabEl.classList.contains('fab-hidden'), opacity: fst.opacity, pe: fst.pointerEvents };
       }
       const gapNav = (fv && nv) ? Math.round(nr.top - fr.bottom) : null;
+      /* v1.4.79: CBT screens (cbt-on) me site-chrome HIDDEN hona chahiye —
+         warna fixed-overlay ke niche document collapse hoke footer TOP pe
+         chadhta hai (PC pe "footer top par chipak gaya" bug) */
+      const cbtOn = document.body.classList.contains('cbt-on');
+      const cbtFooterHidden = !cbtOn || !fv;
       return {
-        vw, vh, appHas,
+        vw, vh, appHas, cbtOn, cbtFooterHidden,
         hOver: Math.max(0, document.documentElement.scrollWidth - vw),
         culprits: culprits.slice(0, 5),
         docH: document.documentElement.scrollHeight,
@@ -129,6 +134,8 @@ const W = (name, extra) => { warn++; console.log('    ⚠ ' + name + (extra ? ' 
     }
     /* v1.4.52: FAB footer/content ke upar chipka nahi (footer dikh rahe to hidden) */
     if (r.fabOk !== undefined) P(r.fabOk, tag + ' FAB footer dikhte waqt hidden (links pe chipakta nahi)', r.fabInfo);
+    /* v1.4.79: cbt-on me footer kabhi visible nahi (top-pe-chipka regression) */
+    if (r.cbtOn) P(r.cbtFooterHidden, tag + ' CBT screen: site-footer hidden (top-pe-chipka regression)', r.fv ? 'footer visible!' : 'ok');
   }
 
   /* ---------- route list ---------- */

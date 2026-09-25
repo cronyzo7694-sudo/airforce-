@@ -84,6 +84,13 @@ button { font-family: inherit; }
   width: 18px; height: 3px; border-radius: 999px; background: var(--navy-2);
 }
 body.exam-on .bottomnav, body.cbt-on .bottomnav { display: none !important; }
+/* v1.4.79 PC FIX: CBT screens (login/instructions/OTR) fixed-overlay hain —
+   #app in-flow me collapse ho jata tha → #site-footer document ke TOP pe
+   chadha rehta tha (overlay ke niche/glimpse me "footer top par chipka").
+   ab cbt-on me poora site-chrome (topnav + footer) bhi hide: */
+body.cbt-on #site-footer, body.cbt-on .topnav { display: none !important; }
+body.cbt-on { overflow: hidden; }        /* overlay ke niche koi scroll nahi */
+body.cbt-on #app { min-height: 100dvh; } /* structure kabhi collapse na ho */
 /* v1.4.52: FAB bhi CBT/exam me gayab — options/footer pe chipakta tha */
 body.exam-on #chat-fab, body.cbt-on #chat-fab { display: none !important; }
 /* v1.4.44: cbt/exam screens par topnav/placeholder bhi poora gayab */
