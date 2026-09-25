@@ -452,7 +452,18 @@ const Generator = (() => {
     const want = Array.isArray(o.subjects) && o.subjects.length ? o.subjects : null;
     for (const s of C.subjects) if (!want || want.includes(s.id)) pools[s.id] = await poolFor({ subjectId: s.id });
     const existing = await DB.getAll('tests');
-    const plan = planSeries(pools, existing, { fullMocks: o.fullMocks, perSubject: o.perSubject });
+    /* v1.4.78 REPEAT POLICY: overlap-exclusion sirf UNATTEMPTED tests ka —
+       attempt ho chuka test apne questions wapas pool me chhod deta hai.
+       25-Q/subject PYQ bank me purani hard-exclusion ka matlab tha: har
+       subject ka SIRF EK test kabhi (attempt ke baad subject permanently
+       khatam — "GS ka test nahi bana" bug). Ab attempt ke baad naya test
+       ban sakta hai; pending unattempted test khud reserve hota hai, isliye
+       per subject max 1 khula test (self-limiting). Numbering poori library
+       se hi hoti hai (Test 1, 2, 3… duplicate number nahi). */
+    let attemptedIds = new Set();
+    try { attemptedIds = new Set((await DB.getAll('attempts')).map(a => a.testId)); } catch (e) { attemptedIds = new Set(); }
+    const activeForOverlap = existing.filter(t => !attemptedIds.has(t.id));
+    const plan = planSeries(pools, activeForOverlap, { fullMocks: o.fullMocks, perSubject: o.perSubject });
 
     // continue numbering from existing series tests — v1.4.47: EXAM-SCOPED
     // (SSC ka "Mathematics Test 1" airforce ke 5 tests ke baad "Test 6" nahi)

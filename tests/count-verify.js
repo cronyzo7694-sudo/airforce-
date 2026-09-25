@@ -96,7 +96,26 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
   /* heal: empty bank par bhi graceful — missing detect, made 0, tries guard */
   const h = await Seed.healSeries('ssc-chsl');
-  t('healSeries: graceful — subject-test library khaali (bank reserved), healed 0, missing 4 reported', h && (h.healed || 0) === 0 && h.missing === 4, JSON.stringify(h));
+  t('healSeries: complete — sab subjects ke KHULE (unattempted) tests hain, healed 0, insufficient []', h && (h.healed || 0) === 0 && h.complete === true && Array.isArray(h.insufficient) && h.insufficient.length === 0, JSON.stringify(h));
+
+  /* v1.4.78 REPEAT POLICY: GS test attempt karo → heal naya GS test banae
+     (attempted Qs wapas pool me) — "GS ka test nahi bana" bug ka regression */
+  const allT = await DB.getAll('tests');
+  const gsT = allT.find(x => x.type === 'subject' && x.sections && x.sections[0] && x.sections[0].subjectId === 'gs');
+  t('repeat-setup: GS test library me hai', !!gsT, gsT ? 'ok' : 'missing');
+  if (gsT) {
+    await DB.put('attempts', { id: 'a_cv_gs1', testId: gsT.id, startedAt: Date.now(), finishedAt: Date.now(), status: 'done' });
+    /* unattempted full mock bhi GS Qs reserve karta hai — usse bhi attempt
+       karo (real-user scenario: pura pending khel liya) */
+    const fullT = (await DB.getAll('tests')).find(x => x.type === 'full');
+    if (fullT) await DB.put('attempts', { id: 'a_cv_full1', testId: fullT.id, startedAt: Date.now(), finishedAt: Date.now(), status: 'done' });
+    const h2 = await Seed.healSeries('ssc-chsl');
+    const gsCount = (await DB.getAll('tests')).filter(x => x.type === 'subject' && x.sections && x.sections[0] && x.sections[0].subjectId === 'gs').length;
+    t('repeat-policy: GS (+full) attempt ke baad heal ne GS Test 2 banaya (attempted Qs freed)', h2 && h2.healed === 1 && gsCount === 2, JSON.stringify(h2) + ' gsCount=' + gsCount);
+    const h3 = await Seed.healSeries('ssc-chsl');
+    const gsCount3 = (await DB.getAll('tests')).filter(x => x.type === 'subject' && x.sections && x.sections[0] && x.sections[0].subjectId === 'gs').length;
+    t('repeat-policy: pending GS#2 khula hai to heal aur NAHI banata (self-limiting)', h3 && (h3.healed || 0) === 0 && gsCount3 === 2, JSON.stringify(h3) + ' gsCount=' + gsCount3);
+  }
 
   /* marking config — shell hamesha sahi (naye questions aane par turant ready) */
   t('SSC marking config: +2 / −0.5 / maxMarks 200', SSC.marking.correct === 2 && SSC.marking.wrong === -0.5 && SSC.maxMarks === 200,

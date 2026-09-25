@@ -171,9 +171,10 @@ const Bank = (() => {
     /* v1.4.54: PER-EXAM flag — duplicate seed call (slow-seed ke beech dobara
        switch) dobara buildSeries chala ke adhoora/double series nahi banayega. */
     const sFlag = exam === 'airforce' ? 'seriesBuilt' : ('seriesBuilt_' + exam);
-    if (!force && typeof Generator !== 'undefined' && !(await Store.getMeta(sFlag, null))) {
+    const G0 = genRef();
+    if (!force && G0 && !(await Store.getMeta(sFlag, null))) {
       try {
-        const series = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 });
+        const series = await G0.buildSeries({ fullMocks: 15, perSubject: 5 });
         report.series = series;
         /* v1.4.54: flag sirf made>0 pe — 0 bana series (questions kam the)
            next boot/seed pe retry karegi, naye questions aate hi mock banega */
@@ -389,6 +390,16 @@ const Bank = (() => {
        (b) na bane (bank exhausted) → UNATTEMPTED series tests hata ke poora
            series REBALANCE (attempted history + custom tests KABHI nahi).
      Loop-guard: max 2 tries per exam. Complete library par zero-cost skip. */
+  /* v1.4.78: Generator browser me global lexical scope me rehta hai (classic
+     script); node/tests me module-scope — dono cover karne wala resolver.
+     (Pehle seed.js ke andar `typeof Generator` node me hamesha 'undefined'
+     tha → heal/autoBuild ki buildSeries calls chupchap skip ho jati theen.) */
+  function genRef() {
+    if (typeof Generator !== 'undefined' && Generator) return Generator;
+    if (typeof require !== 'undefined') { try { return require('./generator.js'); } catch (e) { /* browser */ } }
+    return null;
+  }
+
   async function healSeries(exam) {
     try {
       if (exam === 'airforce') return { healed: 0, skip: true };
@@ -401,10 +412,21 @@ const Bank = (() => {
       if (!C || !C.subjects) return { healed: 0, skip: true };
       const subjects = C.subjects.map(s => s.id);
       const tests = await DB.getAll('tests');
+      /* v1.4.78: 'have' ab sirf UNATTEMPTED series subject tests ginta hai —
+         attempt ho chuka test apne Qs chhod deta hai (buildSeries repeat-
+         policy), isliye jis subject ka koi KHULA test nahi hai uska fresh
+         test boot pe apne aap ban jata hai (daily-practice loop). */
+      let healAttempted = new Set();
+      try { healAttempted = new Set((await DB.getAll('attempts')).map(a => a.testId)); } catch (e) { healAttempted = new Set(); }
+      /* coverage = UNATTEMPTED full/subject test (custom nahi). Unattempted
+         FULL mock apne saare section-subjects ko cover karta hai — pending
+         practice khadi hai to us subject ka naya test nahi banata. */
       const have = {};
       tests.forEach(t => {
-        if ((t.exam || 'airforce') !== exam || !t.series || t.type !== 'subject' || !t.sections || !t.sections[0]) return;
-        have[t.sections[0].subjectId] = (have[t.sections[0].subjectId] || 0) + 1;
+        if ((t.exam || 'airforce') !== exam || !t.sections || !t.sections[0]) return;
+        if (t.type !== 'subject' && t.type !== 'full') return;
+        if (healAttempted.has(t.id)) return;
+        t.sections.forEach(s => { if (s && s.subjectId) have[s.subjectId] = (have[s.subjectId] || 0) + 1; });
       });
       /* v1.4.72: subject-joint bank census — jin subjects ke bank me HI 0 Q hain
          (user ne abhi files nahi di) vo "missing" nahi gine, warna har boot pe
@@ -429,8 +451,9 @@ const Bank = (() => {
       if (tries >= 2) return { healed: 0, blocked: true };
       await Store.setMeta('seriesHealTries_' + exam, tries + 1);
       let made = 0;
-      if (typeof Generator !== 'undefined') {
-        try { const r = await Generator.buildSeries({ fullMocks: 0, perSubject: 1, subjects: missing }); made = (r && r.made) || 0; } catch (e) {}
+      const G = genRef();
+      if (G) {
+        try { const r = await G.buildSeries({ fullMocks: 0, perSubject: 1, subjects: missing }); made = (r && r.made) || 0; } catch (e) {}
       }
       let dropped = 0;
       if (made < missing.length) {
@@ -442,8 +465,9 @@ const Bank = (() => {
           if (atts && atts.length) continue;   // attempted history — kabhi nahi chhoota
           await DB.delete('tests', t.id); dropped++;
         }
-        if (dropped && typeof Generator !== 'undefined') {
-          try { const r = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 }); made += (r && r.made) || 0; } catch (e) {}
+        const G2 = genRef();
+        if (dropped && G2) {
+          try { const r = await G2.buildSeries({ fullMocks: 15, perSubject: 5 }); made += (r && r.made) || 0; } catch (e) {}
         }
       }
       return { healed: made, dropped, missing: missing.length };
@@ -564,13 +588,15 @@ const Bank = (() => {
     // naye tests banata hai, sirf unused questions se)
     let built = 0;
     if (imported > 0 || (pr && pr.tests > 0)) {
-      try { built = (await Generator.autoBuild()) || 0; } catch (e) { /* library top-up optional */ }
+      const G3 = genRef();
+      try { built = G3 ? ((await G3.autoBuild()) || 0) : 0; } catch (e) { /* library top-up optional */ }
     }
     /* v1.4.62 bank-replace ke baad ready-made series naye bank se dobara —
        purge ne unattempted purane series hatae the, fresh 15 mocks + 5×subject */
     if (exam !== 'airforce' && await Store.getMeta('seriesRebuild_' + exam, false)) {
-      try {
-        const series = await Generator.buildSeries({ fullMocks: 15, perSubject: 5 });
+      const G4 = genRef();
+      if (G4) try {
+        const series = await G4.buildSeries({ fullMocks: 15, perSubject: 5 });
         if (series && series.made) {
           await Store.setMeta('seriesBuilt_' + exam, { at: Date.now(), made: series.made, bankV: 3 });
         }
